@@ -167,11 +167,11 @@
             </objects>
             <point key="canvasLocation" x="1835" y="475"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Rotating Tab Bar Controller-->
         <scene sceneID="2VC-D8-MJe">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axc-Xk-92F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="y5K-AK-Jqb" sceneMemberID="viewController">
+                <tabBarController id="y5K-AK-Jqb" customClass="RotatingTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dWG-T1-Ul0">
@@ -183,7 +183,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-95" y="66"/>
+            <point key="canvasLocation" x="-68" y="64"/>
         </scene>
         <!--View Controller - Home Tab-->
         <scene sceneID="1hU-jY-K0n">
@@ -251,6 +251,9 @@
                 <relationship kind="action" name="btnClickSearch:"/>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
             </relationships>
+        </class>
+        <class className="RotatingTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingTabBarController.h"/>
         </class>
         <class className="SpotDetailsViewControllerViewController" superclassName="ViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewControllerViewController.h"/>

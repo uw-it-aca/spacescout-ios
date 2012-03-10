@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
 		C2429A3F150A8600005A994A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2429A3E150A8600005A994A /* iPad.storyboard */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
@@ -65,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingTabBarController.h; path = ViewControllers/RotatingTabBarController.h; sourceTree = "<group>"; };
+		C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingTabBarController.m; path = ViewControllers/RotatingTabBarController.m; sourceTree = "<group>"; };
 		C2429A3E150A8600005A994A /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2429A42150A90DC005A994A /* MapFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterViewController.h; path = ViewControllers/MapFilterViewController.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				C2429AC2150AC133005A994A /* MapViewController.m */,
 				C2429ACB150AE368005A994A /* SpotDetailsViewControllerViewController.h */,
 				C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */,
+				C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */,
+				C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				C2429AC3150AC133005A994A /* MapViewController.m in Sources */,
 				C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */,
 				C2429ACD150AE368005A994A /* SpotDetailsViewControllerViewController.m in Sources */,
+				C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
