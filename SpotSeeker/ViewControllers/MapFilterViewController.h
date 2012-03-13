@@ -22,11 +22,15 @@
 
 @interface MapFilterViewController : UIViewController <SearchFinished> {
     Spot *spot;
+    IBOutlet UIScrollView *scroll_view;
+    IBOutlet UIView *filter_view;
 }
 
 - (IBAction) btnClickSearch:(id)sender;
 - (IBAction) btnClickCancel:(id)sender;
 
+@property (nonatomic, retain) UIScrollView *scroll_view;
+@property (nonatomic, retain) UIView *filter_view;
 @property (nonatomic, retain) Spot *spot;
 
 @end
