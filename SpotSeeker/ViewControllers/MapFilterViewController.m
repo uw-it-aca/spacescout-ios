@@ -56,8 +56,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"In viewDidLoad");
-    NSLog(@"Width: %f, Height: %f", self.filter_view.frame.size.width, self.filter_view.frame.size.width);
     [self.scroll_view setContentSize:self.filter_view.frame.size];
 
 	// Do any additional setup after loading the view.
