@@ -35,12 +35,16 @@
 }
 
 - (void) showDataForSpot {
-    [self setTitle:[spot name]];
+//    [self setTitle:[spot name]];
     [self.capacity_label setText:[spot capacity]];
 }
 
 - (void)viewDidLoad
 {
+    UIImage *image = [UIImage imageNamed:@"cat_named_spot.jpg"];    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    self.navigationItem.titleView = imageView;
+
     [super viewDidLoad];
     [self showDataForSpot];
 	// Do any additional setup after loading the view.
@@ -48,6 +52,7 @@
 
 - (void)viewDidUnload
 {
+    self.navigationItem.titleView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
