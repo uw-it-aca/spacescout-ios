@@ -63,6 +63,11 @@
                                     <action selector="btnClickCancel:" destination="LeZ-pk-cw6" eventType="touchUpInside" id="Q6x-rP-tCh"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" id="R4l-H2-X59">
+                                <rect key="frame" x="0.0" y="49" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gnM-C7-jOd">
                                 <rect key="frame" x="0.0" y="148" width="320" height="264"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +76,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1305"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view hidden="YES" contentMode="scaleToFill" id="avE-j0-w56">
+                                            <view contentMode="scaleToFill" id="avE-j0-w56">
                                                 <rect key="frame" x="0.0" y="15" width="320" height="206"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -106,7 +111,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
-                                            <view hidden="YES" contentMode="scaleToFill" id="slC-f9-tOx">
+                                            <view contentMode="scaleToFill" id="slC-f9-tOx">
                                                 <rect key="frame" x="0.0" y="281" width="320" height="194"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -127,7 +132,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
-                                            <view hidden="YES" contentMode="scaleToFill" id="cXU-H5-ERm">
+                                            <view contentMode="scaleToFill" id="cXU-H5-ERm">
                                                 <rect key="frame" x="0.0" y="499" width="320" height="655"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -139,14 +144,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Outlets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QYD-iL-cyJ">
-                                                        <rect key="frame" x="20" y="41" width="55" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Keep going..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CcZ-pj-5Sm">
-                                                        <rect key="frame" x="26" y="177" width="102" height="21"/>
+                                                        <rect key="frame" x="20" y="62" width="55" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -166,6 +164,52 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Lux-e9-9oc">
+                                                        <rect key="frame" x="20" y="38" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </switch>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="nOD-q6-z0o">
+                                                        <rect key="frame" x="20" y="91" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </switch>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Monitors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5wr-OU-5Ny">
+                                                        <rect key="frame" x="26" y="136" width="68" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3xt-fU-6JO">
+                                                        <rect key="frame" x="21" y="165" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </switch>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Computers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Gm0-4B-drl">
+                                                        <rect key="frame" x="21" y="211" width="85" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Cvb-rv-88K">
+                                                        <rect key="frame" x="20" y="240" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </switch>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Noise Level" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5FQ-Ma-6z9">
+                                                        <rect key="frame" x="26" y="291" width="89" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="91l-YJ-g4e">
+                                                        <rect key="frame" x="0.0" y="320" width="320" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <segments>
+                                                            <segment title="Loud"/>
+                                                            <segment title="Medium"/>
+                                                            <segment title="Quiet"/>
+                                                        </segments>
+                                                    </segmentedControl>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
@@ -175,14 +219,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.012345679010000001" green="1" blue="0.12543041390000001" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
-                            <searchBar contentMode="redraw" id="QMJ-TW-jbe">
-                                <rect key="frame" x="0.0" y="51" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="LeZ-pk-cw6" id="KoQ-tH-Ut4"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -199,7 +235,6 @@
                 <searchDisplayController id="Vdo-MK-ehG">
                     <connections>
                         <outlet property="delegate" destination="LeZ-pk-cw6" id="K1f-ac-KP0"/>
-                        <outlet property="searchBar" destination="QMJ-TW-jbe" id="KDa-iF-W02"/>
                         <outlet property="searchContentsController" destination="LeZ-pk-cw6" id="4Zq-c9-aKZ"/>
                         <outlet property="searchResultsDataSource" destination="LeZ-pk-cw6" id="ZBp-X2-Qir"/>
                         <outlet property="searchResultsDelegate" destination="LeZ-pk-cw6" id="ykr-pt-Gmz"/>

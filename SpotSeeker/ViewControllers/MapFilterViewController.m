@@ -87,9 +87,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.scroll_view setContentSize:self.filter_view.frame.size];
+    self.basic_filter.hidden = TRUE;
+    self.access_filter.hidden = TRUE;
+    self.extras_filter.hidden = TRUE;
     [self showFilterView: self.basic_filter];
-	// Do any additional setup after loading the view.
+
 }
 
 - (void)viewDidUnload
