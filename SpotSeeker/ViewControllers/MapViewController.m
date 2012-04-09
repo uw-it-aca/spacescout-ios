@@ -26,8 +26,9 @@
 @synthesize current_spots;
 
 -(IBAction)btnClickSearch:(id)sender { 
-    NSDictionary *attributes = [NSDictionary alloc];
-    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
+    [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"extended_info:ada_accessible"];
     Spot *_spot = [Spot alloc];
     self.spot = _spot;
     [self.spot getListBySearch:attributes];

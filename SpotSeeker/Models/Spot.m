@@ -53,13 +53,14 @@
     }
     
     server = [server stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-    NSString *list_url = [server stringByAppendingString:@"/api/v1/spot/?open_now=1"];
+    NSString *list_url = [server stringByAppendingString:[self buildURLWithParams:arguments]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:list_url]];
     [request setDelegate:self];
     [request startAsynchronous];
 }
 
+     
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
@@ -89,7 +90,19 @@
     
 }   
 
+-(NSString *)buildURLWithParams:(NSDictionary *)param_dictionary {
+    NSString *base = @"/api/v1/spot/?";
 
+    for (id key in param_dictionary) {
+        NSArray *values = [param_dictionary objectForKey:key];
+        for (id value in values) {
+            base = [base stringByAppendingFormat:@"%@=%@&", key, value];
+        }
+    }
+    base = [base stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&"]];
+
+    return base;
+}
 
 -(void)requestFailed:(ASIHTTPRequest *)request {
     NSLog(@"Request failed");

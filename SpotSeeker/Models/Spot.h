@@ -47,6 +47,7 @@
 }
 
 - (void) getListBySearch: (NSDictionary *)arguments ;
+-(NSString *) buildURLWithParams:(NSDictionary *)param_dictionary;
 
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
