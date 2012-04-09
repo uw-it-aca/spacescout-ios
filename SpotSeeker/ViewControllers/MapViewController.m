@@ -87,8 +87,18 @@
     {
         pinView.annotation = annotation;
     }
-    
+  
     return pinView;    
+}
+
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
+{
+    MKCoordinateRegion mapRegion;   
+    mapRegion.center = map_view.userLocation.coordinate;
+    mapRegion.span.latitudeDelta = 0.005;
+    mapRegion.span.longitudeDelta = 0.005;
+    
+    [map_view setRegion:mapRegion animated: YES];
 }
 
 - (void)showDetails:(id)sender {
@@ -126,6 +136,9 @@
 {
     [super viewDidLoad];
     map_view.delegate = self;
+    [map_view setShowsUserLocation:YES];
+
+//    NSLog(map_view.userLocation);
 	// Do any additional setup after loading the view.
 }
 
