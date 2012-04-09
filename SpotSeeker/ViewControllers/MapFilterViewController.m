@@ -25,6 +25,11 @@
 @synthesize spot;
 @synthesize scroll_view;
 @synthesize filter_view;
+@synthesize basic_filter;
+@synthesize access_filter;
+@synthesize extras_filter;
+@synthesize current_filter;
+@synthesize filter_control;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +41,6 @@
 }
 
 - (IBAction)btnClickCancel:(id)sender {
-    NSLog(@"Just cancel");
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -49,15 +53,42 @@
     [self.spot setDelegate:self];
 }
 
+-(IBAction)btnClickChangeFilter:(id)sender {
+    switch (self.filter_control.selectedSegmentIndex) {
+        case 0:
+            [self showFilterView:self.basic_filter]; 
+            break;
+        case 1:
+            [self showFilterView:self.access_filter]; 
+            break;
+        case 2:
+            [self showFilterView:self.extras_filter]; 
+            break;
+    }
+}
+
 -(void) searchFinished:(NSArray *)spots {
     [self dismissModalViewControllerAnimated:YES]; 
+}
+
+-(void) showFilterView:(UIView *)view {
+    if (self.current_filter) {
+        self.current_filter.hidden = TRUE;
+    }
+
+    self.current_filter = view;
+    view.hidden = FALSE;
+
+    [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    
+    [self.scroll_view setContentSize:view.frame.size];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.scroll_view setContentSize:self.filter_view.frame.size];
-
+//    [self.scroll_view setContentSize:self.filter_view.frame.size];
+    [self showFilterView: self.basic_filter];
 	// Do any additional setup after loading the view.
 }
 
