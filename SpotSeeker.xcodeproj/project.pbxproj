@@ -40,6 +40,8 @@
 		C2429AC3150AC133005A994A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC2150AC133005A994A /* MapViewController.m */; };
 		C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC9150AC711005A994A /* SpotAnnotation.m */; };
 		C2429ACD150AE368005A994A /* SpotDetailsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */; };
+		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
+		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
@@ -132,6 +134,8 @@
 		C2429AC9150AC711005A994A /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotAnnotation.m; path = Models/SpotAnnotation.m; sourceTree = "<group>"; };
 		C2429ACB150AE368005A994A /* SpotDetailsViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotDetailsViewControllerViewController.h; path = ViewControllers/SpotDetailsViewControllerViewController.h; sourceTree = "<group>"; };
 		C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewControllerViewController.m; path = ViewControllers/SpotDetailsViewControllerViewController.m; sourceTree = "<group>"; };
+		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
+		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpotSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -342,11 +346,13 @@
 		C2FDB0E9150A802D00ED3A93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C25166681533713B002CEDB6 /* spotseeker.plist */,
 				C28202F7152E088100218272 /* cat_named_spot.jpg */,
 				C2FDB0EA150A802D00ED3A93 /* SpotSeeker-Info.plist */,
 				C2FDB0EB150A802D00ED3A93 /* InfoPlist.strings */,
 				C2FDB0EE150A802D00ED3A93 /* main.m */,
 				C2FDB0F0150A802D00ED3A93 /* SpotSeeker-Prefix.pch */,
+				C2516665153370CF002CEDB6 /* example_spotseeker.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -444,6 +450,8 @@
 				C2FDB0F6150A802D00ED3A93 /* iPhone.storyboard in Resources */,
 				C2429A3F150A8600005A994A /* iPad.storyboard in Resources */,
 				C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */,
+				C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */,
+				C25166691533713B002CEDB6 /* spotseeker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

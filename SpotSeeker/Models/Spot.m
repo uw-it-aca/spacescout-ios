@@ -42,7 +42,20 @@
 @synthesize description;
 
 - (void) getListBySearch: (NSDictionary *)arguments {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://staff.washington.edu/pmichaud/spotseeker/"]];
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    NSString *server = [plist_values objectForKey:@"spotseeker_host"];
+    
+    if (server == NULL) {
+        NSLog(@"You need to copy the example_spotseeker.plist file to spotseeker.plist, and provide a spotseeker_host value");
+    }
+    
+    server = [server stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+    NSString *list_url = [server stringByAppendingString:@"/api/v1/spot/?open_now=1"];
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:list_url]];
     [request setDelegate:self];
     [request startAsynchronous];
 }
