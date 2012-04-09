@@ -23,6 +23,7 @@
 #import "SpotAnnotation.h"
 #import "SpotDetailsViewControllerViewController.h"
 
+int const meters_per_latitude = 111 * 1000;
 
 @interface MapViewController : ViewController <MKMapViewDelegate, SearchFinished> {
     MKMapView *map_view;

@@ -25,10 +25,18 @@
 @synthesize map_view;
 @synthesize current_spots;
 
+
+
 -(IBAction)btnClickSearch:(id)sender { 
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
     [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"extended_info:ada_accessible"];
+    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
+    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
+
+    int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
+    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
+
     Spot *_spot = [Spot alloc];
     self.spot = _spot;
     [self.spot getListBySearch:attributes];
