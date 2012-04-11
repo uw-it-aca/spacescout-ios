@@ -22,6 +22,7 @@
 #import "Spot.h"
 #import "SpotAnnotation.h"
 #import "SpotDetailsViewControllerViewController.h"
+#import "MapFilterViewController.h"
 
 int const meters_per_latitude = 111 * 1000;
 
@@ -36,5 +37,6 @@ int const meters_per_latitude = 111 * 1000;
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
 
 -(IBAction)btnClickSearch:(id)sender;
+-(IBAction)btnClickFilter:(id)sender;
 
 @end

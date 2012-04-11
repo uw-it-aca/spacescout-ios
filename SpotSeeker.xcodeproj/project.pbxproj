@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
+		C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C224FBED15361C2300CD4A79 /* filter_config.json */; };
+		C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */; };
+		C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */; };
 		C2429A3F150A8600005A994A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2429A3E150A8600005A994A /* iPad.storyboard */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
@@ -39,7 +42,6 @@
 		C2429AC0150AB03F005A994A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AB7150AB03F005A994A /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429AC3150AC133005A994A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC2150AC133005A994A /* MapViewController.m */; };
 		C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC9150AC711005A994A /* SpotAnnotation.m */; };
-		C2429ACD150AE368005A994A /* SpotDetailsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */; };
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
@@ -71,6 +73,11 @@
 /* Begin PBXFileReference section */
 		C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingTabBarController.h; path = ViewControllers/RotatingTabBarController.h; sourceTree = "<group>"; };
 		C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingTabBarController.m; path = ViewControllers/RotatingTabBarController.m; sourceTree = "<group>"; };
+		C224FBED15361C2300CD4A79 /* filter_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filter_config.json; sourceTree = "<group>"; };
+		C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterDetailsViewController.h; path = ViewControllers/MapFilterDetailsViewController.h; sourceTree = "<group>"; };
+		C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterDetailsViewController.m; path = ViewControllers/MapFilterDetailsViewController.m; sourceTree = "<group>"; };
+		C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotDetailsViewControllerViewController.h; path = ViewControllers/SpotDetailsViewControllerViewController.h; sourceTree = "<group>"; };
+		C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewControllerViewController.m; path = ViewControllers/SpotDetailsViewControllerViewController.m; sourceTree = "<group>"; };
 		C2429A3E150A8600005A994A /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2429A42150A90DC005A994A /* MapFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterViewController.h; path = ViewControllers/MapFilterViewController.h; sourceTree = "<group>"; };
@@ -132,8 +139,6 @@
 		C2429AC2150AC133005A994A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/MapViewController.m; sourceTree = "<group>"; };
 		C2429AC8150AC711005A994A /* SpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotAnnotation.h; path = Models/SpotAnnotation.h; sourceTree = "<group>"; };
 		C2429AC9150AC711005A994A /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotAnnotation.m; path = Models/SpotAnnotation.m; sourceTree = "<group>"; };
-		C2429ACB150AE368005A994A /* SpotDetailsViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotDetailsViewControllerViewController.h; path = ViewControllers/SpotDetailsViewControllerViewController.h; sourceTree = "<group>"; };
-		C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewControllerViewController.m; path = ViewControllers/SpotDetailsViewControllerViewController.m; sourceTree = "<group>"; };
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
@@ -201,14 +206,16 @@
 		C2429A51150AA910005A994A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */,
+				C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */,
+				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
+				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
 				C2FDB0F7150A802D00ED3A93 /* ViewController.h */,
 				C2FDB0F8150A802D00ED3A93 /* ViewController.m */,
 				C2429A42150A90DC005A994A /* MapFilterViewController.h */,
 				C2429A43150A90DD005A994A /* MapFilterViewController.m */,
 				C2429AC1150AC133005A994A /* MapViewController.h */,
 				C2429AC2150AC133005A994A /* MapViewController.m */,
-				C2429ACB150AE368005A994A /* SpotDetailsViewControllerViewController.h */,
-				C2429ACC150AE368005A994A /* SpotDetailsViewControllerViewController.m */,
 				C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */,
 				C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */,
 			);
@@ -292,6 +299,13 @@
 			path = ASIHTTP;
 			sourceTree = "<group>";
 		};
+		C27E7D121534E11500B2187F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C2FDB0D3150A802D00ED3A93 = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +347,7 @@
 		C2FDB0E8150A802D00ED3A93 /* SpotSeeker */ = {
 			isa = PBXGroup;
 			children = (
+				C27E7D121534E11500B2187F /* Views */,
 				C2429A52150AA926005A994A /* StoryBoards */,
 				C2429A51150AA910005A994A /* ViewControllers */,
 				C2429A50150AA904005A994A /* Models */,
@@ -353,6 +368,7 @@
 				C2FDB0EE150A802D00ED3A93 /* main.m */,
 				C2FDB0F0150A802D00ED3A93 /* SpotSeeker-Prefix.pch */,
 				C2516665153370CF002CEDB6 /* example_spotseeker.plist */,
+				C224FBED15361C2300CD4A79 /* filter_config.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -452,6 +468,7 @@
 				C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */,
 				C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */,
 				C25166691533713B002CEDB6 /* spotseeker.plist in Resources */,
+				C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,8 +531,9 @@
 				C2429AC0150AB03F005A994A /* ASINetworkQueue.m in Sources */,
 				C2429AC3150AC133005A994A /* MapViewController.m in Sources */,
 				C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */,
-				C2429ACD150AE368005A994A /* SpotDetailsViewControllerViewController.m in Sources */,
 				C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */,
+				C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */,
+				C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,79 @@
+ [
+  {
+  "title":"Basics",
+  "filters":[
+             {
+             "title":"Type of spot",
+             "options": [
+                         { "title":"Open Spaces", "short":"open" },
+                         { "title":"Small study rooms", "short":"small" },
+                         { "title":"Medium study rooms", "short":"medium" },
+                         { "title":"Conference rooms", "short":"conference" },
+                         { "title":"Collaboration studios", "short":"collaboration" }
+                         ]
+             },
+             {
+             "title":"Hours",
+             "options": []
+             },
+             {
+             "title":"Capacity",
+             "options": []
+             }
+             ]
+  },
+  {
+  "title":"Access & availability",
+  "filters":[
+             {
+             "title":"Access restrictions",
+             "options": []
+             },
+             {
+             "title":"ADA Accessibility",
+             "options": []
+             }
+             ]
+  },
+  {
+  "title":"Amenities",
+  "filters":[
+             {
+             "title":"Outlets",
+             "options": []
+             },
+             {
+             "title":"Whiteboards",
+             "options": []
+             },
+             {
+             "title":"Computers",
+             "options": []
+             },
+             {
+             "title":"Monitors",
+             "options": []
+             },
+             {
+             "title":"Noise Level",
+             "options": []
+             },
+             {
+             "title":"Lighting",
+             "options": []
+             },
+             {
+             "title":"Surfaces",
+             "options": []
+             },
+             {
+             "title":"Seating",
+             "options": []
+             },
+             {
+             "title":"Food/coffee",
+             "options": []
+             }             
+             ]
+  }
+  ]

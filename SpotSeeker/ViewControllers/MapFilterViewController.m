@@ -25,11 +25,9 @@
 @synthesize spot;
 @synthesize scroll_view;
 @synthesize filter_view;
-@synthesize basic_filter;
-@synthesize access_filter;
-@synthesize extras_filter;
-@synthesize current_filter;
-@synthesize filter_control;
+@synthesize filter_table;
+@synthesize data_sections;
+@synthesize current_section;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,44 +51,93 @@
     [self.spot setDelegate:self];
 }
 
--(IBAction)btnClickChangeFilter:(id)sender {
-    switch (self.filter_control.selectedSegmentIndex) {
-        case 0:
-            [self showFilterView:self.basic_filter]; 
-            break;
-        case 1:
-            [self showFilterView:self.access_filter]; 
-            break;
-        case 2:
-            [self showFilterView:self.extras_filter]; 
-            break;
-    }
-}
 
 -(void) searchFinished:(NSArray *)spots {
     [self dismissModalViewControllerAnimated:YES]; 
 }
 
--(void) showFilterView:(UIView *)view {
-    if (self.current_filter) {
-        self.current_filter.hidden = TRUE;
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.data_sections count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [[self.data_sections objectAtIndex:section] objectForKey:@"title"];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[[self.data_sections objectAtIndex:section] objectForKey:@"filters"] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"generic_cell";
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
-    self.current_filter = view;
-    view.hidden = FALSE;
-
-    [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+        
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
+    filter_label.text = [[[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row] objectForKey:@"title"];
     
-    [self.scroll_view setContentSize:view.frame.size];
+    return cell;
+}
+
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    self.current_section = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"filter_options" sender:self];
+} 
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"filter_options"]) {
+        MapFilterDetailsViewController *mfd = [segue destinationViewController];
+        mfd.filter = self.current_section;
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.basic_filter.hidden = TRUE;
-    self.access_filter.hidden = TRUE;
-    self.extras_filter.hidden = TRUE;
-    [self showFilterView: self.basic_filter];
+    
+    NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"filter_config" ofType:@"json"]];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSArray *file_data = [parser objectWithData:data_source];
+
+    NSMutableArray *groups = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *section in file_data) {
+        NSMutableDictionary *filter_group = [[NSMutableDictionary alloc] init];
+        [filter_group setObject:[section objectForKey:@"title"] forKey:@"title"];
+        
+        NSMutableArray *filters = [[NSMutableArray alloc] init ];
+        
+        NSArray *filters_data = [section objectForKey:@"filters"];
+        for (NSDictionary *filter in filters_data) {
+            NSMutableDictionary *filter_obj = [[NSMutableDictionary alloc] init ];
+            [filter_obj setObject:[filter objectForKey:@"title"] forKey:@"title"];
+            
+            
+            NSMutableArray *filter_options = [[NSMutableArray alloc] init ];
+            NSArray *options = [filter objectForKey:@"options"];
+            for (NSDictionary *option in options) {
+                NSMutableDictionary *filter_option = [[NSMutableDictionary alloc] init];
+                [filter_option setObject:[option objectForKey:@"title"] forKey:@"title"];
+                [filter_option setObject:[option objectForKey:@"short"] forKey:@"short"];
+                [filter_option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];                                      
+                [filter_options addObject:filter_option];
+            }
+            
+            [filter_obj setObject:filter_options forKey:@"options"];
+            [filters addObject:filter_obj];
+
+        }
+        [filter_group setObject:filters forKey:@"filters"];
+        [groups addObject:filter_group];
+
+   }
+    
+
+   self.data_sections = groups;
 
 }
 

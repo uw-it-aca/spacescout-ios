@@ -19,19 +19,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Spot.h"
+#import "SBJson.h"
+#import "MapFilterDetailsViewController.h"
+
 
 @interface MapFilterViewController : UIViewController <SearchFinished> {
     Spot *spot;
-    UIView *current_filter;
     IBOutlet UIScrollView *scroll_view;
     IBOutlet UIView *filter_view;
+       
+    IBOutlet UITableView *filter_table;
     
-    IBOutlet UIView *basic_filter;
-    IBOutlet UIView *access_filter;
-    IBOutlet UIView *extras_filter;
+    NSMutableArray *data_sections;
+    NSMutableDictionary *current_section;
     
-    IBOutlet UISegmentedControl *filter_control;
-   
 }
 
 - (IBAction) btnClickSearch:(id)sender;
@@ -41,10 +42,8 @@
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
 @property (nonatomic, retain) Spot *spot;
-@property (nonatomic, retain) UIView *basic_filter;
-@property (nonatomic, retain) UIView *access_filter;
-@property (nonatomic, retain) UIView *extras_filter;
-@property (nonatomic, retain) UIView *current_filter;
-@property (nonatomic, retain) UISegmentedControl *filter_control;
+@property (nonatomic, retain) UITableView *filter_table;
+@property (nonatomic, retain) NSMutableArray *data_sections;
+@property (nonatomic, retain) NSMutableDictionary *current_section;
 
 @end

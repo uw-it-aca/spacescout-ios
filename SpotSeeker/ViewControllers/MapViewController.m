@@ -43,6 +43,11 @@
     [self.spot setDelegate:self];
 }
 
+-(IBAction)btnClickFilter:(id)sender {
+    MapFilterViewController *filter_controller = [[MapFilterViewController alloc] init];
+    [self presentModalViewController:filter_controller animated:TRUE];
+}
+
 -(void) searchFinished:(NSArray *)spots {
     self.current_spots = spots;
     [self showFoundSpots:spots];
