@@ -206,8 +206,6 @@
 		C2429A51150AA910005A994A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */,
-				C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */,
 				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
 				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
 				C2FDB0F7150A802D00ED3A93 /* ViewController.h */,
@@ -218,6 +216,8 @@
 				C2429AC2150AC133005A994A /* MapViewController.m */,
 				C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */,
 				C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */,
+				C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */,
+				C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

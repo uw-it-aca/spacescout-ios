@@ -77,8 +77,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
         
+    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+    
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [[[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row] objectForKey:@"title"];
+    filter_label.text = [current_obj objectForKey:@"title"];
+  
+    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            [selected_options addObject:[option objectForKey:@"short"]];
+        }
+    }
+
+    UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
+
+    if ([selected_options count]) {
+        selected_label.text = [selected_options componentsJoinedByString:@", "];
+    }
+    else {
+        selected_label.text = [current_obj objectForKey:@"default_selection_label"];
+    }
     
     return cell;
 }
@@ -115,7 +133,7 @@
         for (NSDictionary *filter in filters_data) {
             NSMutableDictionary *filter_obj = [[NSMutableDictionary alloc] init ];
             [filter_obj setObject:[filter objectForKey:@"title"] forKey:@"title"];
-            
+            [filter_obj setObject:[filter objectForKey:@"default_selection_label"] forKey:@"default_selection_label"];
             
             NSMutableArray *filter_options = [[NSMutableArray alloc] init ];
             NSArray *options = [filter objectForKey:@"options"];
@@ -139,6 +157,10 @@
 
    self.data_sections = groups;
 
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [self.filter_table reloadData];
 }
 
 - (void)viewDidUnload

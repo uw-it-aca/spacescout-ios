@@ -10,10 +10,12 @@
 
 @interface MapFilterDetailsViewController : UIViewController {
     NSMutableDictionary *filter;
+    IBOutlet UITableView *table_view;
 }
 
 //- (void) setFilter:(NSMutableDictionary *)filter;
 
 @property (retain, nonatomic) NSMutableDictionary *filter;
+@property (retain, nonatomic) UITableView *table_view;
 
 @end

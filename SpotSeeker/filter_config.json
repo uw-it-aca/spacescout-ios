@@ -4,6 +4,7 @@
   "filters":[
              {
              "title":"Type of spot",
+             "default_selection_label":"Any",
              "options": [
                          { "title":"Open Spaces", "short":"open" },
                          { "title":"Small study rooms", "short":"small" },
@@ -14,10 +15,12 @@
              },
              {
              "title":"Hours",
+             "default_selection_label":"Open Now",
              "options": []
              },
              {
              "title":"Capacity",
+             "default_selection_label":"Any",
              "options": []
              }
              ]
@@ -27,10 +30,12 @@
   "filters":[
              {
              "title":"Access restrictions",
+             "default_selection_label":"Any",
              "options": []
              },
              {
              "title":"ADA Accessibility",
+             "default_selection_label":"Any",
              "options": []
              }
              ]
@@ -39,39 +44,48 @@
   "title":"Amenities",
   "filters":[
              {
+             "default_selection_label":"Any",
              "title":"Outlets",
              "options": []
              },
              {
              "title":"Whiteboards",
+             "default_selection_label":"Any",
              "options": []
              },
              {
              "title":"Computers",
+             "default_selection_label":"Any",
              "options": []
              },
              {
+             "default_selection_label":"Any",
              "title":"Monitors",
              "options": []
              },
              {
              "title":"Noise Level",
+             "default_selection_label":"Any",
              "options": []
              },
              {
+             "default_selection_label":"Any",
              "title":"Lighting",
              "options": []
              },
              {
+             "default_selection_label":"Any",
              "title":"Surfaces",
              "options": []
              },
              {
+             "default_selection_label":"Any",
              "title":"Seating",
              "options": []
              },
              {
              "title":"Food/coffee",
+             "default_selection_label":"Any",
              "options": []
              }             
              ]

@@ -15,6 +15,7 @@
 @implementation MapFilterDetailsViewController
 
 @synthesize filter;
+@synthesize table_view;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[self.filter objectForKey:@"options"] count];
@@ -31,8 +32,28 @@
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
     filter_label.text = [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"title"];
+
+    if ([[[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"selected"] boolValue]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;    
+    }
     
     return cell;
+}
+
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    UITableViewCell *current_cell = [self.table_view cellForRowAtIndexPath:indexPath];
+    
+    if ([[[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"selected"] boolValue]) {
+        current_cell.accessoryType = UITableViewCellAccessoryNone;
+        [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+    }
+    else {
+        current_cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];        
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
