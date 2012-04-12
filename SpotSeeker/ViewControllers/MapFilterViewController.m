@@ -39,12 +39,41 @@
 }
 
 - (IBAction)btnClickCancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 -(IBAction)btnClickSearch:(id)sender {
-    NSDictionary *attributes = [NSDictionary alloc];
-  
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    
+    for (NSDictionary *section in self.data_sections) {
+        NSArray *filters = [section objectForKey:@"filters"];
+        for (NSDictionary *filter in filters) {
+            NSString *search_key = [filter objectForKey:@"search_key"];
+            if (search_key != nil) {
+                NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+                NSArray *options = [filter objectForKey:@"options"];
+                for (NSDictionary *option in options) {
+                    if ([[option objectForKey:@"selected"] boolValue]) {
+                        NSString *search_value = [option objectForKey:@"search_value"];
+                        if (search_value != nil) {
+                            [selected_options addObject:search_value];
+                        }
+                    }
+                }
+                if ([selected_options count]) {
+                    [attributes setObject:selected_options forKey:search_key];
+                }
+                else {
+                    NSString *default_value = [filter objectForKey:@"default_search_value"];
+                    if (default_value != nil) {
+                        [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
+                    }
+                }
+            }
+        }
+    }
     Spot *_spot = [Spot alloc];
     self.spot = _spot;
     [self.spot getListBySearch:attributes];
@@ -53,7 +82,7 @@
 
 
 -(void) searchFinished:(NSArray *)spots {
-    [self dismissModalViewControllerAnimated:YES]; 
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -133,6 +162,14 @@
         for (NSDictionary *filter in filters_data) {
             NSMutableDictionary *filter_obj = [[NSMutableDictionary alloc] init ];
             [filter_obj setObject:[filter objectForKey:@"title"] forKey:@"title"];
+            NSString *search_key = [filter objectForKey:@"search_key"];
+            if (search_key != nil) {
+                [filter_obj setObject:search_key forKey:@"search_key"];
+            }
+            NSString *default_search_value = [filter objectForKey:@"default_search_value"];
+            if (default_search_value != nil) {
+                [filter_obj setObject:default_search_value forKey:@"default_search_value"];
+            }
             [filter_obj setObject:[filter objectForKey:@"default_selection_label"] forKey:@"default_selection_label"];
             
             NSMutableArray *filter_options = [[NSMutableArray alloc] init ];
@@ -141,7 +178,8 @@
                 NSMutableDictionary *filter_option = [[NSMutableDictionary alloc] init];
                 [filter_option setObject:[option objectForKey:@"title"] forKey:@"title"];
                 [filter_option setObject:[option objectForKey:@"short"] forKey:@"short"];
-                [filter_option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];                                      
+                [filter_option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+                [filter_option setObject:[option objectForKey:@"search_value"] forKey:@"search_value"];
                 [filter_options addObject:filter_option];
             }
             

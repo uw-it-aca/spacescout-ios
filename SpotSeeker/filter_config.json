@@ -4,13 +4,14 @@
   "filters":[
              {
              "title":"Type of spot",
+             "search_key":"extended_info:spot_type",
              "default_selection_label":"Any",
              "options": [
-                         { "title":"Open Spaces", "short":"open" },
-                         { "title":"Small study rooms", "short":"small" },
-                         { "title":"Medium study rooms", "short":"medium" },
-                         { "title":"Conference rooms", "short":"conference" },
-                         { "title":"Collaboration studios", "short":"collaboration" }
+                         { "title":"Open Spaces", "short":"open", "search_value":"open" },
+                         { "title":"Small study rooms", "short":"small", "search_value":"small" },
+                         { "title":"Medium study rooms", "short":"medium", "search_value":"medium" },
+                         { "title":"Conference rooms", "short":"conference", "search_value":"conference" },
+                         { "title":"Collaboration studios", "short":"collaboration", "search_value":"collaboration" }
                          ]
              },
              {
@@ -35,6 +36,8 @@
              },
              {
              "title":"ADA Accessibility",
+             "search_key":"extended_info:ada_accessible",
+             "default_search_value":"1",
              "default_selection_label":"Any",
              "options": []
              }
