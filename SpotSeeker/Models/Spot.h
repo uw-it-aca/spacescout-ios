@@ -26,7 +26,7 @@
 @interface Spot : NSObject {
     id <SearchFinished> delegate;
     NSString *name;
-    NSString *id;
+    NSString *remote_id;
     NSString *uri;
     NSString *capacity;
     NSString *display_hours_available;
@@ -52,7 +52,7 @@
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *id;
+@property (nonatomic, retain) NSString *remote_id;
 @property (nonatomic, retain) NSString *uri;
 @property (nonatomic, retain) NSString *capacity;
 @property (nonatomic, retain) NSString *display_hours_available;

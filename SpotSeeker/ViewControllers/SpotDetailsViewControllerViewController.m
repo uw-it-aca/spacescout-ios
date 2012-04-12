@@ -41,32 +41,25 @@
     
     
     [self.capacity_label setText:[spot capacity]];
-    
-    // Read in favorites
-    self.favorite_spots = [[NSMutableDictionary alloc] init];
-    
-    id is_favorite = [self.favorite_spots objectForKey:spot.id];
-      
-    if (is_favorite != nil) {
+          
+    if ([Favorites isFavorite:spot]) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
     }
 
 }
 
 - (IBAction) btnClickFavorite:(id)sender {
-    NSString *is_favorite = [self.favorite_spots objectForKey:self.spot.id];
-    
-    if (is_favorite == nil) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
-        [self.favorite_spots setObject:@"1" forKey:self.spot.id];
-       
+   
+   
+    if ([Favorites isFavorite:spot]) {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
+        [Favorites removeFavorite:spot];     
     }
     else {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
-        [self.favorite_spots removeObjectForKey:self.spot.id];
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+        [Favorites addFavorite:spot];
     }
     
-    // Write out favorites
 }
 
 - (void)viewDidLoad

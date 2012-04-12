@@ -19,6 +19,7 @@
 
 #import "ViewController.h"
 #import "Spot.h"
+#import "Favorites.h"
 
 @interface SpotDetailsViewControllerViewController : ViewController {
     Spot *spot;
