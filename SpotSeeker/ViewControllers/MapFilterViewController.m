@@ -42,9 +42,19 @@
     return self;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
+}
+
+
 - (IBAction)btnClickCancel:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 
+}
+
+-(IBAction)dismissNameKeyboard:(id)sender {
+    [self.name_filter resignFirstResponder];
 }
 
 -(IBAction)btnClickSearch:(id)sender {
@@ -200,10 +210,12 @@
         [filter_group setObject:filters forKey:@"filters"];
         [groups addObject:filter_group];
 
-   }
+    }
+    
+    [self.name_filter setDelegate: self];
     
 
-   self.data_sections = groups;
+    self.data_sections = groups;
 
 }
 

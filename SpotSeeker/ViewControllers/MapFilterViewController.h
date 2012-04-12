@@ -24,14 +24,14 @@
 #import "MapFilterDetailsViewController.h"
 
 
-@interface MapFilterViewController : UIViewController <SearchFinished> {
+@interface MapFilterViewController : UIViewController <SearchFinished, UITextViewDelegate> {
     Spot *spot;
     IBOutlet UIScrollView *scroll_view;
     IBOutlet UIView *filter_view;
        
     IBOutlet UITableView *filter_table;
     
-    IBOutlet UISearchBar *name_filter;
+    IBOutlet UITextField *name_filter;
     
     NSMutableArray *data_sections;
     NSMutableDictionary *current_section;
@@ -44,10 +44,11 @@
 - (IBAction) btnClickSearch:(id)sender;
 - (IBAction) btnClickCancel:(id)sender;
 - (IBAction) btnClickChangeFilter:(id)sender;
+- (IBAction) dismissNameKeyboard:(id)sender;
 
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
-@property (nonatomic, retain) IBOutlet UISearchBar *name_filter;
+@property (nonatomic, retain) IBOutlet UITextField *name_filter;
 @property (nonatomic, retain) Spot *spot;
 @property (nonatomic, retain) UITableView *filter_table;
 @property (nonatomic, retain) NSMutableArray *data_sections;
