@@ -28,6 +28,9 @@
 @synthesize filter_table;
 @synthesize data_sections;
 @synthesize current_section;
+@synthesize user_longitude;
+@synthesize user_latitude;
+@synthesize user_distance;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +48,13 @@
 
 -(IBAction)btnClickSearch:(id)sender {
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+
+    if (self.user_latitude != nil) {
+        [attributes setValue:[NSArray arrayWithObjects:self.user_latitude, nil] forKey:@"center_latitude"];
+        [attributes setValue:[NSArray arrayWithObjects:self.user_longitude, nil] forKey:@"center_longitude"];
     
+        [attributes setValue:[NSArray arrayWithObjects:self.user_distance, nil] forKey:@"distance"];
+    }
     
     for (NSDictionary *section in self.data_sections) {
         NSArray *filters = [section objectForKey:@"filters"];
@@ -74,16 +83,11 @@
             }
         }
     }
-    Spot *_spot = [Spot alloc];
-    self.spot = _spot;
-    [self.spot getListBySearch:attributes];
-    [self.spot setDelegate:self];
-}
-
-
--(void) searchFinished:(NSArray *)spots {
+    MapViewController *map_vc = [self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] - 2)];   
+    [map_vc runSearchWithAttributes:attributes];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.data_sections count];

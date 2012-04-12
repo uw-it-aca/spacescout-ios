@@ -25,7 +25,7 @@
                     <navigationItem key="navigationItem" id="f11-XH-hmO">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="F4H-kl-V8E">
                             <connections>
-                                <segue destination="Uj1-TD-aQN" kind="push" id="rfQ-ts-oNK"/>
+                                <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" id="1qM-WG-Kjh">

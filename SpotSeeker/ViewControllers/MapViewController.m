@@ -25,6 +25,7 @@
 @synthesize map_view;
 @synthesize current_spots;
 
+int const meters_per_latitude = 111 * 1000;
 
 
 -(IBAction)btnClickSearch:(id)sender { 
@@ -37,15 +38,14 @@
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
 
+    [self runSearchWithAttributes:attributes];
+}
+
+-(void) runSearchWithAttributes:(NSMutableDictionary *)attributes {
     Spot *_spot = [Spot alloc];
     self.spot = _spot;
     [self.spot getListBySearch:attributes];
     [self.spot setDelegate:self];
-}
-
--(IBAction)btnClickFilter:(id)sender {
-    MapFilterViewController *filter_controller = [[MapFilterViewController alloc] init];
-    [self presentModalViewController:filter_controller animated:TRUE];
 }
 
 -(void) searchFinished:(NSArray *)spots {
@@ -104,6 +104,7 @@
     return pinView;    
 }
 
+
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
     MKCoordinateRegion mapRegion;   
@@ -119,9 +120,17 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SpotDetailsViewControllerViewController *details = segue.destinationViewController;
+    if ([[segue identifier] isEqualToString:@"search_filter"]) {
+        MapFilterViewController *filter_vc = segue.destinationViewController;
+        filter_vc.user_latitude = [[NSNumber alloc] initWithDouble: self.map_view.centerCoordinate.latitude];
+        filter_vc.user_longitude = [[NSNumber alloc] initWithDouble: self.map_view.centerCoordinate.longitude];
+        filter_vc.user_distance = [[NSNumber alloc] initWithDouble: map_view.region.span.latitudeDelta * meters_per_latitude ];
+    }
+    else if ([[segue identifier] isEqualToString:@"show_details"]) {
+        SpotDetailsViewControllerViewController *details = segue.destinationViewController;
 
-    [details setSpot:[self.current_spots objectAtIndex:[sender tag]]];
+        [details setSpot:[self.current_spots objectAtIndex:[sender tag]]];
+    }
 }
 
 

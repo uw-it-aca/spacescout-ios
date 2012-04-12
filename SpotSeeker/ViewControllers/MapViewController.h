@@ -24,7 +24,7 @@
 #import "SpotDetailsViewControllerViewController.h"
 #import "MapFilterViewController.h"
 
-int const meters_per_latitude = 111 * 1000;
+extern const int meters_per_latitude;
 
 @interface MapViewController : ViewController <MKMapViewDelegate, SearchFinished> {
     MKMapView *map_view;
@@ -37,6 +37,7 @@ int const meters_per_latitude = 111 * 1000;
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
 
 -(IBAction)btnClickSearch:(id)sender;
--(IBAction)btnClickFilter:(id)sender;
+
+-(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 
 @end

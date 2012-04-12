@@ -16,6 +16,8 @@
              },
              {
              "title":"Hours",
+             "search_key":"open_now",
+             "default_search_value":"1",
              "default_selection_label":"Open Now",
              "options": []
              },

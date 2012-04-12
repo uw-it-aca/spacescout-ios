@@ -20,6 +20,7 @@
 #import <UIKit/UIKit.h>
 #import "Spot.h"
 #import "SBJson.h"
+#import "MapViewController.h"
 #import "MapFilterDetailsViewController.h"
 
 
@@ -32,6 +33,9 @@
     
     NSMutableArray *data_sections;
     NSMutableDictionary *current_section;
+    NSNumber *user_latitude;
+    NSNumber *user_longitude;
+    NSNumber *user_distance;
     
 }
 
@@ -45,5 +49,8 @@
 @property (nonatomic, retain) UITableView *filter_table;
 @property (nonatomic, retain) NSMutableArray *data_sections;
 @property (nonatomic, retain) NSMutableDictionary *current_section;
+@property (nonatomic, retain) NSNumber *user_latitude;
+@property (nonatomic, retain) NSNumber *user_longitude;
+@property (nonatomic, retain) NSNumber *user_distance;
 
 @end
