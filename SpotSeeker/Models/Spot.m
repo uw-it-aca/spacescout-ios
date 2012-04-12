@@ -75,6 +75,7 @@
 
     for (NSDictionary *spot_info in spot_results) {      
         Spot *spot = [Spot alloc];
+        spot.id = [spot_info objectForKey:@"id"];
         spot.name = [spot_info objectForKey:@"name"];
         spot.capacity = [spot_info objectForKey:@"capacity"];
         

@@ -24,6 +24,8 @@
 
 @synthesize spot;
 @synthesize capacity_label;
+@synthesize favorite_button;
+@synthesize favorite_spots;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +38,35 @@
 
 - (void) showDataForSpot {
 //    [self setTitle:[spot name]];
+    
+    
     [self.capacity_label setText:[spot capacity]];
+    
+    // Read in favorites
+    self.favorite_spots = [[NSMutableDictionary alloc] init];
+    
+    id is_favorite = [self.favorite_spots objectForKey:spot.id];
+      
+    if (is_favorite != nil) {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
+    }
+
+}
+
+- (IBAction) btnClickFavorite:(id)sender {
+    NSString *is_favorite = [self.favorite_spots objectForKey:self.spot.id];
+    
+    if (is_favorite == nil) {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+        [self.favorite_spots setObject:@"1" forKey:self.spot.id];
+       
+    }
+    else {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
+        [self.favorite_spots removeObjectForKey:self.spot.id];
+    }
+    
+    // Write out favorites
 }
 
 - (void)viewDidLoad
