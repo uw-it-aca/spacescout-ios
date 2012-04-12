@@ -23,6 +23,7 @@
 @implementation MapFilterViewController
 
 @synthesize spot;
+@synthesize name_filter;
 @synthesize scroll_view;
 @synthesize filter_view;
 @synthesize filter_table;
@@ -55,7 +56,12 @@
     
         [attributes setValue:[NSArray arrayWithObjects:self.user_distance, nil] forKey:@"distance"];
     }
+
+    if (self.name_filter.text != nil) {
+        [attributes setValue:[NSArray arrayWithObjects:self.name_filter.text, nil] forKey:@"name"];
+    }
     
+   
     for (NSDictionary *section in self.data_sections) {
         NSArray *filters = [section objectForKey:@"filters"];
         for (NSDictionary *filter in filters) {

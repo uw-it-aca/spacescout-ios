@@ -134,6 +134,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filter_table" destination="3br-UV-6gb" id="3Iq-0t-6pg"/>
+                        <outlet property="name_filter" destination="6co-2i-erq" id="7r9-XS-wyQ"/>
                         <segue destination="WRf-YH-4Wl" kind="push" identifier="filter_options" id="d8I-vW-hlZ"/>
                     </connections>
                 </viewController>

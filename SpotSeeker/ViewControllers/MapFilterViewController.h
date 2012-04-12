@@ -31,6 +31,8 @@
        
     IBOutlet UITableView *filter_table;
     
+    IBOutlet UISearchBar *name_filter;
+    
     NSMutableArray *data_sections;
     NSMutableDictionary *current_section;
     NSNumber *user_latitude;
@@ -45,6 +47,7 @@
 
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
+@property (nonatomic, retain) IBOutlet UISearchBar *name_filter;
 @property (nonatomic, retain) Spot *spot;
 @property (nonatomic, retain) UITableView *filter_table;
 @property (nonatomic, retain) NSMutableArray *data_sections;
