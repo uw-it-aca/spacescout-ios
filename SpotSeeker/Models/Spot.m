@@ -56,6 +56,18 @@
     NSString *list_url = [server stringByAppendingString:[self buildURLWithParams:arguments]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:list_url]];
+    
+    
+    // XXX - this should be centralized, once there's more than one place that makes requests
+    BOOL use_oauth = [[plist_values objectForKey:@"use_oauth"] boolValue];
+    if (use_oauth) {
+        NSString *oauth_key = [plist_values objectForKey:@"oauth_key"];
+        NSString *oauth_secret = [plist_values objectForKey:@"oauth_secret"];
+        [request signRequestWithClientIdentifier:oauth_key secret:oauth_secret
+                                 tokenIdentifier:nil secret:nil
+                                 usingMethod:ASIOAuthHMAC_SHA1SignatureMethod];
+    }
+    
     [request setDelegate:self];
     [request startAsynchronous];
 }

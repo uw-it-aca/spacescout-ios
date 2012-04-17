@@ -18,7 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
+#import "ASIHTTPRequest+OAuth.h"
 #import "SBJson.h"
 
 @protocol SearchFinished;

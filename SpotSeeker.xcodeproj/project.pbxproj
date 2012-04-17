@@ -48,6 +48,10 @@
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
+		C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */; };
+		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
+		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -149,6 +153,14 @@
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
+		C2B2F64C153E225800292FDC /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
+		C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+OAuth.m"; sourceTree = "<group>"; };
+		C2B2F64E153E225800292FDC /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
+		C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
+		C2B2F650153E225800292FDC /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		C2B2F651153E225800292FDC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		C2B2F652153E225800292FDC /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		C2B2F653153E225800292FDC /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpotSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -315,6 +327,21 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		C2B2F64B153E225800292FDC /* ASIHTTP+OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C2B2F64C153E225800292FDC /* ASIFormDataRequest+OAuth.h */,
+				C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */,
+				C2B2F64E153E225800292FDC /* ASIHTTPRequest+OAuth.h */,
+				C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */,
+				C2B2F650153E225800292FDC /* NSData+Base64.h */,
+				C2B2F651153E225800292FDC /* NSData+Base64.m */,
+				C2B2F652153E225800292FDC /* NSString+URLEncode.h */,
+				C2B2F653153E225800292FDC /* NSString+URLEncode.m */,
+			);
+			path = "ASIHTTP+OAuth";
+			sourceTree = "<group>";
+		};
 		C2FDB0D3150A802D00ED3A93 = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +364,7 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2B2F64B153E225800292FDC /* ASIHTTP+OAuth */,
 				C2429AA4150AB03F005A994A /* ASIHTTP */,
 				C2429A9F150AAC9D005A994A /* Reachability */,
 				C2429A70150AABDB005A994A /* JSON */,
@@ -548,6 +576,10 @@
 				C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */,
 				C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */,
 				C24C116A1536744B00109C30 /* Favorites.m in Sources */,
+				C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */,
+				C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */,
+				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
+				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
