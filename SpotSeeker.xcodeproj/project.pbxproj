@@ -48,6 +48,7 @@
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
+		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */; };
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -64,7 +65,6 @@
 		C2FDB102150A802E00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB103150A802E00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB10B150A802E00ED3A93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2FDB109150A802E00ED3A93 /* InfoPlist.strings */; };
-		C2FDB10E150A802E00ED3A93 /* SpotSeekerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FDB10D150A802E00ED3A93 /* SpotSeekerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +153,8 @@
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
+		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
+		C2A0E92F153E2EE100D9568E /* SpotModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotModelTests.m; sourceTree = "<group>"; };
 		C2B2F64C153E225800292FDC /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
 		C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+OAuth.m"; sourceTree = "<group>"; };
 		C2B2F64E153E225800292FDC /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
@@ -178,8 +180,6 @@
 		C2FDB100150A802E00ED3A93 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2FDB108150A802E00ED3A93 /* SpotSeekerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotSeekerTests-Info.plist"; sourceTree = "<group>"; };
 		C2FDB10A150A802E00ED3A93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2FDB10C150A802E00ED3A93 /* SpotSeekerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotSeekerTests.h; sourceTree = "<group>"; };
-		C2FDB10D150A802E00ED3A93 /* SpotSeekerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotSeekerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -415,8 +415,8 @@
 		C2FDB106150A802E00ED3A93 /* SpotSeekerTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2FDB10C150A802E00ED3A93 /* SpotSeekerTests.h */,
-				C2FDB10D150A802E00ED3A93 /* SpotSeekerTests.m */,
+				C2A0E92E153E2EE100D9568E /* SpotModelTests.h */,
+				C2A0E92F153E2EE100D9568E /* SpotModelTests.m */,
 				C2FDB107150A802E00ED3A93 /* Supporting Files */,
 			);
 			path = SpotSeekerTests;
@@ -587,7 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2FDB10E150A802E00ED3A93 /* SpotSeekerTests.m in Sources */,
+				C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
