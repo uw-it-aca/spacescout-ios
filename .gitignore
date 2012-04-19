@@ -1,4 +1,3 @@
 .DS_Store
-SpotSeeker.xcodeproj/project.xcworkspace/xcuserdata/cstimmel.xcuserdatad
-SpotSeeker.xcodeproj/xcuserdata/*.xcuserdatad
+xcuserdata
 SpotSeeker/spotseeker.plist
