@@ -109,9 +109,9 @@
     for (id key in param_dictionary) {
         NSArray *values = [param_dictionary objectForKey:key];
         for (id value in values) {
-            
+            NSString *value_string = [[NSString alloc] initWithFormat:@"%@", value];
             // From https://devforums.apple.com/message/15674#15674
-            NSMutableString *encoded_value = [NSMutableString stringWithString: [value stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy]];
+            NSMutableString *encoded_value = [NSMutableString stringWithString: [value_string stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy]];
              
             [encoded_value replaceOccurrencesOfString:@"$" withString:@"%24" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [encoded_value length])];
             [encoded_value replaceOccurrencesOfString:@"&" withString:@"%26" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [encoded_value length])];

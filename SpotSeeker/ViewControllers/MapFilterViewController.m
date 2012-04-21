@@ -75,25 +75,36 @@
     for (NSDictionary *section in self.data_sections) {
         NSArray *filters = [section objectForKey:@"filters"];
         for (NSDictionary *filter in filters) {
+
+            NSString *cell_type = [filter objectForKey:@"table_row_type"];
             NSString *search_key = [filter objectForKey:@"search_key"];
             if (search_key != nil) {
-                NSMutableArray *selected_options = [[NSMutableArray alloc] init];
-                NSArray *options = [filter objectForKey:@"options"];
-                for (NSDictionary *option in options) {
-                    if ([[option objectForKey:@"selected"] boolValue]) {
-                        NSString *search_value = [option objectForKey:@"search_value"];
-                        if (search_value != nil) {
-                            [selected_options addObject:search_value];
+                if (cell_type == Nil) {
+                    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+                    NSArray *options = [filter objectForKey:@"options"];
+                    for (NSDictionary *option in options) {
+                        if ([[option objectForKey:@"selected"] boolValue]) {
+                            NSString *search_value = [option objectForKey:@"search_value"];
+                            if (search_value != nil) {
+                                [selected_options addObject:search_value];
+                            }
                         }
                     }
+                    if ([selected_options count]) {
+                        [attributes setObject:selected_options forKey:search_key];
+                    }
+                    else {
+                        NSString *default_value = [filter objectForKey:@"default_search_value"];
+                        if (default_value != nil) {
+                            [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
+                        }
+                    }
+            
                 }
-                if ([selected_options count]) {
-                    [attributes setObject:selected_options forKey:search_key];
-                }
-                else {
-                    NSString *default_value = [filter objectForKey:@"default_search_value"];
-                    if (default_value != nil) {
-                        [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
+                else if ([cell_type isEqualToString:@"cell_with_switch"]) {
+                    NSNumber *is_selected = [filter objectForKey:@"is_selected"];
+                    if (is_selected != Nil && [is_selected boolValue] == TRUE) {
+                        [attributes setObject: [[NSMutableArray alloc] initWithObjects:@"1", nil] forKey:search_key];
                     }
                 }
             }
@@ -119,40 +130,75 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"generic_cell";
+    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *cell_type = [current_obj objectForKey:@"table_row_type"];
+    
+    if (cell_type == Nil) {
+        cell_type = @"generic_cell";
+    }
+    
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_type];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_type];
     }
         
-    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+    if ([cell_type isEqualToString:@"generic_cell"]) {
+        UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
+        filter_label.text = [current_obj objectForKey:@"title"];
     
-    UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [current_obj objectForKey:@"title"];
-  
-    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
-    for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
-        if ([[option objectForKey:@"selected"] boolValue]) {
-            [selected_options addObject:[option objectForKey:@"short"]];
+        NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
+            if ([[option objectForKey:@"selected"] boolValue]) {
+                [selected_options addObject:[option objectForKey:@"short"]];
+            }
+        }
+
+        UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
+
+        if ([selected_options count]) {
+            selected_label.text = [selected_options componentsJoinedByString:@", "];
+        }
+        else {
+            selected_label.text = [current_obj objectForKey:@"default_selection_label"];
         }
     }
-
-    UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
-
-    if ([selected_options count]) {
-        selected_label.text = [selected_options componentsJoinedByString:@", "];
-    }
-    else {
-        selected_label.text = [current_obj objectForKey:@"default_selection_label"];
+    else if ([cell_type isEqualToString:@"cell_with_switch"]) {
+        UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
+        filter_label.text = [current_obj objectForKey:@"title"];      
+        
+        UITableSwitch *on_off = (UITableSwitch *)[cell viewWithTag:4];
+        on_off.indexPath = indexPath;
+        if ([current_obj objectForKey:@"is_selected"] == Nil) {
+            on_off.on = FALSE;
+        }
+        else {
+            on_off.on = TRUE;
+        }
+        
+        [on_off addTarget:self action:@selector(toggleOption:) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
     }
     
     return cell;
 }
 
+-(void) toggleOption:(id)sender {
+    UITableSwitch *ui_switch = (UITableSwitch *)sender;
+    NSIndexPath *indexPath = ui_switch.indexPath;
+    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+
+    [current_obj setValue:[[NSNumber alloc] initWithBool:ui_switch.on] forKey:@"is_selected"];
+}
+         
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
     self.current_section = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"filter_options" sender:self];
+    NSString *cell_type = [self.current_section objectForKey:@"table_row_type"];
+    // Don't segue if it's a custom type
+    if (cell_type == Nil) {
+        [self performSegueWithIdentifier:@"filter_options" sender:self];
+    }
 } 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -186,9 +232,17 @@
             if (search_key != nil) {
                 [filter_obj setObject:search_key forKey:@"search_key"];
             }
+            NSString *cell_type = [filter objectForKey:@"table_row_type"];
+            if (cell_type) {
+                [filter_obj setObject:cell_type forKey:@"table_row_type"];
+            }
             NSString *default_search_value = [filter objectForKey:@"default_search_value"];
             if (default_search_value != nil) {
                 [filter_obj setObject:default_search_value forKey:@"default_search_value"];
+            }
+            NSString *is_selected = [filter objectForKey:@"is_selected"];
+            if (is_selected != nil) {
+                [filter_obj setObject:is_selected forKey:@"is_selected"];
             }
             [filter_obj setObject:[filter objectForKey:@"default_selection_label"] forKey:@"default_selection_label"];
             

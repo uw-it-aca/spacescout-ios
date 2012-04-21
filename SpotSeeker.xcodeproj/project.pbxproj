@@ -53,6 +53,7 @@
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E0937D1542315A0015BF4B /* UITableSwitch.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -163,6 +164,8 @@
 		C2B2F651153E225800292FDC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		C2B2F652153E225800292FDC /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		C2B2F653153E225800292FDC /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
+		C2E0937C1542315A0015BF4B /* UITableSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableSwitch.h; path = Widgets/UITableSwitch.h; sourceTree = "<group>"; };
+		C2E0937D1542315A0015BF4B /* UITableSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableSwitch.m; path = Widgets/UITableSwitch.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpotSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -342,6 +345,15 @@
 			path = "ASIHTTP+OAuth";
 			sourceTree = "<group>";
 		};
+		C2E09380154231610015BF4B /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				C2E0937C1542315A0015BF4B /* UITableSwitch.h */,
+				C2E0937D1542315A0015BF4B /* UITableSwitch.m */,
+			);
+			name = Widgets;
+			sourceTree = "<group>";
+		};
 		C2FDB0D3150A802D00ED3A93 = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +402,7 @@
 				C2429A50150AA904005A994A /* Models */,
 				C2FDB0F1150A802D00ED3A93 /* AppDelegate.h */,
 				C2FDB0F2150A802D00ED3A93 /* AppDelegate.m */,
+				C2E09380154231610015BF4B /* Widgets */,
 				C2FDB0E9150A802D00ED3A93 /* Supporting Files */,
 			);
 			path = SpotSeeker;
@@ -580,6 +593,7 @@
 				C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */,
 				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
+				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

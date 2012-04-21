@@ -38,6 +38,8 @@
              },
              {
              "title":"ADA Accessibility",
+             "table_row_type":"cell_with_switch",
+             "is_selected":true,
              "search_key":"extended_info:ada_accessible",
              "default_search_value":"1",
              "default_selection_label":"Any",

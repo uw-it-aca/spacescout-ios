@@ -22,6 +22,7 @@
 #import "SBJson.h"
 #import "MapViewController.h"
 #import "MapFilterDetailsViewController.h"
+#import "UITableSwitch.h"
 
 
 @interface MapFilterViewController : UIViewController <SearchFinished, UITextViewDelegate> {
