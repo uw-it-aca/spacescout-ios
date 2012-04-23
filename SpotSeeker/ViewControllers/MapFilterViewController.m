@@ -42,8 +42,18 @@
     return self;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    [theTextField resignFirstResponder];
+-(void) viewDidAppear:(BOOL)animated {
+    [self.filter_table reloadData];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
     return YES;
 }
 
@@ -53,9 +63,6 @@
 
 }
 
--(IBAction)dismissNameKeyboard:(id)sender {
-    [self.name_filter resignFirstResponder];
-}
 
 -(IBAction)btnClickSearch:(id)sender {
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
@@ -79,33 +86,11 @@
             NSString *cell_type = [filter objectForKey:@"table_row_type"];
             NSString *search_key = [filter objectForKey:@"search_key"];
             if (search_key != nil) {
-                if (cell_type == Nil) {
-                    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
-                    NSArray *options = [filter objectForKey:@"options"];
-                    for (NSDictionary *option in options) {
-                        if ([[option objectForKey:@"selected"] boolValue]) {
-                            NSString *search_value = [option objectForKey:@"search_value"];
-                            if (search_value != nil) {
-                                [selected_options addObject:search_value];
-                            }
-                        }
-                    }
-                    if ([selected_options count]) {
-                        [attributes setObject:selected_options forKey:search_key];
-                    }
-                    else {
-                        NSString *default_value = [filter objectForKey:@"default_search_value"];
-                        if (default_value != nil) {
-                            [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
-                        }
-                    }
-            
+                if ([cell_type isEqualToString:@"cell_with_switch"]) {
+                    [self addOnOffSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];                    
                 }
-                else if ([cell_type isEqualToString:@"cell_with_switch"]) {
-                    NSNumber *is_selected = [filter objectForKey:@"is_selected"];
-                    if (is_selected != Nil && [is_selected boolValue] == TRUE) {
-                        [attributes setObject: [[NSMutableArray alloc] initWithObjects:@"1", nil] forKey:search_key];
-                    }
+                else {
+                    [self addSubSelectionSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
             }
         }
@@ -114,7 +99,6 @@
     [map_vc runSearchWithAttributes:attributes];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.data_sections count];
@@ -149,21 +133,16 @@
 
 }
 
--(void) toggleOption:(id)sender {
-    UITableSwitch *ui_switch = (UITableSwitch *)sender;
-    NSIndexPath *indexPath = ui_switch.indexPath;
-    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
-
-    [current_obj setValue:[[NSNumber alloc] initWithBool:ui_switch.on] forKey:@"is_selected"];
-}
          
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
-    
     self.current_section = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
     NSString *cell_type = [self.current_section objectForKey:@"table_row_type"];
-    // Don't segue if it's a custom type
-    if (cell_type == Nil) {
-        [self performSegueWithIdentifier:@"filter_options" sender:self];
+    
+    if ([cell_type isEqualToString:@"cell_with_switch"]) {
+        [self didSelectOnOffRowAtIndexPath:indexPath];
+    }
+    else {
+        [self didSelectSubSelectionRowAtIndexPath:indexPath];
     }
 } 
 
@@ -245,6 +224,7 @@
 
 /* Methods for on/off filters */
 
+// Draw the table cell
 -(UITableViewCell *)getOnOffCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_switch"];
     if (cell == nil) {
@@ -268,7 +248,33 @@
     return cell;
 }
 
+// Handle when some clicks the row - do nothing?  prevent blue selection highlight?
+- (void) didSelectOnOffRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+
+// Handle clicking the on/off button
+
+-(void) toggleOption:(id)sender {
+    UITableSwitch *ui_switch = (UITableSwitch *)sender;
+    NSIndexPath *indexPath = ui_switch.indexPath;
+    NSMutableDictionary *current_obj = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+    
+    [current_obj setValue:[[NSNumber alloc] initWithBool:ui_switch.on] forKey:@"is_selected"];
+}
+
+// Fill out the search values
+-(void)addOnOffSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSNumber *is_selected = [filter objectForKey:@"is_selected"];
+    if (is_selected != Nil && [is_selected boolValue] == TRUE) {
+        [attributes setObject: [[NSMutableArray alloc] initWithObjects:@"1", nil] forKey:search_key];
+    }
+    
+}
+
+
 /* Methods for sub-selection filters */
+// Draw the table cell
 -(UITableViewCell *)getSubSelectionCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generic_cell"];
     if (cell == nil) {
@@ -296,21 +302,45 @@
     return cell;
 }
 
-
--(void) viewDidAppear:(BOOL)animated {
-    [self.filter_table reloadData];
+// Transition to the sub-selections
+- (void) didSelectSubSelectionRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"filter_options" sender:self];    
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+// Fill out the search values
+-(void)addSubSelectionSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+    NSArray *options = [filter objectForKey:@"options"];
+    for (NSDictionary *option in options) {
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            NSString *search_value = [option objectForKey:@"search_value"];
+            if (search_value != nil) {
+                [selected_options addObject:search_value];
+            }
+        }
+    }
+    if ([selected_options count]) {
+        [attributes setObject:selected_options forKey:search_key];
+    }
+    else {
+        NSString *default_value = [filter objectForKey:@"default_search_value"];
+        if (default_value != nil) {
+            [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
+        }
+    }   
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+/* These are to handle the text search for spot name */
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
     return YES;
 }
+
+-(IBAction)dismissNameKeyboard:(id)sender {
+    [self.name_filter resignFirstResponder];
+}
+
+
 
 
 @end
