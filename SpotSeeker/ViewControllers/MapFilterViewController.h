@@ -23,9 +23,9 @@
 #import "MapViewController.h"
 #import "MapFilterDetailsViewController.h"
 #import "UITableSwitch.h"
+#import "SearchFilter.h"
 
-
-@interface MapFilterViewController : UIViewController <SearchFinished, UITextViewDelegate> {
+@interface MapFilterViewController : UIViewController <SearchFinished, UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
     Spot *spot;
     IBOutlet UIScrollView *scroll_view;
     IBOutlet UIView *filter_view;

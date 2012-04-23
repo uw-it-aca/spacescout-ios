@@ -13,6 +13,7 @@
 		C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */; };
 		C224FBFA1536505700CD4A79 /* star_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF81536505700CD4A79 /* star_selected.png */; };
 		C224FBFB1536505700CD4A79 /* star_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF91536505700CD4A79 /* star_unselected.png */; };
+		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
 		C2429A3F150A8600005A994A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2429A3E150A8600005A994A /* iPad.storyboard */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
@@ -88,6 +89,8 @@
 		C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewControllerViewController.m; path = ViewControllers/SpotDetailsViewControllerViewController.m; sourceTree = "<group>"; };
 		C224FBF81536505700CD4A79 /* star_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_selected.png; sourceTree = "<group>"; };
 		C224FBF91536505700CD4A79 /* star_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_unselected.png; sourceTree = "<group>"; };
+		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
+		C24181841545E16E00DAA2FC /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFilter.m; path = Models/SearchFilter.m; sourceTree = "<group>"; };
 		C2429A3E150A8600005A994A /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2429A42150A90DC005A994A /* MapFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterViewController.h; path = ViewControllers/MapFilterViewController.h; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 				C2429AC9150AC711005A994A /* SpotAnnotation.m */,
 				C24C11681536744A00109C30 /* Favorites.h */,
 				C24C11691536744B00109C30 /* Favorites.m */,
+				C24181831545E16E00DAA2FC /* SearchFilter.h */,
+				C24181841545E16E00DAA2FC /* SearchFilter.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
+				C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
