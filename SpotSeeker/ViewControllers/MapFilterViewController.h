@@ -25,11 +25,9 @@
 #import "UITableSwitch.h"
 #import "SearchFilter.h"
 
-@interface MapFilterViewController : UIViewController <SearchFinished, UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
+@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
     Spot *spot;
-    IBOutlet UIScrollView *scroll_view;
-    IBOutlet UIView *filter_view;
-       
+      
     IBOutlet UITableView *filter_table;
     
     IBOutlet UITextField *name_filter;
@@ -44,8 +42,6 @@
 
 - (IBAction) btnClickSearch:(id)sender;
 - (IBAction) btnClickCancel:(id)sender;
-- (IBAction) btnClickChangeFilter:(id)sender;
-- (IBAction) dismissNameKeyboard:(id)sender;
 
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
