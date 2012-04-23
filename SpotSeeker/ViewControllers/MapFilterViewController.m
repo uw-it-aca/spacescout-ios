@@ -139,48 +139,14 @@
     }
     
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_type];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_type];
+    if ([cell_type isEqualToString:@"cell_with_switch"]) {
+        return [self getOnOffCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
-        
-    if ([cell_type isEqualToString:@"generic_cell"]) {
-        UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-        filter_label.text = [current_obj objectForKey:@"title"];
-    
-        NSMutableArray *selected_options = [[NSMutableArray alloc] init];
-        for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
-            if ([[option objectForKey:@"selected"] boolValue]) {
-                [selected_options addObject:[option objectForKey:@"short"]];
-            }
-        }
 
-        UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
+    else {
+        return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+    }  
 
-        if ([selected_options count]) {
-            selected_label.text = [selected_options componentsJoinedByString:@", "];
-        }
-        else {
-            selected_label.text = [current_obj objectForKey:@"default_selection_label"];
-        }
-    }
-    else if ([cell_type isEqualToString:@"cell_with_switch"]) {
-        UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
-        filter_label.text = [current_obj objectForKey:@"title"];      
-        
-        UITableSwitch *on_off = (UITableSwitch *)[cell viewWithTag:4];
-        on_off.indexPath = indexPath;
-        if ([current_obj objectForKey:@"is_selected"] == Nil) {
-            on_off.on = FALSE;
-        }
-        else {
-            on_off.on = TRUE;
-        }
-        
-        [on_off addTarget:self action:@selector(toggleOption:) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
-    }
-    
-    return cell;
 }
 
 -(void) toggleOption:(id)sender {
@@ -272,6 +238,64 @@
     self.data_sections = groups;
 
 }
+
+/*
+ Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
+ */
+
+/* Methods for on/off filters */
+
+-(UITableViewCell *)getOnOffCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_switch"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_switch"];
+    }
+
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
+    filter_label.text = [current_obj objectForKey:@"title"];      
+    
+    UITableSwitch *on_off = (UITableSwitch *)[cell viewWithTag:4];
+    on_off.indexPath = indexPath;
+    if ([current_obj objectForKey:@"is_selected"] == Nil) {
+        on_off.on = FALSE;
+    }
+    else {
+        on_off.on = TRUE;
+    }
+    
+    [on_off addTarget:self action:@selector(toggleOption:) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+
+    return cell;
+}
+
+/* Methods for sub-selection filters */
+-(UITableViewCell *)getSubSelectionCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generic_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"generic_cell"];
+    }
+    
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
+    filter_label.text = [current_obj objectForKey:@"title"];
+    
+    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            [selected_options addObject:[option objectForKey:@"short"]];
+        }
+    }
+    
+    UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
+    
+    if ([selected_options count]) {
+        selected_label.text = [selected_options componentsJoinedByString:@", "];
+    }
+    else {
+        selected_label.text = [current_obj objectForKey:@"default_selection_label"];
+    }
+    return cell;
+}
+
 
 -(void) viewDidAppear:(BOOL)animated {
     [self.filter_table reloadData];
