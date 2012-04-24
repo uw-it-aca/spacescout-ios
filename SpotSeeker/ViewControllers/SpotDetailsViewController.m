@@ -27,6 +27,7 @@
 @synthesize favorite_button;
 @synthesize favorite_spots;
 @synthesize img_view;
+@synthesize rest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,19 +48,19 @@
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
     }
 
-    NSString *app_path = [[NSBundle mainBundle] bundlePath];
-    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
-    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-    
-    NSString *server = [plist_values objectForKey:@"spotseeker_host"];
+    if ([spot.image_urls count]) {
+        NSString *image_url = [spot.image_urls objectAtIndex:0];
+        REST *_rest = [[REST alloc] init];
+        _rest.delegate = self;
+        [_rest getURL:image_url];
+        self.rest = _rest;
+    }
+}
 
-    server = [server stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-
-    for (NSString *url in spot.image_urls) {
-        NSString *image_url = [server stringByAppendingString:url];
-//        UIImage *image = [UIImage alloc] from
-  //      [self.img_view a
-        NSLog(@"Fetch url: %@", image_url);
+-(void)requestFromREST:(ASIHTTPRequest *)request {
+    if ([request responseStatusCode] == 200) {
+        UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
+        [self.img_view setImage:img];
     }
 }
 

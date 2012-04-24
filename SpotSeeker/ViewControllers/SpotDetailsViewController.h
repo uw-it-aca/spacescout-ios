@@ -20,13 +20,15 @@
 #import "ViewController.h"
 #import "Spot.h"
 #import "Favorites.h"
+#import "REST.h"
 
-@interface SpotDetailsViewController : ViewController {
+@interface SpotDetailsViewController : ViewController <RESTFinished> {
     Spot *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
     IBOutlet UIButton *favorite_button;
     IBOutlet UIImageView *img_view;
+    REST *rest;
 }
 
 - (IBAction) btnClickFavorite:(id)sender;
@@ -36,5 +38,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *favorite_button;
 @property (nonatomic, retain) NSMutableDictionary *favorite_spots;
 @property (nonatomic, retain) IBOutlet UIImageView *img_view;
+@property (nonatomic, retain) REST *rest;
 
 @end
