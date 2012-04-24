@@ -10,7 +10,7 @@
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
 		C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C224FBED15361C2300CD4A79 /* filter_config.json */; };
 		C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */; };
-		C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */; };
+		C224FBF7153630AA00CD4A79 /* SpotDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */; };
 		C224FBFA1536505700CD4A79 /* star_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF81536505700CD4A79 /* star_selected.png */; };
 		C224FBFB1536505700CD4A79 /* star_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF91536505700CD4A79 /* star_unselected.png */; };
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
@@ -54,6 +54,7 @@
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
 		C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E0937D1542315A0015BF4B /* UITableSwitch.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
@@ -85,8 +86,8 @@
 		C224FBED15361C2300CD4A79 /* filter_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filter_config.json; sourceTree = "<group>"; };
 		C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterDetailsViewController.h; path = ViewControllers/MapFilterDetailsViewController.h; sourceTree = "<group>"; };
 		C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterDetailsViewController.m; path = ViewControllers/MapFilterDetailsViewController.m; sourceTree = "<group>"; };
-		C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotDetailsViewControllerViewController.h; path = ViewControllers/SpotDetailsViewControllerViewController.h; sourceTree = "<group>"; };
-		C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewControllerViewController.m; path = ViewControllers/SpotDetailsViewControllerViewController.m; sourceTree = "<group>"; };
+		C224FBF5153630AA00CD4A79 /* SpotDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotDetailsViewController.h; path = ViewControllers/SpotDetailsViewController.h; sourceTree = "<group>"; };
+		C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewController.m; path = ViewControllers/SpotDetailsViewController.m; sourceTree = "<group>"; };
 		C224FBF81536505700CD4A79 /* star_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_selected.png; sourceTree = "<group>"; };
 		C224FBF91536505700CD4A79 /* star_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_unselected.png; sourceTree = "<group>"; };
 		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
@@ -167,6 +168,8 @@
 		C2B2F651153E225800292FDC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		C2B2F652153E225800292FDC /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		C2B2F653153E225800292FDC /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
+		C2C0088715476865004AF6F7 /* REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REST.h; path = Models/REST.h; sourceTree = "<group>"; };
+		C2C0088815476865004AF6F7 /* REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REST.m; path = Models/REST.m; sourceTree = "<group>"; };
 		C2E0937C1542315A0015BF4B /* UITableSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableSwitch.h; path = Widgets/UITableSwitch.h; sourceTree = "<group>"; };
 		C2E0937D1542315A0015BF4B /* UITableSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableSwitch.m; path = Widgets/UITableSwitch.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpotSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +231,8 @@
 				C24C11691536744B00109C30 /* Favorites.m */,
 				C24181831545E16E00DAA2FC /* SearchFilter.h */,
 				C24181841545E16E00DAA2FC /* SearchFilter.m */,
+				C2C0088715476865004AF6F7 /* REST.h */,
+				C2C0088815476865004AF6F7 /* REST.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,8 +250,8 @@
 				C2429AC2150AC133005A994A /* MapViewController.m */,
 				C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */,
 				C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */,
-				C224FBF5153630AA00CD4A79 /* SpotDetailsViewControllerViewController.h */,
-				C224FBF6153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m */,
+				C224FBF5153630AA00CD4A79 /* SpotDetailsViewController.h */,
+				C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -592,7 +597,7 @@
 				C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */,
 				C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */,
 				C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */,
-				C224FBF7153630AA00CD4A79 /* SpotDetailsViewControllerViewController.m in Sources */,
+				C224FBF7153630AA00CD4A79 /* SpotDetailsViewController.m in Sources */,
 				C24C116A1536744B00109C30 /* Favorites.m in Sources */,
 				C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */,
 				C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */,
@@ -600,6 +605,7 @@
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
 				C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */,
+				C2C0088915476865004AF6F7 /* REST.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

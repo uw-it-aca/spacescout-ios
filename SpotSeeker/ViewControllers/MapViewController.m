@@ -127,7 +127,7 @@ int const meters_per_latitude = 111 * 1000;
         filter_vc.user_distance = [[NSNumber alloc] initWithDouble: map_view.region.span.latitudeDelta * meters_per_latitude ];
     }
     else if ([[segue identifier] isEqualToString:@"show_details"]) {
-        SpotDetailsViewControllerViewController *details = segue.destinationViewController;
+        SpotDetailsViewController *details = segue.destinationViewController;
 
         [details setSpot:[self.current_spots objectAtIndex:[sender tag]]];
     }

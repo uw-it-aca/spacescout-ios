@@ -20,10 +20,11 @@
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest+OAuth.h"
 #import "SBJson.h"
+#import "REST.h"
 
 @protocol SearchFinished;
 
-@interface Spot : NSObject {
+@interface Spot : NSObject <RESTFinished> {
     id <SearchFinished> delegate;
     NSString *name;
     NSString *remote_id;
@@ -44,6 +45,7 @@
     NSNumber *floor;
     NSString *room_number;
     NSString *description;
+    REST *rest;
 }
 
 - (void) getListBySearch: (NSDictionary *)arguments ;
@@ -51,6 +53,7 @@
 
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
+@property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *remote_id;
 @property (nonatomic, retain) NSString *uri;

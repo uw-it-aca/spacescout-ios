@@ -216,11 +216,11 @@
             </objects>
             <point key="canvasLocation" x="2431" y="-440"/>
         </scene>
-        <!--Spot Details View Controller View Controller-->
+        <!--Spot Details View Controller-->
         <scene sceneID="1JD-BQ-XQQ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFD-GY-iDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="23O-33-82K" customClass="SpotDetailsViewControllerViewController" sceneMemberID="viewController">
+                <viewController id="23O-33-82K" customClass="SpotDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkZ-fX-RfE">
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,14 +316,6 @@
             <relationships>
                 <relationship kind="action" name="btnClickSearch:"/>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="SpotDetailsViewControllerViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewControllerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="UITableSwitch" superclassName="UISwitch">

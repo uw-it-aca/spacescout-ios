@@ -40,48 +40,23 @@
 @synthesize floor;
 @synthesize room_number;
 @synthesize description;
+@synthesize rest;
 
 - (void) getListBySearch: (NSDictionary *)arguments {
-    NSString *app_path = [[NSBundle mainBundle] bundlePath];
-    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
-    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-    
-    NSString *server = [plist_values objectForKey:@"spotseeker_host"];
-    
-    if (server == NULL) {
-        NSLog(@"You need to copy the example_spotseeker.plist file to spotseeker.plist, and provide a spotseeker_host value");
-    }
-    
-    server = [server stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-    NSString *list_url = [server stringByAppendingString:[self buildURLWithParams:arguments]];
-
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:list_url]];
-    
-    
-    // XXX - this should be centralized, once there's more than one place that makes requests
-    BOOL use_oauth = [[plist_values objectForKey:@"use_oauth"] boolValue];
-    if (use_oauth) {
-        NSString *oauth_key = [plist_values objectForKey:@"oauth_key"];
-        NSString *oauth_secret = [plist_values objectForKey:@"oauth_secret"];
-        [request signRequestWithClientIdentifier:oauth_key secret:oauth_secret
-                                 tokenIdentifier:nil secret:nil
-                                 usingMethod:ASIOAuthHMAC_SHA1SignatureMethod];
-    }
-    
-    [request setDelegate:self];
-    [request startAsynchronous];
+    REST *_rest = [[REST alloc] init];
+    _rest.delegate = self;
+    [_rest getURL:[self buildURLWithParams:arguments]];
+    self.rest = _rest;
 }
 
-     
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
+-(void)requestFromREST:(ASIHTTPRequest *)request {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
 
     if (200 != [request responseStatusCode]) {
         NSLog(@"Code: %i", [request responseStatusCode]);
         // show an error
     }
-    
+
     NSArray *spot_results = [parser objectWithData:[request responseData]];
     NSMutableArray *spot_list = [NSMutableArray arrayWithCapacity:spot_results.count];
 
@@ -95,6 +70,12 @@
         
         spot.latitude = [location_info objectForKey:@"latitude"];
         spot.longitude = [location_info objectForKey:@"longitude"];
+        
+        NSMutableArray *_image_urls = [[NSMutableArray alloc]init];
+        for (NSDictionary *image in [spot_info objectForKey:@"images"]) {
+            [_image_urls addObject:[image objectForKey:@"url"]];
+        }
+        spot.image_urls = _image_urls;
         
         [spot_list addObject:spot];
     }

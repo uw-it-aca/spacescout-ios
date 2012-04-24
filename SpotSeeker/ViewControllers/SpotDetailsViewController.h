@@ -1,5 +1,5 @@
 //
-//  MapViewController.h
+//  SpotDetailsViewControllerViewController.h
 //  SpotSeeker
 //
 //  Copyright 2012 UW Information Technology, University of Washington
@@ -17,27 +17,24 @@
 //  limitations under the License.
 //
 
-#import <MapKit/MapKit.h>
 #import "ViewController.h"
 #import "Spot.h"
-#import "SpotAnnotation.h"
-#import "SpotDetailsViewController.h"
-#import "MapFilterViewController.h"
+#import "Favorites.h"
 
-extern const int meters_per_latitude;
-
-@interface MapViewController : ViewController <MKMapViewDelegate, SearchFinished> {
-    MKMapView *map_view;
+@interface SpotDetailsViewController : ViewController {
     Spot *spot;
-    NSMutableArray *current_spots;
+    NSMutableDictionary *favorite_spots;
+    IBOutlet UILabel *capacity_label;
+    IBOutlet UIButton *favorite_button;
+    IBOutlet UIImageView *img_view;
 }
 
-@property (nonatomic, retain) NSArray *current_spots;
+- (IBAction) btnClickFavorite:(id)sender;
+
 @property (nonatomic, retain) Spot *spot;
-@property (nonatomic, retain) IBOutlet MKMapView *map_view;
-
--(IBAction)btnClickSearch:(id)sender;
-
--(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
+@property (nonatomic, retain) IBOutlet UILabel *capacity_label;
+@property (nonatomic, retain) IBOutlet UIButton *favorite_button;
+@property (nonatomic, retain) NSMutableDictionary *favorite_spots;
+@property (nonatomic, retain) IBOutlet UIImageView *img_view;
 
 @end

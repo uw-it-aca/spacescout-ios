@@ -207,11 +207,11 @@
             </objects>
             <point key="canvasLocation" x="2264" y="-93"/>
         </scene>
-        <!--Spot Details View Controller View Controller-->
+        <!--Spot Details View Controller-->
         <scene sceneID="adb-7p-DAh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ycF-WC-Hj5" customClass="SpotDetailsViewControllerViewController" sceneMemberID="viewController">
+                <viewController id="ycF-WC-Hj5" customClass="SpotDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRl-lE-xaE">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -252,6 +252,10 @@
                                     <action selector="btnClickFavorite:" destination="ycF-WC-Hj5" eventType="touchUpInside" id="SfN-Xx-Pfc"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ReW-Oz-8cV">
+                                <rect key="frame" x="20" y="86" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -259,6 +263,7 @@
                     <connections>
                         <outlet property="capacity_label" destination="DWc-cr-8Xy" id="hRa-MZ-a8t"/>
                         <outlet property="favorite_button" destination="x91-AN-RSx" id="tar-zJ-BAk"/>
+                        <outlet property="img_view" destination="ReW-Oz-8cV" id="I7O-bg-hZM"/>
                     </connections>
                 </viewController>
             </objects>
@@ -338,51 +343,6 @@
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickCancel:"/>
-                <relationship kind="action" name="btnClickChangeFilter:"/>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="action" name="dismissNameKeyboard:"/>
-                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="filter_view" candidateClass="UIView"/>
-                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scroll_view" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="RotatingTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingTabBarController.h"/>
-        </class>
-        <class className="SpotDetailsViewControllerViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewControllerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="UITableSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
