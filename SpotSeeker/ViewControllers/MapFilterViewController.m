@@ -89,6 +89,9 @@
                 if ([cell_type isEqualToString:@"cell_with_switch"]) {
                     [self addOnOffSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];                    
                 }
+                else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
+                    [self addChooserSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
+                }
                 else {
                     [self addSubSelectionSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
@@ -126,7 +129,9 @@
     if ([cell_type isEqualToString:@"cell_with_switch"]) {
         return [self getOnOffCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
-
+    else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
+        return [self getChooserCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+    }
     else {
         return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }  
@@ -141,6 +146,9 @@
     if ([cell_type isEqualToString:@"cell_with_switch"]) {
         [self didSelectOnOffRowAtIndexPath:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
+        [self didSelectChooserRowAtIndexPath:indexPath];
+    }
     else {
         [self didSelectSubSelectionRowAtIndexPath:indexPath];
     }
@@ -150,6 +158,10 @@
     if ([[segue identifier] isEqualToString:@"filter_options"]) {
         MapFilterDetailsViewController *mfd = [segue destinationViewController];
         mfd.filter = self.current_section;
+    }
+    else if ([[segue identifier] isEqualToString:@"chooser_options"]) {
+        MapFilterPickerViewController *mfp = [segue destinationViewController];
+        mfp.filter = self.current_section;
     }
 }
 
@@ -173,6 +185,51 @@
 /*
  Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
  */
+
+/* Methods for chooser filters */
+
+-(UITableViewCell *)getChooserCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_chooser"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_chooser"];
+    }
+    
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
+    filter_label.text = [current_obj objectForKey:@"title"];      
+
+    UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
+
+    NSInteger current_row = [[current_obj objectForKey:@"selected_row"]  integerValue];
+    if (!current_row) {
+        current_row = 0;
+    }
+    filter_selection.text = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
+    
+    return cell;
+
+}
+
+// Fill out the search values
+-(void)addChooserSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSInteger current_row = [[filter objectForKey:@"selected_row"]  integerValue];
+    
+    if (!current_row) {
+        current_row = 0;
+    }
+    
+    NSString *search_value = [[[filter objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"search_value"];
+    
+    if (search_value != Nil && ![search_value isEqualToString:@""]) {
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:search_value, nil] forKey: search_key];
+    }   
+}
+
+
+// Handle when some clicks the row - do nothing?
+- (void) didSelectChooserRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"chooser_options" sender:self];  
+}
+
 
 /* Methods for on/off filters */
 
@@ -200,8 +257,8 @@
     return cell;
 }
 
-// Handle when some clicks the row - do nothing?  prevent blue selection highlight?
-- (void) didSelectOnOffRowAtIndexPath:(NSIndexPath *)indexPath {
+// Handle when some clicks the row - do nothing?
+- (void) didSelectOnOffRowAtIndexPath:(NSIndexPath *)indexPath {  
 }
 
 
@@ -291,8 +348,5 @@
 -(IBAction)dismissNameKeyboard:(id)sender {
     [self.name_filter resignFirstResponder];
 }
-
-
-
 
 @end

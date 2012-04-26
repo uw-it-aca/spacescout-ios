@@ -45,7 +45,17 @@
             if (is_selected != nil) {
                 [filter_obj setObject:is_selected forKey:@"is_selected"];
             }
-            [filter_obj setObject:[filter objectForKey:@"default_selection_label"] forKey:@"default_selection_label"];
+            
+            NSString *default_selection_label = [filter objectForKey:@"default_selection_label"];
+            if (default_search_value != nil) {
+                [filter_obj setObject:default_selection_label forKey:@"default_selection_label"];
+            }
+            
+                 
+            NSNumber *default_selection_position = [filter objectForKey:@"default_selection_position"];
+            if (default_selection_position != nil) {
+                [filter_obj setObject:default_selection_position forKey:@"selected_row"];
+            }
             
             NSMutableArray *filter_options = [[NSMutableArray alloc] init ];
             NSArray *options = [filter objectForKey:@"options"];
