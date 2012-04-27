@@ -92,6 +92,9 @@
                 else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
                     [self addChooserSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
+                else if ([cell_type isEqualToString:@"cell_with_time"]) {
+                    [self addTimeSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
+                }
                 else {
                     [self addSubSelectionSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
@@ -132,6 +135,9 @@
     else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
         return [self getChooserCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_time"]) {
+        return [self getTimeCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+    }
     else {
         return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }  
@@ -149,6 +155,9 @@
     else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
         [self didSelectChooserRowAtIndexPath:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_time"]) {
+        [self didSelectTimeRowAtIndexPath:indexPath];
+    }
     else {
         [self didSelectSubSelectionRowAtIndexPath:indexPath];
     }
@@ -162,6 +171,10 @@
     else if ([[segue identifier] isEqualToString:@"chooser_options"]) {
         MapFilterPickerViewController *mfp = [segue destinationViewController];
         mfp.filter = self.current_section;
+    }
+    else if ([[segue identifier] isEqualToString:@"time_options"]) {
+        MapFilterTimeViewController *mft = [segue destinationViewController];
+        mft.filter = self.current_section;
     }
 }
 
@@ -185,6 +198,51 @@
 /*
  Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
  */
+
+/* Methods for choosing a time */
+-(UITableViewCell *)getTimeCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_time"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_time"];
+    }
+    
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
+    filter_label.text = [current_obj objectForKey:@"title"];      
+    
+    NSDate *selected_date = [current_obj objectForKey:@"selected_date"];
+    UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
+    if (selected_date != nil) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"h:mm a"];
+        filter_selection.text = [df stringFromDate:selected_date];            
+    }
+    else {
+        filter_selection.text = @"";
+    }
+    return cell;
+    
+}
+
+// Fill out the search values
+-(void)addTimeSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSDate *selected_date = [filter objectForKey:@"selected_date"];
+    if (selected_date != nil) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"HH:mm"];
+        NSString *search_time = [df stringFromDate:selected_date];            
+        NSLog(@"ST: %@", search_time);
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:search_time, nil] forKey: search_key];
+
+    }
+
+}
+
+
+// Handle when some clicks the row - do nothing?
+- (void) didSelectTimeRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"time_options" sender:self];  
+}
+
 
 /* Methods for chooser filters */
 

@@ -23,6 +23,7 @@
 #import "MapViewController.h"
 #import "MapFilterDetailsViewController.h"
 #import "MapFilterPickerViewController.h"
+#import "MapFilterTimeViewController.h"
 #import "UITableSwitch.h"
 #import "SearchFilter.h"
 
