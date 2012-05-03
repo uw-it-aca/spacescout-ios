@@ -29,6 +29,8 @@
 @synthesize img_view;
 @synthesize rest;
 @synthesize config;
+@synthesize equipment_fields;
+@synthesize environment_fields;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,7 +69,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
-        }    
+        }
         return cell.frame.size.height;
     }
     
@@ -82,21 +84,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 2) {
-        return [[self.config objectForKey:@"environment"] count];
+        return [self.environment_fields count];
     }
     if (section == 3) {
-        NSArray *equipment_types = [self.config objectForKey:@"equipment"];
-        NSInteger row_count = 0;
-        for (NSDictionary *type in equipment_types) {
-            NSString *attribute = [type objectForKey:@"attribute"];
-            NSString *show_if   = [type objectForKey:@"show_if"];
-
-            NSString *value = [self.spot.extended_info objectForKey:attribute];
-            if (value != nil && [value isEqual:show_if]) {
-                row_count ++;
-            }
-        }
-        return row_count;
+        return [self.equipment_fields count];
     }
     return 1;
 }
@@ -111,8 +102,12 @@
         UILabel *type = (UILabel *)[cell viewWithTag:1];
         UILabel *value = (UILabel *)[cell viewWithTag:2];
         
-        [type setText: @"Surfaces"];
-        [value setText: @"Large table"];
+        NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row];
+        NSString *attribute_key = [attribute objectForKey:@"attribute"];
+        NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
+        
+        [type setText: [attribute objectForKey:@"display"]];
+        [value setText: attribute_value];
         return cell;
     }
     
@@ -121,8 +116,9 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
         }    
+        NSDictionary *equipment_type = [self.equipment_fields objectAtIndex:indexPath.row];
         UILabel *type = (UILabel *)[cell viewWithTag:1];
-        [type setText: @"Whiteboards"];
+        [type setText: [equipment_type objectForKey:@"display"]];
         return cell;
     }
 
@@ -177,6 +173,32 @@
 
 -(void)detailConfiguration:(NSDictionary *)_config {
     self.config = _config;
+
+    self.equipment_fields = [[NSMutableArray alloc] init];
+    
+    NSArray *equipment_types = [self.config objectForKey:@"equipment"];
+    for (NSDictionary *type in equipment_types) {
+        NSString *attribute = [type objectForKey:@"attribute"];
+        NSString *show_if   = [type objectForKey:@"show_if"];
+        
+        NSString *value = [self.spot.extended_info objectForKey:attribute];
+        if (value != nil && [value isEqual:show_if]) {
+            [self.equipment_fields addObject:type];
+        }
+    }
+
+    self.environment_fields = [[NSMutableArray alloc] init];
+    
+    NSArray *environment_types = [self.config objectForKey:@"environment"];
+    for (NSDictionary *attribute in environment_types) {
+        NSString *attribute_key = [attribute objectForKey:@"attribute"];
+        NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
+
+        if (attribute_value != nil && ![attribute_value isEqualToString:@""]) {
+            [self.environment_fields addObject:attribute];
+        }
+    }
+    
 }
 
 - (void)viewDidLoad

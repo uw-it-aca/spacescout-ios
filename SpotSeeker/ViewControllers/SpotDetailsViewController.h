@@ -32,6 +32,8 @@
     IBOutlet UIImageView *img_view;
     NSDictionary *config;
     REST *rest;
+    NSMutableArray *environment_fields;
+    NSMutableArray *equipment_fields;
 }
 
 - (IBAction) btnClickFavorite:(id)sender;
@@ -43,5 +45,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *img_view;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) NSDictionary *config;
+@property (nonatomic, retain) NSMutableArray *environment_fields;
+@property (nonatomic, retain) NSMutableArray *equipment_fields;
 
 @end
