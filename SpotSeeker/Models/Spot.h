@@ -30,7 +30,7 @@
     NSString *remote_id;
     NSString *uri;
     NSString *capacity;
-    NSString *display_hours_available;
+    NSMutableDictionary *hours_available;
     NSString *display_access_restrictions;
     NSMutableArray *image_urls;
     NSString *organization;
@@ -58,7 +58,7 @@
 @property (nonatomic, retain) NSString *remote_id;
 @property (nonatomic, retain) NSString *uri;
 @property (nonatomic, retain) NSString *capacity;
-@property (nonatomic, retain) NSString *display_hours_available;
+@property (nonatomic, retain) NSMutableDictionary *hours_available;
 @property (nonatomic, retain) NSString *display_access_restrictions;
 @property (nonatomic, retain) NSMutableArray *image_urls;
 @property (nonatomic, retain) NSString *organization;

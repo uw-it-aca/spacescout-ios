@@ -27,7 +27,7 @@
 @synthesize remote_id;
 @synthesize uri;
 @synthesize capacity;
-@synthesize display_hours_available;
+@synthesize hours_available;
 @synthesize display_access_restrictions;
 @synthesize image_urls;
 @synthesize organization;
@@ -85,6 +85,35 @@
         }
         spot.extended_info = _extended_info;
         
+        NSMutableDictionary *_hours_available = [[NSMutableDictionary alloc] init];
+        NSDictionary *hours = [spot_info objectForKey:@"available_hours"];
+
+        for (NSString *day in hours) {
+            NSMutableArray *windows = [[NSMutableArray alloc] init];
+            NSArray *source_windows = [hours objectForKey:day];
+            for (NSArray *source_window in source_windows) {
+                NSMutableArray *window = [[NSMutableArray alloc] init];
+                
+                NSArray *start_parts = [[source_window objectAtIndex:0] componentsSeparatedByString:@":"];
+                
+                NSDateComponents *start_date = [[NSDateComponents alloc] init];
+                start_date.hour = [ [start_parts objectAtIndex:0] intValue ];
+                start_date.minute = [ [start_parts objectAtIndex:1] intValue ];
+
+                NSArray *end_parts = [[source_window objectAtIndex:1] componentsSeparatedByString:@":"];
+
+                NSDateComponents *end_date = [[NSDateComponents alloc] init];
+                end_date.hour = [ [end_parts objectAtIndex:0] intValue ];
+                end_date.minute = [ [end_parts objectAtIndex:1] intValue ];
+  
+                [window addObject:start_date];
+                [window addObject:end_date];
+                [windows addObject:window];
+            }
+            [_hours_available setObject:windows forKey:day];
+        }
+        spot.hours_available = _hours_available;
+    
         [spot_list addObject:spot];
     }
     

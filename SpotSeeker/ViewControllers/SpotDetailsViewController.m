@@ -64,9 +64,17 @@
         }
         
         return cell.frame.size.height;
-        
     }
-    // Right now only the image/name cell needs a custom height, so the choice in cell here is arbitrary
+    else if (indexPath.section == 0 && indexPath.row == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
+        }
+        
+        return cell.frame.size.height;
+    }
+
+    // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
     else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
         if (cell == nil) {
@@ -126,7 +134,19 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
-        }        
+        }
+        
+        NSMutableArray *display_hours = [self formatHours:self.spot.hours_available];
+        
+        for (int index = 0; index < [display_hours count]; index++) {
+            UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
+            hours_label.text = [display_hours objectAtIndex:index];
+        }
+        
+        if (![self isOpenNow:self.spot.hours_available]) {
+            UILabel *open_now = (UILabel *)[cell viewWithTag:2];
+            open_now.hidden = true;
+        }
         return cell;
     }
     else if (indexPath.section == 1) {
@@ -143,6 +163,7 @@
         
         [type setText: [attribute objectForKey:@"display"]];
         [value setText: attribute_value];
+        
         return cell;
     }
     else if (indexPath.section == 2)  {
@@ -170,8 +191,74 @@
     
 }
 
+-(NSMutableArray *)formatHours:(NSMutableDictionary *)hours_available {
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"monday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"tuesday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"wednesday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"thursday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"friday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"saturday"]]];
+    [results addObject:[self formatDayHours:[hours_available objectForKey:@"sunday"]]];
+     
+    return results;
+}
 
+-(NSString *)formatDayHours:(NSMutableArray *)windows {
+    NSMutableArray *windows_as_text = [[NSMutableArray alloc] init];
+    
+    for (NSArray *window in windows) {
+        NSDateComponents *start = [window objectAtIndex:0];
+        NSDateComponents *end = [window objectAtIndex:1];
+    
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"h:mm a"];
+        
+        NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
+        NSDate *start_date = [cal dateFromComponents:start];
+        NSDate *end_date = [cal dateFromComponents:end];
 
+        [windows_as_text addObject:[[NSString alloc] initWithFormat:@"%@-%@", [df stringFromDate:start_date], [df stringFromDate:end_date]]];
+        
+    }
+    
+    return [windows_as_text componentsJoinedByString:@", "];
+}
+     
+-(BOOL)isOpenNow:(NSMutableDictionary *)hours_available {
+    NSDate *now = [NSDate date];
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSUIntegerMax fromDate:now];
+
+    NSArray *day_lookup = [[NSArray alloc] initWithObjects:@"", @"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", nil];
+
+    NSMutableArray *windows = [hours_available objectForKey:[day_lookup objectAtIndex:[components weekday]]];
+       
+    for (NSMutableArray *window in windows) {
+        NSDateComponents *start = [window objectAtIndex:0];
+        NSDateComponents *end   = [window objectAtIndex:1];
+
+        [components setHour:[start hour]];
+        [components setMinute:[start minute]];
+        
+        NSDate *start_cmp = [calendar dateFromComponents:components];
+
+        [components setHour:[end hour]];
+        [components setMinute:[end minute]];
+        
+        NSDate *end_cmp = [calendar dateFromComponents:components];
+
+        // If the start time is before or equal to now, and the end time is after or equal to now, we're open
+        if (([start_cmp compare:now] != NSOrderedDescending) && ([end_cmp compare:now] != NSOrderedAscending)) {
+            return true;   
+        }
+        
+    }
+
+    return false;
+}
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 200) {
