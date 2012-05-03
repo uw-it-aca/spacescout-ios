@@ -102,6 +102,10 @@
         UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
         [spot_name setText:self.spot.name];
         
+        UILabel *capacity = (UILabel *)[cell viewWithTag:3];
+        NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
+        [capacity setText: capacity_string];
+        
         UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
         
         
