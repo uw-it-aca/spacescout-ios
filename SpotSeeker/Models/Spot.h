@@ -26,8 +26,9 @@
 
 @interface Spot : NSObject <RESTFinished> {
     id <SearchFinished> delegate;
-    NSString *name;
     NSString *remote_id;
+    NSString *name;
+    NSString *type;
     NSString *uri;
     NSString *capacity;
     NSMutableDictionary *hours_available;
@@ -54,8 +55,9 @@
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
 @property (nonatomic, retain) REST *rest;
-@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *remote_id;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSString *uri;
 @property (nonatomic, retain) NSString *capacity;
 @property (nonatomic, retain) NSMutableDictionary *hours_available;

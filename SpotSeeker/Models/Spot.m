@@ -23,8 +23,9 @@
 @implementation Spot
 
 @synthesize delegate;
-@synthesize name;
 @synthesize remote_id;
+@synthesize name;
+@synthesize type;
 @synthesize uri;
 @synthesize capacity;
 @synthesize hours_available;
@@ -64,6 +65,7 @@
         Spot *spot = [Spot alloc];
         spot.remote_id = [spot_info objectForKey:@"id"];
         spot.name = [spot_info objectForKey:@"name"];
+        spot.type = [spot_info objectForKey:@"type"];
         spot.capacity = [spot_info objectForKey:@"capacity"];
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];

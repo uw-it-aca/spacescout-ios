@@ -110,6 +110,9 @@
         UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
         [spot_name setText:self.spot.name];
         
+        UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
+        [spot_type setText: self.spot.type];
+        
         UILabel *capacity = (UILabel *)[cell viewWithTag:3];
         NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
         [capacity setText: capacity_string];
