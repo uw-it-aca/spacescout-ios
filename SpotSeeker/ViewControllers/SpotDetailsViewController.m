@@ -42,14 +42,14 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == 1) {
         return @"Environment";
     }
-    if (section == 3) {
+    if (section == 2) {
         return @"Equipment";
     }
     return @"";
@@ -57,44 +57,75 @@
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 2) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
+        }
+        
+        return cell.frame.size.height;
+        
+    }
+    // Right now only the image/name cell needs a custom height, so the choice in cell here is arbitrary
+    else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
         }
         return cell.frame.size.height;
+                
     }
     
-    if (indexPath.section == 3) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
-        }
-        return cell.frame.size.height;
-    }
-    
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
-    }
-
-    return cell.frame.size.height;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == 0) {
+        return 2;
+    }
+    if (section == 1) {
         return [self.environment_fields count];
     }
-    if (section == 3) {
+    else if (section == 2) {
         return [self.equipment_fields count];
     }
-    return 1;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2) {
+    if (indexPath.section == 0 && indexPath.row == 0) {       
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
+        }
+        
+        UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
+        [spot_name setText:self.spot.name];
+        
+        UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
+        
+        
+        if (self.img_view == nil) {
+            self.img_view = spot_image;
+            if ([spot.image_urls count]) {
+                NSString *image_url = [spot.image_urls objectAtIndex:0];
+                REST *_rest = [[REST alloc] init];
+                _rest.delegate = self;
+                [_rest getURL:image_url];
+                self.rest = _rest;
+            }
+        }
+        
+        return cell;
+    }
+    else if (indexPath.section == 0 && indexPath.row == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
+        }        
+        return cell;
+    }
+    else if (indexPath.section == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
@@ -110,8 +141,7 @@
         [value setText: attribute_value];
         return cell;
     }
-    
-    if (indexPath.section == 3) {
+    else if (indexPath.section == 2)  {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
@@ -121,30 +151,19 @@
         [type setText: [equipment_type objectForKey:@"display"]];
         return cell;
     }
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
+    // This fallback should never be reached
+    else {
+        NSLog(@"Invalid index path section: %i", indexPath.section);
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
+        }    
+        UILabel *type = (UILabel *)[cell viewWithTag:1];
+        [type setText: @""];
+        return cell;
+        
     }
     
-    UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
-    [spot_name setText:self.spot.name];
-    
-    UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
-
-    
-    if (self.img_view == nil) {
-        self.img_view = spot_image;
-        if ([spot.image_urls count]) {
-            NSString *image_url = [spot.image_urls objectAtIndex:0];
-            REST *_rest = [[REST alloc] init];
-            _rest.delegate = self;
-            [_rest getURL:image_url];
-            self.rest = _rest;
-        }
-    }
-    
-    return cell;
 }
 
 
