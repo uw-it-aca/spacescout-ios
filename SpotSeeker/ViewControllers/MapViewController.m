@@ -24,28 +24,32 @@
 @synthesize spot;
 @synthesize map_view;
 @synthesize current_spots;
+@synthesize search_attributes;
 
 int const meters_per_latitude = 111 * 1000;
 
-
--(IBAction)btnClickSearch:(id)sender { 
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
-    [attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"extended_info:ada_accessible"];
-    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
-    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
-
+-(void) runSearch {
+    if (search_attributes == nil) {
+        search_attributes = [[NSMutableDictionary alloc] init];
+    }
+    [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
+    [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"extended_info:ada_accessible"];
+    [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
+    [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
+    
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
-    [attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
+    [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
+    
+    Spot *_spot = [Spot alloc];
+    self.spot = _spot;
+    [self.spot getListBySearch:search_attributes];
+    [self.spot setDelegate:self];
 
-    [self runSearchWithAttributes:attributes];
 }
 
 -(void) runSearchWithAttributes:(NSMutableDictionary *)attributes {
-    Spot *_spot = [Spot alloc];
-    self.spot = _spot;
-    [self.spot getListBySearch:attributes];
-    [self.spot setDelegate:self];
+    self.search_attributes = attributes;
+    [self runSearch];
 }
 
 -(void) searchFinished:(NSArray *)spots {
@@ -104,6 +108,9 @@ int const meters_per_latitude = 111 * 1000;
     return pinView;    
 }
 
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    [self runSearch];
+}
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {

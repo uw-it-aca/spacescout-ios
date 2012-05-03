@@ -28,11 +28,6 @@
                                 <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="1qM-WG-Kjh">
-                            <connections>
-                                <action selector="btnClickSearch:" destination="2" id="RpP-CP-fZJ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="map_view" destination="Aik-wh-Fpl" id="Phx-6p-3Bv"/>
@@ -580,61 +575,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterPickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterPickerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="filter_picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="timeSelected:"/>
-                <relationship kind="outlet" name="date_picker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="MapFilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickCancel:"/>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="RotatingTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingTabBarController.h"/>
-        </class>
-        <class className="SpotDetailsViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="UITableSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

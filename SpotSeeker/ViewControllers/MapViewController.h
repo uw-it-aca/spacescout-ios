@@ -30,13 +30,13 @@ extern const int meters_per_latitude;
     MKMapView *map_view;
     Spot *spot;
     NSMutableArray *current_spots;
+    NSMutableDictionary *search_attributes;
 }
 
 @property (nonatomic, retain) NSArray *current_spots;
 @property (nonatomic, retain) Spot *spot;
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
-
--(IBAction)btnClickSearch:(id)sender;
+@property (nonatomic, retain) NSMutableDictionary *search_attributes;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 
