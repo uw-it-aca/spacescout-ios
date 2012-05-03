@@ -54,12 +54,13 @@ int const meters_per_latitude = 111 * 1000;
 
 -(void) searchFinished:(NSArray *)spots {
     self.current_spots = spots;
-    [self showFoundSpots:spots];
+    [self showFoundSpots];
 }
 
--(void) showFoundSpots:(NSArray *)spots {
+-(void) showFoundSpots {
     [self removeAnnotations];
-    
+
+    NSArray *spots = self.current_spots;
     int index;
     for (index = 0; index < spots.count; index++) {
         spot = [spots objectAtIndex:index];
@@ -95,16 +96,18 @@ int const meters_per_latitude = 111 * 1000;
         
         pinView.animatesDrop = YES;
         pinView.canShowCallout = YES;
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTag: [((SpotAnnotation *)annotation).spot_index intValue]];
-        pinView.rightCalloutAccessoryView = button;
     }
     else
     {
         pinView.annotation = annotation;
     }
-  
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTag: [((SpotAnnotation *)annotation).spot_index intValue]];
+    pinView.rightCalloutAccessoryView = button;
+
+    
     return pinView;    
 }
 
