@@ -21,13 +21,16 @@
 #import "Spot.h"
 #import "Favorites.h"
 #import "REST.h"
+#import "DisplayOptions.h"
 
-@interface SpotDetailsViewController : ViewController <RESTFinished> {
+
+@interface SpotDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {
     Spot *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
     IBOutlet UIButton *favorite_button;
     IBOutlet UIImageView *img_view;
+    NSDictionary *config;
     REST *rest;
 }
 
@@ -39,5 +42,6 @@
 @property (nonatomic, retain) NSMutableDictionary *favorite_spots;
 @property (nonatomic, retain) IBOutlet UIImageView *img_view;
 @property (nonatomic, retain) REST *rest;
+@property (nonatomic, retain) NSDictionary *config;
 
 @end

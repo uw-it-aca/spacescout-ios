@@ -77,6 +77,14 @@
         }
         spot.image_urls = _image_urls;
         
+        NSMutableDictionary *_extended_info = [[NSMutableDictionary alloc] init];
+        NSDictionary *info = [spot_info objectForKey:@"extended_info"];
+        for (NSString *key in info) {
+            NSString *value = [info objectForKey:key];
+            [_extended_info setObject:value forKey:key];
+        }
+        spot.extended_info = _extended_info;
+        
         [spot_list addObject:spot];
     }
     

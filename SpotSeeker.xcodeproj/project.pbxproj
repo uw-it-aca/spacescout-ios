@@ -48,6 +48,8 @@
 		C24C116A1536744B00109C30 /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = C24C11691536744B00109C30 /* Favorites.m */; };
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
+		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
+		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */; };
@@ -159,6 +161,9 @@
 		C24C11691536744B00109C30 /* Favorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favorites.m; path = Models/Favorites.m; sourceTree = "<group>"; };
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
+		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
+		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
+		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
 		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
 		C2A0E92F153E2EE100D9568E /* SpotModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotModelTests.m; sourceTree = "<group>"; };
@@ -239,6 +244,8 @@
 				C24181841545E16E00DAA2FC /* SearchFilter.m */,
 				C2C0088715476865004AF6F7 /* REST.h */,
 				C2C0088815476865004AF6F7 /* REST.m */,
+				C277E87E1551FD920022FACD /* DisplayOptions.h */,
+				C277E87F1551FD920022FACD /* DisplayOptions.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -441,6 +448,7 @@
 				C2FDB0F0150A802D00ED3A93 /* SpotSeeker-Prefix.pch */,
 				C2516665153370CF002CEDB6 /* example_spotseeker.plist */,
 				C224FBED15361C2300CD4A79 /* filter_config.json */,
+				C277E87C1551FC7A0022FACD /* details_config.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -543,6 +551,7 @@
 				C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */,
 				C224FBFA1536505700CD4A79 /* star_selected.png in Resources */,
 				C224FBFB1536505700CD4A79 /* star_unselected.png in Resources */,
+				C277E87D1551FC7A0022FACD /* details_config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +627,7 @@
 				C2C0088915476865004AF6F7 /* REST.m in Sources */,
 				C2BF05481549F85E002FA3EA /* MapFilterPickerViewController.m in Sources */,
 				C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */,
+				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

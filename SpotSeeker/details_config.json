@@ -1,0 +1,13 @@
+{
+    "equipment":[
+                 { "attribute":"has_whiteboards", "display":"Whiteboards", "show_if":"1" },
+                 { "attribute":"has_outlets", "display":"Outlets", "show_if":"1" },
+                 { "attribute":"has_monitors", "display":"Monitors", "show_if":"1" },
+                 { "attribute":"has_wizards", "display":"Wizards", "show_if":"1" }
+    ],
+    "environment":[
+                   { "attribute":"surfaces", "display":"Surfaces" },
+                   { "attribute":"seating", "display":"Seating" }
+                   
+    ]
+}
