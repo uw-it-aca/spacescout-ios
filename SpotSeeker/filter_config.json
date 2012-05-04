@@ -7,11 +7,16 @@
              "search_key":"extended_info:spot_type",
              "default_selection_label":"Any",
              "options": [
-                         { "title":"Open Spaces", "short":"open", "search_value":"open" },
-                         { "title":"Small study rooms", "short":"small", "search_value":"small" },
-                         { "title":"Medium study rooms", "short":"medium", "search_value":"medium" },
-                         { "title":"Conference rooms", "short":"conference", "search_value":"conference" },
-                         { "title":"Collaboration studios", "short":"collaboration", "search_value":"collaboration" }
+                         { "title":"Computer lab", "short":"Lab", "search_value":"computer_lab" },
+                         { "title":"Open space", "short":"Open sp", "search_value":"open" },
+                         { "title":"Alcove", "short":"Alc", "search_value":"alcove" },
+                         { "title":"Lounge", "short":"Lng", "search_value":"lounge" },
+                         { "title":"Study room", "short":"Rm", "search_value":"study_room" },
+                         { "title":"Study space", "short":"Spc", "search_value":"study_space" },
+                         { "title":"Studio", "short":"Stdo", "search_value":"studio" },
+                         { "title":"Café", "short":"Café", "search_value":"Café" },
+                         { "title":"Outdoor area", "short":"Outdr", "search_value":"outdoors" },
+                         { "title":"Conference/classroom", "short":"Clsrm", "search_value":"conference" }
                          ]
              },
              {
