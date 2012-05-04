@@ -51,11 +51,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        self.filter_picker.hidden = true;
         NSIndexPath *other_row = [NSIndexPath indexPathForRow:1 inSection:0];
         [[tableView cellForRowAtIndexPath:other_row] setAccessoryType:UITableViewCellAccessoryNone];        
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
         [self.filter removeObjectForKey:@"selected_row"];
+        
+        [self.filter_picker setFrame:CGRectMake(0, 151, 320, 216)];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.filter_picker setFrame:CGRectMake(0, 415, 320, 216)];
+        [UIView commitAnimations];
+
     }
     else {
         NSIndexPath *other_row = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -64,6 +72,14 @@
 
         [self.filter setObject:[[NSNumber alloc] initWithInteger:0] forKey:@"selected_row"];
         [self.filter_picker selectRow:0 inComponent:0 animated:FALSE];
+
+        [self.filter_picker setFrame:CGRectMake(0, 415, 320, 216)];
+
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.filter_picker setFrame:CGRectMake(0, 151, 320, 216)];
+        [UIView commitAnimations];
         
         self.filter_picker.hidden = false; 
 
