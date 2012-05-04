@@ -95,6 +95,9 @@
                 else if ([cell_type isEqualToString:@"cell_with_time"]) {
                     [self addTimeSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
+                else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
+                    [self addCheckboxSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
+                }
                 else {
                     [self addSubSelectionSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
@@ -138,6 +141,9 @@
     else if ([cell_type isEqualToString:@"cell_with_time"]) {
         return [self getTimeCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
+        return [self getCheckboxCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+    }
     else {
         return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }  
@@ -157,6 +163,9 @@
     }
     else if ([cell_type isEqualToString:@"cell_with_time"]) {
         [self didSelectTimeRowAtIndexPath:indexPath];
+    }
+    else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
+        [self didSelectCheckboxRowAtIndexPath:indexPath];
     }
     else {
         [self didSelectSubSelectionRowAtIndexPath:indexPath];
@@ -198,6 +207,50 @@
 /*
  Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
  */
+
+/* Methods for a row with a check mark */
+
+-(UITableViewCell *)getCheckboxCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_checkbox"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_checkbox"];
+    }
+
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
+    filter_label.text = [current_obj objectForKey:@"title"];
+    
+    NSString *current_value = [current_obj objectForKey:@"selected"];
+    if ([current_value isEqualToString:@"1"]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+    
+    return cell;
+}
+
+-(void)didSelectCheckboxRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *filter = [[[self.data_sections objectAtIndex:indexPath.section] objectForKey:@"filters"] objectAtIndex:indexPath.row];
+    
+    NSString *current_value = [filter objectForKey:@"selected"];
+    if ([current_value isEqualToString:@"1"]) {
+        [filter setObject:@"" forKey:@"selected"];
+        UITableViewCell *current = [filter_table cellForRowAtIndexPath:indexPath];
+        [current setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    else {
+        [filter setObject:@"1" forKey:@"selected"];
+        UITableViewCell *current = [filter_table cellForRowAtIndexPath:indexPath];
+        [current setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+}
+
+-(void)addCheckboxSearchValuesToDictionary:attributes forFilter:filter andKey:search_key {
+    
+    NSString *is_selected = [filter objectForKey:@"selected"];
+    if ([is_selected isEqualToString:@"1"]) {
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:@"1", nil] forKey:search_key];
+    }
+    
+}
 
 /* Methods for choosing a time */
 -(UITableViewCell *)getTimeCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {

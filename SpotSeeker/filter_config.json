@@ -15,20 +15,6 @@
                          ]
              },
              {
-             "title":"Hours",
-             "search_key":"open_now",
-             "default_search_value":"1",
-             "default_selection_label":"Open Now",
-             "options": []
-             },
-             {
-             "title":"Choose a time",
-             "search_key":"choose_time",
-             "default_search_value":"",
-             "default_selection_label":"",
-             "table_row_type":"cell_with_time"
-             },            
-             {
              "title":"Capacity",
              "default_selection_position":"0",
              "table_row_type":"cell_with_chooser",
@@ -56,53 +42,58 @@
                          { "title":"19+", "short":"19+", "search_value":"19" },
                          { "title":"20+", "short":"20+", "search_value":"20" },
                          { "title":"21+", "short":"21+", "search_value":"21" }
-
-                     ]
-             }
-             ]
-  },
-  {
-  "title":"Access & availability",
-  "filters":[
+                         
+                         ]
+             },
+             {
+             "title":"Hours",
+             "search_key":"open_now",
+             "default_search_value":"1",
+             "default_selection_label":"Open Now",
+             "options": []
+             },
              {
              "title":"Access restrictions",
              "default_selection_label":"Any",
              "options": []
-             },
-             {
-             "title":"ADA Accessibility",
-             "table_row_type":"cell_with_switch",
-             "is_selected":true,
-             "search_key":"extended_info:ada_accessible",
-             "default_search_value":"1",
-             "default_selection_label":"Any",
-             "options": []
              }
              ]
   },
   {
-  "title":"Amenities",
+  "title":"Where",
+  "filters":[
+             {
+             "default_selection_label":"",
+             "title":"Near me",
+             "options": []
+             },
+             {
+             "default_selection_label":"",
+             "title":"On map ...",
+             "options": []
+             },
+             {
+             "default_selection_label":"",
+             "title":"In building ...",
+             "options": []
+             }
+  
+             ]
+  },
+  {
+  "title":"Environment",
   "filters":[
              {
              "default_selection_label":"Any",
-             "title":"Outlets",
-             "options": []
-             },
-             {
-             "title":"Whiteboards",
-             "default_selection_label":"Any",
-             "options": []
-             },
-             {
-             "title":"Computers",
-             "default_selection_label":"Any",
+             "title":"Surfaces",
              "options": []
              },
              {
              "default_selection_label":"Any",
-             "title":"Monitors",
+             "title":"Seating",
              "options": []
              },
+             
              {
              "title":"Noise Level",
              "default_selection_label":"Any",
@@ -114,20 +105,64 @@
              "options": []
              },
              {
-             "default_selection_label":"Any",
-             "title":"Surfaces",
-             "options": []
-             },
-             {
-             "default_selection_label":"Any",
-             "title":"Seating",
-             "options": []
-             },
-             {
              "title":"Food/coffee",
              "default_selection_label":"Any",
              "options": []
              }             
+             ]
+  },
+  {
+  "title":"Equipment",
+  "filters":[
+             {
+             "title":"Whiteboards",
+             "table_row_type":"cell_with_checkbox",
+             "search_key":"extended_info:has_whiteboards",
+             "default_selection_label":"Any",
+             "options": []
+             },
+             {
+             "default_selection_label":"Any",
+             "search_key":"extended_info:has_outlets",
+             "table_row_type":"cell_with_checkbox",
+             "title":"Outlets",
+             "options": []
+             },
+             {
+             "title":"Computers",
+             "search_key":"extended_info:has_computers",
+             "table_row_type":"cell_with_checkbox",
+             "default_selection_label":"Any",
+             "options": []
+             },
+             {
+             "default_selection_label":"Any",
+             "search_key":"extended_info:has_monitors",
+             "table_row_type":"cell_with_checkbox",
+             "title":"Monitors",
+             "options": []
+             },
+             {
+             "title":"Projectors",
+             "search_key":"extended_info:has_projectors",
+             "table_row_type":"cell_with_checkbox",
+             "default_selection_label":"Any",
+             "options": []
+             },
+             {
+             "title":"Printing",
+             "search_key":"extended_info:has_printing",
+             "table_row_type":"cell_with_checkbox",
+             "default_selection_label":"Any",
+             "options": []
+             },
+             {
+             "title":"Scanning",
+             "search_key":"extended_info:has_scanning",
+             "table_row_type":"cell_with_checkbox",
+             "default_selection_label":"Any",
+             "options": []
+             }
              ]
   }
   ]
