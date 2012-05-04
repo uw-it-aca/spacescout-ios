@@ -4,7 +4,7 @@
   "filters":[
              {
              "title":"Type of spot",
-             "search_key":"extended_info:spot_type",
+             "search_key":"type",
              "default_selection_label":"Any",
              "options": [
                          { "title":"Computer lab", "short":"Lab", "search_value":"computer_lab" },
@@ -100,17 +100,34 @@
              {
              "title":"Noise Level",
              "default_selection_label":"Any",
-             "options": []
+             "options": [
+                         { "title":"No Preference", "short":"", "search_value":"" },
+                         { "title":"Silent", "short":"Silent", "search_value":"silent" },
+                         { "title":"Low Hum", "short":"Hum", "search_value":"low_hum" },
+                         { "title":"Chatter", "short":"Chatter", "search_value":"chatter" },
+                         { "title":"Rowdy", "short":"Rowdy", "search_value":"rowdy" },
+                         { "title":"Variable", "short":"Variable", "search_value":"variable" }
+             ]
              },
              {
              "default_selection_label":"Any",
              "title":"Lighting",
-             "options": []
+             "options": [
+                         { "title":"No Preference", "short":"", "search_value":"" },
+                         { "title":"Windows", "short":"Windows", "search_value":"windows" },
+                         { "title":"No Windows", "short":"No Windows", "search_value":"no_windows" }
+             ]
              },
              {
              "title":"Food/coffee",
              "default_selection_label":"Any",
-             "options": []
+             "options": [
+                         { "title":"No Preference", "short":"", "search_value":"" },
+                         { "title":"In Space", "short":"Space", "search_value":"in_space" },
+                         { "title":"In Building", "short":"Building", "search_value":"in_building" },
+                         { "title":"In Neighboring Building", "short":"Neighboring", "search_value":"neighboring" },
+                         { "title":"None nearby", "short":"None", "search_value":"none" }
+             ]
              }             
              ]
   },
