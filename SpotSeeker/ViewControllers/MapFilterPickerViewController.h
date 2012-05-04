@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapFilterPickerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface MapFilterPickerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UIPickerView *filter_picker;
     
     NSMutableDictionary *filter;

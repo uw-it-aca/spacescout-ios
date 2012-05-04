@@ -51,7 +51,18 @@
                 [filter_obj setObject:default_selection_label forKey:@"default_selection_label"];
             }
             
-                 
+            // For the chooser type
+            NSString *no_selection_label = [filter objectForKey:@"no_selection_label"];
+            if (no_selection_label != nil) {
+                [filter_obj setObject:no_selection_label forKey:@"no_selection_label"];
+            }
+
+            NSString *show_chooser_label = [filter objectForKey:@"show_chooser_label"];
+            if (show_chooser_label != nil) {
+                [filter_obj setObject:show_chooser_label forKey:@"show_chooser_label"];
+            }
+
+            
             NSNumber *default_selection_position = [filter objectForKey:@"default_selection_position"];
             if (default_selection_position != nil) {
                 [filter_obj setObject:default_selection_position forKey:@"selected_row"];

@@ -310,12 +310,15 @@
 
     UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
 
-    NSInteger current_row = [[current_obj objectForKey:@"selected_row"]  integerValue];
-    if (!current_row) {
-        current_row = 0;
+    NSNumber *selected_row = [current_obj objectForKey:@"selected_row"];
+    if (selected_row == nil) {
+        filter_selection.text = [current_obj objectForKey:@"no_selection_label"];
+
     }
-    filter_selection.text = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
-    
+    else {
+        NSInteger current_row = [selected_row  integerValue];
+        filter_selection.text = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
+    }
     return cell;
 
 }
