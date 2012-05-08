@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
+		C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5A61559C70C00F295DD /* HoursFormat.m */; };
+		C213C5AB1559C82700F295DD /* HoursDisplayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5AA1559C82700F295DD /* HoursDisplayTests.m */; };
 		C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C224FBED15361C2300CD4A79 /* filter_config.json */; };
 		C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */; };
 		C224FBF7153630AA00CD4A79 /* SpotDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */; };
@@ -87,6 +89,10 @@
 /* Begin PBXFileReference section */
 		C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingTabBarController.h; path = ViewControllers/RotatingTabBarController.h; sourceTree = "<group>"; };
 		C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingTabBarController.m; path = ViewControllers/RotatingTabBarController.m; sourceTree = "<group>"; };
+		C213C5A51559C70C00F295DD /* HoursFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoursFormat.h; path = Models/HoursFormat.h; sourceTree = "<group>"; };
+		C213C5A61559C70C00F295DD /* HoursFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoursFormat.m; path = Models/HoursFormat.m; sourceTree = "<group>"; };
+		C213C5A91559C82700F295DD /* HoursDisplayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoursDisplayTests.h; sourceTree = "<group>"; };
+		C213C5AA1559C82700F295DD /* HoursDisplayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoursDisplayTests.m; sourceTree = "<group>"; };
 		C224FBED15361C2300CD4A79 /* filter_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filter_config.json; sourceTree = "<group>"; };
 		C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterDetailsViewController.h; path = ViewControllers/MapFilterDetailsViewController.h; sourceTree = "<group>"; };
 		C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterDetailsViewController.m; path = ViewControllers/MapFilterDetailsViewController.m; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 				C2C0088815476865004AF6F7 /* REST.m */,
 				C277E87E1551FD920022FACD /* DisplayOptions.h */,
 				C277E87F1551FD920022FACD /* DisplayOptions.m */,
+				C213C5A51559C70C00F295DD /* HoursFormat.h */,
+				C213C5A61559C70C00F295DD /* HoursFormat.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -458,6 +466,8 @@
 			children = (
 				C2A0E92E153E2EE100D9568E /* SpotModelTests.h */,
 				C2A0E92F153E2EE100D9568E /* SpotModelTests.m */,
+				C213C5A91559C82700F295DD /* HoursDisplayTests.h */,
+				C213C5AA1559C82700F295DD /* HoursDisplayTests.m */,
 				C2FDB107150A802E00ED3A93 /* Supporting Files */,
 			);
 			path = SpotSeekerTests;
@@ -628,6 +638,7 @@
 				C2BF05481549F85E002FA3EA /* MapFilterPickerViewController.m in Sources */,
 				C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */,
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
+				C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */,
+				C213C5AB1559C82700F295DD /* HoursDisplayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
