@@ -11,9 +11,19 @@
 @implementation HoursFormat
 
 -(NSMutableArray *)displayLabelsForHours:(NSDictionary *)hours {
+    NSMutableArray *by_day_strings = [[NSMutableArray alloc] init];
+
+    NSMutableArray *days = [[NSMutableArray alloc] initWithObjects:@"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday", @"monday", nil];
+
+    for (int index = 1; index <= 7; index++) {
+        NSArray *todays_hours = [hours objectForKey:[days objectAtIndex:index]];
+        NSArray *tomorrow_hours = [hours objectForKey:[days objectAtIndex:index + 1]];
+        NSArray *yesterday_hours = [hours objectForKey:[days objectAtIndex:index - 1]];
+        [by_day_strings addObject:[self getStringDescribingHours:todays_hours dayBefore:yesterday_hours nextDay:tomorrow_hours]];
+    }
     NSMutableArray *display_strings = [[NSMutableArray alloc] init];
-    
-    NSArray *day_groups = [self groupDaysBySameHours:hours];
+
+    NSArray *day_groups = [self groupDaysBySameHours:by_day_strings];
     for (NSDictionary *group in day_groups) {
         [display_strings addObject:[self getDisplayStringForGroup:group]];
     }
@@ -23,25 +33,97 @@
 
 -(NSString *)getDisplayStringForGroup:(NSDictionary *)group {
     NSString *day_string = [self getStringDescribingDays:[group objectForKey:@"days"]];
-    NSString *hours_string = [self getStringDescribingHours:[group objectForKey:@"hours"]];
+    NSString *hours_string = [group objectForKey:@"hours"];
     return [NSString stringWithFormat:@"%@: %@", day_string, hours_string];
 }
 
--(NSString *)getStringDescribingHours:(NSArray *)hours {
+-(NSString *)getStringDescribingHours:(NSArray *)hours dayBefore:(NSArray *)prev_hours nextDay:(NSArray *)next_hours {
     NSMutableArray *display_parts =  [[NSMutableArray alloc] init];
     
+//    bool yesterday_is_24_hours = [self isOpen24Hours:prev_hours];
+    bool yesterday_ends_at_midnight = [self doesWindowEndAtMidnight:prev_hours];
+    bool tomorrow_is_24_hours = [self isOpen24Hours:next_hours];
+    bool tomorrow_starts_at_midnight = [self doesWindowStartAtMidnight:next_hours];
+    
     for (NSArray *window in hours) {
-        NSString *window_display = [NSString stringWithFormat:@"%@-%@", [self formatTime: [window objectAtIndex: 0]], [self formatTime: [window objectAtIndex: 1]]];
-        [display_parts addObject:window_display];
+        NSDateComponents *start_time = [window objectAtIndex:0];
+        NSDateComponents *end_time = [window objectAtIndex:1];
+        
+        if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours) {
+            NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
+            [display_parts addObject:[NSString stringWithFormat: @"Open 24 hours, until %@", [self formatTime:tomorrows_end_time]]];
+        }
+        else if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59) {
+            [display_parts addObject:@"Open 24 hours"];
+        }
+        else if (start_time.hour == 0 && start_time.minute == 0 && yesterday_ends_at_midnight) {
+            // This window is covered in yesterdays last display window - e.g. 8pm-3am
+        }
+        else if (end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours) {
+            NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
+            NSString *window_display = [NSString stringWithFormat:@"%@-%@", [self formatTime: start_time], [self formatTime: tomorrows_end_time]];
+            [display_parts addObject:window_display];
+        }
+        else {
+            NSString *window_display = [NSString stringWithFormat:@"%@-%@", [self formatTime: start_time], [self formatTime: end_time]];
+            [display_parts addObject:window_display];
+        }
     }
     
-    return [display_parts componentsJoinedByString:@", "];
+    NSString *value = [display_parts componentsJoinedByString:@", "];
+    return value;
 }
+
+-(bool)doesWindowEndAtMidnight:(NSArray *)windows {
+    for (NSArray *window in windows) {
+        NSDateComponents *end_time = [window objectAtIndex:1];
+        if (end_time.hour == 23 && end_time.minute == 59) {
+            return true;
+        }
+    }
+    return false;
+}
+                                       
+-(bool)doesWindowStartAtMidnight:(NSArray *)windows {
+    for (NSArray *window in windows) {
+        NSDateComponents *start_time = [window objectAtIndex:0];
+        if (start_time.hour == 0 && start_time.minute == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+-(NSDateComponents *)getEndOfWindowStartingAtMidnight:(NSArray *)windows {
+    for (NSArray *window in windows) {
+        NSDateComponents *start_time = [window objectAtIndex:0];
+        if (start_time.hour == 0 && start_time.minute == 0) {
+            return [window objectAtIndex:1];
+        }
+    }
+    return nil;    
+}
+                                       
+-(bool)isOpen24Hours:(NSArray *)windows {
+    for (NSArray *window in windows) {
+        NSDateComponents *start_time = [window objectAtIndex:0];
+        NSDateComponents *end_time = [window objectAtIndex:1];
+        if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 -(NSString *)formatTime:(NSDateComponents *)time {
     NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *time_as_date = [cal dateFromComponents:time];
 
+    if (time.hour == 23 && time.minute == 59) {
+        return @"midnight";
+    }
+    
     if (time.minute == 0) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"ha"];
@@ -55,71 +137,118 @@
 }
 
 -(NSString *)getStringDescribingDays:(NSArray *)days {
-    NSMutableDictionary *display_days = [[NSMutableDictionary alloc] init];
-    [display_days setObject:@"M" forKey:@"monday"];
-    [display_days setObject:@"T" forKey:@"tuesday"];
-    [display_days setObject:@"W" forKey:@"wednesday"];
-    [display_days setObject:@"Th" forKey:@"thursday"];
-    [display_days setObject:@"F" forKey:@"friday"];
-    [display_days setObject:@"S" forKey:@"saturday"];
-    [display_days setObject:@"Su" forKey:@"sunday"];
+    NSArray *display_days = [[NSArray alloc] initWithObjects:@"M", @"T", @"W", @"Th", @"F", @"S", @"Su", nil];
+
+    NSMutableArray *selected_days = [[NSMutableArray alloc] init];
+    for (int index = 0; index < 7; index++) {
+        [selected_days addObject:[NSNumber numberWithBool:FALSE]];
+    }
     
     NSMutableArray *display_parts = [[NSMutableArray alloc] init];
     for (NSString *day in days) {
-        [display_parts addObject:[display_days objectForKey:day]];
+        int index = 0;
+        if (day == @"monday") {
+            index = 0;
+        }
+        else if (day == @"tuesday") {
+            index = 1;
+        }
+        else if (day == @"wednesday") {
+            index = 2;
+        }
+        else if (day == @"thursday") {
+            index = 3;
+        }
+        else if (day == @"friday") {
+            index = 4;
+        }
+        else if (day == @"saturday") {
+            index = 5;
+        }
+        else {
+            index = 6;
+        }
+        [selected_days insertObject:[NSNumber numberWithBool:TRUE] atIndex:index];
+
     }
     
-    return [display_parts componentsJoinedByString:@", "];
-}
-
--(NSMutableArray *)groupDaysBySameHours:(NSDictionary *)hours {
-    NSMutableArray *groups = [[NSMutableArray alloc] init];
-    
-    for (NSString *day in [[NSArray alloc] initWithObjects:@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday", nil]) {
-        NSArray *day_windows = [hours objectForKey:day];
-        if ([day_windows count] == 0) {
-            continue;
+    NSMutableArray *selected_set = [[NSMutableArray alloc] init];
+    for (int index = 0; index < 7; index++) {
+        if ([[selected_days objectAtIndex:index] boolValue]) {
+            [selected_set addObject:[display_days objectAtIndex:index]];
         }
-        
-        BOOL found_group = false;
-        for (NSDictionary *group in groups) {
-            NSArray *group_windows = [group objectForKey:@"hours"];
-            if ([group_windows count] == [day_windows count] && !found_group) {
-                for (int index = 0; index < [group_windows count]; index++) {
-                    NSArray *group_window = [group_windows objectAtIndex:index];
-                    NSArray *day_window   = [day_windows objectAtIndex:index];
-                    
-                    NSDateComponents *group_start = [group_window objectAtIndex:0];
-                    NSDateComponents *group_end = [group_window objectAtIndex:1];
-                    NSDateComponents *day_start = [day_window objectAtIndex:0];
-                    NSDateComponents *day_end = [day_window objectAtIndex:1];
-                    
-                    if ((group_start.hour == day_start.hour) && 
-                        (group_end.hour == day_end.hour) && 
-                        (group_start.minute == day_start.minute) && 
-                        (group_end.minute == day_end.minute)) {
-                        
-                        found_group = true;
-                        NSMutableArray *group_days = [group objectForKey:@"days"];
-                        [group_days addObject:day];
-                    }
-                }
+        else {
+            if ([selected_set count]) {
+                [display_parts addObject:[self getDisplayStringForDayGroup:selected_set]];
+                [selected_set removeAllObjects];
             }
         }
+    }
+    if ([selected_set count]) {
+        [display_parts addObject:[self getDisplayStringForDayGroup:selected_set]];
+    }
+    
+    return [display_parts componentsJoinedByString:@","];
+}
+
+-(NSString *)getDisplayStringForDayGroup:(NSArray *)days {
+    if ([days count] == 1) {
+        return [days objectAtIndex:0];
+    }
+    else if ([days count] == 2) {
+        return [days componentsJoinedByString:@","];
+    }
+    else if ([days count] == 7) {
+        return @"Daily";
+    }
+    else {
+        return [NSString stringWithFormat:@"%@-%@", [days objectAtIndex:0], [days objectAtIndex:[days count] - 1]];
+    }
+}
+
+-(NSMutableArray *)groupDaysBySameHours:(NSArray *)display_hours {
+    
+    NSArray *day_names = [[NSArray alloc] initWithObjects:@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday", nil];
+ 
+    NSMutableDictionary *matches = [[NSMutableDictionary alloc] init];
+ 
+    // Doing this so we can have the group output sorted by day
+    NSMutableArray *match_by_day = [[NSMutableArray alloc] init];
+    
+    for (int index = 0; index < 7; index++) {
+        NSString *day_display = [display_hours objectAtIndex:index];
         
-        if (!found_group) {
+        [match_by_day addObject:day_display];
+        if ([matches objectForKey:day_display]) { 
+            [[matches objectForKey:day_display] addObject: [day_names objectAtIndex:index]];
+        }
+        else {
+            NSMutableArray *days = [[NSMutableArray alloc] init];
+            [days addObject:[day_names objectAtIndex:index]];
+            [matches setObject:days forKey:day_display];
+        }
+    }
+    
+    NSMutableArray *groups = [[NSMutableArray alloc] init];
+    NSMutableDictionary *seen_displays = [[NSMutableDictionary alloc] init];
+
+    for (int index = 0; index < 7; index++) {
+        NSString *hours_label = [match_by_day objectAtIndex:index];
+        
+        if ([[seen_displays objectForKey:hours_label] boolValue]) {
+            continue;
+        }
+
+        [seen_displays setObject:[NSNumber numberWithBool:TRUE] forKey:hours_label];
+        if (![hours_label isEqualToString:@""]) {
+            NSArray *days = [matches objectForKey:hours_label];
             NSMutableDictionary *new_group = [[NSMutableDictionary alloc] init];
-            NSMutableArray *group_hours = [[NSMutableArray alloc] initWithArray:day_windows copyItems:true];
-            NSMutableArray *group_days = [[NSMutableArray alloc] initWithObjects:day, nil];
-            
-            [new_group setObject:group_hours forKey:@"hours"];
-            [new_group setObject:group_days forKey:@"days"];
-            
+            [new_group setObject:hours_label forKey:@"hours"];
+            [new_group setObject:days forKey:@"days"];
             [groups addObject:new_group];
         }
     }
-    
-    NSLog(@"Returning groups: %@", groups);
+        
     return groups;
 }
 
