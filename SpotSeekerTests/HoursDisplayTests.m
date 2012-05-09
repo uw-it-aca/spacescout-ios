@@ -77,11 +77,12 @@
     [with_days setObject:saturday forKey:@"saturday"];
     [with_days setObject:sunday forKey:@"sunday"];
     
+    
     NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
     STAssertEquals([values count], 2U, @"2 lines to display");
 
-    STAssertEquals([values objectAtIndex:0], @"M,W,Th,F: 11am-3pm", @"Proper display for m,w,th,f");
-    STAssertEquals([values objectAtIndex:1], @"T: 11am-2pm", @"Proper display for t");
+    STAssertEqualObjects([values objectAtIndex:0], @"M,W,Th,F: 11am-3pm", @"Proper display for m,w,th,f");
+    STAssertEqualObjects([values objectAtIndex:1], @"T: 11am-2pm", @"Proper display for t");
     
 }
 
@@ -128,7 +129,7 @@
     NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
     STAssertEquals([values count], 1U, @"1 line of display");
     
-    STAssertEquals([values objectAtIndex:0], @"M-F: 11am-3pm", @"Proper M-F grouping");
+    STAssertEqualObjects([values objectAtIndex:0], @"M-F: 11am-3pm", @"Proper M-F grouping");
 }
 
 
@@ -188,8 +189,8 @@
     NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
     STAssertEquals([values count], 2U, @"2 lines to display");
     
-    STAssertEquals([values objectAtIndex:0], @"M,T,Th,F: 11am-3pm", @"Proper non-extra grouping");
-    STAssertEquals([values objectAtIndex:0], @"W: 11am-3pm, 4pm-8:30pm", @"Proper bonus window day");
+    STAssertEqualObjects([values objectAtIndex:0], @"M,T,Th,F: 11am-3pm", @"Proper non-extra grouping");
+    STAssertEqualObjects([values objectAtIndex:0], @"W: 11am-3pm, 4pm-8:30pm", @"Proper bonus window day");
     
 }
 
@@ -234,7 +235,7 @@
 
     NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
     STAssertEquals([values count], 1U, @"1 line to display");
-    STAssertEquals([values objectAtIndex:0], @"Daily: Open 24 hours", @"24 hours");    
+    STAssertEqualObjects([values objectAtIndex:0], @"Daily: Open 24 hours", @"24 hours");    
 }
 
 -(void)testMidnight {
@@ -302,9 +303,9 @@
     
     NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
     STAssertEquals([values count], 3U, @"3 lines to display");
-    STAssertEquals([values objectAtIndex:0], @"M: 8am-midnight", @"Monday opener format");    
-    STAssertEquals([values objectAtIndex:1], @"T-F: Open 24 hours", @"Mid-week 24 hours");    
-    STAssertEquals([values objectAtIndex:2], @"F: Open until 2am", @"Friday finisher");    
+    STAssertEqualObjects([values objectAtIndex:0], @"M: 8am-midnight", @"Monday opener format");    
+    STAssertEqualObjects([values objectAtIndex:1], @"T-F: Open 24 hours", @"Mid-week 24 hours");    
+    STAssertEqualObjects([values objectAtIndex:2], @"F: Open until 2am", @"Friday finisher");    
 }
 
 @end
