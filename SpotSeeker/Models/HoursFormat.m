@@ -22,7 +22,54 @@
 }
 
 -(NSString *)getDisplayStringForGroup:(NSDictionary *)group {
-    return @"";
+    NSString *day_string = [self getStringDescribingDays:[group objectForKey:@"days"]];
+    NSString *hours_string = [self getStringDescribingHours:[group objectForKey:@"hours"]];
+    return [NSString stringWithFormat:@"%@: %@", day_string, hours_string];
+}
+
+-(NSString *)getStringDescribingHours:(NSArray *)hours {
+    NSMutableArray *display_parts =  [[NSMutableArray alloc] init];
+    
+    for (NSArray *window in hours) {
+        NSString *window_display = [NSString stringWithFormat:@"%@-%@", [self formatTime: [window objectAtIndex: 0]], [self formatTime: [window objectAtIndex: 1]]];
+        [display_parts addObject:window_display];
+    }
+    
+    return [display_parts componentsJoinedByString:@", "];
+}
+
+-(NSString *)formatTime:(NSDateComponents *)time {
+    NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *time_as_date = [cal dateFromComponents:time];
+
+    if (time.minute == 0) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"ha"];
+        return [df stringFromDate:time_as_date];
+    }
+    else {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"h:mma"];
+        return [df stringFromDate:time_as_date];        
+    }
+}
+
+-(NSString *)getStringDescribingDays:(NSArray *)days {
+    NSMutableDictionary *display_days = [[NSMutableDictionary alloc] init];
+    [display_days setObject:@"M" forKey:@"monday"];
+    [display_days setObject:@"T" forKey:@"tuesday"];
+    [display_days setObject:@"W" forKey:@"wednesday"];
+    [display_days setObject:@"Th" forKey:@"thursday"];
+    [display_days setObject:@"F" forKey:@"friday"];
+    [display_days setObject:@"S" forKey:@"saturday"];
+    [display_days setObject:@"Su" forKey:@"sunday"];
+    
+    NSMutableArray *display_parts = [[NSMutableArray alloc] init];
+    for (NSString *day in days) {
+        [display_parts addObject:[display_days objectForKey:day]];
+    }
+    
+    return [display_parts componentsJoinedByString:@", "];
 }
 
 -(NSMutableArray *)groupDaysBySameHours:(NSDictionary *)hours {
