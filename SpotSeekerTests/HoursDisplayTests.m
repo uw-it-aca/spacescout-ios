@@ -308,4 +308,62 @@
     STAssertEqualObjects([values objectAtIndex:2], @"F: Open 24 hours, until 2AM", @"Friday finisher");    
 }
 
+-(void)testOverMidnight {
+    NSMutableArray *monday = [[NSMutableArray alloc] init];
+    NSMutableArray *tuesday = [[NSMutableArray alloc] init];
+    NSMutableArray *wednesday = [[NSMutableArray alloc] init];
+    NSMutableArray *thursday = [[NSMutableArray alloc] init];
+    NSMutableArray *friday = [[NSMutableArray alloc] init];
+    NSMutableArray *saturday = [[NSMutableArray alloc] init];
+    NSMutableArray *sunday = [[NSMutableArray alloc] init];
+
+    NSMutableArray *evening_part = [[NSMutableArray alloc] init];
+    NSDateComponents *eve_start = [[NSDateComponents alloc] init];
+    eve_start.hour = 8;
+    eve_start.minute = 0;
+    
+    NSDateComponents *eve_end = [[NSDateComponents alloc] init];
+    eve_end.hour = 23;
+    eve_end.minute = 59;
+    
+    [evening_part addObject:eve_start];
+    [evening_part addObject:eve_end];
+
+    NSMutableArray *morning_part = [[NSMutableArray alloc] init];
+    NSDateComponents *morn_start = [[NSDateComponents alloc] init];
+    morn_start.hour = 0;
+    morn_start.minute = 0;
+    
+    NSDateComponents *morn_end = [[NSDateComponents alloc] init];
+    morn_end.hour = 3;
+    morn_end.minute = 0;
+    
+    [morning_part addObject:morn_start];
+    [morning_part addObject:morn_end];
+
+    [tuesday addObject:evening_part];
+    [wednesday addObject:morning_part];
+    [wednesday addObject:evening_part];
+    [thursday addObject:morning_part];
+    [thursday addObject:evening_part];
+    [friday addObject:morning_part];
+
+    
+    NSMutableDictionary *with_days = [[NSMutableDictionary alloc] init];
+    [with_days setObject:monday forKey:@"monday"];
+    [with_days setObject:tuesday forKey:@"tuesday"];
+    [with_days setObject:wednesday forKey:@"wednesday"];
+    [with_days setObject:thursday forKey:@"thursday"];
+    [with_days setObject:friday forKey:@"friday"];
+    [with_days setObject:saturday forKey:@"saturday"];
+    [with_days setObject:sunday forKey:@"sunday"];
+    
+    
+    NSMutableArray *values = [[HoursFormat alloc] displayLabelsForHours:with_days];
+    STAssertEquals([values count], 1U, @"1 line1 to display");
+    STAssertEqualObjects([values objectAtIndex:0], @"T-Th: 8AM-3AM", @"Over midnight format");    
+
+    
+}
+
 @end
