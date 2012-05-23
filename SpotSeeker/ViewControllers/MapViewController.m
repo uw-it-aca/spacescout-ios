@@ -60,22 +60,22 @@ int const meters_per_latitude = 111 * 1000;
 -(void) showFoundSpots {
     [self removeAnnotations];
 
-    NSArray *spots = self.current_spots;
-    int index;
-    for (index = 0; index < spots.count; index++) {
-        spot = [spots objectAtIndex:index];
-
+    NSArray *annotation_groups = [AnnotationCluster createClustersFromSpots:self.current_spots andMap:map_view];
+    
+    for (int index = 0; index < annotation_groups.count; index++) {
+        AnnotationCluster *cluster = [annotation_groups objectAtIndex:index];
         CLLocationCoordinate2D annotationCoord;
-        annotationCoord.latitude = [spot.latitude floatValue];
-        annotationCoord.longitude = [spot.longitude floatValue];
-        
+        annotationCoord.latitude = [cluster.display_latitude floatValue];
+        annotationCoord.longitude = [cluster.display_longitude floatValue];
+
+        Spot *first_in_group = [cluster.spots objectAtIndex:0];
         SpotAnnotation *annotationPoint = [[SpotAnnotation alloc] init];
         annotationPoint.coordinate = annotationCoord;
-        annotationPoint.title = [spot name];
+        annotationPoint.spots = cluster.spots;
+        annotationPoint.title = [first_in_group name];
         annotationPoint.spot_index = [NSNumber numberWithInt:index];
         [map_view addAnnotation:annotationPoint]; 
     }
-   
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -87,14 +87,14 @@ int const meters_per_latitude = 111 * 1000;
     
     NSString *annotationIdentifier = @"PinViewAnnotation";
     
-    MKPinAnnotationView *pinView = (MKPinAnnotationView *) [map_view dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+    MKAnnotationView *pinView = (MKPinAnnotationView *) [map_view dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
   
     if (!pinView) {
-        pinView = [[MKPinAnnotationView alloc]
+        pinView = [[MKAnnotationView alloc]
                    initWithAnnotation:annotation
                    reuseIdentifier:annotationIdentifier];
         
-        pinView.animatesDrop = YES;
+//        pinView.animatesDrop = YES;
         pinView.canShowCallout = YES;
     }
     else
@@ -102,6 +102,16 @@ int const meters_per_latitude = 111 * 1000;
         pinView.annotation = annotation;
     }
 
+    SpotAnnotation *actual = (SpotAnnotation *)annotation;
+    
+    int spot_count = actual.spots.count;
+    if (spot_count > 33) {
+        spot_count = 33;
+    }
+    
+    NSString *image_name = [NSString stringWithFormat:@"%02i.png", spot_count];
+    pinView.image = [UIImage imageNamed:image_name];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
     [button setTag: [((SpotAnnotation *)annotation).spot_index intValue]];

@@ -25,6 +25,7 @@
     NSString *title;
     NSNumber *spot_index;
     NSString *subtitle;
+    NSArray *spots;
     CLLocationCoordinate2D coordinate; 
 }
 
@@ -32,4 +33,5 @@
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *subtitle; 
 @property (nonatomic,retain) NSNumber *spot_index;
+@property (nonatomic,retain) NSArray *spots;
 @end

@@ -23,6 +23,7 @@
 @synthesize title;
 @synthesize subtitle;
 @synthesize spot_index;
+@synthesize spots;
 
 @end
 

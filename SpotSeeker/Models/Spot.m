@@ -67,6 +67,7 @@
         spot.name = [spot_info objectForKey:@"name"];
         spot.type = [spot_info objectForKey:@"type"];
         spot.capacity = [spot_info objectForKey:@"capacity"];
+        spot.building_name = @"";
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
         
