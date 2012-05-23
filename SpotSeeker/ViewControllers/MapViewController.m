@@ -177,6 +177,18 @@ int const meters_per_latitude = 111 * 1000;
         
         [details setSpot:[selected_cluster.spots objectAtIndex:0]];
     }
+    else if ([[segue identifier] isEqualToString:@"spot_list"]) {
+        UINavigationController *nav = segue.destinationViewController;
+        ListViewController *destination = [[nav viewControllers] objectAtIndex:0];      
+        
+        NSMutableArray *all_spots = [[NSMutableArray alloc] init];
+        for (int index = 0; index < self.current_clusters.count; index++) {
+            AnnotationCluster *cluster = [self.current_clusters objectAtIndex:index];
+            [all_spots addObjectsFromArray:cluster.spots];
+        }
+       
+        destination.spots = all_spots;       
+    }
 }
 
 

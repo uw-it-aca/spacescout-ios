@@ -24,6 +24,7 @@
 #import "SpotDetailsViewController.h"
 #import "MapFilterViewController.h"
 #import "AnnotationCluster.h"
+#import "ListViewController.h"
 
 extern const int meters_per_latitude;
 

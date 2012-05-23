@@ -54,6 +54,7 @@
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
+		C2A20629156D9914005E30FF /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A20628156D9914005E30FF /* ListViewController.m */; };
 		C2AFB79B156C370100D19E7A /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AFB77A156C370100D19E7A /* 33.png */; };
 		C2AFB79C156C370100D19E7A /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AFB77B156C370100D19E7A /* 32.png */; };
 		C2AFB79D156C370100D19E7A /* 31.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AFB77C156C370100D19E7A /* 31.png */; };
@@ -207,6 +208,8 @@
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
 		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
 		C2A0E92F153E2EE100D9568E /* SpotModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotModelTests.m; sourceTree = "<group>"; };
+		C2A20627156D9914005E30FF /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = ViewControllers/ListViewController.h; sourceTree = "<group>"; };
+		C2A20628156D9914005E30FF /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = ViewControllers/ListViewController.m; sourceTree = "<group>"; };
 		C2AFB77A156C370100D19E7A /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
 		C2AFB77B156C370100D19E7A /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
 		C2AFB77C156C370100D19E7A /* 31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 31.png; sourceTree = "<group>"; };
@@ -240,7 +243,7 @@
 		C2AFB798156C370100D19E7A /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
 		C2AFB799156C370100D19E7A /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
 		C2AFB79A156C370100D19E7A /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
-		C2AFB7BC156CA3DB00D19E7A /* AnnotationCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AnnotationCluster.h; path = Models/AnnotationCluster.h; sourceTree = "<group>"; };
+		C2AFB7BC156CA3DB00D19E7A /* AnnotationCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationCluster.h; path = Models/AnnotationCluster.h; sourceTree = "<group>"; };
 		C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotationCluster.m; path = Models/AnnotationCluster.m; sourceTree = "<group>"; };
 		C2B2F64C153E225800292FDC /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
 		C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+OAuth.m"; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */,
 				C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */,
 				C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */,
+				C2A20627156D9914005E30FF /* ListViewController.h */,
+				C2A20628156D9914005E30FF /* ListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -785,6 +790,7 @@
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
 				C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */,
 				C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */,
+				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
