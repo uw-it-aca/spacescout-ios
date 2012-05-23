@@ -130,20 +130,33 @@ int const meters_per_latitude = 111 * 1000;
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if([view.annotation isKindOfClass:[MKUserLocation class]])
+        return;
+
     SpotAnnotation *annotation = (SpotAnnotation *)view.annotation;
     if (annotation.spots.count > 1) {
         [self performSegueWithIdentifier:@"cluster_details" sender:nil];
     }
 }
 
+- (IBAction) btnClickRecenter:(id)sender {
+    [self centerOnUserLocation];
+}
+
+
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
+    [self centerOnUserLocation];
+}
+
+-(void)centerOnUserLocation {
     MKCoordinateRegion mapRegion;   
     mapRegion.center = map_view.userLocation.coordinate;
     mapRegion.span.latitudeDelta = 0.005;
     mapRegion.span.longitudeDelta = 0.005;
     
     [map_view setRegion:mapRegion animated: YES];
+    
 }
 
 - (void)showDetails:(id)sender {

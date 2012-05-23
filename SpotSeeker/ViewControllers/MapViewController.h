@@ -42,5 +42,7 @@ extern const int meters_per_latitude;
 @property (nonatomic, retain) NSArray *current_clusters;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
+- (IBAction) btnClickRecenter:(id)sender;
+
 
 @end
