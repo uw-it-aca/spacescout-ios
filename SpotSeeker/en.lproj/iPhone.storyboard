@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="y5K-AK-Jqb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="y5K-AK-Jqb">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -32,6 +32,7 @@
                     <connections>
                         <outlet property="map_view" destination="Aik-wh-Fpl" id="Phx-6p-3Bv"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="3uu-G9-i3V"/>
+                        <segue destination="ty9-ZD-bvE" kind="push" identifier="cluster_details" id="5IB-FM-cpV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -638,6 +639,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1835" y="475"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XeB-JD-BkB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLi-ey-LjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ty9-ZD-bvE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wgs-fR-QYU">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Multi-spot screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yBH-2M-III">
+                                <rect key="frame" x="78" y="20" width="352" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R48-Hc-Krn"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1836" y="1052"/>
         </scene>
         <!--Rotating Tab Bar Controller-->
         <scene sceneID="2VC-D8-MJe">

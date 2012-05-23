@@ -22,7 +22,7 @@
 @synthesize coordinate;
 @synthesize title;
 @synthesize subtitle;
-@synthesize spot_index;
+@synthesize cluster_index;
 @synthesize spots;
 
 @end

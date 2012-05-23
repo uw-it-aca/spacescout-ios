@@ -23,7 +23,7 @@
 
 @interface SpotAnnotation : NSObject <MKAnnotation> {
     NSString *title;
-    NSNumber *spot_index;
+    NSNumber *cluster_index;
     NSString *subtitle;
     NSArray *spots;
     CLLocationCoordinate2D coordinate; 
@@ -32,6 +32,6 @@
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *subtitle; 
-@property (nonatomic,retain) NSNumber *spot_index;
+@property (nonatomic,retain) NSNumber *cluster_index;
 @property (nonatomic,retain) NSArray *spots;
 @end

@@ -25,6 +25,7 @@
 @synthesize map_view;
 @synthesize current_spots;
 @synthesize search_attributes;
+@synthesize current_clusters;
 
 int const meters_per_latitude = 111 * 1000;
 
@@ -73,9 +74,10 @@ int const meters_per_latitude = 111 * 1000;
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
-        annotationPoint.spot_index = [NSNumber numberWithInt:index];
+        annotationPoint.cluster_index = [NSNumber numberWithInt:index];
         [map_view addAnnotation:annotationPoint]; 
     }
+    self.current_clusters = annotation_groups;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -92,13 +94,9 @@ int const meters_per_latitude = 111 * 1000;
     if (!pinView) {
         pinView = [[MKAnnotationView alloc]
                    initWithAnnotation:annotation
-                   reuseIdentifier:annotationIdentifier];
-        
-//        pinView.animatesDrop = YES;
-        pinView.canShowCallout = YES;
+                   reuseIdentifier:annotationIdentifier];        
     }
-    else
-    {
+    else {
         pinView.annotation = annotation;
     }
 
@@ -108,21 +106,34 @@ int const meters_per_latitude = 111 * 1000;
     if (spot_count > 33) {
         spot_count = 33;
     }
+
+    if (spot_count > 1) {
+        pinView.canShowCallout = false;
+    }
+    else {
+        pinView.canShowCallout = true;
+    }
     
     NSString *image_name = [NSString stringWithFormat:@"%02i.png", spot_count];
     pinView.image = [UIImage imageNamed:image_name];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-    [button setTag: [((SpotAnnotation *)annotation).spot_index intValue]];
+    [button setTag: [((SpotAnnotation *)annotation).cluster_index intValue]];
     pinView.rightCalloutAccessoryView = button;
 
-    
     return pinView;    
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     [self runSearch];
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    SpotAnnotation *annotation = (SpotAnnotation *)view.annotation;
+    if (annotation.spots.count > 1) {
+        [self performSegueWithIdentifier:@"cluster_details" sender:nil];
+    }
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
@@ -149,7 +160,9 @@ int const meters_per_latitude = 111 * 1000;
     else if ([[segue identifier] isEqualToString:@"show_details"]) {
         SpotDetailsViewController *details = segue.destinationViewController;
 
-        [details setSpot:[self.current_spots objectAtIndex:[sender tag]]];
+        AnnotationCluster *selected_cluster = [self.current_clusters objectAtIndex:[sender tag]];
+        
+        [details setSpot:[selected_cluster.spots objectAtIndex:0]];
     }
 }
 
