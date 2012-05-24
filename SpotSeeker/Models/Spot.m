@@ -67,12 +67,12 @@
         spot.name = [spot_info objectForKey:@"name"];
         spot.type = [spot_info objectForKey:@"type"];
         spot.capacity = [spot_info objectForKey:@"capacity"];
-        spot.building_name = @"";
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
         
         spot.latitude = [location_info objectForKey:@"latitude"];
         spot.longitude = [location_info objectForKey:@"longitude"];
+        spot.building_name = [location_info objectForKey:@"building_name"];
         
         NSMutableArray *_image_urls = [[NSMutableArray alloc]init];
         for (NSDictionary *image in [spot_info objectForKey:@"images"]) {

@@ -96,7 +96,7 @@
     Spot *test_spot = [test_group.spots objectAtIndex:0];
     Spot *cluster_spot = [cluster_group.spots objectAtIndex:0];
     
-    if (test_spot.building_name != cluster_spot.building_name) {
+    if (![test_spot.building_name isEqualToString:cluster_spot.building_name]) {
         return false;
     }
     return true;
