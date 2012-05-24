@@ -22,6 +22,7 @@
 #import "Favorites.h"
 #import "REST.h"
 #import "DisplayOptions.h"
+#import "HoursFormat.h"
 
 
 @interface SpotDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {

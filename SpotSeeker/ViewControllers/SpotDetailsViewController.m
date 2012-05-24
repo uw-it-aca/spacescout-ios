@@ -32,14 +32,8 @@
 @synthesize equipment_fields;
 @synthesize environment_fields;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark -
+#pragma mark table control methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
@@ -71,7 +65,13 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
         }
         
-        return cell.frame.size.height;
+        NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
+        UILabel *hours_label = (UILabel *)[cell viewWithTag:11];
+        int hours_height = hours_label.frame.size.height;
+        
+        int unneeded = 7 - [display_hours count];
+        
+        return cell.frame.size.height - (unneeded * hours_height);
     }
 
     // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
@@ -139,11 +139,16 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
         }
         
-        NSMutableArray *display_hours = [self formatHours:self.spot.hours_available];
+        NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
         
         for (int index = 0; index < [display_hours count]; index++) {
             UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
             hours_label.text = [display_hours objectAtIndex:index];
+        }
+        
+        for (int index = [display_hours count]; index <= 7; index++) {
+            UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
+            hours_label.text = @"";            
         }
         
         if (![self isOpenNow:self.spot.hours_available]) {
@@ -194,40 +199,8 @@
     
 }
 
--(NSMutableArray *)formatHours:(NSMutableDictionary *)hours_available {
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"monday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"tuesday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"wednesday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"thursday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"friday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"saturday"]]];
-    [results addObject:[self formatDayHours:[hours_available objectForKey:@"sunday"]]];
-     
-    return results;
-}
-
--(NSString *)formatDayHours:(NSMutableArray *)windows {
-    NSMutableArray *windows_as_text = [[NSMutableArray alloc] init];
-    
-    for (NSArray *window in windows) {
-        NSDateComponents *start = [window objectAtIndex:0];
-        NSDateComponents *end = [window objectAtIndex:1];
-    
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"h:mm a"];
-        
-        NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
-        NSDate *start_date = [cal dateFromComponents:start];
-        NSDate *end_date = [cal dateFromComponents:end];
-
-        [windows_as_text addObject:[[NSString alloc] initWithFormat:@"%@-%@", [df stringFromDate:start_date], [df stringFromDate:end_date]]];
-        
-    }
-    
-    return [windows_as_text componentsJoinedByString:@", "];
-}
+#pragma mark -
+#pragma mark hours formatting
      
 -(BOOL)isOpenNow:(NSMutableDictionary *)hours_available {
     NSDate *now = [NSDate date];
@@ -263,6 +236,9 @@
     return false;
 }
 
+#pragma mark -
+#pragma mark image methods
+
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 200) {
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
@@ -270,19 +246,8 @@
     }
 }
 
-- (IBAction) btnClickFavorite:(id)sender {
-   
-   
-    if ([Favorites isFavorite:spot]) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
-        [Favorites removeFavorite:spot];     
-    }
-    else {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
-        [Favorites addFavorite:spot];
-    }
-    
-}
+#pragma mark -
+#pragma mark equipment and environment
 
 -(void)detailConfiguration:(NSDictionary *)_config {
     self.config = _config;
@@ -314,6 +279,24 @@
     
 }
 
+#pragma mark -
+#pragma mark button actions
+- (IBAction) btnClickFavorite:(id)sender {
+    
+    if ([Favorites isFavorite:spot]) {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
+        [Favorites removeFavorite:spot];     
+    }
+    else {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+        [Favorites addFavorite:spot];
+    }
+    
+}
+
+#pragma mark -
+#pragma mark setup
+
 - (void)viewDidLoad
 {
     DisplayOptions *options = [[DisplayOptions alloc] init];
@@ -335,11 +318,5 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload
-{
-    self.navigationItem.titleView = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
 @end
