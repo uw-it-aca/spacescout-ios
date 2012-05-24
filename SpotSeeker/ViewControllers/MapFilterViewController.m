@@ -325,6 +325,10 @@
 
 // Fill out the search values
 -(void)addChooserSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSNumber *selected_row = [filter objectForKey:@"selected_row"];
+    if (selected_row == nil) {
+        return;
+    }
     NSInteger current_row = [[filter objectForKey:@"selected_row"]  integerValue];
     
     if (!current_row) {
