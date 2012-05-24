@@ -61,13 +61,12 @@
     return favorites_path;
 }
 
-+(NSArray *)getFavoritesList {
++(NSArray *)getFavoritesIDList {
     NSDictionary *lookup = [Favorites getFavorites];
     NSMutableArray *list = [[NSMutableArray alloc] init];
     
     for (NSString *key in lookup) {
-        Spot *fav = [lookup objectForKey:key];
-        [list addObject:fav];
+        [list addObject:key];
     }
     
     return list;

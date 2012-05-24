@@ -10,12 +10,16 @@
 #import "Spot.h"
 #import "Favorites.h"
 
-@interface FavoriteSpotsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface FavoriteSpotsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SearchFinished> {
     UITableView *spots_table;
     NSArray *favorites;
+    Spot *spot;
+    NSArray *spot_list;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *spots_table;
 @property (nonatomic, retain) NSArray *favorites;
+@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) NSArray *spot_list;
 
 @end

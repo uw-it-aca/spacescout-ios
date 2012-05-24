@@ -19,6 +19,6 @@
 
 +(void) removeFavorite:(Spot *)spot;
 
-+(NSArray *) getFavoritesList;
++(NSArray *) getFavoritesIDList;
 
 @end
