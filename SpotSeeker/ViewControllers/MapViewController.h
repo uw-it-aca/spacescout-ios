@@ -25,28 +25,18 @@
 #import "MapFilterViewController.h"
 #import "AnnotationCluster.h"
 #import "ListViewController.h"
+#import "SearchableSpotListViewController.h"
 
-extern const int meters_per_latitude;
-
-@interface MapViewController : ViewController <MKMapViewDelegate, SearchFinished> {
-    MKMapView *map_view;
-    Spot *spot;
-    NSMutableArray *current_spots;
+@interface MapViewController : SearchableSpotListViewController <MKMapViewDelegate> {
     NSArray *current_clusters;
-    NSMutableDictionary *search_attributes;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
 }
 
-@property (nonatomic, retain) NSArray *current_spots;
-@property (nonatomic, retain) Spot *spot;
-@property (nonatomic, retain) IBOutlet MKMapView *map_view;
-@property (nonatomic, retain) NSMutableDictionary *search_attributes;
 @property (nonatomic, retain) NSArray *current_clusters;
 @property (nonatomic, retain) NSNumber *from_list;
 @property (nonatomic) MKCoordinateRegion map_region;
 
--(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 - (IBAction) btnClickRecenter:(id)sender;
 
 
