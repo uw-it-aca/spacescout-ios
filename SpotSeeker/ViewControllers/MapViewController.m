@@ -121,6 +121,7 @@ extern const int meters_per_latitude;
     if (annotation.spots.count > 1) {
         self.cluster_spots_to_display = annotation.spots;
         [self performSegueWithIdentifier:@"cluster_details" sender:nil];
+        [map_view deselectAnnotation:annotation animated:false];
     }
 }
 
