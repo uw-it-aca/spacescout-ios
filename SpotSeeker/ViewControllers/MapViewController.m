@@ -26,6 +26,8 @@
 @synthesize current_spots;
 @synthesize search_attributes;
 @synthesize current_clusters;
+@synthesize from_list;
+@synthesize map_region;
 
 int const meters_per_latitude = 111 * 1000;
 
@@ -126,7 +128,13 @@ int const meters_per_latitude = 111 * 1000;
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    [self runSearch];
+    if ([self.from_list boolValue] == false) {
+        [self runSearch];
+    }
+    else {
+        [self showFoundSpots];
+        self.from_list = [NSNumber numberWithBool:false];
+    }
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
@@ -188,6 +196,7 @@ int const meters_per_latitude = 111 * 1000;
         }
        
         destination.spots = all_spots;       
+        destination.map_region = [self.map_view region];
     }
 }
 
@@ -216,7 +225,16 @@ int const meters_per_latitude = 111 * 1000;
 {
     [super viewDidLoad];
     map_view.delegate = self;
-    [map_view setShowsUserLocation:YES];
+
+    if (self.current_spots.count > 0) {
+        self.from_list = [NSNumber numberWithBool:true];
+        [map_view setRegion:self.map_region animated: NO];
+
+    }
+    else {
+        [map_view setShowsUserLocation:YES];
+        self.from_list = [NSNumber numberWithBool:false];        
+    }
 
 //    NSLog(map_view.userLocation);
 	// Do any additional setup after loading the view.

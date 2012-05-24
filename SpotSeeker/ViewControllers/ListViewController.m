@@ -13,6 +13,7 @@
 @synthesize spots;
 @synthesize spot_table;
 @synthesize selected_spot;
+@synthesize map_region;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +42,14 @@
         SpotDetailsViewController *details = segue.destinationViewController;
         [details setSpot:self.selected_spot];
     }
+    else if ([[segue identifier] isEqualToString:@"spot_map"]) {
+        UINavigationController *nav = segue.destinationViewController;
+        MapViewController *destination = [[nav viewControllers] objectAtIndex:0];      
+
+        destination.current_spots = self.spots;
+        destination.map_region = self.map_region;
+    }
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

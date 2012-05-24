@@ -34,6 +34,8 @@ extern const int meters_per_latitude;
     NSMutableArray *current_spots;
     NSArray *current_clusters;
     NSMutableDictionary *search_attributes;
+    NSNumber *from_list;
+    MKCoordinateRegion map_region;
 }
 
 @property (nonatomic, retain) NSArray *current_spots;
@@ -41,6 +43,8 @@ extern const int meters_per_latitude;
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
 @property (nonatomic, retain) NSMutableDictionary *search_attributes;
 @property (nonatomic, retain) NSArray *current_clusters;
+@property (nonatomic, retain) NSNumber *from_list;
+@property (nonatomic) MKCoordinateRegion map_region;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 - (IBAction) btnClickRecenter:(id)sender;

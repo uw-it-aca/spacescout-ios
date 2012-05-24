@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map View Controller - SpotSeeker-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -55,28 +55,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f11-XH-hmO">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="F4H-kl-V8E">
+                    <navigationItem key="navigationItem" title="SpotSeeker" id="f11-XH-hmO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="F4H-kl-V8E">
                             <connections>
                                 <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YGQ-P3-GEE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8LH-na-wq8">
-                                <rect key="frame" x="244" y="4" width="71" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="BM">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="H5F-cS-j3x" kind="push" id="TAB-3b-5az"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="V6v-gZ-kPf">
+                            <connections>
+                                <segue destination="H5F-cS-j3x" kind="push" id="em9-ZW-DQ1"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -758,7 +746,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="445" y="165"/>
         </scene>
-        <!--List View Controller-->
+        <!--List View Controller - SpotSeeker-->
         <scene sceneID="MQy-Rx-pvH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4O-8k-jYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -779,7 +767,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <segment title="List"/>
                                         </segments>
                                         <connections>
-                                            <segue destination="8VW-Ka-HVY" kind="modal" modalTransitionStyle="flipHorizontal" id="aIm-cK-bmM"/>
+                                            <segue destination="8VW-Ka-HVY" kind="modal" identifier="spot_map" modalTransitionStyle="flipHorizontal" id="aIm-cK-bmM"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
@@ -821,15 +809,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Zl-UU-At7">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="y2d-oE-VTZ">
+                    <navigationItem key="navigationItem" title="SpotSeeker" id="9Zl-UU-At7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="y2d-oE-VTZ">
                             <connections>
                                 <segue destination="Uj1-TD-aQN" kind="push" id="7BZ-SZ-G39"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="BM" id="g2n-SE-zI5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="BQS-yT-fgW">
                             <connections>
-                                <segue destination="H5F-cS-j3x" kind="push" id="kBs-V9-b5X"/>
+                                <segue destination="H5F-cS-j3x" kind="push" id="2aF-sA-100"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -928,8 +916,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="2aF-sA-100"/>
         <segue reference="7BZ-SZ-G39"/>
         <segue reference="Zv8-Ju-hZd"/>
-        <segue reference="kBs-V9-b5X"/>
     </inferredMetricsTieBreakers>
 </document>
