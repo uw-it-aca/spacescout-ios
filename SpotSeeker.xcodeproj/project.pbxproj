@@ -50,6 +50,7 @@
 		C24C116A1536744B00109C30 /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = C24C11691536744B00109C30 /* Favorites.m */; };
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
+		C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpotClusterViewController.m */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
@@ -204,6 +205,8 @@
 		C24C11691536744B00109C30 /* Favorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favorites.m; path = Models/Favorites.m; sourceTree = "<group>"; };
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
+		C26EAA21156EE32600632C78 /* SpotClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotClusterViewController.h; path = ViewControllers/SpotClusterViewController.h; sourceTree = "<group>"; };
+		C26EAA22156EE32600632C78 /* SpotClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotClusterViewController.m; path = ViewControllers/SpotClusterViewController.m; sourceTree = "<group>"; };
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				C2A2A168156EA250004781F6 /* SearchableSpotListViewController.m */,
 				C2A2A16B156EAD71004781F6 /* FavoriteSpotsViewController.h */,
 				C2A2A16C156EAD71004781F6 /* FavoriteSpotsViewController.m */,
+				C26EAA21156EE32600632C78 /* SpotClusterViewController.h */,
+				C26EAA22156EE32600632C78 /* SpotClusterViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
 				C2A2A169156EA250004781F6 /* SearchableSpotListViewController.m in Sources */,
 				C2A2A16D156EAD72004781F6 /* FavoriteSpotsViewController.m in Sources */,
+				C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

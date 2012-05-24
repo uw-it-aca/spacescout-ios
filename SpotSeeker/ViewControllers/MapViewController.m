@@ -24,6 +24,7 @@
 @synthesize current_clusters;
 @synthesize from_list;
 @synthesize map_region;
+@synthesize cluster_spots_to_display;
 
 extern const int meters_per_latitude;
 
@@ -118,6 +119,7 @@ extern const int meters_per_latitude;
 
     SpotAnnotation *annotation = (SpotAnnotation *)view.annotation;
     if (annotation.spots.count > 1) {
+        self.cluster_spots_to_display = annotation.spots;
         [self performSegueWithIdentifier:@"cluster_details" sender:nil];
     }
 }
@@ -171,6 +173,10 @@ extern const int meters_per_latitude;
         destination.current_spots = all_spots;       
         destination.map_region = [self.map_view region];
         destination.map_view = self.map_view;
+    }
+    else if ([[segue identifier] isEqualToString:@"cluster_details"]) {
+        ListViewController *destination = segue.destinationViewController;
+        destination.current_spots = self.cluster_spots_to_display;
     }
 }
 

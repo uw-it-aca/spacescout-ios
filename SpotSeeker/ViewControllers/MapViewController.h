@@ -26,16 +26,19 @@
 #import "AnnotationCluster.h"
 #import "ListViewController.h"
 #import "SearchableSpotListViewController.h"
+//#import "SpotClusterViewController.h"
 
 @interface MapViewController : SearchableSpotListViewController <MKMapViewDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
+    NSArray *cluster_spots_to_display;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;
 @property (nonatomic, retain) NSNumber *from_list;
 @property (nonatomic) MKCoordinateRegion map_region;
+@property (nonatomic, retain) NSArray *cluster_spots_to_display;
 
 - (IBAction) btnClickRecenter:(id)sender;
 
