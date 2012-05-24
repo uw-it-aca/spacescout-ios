@@ -48,7 +48,6 @@
         destination.current_spots = self.current_spots;
         destination.map_region = self.map_region;
     }
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
