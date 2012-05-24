@@ -10,7 +10,6 @@
 
 @implementation ListViewController
 
-@synthesize spots;
 @synthesize spot_table;
 @synthesize selected_spot;
 @synthesize map_region;
@@ -46,10 +45,9 @@
         UINavigationController *nav = segue.destinationViewController;
         MapViewController *destination = [[nav viewControllers] objectAtIndex:0];      
 
-        destination.current_spots = self.spots;
+        destination.current_spots = self.current_spots;
         destination.map_region = self.map_region;
     }
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -57,15 +55,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void) showFoundSpots {
+    [self.spot_table reloadData];
+}
+
 #pragma mark -
 #pragma mark table_view_methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.spots.count;
+    return self.current_spots.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Spot *spot = [self.spots objectAtIndex:indexPath.row];
+    Spot *row_spot = [self.current_spots objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"spot_list_display"];
     if (cell == nil) {
@@ -73,13 +75,13 @@
     }
     
     UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
-    spot_name.text = spot.name;
+    spot_name.text = row_spot.name;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    self.selected_spot = [self.spots objectAtIndex:indexPath.row];
+    self.selected_spot = [self.current_spots objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"show_details" sender:nil];
 }
 

@@ -168,8 +168,9 @@ extern const int meters_per_latitude;
             [all_spots addObjectsFromArray:cluster.spots];
         }
        
-        destination.spots = all_spots;       
+        destination.current_spots = all_spots;       
         destination.map_region = [self.map_view region];
+        destination.map_view = self.map_view;
     }
 }
 

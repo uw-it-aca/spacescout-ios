@@ -10,16 +10,15 @@
 #import "Spot.h"
 #import "SpotDetailsViewController.h"
 #import "MapViewController.h"
+#import "SearchableSpotListViewController.h"
 
-@interface ListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ListViewController : SearchableSpotListViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *spot_table;
-    NSArray *spots;
     Spot *selected_spot;
     MKCoordinateRegion map_region;
 
 }
 
-@property (nonatomic, retain) NSArray *spots;
 @property (nonatomic, retain) UITableView *spot_table;
 @property (nonatomic, retain) Spot *selected_spot;
 @property (nonatomic) MKCoordinateRegion map_region;
