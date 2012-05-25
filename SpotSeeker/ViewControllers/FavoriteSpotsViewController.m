@@ -23,11 +23,25 @@
 #pragma mark -
 #pragma mark viewcontroller loading
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    // If someone unfavorites something after being here, redraw the table
+    NSArray *current_favorites = [Favorites getFavoritesIDList];
+    if (self.favorites.count != current_favorites.count) {
+        self.favorites = current_favorites;
+        [self fetchFavorites];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.favorites = [Favorites getFavoritesIDList];
+    [self fetchFavorites];
+}
+
+- (void)fetchFavorites {
     NSMutableDictionary *id_lookup = [[NSMutableDictionary alloc] init];
     [id_lookup setObject:self.favorites forKey:@"id"];
     
@@ -35,7 +49,7 @@
     search_spot.delegate = self;
     [search_spot getListBySearch:id_lookup];
     self.spot = search_spot;
-	// Do any additional setup after loading the view.
+    
 }
 
 @end
