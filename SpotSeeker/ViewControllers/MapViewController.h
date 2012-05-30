@@ -18,6 +18,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "SBJson.h"
 #import "ViewController.h"
 #import "Spot.h"
 #import "SpotAnnotation.h"

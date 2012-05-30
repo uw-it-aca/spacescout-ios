@@ -128,13 +128,29 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
+    if (userLocation.location == nil) {
+        NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"map_defaults" ofType:@"json"]];
+        
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSDictionary *values = [parser objectWithData:data_source];
+        
+        MKCoordinateRegion mapRegion;   
+        mapRegion.center =  CLLocationCoordinate2DMake([[values objectForKey:@"latitude"] doubleValue], [[values objectForKey:@"longitude"] doubleValue]);
+        mapRegion.span.latitudeDelta = [[values objectForKey:@"latitude_delta"] doubleValue];
+        mapRegion.span.longitudeDelta = [[values objectForKey:@"longitude_delta"] doubleValue];
+        
+        [map_view setRegion:mapRegion animated: NO];
+    }
     [self centerOnUserLocation];
 }
 
 #pragma mark -
 
 -(void)centerOnUserLocation {
-    MKCoordinateRegion mapRegion;   
+    MKCoordinateRegion mapRegion;
+    if (map_view.userLocation.coordinate.latitude == 0.0 && map_view.userLocation.coordinate.longitude == 0.0) {
+        return;
+    }
     mapRegion.center = map_view.userLocation.coordinate;
     mapRegion.span.latitudeDelta = 0.005;
     mapRegion.span.longitudeDelta = 0.005;
