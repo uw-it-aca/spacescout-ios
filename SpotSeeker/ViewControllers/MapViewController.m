@@ -109,7 +109,6 @@ extern const int meters_per_latitude;
     }
     else {
         [self showFoundSpots];
-        self.from_list = [NSNumber numberWithBool:false];
     }
 }
 
@@ -227,15 +226,17 @@ extern const int meters_per_latitude;
         self.from_list = [NSNumber numberWithBool:true];
         [map_view setShowsUserLocation:YES];
         [map_view setRegion:self.map_region animated: NO];
-
+        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
     else {
         [map_view setShowsUserLocation:YES];
         self.from_list = [NSNumber numberWithBool:false];        
     }
 
-//    NSLog(map_view.userLocation);
-	// Do any additional setup after loading the view.
+}
+
+-(void)clearFromList:(NSTimer *)timer {
+    self.from_list = [NSNumber numberWithBool:false];
 }
 
 - (void)viewDidUnload
