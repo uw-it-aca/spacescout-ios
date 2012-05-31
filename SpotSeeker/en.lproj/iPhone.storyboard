@@ -18,6 +18,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Aik-wh-Fpl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="2zd-Ht-eos"/>
+                                </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9HE-8v-nHi">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>

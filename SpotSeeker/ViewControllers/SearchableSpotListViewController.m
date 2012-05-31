@@ -27,6 +27,11 @@ int const meters_per_latitude = 111 * 1000;
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
     
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
+    
+    if (meters > 10000) {
+        return;
+    }
+    
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
     
     Spot *_spot = [Spot alloc];

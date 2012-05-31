@@ -39,13 +39,14 @@ extern const int meters_per_latitude;
         annotationCoord.latitude = [cluster.display_latitude floatValue];
         annotationCoord.longitude = [cluster.display_longitude floatValue];
 
+       
         Spot *first_in_group = [cluster.spots objectAtIndex:0];
         SpotAnnotation *annotationPoint = [[SpotAnnotation alloc] init];
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
         annotationPoint.cluster_index = [NSNumber numberWithInt:index];
-        [map_view addAnnotation:annotationPoint]; 
+        [self.map_view addAnnotation:annotationPoint]; 
     }
     self.current_clusters = annotation_groups;
 }
@@ -133,7 +134,6 @@ extern const int meters_per_latitude;
 #pragma mark -
 
 -(void)centerOnUserLocation {
-    MKCoordinateRegion mapRegion;
     if (map_view.userLocation.location == nil) {
         NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"map_defaults" ofType:@"json"]];
         
@@ -144,16 +144,18 @@ extern const int meters_per_latitude;
         mapRegion.center =  CLLocationCoordinate2DMake([[values objectForKey:@"latitude"] doubleValue], [[values objectForKey:@"longitude"] doubleValue]);
         mapRegion.span.latitudeDelta = [[values objectForKey:@"latitude_delta"] doubleValue];
         mapRegion.span.longitudeDelta = [[values objectForKey:@"longitude_delta"] doubleValue];
-        
-        [map_view setRegion:mapRegion animated: YES];
+       
+        [map_view setRegion:mapRegion animated: NO];
         return;
     }
-    mapRegion.center = map_view.userLocation.coordinate;
-    mapRegion.span.latitudeDelta = 0.005;
-    mapRegion.span.longitudeDelta = 0.005;
+    else {
+        MKCoordinateRegion mapRegion;
+        mapRegion.center = map_view.userLocation.coordinate;
+        mapRegion.span.latitudeDelta = 0.005;
+        mapRegion.span.longitudeDelta = 0.005;
     
-    [map_view setRegion:mapRegion animated: YES];
-    
+        [map_view setRegion:mapRegion animated: YES];
+    }
 }
 
 - (void)showDetails:(id)sender {
