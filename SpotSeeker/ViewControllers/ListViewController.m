@@ -38,7 +38,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"search_filter"]) {
-        MapFilterViewController *filter_vc = segue.destinationViewController;
+        UINavigationController *nav_controller = segue.destinationViewController;
+        MapFilterViewController *filter_vc = [nav_controller.childViewControllers objectAtIndex:0];
         filter_vc.delegate = (id <SearchFilters>)self;
     }
     else if ([[segue identifier] isEqualToString:@"show_details"]) {
