@@ -52,12 +52,12 @@
                     <navigationItem key="navigationItem" title="SpotSeeker" id="f11-XH-hmO">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="F4H-kl-V8E">
                             <connections>
-                                <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="rfQ-ts-oNK"/>
+                                <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="V6v-gZ-kPf">
                             <connections>
-                                <segue destination="H5F-cS-j3x" kind="push" id="em9-ZW-DQ1"/>
+                                <segue destination="cCc-xy-eWs" kind="modal" id="em9-ZW-DQ1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3br-UV-6gb">
-                                <rect key="frame" x="0.0" y="39" width="320" height="318"/>
+                                <rect key="frame" x="0.0" y="42" width="320" height="374"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -205,21 +205,6 @@
                                     <outlet property="delegate" destination="Uj1-TD-aQN" id="GT3-aY-BOa"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Ve-iu-wzB">
-                                <rect key="frame" x="113" y="365" width="94" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnClickSearch:" destination="Uj1-TD-aQN" eventType="touchUpInside" id="Xbf-KD-GoT"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spot Name" minimumFontSize="17" clearButtonMode="always" id="c1y-zN-Gzp">
                                 <rect key="frame" x="0.0" y="4" width="320" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,6 +215,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="9K3-nX-3rJ">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LN9-M6-C7Q">
+                            <connections>
+                                <action selector="btnClickCancel:" destination="Uj1-TD-aQN" id="RJq-qH-vOe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" id="NKe-vK-XcP">
                             <connections>
                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="Dhb-DJ-LMX"/>
@@ -254,7 +244,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1818" y="-579"/>
+            <point key="canvasLocation" x="2344" y="-579"/>
         </scene>
         <!--Map Filter Details View Controller-->
         <scene sceneID="aZK-RQ-ofv">
@@ -303,7 +293,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2820" y="-1029"/>
+            <point key="canvasLocation" x="3346" y="-1029"/>
         </scene>
         <!--Map Filter Picker View Controller-->
         <scene sceneID="WB2-j4-o6C">
@@ -360,7 +350,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2804" y="-323"/>
+            <point key="canvasLocation" x="3330" y="-323"/>
         </scene>
         <!--Map Filter Time View Controller-->
         <scene sceneID="8lM-bA-ILI">
@@ -621,9 +611,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2407" y="637"/>
+            <point key="canvasLocation" x="2933" y="637"/>
         </scene>
-        <!--Favorite Spots View Controller-->
+        <!--Favorite Spots View Controller - Bookmarks-->
         <scene sceneID="1K6-Li-Krl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYw-dW-fye" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -664,14 +654,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lNt-eK-HUl"/>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="lNt-eK-HUl">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="Dnz-He-EZd">
+                            <connections>
+                                <action selector="btnClickClose:" destination="H5F-cS-j3x" id="qtc-jl-r2g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="mkW-fZ-cno" id="hVa-LR-vjH"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="ehC-Lb-oxn"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1830" y="1150"/>
+            <point key="canvasLocation" x="2356" y="1150"/>
         </scene>
         <!--Spot Cluster View Controller-->
         <scene sceneID="XeB-JD-BkB">
@@ -822,12 +818,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="SpotSeeker" id="9Zl-UU-At7">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="y2d-oE-VTZ">
                             <connections>
-                                <segue destination="Uj1-TD-aQN" kind="push" id="7BZ-SZ-G39"/>
+                                <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="BQS-yT-fgW">
                             <connections>
-                                <segue destination="H5F-cS-j3x" kind="push" id="2aF-sA-100"/>
+                                <segue destination="cCc-xy-eWs" kind="modal" id="2aF-sA-100"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -857,18 +853,126 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="457" y="1012"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jqm-dH-BTm">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKi-l6-d7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="cCc-xy-eWs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56t-8u-DKs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H5F-cS-j3x" kind="relationship" relationship="rootViewController" id="Gjw-Qb-fvB"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1830" y="1150"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eLz-rM-KUI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcG-2E-mXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="VMr-ab-5JP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ePh-KH-z3t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uj1-TD-aQN" kind="relationship" relationship="rootViewController" id="i8q-Ti-Azz"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1818" y="-579"/>
+        </scene>
     </scenes>
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickClose:"/>
+            </relationships>
+        </class>
+        <class className="ListViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterPickerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="filter_picker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="timeSelected:"/>
+                <relationship kind="outlet" name="date_picker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="MapFilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="action" name="btnClickSearch:"/>
+                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickRecenter:"/>
+            </relationships>
+        </class>
+        <class className="SearchableSpotListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SpotClusterViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
+        </class>
+        <class className="SpotDetailsViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickFavorite:"/>
+                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UITableSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3uu-G9-i3V"/>
-        <segue reference="rfQ-ts-oNK"/>
         <segue reference="em9-ZW-DQ1"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,6 +27,8 @@
 #import "UITableSwitch.h"
 #import "SearchFilter.h"
 
+@protocol SearchFilters;
+
 @interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
     Spot *spot;
       
@@ -39,6 +41,7 @@
     NSNumber *user_latitude;
     NSNumber *user_longitude;
     NSNumber *user_distance;
+    id <SearchFilters> delegate;
     
 }
 
@@ -55,5 +58,13 @@
 @property (nonatomic, retain) NSNumber *user_latitude;
 @property (nonatomic, retain) NSNumber *user_longitude;
 @property (nonatomic, retain) NSNumber *user_distance;
+@property (nonatomic, retain) id <SearchFilters> delegate;
 
 @end
+
+@protocol SearchFilters <NSObject>;
+
+-(void)runSearchWithAttributes:(NSDictionary *)filters;
+
+@end
+

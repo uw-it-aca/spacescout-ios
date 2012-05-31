@@ -15,6 +15,8 @@
     NSArray *favorites;
 }
 
+- (IBAction) btnClickClose:(id)sender;
+
 @property (nonatomic, retain) NSArray *favorites;
 
 @end

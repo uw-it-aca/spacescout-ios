@@ -32,6 +32,7 @@
 @synthesize user_longitude;
 @synthesize user_latitude;
 @synthesize user_distance;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,8 +60,7 @@
 
 
 - (IBAction)btnClickCancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -104,9 +104,9 @@
             }
         }
     }
-    MapViewController *map_vc = [self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] - 2)];   
-    [map_vc runSearchWithAttributes:attributes];
-    [self.navigationController popViewControllerAnimated:YES];
+
+    [delegate runSearchWithAttributes:attributes];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

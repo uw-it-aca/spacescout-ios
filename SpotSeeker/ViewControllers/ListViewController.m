@@ -37,7 +37,11 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"show_details"]) {
+    if ([[segue identifier] isEqualToString:@"search_filter"]) {
+        MapFilterViewController *filter_vc = segue.destinationViewController;
+        filter_vc.delegate = (id <SearchFilters>)self;
+    }
+    else if ([[segue identifier] isEqualToString:@"show_details"]) {
         SpotDetailsViewController *details = segue.destinationViewController;
         [details setSpot:self.selected_spot];
     }

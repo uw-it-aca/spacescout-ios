@@ -12,6 +12,11 @@
 
 @synthesize favorites;
 
+- (IBAction)btnClickClose:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
 #pragma mark -
 #pragma mark load spots
 
