@@ -34,12 +34,14 @@
     NSNumber *from_list;
     MKCoordinateRegion map_region;
     NSArray *cluster_spots_to_display;
+    NSMutableDictionary *current_annotations;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;
 @property (nonatomic, retain) NSNumber *from_list;
 @property (nonatomic) MKCoordinateRegion map_region;
 @property (nonatomic, retain) NSArray *cluster_spots_to_display;
+@property (nonatomic, retain) NSMutableDictionary *current_annotations;
 
 - (IBAction) btnClickRecenter:(id)sender;
 

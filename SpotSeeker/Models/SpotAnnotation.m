@@ -25,5 +25,9 @@
 @synthesize cluster_index;
 @synthesize spots;
 
+-(NSString *)getLookupKey {
+    return [NSString stringWithFormat:@"%f_%f_%i", self.coordinate.latitude, self.coordinate.longitude, [self.spots count]];
+}
+
 @end
 

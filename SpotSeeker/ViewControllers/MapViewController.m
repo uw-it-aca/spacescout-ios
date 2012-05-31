@@ -25,13 +25,15 @@
 @synthesize from_list;
 @synthesize map_region;
 @synthesize cluster_spots_to_display;
+@synthesize current_annotations;
 
 extern const int meters_per_latitude;
 
 -(void) showFoundSpots {
-    [self removeAnnotations];
-
     NSArray *annotation_groups = [AnnotationCluster createClustersFromSpots:self.current_spots andMap:map_view];
+   
+    NSMutableArray *next_spots = [[NSMutableArray alloc] init];
+    NSMutableDictionary *keeper_ids = [[NSMutableDictionary alloc] init];
     
     for (int index = 0; index < annotation_groups.count; index++) {
         AnnotationCluster *cluster = [annotation_groups objectAtIndex:index];
@@ -46,7 +48,39 @@ extern const int meters_per_latitude;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
         annotationPoint.cluster_index = [NSNumber numberWithInt:index];
-        [self.map_view addAnnotation:annotationPoint]; 
+        
+        NSString *lookup_key = [annotationPoint getLookupKey];
+        SpotAnnotation *existing = [self.current_annotations objectForKey:lookup_key];
+        
+        if (existing) {
+            existing.spots = annotationPoint.spots;
+            existing.title = annotationPoint.title;
+            existing.cluster_index = annotationPoint.cluster_index;
+            [keeper_ids setObject:existing forKey:[existing getLookupKey]];
+        }
+        else {
+            [next_spots addObject:annotationPoint];
+        }
+    }
+
+    NSMutableArray *remove_me = [[NSMutableArray alloc] init];
+    for (NSString *key in self.current_annotations) {
+        SpotAnnotation *test_annotation = [keeper_ids objectForKey:key];
+        if (test_annotation == nil) {
+            [remove_me addObject:key];
+        }
+    }
+    
+    for (int index = 0; index < [remove_me count]; index++) {
+        NSString *key = [remove_me objectAtIndex:index];
+        [self.map_view removeAnnotation:[self.current_annotations objectForKey:key]];
+        [self.current_annotations removeObjectForKey:key];
+    }
+    
+    for (int index = 0; index < [next_spots count]; index++) {
+        SpotAnnotation *add_me = [next_spots objectAtIndex:index];
+        [self.map_view addAnnotation:add_me];
+        [self.current_annotations setObject:add_me forKey:[add_me getLookupKey]];
     }
     self.current_clusters = annotation_groups;
 }
@@ -200,18 +234,6 @@ extern const int meters_per_latitude;
     }
 }
 
-
--(void) removeAnnotations {
-    int index;
-    for (index = map_view.annotations.count - 1; index >= 0; index --) {
-        NSObject <MKAnnotation> *test = [map_view.annotations objectAtIndex:index];
-        if ([test isKindOfClass:[SpotAnnotation class]]) {
-            [map_view removeAnnotation:test];
-        }
-    }
-
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -224,6 +246,7 @@ extern const int meters_per_latitude;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.current_annotations = [[NSMutableDictionary alloc] init];
     map_view.delegate = self;
 
     if (self.current_spots.count > 0) {
