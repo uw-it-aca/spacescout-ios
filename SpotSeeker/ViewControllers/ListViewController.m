@@ -51,6 +51,7 @@
         MapViewController *destination = [[nav viewControllers] objectAtIndex:0];      
         destination.current_spots = self.current_spots;
         destination.map_region = self.map_region;
+        destination.search_attributes = self.search_attributes;
     }
 }
 

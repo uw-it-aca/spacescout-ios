@@ -191,6 +191,8 @@ extern const int meters_per_latitude;
         destination.current_spots = all_spots;       
         destination.map_region = [self.map_view region];
         destination.map_view = self.map_view;
+        destination.search_attributes = self.search_attributes;
+
     }
     else if ([[segue identifier] isEqualToString:@"cluster_details"]) {
         ListViewController *destination = segue.destinationViewController;
