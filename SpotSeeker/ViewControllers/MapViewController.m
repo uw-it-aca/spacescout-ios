@@ -47,6 +47,10 @@ extern const int meters_per_latitude;
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
+        annotationPoint.subtitle = [NSString stringWithFormat:@"%@ | %@ seats", first_in_group.type, first_in_group.capacity];
+        if (first_in_group.room_number.length != 0) {
+            annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@" | Room %@", first_in_group.room_number];
+        }
         annotationPoint.cluster_index = [NSNumber numberWithInt:index];
         
         NSString *lookup_key = [annotationPoint getLookupKey];

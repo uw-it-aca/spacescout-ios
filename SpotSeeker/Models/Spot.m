@@ -73,6 +73,7 @@
         spot.latitude = [location_info objectForKey:@"latitude"];
         spot.longitude = [location_info objectForKey:@"longitude"];
         spot.building_name = [location_info objectForKey:@"building_name"];
+        spot.room_number = [location_info objectForKey:@"room_number"];
         
         NSMutableArray *_image_urls = [[NSMutableArray alloc]init];
         for (NSDictionary *image in [spot_info objectForKey:@"images"]) {
