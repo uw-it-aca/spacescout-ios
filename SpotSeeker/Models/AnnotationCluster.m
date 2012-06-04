@@ -162,8 +162,8 @@
     AnnotationCluster *all_of_it = [[AnnotationCluster alloc] init];
     NSMutableArray *all_spots = [NSArray arrayWithArray:group.spots];
     
-    float total_latitude;
-    float total_longitude;
+    float total_latitude = 0.0;
+    float total_longitude = 0.0;
     
     for (int index = 0; index < group.spots.count; index++) {
         Spot *spot = [group.spots objectAtIndex:index];
