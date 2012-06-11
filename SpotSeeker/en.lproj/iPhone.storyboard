@@ -365,7 +365,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3ak-Ze-GTq"/>
+                    <navigationItem key="navigationItem" id="3ak-Ze-GTq">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="pkl-63-ssl">
+                            <connections>
+                                <action selector="btnClickCancel:" destination="85z-WW-HGT" id="MXj-G2-Xev"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="HGb-5r-mne" id="oPQ-m6-g56"/>
                         <outlet property="table_view" destination="HU0-52-ab2" id="k3z-Gd-2Yi"/>

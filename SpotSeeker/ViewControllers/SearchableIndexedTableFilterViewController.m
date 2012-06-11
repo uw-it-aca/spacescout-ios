@@ -17,6 +17,7 @@
 @synthesize search_display_controller;
 @synthesize search_results;
 @synthesize search_bar_cell;
+@synthesize did_cancel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,6 +81,10 @@
         }
         
         [building setObject:[NSNumber numberWithInt:index] forKey:@"array_index"];
+        
+        if ([[building objectForKey:@"selected"] intValue] > 0) {
+            [building setObject:[NSNumber numberWithInt:1] forKey:@"checked"];
+        }
         
         NSIndexPath *index_path = [NSIndexPath indexPathForRow:row_count inSection:section_index];
         [building setObject:index_path forKey:@"index_path"];
@@ -323,6 +328,29 @@
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     NSPredicate *results_predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", searchText];
     self.search_results = [[filter objectForKey:@"options"] filteredArrayUsingPredicate:results_predicate];
+}
+
+#pragma mark -
+#pragma mark button actions and navigation
+
+-(IBAction)btnClickCancel:(id)sender {
+    self.did_cancel = [NSNumber numberWithInt:1];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    for (NSMutableDictionary *building in [self.filter objectForKey:@"options"]) {
+        if (self.did_cancel == nil) {
+            if ([[building objectForKey:@"checked"] intValue] > 0) {
+                [building setObject:[NSNumber numberWithInt:1] forKey:@"selected"];
+            }
+            else {
+                [building setObject:[NSNumber numberWithInt:0] forKey:@"selected"];
+                
+            }
+        }
+        [building removeObjectForKey:@"checked"];
+    }
 }
 
 @end

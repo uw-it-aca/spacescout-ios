@@ -16,8 +16,12 @@
     NSMutableDictionary *index_data;
     NSArray *search_results;
     UITableViewCell *search_bar_cell;
+    NSNumber *did_cancel;
 }
 
+-(IBAction)btnClickCancel:(id)sender;
+
+@property (nonatomic, retain) NSNumber *did_cancel;
 @property (nonatomic, retain) NSMutableDictionary *index_data;
 @property (nonatomic, retain) NSMutableDictionary *filter;
 @property (nonatomic, retain) UITableView *table_view;
