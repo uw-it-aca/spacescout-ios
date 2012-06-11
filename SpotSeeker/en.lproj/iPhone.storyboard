@@ -185,13 +185,31 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_with_checkbox" editingAccessoryType="checkmark" id="LJ3-I6-qqe">
-                                        <rect key="frame" x="0.0" y="223" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="223" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WbV-qt-CkP">
+                                                    <rect key="frame" x="12" y="0.0" width="186" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_with_indexed_table" editingAccessoryType="checkmark" id="YNZ-6g-atf">
+                                        <rect key="frame" x="0.0" y="267" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="This should go to the indexed table" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GC7-ih-jbM">
                                                     <rect key="frame" x="12" y="0.0" width="186" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -236,6 +254,7 @@
                         <segue destination="WRf-YH-4Wl" kind="push" identifier="filter_options" id="d8I-vW-hlZ"/>
                         <segue destination="n5l-aV-LdT" kind="push" identifier="chooser_options" id="sQE-Ji-hv8"/>
                         <segue destination="8cc-dF-ZeI" kind="push" identifier="time_options" id="KEO-9V-QCV"/>
+                        <segue destination="85z-WW-HGT" kind="push" identifier="index_table" id="iVI-jE-RMB"/>
                     </connections>
                 </viewController>
                 <searchDisplayController id="a9g-fh-ath">
@@ -248,6 +267,120 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2344" y="-579"/>
+        </scene>
+        <!--Searchable Indexed Table Filter View Controller-->
+        <scene sceneID="8PW-PT-YaS">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-QW-1ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="85z-WW-HGT" customClass="SearchableIndexedTableFilterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aDN-fT-YGG">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HU0-52-ab2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="search_cell" id="ec6-t2-koB">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <searchBar tag="1" contentMode="redraw" placeholder="Search..." id="lHQ-zq-nAs">
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <scopeButtonTitles>
+                                                        <string>Title</string>
+                                                        <string>Title</string>
+                                                    </scopeButtonTitles>
+                                                </searchBar>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clear_cell" id="zdU-71-MR1">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Clicking this one clears things" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="NfH-Kd-8je">
+                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="content_cell" id="XQO-gT-mta">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Selectable Option" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bCT-Fi-WJr">
+                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="search_results_cell" id="awe-zn-ahG">
+                                        <rect key="frame" x="0.0" y="154" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Search Results Option" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="qMb-cO-j5u">
+                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="85z-WW-HGT" id="N7d-LB-ZfB"/>
+                                    <outlet property="delegate" destination="85z-WW-HGT" id="EjS-Se-4MA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3ak-Ze-GTq"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="HGb-5r-mne" id="oPQ-m6-g56"/>
+                        <outlet property="table_view" destination="HU0-52-ab2" id="k3z-Gd-2Yi"/>
+                    </connections>
+                </viewController>
+                <searchDisplayController id="HGb-5r-mne">
+                    <connections>
+                        <outlet property="delegate" destination="85z-WW-HGT" id="aFF-XZ-V5p"/>
+                        <outlet property="searchContentsController" destination="85z-WW-HGT" id="sRc-uW-gha"/>
+                        <outlet property="searchResultsDataSource" destination="85z-WW-HGT" id="Had-52-Lmk"/>
+                        <outlet property="searchResultsDelegate" destination="85z-WW-HGT" id="Utt-rR-dbx"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3340" y="-1614"/>
         </scene>
         <!--Map Filter Details View Controller-->
         <scene sceneID="aZK-RQ-ofv">
@@ -405,7 +538,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2942" y="442"/>
+            <point key="canvasLocation" x="3322" y="302"/>
         </scene>
         <!--Spot Details View Controller-->
         <scene sceneID="adb-7p-DAh">
@@ -896,86 +1029,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickClose:"/>
-            </relationships>
-        </class>
-        <class className="ListViewController" superclassName="SearchableSpotListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterPickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterPickerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="filter_picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="timeSelected:"/>
-                <relationship kind="outlet" name="date_picker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="MapFilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickCancel:"/>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="SearchableSpotListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickRecenter:"/>
-            </relationships>
-        </class>
-        <class className="SearchableSpotListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="SpotClusterViewController" superclassName="ListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
-        </class>
-        <class className="SpotDetailsViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="UITableSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
         <segue reference="rfQ-ts-oNK"/>
+        <segue reference="em9-ZW-DQ1"/>
         <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -53,11 +53,32 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    SearchFilter *search_filter = [[SearchFilter alloc] init];
+    search_filter.delegate = self;
+    [search_filter loadSearchFilters];
+    
+    
+    [self.name_filter setDelegate: self];
+    
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
 
+-(void)availableFilters:(NSMutableArray *)filters {
+    self.data_sections = filters;
+}
+
+
+
+#pragma mark -
+#pragma mark screen actions
 
 - (IBAction)btnClickCancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
@@ -98,6 +119,9 @@
                 else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
                     [self addCheckboxSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
+                else if ([cell_type isEqualToString:@"cell_with_indexed_table"]) {
+                    [self addIndexedTableSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
+                }
                 else {
                     [self addSubSelectionSearchValuesToDictionary:attributes forFilter:filter andKey:search_key];
                 }
@@ -108,6 +132,29 @@
     [delegate runSearchWithAttributes:attributes];
     [self dismissModalViewControllerAnimated:YES];
 }
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"filter_options"]) {
+        MapFilterDetailsViewController *mfd = [segue destinationViewController];
+        mfd.filter = self.current_section;
+    }
+    else if ([[segue identifier] isEqualToString:@"chooser_options"]) {
+        MapFilterPickerViewController *mfp = [segue destinationViewController];
+        mfp.filter = self.current_section;
+    }
+    else if ([[segue identifier] isEqualToString:@"time_options"]) {
+        MapFilterTimeViewController *mft = [segue destinationViewController];
+        mft.filter = self.current_section;
+    }
+    else if ([[segue identifier] isEqualToString:@"index_table"]) {
+        SearchableIndexedTableFilterViewController *mft = [segue destinationViewController];
+        mft.filter = self.current_section;
+    }
+
+}
+
+#pragma mark -
+#pragma mark table management
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.data_sections count];
@@ -144,6 +191,9 @@
     else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
         return [self getCheckboxCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_index_table"]) {
+        return [self getIndexedTableCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+    }
     else {
         return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }  
@@ -167,48 +217,22 @@
     else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
         [self didSelectCheckboxRowAtIndexPath:indexPath];
     }
+    else if ([cell_type isEqualToString:@"cell_with_indexed_table"]) {
+        [self didSelectIndexTableRowAtIndexPath:indexPath];
+    }
     else {
         [self didSelectSubSelectionRowAtIndexPath:indexPath];
     }
 } 
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"filter_options"]) {
-        MapFilterDetailsViewController *mfd = [segue destinationViewController];
-        mfd.filter = self.current_section;
-    }
-    else if ([[segue identifier] isEqualToString:@"chooser_options"]) {
-        MapFilterPickerViewController *mfp = [segue destinationViewController];
-        mfp.filter = self.current_section;
-    }
-    else if ([[segue identifier] isEqualToString:@"time_options"]) {
-        MapFilterTimeViewController *mft = [segue destinationViewController];
-        mft.filter = self.current_section;
-    }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    SearchFilter *search_filter = [[SearchFilter alloc] init];
-    search_filter.delegate = self;
-    [search_filter loadSearchFilters];
-    
-    
-    [self.name_filter setDelegate: self];
-    
-}
-
--(void)availableFilters:(NSMutableArray *)filters {
-    self.data_sections = filters;
-}
 
 /*
  Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
  */
 
 /* Methods for a row with a check mark */
+
+#pragma mark - 
+#pragma mark checkbox rows
 
 -(UITableViewCell *)getCheckboxCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_checkbox"];
@@ -253,6 +277,9 @@
 }
 
 /* Methods for choosing a time */
+#pragma mark - 
+#pragma mark time filter
+
 -(UITableViewCell *)getTimeCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_time"];
     if (cell == nil) {
@@ -298,6 +325,8 @@
 
 
 /* Methods for chooser filters */
+#pragma mark - 
+#pragma mark table multi-select
 
 -(UITableViewCell *)getChooserCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_chooser"];
@@ -350,6 +379,8 @@
 
 
 /* Methods for on/off filters */
+#pragma mark - 
+#pragma mark on/off filters
 
 // Draw the table cell
 -(UITableViewCell *)getOnOffCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
@@ -401,6 +432,9 @@
 
 
 /* Methods for sub-selection filters */
+#pragma mark - 
+#pragma mark sub selection filters
+
 // Draw the table cell
 -(UITableViewCell *)getSubSelectionCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generic_cell"];
@@ -457,7 +491,28 @@
     }   
 }
 
+#pragma mark -
+#pragma mark indexed table methods
+
+-(UITableViewCell *)getIndexedTableCellForFilter:(UITableView *)tableView filter:(NSMutableDictionary *)current_obj pathIndex:indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_with_indexed_table"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_indexed_table"];
+    }
+    return cell;
+}
+
+- (void) didSelectIndexTableRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"index_table" sender:self];    
+}
+
+-(void)addIndexedTableSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+}
+
 /* These are to handle the text search for spot name */
+#pragma mark - 
+#pragma mark spot name search
+
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     [theTextField resignFirstResponder];
     return YES;

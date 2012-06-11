@@ -15,6 +15,7 @@
 		C224FBF7153630AA00CD4A79 /* SpotDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */; };
 		C224FBFA1536505700CD4A79 /* star_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF81536505700CD4A79 /* star_selected.png */; };
 		C224FBFB1536505700CD4A79 /* star_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF91536505700CD4A79 /* star_unselected.png */; };
+		C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */; };
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
 		C2429A3F150A8600005A994A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2429A3E150A8600005A994A /* iPad.storyboard */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
@@ -140,6 +141,8 @@
 		C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewController.m; path = ViewControllers/SpotDetailsViewController.m; sourceTree = "<group>"; };
 		C224FBF81536505700CD4A79 /* star_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_selected.png; sourceTree = "<group>"; };
 		C224FBF91536505700CD4A79 /* star_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_unselected.png; sourceTree = "<group>"; };
+		C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchableIndexedTableFilterViewController.h; path = ViewControllers/SearchableIndexedTableFilterViewController.h; sourceTree = "<group>"; };
+		C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableIndexedTableFilterViewController.m; path = ViewControllers/SearchableIndexedTableFilterViewController.m; sourceTree = "<group>"; };
 		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
 		C24181841545E16E00DAA2FC /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFilter.m; path = Models/SearchFilter.m; sourceTree = "<group>"; };
 		C2429A3E150A8600005A994A /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
@@ -323,6 +326,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C22FB45915826BEB005D6BD5 /* Search Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
+				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
+				C2BF05461549F85E002FA3EA /* MapFilterPickerViewController.h */,
+				C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */,
+				C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */,
+				C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */,
+				C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */,
+				C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */,
+			);
+			name = "Search Filters";
+			sourceTree = "<group>";
+		};
 		C2429A50150AA904005A994A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,8 +367,7 @@
 		C2429A51150AA910005A994A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
-				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
+				C22FB45915826BEB005D6BD5 /* Search Filters */,
 				C2FDB0F7150A802D00ED3A93 /* ViewController.h */,
 				C2FDB0F8150A802D00ED3A93 /* ViewController.m */,
 				C2429A42150A90DC005A994A /* MapFilterViewController.h */,
@@ -361,10 +378,6 @@
 				C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */,
 				C224FBF5153630AA00CD4A79 /* SpotDetailsViewController.h */,
 				C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */,
-				C2BF05461549F85E002FA3EA /* MapFilterPickerViewController.h */,
-				C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */,
-				C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */,
-				C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */,
 				C2A20627156D9914005E30FF /* ListViewController.h */,
 				C2A20628156D9914005E30FF /* ListViewController.m */,
 				C2A2A167156EA250004781F6 /* SearchableSpotListViewController.h */,
@@ -817,6 +830,7 @@
 				C2A2A169156EA250004781F6 /* SearchableSpotListViewController.m in Sources */,
 				C2A2A16D156EAD72004781F6 /* FavoriteSpotsViewController.m in Sources */,
 				C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */,
+				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
