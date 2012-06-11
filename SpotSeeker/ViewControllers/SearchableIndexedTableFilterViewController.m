@@ -162,7 +162,14 @@
     [self.search_display_controller setActive:NO animated:YES];
 
     [self createTableIndex];
-    [self.table_view scrollToRowAtIndexPath:hit_index_path atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    [hit setObject:[NSNumber numberWithInt:1] forKey:@"checked"];
+
+    [self.table_view scrollToRowAtIndexPath:hit_index_path atScrollPosition:UITableViewScrollPositionTop animated:NO];
+
+    // If the cell is already rendered, we need to add a check here
+    UITableViewCell *building_cell = [self.table_view cellForRowAtIndexPath:hit_index_path];
+    [building_cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 
 }
 
@@ -247,6 +254,12 @@
         
         NSMutableDictionary *building = [values objectAtIndex:indexPath.row];
         
+        if ([[building objectForKey:@"checked"] intValue] > 0) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
+        else {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
         option.text = [building objectForKey:@"title"];
         
         return cell;        
