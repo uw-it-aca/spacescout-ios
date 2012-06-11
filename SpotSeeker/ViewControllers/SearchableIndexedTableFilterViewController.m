@@ -207,6 +207,16 @@
 #pragma mark main list table methods
 
 -(void)listTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        for (NSMutableDictionary *building in [self.filter objectForKey:@"options"]) {
+            if ([[building objectForKey:@"checked"] intValue] > 0) {
+                UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:[building objectForKey:@"index_path"]];
+                [cell setAccessoryType:UITableViewCellAccessoryNone];
+            }
+            [building removeObjectForKey:@"checked"];
+        }
+        return;
+    }
     UITableViewCell *clicked_cell = [tableView cellForRowAtIndexPath:indexPath];
     
     UILabel *label = (UILabel *)[clicked_cell viewWithTag:1];
