@@ -191,7 +191,7 @@
     else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
         return [self getCheckboxCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
-    else if ([cell_type isEqualToString:@"cell_with_index_table"]) {
+    else if ([cell_type isEqualToString:@"cell_with_indexed_table"]) {
         return [self getIndexedTableCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else {
@@ -499,6 +499,26 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_with_indexed_table"];
     }
+    
+    UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
+    filter_label.text = [current_obj objectForKey:@"title"];
+    
+    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            [selected_options addObject:[option objectForKey:@"short"]];
+        }
+    }
+    
+    UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
+    
+    if ([selected_options count]) {
+        selected_label.text = [selected_options componentsJoinedByString:@", "];
+    }
+    else {
+        selected_label.text = [current_obj objectForKey:@"default_selection_label"];
+    }
+
     return cell;
 }
 
@@ -507,6 +527,19 @@
 }
 
 -(void)addIndexedTableSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
+    NSMutableArray *selected_options = [[NSMutableArray alloc] init];
+    NSArray *options = [filter objectForKey:@"options"];
+    for (NSDictionary *option in options) {
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            NSString *search_value = [option objectForKey:@"search_value"];
+            if (search_value != nil) {
+                [selected_options addObject:search_value];
+            }
+        }
+    }
+    if ([selected_options count]) {
+        [attributes setObject:selected_options forKey:search_key];
+    }
 }
 
 /* These are to handle the text search for spot name */

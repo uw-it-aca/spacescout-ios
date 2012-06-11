@@ -47,7 +47,7 @@
             }
             
             NSString *default_selection_label = [filter objectForKey:@"default_selection_label"];
-            if (default_search_value != nil) {
+            if (default_selection_label != nil) {
                 [filter_obj setObject:default_selection_label forKey:@"default_selection_label"];
             }
             

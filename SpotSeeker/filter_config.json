@@ -21,6 +21,7 @@
              },
              {
              "title":"Building",
+             "search_key":"building_name",
              "table_row_type":"cell_with_indexed_table",
              "default_selection_label":"Entire campus",
              "options": [
@@ -35,8 +36,8 @@
                          { "title":"Art Building", "short":"NAME", "search_value":"" },
                          { "title":"Arts Ticket Office", "short":"NAME", "search_value":"" },
                          { "title":"Atmospheric Sciences - Geophysics Building", "short":"NAME", "search_value":"" },
-                         { "title":"Bagley Hall", "short":"NAME", "search_value":"" },
-                         { "title":"Balmer Hall", "short":"NAME", "search_value":"" },
+                         { "title":"Bagley Hall", "short":"", "search_value":"" },
+                         { "title":"Balmer Hall", "short":"", "search_value":"" },
                          { "title":"Bank of America Executive Education Center & Foster Library", "short":"NAME", "search_value":"" },
                          { "title":"Benjamin D. Hall Interdisciplinary Reasearch Building", "short":"NAME", "search_value":"" },
                          { "title":"Benson Hall", "short":"NAME", "search_value":"" },
