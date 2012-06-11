@@ -281,27 +281,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" tag="1" contentMode="redraw" placeholder="Search..." id="lHQ-zq-nAs">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="85z-WW-HGT" id="1mJ-b9-1CL"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="search_cell" id="ec6-t2-koB">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <searchBar tag="1" contentMode="redraw" placeholder="Search..." id="lHQ-zq-nAs">
-                                                    <rect key="frame" x="0.0" y="-1" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <scopeButtonTitles>
-                                                        <string>Title</string>
-                                                        <string>Title</string>
-                                                    </scopeButtonTitles>
-                                                </searchBar>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clear_cell" id="zdU-71-MR1">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -374,6 +366,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="HGb-5r-mne" id="oPQ-m6-g56"/>
+                        <outlet property="search_bar" destination="lHQ-zq-nAs" id="8ct-Ab-iR7"/>
                         <outlet property="table_view" destination="HU0-52-ab2" id="k3z-Gd-2Yi"/>
                     </connections>
                 </viewController>
@@ -1035,6 +1028,86 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickClose:"/>
+            </relationships>
+        </class>
+        <class className="ListViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterPickerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="filter_picker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="timeSelected:"/>
+                <relationship kind="outlet" name="date_picker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="MapFilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="action" name="btnClickSearch:"/>
+                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickRecenter:"/>
+            </relationships>
+        </class>
+        <class className="SearchableIndexedTableFilterViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableIndexedTableFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="outlet" name="search_bar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SearchableSpotListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SpotClusterViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
+        </class>
+        <class className="SpotDetailsViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickFavorite:"/>
+                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UITableSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

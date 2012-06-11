@@ -33,6 +33,12 @@
     [super viewDidLoad];
 
     self.index_data = [self createTableIndex];
+    
+    self.search_display_controller = [[UISearchDisplayController alloc] initWithSearchBar:self.search_bar contentsController:self];
+    self.search_display_controller.delegate = self;
+    self.search_display_controller.searchResultsDataSource = self;
+    self.search_display_controller.searchResultsDelegate = self;
+    self.search_bar.scopeButtonTitles = nil;
 	// Do any additional setup after loading the view.
 }
 
@@ -233,7 +239,7 @@
 
 -(NSInteger)listTableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 2;
+        return 1;
     }
     
     return [[[[self.index_data objectForKey:@"sections"] objectAtIndex:section - 1] objectForKey:@"values"] count];
@@ -241,36 +247,11 @@
 
 -(UITableViewCell *)listTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            // If we recreate this, the behavior never gets lined up properly again
-            if (self.search_bar_cell != nil) {
-                return self.search_bar_cell;
-            }
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"search_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"search_cell"];
-            }
-            UISearchBar *bar = (UISearchBar *)[cell viewWithTag:1];
-            bar.delegate = self;
-            self.search_bar = bar;
-            
-            self.search_display_controller = [[UISearchDisplayController alloc] initWithSearchBar:bar contentsController:self];
-            self.search_display_controller.delegate = self;
-            self.search_display_controller.searchResultsDataSource = self;
-            self.search_display_controller.searchResultsDelegate = self;
-            self.search_bar.scopeButtonTitles = nil;
-            
-            self.search_bar_cell = cell;
-            return cell;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clear_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"clear_cell"];
         }
-        else {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clear_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"clear_cell"];
-            }
-            return cell;        
-        }
+        return cell;        
     }
     else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"content_cell"];
@@ -312,8 +293,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    if ([title isEqualToString:@"#"]) {
-        return 0;
+    if (index == 0) {
+        [self.table_view scrollRectToVisible:CGRectMake(0.0, 0.0, self.search_bar.frame.size.width, self.search_bar.frame.size.height) animated:NO];
+        return -1;
     }
     NSNumber *section = [[self.index_data objectForKey:@"section_lookup"] valueForKey:title];
     if (section != nil) {
