@@ -196,6 +196,29 @@
 #pragma mark main list table methods
 
 -(void)listTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *clicked_cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UILabel *label = (UILabel *)[clicked_cell viewWithTag:1];
+    NSString *building_name = label.text;
+    
+    // This really can't be the best way to do this - but to get to the array index, i'd need to iterate over the sections of
+    // the table to get the count
+    NSPredicate *results_predicate = [NSPredicate predicateWithFormat:@"(title = %@)", building_name];
+    NSArray *found_buildings = [[filter objectForKey:@"options"] filteredArrayUsingPredicate:results_predicate];
+
+    for (NSMutableDictionary *building in found_buildings) {
+        if ([[building objectForKey:@"checked"] intValue] > 0) {
+            [building setObject:[NSNumber numberWithInt:0] forKey:@"checked"];
+            [clicked_cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        else {
+            [building setObject:[NSNumber numberWithInt:1] forKey:@"checked"];
+            [clicked_cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+
+        }
+    }
+    
+    
 }
 
 -(NSInteger)numberOfSectionsInListTableView:(UITableView *)tableView {
