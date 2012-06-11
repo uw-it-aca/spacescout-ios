@@ -16,6 +16,7 @@
 @synthesize index_data;
 @synthesize search_display_controller;
 @synthesize search_results;
+@synthesize search_bar_cell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -206,6 +207,11 @@
 -(UITableViewCell *)listTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+            // If we recreate this, the behavior never gets lined up properly again
+            if (self.search_bar_cell != nil) {
+                return self.search_bar_cell;
+            }
+            
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"search_cell"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"search_cell"];
@@ -220,6 +226,7 @@
             self.search_display_controller.searchResultsDelegate = self;
             self.search_bar.scopeButtonTitles = nil;
             
+            self.search_bar_cell = cell;
             return cell;
         }
         else {
@@ -240,7 +247,7 @@
         
         NSMutableDictionary *building = [values objectAtIndex:indexPath.row];
         
-        option.text = [[values objectAtIndex:indexPath.row] objectForKey:@"title"];
+        option.text = [building objectForKey:@"title"];
         
         return cell;        
     }
