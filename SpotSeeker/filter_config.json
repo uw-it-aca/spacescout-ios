@@ -227,40 +227,8 @@
              ]
   },
   {
-  "title":"Where",
-  "filters":[
-             {
-             "default_selection_label":"",
-             "title":"Near me",
-             "options": []
-             },
-             {
-             "default_selection_label":"",
-             "title":"On map ...",
-             "options": []
-             },
-             {
-             "default_selection_label":"",
-             "title":"In building ...",
-             "options": []
-             }
-             
-             ]
-  },
-  {
   "title":"Environment",
   "filters":[
-             {
-             "default_selection_label":"Any",
-             "title":"Surfaces",
-             "options": []
-             },
-             {
-             "default_selection_label":"Any",
-             "title":"Seating",
-             "options": []
-             },
-             
              {
              "title":"Noise Level",
              "default_selection_label":"Any",
@@ -287,70 +255,35 @@
                          ]
              },
              {
+             "title":"Equipment",
+             "screen_title":"Equipment",
+             "search_key":"equipment",
+             "screen_header":"Equipment required",
+             "screen_subheader":"Select all attributes you want to include in your search.  Leave blank if you don't care",
+             "options":[
+                        {"title":"Whiteboards", "short":"W", "search_value":"whiteboards" },
+                        {"title":"Outlets", "short":"O", "search_value":"outlets" },
+                        {"title":"Computers", "short":"C", "search_value":"computers" },
+                        {"title":"Large Displays", "subtitle":"For your laptop", "short":"LD", "search_value":"displays" },
+                        {"title":"Projectors", "short":"Proj", "search_value":"projectors" },
+                        {"title":"Printing", "short":"Print", "search_value":"printing" },
+                        {"title":"Scanning", "short":"S", "search_value":"scanning" }
+                
+                        ]
+             },
+             {
              "title":"Food/coffee",
+             "screen_title":"Food/coffee",
              "default_selection_label":"Any",
+             "search_key":"food_nearby",
              "options": [
                          { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"In Space", "short":"Space", "search_value":"in_space" },
-                         { "title":"In Building", "short":"Building", "search_value":"in_building" },
-                         { "title":"In Neighboring Building", "short":"Neighboring", "search_value":"neighboring" },
+                         { "title":"In Space", "short":"In Sp.", "search_value":"space" },
+                         { "title":"In Building", "short":"In Bldg.", "search_value":"building" },
+                         { "title":"In neighboring building", "short":"In Neighb.", "search_value":"neighboring" },
                          { "title":"None nearby", "short":"None", "search_value":"none" }
                          ]
              }             
-             ]
-  },
-  {
-  "title":"Equipment",
-  "filters":[
-             {
-             "title":"Whiteboards",
-             "table_row_type":"cell_with_checkbox",
-             "search_key":"extended_info:has_whiteboards",
-             "default_selection_label":"Any",
-             "options": []
-             },
-             {
-             "default_selection_label":"Any",
-             "search_key":"extended_info:has_outlets",
-             "table_row_type":"cell_with_checkbox",
-             "title":"Outlets",
-             "options": []
-             },
-             {
-             "title":"Computers",
-             "search_key":"extended_info:has_computers",
-             "table_row_type":"cell_with_checkbox",
-             "default_selection_label":"Any",
-             "options": []
-             },
-             {
-             "default_selection_label":"Any",
-             "search_key":"extended_info:has_monitors",
-             "table_row_type":"cell_with_checkbox",
-             "title":"Monitors",
-             "options": []
-             },
-             {
-             "title":"Projectors",
-             "search_key":"extended_info:has_projectors",
-             "table_row_type":"cell_with_checkbox",
-             "default_selection_label":"Any",
-             "options": []
-             },
-             {
-             "title":"Printing",
-             "search_key":"extended_info:has_printing",
-             "table_row_type":"cell_with_checkbox",
-             "default_selection_label":"Any",
-             "options": []
-             },
-             {
-             "title":"Scanning",
-             "search_key":"extended_info:has_scanning",
-             "table_row_type":"cell_with_checkbox",
-             "default_selection_label":"Any",
-             "options": []
-             }
              ]
   }
   ]

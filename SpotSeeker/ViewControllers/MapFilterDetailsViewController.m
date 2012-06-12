@@ -88,21 +88,35 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"detail_cell";
+    NSDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
+    NSString *cell_id;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *subtitle = [option objectForKey:@"subtitle"];
+    if (subtitle != nil) {
+        cell_id = @"detail_cell_with_subtitle";
+    }
+    else {
+        cell_id = @"detail_cell";        
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"title"];
+    filter_label.text = [option objectForKey:@"title"];
 
-    if ([[[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"selected"] boolValue]) {
+    if ([[option objectForKey:@"selected"] boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;    
+    }
+
+    if (subtitle != nil) {
+        UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];
+        subtitle_label.text = subtitle;
     }
     
     return cell;
