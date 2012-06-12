@@ -54,6 +54,9 @@
                 if ([option objectForKey:@"clear_all"]) {
                     [filter_option setObject:[option objectForKey:@"clear_all"] forKey:@"clear_all"];
                 }
+                if ([option objectForKey:@"selected"]) {
+                    [filter_option setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];
+                }
                 [filter_options addObject:filter_option];
             }
             

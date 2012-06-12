@@ -4,6 +4,7 @@
   "filters":[
              {
              "title":"Type of spot",
+             "screen_title":"Type of spot",
              "search_key":"type",
              "default_selection_label":"Any",
              "options": [
@@ -275,12 +276,13 @@
                          ]
              },
              {
-             "default_selection_label":"Any",
+             "default_selection_label":"No preference",
              "title":"Lighting",
+             "screen_title":"Lighting",
+             "search_key":"has_natural_light",
              "options": [
-                         { "title":"No Preference", "short":"", "search_value":"" },
-                         { "title":"Windows", "short":"Windows", "search_value":"windows" },
-                         { "title":"No Windows", "short":"No Windows", "search_value":"no_windows" }
+                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
+                         { "title":"Natural light", "short":"Natural light", "search_value":"true" }
                          ]
              },
              {
