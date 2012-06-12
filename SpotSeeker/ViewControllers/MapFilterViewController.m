@@ -33,6 +33,7 @@
 @synthesize user_latitude;
 @synthesize user_distance;
 @synthesize delegate;
+@synthesize picker_view;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -376,6 +377,10 @@
         NSInteger current_row = [selected_row  integerValue];
         filter_selection.text = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
     }
+    
+    UILabel *value_label = (UILabel *)[cell viewWithTag:5];
+    value_label.text = [current_obj objectForKey:@"value_label_title"];
+    
     return cell;
 
 }
@@ -402,9 +407,63 @@
 
 // Handle when some clicks the row - do nothing?
 - (void) didSelectChooserRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"chooser_options" sender:self];  
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"PickerView"
+                                                      owner:self
+                                                    options:nil];
+    
+    self.picker_view = [nibViews objectAtIndex: 0];
+    
+    [self.view addSubview:picker_view];
+    UIPickerView *picker = (UIPickerView *)[picker_view viewWithTag:3];
+    picker.delegate = self;
+    picker.dataSource = self;
+    
+    [picker selectRow:[[self.current_section objectForKey:@"selected_row"] intValue] inComponent:0 animated:NO];
+    
+    UIButton *reset = (UIButton *)[picker_view viewWithTag:1];
+    [reset addTarget:self action:@selector(pickerResetBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *done = (UIButton *)[picker_view viewWithTag:2];
+    [done addTarget:self action:@selector(pickerDoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+
+    // This covers the top of the screen
+    UIButton *fake_done = (UIButton *)[picker_view viewWithTag:4];
+    [fake_done addTarget:self action:@selector(pickerDoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
+-(void)pickerResetBtnClick:(id)sender {
+    UIPickerView *picker = (UIPickerView *)[self.picker_view viewWithTag:3];
+    [picker selectRow:0 inComponent:0 animated:YES];
+}
+
+-(void)pickerDoneBtnClick:(id)sender {
+    for (NSMutableDictionary *option in [self.current_section objectForKey:@"options"]) {
+        [option setValue:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+    }
+
+    UIPickerView *picker = (UIPickerView *)[self.picker_view viewWithTag:3];
+    NSMutableDictionary *chosen = [[self.current_section objectForKey:@"options"] objectAtIndex:[picker selectedRowInComponent:0]];
+    [chosen setValue:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+
+    [self.current_section setObject:[NSNumber numberWithInt:[picker selectedRowInComponent:0]] forKey:@"selected_row"];
+    [self.filter_table reloadData];
+    
+    [self.picker_view removeFromSuperview];
+}
+
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [[self.current_section objectForKey:@"options"] count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [[[self.current_section objectForKey:@"options"] objectAtIndex:row] objectForKey:@"title"];
+}
 
 /* Methods for on/off filters */
 #pragma mark - 

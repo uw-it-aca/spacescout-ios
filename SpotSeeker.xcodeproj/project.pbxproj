@@ -53,6 +53,7 @@
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
 		C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */ = {isa = PBXBuildFile; fileRef = C25D6F931576ACDC00A16A87 /* map_defaults.json */; };
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
+		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
 		C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpotClusterViewController.m */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
@@ -212,6 +213,7 @@
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
 		C25D6F931576ACDC00A16A87 /* map_defaults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_defaults.json; sourceTree = "<group>"; };
 		C25D6F961576AF7100A16A87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		C26EAA21156EE32600632C78 /* SpotClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotClusterViewController.h; path = ViewControllers/SpotClusterViewController.h; sourceTree = "<group>"; };
 		C26EAA22156EE32600632C78 /* SpotClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotClusterViewController.m; path = ViewControllers/SpotClusterViewController.m; sourceTree = "<group>"; };
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				C2FDB0F4150A802D00ED3A93 /* iPhone.storyboard */,
 				C2429A3E150A8600005A994A /* iPad.storyboard */,
+				C26DBE011587F0A200FB4DD8 /* PickerView.xib */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				C2AFB7BA156C370100D19E7A /* 02.png in Resources */,
 				C2AFB7BB156C370100D19E7A /* 01.png in Resources */,
 				C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */,
+				C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

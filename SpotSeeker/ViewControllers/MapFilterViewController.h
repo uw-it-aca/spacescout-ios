@@ -30,7 +30,7 @@
 
 @protocol SearchFilters;
 
-@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
+@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     Spot *spot;
       
     IBOutlet UITableView *filter_table;
@@ -44,11 +44,14 @@
     NSNumber *user_distance;
     id <SearchFilters> delegate;
     
+    UIView *picker_view;
+    
 }
 
 - (IBAction) btnClickSearch:(id)sender;
 - (IBAction) btnClickCancel:(id)sender;
 
+@property (nonatomic, retain) UIView *picker_view;
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
 @property (nonatomic, retain) IBOutlet UITextField *name_filter;
