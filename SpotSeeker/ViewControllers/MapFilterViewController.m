@@ -545,8 +545,7 @@
     
     if ([selected_options count]) {
         NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label];
-//        NSString *label = [self getSelectedOptionsStringForTitle:[current_obj objectForKey:@"title"] andSelectedOptions:selected_options];
-        NSLog(@"Value: %@", label); 
+        selected_label.text = label;
     }
     else {
         selected_label.text = [current_obj objectForKey:@"default_selection_label"];
