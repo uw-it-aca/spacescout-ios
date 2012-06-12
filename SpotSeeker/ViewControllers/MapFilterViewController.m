@@ -225,6 +225,34 @@
     }
 } 
 
+-(NSString *)getSelectedOptionsStringForLabel:(UILabel *)selected_label andSelectedOptions:(NSArray *)options withTitleLabel:(UILabel *)title_label {
+    NSMutableArray *long_options = [[NSMutableArray alloc] init];
+    for (NSDictionary *option in options) {
+        [long_options addObject:[option objectForKey:@"title"]];
+    }
+
+    float left_most = title_label.frame.origin.x;
+    float right_most = selected_label.frame.origin.x + selected_label.frame.size.width;
+    
+    float available_width = right_most - left_most;
+
+    float title_width = [title_label.text sizeWithFont:title_label.font].width;
+    
+    NSString *long_test = [long_options componentsJoinedByString:@", "];
+    CGSize long_size = [long_test sizeWithFont:selected_label.font];
+    
+    if ((title_width + long_size.width + 20) < available_width) {
+        return long_test;
+    }
+    
+    NSMutableArray *short_options = [[NSMutableArray alloc] init];
+    for (NSDictionary *option in options) {
+        [short_options addObject:[option objectForKey:@"short"]];
+    }
+    
+    return [short_options componentsJoinedByString:@", "];
+}
+
 /*
  Each filter type needs to implement a method for loading a cell, fetching the value for the cell, and handling any transitions from clicking on the cell
  */
@@ -448,18 +476,20 @@
     NSMutableArray *selected_options = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
         if ([[option objectForKey:@"selected"] boolValue]) {
-            [selected_options addObject:[option objectForKey:@"short"]];
+            [selected_options addObject:option];
         }
     }
     
     UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
     
     if ([selected_options count]) {
-        selected_label.text = [selected_options componentsJoinedByString:@", "];
+        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label];
+        selected_label.text = label;
     }
     else {
         selected_label.text = [current_obj objectForKey:@"default_selection_label"];
     }
+    
     return cell;
 }
 
@@ -506,14 +536,17 @@
     NSMutableArray *selected_options = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
         if ([[option objectForKey:@"selected"] boolValue]) {
-            [selected_options addObject:[option objectForKey:@"short"]];
+            [selected_options addObject:option];
         }
     }
+    
     
     UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
     
     if ([selected_options count]) {
-        selected_label.text = [selected_options componentsJoinedByString:@", "];
+        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label];
+//        NSString *label = [self getSelectedOptionsStringForTitle:[current_obj objectForKey:@"title"] andSelectedOptions:selected_options];
+        NSLog(@"Value: %@", label); 
     }
     else {
         selected_label.text = [current_obj objectForKey:@"default_selection_label"];

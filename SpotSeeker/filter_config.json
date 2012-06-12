@@ -266,13 +266,14 @@
              "default_selection_label":"Any",
              "screen_title":"Noise level",
              "screen_header":"Select acceptable noise levels",
+             "search_key":"noise_level",
              "options": [
                          { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"Silent", "short":"Silent", "search_value":"silent" },
-                         { "title":"Low Hum", "short":"Hum", "search_value":"low_hum" },
-                         { "title":"Chatter", "short":"Chatter", "search_value":"chatter" },
-                         { "title":"Rowdy", "short":"Rowdy", "search_value":"rowdy" },
-                         { "title":"Variable", "short":"Variable", "search_value":"variable" }
+                         { "title":"Silent", "short":"S", "search_value":"silent" },
+                         { "title":"Low Hum", "short":"H", "search_value":"quiet" },
+                         { "title":"Chatter", "short":"CH", "search_value":"moderate" },
+                         { "title":"Rowdy", "short":"R", "search_value":"loud" },
+                         { "title":"Variable", "short":"V", "search_value":"variable" }
                          ]
              },
              {
