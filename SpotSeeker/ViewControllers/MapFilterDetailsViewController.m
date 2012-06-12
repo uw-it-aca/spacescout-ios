@@ -110,14 +110,35 @@
 
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
     UITableViewCell *current_cell = [self.table_view cellForRowAtIndexPath:indexPath];
+    NSMutableDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
     
-    if ([[[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] objectForKey:@"selected"] boolValue]) {
-        current_cell.accessoryType = UITableViewCellAccessoryNone;
-        [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+    if ([option objectForKey:@"clear_all"]) {
+        for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
+            NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
+            [opt setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+            NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+            UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        [current_cell setAccessoryType:UITableViewCellAccessoryCheckmark];        
     }
     else {
-        current_cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [[[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row] setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];        
+        for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
+            NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
+            if ([opt objectForKey:@"clear_all"]) {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
+                [cell setAccessoryType:UITableViewCellAccessoryNone];
+            }
+        }
+        if ([[option objectForKey:@"selected"] boolValue]) {
+            current_cell.accessoryType = UITableViewCellAccessoryNone;
+            [option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
+        }
+        else {
+            current_cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [option setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];        
+        }
     }
 }
 

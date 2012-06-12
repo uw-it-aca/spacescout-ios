@@ -50,6 +50,10 @@
                 [filter_option setObject:[option objectForKey:@"short"] forKey:@"short"];
                 [filter_option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
                 [filter_option setObject:[option objectForKey:@"search_value"] forKey:@"search_value"];
+                
+                if ([option objectForKey:@"clear_all"]) {
+                    [filter_option setObject:[option objectForKey:@"clear_all"] forKey:@"clear_all"];
+                }
                 [filter_options addObject:filter_option];
             }
             

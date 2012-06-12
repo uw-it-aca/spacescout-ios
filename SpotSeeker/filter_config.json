@@ -266,7 +266,7 @@
              "screen_title":"Noise level",
              "screen_header":"Select acceptable noise levels",
              "options": [
-                         { "title":"No Preference", "short":"", "search_value":"" },
+                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
                          { "title":"Silent", "short":"Silent", "search_value":"silent" },
                          { "title":"Low Hum", "short":"Hum", "search_value":"low_hum" },
                          { "title":"Chatter", "short":"Chatter", "search_value":"chatter" },
@@ -287,7 +287,7 @@
              "title":"Food/coffee",
              "default_selection_label":"Any",
              "options": [
-                         { "title":"No Preference", "short":"", "search_value":"" },
+                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
                          { "title":"In Space", "short":"Space", "search_value":"in_space" },
                          { "title":"In Building", "short":"Building", "search_value":"in_building" },
                          { "title":"In Neighboring Building", "short":"Neighboring", "search_value":"neighboring" },
