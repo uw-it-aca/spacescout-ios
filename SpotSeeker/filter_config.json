@@ -263,6 +263,8 @@
              {
              "title":"Noise Level",
              "default_selection_label":"Any",
+             "screen_title":"Noise level",
+             "screen_header":"Select acceptable noise levels",
              "options": [
                          { "title":"No Preference", "short":"", "search_value":"" },
                          { "title":"Silent", "short":"Silent", "search_value":"silent" },

@@ -29,7 +29,7 @@
         for (NSDictionary *filter in filters_data) {
             NSMutableDictionary *filter_obj = [[NSMutableDictionary alloc] init ];
             
-            NSArray *keys = [[NSArray alloc] initWithObjects:@"title", @"screen_title", @"search_key", @"table_row_type", @"default_search_value", @"is_selected", @"default_selection_label", @"no_selection_label", @"show_chooser_label", @"clear_selections_label", nil];
+            NSArray *keys = [[NSArray alloc] initWithObjects:@"title", @"screen_title", @"screen_header", @"screen_subheader", @"search_key", @"table_row_type", @"default_search_value", @"is_selected", @"default_selection_label", @"no_selection_label", @"show_chooser_label", @"clear_selections_label", nil];
             for (NSString *key in keys) {
                 NSString *value = [filter objectForKey:key];
                 if (value != nil) {
