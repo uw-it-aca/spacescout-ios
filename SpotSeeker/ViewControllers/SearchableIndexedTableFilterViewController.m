@@ -39,6 +39,9 @@
     self.search_display_controller.searchResultsDataSource = self;
     self.search_display_controller.searchResultsDelegate = self;
     self.search_bar.scopeButtonTitles = nil;
+    
+    NSString *screen_title = [self.filter objectForKey:@"screen_title"];
+    self.title = screen_title;
 	// Do any additional setup after loading the view.
 }
 
@@ -258,6 +261,11 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clear_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"clear_cell"];
+        }
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        NSString *clear_string = [self.filter objectForKey:@"clear_selections_label"];
+        if (clear_string != nil) {
+            label.text = clear_string;
         }
         return cell;        
     }

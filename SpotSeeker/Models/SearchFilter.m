@@ -28,41 +28,15 @@
         NSArray *filters_data = [section objectForKey:@"filters"];
         for (NSDictionary *filter in filters_data) {
             NSMutableDictionary *filter_obj = [[NSMutableDictionary alloc] init ];
-            [filter_obj setObject:[filter objectForKey:@"title"] forKey:@"title"];
-            NSString *search_key = [filter objectForKey:@"search_key"];
-            if (search_key != nil) {
-                [filter_obj setObject:search_key forKey:@"search_key"];
-            }
-            NSString *cell_type = [filter objectForKey:@"table_row_type"];
-            if (cell_type) {
-                [filter_obj setObject:cell_type forKey:@"table_row_type"];
-            }
-            NSString *default_search_value = [filter objectForKey:@"default_search_value"];
-            if (default_search_value != nil) {
-                [filter_obj setObject:default_search_value forKey:@"default_search_value"];
-            }
-            NSString *is_selected = [filter objectForKey:@"is_selected"];
-            if (is_selected != nil) {
-                [filter_obj setObject:is_selected forKey:@"is_selected"];
-            }
             
-            NSString *default_selection_label = [filter objectForKey:@"default_selection_label"];
-            if (default_selection_label != nil) {
-                [filter_obj setObject:default_selection_label forKey:@"default_selection_label"];
-            }
-            
-            // For the chooser type
-            NSString *no_selection_label = [filter objectForKey:@"no_selection_label"];
-            if (no_selection_label != nil) {
-                [filter_obj setObject:no_selection_label forKey:@"no_selection_label"];
+            NSArray *keys = [[NSArray alloc] initWithObjects:@"title", @"screen_title", @"search_key", @"table_row_type", @"default_search_value", @"is_selected", @"default_selection_label", @"no_selection_label", @"show_chooser_label", @"clear_selections_label", nil];
+            for (NSString *key in keys) {
+                NSString *value = [filter objectForKey:key];
+                if (value != nil) {
+                    [filter_obj setObject:value forKey:key];
+                }
             }
 
-            NSString *show_chooser_label = [filter objectForKey:@"show_chooser_label"];
-            if (show_chooser_label != nil) {
-                [filter_obj setObject:show_chooser_label forKey:@"show_chooser_label"];
-            }
-
-            
             NSNumber *default_selection_position = [filter objectForKey:@"default_selection_position"];
             if (default_selection_position != nil) {
                 [filter_obj setObject:default_selection_position forKey:@"selected_row"];

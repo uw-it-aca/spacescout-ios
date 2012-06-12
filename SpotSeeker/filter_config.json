@@ -21,9 +21,11 @@
              },
              {
              "title":"Building",
+             "screen_title":"Select Building",
              "search_key":"building_name",
              "table_row_type":"cell_with_indexed_table",
              "default_selection_label":"Entire campus",
+             "clear_selections_label":"Entire campus",
              "options": [
                          { "title":"Academic Computer Center", "short":"NAME", "search_value":"" },
                          { "title":"Aerodynamics Laboratory", "short":"NAME", "search_value":"" },
