@@ -412,6 +412,19 @@
                                                     options:nil];
     
     self.picker_view = [nibViews objectAtIndex: 0];
+    picker_view.frame = CGRectMake(0, 960, 320, 480);
+    [self.view addSubview:picker_view];
+    
+    [UIView animateWithDuration:0.4
+                          delay:0.2
+                        options:UIViewAnimationCurveEaseOut
+                        animations:^{   
+                            picker_view.frame = CGRectMake(0, 0, 320, 480);
+                        }
+                     completion:^(BOOL finished) {
+                     }
+     ];
+    
     
     [self.view addSubview:picker_view];
     UIPickerView *picker = (UIPickerView *)[picker_view viewWithTag:3];
@@ -449,7 +462,18 @@
     [self.current_section setObject:[NSNumber numberWithInt:[picker selectedRowInComponent:0]] forKey:@"selected_row"];
     [self.filter_table reloadData];
     
-    [self.picker_view removeFromSuperview];
+    [UIView animateWithDuration:0.8
+                          delay:0.2
+                        options: UIViewAnimationCurveEaseIn
+                     animations:^{
+                         picker_view.frame = CGRectMake(0, 960, 320, 480);
+                     } 
+                     completion:^(BOOL finished){
+                         [self.picker_view removeFromSuperview];
+
+                     }];
+    
+    
 }
 
 
