@@ -21,7 +21,49 @@
                          ]
              },
              {
-             "title":"Building",
+             "title":"Capacity",
+             "no_selection_label":"1",
+             "show_chooser_label":"At least",
+             "table_row_type":"cell_with_chooser",
+             "value_label_title":"Seats at least",
+             "search_key":"capacity",
+             "options": [
+                         { "title":"1", "short":"1", "search_value":"1" },
+                         { "title":"2", "short":"2", "search_value":"2" },
+                         { "title":"3", "short":"3", "search_value":"3" },
+                         { "title":"4", "short":"4", "search_value":"4" },
+                         { "title":"5", "short":"5", "search_value":"5" },
+                         { "title":"6", "short":"6", "search_value":"6" },
+                         { "title":"7", "short":"7", "search_value":"7" },
+                         { "title":"8", "short":"8", "search_value":"8" },
+                         { "title":"9", "short":"9", "search_value":"9" },
+                         { "title":"10", "short":"10", "search_value":"10" },
+                         { "title":"15", "short":"15", "search_value":"15" },
+                         { "title":"20", "short":"20", "search_value":"20" },
+                         { "title":"25+", "short":"25+", "search_value":"25" }
+                         
+                         ]
+             },
+             {
+             "title":"Hours",
+             "search_key":"open_now",
+             "default_search_value":"1",
+             "default_selection_label":"Open Now",
+             "table_row_type":"cell_with_time",
+             "options": []
+             },
+             {
+             "title":"Reserveable?",
+             "screen_header":"Select reserveability",
+             "search_key":"reservable",
+             "default_selection_label":"No preference",
+             "options":[
+                        {"title":"No preference", "search_value":"", "clear_all":true },
+                        {"title":"Reserveable", "search_value":"true" }
+                        ]
+             },
+             {
+             "title":"Location",
              "screen_title":"Select Building",
              "search_key":"building_name",
              "table_row_type":"cell_with_indexed_table",
@@ -182,50 +224,8 @@
                          { "title":"Winkenwerder Forest Sciences Laboratory", "short":"NAME", "search_value":"" },
                          { "title":"Women's Fastpitch Softball Building", "short":"NAME", "search_value":"" }
                          ]
-             },
-             {
-             "title":"Capacity",
-             "no_selection_label":"1",
-             "show_chooser_label":"At least",
-             "table_row_type":"cell_with_chooser",
-             "value_label_title":"Seats at least",
-             "search_key":"capacity",
-             "options": [
-                         { "title":"1", "short":"1", "search_value":"1" },
-                         { "title":"2", "short":"2", "search_value":"2" },
-                         { "title":"3", "short":"3", "search_value":"3" },
-                         { "title":"4", "short":"4", "search_value":"4" },
-                         { "title":"5", "short":"5", "search_value":"5" },
-                         { "title":"6", "short":"6", "search_value":"6" },
-                         { "title":"7", "short":"7", "search_value":"7" },
-                         { "title":"8", "short":"8", "search_value":"8" },
-                         { "title":"9", "short":"9", "search_value":"9" },
-                         { "title":"10", "short":"10", "search_value":"10" },
-                         { "title":"15", "short":"15", "search_value":"15" },
-                         { "title":"20", "short":"20", "search_value":"20" },
-                         { "title":"25+", "short":"25+", "search_value":"25" }
-                         
-                         ]
-             },
-             {
-             "title":"Hours",
-             "search_key":"open_now",
-             "default_search_value":"1",
-             "default_selection_label":"Open Now",
-             "table_row_type":"cell_with_time",
-             "options": []
-             },
-             {
-             "title":"Reserveable?",
-             "screen_header":"Select reserveability",
-             "search_key":"reservable",
-             "default_search_value":"",
-             "default_selection_label":"No preference",
-             "options":[
-                        {"title":"No preference", "search_value":"", "clear_all":true },
-                        {"title":"Reserveable", "search_value":"true" }
-                        ]
              }
+
              ]
   },
   {
@@ -240,15 +240,14 @@
              "options": [
                          { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
                          { "title":"Silent", "short":"S", "search_value":"silent" },
-                         { "title":"Low Hum", "short":"H", "search_value":"quiet" },
-                         { "title":"Chatter", "short":"CH", "search_value":"moderate" },
-                         { "title":"Rowdy", "short":"R", "search_value":"loud" },
-                         { "title":"Variable", "short":"V", "search_value":"variable" }
+                         { "title":"Low Hum", "short":"LH", "search_value":"quiet" },
+                         { "title":"Chatter", "short":"CH", "search_value":"moderate" }
                          ]
              },
              {
              "default_selection_label":"No preference",
              "title":"Lighting",
+             "screen_header":"Select type of lighting",
              "screen_title":"Lighting",
              "search_key":"has_natural_light",
              "options": [
@@ -261,29 +260,30 @@
              "screen_title":"Equipment",
              "search_key":"equipment",
              "screen_header":"Equipment required",
+             "default_selection_label":"No preference",
              "screen_subheader":"Select all attributes you want to include in your search.  Leave blank if you don't care",
              "options":[
-                        {"title":"Whiteboards", "short":"W", "search_value":"whiteboards" },
-                        {"title":"Outlets", "short":"O", "search_value":"outlets" },
-                        {"title":"Computers", "short":"C", "search_value":"computers" },
-                        {"title":"Large Displays", "subtitle":"For your laptop", "short":"LD", "search_value":"displays" },
-                        {"title":"Projectors", "short":"Proj", "search_value":"projectors" },
-                        {"title":"Printing", "short":"Print", "search_value":"printing" },
-                        {"title":"Scanning", "short":"S", "search_value":"scanning" }
+                        {"title":"Whiteboards", "short":"W", "search_key":"has_whiteboards", "search_value":"true" },
+                        {"title":"Outlets", "short":"O", "search_key":"has_outlets", "search_value":"true" },
+                        {"title":"Computers", "short":"C", "search_key":"has_computers", "search_value":"true" },
+                        {"title":"Large Displays", "subtitle":"For your laptop", "short":"LD", "search_key":"has_displays", "search_value":"true" },
+                        {"title":"Projectors", "short":"Proj", "search_key":"has_projector", "search_value":"true"  },
+                        {"title":"Printing", "short":"Print", "search_key":"has_printing", "search_value":"true"  },
+                        {"title":"Scanning", "short":"S", "search_key":"has_scanning", "search_value":"true"  }
                 
                         ]
              },
              {
              "title":"Food/coffee",
              "screen_title":"Food/coffee",
+             "screen_header":"Select proximity of food/coffee",
              "default_selection_label":"Any",
              "search_key":"food_nearby",
              "options": [
-                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"In Space", "short":"In Sp.", "search_value":"space" },
-                         { "title":"In Building", "short":"In Bldg.", "search_value":"building" },
-                         { "title":"In neighboring building", "short":"In Neighb.", "search_value":"neighboring" },
-                         { "title":"None nearby", "short":"None", "search_value":"none" }
+                         { "title":"No preference", "short":"", "search_value":"", "clear_all":true },
+                         { "title":"In space", "short":"In Sp.", "search_value":"space" },
+                         { "title":"In building", "short":"In Bldg.", "search_value":"building" },
+                         { "title":"In neighboring building", "short":"In Neighb.", "search_value":"neighboring" }
                          ]
              }             
              ]

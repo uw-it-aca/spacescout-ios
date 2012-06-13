@@ -47,7 +47,7 @@
             for (NSDictionary *option in options) {
                 NSMutableDictionary *filter_option = [[NSMutableDictionary alloc] init];
                 
-                NSArray *opt_keys = [[NSArray alloc] initWithObjects:@"title", @"short", @"selected", @"search_value", @"subtitle", @"clear_all", nil];
+                NSArray *opt_keys = [[NSArray alloc] initWithObjects:@"title", @"short", @"selected", @"search_key", @"search_value", @"subtitle", @"clear_all", nil];
                 for (NSString *key in opt_keys) {
                     NSString *value = [option objectForKey:key];
                     if (value != nil) {

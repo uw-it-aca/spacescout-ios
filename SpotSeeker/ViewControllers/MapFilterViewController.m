@@ -653,18 +653,29 @@
 -(void)addSubSelectionSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
     NSMutableArray *selected_options = [[NSMutableArray alloc] init];
     NSArray *options = [filter objectForKey:@"options"];
+    
+    BOOL has_search_values = false;
     for (NSDictionary *option in options) {
         if ([[option objectForKey:@"selected"] boolValue]) {
             NSString *search_value = [option objectForKey:@"search_value"];
+            NSString *search_key   = [option objectForKey:@"search_key"];
+            
             if (search_value != nil) {
-                [selected_options addObject:search_value];
+                has_search_values = true;
+                // A row can either add options to the group, or be independent.
+                if (search_key != nil) {
+                    [attributes setObject:[[NSArray alloc] initWithObjects:search_value, nil] forKey:search_key];
+                }
+                else {
+                    [selected_options addObject:search_value];
+                }
             }
         }
     }
     if ([selected_options count]) {
         [attributes setObject:selected_options forKey:search_key];
     }
-    else {
+    else if (has_search_values == false) {
         NSString *default_value = [filter objectForKey:@"default_search_value"];
         if (default_value != nil) {
             [attributes setObject: [[NSMutableArray alloc] initWithObjects:default_value, nil] forKey:search_key];
