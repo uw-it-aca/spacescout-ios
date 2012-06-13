@@ -432,16 +432,16 @@
     UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
     filter_label.text = [current_obj objectForKey:@"title"];      
 
-    UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
+    UIButton *filter_selection = (UIButton *)[cell viewWithTag:4];
 
     NSNumber *selected_row = [current_obj objectForKey:@"selected_row"];
     if (selected_row == nil) {
-        filter_selection.text = [current_obj objectForKey:@"no_selection_label"];
-
+        [filter_selection setTitle:[current_obj objectForKey:@"no_selection_label"] forState:UIControlStateNormal];
     }
     else {
         NSInteger current_row = [selected_row  integerValue];
-        filter_selection.text = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
+        NSString *title = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
+        [filter_selection setTitle:title forState:UIControlStateNormal];
     }
     
     UILabel *value_label = (UILabel *)[cell viewWithTag:5];

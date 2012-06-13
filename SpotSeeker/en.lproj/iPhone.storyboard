@@ -148,20 +148,25 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="25+" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7vd-3U-gVj">
-                                                    <rect key="frame" x="237" y="11" width="36" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="Value label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DsI-lr-mPD">
-                                                    <rect key="frame" x="108" y="11" width="127" height="21"/>
+                                                    <rect key="frame" x="84" y="11" width="127" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jb2-51-rZz">
+                                                    <rect key="frame" x="219" y="3" width="72" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="25+">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1105,6 +1110,87 @@
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickClose:"/>
+            </relationships>
+        </class>
+        <class className="ListViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="screen_header" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screen_subheader" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelBtnClick:"/>
+                <relationship kind="action" name="doneBtnClick:"/>
+                <relationship kind="action" name="endTimeBtnClick:"/>
+                <relationship kind="action" name="resetBtnClick:"/>
+                <relationship kind="action" name="startTimeBtnClick:"/>
+                <relationship kind="action" name="timeSelected:"/>
+                <relationship kind="outlet" name="time_picker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="action" name="btnClickSearch:"/>
+                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickRecenter:"/>
+            </relationships>
+        </class>
+        <class className="SearchableIndexedTableFilterViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableIndexedTableFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="outlet" name="search_bar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SearchableSpotListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SpotClusterViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
+        </class>
+        <class className="SpotDetailsViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickFavorite:"/>
+                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UITableSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
