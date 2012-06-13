@@ -216,9 +216,15 @@
              "options": []
              },
              {
-             "title":"Access restrictions",
-             "default_selection_label":"Any",
-             "options": []
+             "title":"Reserveable?",
+             "screen_header":"Select reserveability",
+             "search_key":"reservable",
+             "default_search_value":"",
+             "default_selection_label":"No preference",
+             "options":[
+                        {"title":"No preference", "search_value":"", "clear_all":true },
+                        {"title":"Reserveable", "search_value":"true" }
+                        ]
              }
              ]
   },

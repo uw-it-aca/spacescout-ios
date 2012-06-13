@@ -46,20 +46,13 @@
             NSArray *options = [filter objectForKey:@"options"];
             for (NSDictionary *option in options) {
                 NSMutableDictionary *filter_option = [[NSMutableDictionary alloc] init];
-                [filter_option setObject:[option objectForKey:@"title"] forKey:@"title"];
-                [filter_option setObject:[option objectForKey:@"short"] forKey:@"short"];
-                [filter_option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
-                [filter_option setObject:[option objectForKey:@"search_value"] forKey:@"search_value"];
                 
-                if ([option objectForKey:@"subtitle"]) {
-                    [filter_option setObject:[option objectForKey:@"subtitle"] forKey:@"subtitle"];
-                }
-                
-                if ([option objectForKey:@"clear_all"]) {
-                    [filter_option setObject:[option objectForKey:@"clear_all"] forKey:@"clear_all"];
-                }
-                if ([option objectForKey:@"selected"]) {
-                    [filter_option setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];
+                NSArray *opt_keys = [[NSArray alloc] initWithObjects:@"title", @"short", @"selected", @"search_value", @"subtitle", @"clear_all", nil];
+                for (NSString *key in opt_keys) {
+                    NSString *value = [option objectForKey:key];
+                    if (value != nil) {
+                        [filter_option setObject:value forKey:key];
+                    }
                 }
                 [filter_options addObject:filter_option];
             }
