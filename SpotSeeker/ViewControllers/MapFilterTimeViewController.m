@@ -13,6 +13,8 @@
 
 @synthesize time_picker;
 @synthesize filter;
+@synthesize start_time;
+@synthesize end_time;
 
 -(IBAction)timeSelected:(id)sender {
 //    [self.filter setObject:self.date_picker.date forKey:@"selected_date"];
@@ -48,6 +50,81 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark -
+#pragma mark button handling
+
+-(IBAction)startTimeBtnClick:(id)sender {
+    NSDateComponents *start =  [self getStartTime];
+
+    [self setPickerDateComponents:start];
+}
+
+-(IBAction)endTimeBtnClick:(id)sender {
+    NSDateComponents *end = [self getEndTime];
+    [self setPickerDateComponents:end];
+}
+
+     
+#pragma mark -
+#pragma mark date math
+     
+-(NSDateComponents *)getStartTime {
+    if (self.start_time) {
+        return self.start_time;
+    }
+    
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    
+    NSDateComponents *components = [cal components:( INT_MAX ) fromDate:now];
+
+    // Get the minutes in the 15 minute interval format
+    components.minute = (components.minute / 15) * 15;
+    
+    return components;
+}
+
+-(NSDateComponents *)getEndTime {
+    if (self.end_time) {
+        return self.end_time;
+    }
+    
+    NSDateComponents *start = [self getStartTime];
+            
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+    NSDate *tmp_date = [cal dateFromComponents:start];
+    NSDate *end_date = [tmp_date dateByAddingTimeInterval:60*60];
+    
+    NSDateComponents *components = [cal components:( INT_MAX ) fromDate:end_date];
+
+    return components;
+}
+
+#pragma mark -
+#pragma mark setting the picker value
+     
+-(void) setPickerDateComponents:(NSDateComponents *)components {
+    int is_pm = 0;
+    int hour = components.hour;
+        
+    if (hour >= 12) {
+        is_pm = 1;
+    }
+    if (hour > 12) {
+        hour -= 12;
+    }
+    
+    BOOL is_animated = YES;
+    // Sunday is 1 in components.weekday, Monday is 0 in our spinner.
+    [self.time_picker selectRow:((components.weekday + 5) % 7) inComponent:0 animated:is_animated];
+    [self.time_picker selectRow:(hour-1) inComponent:1 animated:is_animated];
+    [self.time_picker selectRow:(components.minute / 15) inComponent:2 animated:is_animated];
+
+    [self.time_picker selectRow:is_pm inComponent:3 animated:is_animated];
+     
+}
+     
 #pragma mark -
 #pragma mark picker methods
 

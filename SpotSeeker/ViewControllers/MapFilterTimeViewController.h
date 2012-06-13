@@ -11,12 +11,18 @@
 @interface MapFilterTimeViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
     IBOutlet UIPickerView *time_picker;
     NSMutableDictionary *filter;
-
+    NSDateComponents *start_time;
+    NSDateComponents *end_time;
 }
 
 -(IBAction)timeSelected:(id)sender;
+-(IBAction)startTimeBtnClick:(id)sender;
+-(IBAction)endTimeBtnClick:(id)sender;
+
 
 @property (nonatomic, retain) UIPickerView *time_picker;
 @property (nonatomic, retain) NSMutableDictionary *filter;
+@property (nonatomic, retain) NSDateComponents *start_time;
+@property (nonatomic, retain) NSDateComponents *end_time;
 
 @end

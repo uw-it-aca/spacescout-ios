@@ -550,6 +550,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startTimeBtnClick:" destination="8cc-dF-ZeI" eventType="touchUpInside" id="E40-ig-60a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d07-U0-qtC">
                                 <rect key="frame" x="87" y="119" width="204" height="37"/>
@@ -562,6 +565,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="endTimeBtnClick:" destination="8cc-dF-ZeI" eventType="touchUpInside" id="Vlc-ZM-ATA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1087,6 +1093,8 @@
         <class className="MapFilterTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="endTimeBtnClick:"/>
+                <relationship kind="action" name="startTimeBtnClick:"/>
                 <relationship kind="action" name="timeSelected:"/>
                 <relationship kind="outlet" name="time_picker" candidateClass="UIPickerView"/>
             </relationships>
