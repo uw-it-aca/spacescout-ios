@@ -101,7 +101,6 @@
     CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(cell.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
         
     return 45.0 + expected.height - 18.0;
-    return 40;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
