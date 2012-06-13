@@ -33,6 +33,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.start_time = [self.filter objectForKey:@"open_at"];
+    self.end_time = [self.filter objectForKey:@"open_until"];
+    
+    if (self.start_time != nil) {
+        [self updateStartButtonWithDateComponents:self.start_time];
+    }
+    if (self.end_time != nil) {
+        [self updateEndButtonWithDateComponents:self.end_time];
+    }
+    
 	// Do any additional setup after loading the view.
     NSDate *selected_date = [self.filter objectForKey:@"selected_date"];
     if (selected_date != Nil) {
@@ -51,8 +61,25 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+    if (self.end_time != nil) {
+        [self.filter setObject:self.end_time forKey:@"open_until"];    
+    }
+    if (self.start_time != nil) {
+        [self.filter setObject:self.start_time forKey:@"open_at"];
+    }
+}
+
 #pragma mark -
 #pragma mark button handling
+
+-(IBAction)cancelBtnClick:(id)sender {
+    self.end_time = [self.filter objectForKey:@"open_until"];
+    self.start_time = [self.filter objectForKey:@"open_at"];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
 
 -(IBAction)startTimeBtnClick:(id)sender {
     NSDateComponents *start =  [self getStartTime];
@@ -158,10 +185,10 @@
     NSString *am_pm;
     
     if (hour >= 12) {
-        am_pm = @"pm";
+        am_pm = @"PM";
     }
     else {
-        am_pm = @"am";
+        am_pm = @"AM";
     }
     
     if (hour > 12) {

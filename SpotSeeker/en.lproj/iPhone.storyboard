@@ -173,7 +173,7 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="c6L-Y0-LIo">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="c6L-Y0-LIo">
                                                     <rect key="frame" x="12" y="0.0" width="186" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -181,7 +181,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mo9-kc-Kot">
-                                                    <rect key="frame" x="141" y="11" width="132" height="21"/>
+                                                    <rect key="frame" x="68" y="11" width="205" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -494,7 +494,7 @@
             </objects>
             <point key="canvasLocation" x="3346" y="-1029"/>
         </scene>
-        <!--Map Filter Time View Controller-->
+        <!--Map Filter Time View Controller - Hours-->
         <scene sceneID="8lM-bA-ILI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNJ-I7-In7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -609,7 +609,13 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jeV-fy-fMv"/>
+                    <navigationItem key="navigationItem" title="Hours" id="jeV-fy-fMv">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Sq2-S5-kGh">
+                            <connections>
+                                <action selector="cancelBtnClick:" destination="8cc-dF-ZeI" id="ZE8-S3-yx6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="time_picker" destination="Fgz-Vm-PXC" id="3yk-3m-43n"/>
                     </connections>
@@ -1130,6 +1136,7 @@
         <class className="MapFilterTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelBtnClick:"/>
                 <relationship kind="action" name="doneBtnClick:"/>
                 <relationship kind="action" name="endTimeBtnClick:"/>
                 <relationship kind="action" name="resetBtnClick:"/>

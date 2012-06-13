@@ -318,32 +318,98 @@
     UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
     filter_label.text = [current_obj objectForKey:@"title"];      
     
-    NSDate *selected_date = [current_obj objectForKey:@"selected_date"];
     UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
-    if (selected_date != nil) {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"h:mm a"];
-        filter_selection.text = [df stringFromDate:selected_date];            
+    
+    if ([current_obj objectForKey:@"open_until"] != nil) {
+        NSString *date_format = [self stringForDateRangeFrom:[current_obj objectForKey:@"open_at"] to:[current_obj objectForKey:@"open_until"]];
+        filter_selection.text = [NSString stringWithFormat:@"Open: %@", date_format];
+    }
+    else if ([current_obj objectForKey:@"open_at"] != nil) {
+        NSString *date_format = [self stringForDateComponents:[current_obj objectForKey:@"open_at"]];
+        filter_selection.text = [NSString stringWithFormat:@"Open: %@", date_format];
     }
     else {
-        filter_selection.text = @"";
+        filter_selection.text = [current_obj objectForKey:@"default_selection_label"];
     }
     return cell;
     
 }
 
+-(NSString *)dayNameForIndex:(NSInteger)weekday {
+    NSArray *days = [NSArray arrayWithObjects:@"Sun", @"Mon", @"Tues", @"Wed", @"Thurs", @"Fri", @"Sat", nil];
+    return [days objectAtIndex:weekday];
+}
+
+
+-(NSString *)stringForDateComponents:(NSDateComponents *)components {
+    if (components == nil) {
+        return @"Now";
+    }
+    int hour = components.hour;
+    
+    NSString *am_pm;
+    if (hour >= 12) {
+        am_pm = @"PM";
+    }
+    else {
+        am_pm = @"AM";
+    }
+    
+    if (hour > 12) {
+        hour -= 12;
+    }
+    
+    if (hour == 0) {
+        hour = 12;
+    }
+    
+    NSString *display = [NSString stringWithFormat:@"%@, %i:%02i %@", [self dayNameForIndex:components.weekday -1], hour, components.minute, am_pm];
+
+    return display;
+}
+
+-(NSString *)stringForDateRangeFrom:(NSDateComponents *)starting to:(NSDateComponents *)ending {
+    return [NSString stringWithFormat:@"%@ - %@", [self stringForDateComponents:starting], [self stringForDateComponents:ending]];
+}
+
+-(NSString *)dayNameForSearchingAtIndex:(NSInteger)weekday {
+    NSArray *days = [NSArray arrayWithObjects:@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", nil];
+    return [days objectAtIndex:weekday];
+}
+
+-(NSString *)stringForSearchingForDateComponents:(NSDateComponents *)components {
+    
+    NSString *display = [NSString stringWithFormat:@"%@,%i:%02i", [self dayNameForSearchingAtIndex:components.weekday -1], components.hour, components.minute];
+    
+    return display;
+}
+
+
 // Fill out the search values
 -(void)addTimeSearchValuesToDictionary:(NSMutableDictionary *)attributes forFilter:(NSDictionary *)filter andKey:(NSString *)search_key {
-    NSDate *selected_date = [filter objectForKey:@"selected_date"];
-    if (selected_date != nil) {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"HH:mm"];
-        NSString *search_time = [df stringFromDate:selected_date];            
-        NSLog(@"ST: %@", search_time);
-        [attributes setObject:[[NSMutableArray alloc] initWithObjects:search_time, nil] forKey: search_key];
+    if ([filter objectForKey:@"open_until"]) {
+        NSString *date_string = [self stringForSearchingForDateComponents:[filter objectForKey:@"open_until"]];
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:date_string, nil] forKey: @"open_until"];
+        
+        NSDateComponents *open_at = [filter objectForKey:@"open_at"];
+        if (open_at == nil) {
+            NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            NSDate *now = [NSDate date];
+            
+           open_at = [cal components:( INT_MAX ) fromDate:now];
+        }
+
+        NSString *open_string = [self stringForSearchingForDateComponents:open_at];
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:open_string, nil] forKey: @"open_at"];        
+    }
+    else if ([filter objectForKey:@"open_at"]) {
+        NSString *date_string = [self stringForSearchingForDateComponents:[filter objectForKey:@"open_at"]];
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:date_string, nil] forKey: @"open_at"];
 
     }
-
+    else {
+        [attributes setObject:[[NSMutableArray alloc] initWithObjects:@"1", nil] forKey: @"open_now"];        
+    }
 }
 
 
