@@ -13,6 +13,7 @@
     NSMutableDictionary *filter;
     NSDateComponents *start_time;
     NSDateComponents *end_time;
+    NSNumber *current_widget;
 }
 
 -(IBAction)timeSelected:(id)sender;
@@ -24,5 +25,6 @@
 @property (nonatomic, retain) NSMutableDictionary *filter;
 @property (nonatomic, retain) NSDateComponents *start_time;
 @property (nonatomic, retain) NSDateComponents *end_time;
+@property (nonatomic, retain) NSNumber *current_widget;
 
 @end

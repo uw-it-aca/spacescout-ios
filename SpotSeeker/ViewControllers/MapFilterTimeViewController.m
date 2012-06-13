@@ -15,6 +15,7 @@
 @synthesize filter;
 @synthesize start_time;
 @synthesize end_time;
+@synthesize current_widget;
 
 -(IBAction)timeSelected:(id)sender {
 //    [self.filter setObject:self.date_picker.date forKey:@"selected_date"];
@@ -56,15 +57,56 @@
 -(IBAction)startTimeBtnClick:(id)sender {
     NSDateComponents *start =  [self getStartTime];
 
+    self.current_widget = [NSNumber numberWithInt:1];
     [self setPickerDateComponents:start];
 }
 
 -(IBAction)endTimeBtnClick:(id)sender {
     NSDateComponents *end = [self getEndTime];
+
+    self.current_widget = [NSNumber numberWithInt:2];
     [self setPickerDateComponents:end];
 }
 
+#pragma mark -
+#pragma mark update button display
      
+-(void)updateStartButtonWithDateComponents:(NSDateComponents *)components {
+    UIButton *start = (UIButton *)[self.view viewWithTag:2];
+    NSString *title = [self stringForDateComponents:components];
+    [start setTitle:title forState:UIControlStateNormal];
+}
+
+-(void)updateEndButtonWithDateComponents:(NSDateComponents *)components {
+    UIButton *end = (UIButton *)[self.view viewWithTag:3];
+    NSString *title = [self stringForDateComponents:components];
+    [end setTitle:title forState:UIControlStateNormal];
+
+}
+
+-(NSString *)stringForDateComponents:(NSDateComponents *)components {
+    int hour = components.hour;
+    NSString *am_pm;
+    
+    if (hour >= 12) {
+        am_pm = @"pm";
+    }
+    else {
+        am_pm = @"am";
+    }
+    
+    if (hour > 12) {
+        hour -= 12;
+    }
+    
+    if (hour == 0) {
+        hour = 12;
+    }
+    
+    NSString *display = [NSString stringWithFormat:@"%@, %i:%02i %@", [self dayNameForIndex:components.weekday -1], hour, components.minute, am_pm];
+    return display;
+}
+
 #pragma mark -
 #pragma mark date math
      
@@ -95,10 +137,27 @@
 
     NSDate *tmp_date = [cal dateFromComponents:start];
     NSDate *end_date = [tmp_date dateByAddingTimeInterval:60*60];
-    
     NSDateComponents *components = [cal components:( INT_MAX ) fromDate:end_date];
 
     return components;
+}
+
+-(void)setNewWeekDay:(NSInteger)weekday ForDateComponents:(NSDateComponents *)date_components {
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *the_days = [[NSDateComponents alloc] init];
+    the_days.day = weekday + 7 - date_components.weekday;
+    
+    NSDate *tmp_date = [cal dateFromComponents:date_components];
+
+    NSDate *right_day = [cal dateByAddingComponents:the_days toDate:tmp_date options:0];
+    
+    NSDateComponents *right_values = [cal components:(INT_MAX) fromDate:right_day];
+    
+    date_components.day = right_values.day;
+    date_components.month = right_values.month;
+    date_components.year = right_values.year;
+    date_components.weekday = right_values.weekday;
 }
 
 #pragma mark -
@@ -115,9 +174,13 @@
         hour -= 12;
     }
     
+    if (hour == 0) {
+        hour = 12;
+    }
+    
     BOOL is_animated = YES;
-    // Sunday is 1 in components.weekday, Monday is 0 in our spinner.
-    [self.time_picker selectRow:((components.weekday + 5) % 7) inComponent:0 animated:is_animated];
+    // Sunday is 1 in components.weekday, but 0 in our spinner.
+    [self.time_picker selectRow:(components.weekday - 1) inComponent:0 animated:is_animated];
     [self.time_picker selectRow:(hour-1) inComponent:1 animated:is_animated];
     [self.time_picker selectRow:(components.minute / 15) inComponent:2 animated:is_animated];
 
@@ -127,6 +190,63 @@
      
 #pragma mark -
 #pragma mark picker methods
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    NSDateComponents *initial;
+    if ([self.current_widget intValue] == 1) {
+        initial = [self getStartTime];        
+    }
+    else {
+        initial = [self getEndTime];                
+    }
+
+    NSDateComponents *new = [initial copy];
+
+    int hour;
+    switch (component) {
+        case 0:
+            [self setNewWeekDay:(row + 1) ForDateComponents:new];
+            break;
+        case 1:
+            hour = row;
+            if (hour == 11) {
+                hour = -1;
+            }
+            if ([pickerView selectedRowInComponent:3] == 1) {
+                new.hour = hour + 13;
+            }
+            else {
+                new.hour = hour + 1; 
+            }
+            break;
+        case 2:
+            new.minute = row * 15;
+            break;
+        case 3:
+            hour = [pickerView selectedRowInComponent:1];
+            if (hour == 11) {
+                hour = -1;
+            }
+
+            if (row == 0) {
+                new.hour = hour + 1;
+            }
+            else {
+                new.hour = hour + 13;
+            }
+            break;
+    }
+    
+    if ([self.current_widget intValue] == 1) {
+        self.start_time = new;
+        [self updateStartButtonWithDateComponents:new];
+    }
+    else {
+        self.end_time = new;
+        [self updateEndButtonWithDateComponents:new];
+    }
+}
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 4;
@@ -172,17 +292,21 @@
         }
     }
     else if (component == 2) {
-        return [NSString stringWithFormat:@"%i", row * 15];
+        return [NSString stringWithFormat:@"%02i", row * 15];
     }
     else if (component == 1) {
         return [NSString stringWithFormat:@"%i", row+1];
     }
     else {
-        NSArray *days = [NSArray arrayWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", nil];
-        return [days objectAtIndex:row];
+        return [self dayNameForIndex:row];
     }
     
     return @"OK";
+}
+
+-(NSString *)dayNameForIndex:(NSInteger)weekday {
+    NSArray *days = [NSArray arrayWithObjects:@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", nil];
+    return [days objectAtIndex:weekday];
 }
 
 @end
