@@ -477,12 +477,13 @@
                                                       owner:self
                                                     options:nil];
     
+    
     self.picker_view = [nibViews objectAtIndex: 0];
     picker_view.frame = CGRectMake(0, 960, 320, 480);
     [self.view addSubview:picker_view];
     
     [UIView animateWithDuration:0.4
-                          delay:0.2
+                          delay:0.0
                         options:UIViewAnimationCurveEaseOut
                         animations:^{   
                             picker_view.frame = CGRectMake(0, 0, 320, 480);
@@ -491,6 +492,7 @@
                      }
      ];
     
+    [self.filter_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
     [self.view addSubview:picker_view];
     UIPickerView *picker = (UIPickerView *)[picker_view viewWithTag:3];
