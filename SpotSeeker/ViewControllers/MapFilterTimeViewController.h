@@ -19,6 +19,8 @@
 -(IBAction)timeSelected:(id)sender;
 -(IBAction)startTimeBtnClick:(id)sender;
 -(IBAction)endTimeBtnClick:(id)sender;
+-(IBAction)resetBtnClick:(id)sender;
+-(IBAction)doneBtnClick:(id)sender;
 
 
 @property (nonatomic, retain) UIPickerView *time_picker;

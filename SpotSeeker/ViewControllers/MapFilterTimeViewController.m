@@ -56,6 +56,7 @@
 
 -(IBAction)startTimeBtnClick:(id)sender {
     NSDateComponents *start =  [self getStartTime];
+    [self showPickerWidget];
 
     self.current_widget = [NSNumber numberWithInt:1];
     [self setPickerDateComponents:start];
@@ -63,9 +64,77 @@
 
 -(IBAction)endTimeBtnClick:(id)sender {
     NSDateComponents *end = [self getEndTime];
-
+    [self showPickerWidget];
+    
     self.current_widget = [NSNumber numberWithInt:2];
     [self setPickerDateComponents:end];
+}
+
+-(IBAction)resetBtnClick:(id)sender {
+    if ([self.current_widget intValue] == 1) {
+        NSDateComponents *new = [self getDefaultStartTime];
+        self.start_time = new;
+        [self setPickerDateComponents:new];
+        [self updateStartButtonWithDateComponents:new];
+    }
+    else {
+        NSDateComponents *new = [self getDefaultEndTime];
+        self.end_time = new;
+        [self setPickerDateComponents:new];
+        [self updateEndButtonWithDateComponents:new];        
+    }
+}
+
+-(IBAction)doneBtnClick:(id)sender {
+    [self hidePickerWidget];
+}
+
+#pragma mark -
+#pragma mark animations
+
+-(void)showPickerWidget {
+    UIView *wrapper = [self.view viewWithTag:5];
+    
+    if (!wrapper.hidden) {
+        return;
+    }
+    
+    CGRect current = wrapper.frame;
+    CGRect starting = CGRectMake(0, 480, current.size.width, current.size.height);
+    CGRect ending = CGRectMake(0, 480 - 60 - current.size.height, current.size.width, current.size.height);
+    
+    [wrapper setFrame:starting];
+    wrapper.hidden = false;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{   
+                         wrapper.frame = ending;
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
+
+}
+
+-(void)hidePickerWidget {
+    UIView *wrapper = [self.view viewWithTag:5];
+    
+    CGRect current = wrapper.frame;
+    CGRect ending = CGRectMake(0, 480 + current.size.height, current.size.width , current.size.height);
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.2
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{   
+                         wrapper.frame = ending;
+                     }
+                     completion:^(BOOL finished) {
+                         wrapper.hidden = true;
+                     }
+     ];
+    
 }
 
 #pragma mark -
@@ -115,31 +184,39 @@
         return self.start_time;
     }
     
+    return [self getDefaultStartTime];
+}
+
+-(NSDateComponents *)getDefaultStartTime {
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate *now = [NSDate date];
     
     NSDateComponents *components = [cal components:( INT_MAX ) fromDate:now];
-
+    
     // Get the minutes in the 15 minute interval format
     components.minute = (components.minute / 15) * 15;
     
-    return components;
+    return components;    
 }
 
 -(NSDateComponents *)getEndTime {
     if (self.end_time) {
         return self.end_time;
     }
-    
-    NSDateComponents *start = [self getStartTime];
-            
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
+    return [self getDefaultEndTime];
+}
+
+-(NSDateComponents *)getDefaultEndTime {
+    NSDateComponents *start = [self getStartTime];
+    
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
     NSDate *tmp_date = [cal dateFromComponents:start];
     NSDate *end_date = [tmp_date dateByAddingTimeInterval:60*60];
     NSDateComponents *components = [cal components:( INT_MAX ) fromDate:end_date];
-
-    return components;
+    
+    return components;    
 }
 
 -(void)setNewWeekDay:(NSInteger)weekday ForDateComponents:(NSDateComponents *)date_components {
@@ -240,10 +317,12 @@
     
     if ([self.current_widget intValue] == 1) {
         self.start_time = new;
+        [self.filter setObject:new forKey:@"selected_start_time"];
         [self updateStartButtonWithDateComponents:new];
     }
     else {
         self.end_time = new;
+        [self.filter setObject:new forKey:@"selected_end_time"];
         [self updateEndButtonWithDateComponents:new];
     }
 }
