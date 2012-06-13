@@ -379,7 +379,7 @@
 
 -(NSString *)stringForSearchingForDateComponents:(NSDateComponents *)components {
     
-    NSString *display = [NSString stringWithFormat:@"%@,%i:%02i", [self dayNameForSearchingAtIndex:components.weekday -1], components.hour, components.minute];
+    NSString *display = [NSString stringWithFormat:@"%@,%02i:%02i", [self dayNameForSearchingAtIndex:components.weekday -1], components.hour, components.minute];
     
     return display;
 }
