@@ -82,6 +82,28 @@
 #pragma mark -
 #pragma mark table methods
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
+
+    NSString *subtitle = [option objectForKey:@"subtitle"];
+    
+    if (subtitle == nil) {
+        return 45.0;
+    }
+
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail_cell_with_subtitle"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail_cell_with_subtitle"];
+    }
+
+    UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];
+    CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(cell.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
+        
+    return 45.0 + expected.height - 18.0;
+    return 40;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[self.filter objectForKey:@"options"] count];
 }

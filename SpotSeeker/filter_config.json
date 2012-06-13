@@ -5,19 +5,19 @@
              {
              "title":"Type of spot",
              "screen_title":"Type of spot",
+             "screen_header":"Select types of spots",
              "search_key":"type",
              "default_selection_label":"Any",
              "options": [
-                         { "title":"Computer lab", "short":"Lab", "search_value":"computer_lab" },
-                         { "title":"Open space", "short":"Open sp", "search_value":"open" },
-                         { "title":"Alcove", "short":"Alc", "search_value":"alcove" },
-                         { "title":"Lounge", "short":"Lng", "search_value":"lounge" },
-                         { "title":"Study room", "short":"Rm", "search_value":"study_room" },
-                         { "title":"Study space", "short":"Spc", "search_value":"study_space" },
-                         { "title":"Studio", "short":"Stdo", "search_value":"studio" },
-                         { "title":"Café", "short":"Café", "search_value":"Café" },
-                         { "title":"Outdoor area", "short":"Outdr", "search_value":"outdoors" },
-                         { "title":"Conference/classroom", "short":"Clsrm", "search_value":"conference" }
+                         { "title":"Study room", "subtitle":"Enclosed space for individual or group", "short":"Rm", "search_value":"study_room" },
+                         { "title":"Study space", "subtitle":"Unenclosed space for individual or group", "short":"Spc", "search_value":"study_space" },
+                         { "title":"Computer lab", "subtitle":"Group of computer stations", "short":"Lab", "search_value":"computer_lab" },
+                         { "title":"Production studio", "subtitle":"Work space with specialized equipment or technology", "short":"Stdo", "search_value":"studio" },
+                         { "title":"Conference/classroom", "subtitle":"Larger-capacity rooms primarily used for classes, meetings, or workshops", "short":"Clsrm", "search_value":"conference" },
+                         { "title":"Open space", "subtitle":"Area for use by multiple individuals or groups", "short":"Open sp", "search_value":"open" },
+                         { "title":"Lounge", "subtitle":"Indoor casual space", "short":"Lng", "search_value":"lounge" },
+                         { "title":"Café", "subtitle":"Space that functions primarily as an eatery", "short":"Café", "search_value":"Café" },
+                         { "title":"Outdoor area", "subtitle":"Outdoor casual space", "short":"Outdr", "search_value":"outdoors" }
                          ]
              },
              {
