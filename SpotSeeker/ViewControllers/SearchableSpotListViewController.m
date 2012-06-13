@@ -25,7 +25,6 @@ int const meters_per_latitude = 111 * 1000;
     if ([search_attributes objectForKey:@"open_at"] == nil && [search_attributes objectForKey:@"open_until"] == nil) {
         [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
     }
-    [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"extended_info:ada_accessible"];
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
     
