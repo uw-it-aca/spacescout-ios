@@ -19,6 +19,9 @@
 @synthesize tap_recognizer;
 @synthesize image_data;
 @synthesize page_header;
+@synthesize page_footer;
+@synthesize prev_button;
+@synthesize next_button;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,6 +67,20 @@
     int index = [self.current_index intValue];
     int count = [self.spot.image_urls count];
 
+    if (index == 0) {
+        [self.prev_button setEnabled:FALSE];
+    }
+    else {
+        [self.prev_button setEnabled:TRUE];        
+    }
+    
+    if (index == count - 1) {
+        [self.next_button setEnabled:FALSE];
+    }
+    else {
+        [self.next_button setEnabled:TRUE];
+    }
+    
     UILabel *title = (UILabel *)[self.page_header viewWithTag:1];
     title.text = [NSString stringWithFormat:@"%i of %i", index+1, count];
     
@@ -88,7 +105,17 @@
     [image_view setImage:img];
     
 }
-     
+
+-(void)showNextImage {
+    self.current_index = [NSNumber numberWithInt:[self.current_index intValue] + 1];
+    [self showCurrentImage];    
+}
+
+-(void)showPreviousImage {
+    self.current_index = [NSNumber numberWithInt:[self.current_index intValue] - 1];
+    [self showCurrentImage];
+}
+
 #pragma mark -
 #pragma mark gesture methods
 
@@ -96,14 +123,17 @@
     if ([touch.view isDescendantOfView:self.page_header]) {
         return NO;
     }
+    if ([touch.view isDescendantOfView:self.page_footer]) {
+        return NO;
+    }
+
     return YES;
 }
 
 -(IBAction)swipeLeft:(id)sender {
     [self hideScreenNavigation];
     if ([self.current_index intValue] < [spot.image_urls count] - 1) {
-        self.current_index = [NSNumber numberWithInt:[self.current_index intValue] + 1];
-        [self showCurrentImage];
+        [self showNextImage];
     }
 
 }
@@ -111,8 +141,7 @@
 -(IBAction)swipeRight:(id)sender {
     [self hideScreenNavigation];
     if ([self.current_index intValue] > 0) {
-        self.current_index = [NSNumber numberWithInt:[self.current_index intValue] - 1];
-        [self showCurrentImage];
+        [self showPreviousImage];
     }
 
 }
@@ -128,15 +157,25 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(IBAction)clickNextImgBtn:(id)sender {
+    [self showNextImage];
+}
+
+-(IBAction)clickPrevImgBtn:(id)sender {
+    [self showPreviousImage];
+}
+
 #pragma mark -
 #pragma mark navigation display handling
 
 -(void) showScreenNavigation {
     page_header.hidden = NO;
+    page_footer.hidden = NO;
 }
 
 -(void)hideScreenNavigation {
     page_header.hidden = YES;
+    page_footer.hidden = YES;
 }
 
 @end
