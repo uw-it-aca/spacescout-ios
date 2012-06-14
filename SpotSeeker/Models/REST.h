@@ -18,6 +18,7 @@
 @property (retain, nonatomic) id <RESTFinished> delegate;
 
 -(void) getURL:(NSString *)url;
+-(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url;
 
 @end
 

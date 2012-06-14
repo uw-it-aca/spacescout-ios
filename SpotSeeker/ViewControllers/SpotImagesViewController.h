@@ -35,6 +35,7 @@
 @property (nonatomic, strong) IBOutlet UIView *page_footer;
 @property (nonatomic, strong) IBOutlet UIButton *prev_button;
 @property (nonatomic, strong) IBOutlet UIButton *next_button;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activity_indicator;
 @property (nonatomic, retain) NSNumber *pan_translation;
 
 @property (nonatomic, retain) NSMutableArray *image_data;

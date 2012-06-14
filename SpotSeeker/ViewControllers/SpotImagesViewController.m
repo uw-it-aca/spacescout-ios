@@ -22,6 +22,7 @@
 @synthesize prev_button;
 @synthesize next_button;
 @synthesize pan_translation;
+@synthesize activity_indicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -98,7 +99,22 @@
     }
     else {
         NSString *image_url = [spot.image_urls objectAtIndex:index];
-        [rest getURL:image_url];
+        self.image_view.hidden = TRUE;
+        self.activity_indicator.hidden = FALSE;
+        
+        __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
+        
+        [request setCompletionBlock:^{
+            [self.image_data insertObject:[request responseData] atIndex:index];
+            if (index == [self.current_index intValue]) {
+                [self showImageWithData:[request responseData]];
+                
+                self.activity_indicator.hidden = TRUE;
+                self.image_view.hidden = FALSE;
+            }
+        }];
+        
+        [request startAsynchronous];
     }
 }
 
@@ -106,6 +122,9 @@
     if ([request responseStatusCode] == 200) {
         [self.image_data insertObject:[request responseData] atIndex:[self.current_index intValue]];
         [self showImageWithData:[request responseData]];
+        
+        self.activity_indicator.hidden = TRUE;
+        self.image_view.hidden = FALSE;
     }
 }
 
