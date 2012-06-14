@@ -15,6 +15,7 @@
 @synthesize current_index;
 @synthesize rest;
 @synthesize pan_recognizer;
+@synthesize pinch_recognizer;
 @synthesize tap_recognizer;
 @synthesize image_data;
 @synthesize page_header;
@@ -43,6 +44,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     
+    [self.view addGestureRecognizer:self.pinch_recognizer];
     [self.view addGestureRecognizer:self.pan_recognizer];
     [self.view addGestureRecognizer:self.tap_recognizer];
     [self recenterImageView];
@@ -160,6 +162,22 @@
 
     return YES;
 }
+
+
+-(IBAction)handlePinch:(UIPinchGestureRecognizer *)gesture {
+    /*
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        NSLog(@"Pinching start");
+    }
+    else if ([gesture state] == UIGestureRecognizerStateChanged ) {
+        NSLog(@"In process - %f", [gesture scale]);
+    }
+    else if ([gesture state] == UIGestureRecognizerStateEnded) {
+        NSLog(@"Done");
+    }
+     */
+}
+
 
 -(IBAction)handlePan:(UIPanGestureRecognizer *)gesture {
     if ([gesture state] == UIGestureRecognizerStateBegan) {

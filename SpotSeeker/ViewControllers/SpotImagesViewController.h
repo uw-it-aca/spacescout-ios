@@ -20,6 +20,7 @@
 
 -(IBAction) screenTap:(id)sender;
 -(IBAction) handlePan:(UIPanGestureRecognizer *)gesture;
+-(IBAction) handlePinch:(UIPinchGestureRecognizer *)gesture;
 -(IBAction) closeGallery:(id)sender;
 -(IBAction) clickNextImgBtn:(id)sender;
 -(IBAction) clickPrevImgBtn:(id)sender;
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) NSNumber *current_index;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tap_recognizer;
+@property (nonatomic, strong) IBOutlet UIPinchGestureRecognizer *pinch_recognizer;
 @property (nonatomic, strong) IBOutlet UIPanGestureRecognizer *pan_recognizer;
 @property (nonatomic, strong) IBOutlet UIView *page_header;
 @property (nonatomic, strong) IBOutlet UIView *page_footer;
