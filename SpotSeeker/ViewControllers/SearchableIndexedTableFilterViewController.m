@@ -102,6 +102,8 @@
         row_count++;
     }
     
+    [filter_sections addObject:current_section];
+    
     NSMutableDictionary *index = [[NSMutableDictionary alloc] init];
     [index setObject:filter_sections forKey:@"sections"];
     [index setObject:[self filterSectionTitles] forKey:@"section_titles"];
