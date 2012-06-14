@@ -657,10 +657,6 @@
                                             <rect key="frame" x="10" y="1" width="300" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" id="jfx-fA-wnD">
-                                                    <rect key="frame" x="9" y="4" width="89" height="89"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="&lt;spot name>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6YA-ZT-qkU">
                                                     <rect key="frame" x="106" y="4" width="102" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -689,9 +685,16 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView tag="4" contentMode="scaleToFill" id="jfx-fA-wnD">
+                                                    <rect key="frame" x="9" y="4" width="89" height="89"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="4PN-pK-yie" kind="push" identifier="image_view" id="j35-bQ-sGp"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hours_cell" rowHeight="179" id="GeP-Wf-h7G">
                                         <rect key="frame" x="0.0" y="145" width="320" height="179"/>
@@ -843,7 +846,50 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2933" y="637"/>
+            <point key="canvasLocation" x="2890" y="649"/>
+        </scene>
+        <!--Spot Images View Controller-->
+        <scene sceneID="jeK-Q6-heI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6z-hz-0P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="4PN-pK-yie" customClass="SpotImagesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uXe-42-Ml9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="enD-sV-zY7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7Bc-0D-Iex" appends="YES" id="DrR-nR-IMv"/>
+                                    <outletCollection property="gestureRecognizers" destination="YCE-zV-dkv" appends="YES" id="CIB-Tj-AbW"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <connections>
+                        <outlet property="image_view" destination="enD-sV-zY7" id="ppM-gl-gre"/>
+                        <outlet property="swipe_left_recognizer" destination="7Bc-0D-Iex" id="Bbb-nJ-fl3"/>
+                        <outlet property="swipe_right_recognizer" destination="YCE-zV-dkv" id="120-8Y-X4I"/>
+                    </connections>
+                </viewController>
+                <swipeGestureRecognizer direction="left" id="7Bc-0D-Iex">
+                    <connections>
+                        <action selector="swipeLeft:" destination="4PN-pK-yie" id="cI5-N4-gkr"/>
+                        <outlet property="delegate" destination="4PN-pK-yie" id="4e7-zx-lAB"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="YCE-zV-dkv">
+                    <connections>
+                        <action selector="swipeRight:" destination="4PN-pK-yie" id="Mbt-E4-Is9"/>
+                        <outlet property="delegate" destination="4PN-pK-yie" id="7ck-St-2f8"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3356" y="692"/>
         </scene>
         <!--Favorite Spots View Controller - Bookmarks-->
         <scene sceneID="1K6-Li-Krl">
@@ -1197,6 +1243,16 @@
                 <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SpotImagesViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotImagesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="swipeLeft:"/>
+                <relationship kind="action" name="swipeRight:"/>
+                <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="swipe_left_recognizer" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="swipe_right_recognizer" candidateClass="UISwipeGestureRecognizer"/>
             </relationships>
         </class>
         <class className="UITableSwitch" superclassName="UISwitch">

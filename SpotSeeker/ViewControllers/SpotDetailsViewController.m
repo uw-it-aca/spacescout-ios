@@ -294,6 +294,13 @@
     
 }
 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"image_view"]) {
+        SpotImagesViewController *destination = (SpotImagesViewController *)[segue destinationViewController];
+        destination.spot = self.spot;
+    }
+}
 #pragma mark -
 #pragma mark setup
 

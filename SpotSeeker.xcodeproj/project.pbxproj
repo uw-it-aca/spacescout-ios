@@ -57,6 +57,7 @@
 		C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpotClusterViewController.m */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
+		C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */; };
 		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2A20629156D9914005E30FF /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A20628156D9914005E30FF /* ListViewController.m */; };
@@ -219,6 +220,8 @@
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
+		C27F30C0158A563D002EC7B2 /* SpotImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotImagesViewController.h; path = ViewControllers/SpotImagesViewController.h; sourceTree = "<group>"; };
+		C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotImagesViewController.m; path = ViewControllers/SpotImagesViewController.m; sourceTree = "<group>"; };
 		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
 		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
 		C2A0E92F153E2EE100D9568E /* SpotModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotModelTests.m; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				C2A2A16C156EAD71004781F6 /* FavoriteSpotsViewController.m */,
 				C26EAA21156EE32600632C78 /* SpotClusterViewController.h */,
 				C26EAA22156EE32600632C78 /* SpotClusterViewController.m */,
+				C27F30C0158A563D002EC7B2 /* SpotImagesViewController.h */,
+				C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				C2A2A16D156EAD72004781F6 /* FavoriteSpotsViewController.m in Sources */,
 				C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */,
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
+				C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

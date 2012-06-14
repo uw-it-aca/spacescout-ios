@@ -23,6 +23,7 @@
 #import "REST.h"
 #import "DisplayOptions.h"
 #import "HoursFormat.h"
+#import "SpotImagesViewController.h"
 
 
 @interface SpotDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {
