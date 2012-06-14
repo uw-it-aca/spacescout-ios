@@ -14,14 +14,14 @@
 @synthesize image_view;
 @synthesize current_index;
 @synthesize rest;
-@synthesize swipe_left_recognizer;
-@synthesize swipe_right_recognizer;
+@synthesize pan_recognizer;
 @synthesize tap_recognizer;
 @synthesize image_data;
 @synthesize page_header;
 @synthesize page_footer;
 @synthesize prev_button;
 @synthesize next_button;
+@synthesize pan_translation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +40,7 @@
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
-    [self.view addGestureRecognizer:self.swipe_left_recognizer];
-    [self.view addGestureRecognizer:self.swipe_right_recognizer];
+    [self.view addGestureRecognizer:self.pan_recognizer];
     [self.view addGestureRecognizer:self.tap_recognizer];
     
     [self showCurrentImage];
@@ -64,6 +63,8 @@
 #pragma mark image methods
 
 -(void)showCurrentImage {
+   
+    image_view.image = nil;
     int index = [self.current_index intValue];
     int count = [self.spot.image_urls count];
 
@@ -102,8 +103,7 @@
 
 -(void)showImageWithData:(NSData *)data {
     UIImage *img = [[UIImage alloc] initWithData:data];
-    [image_view setImage:img];
-    
+    [image_view setImage:img];    
 }
 
 -(void)showNextImage {
@@ -130,25 +130,54 @@
     return YES;
 }
 
--(IBAction)swipeLeft:(id)sender {
-    [self hideScreenNavigation];
-    if ([self.current_index intValue] < [spot.image_urls count] - 1) {
-        [self showNextImage];
+-(IBAction)handlePan:(UIPanGestureRecognizer *)gesture {
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        self.pan_translation = [NSNumber numberWithFloat:0.0];
     }
+    if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [gesture translationInView:[image_view superview]];
 
+        self.pan_translation = [NSNumber numberWithFloat:[self.pan_translation floatValue] + translation.x];
+        [image_view setCenter:CGPointMake([image_view center].x + translation.x, [image_view center].y)];
+        [gesture setTranslation:CGPointZero inView:[image_view superview]];
+    }
+    else {        
+        // Doing this instead of a swipe, to make it look smoother
+        if (([self.pan_translation floatValue] > self.view.frame.size.width / 4) && ([self.current_index intValue] > 0)) {
+            image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+            [self hideScreenNavigation];
+            [self showPreviousImage];
+        }
+        else if (([self.pan_translation floatValue] < -1 * self.view.frame.size.width / 4) && ([self.current_index intValue] < [self.spot.image_urls count]-1)) 
+        {
+            image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+            [self hideScreenNavigation];
+            [self showNextImage];
+        }
+        else {
+            [UIView animateWithDuration:0.5
+                                  delay:0.0
+                                options:UIViewAnimationCurveEaseOut
+                             animations:^{   
+                                 image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+                             }
+                             completion:^(BOOL finished) {
+                             }
+             ];
+        }
+    }
 }
 
--(IBAction)swipeRight:(id)sender {
-    [self hideScreenNavigation];
-    if ([self.current_index intValue] > 0) {
-        [self showPreviousImage];
-    }
-
-}
 
 -(IBAction)screenTap:(id)sender {
     [self showScreenNavigation];
 }
+
+- (BOOL)gestureRecognizer:(UIPanGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UISwipeGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
 
 #pragma mark -
 #pragma mark button actions

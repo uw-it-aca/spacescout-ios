@@ -861,10 +861,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7Bc-0D-Iex" appends="YES" id="DrR-nR-IMv"/>
-                                    <outletCollection property="gestureRecognizers" destination="YCE-zV-dkv" appends="YES" id="CIB-Tj-AbW"/>
-                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" id="35O-4I-4T2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -941,32 +937,25 @@
                         <outlet property="next_button" destination="Fx6-Xb-DzS" id="UtG-cd-e5h"/>
                         <outlet property="page_footer" destination="H75-6b-Pmw" id="OnT-lr-qK6"/>
                         <outlet property="page_header" destination="35O-4I-4T2" id="tSA-qP-Ulf"/>
+                        <outlet property="pan_recognizer" destination="dKy-xI-7Ol" id="M9e-wb-rKY"/>
                         <outlet property="prev_button" destination="jZe-qQ-aSN" id="uOC-DV-Hgg"/>
-                        <outlet property="swipe_left_recognizer" destination="7Bc-0D-Iex" id="Bbb-nJ-fl3"/>
-                        <outlet property="swipe_right_recognizer" destination="YCE-zV-dkv" id="120-8Y-X4I"/>
                         <outlet property="tap_recognizer" destination="VJS-Tu-aYV" id="yjN-5c-ba9"/>
                     </connections>
                 </viewController>
-                <swipeGestureRecognizer direction="left" id="7Bc-0D-Iex">
-                    <connections>
-                        <action selector="swipeLeft:" destination="4PN-pK-yie" id="cI5-N4-gkr"/>
-                        <outlet property="delegate" destination="4PN-pK-yie" id="4e7-zx-lAB"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="YCE-zV-dkv">
-                    <connections>
-                        <action selector="swipeRight:" destination="4PN-pK-yie" id="Mbt-E4-Is9"/>
-                        <outlet property="delegate" destination="4PN-pK-yie" id="7ck-St-2f8"/>
-                    </connections>
-                </swipeGestureRecognizer>
                 <tapGestureRecognizer id="VJS-Tu-aYV">
                     <connections>
                         <action selector="screenTap:" destination="4PN-pK-yie" id="z6m-Zu-XlV"/>
                         <outlet property="delegate" destination="4PN-pK-yie" id="4EQ-t4-N6C"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="dKy-xI-7Ol">
+                    <connections>
+                        <action selector="handlePan:" destination="4PN-pK-yie" id="Lu4-Cg-F6C"/>
+                        <outlet property="delegate" destination="4PN-pK-yie" id="eLe-kk-iM3"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3387" y="660"/>
+            <point key="canvasLocation" x="3408" y="684"/>
         </scene>
         <!--Favorite Spots View Controller - Bookmarks-->
         <scene sceneID="1K6-Li-Krl">
@@ -1328,6 +1317,7 @@
                 <relationship kind="action" name="clickNextImgBtn:"/>
                 <relationship kind="action" name="clickPrevImgBtn:"/>
                 <relationship kind="action" name="closeGallery:"/>
+                <relationship kind="action" name="handlePan:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="action" name="screenTap:"/>
                 <relationship kind="action" name="swipeLeft:"/>
                 <relationship kind="action" name="swipeRight:"/>
@@ -1335,6 +1325,7 @@
                 <relationship kind="outlet" name="next_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="page_footer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="page_header" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pan_recognizer" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="outlet" name="prev_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="swipe_left_recognizer" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="outlet" name="swipe_right_recognizer" candidateClass="UISwipeGestureRecognizer"/>
