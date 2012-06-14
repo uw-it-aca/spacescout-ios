@@ -246,12 +246,35 @@
         return long_test;
     }
     
-    NSMutableArray *short_options = [[NSMutableArray alloc] init];
-    for (NSDictionary *option in options) {
-        [short_options addObject:[option objectForKey:@"short"]];
+    // Build a string of the short values.  If that's still too long, go down to something like "X, Y, 2 more".
+    // Assuming that if there are more than 10 options selected, the string will be too long - just cutting down on
+    // the number of string length tests.
+    NSMutableArray *options_copy = [[NSMutableArray alloc] initWithArray: options];
+    int index = 0;
+    if ([options count] > 10) {
+        [options_copy removeObjectsInRange:NSMakeRange(10, [options count] - 10)];
+        index = [options count] - 10;
     }
-    
-    return [short_options componentsJoinedByString:@", "];
+    for (; index < [options count]; index++) {
+        NSMutableArray *short_options = [[NSMutableArray alloc] init];
+        for (NSDictionary *option in options_copy) {
+            [short_options addObject:[option objectForKey:@"short"]];
+        }
+        NSString *test_string = [short_options componentsJoinedByString:@", "];
+        if (index > 0) {
+            test_string = [NSString stringWithFormat:@"%@, %i more", test_string, index];
+        }
+        CGSize short_size = [test_string sizeWithFont:selected_label.font];
+        
+        if ((title_width + short_size.width + 20) < available_width) {
+            return test_string;
+        }
+        int remove_at = [options_copy count] - 1;
+        [options_copy removeObjectAtIndex:remove_at];
+    }
+
+    // Oh boy, I guess just tell them how many selected options there are.
+    return [NSString stringWithFormat:@"%i selected", [options count]];
 }
 
 /*
