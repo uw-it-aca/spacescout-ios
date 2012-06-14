@@ -80,12 +80,10 @@
 
 -(void)showImageWithData:(NSData *)data {
     UIImage *img = [[UIImage alloc] initWithData:data];
-//    NSLog(@"Image size: %f x %f", img.size.width, img.size.height);
-//    NSLog(@"Image view size: %f x %f", image_view.frame.size.width, image_view.frame.size.height);
     [image_view setImage:img];
     
 }
-
+     
 #pragma mark -
 #pragma mark gesture methods
 
