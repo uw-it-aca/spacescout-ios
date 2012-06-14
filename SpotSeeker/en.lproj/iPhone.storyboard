@@ -874,6 +874,7 @@
                         <outlet property="image_view" destination="enD-sV-zY7" id="ppM-gl-gre"/>
                         <outlet property="swipe_left_recognizer" destination="7Bc-0D-Iex" id="Bbb-nJ-fl3"/>
                         <outlet property="swipe_right_recognizer" destination="YCE-zV-dkv" id="120-8Y-X4I"/>
+                        <outlet property="tap_recognizer" destination="VJS-Tu-aYV" id="yjN-5c-ba9"/>
                     </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="left" id="7Bc-0D-Iex">
@@ -888,6 +889,12 @@
                         <outlet property="delegate" destination="4PN-pK-yie" id="7ck-St-2f8"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="VJS-Tu-aYV">
+                    <connections>
+                        <action selector="screenTap:" destination="4PN-pK-yie" id="z6m-Zu-XlV"/>
+                        <outlet property="delegate" destination="4PN-pK-yie" id="4EQ-t4-N6C"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3356" y="692"/>
         </scene>
@@ -1248,11 +1255,13 @@
         <class className="SpotImagesViewController" superclassName="ViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotImagesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="screenTap:"/>
                 <relationship kind="action" name="swipeLeft:"/>
                 <relationship kind="action" name="swipeRight:"/>
                 <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="swipe_left_recognizer" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="outlet" name="swipe_right_recognizer" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="tap_recognizer" candidateClass="UITapGestureRecognizer"/>
             </relationships>
         </class>
         <class className="UITableSwitch" superclassName="UISwitch">

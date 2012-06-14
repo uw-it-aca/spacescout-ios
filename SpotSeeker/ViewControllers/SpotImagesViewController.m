@@ -16,6 +16,7 @@
 @synthesize rest;
 @synthesize swipe_left_recognizer;
 @synthesize swipe_right_recognizer;
+@synthesize tap_recognizer;
 @synthesize image_data;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,7 +38,8 @@
     
     [self.view addGestureRecognizer:self.swipe_left_recognizer];
     [self.view addGestureRecognizer:self.swipe_right_recognizer];
-
+    [self.view addGestureRecognizer:self.tap_recognizer];
+    
     [self showCurrentImage];
 	// Do any additional setup after loading the view.
 }
@@ -78,6 +80,8 @@
 
 -(void)showImageWithData:(NSData *)data {
     UIImage *img = [[UIImage alloc] initWithData:data];
+//    NSLog(@"Image size: %f x %f", img.size.width, img.size.height);
+//    NSLog(@"Image view size: %f x %f", image_view.frame.size.width, image_view.frame.size.height);
     [image_view setImage:img];
     
 }
@@ -86,6 +90,7 @@
 #pragma mark gesture methods
 
 -(IBAction)swipeLeft:(id)sender {
+    [self hideScreenNavigation];
     if ([self.current_index intValue] < [spot.image_urls count] - 1) {
         self.current_index = [NSNumber numberWithInt:[self.current_index intValue] + 1];
         [self showCurrentImage];
@@ -94,6 +99,7 @@
 }
 
 -(IBAction)swipeRight:(id)sender {
+    [self hideScreenNavigation];
     if ([self.current_index intValue] > 0) {
         self.current_index = [NSNumber numberWithInt:[self.current_index intValue] - 1];
         [self showCurrentImage];
@@ -101,5 +107,19 @@
 
 }
 
+-(IBAction)screenTap:(id)sender {
+    [self showScreenNavigation];
+}
+
+#pragma mark -
+#pragma mark navigation display handling
+
+-(void) showScreenNavigation {
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+-(void)hideScreenNavigation {
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 @end
