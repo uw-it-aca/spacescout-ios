@@ -40,23 +40,31 @@
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+    
     [self.view addGestureRecognizer:self.pan_recognizer];
     [self.view addGestureRecognizer:self.tap_recognizer];
+    [self recenterImageView];
     
     [self showCurrentImage];
 	// Do any additional setup after loading the view.
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];    
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+
     // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    [self showScreenNavigation];    
     return YES;
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark -
@@ -116,6 +124,10 @@
     [self showCurrentImage];
 }
 
+-(void)recenterImageView {
+    image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+}
+
 #pragma mark -
 #pragma mark gesture methods
 
@@ -133,6 +145,7 @@
 -(IBAction)handlePan:(UIPanGestureRecognizer *)gesture {
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         self.pan_translation = [NSNumber numberWithFloat:0.0];
+        [self hideScreenNavigation];
     }
     if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:[image_view superview]];
@@ -144,13 +157,14 @@
     else {        
         // Doing this instead of a swipe, to make it look smoother
         if (([self.pan_translation floatValue] > self.view.frame.size.width / 4) && ([self.current_index intValue] > 0)) {
-            image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+            [self recenterImageView];
+
             [self hideScreenNavigation];
             [self showPreviousImage];
         }
         else if (([self.pan_translation floatValue] < -1 * self.view.frame.size.width / 4) && ([self.current_index intValue] < [self.spot.image_urls count]-1)) 
         {
-            image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+            [self recenterImageView];
             [self hideScreenNavigation];
             [self showNextImage];
         }
@@ -159,7 +173,7 @@
                                   delay:0.0
                                 options:UIViewAnimationCurveEaseOut
                              animations:^{   
-                                 image_view.frame = CGRectMake(0, 0, image_view.frame.size.width, image_view.frame.size.height);
+                                 [self recenterImageView];
                              }
                              completion:^(BOOL finished) {
                              }
@@ -198,13 +212,16 @@
 #pragma mark navigation display handling
 
 -(void) showScreenNavigation {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     page_header.hidden = NO;
     page_footer.hidden = NO;
 }
 
 -(void)hideScreenNavigation {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     page_header.hidden = YES;
     page_footer.hidden = YES;
+
 }
 
 @end
