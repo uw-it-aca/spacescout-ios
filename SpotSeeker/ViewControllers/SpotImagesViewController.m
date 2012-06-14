@@ -18,6 +18,7 @@
 @synthesize swipe_right_recognizer;
 @synthesize tap_recognizer;
 @synthesize image_data;
+@synthesize page_header;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +62,10 @@
 
 -(void)showCurrentImage {
     int index = [self.current_index intValue];
+    int count = [self.spot.image_urls count];
+
+    UILabel *title = (UILabel *)[self.page_header viewWithTag:1];
+    title.text = [NSString stringWithFormat:@"%i of %i", index+1, count];
     
     if (index < [self.image_data count] && [self.image_data objectAtIndex:index] != nil) {
         [self showImageWithData:[self.image_data objectAtIndex:index]];
@@ -87,6 +92,13 @@
 #pragma mark -
 #pragma mark gesture methods
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:self.page_header]) {
+        return NO;
+    }
+    return YES;
+}
+
 -(IBAction)swipeLeft:(id)sender {
     [self hideScreenNavigation];
     if ([self.current_index intValue] < [spot.image_urls count] - 1) {
@@ -110,14 +122,21 @@
 }
 
 #pragma mark -
+#pragma mark button actions
+
+-(IBAction)closeGallery:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
 #pragma mark navigation display handling
 
 -(void) showScreenNavigation {
-    self.navigationController.navigationBar.hidden = NO;
+    page_header.hidden = NO;
 }
 
 -(void)hideScreenNavigation {
-    self.navigationController.navigationBar.hidden = YES;
+    page_header.hidden = YES;
 }
 
 @end

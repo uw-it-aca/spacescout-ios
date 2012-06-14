@@ -21,6 +21,7 @@
 -(IBAction) swipeLeft:(id)sender;
 -(IBAction) swipeRight:(id)sender;
 -(IBAction) screenTap:(id)sender;
+-(IBAction) closeGallery:(id)sender;
 
 @property (nonatomic, retain) Spot *spot;
 @property (nonatomic, retain) IBOutlet UIImageView *image_view;
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) IBOutlet UISwipeGestureRecognizer *swipe_left_recognizer;
 @property (nonatomic, strong) IBOutlet UISwipeGestureRecognizer *swipe_right_recognizer;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tap_recognizer;
+@property (nonatomic, strong) IBOutlet UIView *page_header;
 
 @property (nonatomic, retain) NSMutableArray *image_data;
 

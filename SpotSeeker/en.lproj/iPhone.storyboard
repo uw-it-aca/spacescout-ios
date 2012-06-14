@@ -693,7 +693,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="4PN-pK-yie" kind="push" identifier="image_view" id="j35-bQ-sGp"/>
+                                            <segue destination="4PN-pK-yie" kind="modal" identifier="image_view" id="j35-bQ-sGp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hours_cell" rowHeight="179" id="GeP-Wf-h7G">
@@ -854,11 +854,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6z-hz-0P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4PN-pK-yie" customClass="SpotImagesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXe-42-Ml9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="enD-sV-zY7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -866,12 +866,42 @@
                                     <outletCollection property="gestureRecognizers" destination="YCE-zV-dkv" appends="YES" id="CIB-Tj-AbW"/>
                                 </connections>
                             </imageView>
+                            <view contentMode="scaleToFill" id="35O-4I-4T2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DbK-jG-kBQ">
+                                        <rect key="frame" x="94" y="12" width="132" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vVS-1Z-cY2">
+                                        <rect key="frame" x="20" y="8" width="56" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeGallery:" destination="4PN-pK-yie" eventType="touchUpInside" id="Bdk-o3-m2q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
                     <connections>
                         <outlet property="image_view" destination="enD-sV-zY7" id="ppM-gl-gre"/>
+                        <outlet property="page_header" destination="35O-4I-4T2" id="tSA-qP-Ulf"/>
                         <outlet property="swipe_left_recognizer" destination="7Bc-0D-Iex" id="Bbb-nJ-fl3"/>
                         <outlet property="swipe_right_recognizer" destination="YCE-zV-dkv" id="120-8Y-X4I"/>
                         <outlet property="tap_recognizer" destination="VJS-Tu-aYV" id="yjN-5c-ba9"/>
@@ -896,7 +926,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3356" y="692"/>
+            <point key="canvasLocation" x="3387" y="660"/>
         </scene>
         <!--Favorite Spots View Controller - Bookmarks-->
         <scene sceneID="1K6-Li-Krl">
@@ -1178,99 +1208,6 @@
     <resources>
         <image name="star_unselected.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickClose:"/>
-            </relationships>
-        </class>
-        <class className="ListViewController" superclassName="SearchableSpotListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="screen_header" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screen_subheader" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelBtnClick:"/>
-                <relationship kind="action" name="doneBtnClick:"/>
-                <relationship kind="action" name="endTimeBtnClick:"/>
-                <relationship kind="action" name="resetBtnClick:"/>
-                <relationship kind="action" name="startTimeBtnClick:"/>
-                <relationship kind="action" name="timeSelected:"/>
-                <relationship kind="outlet" name="time_picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="MapFilterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickCancel:"/>
-                <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="SearchableSpotListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickRecenter:"/>
-            </relationships>
-        </class>
-        <class className="SearchableIndexedTableFilterViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableIndexedTableFilterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickCancel:"/>
-                <relationship kind="outlet" name="search_bar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SearchableSpotListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="SpotClusterViewController" superclassName="ListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
-        </class>
-        <class className="SpotDetailsViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SpotImagesViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotImagesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="screenTap:"/>
-                <relationship kind="action" name="swipeLeft:"/>
-                <relationship kind="action" name="swipeRight:"/>
-                <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="swipe_left_recognizer" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="swipe_right_recognizer" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="tap_recognizer" candidateClass="UITapGestureRecognizer"/>
-            </relationships>
-        </class>
-        <class className="UITableSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
