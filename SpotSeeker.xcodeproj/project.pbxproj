@@ -17,7 +17,6 @@
 		C224FBFB1536505700CD4A79 /* star_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = C224FBF91536505700CD4A79 /* star_unselected.png */; };
 		C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */; };
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
-		C2429A3F150A8600005A994A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2429A3E150A8600005A994A /* iPad.storyboard */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
 		C2429A4B150AA37C005A994A /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A4A150AA37C005A994A /* Spot.m */; };
@@ -147,7 +146,6 @@
 		C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableIndexedTableFilterViewController.m; path = ViewControllers/SearchableIndexedTableFilterViewController.m; sourceTree = "<group>"; };
 		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
 		C24181841545E16E00DAA2FC /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFilter.m; path = Models/SearchFilter.m; sourceTree = "<group>"; };
-		C2429A3E150A8600005A994A /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2429A42150A90DC005A994A /* MapFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterViewController.h; path = ViewControllers/MapFilterViewController.h; sourceTree = "<group>"; };
 		C2429A43150A90DD005A994A /* MapFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterViewController.m; path = ViewControllers/MapFilterViewController.m; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				C2FDB0F4150A802D00ED3A93 /* iPhone.storyboard */,
-				C2429A3E150A8600005A994A /* iPad.storyboard */,
 				C26DBE011587F0A200FB4DD8 /* PickerView.xib */,
 			);
 			name = StoryBoards;
@@ -714,7 +711,6 @@
 			files = (
 				C2FDB0ED150A802D00ED3A93 /* InfoPlist.strings in Resources */,
 				C2FDB0F6150A802D00ED3A93 /* iPhone.storyboard in Resources */,
-				C2429A3F150A8600005A994A /* iPad.storyboard in Resources */,
 				C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */,
 				C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */,
 				C25166691533713B002CEDB6 /* spotseeker.plist in Resources */,
@@ -911,7 +907,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -929,7 +925,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -942,9 +938,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpotSeeker-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeeker/SpotSeeker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -955,9 +951,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpotSeeker-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeeker/SpotSeeker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
