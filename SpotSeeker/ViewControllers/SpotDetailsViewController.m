@@ -117,6 +117,14 @@
         NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
         [capacity setText: capacity_string];
         
+        if (![self isOpenNow:self.spot.hours_available]) {
+            UILabel *open_now = (UILabel *)[cell viewWithTag:5];
+            open_now.hidden = true;
+        }
+
+        UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
+        self.favorite_button = fav_button;
+        
         UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
         
         
@@ -151,10 +159,6 @@
             hours_label.text = @"";            
         }
         
-        if (![self isOpenNow:self.spot.hours_available]) {
-            UILabel *open_now = (UILabel *)[cell viewWithTag:2];
-            open_now.hidden = true;
-        }
         return cell;
     }
     else if (indexPath.section == 1) {
@@ -241,6 +245,8 @@
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 200) {
+        UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.view viewWithTag:10];
+        spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
         [self.img_view setImage:img];
     }
@@ -282,7 +288,6 @@
 #pragma mark -
 #pragma mark button actions
 - (IBAction) btnClickFavorite:(id)sender {
-    
     if ([Favorites isFavorite:spot]) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
         [Favorites removeFavorite:spot];     
