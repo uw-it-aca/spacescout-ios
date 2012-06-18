@@ -1127,12 +1127,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="M24-wc-1kt">
+                                                <imageView userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFit" id="M24-wc-1kt">
                                                     <rect key="frame" x="13" y="4" width="89" height="89"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="qTl-0I-d0D">
                                                     <rect key="frame" x="110" y="4" width="185" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <activityIndicatorView opaque="NO" tag="21" contentMode="scaleToFill" animating="YES" style="gray" id="3EF-3U-bh1">
+                                                    <rect key="frame" x="48" y="38" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Spot type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="s5E-gt-bI9">
+                                                    <rect key="frame" x="110" y="29" width="197" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1356,8 +1367,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
-        <segue reference="rfQ-ts-oNK"/>
-        <segue reference="ehC-Lb-oxn"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="2aF-sA-100"/>
     </inferredMetricsTieBreakers>
 </document>

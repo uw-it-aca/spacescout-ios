@@ -13,6 +13,7 @@
 @synthesize spot_table;
 @synthesize selected_spot;
 @synthesize map_region;
+@synthesize rest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.rest = [[REST alloc] init];
+    self.rest.delegate = self;
     [self.spot_table reloadData];
 	// Do any additional setup after loading the view.
 }
@@ -78,9 +81,37 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"spot_list_display"];
     }
+ 
+    UIImageView *spot_image = (UIImageView *)[cell viewWithTag:20];
+    UIActivityIndicatorView *loading_image = (UIActivityIndicatorView *)[cell viewWithTag:21];
+
+    if ([row_spot.image_urls count]) {
+        
+        NSString *image_url = [row_spot.image_urls objectAtIndex:0];
+                
+        spot_image.hidden = TRUE;
+        loading_image.hidden = FALSE;
+        
+        __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
+        
+        [request setCompletionBlock:^{
+            UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
+            [spot_image setImage:img];    
+            
+            loading_image.hidden = TRUE;
+            spot_image.hidden = FALSE;
+            
+        }];
+        
+        [request startAsynchronous];
+    }
     
     UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
     spot_name.text = row_spot.name;
+    
+    UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
+    spot_type.text = row_spot.type;
+
     return cell;
 }
 
@@ -92,5 +123,7 @@
 
 #pragma mark -
 
+-(void)requestFromREST:(ASIHTTPRequest *)request {
+}
 
 @end
