@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest+OAuth.h"
+#import "ASIDownloadCache.h"
 
 @protocol RESTFinished;
 

@@ -14,6 +14,7 @@
 
 -(void) getURL:(NSString *)url {
 
+    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
     NSString *request_url = [self _getFullURL:url];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
