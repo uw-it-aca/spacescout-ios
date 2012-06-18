@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fhZ-sJ-vxk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -1086,30 +1086,6 @@
             </objects>
             <point key="canvasLocation" x="1830" y="25"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="JSr-nZ-uXS">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mQr-NG-Jew" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="fhZ-sJ-vxk" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qY6-cq-py3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="81r-r6-Yrw">
-                                <rect key="frame" x="142" y="211" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <segue destination="8VW-Ka-HVY" kind="modal" identifier="start_app" id="5Uf-id-02m"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-59" y="72"/>
-        </scene>
         <!--Navigation Controller - The Map-->
         <scene sceneID="9xf-6v-IZz">
             <objects>
@@ -1117,7 +1093,6 @@
                 <navigationController id="8VW-Ka-HVY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="The Map" id="m7Z-Yt-jdn"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="asa-Nv-AlH"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CIS-DL-2bc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1381,7 +1356,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5Uf-id-02m"/>
         <segue reference="em9-ZW-DQ1"/>
         <segue reference="rfQ-ts-oNK"/>
         <segue reference="ehC-Lb-oxn"/>
