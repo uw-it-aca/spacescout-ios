@@ -26,7 +26,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self performSelector:@selector(displayApp) withObject:nil afterDelay:2];
     return YES;
+}
+
+-(void)displayApp {
+    [self.window.rootViewController performSegueWithIdentifier:@"start_app" sender:self];    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
