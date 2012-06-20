@@ -86,7 +86,6 @@
     }
  
     self.current_spots = [self.current_spots sortedArrayUsingSelector:@selector(compareToSpot:)];
-    
 }
 
 #pragma mark -
@@ -126,6 +125,17 @@
         }];
         
         [request startAsynchronous];
+    }
+    
+    UILabel *distance_label = (UILabel *)[cell viewWithTag:3];
+    UILabel *distance_value = (UILabel *)[cell viewWithTag:4];
+        
+    if (row_spot.distance_from_user != nil) {
+        distance_value.text = [NSString stringWithFormat:@"%.02f", [row_spot.distance_from_user floatValue]];
+    }
+    else {
+        distance_label.hidden = YES;
+        distance_value.hidden = YES;
     }
     
     UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
