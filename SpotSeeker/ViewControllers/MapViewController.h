@@ -35,6 +35,7 @@
     MKCoordinateRegion map_region;
     NSArray *cluster_spots_to_display;
     NSMutableDictionary *current_annotations;
+    BOOL has_centered_on_location;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;

@@ -169,6 +169,11 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
+    if (has_centered_on_location) {
+        return;
+    }
+    has_centered_on_location = true;
+
     [self centerOnUserLocation];
 }
 
@@ -253,6 +258,7 @@ extern const int meters_per_latitude;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    has_centered_on_location = false;
     self.current_annotations = [[NSMutableDictionary alloc] init];
     map_view.delegate = self;
 

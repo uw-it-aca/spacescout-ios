@@ -142,8 +142,17 @@
     spot_name.text = row_spot.name;
     
     UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
-    spot_type.text = row_spot.type;
-
+    
+    NSString *type_display = row_spot.type;
+    
+    if (row_spot.capacity) {
+        type_display = [NSString stringWithFormat:@"%@, seats %i", type_display, [row_spot.capacity intValue]];
+    }
+    spot_type.text = type_display;
+  
+    UILabel *location_description = (UILabel *)[cell viewWithTag:5];
+    location_description.text = [row_spot.extended_info objectForKey:@"location_description"];
+    
     return cell;
 }
 
