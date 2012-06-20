@@ -42,6 +42,7 @@
 @synthesize room_number;
 @synthesize description;
 @synthesize rest;
+@synthesize distance_from_user;
 
 - (void) getListBySearch: (NSDictionary *)arguments {
     REST *_rest = [[REST alloc] init];

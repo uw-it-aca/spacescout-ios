@@ -29,6 +29,7 @@
     [super viewDidLoad];
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
+    [self sortSpots];
     [self.spot_table reloadData];
 	// Do any additional setup after loading the view.
 }
@@ -64,7 +65,27 @@
 }
 
 -(void) showFoundSpots {
+    [self sortSpots];
     [self.spot_table reloadData];
+}
+
+#pragma mark -
+#pragma mark sorting methods
+
+-(void)sortSpots {
+    for (spot in self.current_spots) {
+        if (self.map_view.userLocation == nil) {
+            spot.distance_from_user = nil;
+        }
+        else {
+            CLLocation *spot_location = [[CLLocation alloc] initWithLatitude:[spot.latitude floatValue] longitude:[spot.longitude floatValue]];
+            double meters = [spot_location distanceFromLocation:self.map_view.userLocation.location];
+            double miles = meters * 0.000621371192;
+            spot.distance_from_user = [NSNumber numberWithFloat:miles];
+        }
+    }
+    
+    
 }
 
 #pragma mark -

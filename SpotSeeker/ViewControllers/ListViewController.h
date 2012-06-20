@@ -17,7 +17,6 @@
     IBOutlet UITableView *spot_table;
     Spot *selected_spot;
     MKCoordinateRegion map_region;
-
 }
 
 @property (nonatomic, retain) UITableView *spot_table;

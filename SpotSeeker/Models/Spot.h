@@ -47,6 +47,9 @@
     NSString *room_number;
     NSString *description;
     REST *rest;
+    
+    // For the list view, in miles
+    NSNumber *distance_from_user;
 }
 
 - (void) getListBySearch: (NSDictionary *)arguments ;
@@ -73,6 +76,7 @@
 @property (nonatomic, retain) NSNumber *floor;
 @property (nonatomic, retain) NSString *room_number;
 @property (nonatomic, retain) NSString *description;
+@property (nonatomic, retain) NSNumber *distance_from_user;
 
 @end
 
