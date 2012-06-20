@@ -131,7 +131,13 @@
     UILabel *distance_value = (UILabel *)[cell viewWithTag:4];
         
     if (row_spot.distance_from_user != nil) {
-        distance_value.text = [NSString stringWithFormat:@"%.02f", [row_spot.distance_from_user floatValue]];
+        float distance = [row_spot.distance_from_user floatValue];
+        if (distance > 1.0) {
+            distance_value.text = [NSString stringWithFormat:@"%.01f", [row_spot.distance_from_user floatValue]];   
+        }
+        else {
+            distance_value.text = [NSString stringWithFormat:@"%.02f", [row_spot.distance_from_user floatValue]];   
+        }
     }
     else {
         distance_label.hidden = YES;
