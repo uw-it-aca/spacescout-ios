@@ -166,5 +166,120 @@
     NSLog(@"Request failed");
 }
 
+#pragma mark -
+#pragma mark sorting for list views
+
+-(NSComparisonResult)compareToSpot:(Spot *)spot {
+    /*
+    Proximity to current location (when no location authorized, do not show the distance in the list view and sort alpha by building instead)
+    Alpha by building name
+    Floor number (basement, 1, 2, etc. -- OR, lower level, main floor, upper level)
+    Room number
+    Alpha by space* name
+    By room type (according to the order we listed in the search screen)
+    By number of seats (ascending)
+     */
+     
+    if (self.distance_from_user && spot.distance_from_user) {
+        NSNumber *d1 = [NSNumber numberWithInt:(int)([self.distance_from_user floatValue] * 100.0)];
+        NSNumber *d2 = [NSNumber numberWithInt:(int)([spot.distance_from_user floatValue] * 100.0)];
+
+        if (![d1 isEqualToNumber:d2]) {
+            return [d1 compare:d2];
+        }
+    }
+    
+    if (![self.building_name isEqualToString:spot.building_name]) {
+        return [self.building_name compare:spot.building_name];
+    }
+    
+    NSNumber *my_floor = [self numberFromFloorString:self.floor];
+    NSNumber *their_floor = [self numberFromFloorString:spot.floor];
+    
+    if (![my_floor isEqualToNumber:their_floor]) {
+        return [my_floor compare:their_floor];
+    }
+
+    if (![self.room_number isEqualToString:spot.room_number]) {
+        return [self.room_number compare:spot.room_number];
+    }
+
+    if (![self.name isEqualToString:spot.name]) {
+        return [self.name compare:spot.name];
+    }
+
+    NSNumber *my_type = [self numberFromSpotType:self.type];
+    NSNumber *their_type = [self numberFromSpotType:spot.type];
+    
+    if (![my_type isEqualToNumber:their_type]) {
+        return [my_type compare:their_type];
+    }
+    
+    if (![self.capacity isEqualToNumber:spot.capacity]) {
+        return [self.capacity compare:spot.capacity];
+    }
+    
+    return NSOrderedSame;
+}
+
+-(NSNumber *)numberFromSpotType:(NSString *)spot_type {
+    if ([spot_type isEqualToString:@"study_room"]) {
+        return [NSNumber numberWithInt:0];
+    }
+    if ([spot_type isEqualToString:@"study_space"]) {
+        return [NSNumber numberWithInt:1];
+    }
+    if ([spot_type isEqualToString:@"computer_lab"]) {
+        return [NSNumber numberWithInt:2];
+    }
+    if ([spot_type isEqualToString:@"studio"]) {
+        return [NSNumber numberWithInt:3];
+    }
+    if ([spot_type isEqualToString:@"conference"]) {
+        return [NSNumber numberWithInt:4];
+    }
+    if ([spot_type isEqualToString:@"open"]) {
+        return [NSNumber numberWithInt:5];
+    }
+    if ([spot_type isEqualToString:@"lounge"]) {
+        return [NSNumber numberWithInt:6];
+    }
+    if ([spot_type isEqualToString:@"cafe"]) {
+        return [NSNumber numberWithInt:7];
+    }
+    if ([spot_type isEqualToString:@"outdoors"]) {
+        return [NSNumber numberWithInt:8];
+    }
+
+    return [NSNumber numberWithInt:-1];
+}
+
+-(NSNumber *)numberFromFloorString:(NSString *)_floor {
+    if (_floor == nil) {
+        return [NSNumber numberWithInt:-10];        
+    }
+    if ([_floor isEqualToString:@"Basement"]) {
+        return [NSNumber numberWithInt:-1];
+    }
+    
+    if ([_floor isEqualToString:@"Main floor"]) {
+        return [NSNumber numberWithInt:1];
+    }
+    
+    if ([_floor isEqualToString:@"Upper floor"]) {
+        return [NSNumber numberWithInt:2];
+    }
+    
+    NSScanner *floor_finder = [NSScanner scannerWithString:_floor];
+    int number;
+    [floor_finder scanInt:&number];
+    
+    if (number) {
+        return [NSNumber numberWithInt:number];
+    }
+    
+    return [NSNumber numberWithInt:-10];
+
+}
 
 @end

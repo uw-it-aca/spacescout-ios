@@ -84,7 +84,8 @@
             spot.distance_from_user = [NSNumber numberWithFloat:miles];
         }
     }
-    
+ 
+    self.current_spots = [self.current_spots sortedArrayUsingSelector:@selector(compareToSpot:)];
     
 }
 

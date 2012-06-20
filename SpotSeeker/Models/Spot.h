@@ -30,7 +30,7 @@
     NSString *name;
     NSString *type;
     NSString *uri;
-    NSString *capacity;
+    NSNumber *capacity;
     NSMutableDictionary *hours_available;
     NSString *display_access_restrictions;
     NSMutableArray *image_urls;
@@ -43,7 +43,7 @@
     NSNumber *longitude;
     NSNumber *height_from_sea_level;
     NSString *building_name;
-    NSNumber *floor;
+    NSString *floor;
     NSString *room_number;
     NSString *description;
     REST *rest;
@@ -54,6 +54,7 @@
 
 - (void) getListBySearch: (NSDictionary *)arguments ;
 -(NSString *) buildURLWithParams:(NSDictionary *)param_dictionary;
+-(NSComparisonResult)compareToSpot:(Spot *)spot;
 
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
@@ -62,7 +63,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSString *uri;
-@property (nonatomic, retain) NSString *capacity;
+@property (nonatomic, retain) NSNumber *capacity;
 @property (nonatomic, retain) NSMutableDictionary *hours_available;
 @property (nonatomic, retain) NSString *display_access_restrictions;
 @property (nonatomic, retain) NSMutableArray *image_urls;
@@ -73,7 +74,7 @@
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSNumber *height_from_sea_level;
 @property (nonatomic, retain) NSString *building_name;
-@property (nonatomic, retain) NSNumber *floor;
+@property (nonatomic, retain) NSString *floor;
 @property (nonatomic, retain) NSString *room_number;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSNumber *distance_from_user;

@@ -16,7 +16,7 @@
                          { "title":"Conference/classroom", "subtitle":"Larger-capacity rooms primarily used for classes, meetings, or workshops", "short":"Clsrm", "search_value":"conference" },
                          { "title":"Open space", "subtitle":"Area for use by multiple individuals or groups", "short":"Open sp", "search_value":"open" },
                          { "title":"Lounge", "subtitle":"Indoor casual space", "short":"Lng", "search_value":"lounge" },
-                         { "title":"Café", "subtitle":"Space that functions primarily as an eatery", "short":"Café", "search_value":"Café" },
+                         { "title":"Café", "subtitle":"Space that functions primarily as an eatery", "short":"Café", "search_value":"cafe" },
                          { "title":"Outdoor area", "subtitle":"Outdoor casual space", "short":"Outdr", "search_value":"outdoors" }
                          ]
              },
