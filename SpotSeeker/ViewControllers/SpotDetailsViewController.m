@@ -161,7 +161,13 @@
         [spot_name setText:self.spot.name];
         
         UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
-        [spot_type setText: self.spot.type];
+        
+        NSString *type_and_capacity = self.spot.type;
+        
+        if (spot.capacity > 0) {
+            type_and_capacity = [NSString stringWithFormat:@"%@, seats %@", type_and_capacity, spot.capacity];
+        }
+        [spot_type setText: type_and_capacity];
         
         UILabel *capacity = (UILabel *)[cell viewWithTag:3];
         NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
