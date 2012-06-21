@@ -73,15 +73,53 @@
         
         return cell.frame.size.height - (unneeded * hours_height);
     }
+    else if (indexPath.section == 2) {
+        int offset = 0;
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"access_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"access_notes_cell"];
+                }
+                UILabel *display = (UILabel *)[cell viewWithTag:2];
+
+                CGSize expected = [[self.spot.extended_info objectForKey:@"access_notes"] sizeWithFont:display.font constrainedToSize:CGSizeMake(display.frame.size.width, 500.0)  lineBreakMode:display.lineBreakMode];
+
+                return expected.height + 20.0;
+            }
+            offset++;
+        }
+        
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reservation_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reservation_notes_cell"];
+                }
+                UILabel *display = (UILabel *)[cell viewWithTag:2];
+
+                CGSize expected = [[self.spot.extended_info objectForKey:@"reservation_notes"] sizeWithFont:display.font constrainedToSize:CGSizeMake(display.frame.size.width, 500.0)  lineBreakMode:display.lineBreakMode];
+                
+                return expected.height + 20.0;
+            }
+            offset++;
+        }
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
+        }
+        return cell.frame.size.height;
+    }
 
     // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
     else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
         }
         return cell.frame.size.height;
-                
+   
     }
     
 }
@@ -96,10 +134,17 @@
             count++;
         }
         return count;
-//        return [self.environment_fields count];
     }
     else if (section == 2) {
-        return [self.equipment_fields count];
+        int count = 2;
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            count++;
+        }
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+            count++;
+        }
+        
+        return count;
     }
     return 0;
 }
@@ -219,13 +264,67 @@
         }
     }
     else if (indexPath.section == 2)  {
+        int offset = 0;
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"access_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"access_notes_cell"];
+                }    
+                
+                UILabel *notes = (UILabel *)[cell viewWithTag:2];
+                
+                CGSize expected = [[self.spot.extended_info objectForKey:@"access_notes"] sizeWithFont:notes.font constrainedToSize:CGSizeMake(notes.frame.size.width, 500.0)  lineBreakMode:notes.lineBreakMode];
+
+                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, expected.height);
+                
+                notes.text = [self.spot.extended_info objectForKey:@"access_notes"];
+                return cell;
+            }
+            offset++;
+        }
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+            
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reservation_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reservation_notes_cell"];
+                }    
+                UILabel *notes = (UILabel *)[cell viewWithTag:2];
+ 
+                CGSize expected = [[self.spot.extended_info objectForKey:@"reservation_notes"] sizeWithFont:notes.font constrainedToSize:CGSizeMake(notes.frame.size.width, 500.0)  lineBreakMode:notes.lineBreakMode];
+                
+                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, expected.height);
+                
+                notes.text = [self.spot.extended_info objectForKey:@"reservation_notes"];
+
+                return cell;
+            }
+            offset++;
+        }
+        
+        if (indexPath.row - offset == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
+            }    
+            return cell;
+        }
+
+        if (indexPath.row - offset == 1) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"google_maps_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"google_maps_cell"];
+            }    
+            return cell;
+        }
+
+        
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
         }    
-        NSDictionary *equipment_type = [self.equipment_fields objectAtIndex:indexPath.row];
-        UILabel *type = (UILabel *)[cell viewWithTag:1];
-        [type setText: [equipment_type objectForKey:@"display"]];
         return cell;
     }
     // This fallback should never be reached

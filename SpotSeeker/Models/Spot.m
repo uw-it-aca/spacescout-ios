@@ -119,6 +119,9 @@
         }
         spot.hours_available = _hours_available;
     
+        [spot.extended_info setObject:@"This is how you get in.  This can be longish text, and the cell needs to wrap it as needed, and grow, and so on." forKey:@"access_notes"];
+        [spot.extended_info setObject:@"This is how you reserve the space" forKey:@"reservation_notes"];
+        
         [spot_list addObject:spot];
     }
     
