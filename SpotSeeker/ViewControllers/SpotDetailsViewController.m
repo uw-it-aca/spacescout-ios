@@ -149,6 +149,27 @@
     return 0;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        int offset = 0;
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            offset++;
+        }
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+            offset++;
+        }
+   
+        if (indexPath.row - offset == 0) {
+            NSLog(@"Show in our app");
+        }
+        else if (indexPath.row - offset == 1) {
+            UIApplication *app = [UIApplication sharedApplication];  
+            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy]];
+            [app openURL:[NSURL URLWithString:url]];  
+        }
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {       
