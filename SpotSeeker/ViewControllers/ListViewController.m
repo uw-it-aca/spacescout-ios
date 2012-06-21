@@ -126,6 +126,9 @@
         
         [request startAsynchronous];
     }
+    else {
+        loading_image.hidden = TRUE;
+    }
     
     UILabel *distance_label = (UILabel *)[cell viewWithTag:3];
     UILabel *distance_value = (UILabel *)[cell viewWithTag:4];

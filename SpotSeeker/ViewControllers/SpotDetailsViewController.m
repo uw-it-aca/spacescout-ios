@@ -57,7 +57,10 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
         }
         
-        return cell.frame.size.height;
+        if ([self.spot.image_urls count]) {
+            return cell.frame.size.height;
+        }
+        return 120;
     }
     else if (indexPath.section == 0 && indexPath.row == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
@@ -173,6 +176,11 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        if ([self.spot.image_urls count] > 0) {
+            [self performSegueWithIdentifier:@"image_view" sender:self];
+        }
+    }
     if (indexPath.section == 2) {
         int offset = 0;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
@@ -229,6 +237,10 @@
         
         UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
         
+        if ([spot.image_urls count] == 0) {
+            UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
+            spinner.hidden = YES;
+        }
         
         if (self.img_view == nil) {
             self.img_view = spot_image;
