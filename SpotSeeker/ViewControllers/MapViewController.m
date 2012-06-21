@@ -127,7 +127,7 @@ extern const int meters_per_latitude;
     pinView.image = [UIImage imageNamed:image_name];
     
     // XXX - This is the distance from the center of the image to the "point" of the pin drop. Needs to be updated with the images.
-    pinView.centerOffset = CGPointMake(10, -12);
+    pinView.centerOffset = CGPointMake(5, -20);
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
