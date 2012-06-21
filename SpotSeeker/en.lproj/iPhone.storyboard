@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="refresh" id="j22-9e-vnm">
+                                    <barButtonItem systemItem="compose" id="j22-9e-vnm">
                                         <connections>
                                             <action selector="btnClickRecenter:" destination="2" id="7ty-oU-Znv"/>
                                         </connections>
@@ -34,7 +34,7 @@
                                     <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
                                     <barButtonItem style="plain" id="lHy-1N-aSN">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
-                                            <rect key="frame" x="64" y="8" width="207" height="30"/>
+                                            <rect key="frame" x="72" y="8" width="207" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
@@ -777,8 +777,76 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notes_bubble_cell" rowHeight="86" id="bVN-xB-1uX">
+                                        <rect key="frame" x="0.0" y="479" width="320" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view autoresizesSubviews="NO" tag="20" contentMode="scaleToFill" id="QzU-R6-d5u">
+                                                    <rect key="frame" x="21" y="16" width="260" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view autoresizesSubviews="NO" tag="21" contentMode="scaleToFill" id="Mpu-7f-ypZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="33"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Access Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EFZ-gF-2X3">
+                                                                    <rect key="frame" x="36" y="7" width="118" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="see below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GW9-O4-Oa8">
+                                                                    <rect key="frame" x="136" y="7" width="114" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="asterisks.png" id="JTu-H0-vvp">
+                                                                    <rect key="frame" x="6" y="6" width="22" height="22"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view autoresizesSubviews="NO" tag="22" contentMode="scaleToFill" id="rGJ-15-VFp">
+                                                            <rect key="frame" x="0.0" y="30" width="260" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tools.png" id="Ko3-Nj-6DV">
+                                                                    <rect key="frame" x="7" y="3" width="22" height="23"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                </imageView>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reservations required:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JCh-dC-Jit">
+                                                                    <rect key="frame" x="37" y="5" width="148" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="see below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qlr-cX-N2v">
+                                                                    <rect key="frame" x="186" y="5" width="83" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.9321010035143642" green="0.75469280517133064" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="equipment_cell" id="Bb4-vc-kRg">
-                                        <rect key="frame" x="0.0" y="479" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="565" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -800,7 +868,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="environment_cell" id="aox-zp-QVD">
-                                        <rect key="frame" x="0.0" y="523" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="609" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -822,7 +890,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="access_notes_cell" id="vOm-er-cbx">
-                                        <rect key="frame" x="0.0" y="567" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="653" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -844,7 +912,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reservation_notes_cell" id="myt-pG-L0I">
-                                        <rect key="frame" x="0.0" y="611" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="697" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -866,7 +934,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="map_view_cell" id="Sba-ta-7Ic">
-                                        <rect key="frame" x="0.0" y="655" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="741" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -884,7 +952,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="google_maps_cell" id="PbZ-3r-Jyw">
-                                        <rect key="frame" x="0.0" y="699" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="785" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -1363,14 +1431,115 @@
         <image name="star_unselected.png" width="41" height="32"/>
         <image name="tools.png" width="22" height="22"/>
     </resources>
+    <classes>
+        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickClose:"/>
+            </relationships>
+        </class>
+        <class className="ListViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="screen_header" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screen_subheader" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelBtnClick:"/>
+                <relationship kind="action" name="doneBtnClick:"/>
+                <relationship kind="action" name="endTimeBtnClick:"/>
+                <relationship kind="action" name="resetBtnClick:"/>
+                <relationship kind="action" name="startTimeBtnClick:"/>
+                <relationship kind="action" name="timeSelected:"/>
+                <relationship kind="outlet" name="time_picker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="MapFilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="action" name="btnClickSearch:"/>
+                <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="SearchableSpotListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickRecenter:"/>
+            </relationships>
+        </class>
+        <class className="SearchableIndexedTableFilterViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableIndexedTableFilterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickCancel:"/>
+                <relationship kind="outlet" name="search_bar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SearchableSpotListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SpotClusterViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
+        </class>
+        <class className="SpotDetailsViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickFavorite:"/>
+                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SpotImagesViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotImagesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clickNextImgBtn:"/>
+                <relationship kind="action" name="clickPrevImgBtn:"/>
+                <relationship kind="action" name="closeGallery:"/>
+                <relationship kind="action" name="handlePan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="handlePinch:" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="action" name="screenTap:"/>
+                <relationship kind="outlet" name="activity_indicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="next_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="page_footer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="page_header" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pan_recognizer" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="pinch_recognizer" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="outlet" name="prev_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tap_recognizer" candidateClass="UITapGestureRecognizer"/>
+            </relationships>
+        </class>
+        <class className="UITableSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableSwitch.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Zv8-Ju-hZd"/>
-        <segue reference="2aF-sA-100"/>
-        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>

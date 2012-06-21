@@ -73,6 +73,26 @@
         
         return cell.frame.size.height - (unneeded * hours_height);
     }
+    else if (indexPath.section == 0 && indexPath.row == 2) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notes_bubble_cell"];
+        }
+        
+        float base_size = cell.frame.size.height;
+
+        if ([self.spot.extended_info objectForKey:@"access_notes"] == nil) {
+            UIView *notes = (UIView *)[cell viewWithTag:21];
+            base_size -= notes.frame.size.height - 10;
+        }
+
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] == nil) {
+            UIView *notes = (UIView *)[cell viewWithTag:22];
+            base_size -= notes.frame.size.height - 10;
+        }
+
+        return base_size;
+    }
     else if (indexPath.section == 2) {
         int offset = 0;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
@@ -126,6 +146,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil || [self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+            return 3;
+        }
         return 2;
     }
     if (section == 1) {
@@ -238,6 +261,36 @@
             hours_label.text = @"";            
         }
         
+        return cell;
+    }
+    else if (indexPath.section == 0 && indexPath.row == 2) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notes_bubble_cell"];
+        }
+        
+        if ([self.spot.extended_info objectForKey:@"access_notes"] == nil) {
+            UIView *reservation_notes = (UIView *)[cell viewWithTag:22];
+
+            UIView *notes = (UIView *)[cell viewWithTag:21];
+            notes.hidden = YES;
+            
+            // Need to move the reservation notes up
+            reservation_notes.frame = CGRectMake(reservation_notes.frame.origin.x, notes.frame.origin.y, reservation_notes.frame.size.width, reservation_notes.frame.size.height);
+            UIView *wrapper = (UIView *)[cell viewWithTag:20];
+            wrapper.frame = CGRectMake(wrapper.frame.origin.x, wrapper.frame.origin.y, wrapper.frame.size.width, reservation_notes.frame.size.height + 4);
+
+        }
+        
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] == nil) {
+            UIView *access_notes = (UIView *)[cell viewWithTag:21];
+            UIView *notes = (UIView *)[cell viewWithTag:22];
+            notes.hidden = YES;
+            UIView *wrapper = (UIView *)[cell viewWithTag:20];
+            
+            wrapper.frame = CGRectMake(wrapper.frame.origin.x, wrapper.frame.origin.y, wrapper.frame.size.width, access_notes.frame.size.height + 4);
+        }
+
         return cell;
     }
     else if (indexPath.section == 1) {
