@@ -24,7 +24,7 @@
 #import "DisplayOptions.h"
 #import "HoursFormat.h"
 #import "SpotImagesViewController.h"
-
+#import "SingleSpotMapViewController.h"
 
 @interface SpotDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {
     Spot *spot;

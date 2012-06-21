@@ -183,7 +183,7 @@
         }
    
         if (indexPath.row - offset == 0) {
-            NSLog(@"Show in our app");
+            // ...
         }
         else if (indexPath.row - offset == 1) {
             UIApplication *app = [UIApplication sharedApplication];  
@@ -522,6 +522,11 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"image_view"]) {
         SpotImagesViewController *destination = (SpotImagesViewController *)[segue destinationViewController];
+        destination.spot = self.spot;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"map_display"]) {
+        SingleSpotMapViewController *destination = (SingleSpotMapViewController *)[segue destinationViewController];
         destination.spot = self.spot;
     }
 }

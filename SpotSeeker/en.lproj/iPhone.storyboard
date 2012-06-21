@@ -950,6 +950,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="tFu-VE-Lvr" kind="push" identifier="map_display" id="lzT-Ni-9kQ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="google_maps_cell" id="PbZ-3r-Jyw">
                                         <rect key="frame" x="0.0" y="785" width="320" height="45"/>
@@ -978,10 +981,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Yev-Ct-bwQ"/>
+                    <navigationItem key="navigationItem" id="Yev-Ct-bwQ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
+                    </navigationItem>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2890" y="649"/>
+            <point key="canvasLocation" x="2889" y="848"/>
         </scene>
         <!--Spot Images View Controller-->
         <scene sceneID="jeK-Q6-heI">
@@ -1104,6 +1109,35 @@
                 </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3408" y="684"/>
+        </scene>
+        <!--Single Spot Map View Controller-->
+        <scene sceneID="d4a-jq-xVa">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcI-TN-IOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="tFu-VE-Lvr" customClass="SingleSpotMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cc4-pH-RqL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="tsY-Fp-VO0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tFu-VE-Lvr" id="nqT-CB-VCT"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="glk-rS-omI">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ByD-Yg-bsd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="map_view" destination="tsY-Fp-VO0" id="Gxt-jF-KN1"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3408" y="1262"/>
         </scene>
         <!--Favorite Spots View Controller - Bookmarks-->
         <scene sceneID="1K6-Li-Krl">
@@ -1489,6 +1523,12 @@
         </class>
         <class className="SearchableSpotListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SingleSpotMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleSpotMapViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
             </relationships>
