@@ -44,7 +44,7 @@
         return @"Environment";
     }
     if (section == 2) {
-        return @"Equipment";
+        return @"Getting Here";
     }
     return @"";
 }
@@ -91,7 +91,12 @@
         return 2;
     }
     if (section == 1) {
-        return [self.environment_fields count];
+        int count = [self.environment_fields count];
+        if ([self.equipment_fields count] > 0) {
+            count++;
+        }
+        return count;
+//        return [self.environment_fields count];
     }
     else if (section == 2) {
         return [self.equipment_fields count];
@@ -164,21 +169,54 @@
         return cell;
     }
     else if (indexPath.section == 1) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
+        int attribute_offset = 0;
+        if ([self.equipment_fields count] > 0) {
+            attribute_offset = 1;
         }
-        UILabel *type = (UILabel *)[cell viewWithTag:1];
-        UILabel *value = (UILabel *)[cell viewWithTag:2];
         
-        NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row];
-        NSString *attribute_key = [attribute objectForKey:@"attribute"];
-        NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
-        
-        [type setText: [attribute objectForKey:@"display"]];
-        [value setText: attribute_value];
-        
-        return cell;
+        if (indexPath.row == 0 && attribute_offset) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
+            }    
+            
+            NSMutableArray *display_fields = [[NSMutableArray alloc] init];
+            for (NSMutableDictionary *field in self.equipment_fields) {
+                [display_fields addObject:[field objectForKey:@"display"]];
+            }
+            
+            UILabel *type = (UILabel *)[cell viewWithTag:1];
+            type.text = [display_fields componentsJoinedByString:@", "];
+
+            return cell;
+        }
+        else {        
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
+            }
+                                   
+            UILabel *value = (UILabel *)[cell viewWithTag:2];
+            
+            NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row - attribute_offset];
+            NSString *attribute_key = [attribute objectForKey:@"attribute"];
+            NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
+
+            
+            UIImageView *icon_view = (UIImageView *)[cell viewWithTag:1];
+            
+            if ([attribute_key isEqualToString:@"food_nearby"]) {
+                UIImage *icon = [UIImage imageNamed:@"cafe.png"];
+                icon_view.image = icon;
+            }
+            else if ([attribute_key isEqualToString:@"noise_level"]) {
+                UIImage *icon = [UIImage imageNamed:@"noise.png"];
+                icon_view.image = icon;
+            }
+            
+            [value setText: attribute_value];
+            return cell;
+        }
     }
     else if (indexPath.section == 2)  {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];

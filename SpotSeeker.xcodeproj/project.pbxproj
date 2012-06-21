@@ -129,6 +129,11 @@
 		C2BF05481549F85E002FA3EA /* MapFilterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */; };
 		C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
+		C2D4E31315938BAB00B594C5 /* asterisks.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30E15938BAB00B594C5 /* asterisks.png */; };
+		C2D4E31415938BAB00B594C5 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30F15938BAB00B594C5 /* cafe.png */; };
+		C2D4E31515938BAB00B594C5 /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31015938BAB00B594C5 /* noise.png */; };
+		C2D4E31615938BAB00B594C5 /* reservable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31115938BAB00B594C5 /* reservable.png */; };
+		C2D4E31715938BAB00B594C5 /* tools.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31215938BAB00B594C5 /* tools.png */; };
 		C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E0937D1542315A0015BF4B /* UITableSwitch.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
@@ -330,6 +335,11 @@
 		C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterTimeViewController.m; path = ViewControllers/MapFilterTimeViewController.m; sourceTree = "<group>"; };
 		C2C0088715476865004AF6F7 /* REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REST.h; path = Models/REST.h; sourceTree = "<group>"; };
 		C2C0088815476865004AF6F7 /* REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REST.m; path = Models/REST.m; sourceTree = "<group>"; };
+		C2D4E30E15938BAB00B594C5 /* asterisks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asterisks.png; sourceTree = "<group>"; };
+		C2D4E30F15938BAB00B594C5 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
+		C2D4E31015938BAB00B594C5 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
+		C2D4E31115938BAB00B594C5 /* reservable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reservable.png; sourceTree = "<group>"; };
+		C2D4E31215938BAB00B594C5 /* tools.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tools.png; sourceTree = "<group>"; };
 		C2E0937C1542315A0015BF4B /* UITableSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableSwitch.h; path = Widgets/UITableSwitch.h; sourceTree = "<group>"; };
 		C2E0937D1542315A0015BF4B /* UITableSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableSwitch.m; path = Widgets/UITableSwitch.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpotSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -527,6 +537,7 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C2D4E30D15938BAB00B594C5 /* details */,
 				C24B24E0158BC464001C4B3F /* star_selected.png */,
 				C24B24E1158BC464001C4B3F /* star_unselected.png */,
 				C2AFB778156C36D500D19E7A /* Pin images */,
@@ -620,6 +631,19 @@
 				C2B2F653153E225800292FDC /* NSString+URLEncode.m */,
 			);
 			path = "ASIHTTP+OAuth";
+			sourceTree = "<group>";
+		};
+		C2D4E30D15938BAB00B594C5 /* details */ = {
+			isa = PBXGroup;
+			children = (
+				C2D4E30E15938BAB00B594C5 /* asterisks.png */,
+				C2D4E30F15938BAB00B594C5 /* cafe.png */,
+				C2D4E31015938BAB00B594C5 /* noise.png */,
+				C2D4E31115938BAB00B594C5 /* reservable.png */,
+				C2D4E31215938BAB00B594C5 /* tools.png */,
+			);
+			name = details;
+			path = images/details;
 			sourceTree = "<group>";
 		};
 		C2E09380154231610015BF4B /* Widgets */ = {
@@ -865,6 +889,11 @@
 				C242C2E9159260140045924B /* pin29@2x.png in Resources */,
 				C242C2EA159260140045924B /* pin30.png in Resources */,
 				C242C2EB159260140045924B /* pin30@2x.png in Resources */,
+				C2D4E31315938BAB00B594C5 /* asterisks.png in Resources */,
+				C2D4E31415938BAB00B594C5 /* cafe.png in Resources */,
+				C2D4E31515938BAB00B594C5 /* noise.png in Resources */,
+				C2D4E31615938BAB00B594C5 /* reservable.png in Resources */,
+				C2D4E31715938BAB00B594C5 /* tools.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

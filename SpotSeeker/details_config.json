@@ -7,7 +7,9 @@
     ],
     "environment":[
                    { "attribute":"surfaces", "display":"Surfaces" },
-                   { "attribute":"seating", "display":"Seating" }
+                   { "attribute":"seating", "display":"Seating" },
+                   { "attribute":"food_nearby", "display":"Food/Coffee nearby" },
+                   { "attribute":"noise_level", "display":"Noise level" }
                    
     ]  
 }
