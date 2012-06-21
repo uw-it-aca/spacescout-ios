@@ -193,13 +193,13 @@
     }
     else {        
         // Doing this instead of a swipe, to make it look smoother
-        if (([self.pan_translation floatValue] > self.view.frame.size.width / 4) && ([self.current_index intValue] > 0)) {
+        if (([self.pan_translation floatValue] > self.view.frame.size.width / 10) && ([self.current_index intValue] > 0)) {
             [self recenterImageView];
 
             [self hideScreenNavigation];
             [self showPreviousImage];
         }
-        else if (([self.pan_translation floatValue] < -1 * self.view.frame.size.width / 4) && ([self.current_index intValue] < [self.spot.image_urls count]-1)) 
+        else if (([self.pan_translation floatValue] < -1 * self.view.frame.size.width / 10) && ([self.current_index intValue] < [self.spot.image_urls count]-1)) 
         {
             [self recenterImageView];
             [self hideScreenNavigation];
