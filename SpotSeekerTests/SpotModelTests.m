@@ -19,7 +19,7 @@
 -(void)testSingleValue {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:[[NSArray alloc] initWithObjects: @"search_value", nil] forKey:@"search_key"];
+    [dict setObject:[[NSMutableArray alloc] initWithObjects: @"search_value", nil] forKey:@"search_key"];
     
     NSString *result = [[Spot alloc] buildURLWithParams:dict];
     
@@ -29,7 +29,7 @@
 -(void)testMultiValue {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:[[NSArray alloc] initWithObjects: @"search_value2", @"search_value1", nil] forKey:@"search_key"];
+    [dict setObject:[[NSMutableArray alloc] initWithObjects: @"search_value2", @"search_value1", nil] forKey:@"search_key"];
     
     NSString *result = [[Spot alloc] buildURLWithParams:dict];
     
@@ -39,7 +39,7 @@
 -(void)testEncoding {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:[[NSArray alloc] initWithObjects: @"#\n&?%", nil] forKey:@"search_key"];
+    [dict setObject:[[NSMutableArray alloc] initWithObjects: @"#\n&?%", nil] forKey:@"search_key"];
     
     NSString *result = [[Spot alloc] buildURLWithParams:dict];
     
@@ -214,46 +214,50 @@
     beta.name = @"BB";
     gamma.name = @"BB";
 
-    alpha.type = @"study_room";
-    beta.type = @"study_space";
-    gamma.type = @"study_space";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"study_room", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
+    gamma.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
     
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     STAssertEquals([beta compareToSpot:alpha], NSOrderedDescending, @"Further things sort properly");
     STAssertEquals([beta compareToSpot:gamma], NSOrderedSame, @"Only comparing significant digits");   
 
-    alpha.type = @"study_space";
-    beta.type = @"computer_lab";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"computer_lab", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"computer_lab";
-    beta.type = @"studio";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"computer_lab", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"studio", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
 
-    alpha.type = @"studio";
-    beta.type = @"conference";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"studio", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"conference", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"conference";
-    beta.type = @"open";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"conference", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"open", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"open";
-    beta.type = @"lounge";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"open", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"lounge", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"lounge";
-    beta.type = @"cafe";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"lounge", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"cafe", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"cafe";
-    beta.type = @"outdoors";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"cafe", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"outdoors", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
-    alpha.type = @"study_room";
-    beta.type = @"outdoors";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"study_room", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"outdoors", nil];
     STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");
     
+    // Test spots w/ multiple types
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"cafe", @"study_room", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"lounge", nil];
+    STAssertEquals([alpha compareToSpot:beta], NSOrderedAscending, @"Closer things sort properly");   
     
 }
 
@@ -283,9 +287,9 @@
     beta.name = @"BB";
     gamma.name = @"BB";
     
-    alpha.type = @"study_space";
-    beta.type = @"study_space";
-    gamma.type = @"study_space";
+    alpha.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
+    beta.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
+    gamma.type = [[NSMutableArray alloc] initWithObjects:@"study_space", nil];
     
     alpha.capacity = [NSNumber numberWithInt:10];
     beta.capacity = [NSNumber numberWithInt:20];

@@ -229,7 +229,7 @@
     NSNumber *min = [NSNumber numberWithInt:99];
     for (NSString *_type in spot_types) {
         NSNumber *type_val = [self numberFromSpotType:_type];
-        if (type_val < min) {
+        if ([type_val intValue] < [min intValue]) {
             min = type_val;
         }
     }
