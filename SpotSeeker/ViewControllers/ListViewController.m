@@ -153,11 +153,10 @@
     UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
     
     NSMutableArray *type_names = [[NSMutableArray alloc] init];
-    for (NSString *type in self.spot.type) {
+    for (NSString *type in row_spot.type) {
         NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
         
         NSString *type_name = NSLocalizedString(string_key, nil);
-        NSLog(@"Type name: %@", type_name);
         [type_names addObject:type_name];
     }
     NSString *type_display = [type_names componentsJoinedByString:@", "];

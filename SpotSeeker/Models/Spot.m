@@ -211,8 +211,8 @@
         return [self.name compare:spot.name];
     }
 
-    NSNumber *my_type = [self numberFromSpotType:self.type];
-    NSNumber *their_type = [self numberFromSpotType:spot.type];
+    NSNumber *my_type = [self numberFromSpotTypes:self.type];
+    NSNumber *their_type = [self numberFromSpotTypes:spot.type];
     
     if (![my_type isEqualToNumber:their_type]) {
         return [my_type compare:their_type];
@@ -223,6 +223,17 @@
     }
     
     return NSOrderedSame;
+}
+
+-(NSNumber *)numberFromSpotTypes:(NSMutableArray *)spot_types {
+    NSNumber *min = [NSNumber numberWithInt:99];
+    for (NSString *_type in spot_types) {
+        NSNumber *type_val = [self numberFromSpotType:_type];
+        if (type_val < min) {
+            min = type_val;
+        }
+    }
+    return min;
 }
 
 -(NSNumber *)numberFromSpotType:(NSString *)spot_type {
