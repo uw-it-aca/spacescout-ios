@@ -326,7 +326,10 @@
             
             NSMutableArray *display_fields = [[NSMutableArray alloc] init];
             for (NSMutableDictionary *field in self.equipment_fields) {
-                [display_fields addObject:[field objectForKey:@"display"]];
+                NSString *lang_key = [NSString stringWithFormat:@"Space equipment %@", [field objectForKey:@"attribute"]];
+                NSString *display_value = NSLocalizedString(lang_key, nil);
+
+                [display_fields addObject:display_value];
             }
             
             UILabel *type = (UILabel *)[cell viewWithTag:1];
@@ -346,6 +349,8 @@
             NSString *attribute_key = [attribute objectForKey:@"attribute"];
             NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
 
+            NSString *lang_key = [NSString stringWithFormat:@"Space environment %@ %@", attribute_key, attribute_value];
+            NSString *display_value = NSLocalizedString(lang_key, nil);
             
             UIImageView *icon_view = (UIImageView *)[cell viewWithTag:1];
             
@@ -358,7 +363,7 @@
                 icon_view.image = icon;
             }
             
-            [value setText: attribute_value];
+            [value setText: display_value];
             return cell;
         }
     }

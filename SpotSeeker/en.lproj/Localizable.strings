@@ -3,8 +3,8 @@
   SpotSeeker
 
   Created by Patrick Michaud on 6/22/12.
-  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-*/
+
+ */
 
 "Space type computer_lab" = "Computer lab";
 "Space type open" = "Open Space";
@@ -16,3 +16,17 @@
 "Space type studio" = "Studio";
 "Space type cafe" = "Café";
 "Space type outdoor" = "Outdoor Area";
+
+"Space environment noise_level silent" = "Silent";
+"Space environment noise_level quiet" = "Low Hum";
+"Space environment noise_level moderate" = "Chatter";
+"Space environment noise_level loud" = "Rowdy";
+"Space environment noise_level variable" = "Variable";
+
+"Space environment food_nearby space" = "In space";
+"Space environment food_nearby building" = "In building";
+"Space environment food_nearby neighboring" = "In neighboring building";
+"Space environment food_nearby none" = "None nearby";
+
+"Space equipment has_whiteboards" = "Whiteboards";
+"Space equipment has_outlets" = "Outlets";
