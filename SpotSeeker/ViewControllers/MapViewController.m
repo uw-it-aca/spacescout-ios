@@ -47,7 +47,17 @@ extern const int meters_per_latitude;
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
-        annotationPoint.subtitle = [NSString stringWithFormat:@"%@ | %@ seats", first_in_group.type, first_in_group.capacity];
+        
+        NSMutableArray *type_names = [[NSMutableArray alloc] init];
+        for (NSString *type in first_in_group.type) {
+            NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
+            
+            NSString *type_name = NSLocalizedString(string_key, nil);
+            [type_names addObject:type_name];
+        }
+        NSString *all_types = [type_names componentsJoinedByString:@", "];
+        
+        annotationPoint.subtitle = [NSString stringWithFormat:@"%@ | %@ seats", all_types, first_in_group.capacity];
         if (first_in_group.room_number.length != 0) {
             annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@" | Room %@", first_in_group.room_number];
         }
