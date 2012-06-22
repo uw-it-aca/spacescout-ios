@@ -112,6 +112,10 @@
 		C251438F1594E08F006A4A9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C25143911594E08F006A4A9E /* Localizable.strings */; };
 		C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2516665153370CF002CEDB6 /* example_spotseeker.plist */; };
 		C25166691533713B002CEDB6 /* spotseeker.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25166681533713B002CEDB6 /* spotseeker.plist */; };
+		C255957D15951F8A00C98C32 /* faveslist.png in Resources */ = {isa = PBXBuildFile; fileRef = C255957A15951F8A00C98C32 /* faveslist.png */; };
+		C255957E15951F8A00C98C32 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = C255957B15951F8A00C98C32 /* locate.png */; };
+		C255957F15951F8A00C98C32 /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C255957C15951F8A00C98C32 /* locate@2x.png */; };
+		C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C255958115951FAD00C98C32 /* faveslist@2x.png */; };
 		C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */ = {isa = PBXBuildFile; fileRef = C25D6F931576ACDC00A16A87 /* map_defaults.json */; };
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
@@ -308,6 +312,10 @@
 		C25143901594E08F006A4A9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C2516665153370CF002CEDB6 /* example_spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = example_spotseeker.plist; sourceTree = "<group>"; };
 		C25166681533713B002CEDB6 /* spotseeker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spotseeker.plist; sourceTree = "<group>"; };
+		C255957A15951F8A00C98C32 /* faveslist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = faveslist.png; path = images/faveslist.png; sourceTree = "<group>"; };
+		C255957B15951F8A00C98C32 /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locate.png; path = images/locate.png; sourceTree = "<group>"; };
+		C255957C15951F8A00C98C32 /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "locate@2x.png"; path = "images/locate@2x.png"; sourceTree = "<group>"; };
+		C255958115951FAD00C98C32 /* faveslist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "faveslist@2x.png"; path = "images/faveslist@2x.png"; sourceTree = "<group>"; };
 		C25D6F931576ACDC00A16A87 /* map_defaults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_defaults.json; sourceTree = "<group>"; };
 		C25D6F961576AF7100A16A87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
@@ -550,9 +558,13 @@
 			isa = PBXGroup;
 			children = (
 				C2D4E30D15938BAB00B594C5 /* details */,
+				C2AFB778156C36D500D19E7A /* Pin images */,
+				C255958115951FAD00C98C32 /* faveslist@2x.png */,
+				C255957A15951F8A00C98C32 /* faveslist.png */,
+				C255957B15951F8A00C98C32 /* locate.png */,
+				C255957C15951F8A00C98C32 /* locate@2x.png */,
 				C24B24E0158BC464001C4B3F /* star_selected.png */,
 				C24B24E1158BC464001C4B3F /* star_unselected.png */,
-				C2AFB778156C36D500D19E7A /* Pin images */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -909,6 +921,10 @@
 				C2D4E31615938BAB00B594C5 /* reservable.png in Resources */,
 				C2D4E31715938BAB00B594C5 /* tools.png in Resources */,
 				C251438F1594E08F006A4A9E /* Localizable.strings in Resources */,
+				C255957D15951F8A00C98C32 /* faveslist.png in Resources */,
+				C255957E15951F8A00C98C32 /* locate.png in Resources */,
+				C255957F15951F8A00C98C32 /* locate@2x.png in Resources */,
+				C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
