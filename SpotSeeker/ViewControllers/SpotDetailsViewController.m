@@ -195,7 +195,7 @@
         }
         else if (indexPath.row - offset == 1) {
             UIApplication *app = [UIApplication sharedApplication];  
-            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy]];
+            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy]];
             [app openURL:[NSURL URLWithString:url]];  
         }
     }
