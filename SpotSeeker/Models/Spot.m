@@ -66,7 +66,17 @@
         Spot *spot = [Spot alloc];
         spot.remote_id = [spot_info objectForKey:@"id"];
         spot.name = [spot_info objectForKey:@"name"];
-        spot.type = [spot_info objectForKey:@"type"];
+        
+        id type_basics = [spot_info objectForKey:@"type"];
+        NSString *type_class = [NSString stringWithFormat:@"%@", [type_basics class]];
+        if ([type_class isEqualToString:@"__NSCFString"]) {
+            NSMutableArray *types = [[NSMutableArray alloc] init];
+            [types addObject:type_basics];
+            spot.type = types;
+        }
+        else {
+            spot.type = [spot_info objectForKey:@"type"];
+        }
         spot.capacity = [spot_info objectForKey:@"capacity"];
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
