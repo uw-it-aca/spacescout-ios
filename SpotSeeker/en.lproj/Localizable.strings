@@ -6,8 +6,8 @@
   Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 */
 
-"Space type computer_lab" = "Café";
-"Space type open" = "Computer Lab";
+"Space type computer_lab" = "Computer lab";
+"Space type open" = "Open Space";
 "Space type alcove" = "Alcove / Nook";
 "Space type lounge" = "Lounge";
 "Space type classroom" = "Conference / Classroom";

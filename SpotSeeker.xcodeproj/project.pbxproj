@@ -173,7 +173,6 @@
 		C213C5A61559C70C00F295DD /* HoursFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoursFormat.m; path = Models/HoursFormat.m; sourceTree = "<group>"; };
 		C213C5A91559C82700F295DD /* HoursDisplayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoursDisplayTests.h; sourceTree = "<group>"; };
 		C213C5AA1559C82700F295DD /* HoursDisplayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoursDisplayTests.m; sourceTree = "<group>"; };
-		C223726B1594E9E40017CB49 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C224FBED15361C2300CD4A79 /* filter_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filter_config.json; sourceTree = "<group>"; };
 		C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterDetailsViewController.h; path = ViewControllers/MapFilterDetailsViewController.h; sourceTree = "<group>"; };
 		C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterDetailsViewController.m; path = ViewControllers/MapFilterDetailsViewController.m; sourceTree = "<group>"; };
@@ -1023,7 +1022,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C25143901594E08F006A4A9E /* en */,
-				C223726B1594E9E40017CB49 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
