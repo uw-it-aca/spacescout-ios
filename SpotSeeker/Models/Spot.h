@@ -28,7 +28,7 @@
     id <SearchFinished> delegate;
     NSString *remote_id;
     NSString *name;
-    NSString *type;
+    NSMutableArray *type;
     NSString *uri;
     NSNumber *capacity;
     NSMutableDictionary *hours_available;
@@ -61,7 +61,7 @@
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) NSString *remote_id;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *type;
+@property (nonatomic, retain) NSMutableArray *type;
 @property (nonatomic, retain) NSString *uri;
 @property (nonatomic, retain) NSNumber *capacity;
 @property (nonatomic, retain) NSMutableDictionary *hours_available;

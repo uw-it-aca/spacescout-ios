@@ -214,7 +214,14 @@
         
         UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
         
-        NSString *type_and_capacity = self.spot.type;
+        NSMutableArray *type_names = [[NSMutableArray alloc] init];
+        for (NSString *type in self.spot.type) {
+            NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
+                                
+            NSString *type_name = NSLocalizedString(string_key, nil);
+            [type_names addObject:type_name];
+        }
+        NSString *type_and_capacity = [type_names componentsJoinedByString:@", "];
         
         if (spot.capacity > 0) {
             type_and_capacity = [NSString stringWithFormat:@"%@, seats %@", type_and_capacity, spot.capacity];
