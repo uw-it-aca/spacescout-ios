@@ -31,12 +31,10 @@
                                             <action selector="btnClickRecenter:" destination="2" id="7ty-oU-Znv"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
-                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="0EK-gK-iTt"/>
-                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="vrQ-xb-eFW"/>
+                                    <barButtonItem width="33" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
                                     <barButtonItem title="Item" style="plain" id="lHy-1N-aSN">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
-                                            <rect key="frame" x="102" y="8" width="142" height="30"/>
+                                            <rect key="frame" x="93" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
@@ -1368,10 +1366,10 @@
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem width="82" style="plain" systemItem="fixedSpace" id="ldb-8E-bvN"/>
+                                    <barButtonItem width="78" style="plain" systemItem="fixedSpace" id="ldb-8E-bvN"/>
                                     <barButtonItem style="plain" id="u0B-AM-0hA">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
-                                            <rect key="frame" x="94" y="8" width="142" height="30"/>
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
+                                            <rect key="frame" x="90" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
