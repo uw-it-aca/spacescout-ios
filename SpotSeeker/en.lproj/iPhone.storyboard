@@ -994,13 +994,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="Yev-Ct-bwQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
+                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="LlY-XK-qJN">
+                            <connections>
+                                <segue destination="cCc-xy-eWs" kind="modal" id="QY8-j1-nec"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="4PN-pK-yie" kind="modal" identifier="image_view" id="eBK-RZ-wht"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2889" y="848"/>
+            <point key="canvasLocation" x="2811" y="642"/>
         </scene>
         <!--Spot Images View Controller-->
         <scene sceneID="jeK-Q6-heI">
@@ -1610,7 +1615,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rfQ-ts-oNK"/>
         <segue reference="3uu-G9-i3V"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="QY8-j1-nec"/>
     </inferredMetricsTieBreakers>
 </document>

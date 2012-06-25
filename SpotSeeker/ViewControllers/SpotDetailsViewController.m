@@ -241,6 +241,9 @@
 
         UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
         self.favorite_button = fav_button;
+        if ([Favorites isFavorite:spot]) {
+            [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
+        }
         
         UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
         
@@ -570,10 +573,6 @@
      */
     [super viewDidLoad];
     
-    if ([Favorites isFavorite:spot]) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
-    }
-
 	// Do any additional setup after loading the view.
 }
 
