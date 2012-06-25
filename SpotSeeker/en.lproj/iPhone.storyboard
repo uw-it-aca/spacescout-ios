@@ -636,7 +636,7 @@
             </objects>
             <point key="canvasLocation" x="3321" y="109"/>
         </scene>
-        <!--Spot Details View Controller-->
+        <!--Spot Details View Controller - SpaceScout-->
         <scene sceneID="adb-7p-DAh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -978,7 +978,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Yev-Ct-bwQ">
+                    <navigationItem key="navigationItem" title="SpaceScout" id="Yev-Ct-bwQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
                     </navigationItem>
                     <connections>
