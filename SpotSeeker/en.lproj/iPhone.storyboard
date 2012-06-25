@@ -902,7 +902,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="center" image="asterisks.png" id="kGl-FR-oDd">
                                                     <rect key="frame" x="9" y="11" width="22" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1223,8 +1223,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFit" id="lnz-xO-iJS">
-                                                    <rect key="frame" x="14" y="7" width="89" height="89"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="lnz-xO-iJS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="104"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="lmB-sv-46a">
@@ -1580,8 +1580,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
-        <segue reference="rfQ-ts-oNK"/>
-        <segue reference="3uu-G9-i3V"/>
+        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="2aF-sA-100"/>
+        <segue reference="Zv8-Ju-hZd"/>
     </inferredMetricsTieBreakers>
 </document>
