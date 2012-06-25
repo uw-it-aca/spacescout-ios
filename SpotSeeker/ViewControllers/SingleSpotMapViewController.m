@@ -25,7 +25,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = self.spot.name;
+    
+    [map_view setShowsUserLocation:YES];
+
     
     MKCoordinateRegion mapRegion;   
     mapRegion.center =  CLLocationCoordinate2DMake([self.spot.latitude doubleValue], [self.spot.longitude doubleValue]);

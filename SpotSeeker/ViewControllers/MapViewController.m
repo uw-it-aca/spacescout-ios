@@ -162,6 +162,8 @@ extern const int meters_per_latitude;
         [self runSearch];
     }
     else {
+        UIView *tips = [self.view viewWithTag:10];
+        tips.hidden = true;
         [self showFoundSpots];
     }
 }
