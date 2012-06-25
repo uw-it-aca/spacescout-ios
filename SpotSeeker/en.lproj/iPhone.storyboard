@@ -35,7 +35,7 @@
                                     <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="0EK-gK-iTt"/>
                                     <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="vrQ-xb-eFW"/>
                                     <barButtonItem title="Item" style="plain" id="lHy-1N-aSN">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
                                             <rect key="frame" x="102" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -47,7 +47,6 @@
                                                 <segue destination="vs2-cn-cMQ" kind="modal" identifier="spot_list" modalTransitionStyle="flipHorizontal" id="8wc-VD-41p"/>
                                             </connections>
                                         </segmentedControl>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -1291,7 +1290,7 @@
             </objects>
             <point key="canvasLocation" x="445" y="165"/>
         </scene>
-        <!--List View Controller - SpotSeeker-->
+        <!--List View Controller - SpaceScout-->
         <scene sceneID="MQy-Rx-pvH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4O-8k-jYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1312,12 +1311,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFit" id="M24-wc-1kt">
-                                                    <rect key="frame" x="13" y="4" width="89" height="89"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="M24-wc-1kt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="97"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qTl-0I-d0D">
-                                                    <rect key="frame" x="110" y="4" width="153" height="27"/>
+                                                    <rect key="frame" x="119" y="4" width="146" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1327,31 +1326,31 @@
                                                     <rect key="frame" x="48" y="38" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Spot type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="s5E-gt-bI9">
-                                                    <rect key="frame" x="110" y="29" width="197" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Spot type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="s5E-gt-bI9">
+                                                    <rect key="frame" x="119" y="29" width="190" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lfm-zW-Z5f">
-                                                    <rect key="frame" x="289" y="7" width="18" height="21"/>
+                                                    <rect key="frame" x="288" y="7" width="18" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="46.19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6h-ad-gse">
-                                                    <rect key="frame" x="259" y="7" width="33" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="46.19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="f6h-ad-gse">
+                                                    <rect key="frame" x="261" y="7" width="33" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="This is a description of where the spot is, on 2 lines" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="0Mp-4v-m05">
-                                                    <rect key="frame" x="110" y="54" width="202" height="38"/>
+                                                    <rect key="frame" x="119" y="54" width="195" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1365,40 +1364,39 @@
                                     <outlet property="delegate" destination="ylv-3b-UIf" id="Hxm-Dm-QKj"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Xg7-r2-bqq">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="Xg7-r2-bqq">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ldb-8E-bvN"/>
+                                    <barButtonItem width="82" style="plain" systemItem="fixedSpace" id="ldb-8E-bvN"/>
                                     <barButtonItem style="plain" id="u0B-AM-0hA">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
-                                            <rect key="frame" x="54" y="8" width="207" height="30"/>
+                                            <rect key="frame" x="94" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <segue destination="8VW-Ka-HVY" kind="modal" identifier="spot_map" modalTransitionStyle="flipHorizontal" id="H5I-1v-Ztp"/>
                                             </connections>
                                         </segmentedControl>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SpotSeeker" id="9Zl-UU-At7">
+                    <navigationItem key="navigationItem" title="SpaceScout" id="9Zl-UU-At7">
+                        <barButtonItem key="backBarButtonItem" title="List" id="zyD-7A-tTw"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="y2d-oE-VTZ">
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="BQS-yT-fgW">
-                            <connections>
-                                <segue destination="cCc-xy-eWs" kind="modal" id="2aF-sA-100"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="vSy-EG-TqB"/>
                     </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="Yxq-b3-KBs" id="tSi-Yg-QcM"/>
@@ -1414,7 +1412,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHd-9o-yB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="vs2-cn-cMQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Lws-D7-hHP">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="Lws-D7-hHP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1584,8 +1583,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rfQ-ts-oNK"/>
-        <segue reference="em9-ZW-DQ1"/>
-        <segue reference="3uu-G9-i3V"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="7BZ-SZ-G39"/>
     </inferredMetricsTieBreakers>
 </document>
