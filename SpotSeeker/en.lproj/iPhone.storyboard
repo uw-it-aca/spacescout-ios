@@ -52,6 +52,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="f11-XH-hmO">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="E3E-6D-F3L"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="F4H-kl-V8E">
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
@@ -1595,7 +1596,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3Cj-Ws-5ju"/>
-        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>
