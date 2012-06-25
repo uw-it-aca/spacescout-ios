@@ -814,10 +814,6 @@
                                                             <rect key="frame" x="0.0" y="30" width="260" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tools.png" id="Ko3-Nj-6DV">
-                                                                    <rect key="frame" x="9" y="0.0" width="22" height="23"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                </imageView>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reservations required:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JCh-dC-Jit">
                                                                     <rect key="frame" x="39" y="2" width="148" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -835,6 +831,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
+                                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" image="reservable.png" id="gjm-GT-4es">
+                                                            <rect key="frame" x="10" y="33" width="22" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.86274516580000005" green="0.86274516580000005" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
                                                 </view>
