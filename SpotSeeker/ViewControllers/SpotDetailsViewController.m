@@ -365,6 +365,10 @@
                 UIImage *icon = [UIImage imageNamed:@"noise.png"];
                 icon_view.image = icon;
             }
+            else if ([attribute_key isEqualToString:@"has_natural_light"]) {
+                UIImage *icon = [UIImage imageNamed:@"lighting.png"];
+                icon_view.image = icon;                
+            }
             
             [value setText: display_value];
             return cell;

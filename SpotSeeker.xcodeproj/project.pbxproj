@@ -16,6 +16,8 @@
 		C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */; };
 		C224FBF7153630AA00CD4A79 /* SpotDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */; };
 		C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */; };
+		C23074D61599298900C31AA1 /* lighting.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D41599298900C31AA1 /* lighting.png */; };
+		C23074D71599298900C31AA1 /* lighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D51599298900C31AA1 /* lighting@2x.png */; };
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
@@ -184,6 +186,8 @@
 		C224FBF6153630AA00CD4A79 /* SpotDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotDetailsViewController.m; path = ViewControllers/SpotDetailsViewController.m; sourceTree = "<group>"; };
 		C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchableIndexedTableFilterViewController.h; path = ViewControllers/SearchableIndexedTableFilterViewController.h; sourceTree = "<group>"; };
 		C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableIndexedTableFilterViewController.m; path = ViewControllers/SearchableIndexedTableFilterViewController.m; sourceTree = "<group>"; };
+		C23074D41599298900C31AA1 /* lighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighting.png; sourceTree = "<group>"; };
+		C23074D51599298900C31AA1 /* lighting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighting@2x.png"; sourceTree = "<group>"; };
 		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
 		C24181841545E16E00DAA2FC /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFilter.m; path = Models/SearchFilter.m; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -660,6 +664,8 @@
 		C2D4E30D15938BAB00B594C5 /* details */ = {
 			isa = PBXGroup;
 			children = (
+				C23074D41599298900C31AA1 /* lighting.png */,
+				C23074D51599298900C31AA1 /* lighting@2x.png */,
 				C2D4E30E15938BAB00B594C5 /* asterisks.png */,
 				C2D4E30F15938BAB00B594C5 /* cafe.png */,
 				C2D4E31015938BAB00B594C5 /* noise.png */,
@@ -925,6 +931,8 @@
 				C255957E15951F8A00C98C32 /* locate.png in Resources */,
 				C255957F15951F8A00C98C32 /* locate@2x.png in Resources */,
 				C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */,
+				C23074D61599298900C31AA1 /* lighting.png in Resources */,
+				C23074D71599298900C31AA1 /* lighting@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

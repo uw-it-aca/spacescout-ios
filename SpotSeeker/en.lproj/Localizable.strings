@@ -28,5 +28,12 @@
 "Space environment food_nearby neighboring" = "In neighboring building";
 "Space environment food_nearby none" = "None nearby";
 
+"Space environment has_natural_light true" = "Natural light";
+
 "Space equipment has_whiteboards" = "Whiteboards";
 "Space equipment has_outlets" = "Outlets";
+"Space equipment has_printing" = "Printers";
+"Space equipment has_scanner" = "Scanners";
+"Space equipment has_computers" = "Computers";
+
+
