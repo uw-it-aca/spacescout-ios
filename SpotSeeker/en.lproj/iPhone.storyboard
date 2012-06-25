@@ -22,7 +22,7 @@
                                     <outlet property="delegate" destination="2" id="2zd-Ht-eos"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="9HE-8v-nHi">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="9HE-8v-nHi">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -42,7 +42,7 @@
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
-                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="vs2-cn-cMQ" kind="modal" identifier="spot_list" modalTransitionStyle="flipHorizontal" id="8wc-VD-41p"/>
                                             </connections>
@@ -1364,7 +1364,7 @@
                                     <outlet property="delegate" destination="ylv-3b-UIf" id="Hxm-Dm-QKj"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="Xg7-r2-bqq">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Xg7-r2-bqq">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -1377,12 +1377,12 @@
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
-                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="8VW-Ka-HVY" kind="modal" identifier="spot_map" modalTransitionStyle="flipHorizontal" id="H5I-1v-Ztp"/>
                                             </connections>
                                         </segmentedControl>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
