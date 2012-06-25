@@ -77,7 +77,10 @@
         else {
             spot.type = [spot_info objectForKey:@"type"];
         }
-        spot.capacity = [spot_info objectForKey:@"capacity"];
+        
+        if (![[[spot_info objectForKey:@"capacity"] class] isSubclassOfClass:[NSNull class]]) {
+            spot.capacity = [spot_info objectForKey:@"capacity"];
+        }
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
         
