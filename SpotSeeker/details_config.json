@@ -6,7 +6,10 @@
                  { "attribute":"has_scanner", "show_if":"true" },
                  { "attribute":"has_printing", "show_if":"true" },
                  { "attribute":"has_computers", "show_if":"true" },
+                 { "attribute":"has_displays", "show_if":"true" },
+                 { "attribute":"has_projector", "show_if":"true" },
                  { "attribute":"has_wizards", "show_if":"true" }
+                
     ],
     "environment":[
                    { "attribute":"surfaces" },

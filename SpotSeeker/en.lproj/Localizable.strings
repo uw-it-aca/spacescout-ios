@@ -30,10 +30,12 @@
 
 "Space environment has_natural_light true" = "Natural light";
 
+"Space equipment has_projector" = "Projectors";
 "Space equipment has_whiteboards" = "Whiteboards";
 "Space equipment has_outlets" = "Outlets";
 "Space equipment has_printing" = "Printers";
 "Space equipment has_scanner" = "Scanners";
 "Space equipment has_computers" = "Computers";
+"Space equipment has_displays" = "Displays";
 
 
