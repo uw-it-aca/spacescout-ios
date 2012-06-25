@@ -574,7 +574,6 @@
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
     }
 
-    self.title = spot.name;
 	// Do any additional setup after loading the view.
 }
 
