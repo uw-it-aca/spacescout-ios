@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller - SpotSeeker-->
+        <!--Map View Controller - SpaceScout-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -52,7 +52,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SpotSeeker" id="f11-XH-hmO">
+                    <navigationItem key="navigationItem" title="SpaceScout" id="f11-XH-hmO">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="F4H-kl-V8E">
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
@@ -1139,7 +1139,7 @@
             </objects>
             <point key="canvasLocation" x="3408" y="1262"/>
         </scene>
-        <!--Favorite Spots View Controller - Bookmarks-->
+        <!--Favorite Spots View Controller - Favorites-->
         <scene sceneID="1K6-Li-Krl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYw-dW-fye" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1180,7 +1180,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bookmarks" id="lNt-eK-HUl">
+                    <navigationItem key="navigationItem" title="Favorites" id="lNt-eK-HUl">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="Dnz-He-EZd">
                             <connections>
                                 <action selector="btnClickClose:" destination="H5F-cS-j3x" id="qtc-jl-r2g"/>
@@ -1195,7 +1195,7 @@
             </objects>
             <point key="canvasLocation" x="2356" y="1150"/>
         </scene>
-        <!--Spot Cluster View Controller-->
+        <!--Spot Cluster View Controller - SpaceScout-->
         <scene sceneID="XeB-JD-BkB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLi-ey-LjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1258,7 +1258,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="R48-Hc-Krn"/>
+                    <navigationItem key="navigationItem" title="SpaceScout" id="R48-Hc-Krn">
+                        <barButtonItem key="backBarButtonItem" title="List" id="a9i-Fe-DaS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="fYm-Ao-Mlg" id="dyc-DU-ZTT"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="3Cj-Ws-5ju"/>
@@ -1580,8 +1582,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7BZ-SZ-G39"/>
-        <segue reference="2aF-sA-100"/>
-        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="3Cj-Ws-5ju"/>
     </inferredMetricsTieBreakers>
 </document>
