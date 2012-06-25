@@ -22,7 +22,7 @@
                                     <outlet property="delegate" destination="2" id="2zd-Ht-eos"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9HE-8v-nHi">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="9HE-8v-nHi">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -32,22 +32,24 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
-                                    <barButtonItem style="plain" id="lHy-1N-aSN">
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="0EK-gK-iTt"/>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="vrQ-xb-eFW"/>
+                                    <barButtonItem title="Item" style="plain" id="lHy-1N-aSN">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
-                                            <rect key="frame" x="74" y="8" width="207" height="30"/>
+                                            <rect key="frame" x="102" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
-                                            <color key="tintColor" red="0.85490202900000001" green="0.0" blue="0.74901962280000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <segue destination="vs2-cn-cMQ" kind="modal" identifier="spot_list" modalTransitionStyle="flipHorizontal" id="8wc-VD-41p"/>
                                             </connections>
                                         </segmentedControl>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" red="0.85490202900000001" green="0.0" blue="0.74901962280000001" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1276,10 +1278,10 @@
                 <navigationController id="8VW-Ka-HVY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="The Map" id="m7Z-Yt-jdn"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CIS-DL-2bc">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="CIS-DL-2bc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.85490202900000001" green="0.0" blue="0.74901962280000001" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1584,6 +1586,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="rfQ-ts-oNK"/>
         <segue reference="em9-ZW-DQ1"/>
-        <segue reference="3Cj-Ws-5ju"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>
