@@ -36,6 +36,8 @@
     NSArray *cluster_spots_to_display;
     NSMutableDictionary *current_annotations;
     BOOL has_centered_on_location;
+    BOOL showing_tip_view;
+    BOOL loading;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;

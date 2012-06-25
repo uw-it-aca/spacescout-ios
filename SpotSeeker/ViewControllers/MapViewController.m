@@ -99,6 +99,7 @@ extern const int meters_per_latitude;
     self.current_clusters = annotation_groups;
 }
 
+
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
     if([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
@@ -157,11 +158,37 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     if ([self.from_list boolValue] == false) {
+        [self hideTipView];
         [self runSearch];
     }
     else {
         [self showFoundSpots];
     }
+}
+
+-(void)hideTipView {
+    if (loading) {
+        return;
+    }
+    if (showing_tip_view) {
+        UIView *tips = [self.view viewWithTag:10];
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseInOut
+                         animations:^{   
+                             tips.alpha = 0.0;
+                         }
+                         completion:^(BOOL finished) {
+                             tips.hidden = true;
+                         }
+         ];
+
+    }
+    showing_tip_view = false;
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+    loading = false;
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
@@ -268,6 +295,8 @@ extern const int meters_per_latitude;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    showing_tip_view = true;
+    loading = true;
     has_centered_on_location = false;
     self.current_annotations = [[NSMutableDictionary alloc] init];
     map_view.delegate = self;
