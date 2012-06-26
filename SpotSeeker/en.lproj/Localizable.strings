@@ -168,7 +168,7 @@
 "Search screen label open_now" = "Hours";
 
 "Search screen label capacity" = "Capacity";
-
+"Search screen label title capacity" = "Seats at least";
 /* search screen headers */
 
 "Search screen section title basics" = "Basics";

@@ -139,10 +139,6 @@
         MapFilterDetailsViewController *mfd = [segue destinationViewController];
         mfd.filter = self.current_section;
     }
-    else if ([[segue identifier] isEqualToString:@"chooser_options"]) {
-        MapFilterPickerViewController *mfp = [segue destinationViewController];
-        mfp.filter = self.current_section;
-    }
     else if ([[segue identifier] isEqualToString:@"time_options"]) {
         MapFilterTimeViewController *mft = [segue destinationViewController];
         mft.filter = self.current_section;
@@ -484,7 +480,8 @@
     }
     
     UILabel *value_label = (UILabel *)[cell viewWithTag:5];
-    value_label.text = [current_obj objectForKey:@"value_label_title"];
+    NSString *value_label_key = [NSString stringWithFormat:@"Search screen label title %@", [current_obj objectForKey:@"search_key"]];   
+    value_label.text = NSLocalizedString(value_label_key, nil);
     
     return cell;
 

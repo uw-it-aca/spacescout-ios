@@ -36,9 +36,7 @@
              },
              {
              "no_selection_label":"1",
-             "show_chooser_label":"At least",
              "table_row_type":"cell_with_chooser",
-             "value_label_title":"Seats at least",
              "search_key":"capacity",
              "options": [
                          { "title":"1", "short":"1", "search_value":"1" },

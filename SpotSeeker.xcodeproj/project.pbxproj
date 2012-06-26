@@ -136,7 +136,6 @@
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C2BF05481549F85E002FA3EA /* MapFilterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */; };
 		C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
 		C2D4E31315938BAB00B594C5 /* asterisks.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30E15938BAB00B594C5 /* asterisks.png */; };
@@ -351,8 +350,6 @@
 		C2B2F651153E225800292FDC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		C2B2F652153E225800292FDC /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		C2B2F653153E225800292FDC /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
-		C2BF05461549F85E002FA3EA /* MapFilterPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterPickerViewController.h; path = ViewControllers/MapFilterPickerViewController.h; sourceTree = "<group>"; };
-		C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterPickerViewController.m; path = ViewControllers/MapFilterPickerViewController.m; sourceTree = "<group>"; };
 		C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterTimeViewController.h; path = ViewControllers/MapFilterTimeViewController.h; sourceTree = "<group>"; };
 		C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterTimeViewController.m; path = ViewControllers/MapFilterTimeViewController.m; sourceTree = "<group>"; };
 		C2C0088715476865004AF6F7 /* REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REST.h; path = Models/REST.h; sourceTree = "<group>"; };
@@ -418,8 +415,6 @@
 			children = (
 				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
 				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
-				C2BF05461549F85E002FA3EA /* MapFilterPickerViewController.h */,
-				C2BF05471549F85E002FA3EA /* MapFilterPickerViewController.m */,
 				C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */,
 				C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */,
 				C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */,
@@ -1010,7 +1005,6 @@
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
 				C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */,
 				C2C0088915476865004AF6F7 /* REST.m in Sources */,
-				C2BF05481549F85E002FA3EA /* MapFilterPickerViewController.m in Sources */,
 				C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */,
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
 				C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */,
