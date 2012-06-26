@@ -91,12 +91,17 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
 
-    NSString *subtitle = [option objectForKey:@"subtitle"];
+    NSString *search_key = [option objectForKey:@"search_key"];
+    if (search_key == nil) {
+        search_key = [self.filter objectForKey:@"search_key"];
+    }
+    
+    NSString *subtitle_key = [NSString stringWithFormat:@"Search option subtitle %@ %@", search_key, [option objectForKey:@"search_value"]];
+    NSString *subtitle =  NSLocalizedString(subtitle_key, nil);
     
     if (subtitle == nil) {
         return 45.0;
     }
-
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail_cell_with_subtitle"];
     if (cell == nil) {
