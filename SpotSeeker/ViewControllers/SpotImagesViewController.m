@@ -50,6 +50,10 @@
     [self recenterImageView];
     
     [self showCurrentImage];
+    
+    if ([self.spot.image_urls count] == 1) {
+        page_footer.hidden = YES;
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -251,7 +255,9 @@
 -(void) showScreenNavigation {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     page_header.hidden = NO;
-    page_footer.hidden = NO;
+    if ([self.spot.image_urls count] > 1) {
+        page_footer.hidden = NO;
+    }
 }
 
 -(void)hideScreenNavigation {
