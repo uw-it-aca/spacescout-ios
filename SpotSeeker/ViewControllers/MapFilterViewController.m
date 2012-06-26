@@ -230,8 +230,16 @@
         if (search_key == nil) {
             search_key = [filter objectForKey:@"search_key"];
         }
-        NSString *label_key = [NSString stringWithFormat:@"Search option title %@ %@", search_key, [option objectForKey:@"search_value"]];
-        [long_options addObject:NSLocalizedString(label_key, nil)];
+        // XXX - this is an unfortunate thing, but building names really can't be in the localization file.
+        NSString *long_string;
+        if ([search_key isEqualToString:@"building_name"]) {
+            long_string = [option objectForKey:@"title"];
+        }
+        else {
+            NSString *label_key = [NSString stringWithFormat:@"Search option title %@ %@", search_key, [option objectForKey:@"search_value"]];
+            long_string = NSLocalizedString(label_key, nil);
+        }
+        [long_options addObject:long_string];
     }
 
     float left_most = title_label.frame.origin.x;
@@ -264,9 +272,17 @@
             if (search_key == nil) {
                 search_key = [filter objectForKey:@"search_key"];
             }
-
-            NSString *short_key = [NSString stringWithFormat:@"Search option short %@ %@", search_key, [option objectForKey:@"search_value"]];
-            [short_options addObject:NSLocalizedString(short_key, nil)];
+            
+            // XXX - this is an unfortunate thing, but building names really can't be in the localization file.
+            NSString *short_string;
+            if ([search_key isEqualToString:@"building_name"]) {
+                short_string = [option objectForKey:@"short"];
+            }
+            else {
+                NSString *short_key = [NSString stringWithFormat:@"Search option short %@ %@", search_key, [option objectForKey:@"search_value"]];
+                short_string = NSLocalizedString(short_key, nil);
+            }
+            [short_options addObject:short_string];
         }
         NSString *test_string = [short_options componentsJoinedByString:@", "];
         if (index > 0) {
