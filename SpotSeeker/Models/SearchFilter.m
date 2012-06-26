@@ -21,7 +21,8 @@
     
     for (NSDictionary *section in file_data) {
         NSMutableDictionary *filter_group = [[NSMutableDictionary alloc] init];
-        [filter_group setObject:[section objectForKey:@"title"] forKey:@"title"];
+        [filter_group setObject:[section objectForKey:@"section_name"] forKey:@"section_name"];
+
         
         NSMutableArray *filters = [[NSMutableArray alloc] init ];
         

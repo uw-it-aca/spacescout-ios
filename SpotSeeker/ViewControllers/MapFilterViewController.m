@@ -162,7 +162,8 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.data_sections objectAtIndex:section] objectForKey:@"title"];
+    NSString *label_key = [NSString stringWithFormat:@"Search screen section title %@", [[self.data_sections objectAtIndex:section] objectForKey:@"section_name"]];   
+    return NSLocalizedString(label_key, nil);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -350,7 +351,9 @@
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
-    filter_label.text = [current_obj objectForKey:@"title"];      
+    
+    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
+    filter_label.text = NSLocalizedString(label_key, nil);
     
     UILabel *filter_selection = (UILabel *)[cell viewWithTag:4];
     
@@ -464,7 +467,9 @@
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
-    filter_label.text = [current_obj objectForKey:@"title"];      
+    
+    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
+    filter_label.text = NSLocalizedString(label_key, nil);
 
     UIButton *filter_selection = (UIButton *)[cell viewWithTag:4];
 
@@ -730,7 +735,9 @@
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [current_obj objectForKey:@"title"];
+    
+    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
+    filter_label.text = NSLocalizedString(label_key, nil);
     
     NSMutableArray *selected_options = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {

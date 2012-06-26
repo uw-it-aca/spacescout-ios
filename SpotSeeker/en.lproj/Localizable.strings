@@ -163,4 +163,15 @@
 "Search option short food_nearby neighboring" = "In Neighb.";
 
 
+"Search screen label building_name" = "Location";
+
+"Search screen label open_now" = "Hours";
+
+"Search screen label capacity" = "Capacity";
+
+/* search screen headers */
+
+"Search screen section title basics" = "Basics";
+"Search screen section title environment" = "Environment";
+
 

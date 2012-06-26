@@ -1,6 +1,6 @@
  [
   {
-  "title":"Basics",
+  "section_name":"basics",
   "filters":[
              {
              "options" : [
@@ -35,7 +35,6 @@
              "search_key" : "type"
              },
              {
-             "title":"Capacity",
              "no_selection_label":"1",
              "show_chooser_label":"At least",
              "table_row_type":"cell_with_chooser",
@@ -59,7 +58,6 @@
                          ]
              },
              {
-             "title":"Hours",
              "search_key":"open_now",
              "default_search_value":"1",
              "default_selection_label":"Open Now",
@@ -79,7 +77,6 @@
              "search_key" : "reservable"
              },
              {
-             "title":"Location",
              "screen_title":"Select Building",
              "search_key":"building_name",
              "table_row_type":"cell_with_indexed_table",
@@ -101,7 +98,7 @@
              ]
   },
   {
-  "title":"Environment",
+  "section_name":"environment",
   "filters":[
              {
              "options" : [
