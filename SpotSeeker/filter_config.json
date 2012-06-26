@@ -3,22 +3,37 @@
   "title":"Basics",
   "filters":[
              {
-             "title":"Type of spot",
-             "screen_title":"Type of spot",
-             "screen_header":"Select types of spots",
-             "search_key":"type",
-             "default_selection_label":"Any",
-             "options": [
-                         { "title":"Study room", "subtitle":"Enclosed space for individual or group", "short":"Rm", "search_value":"study_room" },
-                         { "title":"Study space", "subtitle":"Unenclosed space for individual or group", "short":"Spc", "search_value":"study_space" },
-                         { "title":"Computer lab", "subtitle":"Group of computer stations", "short":"Lab", "search_value":"computer_lab" },
-                         { "title":"Production studio", "subtitle":"Work space with specialized equipment or technology", "short":"Stdo", "search_value":"studio" },
-                         { "title":"Conference/classroom", "subtitle":"Larger-capacity rooms primarily used for classes, meetings, or workshops", "short":"Clsrm", "search_value":"conference" },
-                         { "title":"Open space", "subtitle":"Area for use by multiple individuals or groups", "short":"Open sp", "search_value":"open" },
-                         { "title":"Lounge", "subtitle":"Indoor casual space", "short":"Lng", "search_value":"lounge" },
-                         { "title":"Café", "subtitle":"Space that functions primarily as an eatery", "short":"Café", "search_value":"cafe" },
-                         { "title":"Outdoor area", "subtitle":"Outdoor casual space", "short":"Outdr", "search_value":"outdoors" }
-                         ]
+             "options" : [
+                          {
+                          "search_value" : "study_room"
+                          },
+                          {
+                          "search_value" : "study_space"
+                          },
+                          {
+                          "search_value" : "computer_lab"
+                          },
+                          {
+                          "search_value" : "studio"
+                          },
+                          {
+                          "search_value" : "conference"
+                          },
+                          {
+                          "search_value" : "open"
+                          },
+                          {
+                          "search_value" : "lounge"
+                          },
+                          {
+                          "search_value" : "cafe"
+                          },
+                          {
+                          "search_value" : "outdoors"
+                          }
+                          ],
+             "search_key" : "type",
+             "title" : "Type of spot"
              },
              {
              "title":"Capacity",
@@ -53,14 +68,17 @@
              "options": []
              },
              {
-             "title":"Reserveable?",
-             "screen_header":"Select reserveability",
-             "search_key":"reservable",
-             "default_selection_label":"No preference",
-             "options":[
-                        {"title":"No preference", "search_value":"", "clear_all":true },
-                        {"title":"Reserveable", "search_value":"true" }
-                        ]
+             "options" : [
+                          {
+                          "search_value" : "",
+                          "clear_all" : true
+                          },
+                          {
+                          "search_value" : "true"
+                          }
+                          ],
+             "search_key" : "reservable",
+             "title" : "Reserveable?"
              },
              {
              "title":"Location",
@@ -232,60 +250,91 @@
   "title":"Environment",
   "filters":[
              {
-             "title":"Noise Level",
-             "default_selection_label":"Any",
-             "screen_title":"Noise level",
-             "screen_header":"Select acceptable noise levels",
-             "search_key":"noise_level",
-             "options": [
-                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"Silent", "short":"S", "search_value":"silent" },
-                         { "title":"Low Hum", "short":"LH", "search_value":"quiet" },
-                         { "title":"Chatter", "short":"CH", "search_value":"moderate" }
-                         ]
+             "options" : [
+                          {
+                          "search_value" : "",
+                          "clear_all" : true
+                          },
+                          {
+                          "search_value" : "silent"
+                          },
+                          {
+                          "search_value" : "quiet"
+                          },
+                          {
+                          "search_value" : "moderate"
+                          }
+                          ],
+             "search_key" : "noise_level",
+             "title" : "Noise Level"
              },
              {
-             "default_selection_label":"No preference",
-             "title":"Lighting",
-             "screen_header":"Select type of lighting",
-             "screen_title":"Lighting",
-             "search_key":"has_natural_light",
-             "options": [
-                         { "title":"No Preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"Natural light", "short":"Natural light", "search_value":"true" }
-                         ]
+             "options" : [
+                          {
+                          "search_value" : "",
+                          "clear_all" : true
+                          },
+                          {
+                          "search_value" : "true"
+                          }
+                          ],
+             "search_key" : "has_natural_light",
+             "title" : "Lighting"
              },
              {
-             "title":"Equipment",
-             "screen_title":"Equipment",
-             "search_key":"equipment",
-             "screen_header":"Equipment required",
-             "default_selection_label":"No preference",
-             "screen_subheader":"Select all attributes you want to include in your search.  Leave blank if you don't care",
-             "options":[
-                        {"title":"Whiteboards", "short":"W", "search_key":"has_whiteboards", "search_value":"true" },
-                        {"title":"Outlets", "short":"O", "search_key":"has_outlets", "search_value":"true" },
-                        {"title":"Computers", "short":"C", "search_key":"has_computers", "search_value":"true" },
-                        {"title":"Large Displays", "subtitle":"For your laptop", "short":"LD", "search_key":"has_displays", "search_value":"true" },
-                        {"title":"Projectors", "short":"Proj", "search_key":"has_projector", "search_value":"true"  },
-                        {"title":"Printing", "short":"Print", "search_key":"has_printing", "search_value":"true"  },
-                        {"title":"Scanning", "short":"S", "search_key":"has_scanning", "search_value":"true"  }
-                
-                        ]
+             "options" : [
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_whiteboards"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_outlets"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_computers"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_displays"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_projector"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_printing"
+                          },
+                          {
+                          "search_value" : "true",
+                          "search_key" : "has_scanning"
+                          }
+                          ],
+             "search_key" : "equipment",
+             "title" : "Equipment"
              },
              {
-             "title":"Food/coffee",
-             "screen_title":"Food/coffee",
-             "screen_header":"Select proximity of food/coffee",
-             "default_selection_label":"Any",
-             "search_key":"food_nearby",
-             "options": [
-                         { "title":"No preference", "short":"", "search_value":"", "clear_all":true },
-                         { "title":"In space", "short":"In Sp.", "search_value":"space" },
-                         { "title":"In building", "short":"In Bldg.", "search_value":"building" },
-                         { "title":"In neighboring building", "short":"In Neighb.", "search_value":"neighboring" }
-                         ]
-             }             
+             "options" : [
+                          {
+                          "search_value" : "",
+                          "clear_all" : true
+                          },
+                          {
+                          "search_value" : "space"
+                          },
+                          {
+                          "search_value" : "building"
+                          },
+                          {
+                          "search_value" : "neighboring"
+                          }
+                          ],
+             "search_key" : "food_nearby",
+             "title" : "Food/coffee"
+             }
+                          
              ]
   }
   ]

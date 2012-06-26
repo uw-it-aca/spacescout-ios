@@ -6,6 +6,8 @@
 
  */
 
+/* These values show up on the space details screen */
+
 "Space type computer_lab" = "Computer lab";
 "Space type open" = "Open Space";
 "Space type alcove" = "Alcove / Nook";
@@ -37,5 +39,123 @@
 "Space equipment has_scanner" = "Scanners";
 "Space equipment has_computers" = "Computers";
 "Space equipment has_displays" = "Displays";
+
+/* These values are for the search screen */
+
+"Search screen title type" = "Type of spot";
+"Search screen header type" = "Select types of spots";
+"Search screen subheader type" = "";
+"Search screen default label type" = "Any";
+"Search option title type study_room" = "Study room";
+"Search option subtitle type study_room" = "Enclosed space for individual or group";
+"Search option short type study_room" = "Rm";
+"Search option title type study_space" = "Study space";
+"Search option subtitle type study_space" = "Unenclosed space for individual or group";
+"Search option short type study_space" = "Spc";
+"Search option title type computer_lab" = "Computer lab";
+"Search option subtitle type computer_lab" = "Group of computer stations";
+"Search option short type computer_lab" = "Lab";
+"Search option title type studio" = "Production studio";
+"Search option subtitle type studio" = "Work space with specialized equipment or technology";
+"Search option short type studio" = "Stdo";
+"Search option title type conference" = "Conference/classroom";
+"Search option subtitle type conference" = "Larger-capacity rooms primarily used for classes, meetings, or workshops";
+"Search option short type conference" = "Clsrm";
+"Search option title type open" = "Open space";
+"Search option subtitle type open" = "Area for use by multiple individuals or groups";
+"Search option short type open" = "Open sp";
+"Search option title type lounge" = "Lounge";
+"Search option subtitle type lounge" = "Indoor casual space";
+"Search option short type lounge" = "Lng";
+"Search option title type cafe" = "Café";
+"Search option subtitle type cafe" = "Space that functions primarily as an eatery";
+"Search option short type cafe" = "Café";
+"Search option title type outdoors" = "Outdoor area";
+"Search option subtitle type outdoors" = "Outdoor casual space";
+"Search option short type outdoors" = "Outdr";
+
+"Search screen title reservable" = "";
+"Search screen header reservable" = "Select reserveability";
+"Search screen subheader reservable" = "";
+"Search screen default label reservable" = "No preference";
+"Search option title reservable " = "No preference";
+"Search option subtitle reservable " = "";
+"Search option short reservable " = "";
+"Search option title reservable true" = "Reserveable";
+"Search option subtitle reservable true" = "";
+"Search option short reservable true" = "";
+
+"Search screen title noise_level" = "Noise level";
+"Search screen header noise_level" = "Select acceptable noise levels";
+"Search screen subheader noise_level" = "";
+"Search screen default label noise_level" = "Any";
+"Search option title noise_level " = "No Preference";
+"Search option subtitle noise_level " = "";
+"Search option short noise_level " = "";
+"Search option title noise_level silent" = "Silent";
+"Search option subtitle noise_level silent" = "";
+"Search option short noise_level silent" = "S";
+"Search option title noise_level quiet" = "Low Hum";
+"Search option subtitle noise_level quiet" = "";
+"Search option short noise_level quiet" = "LH";
+"Search option title noise_level moderate" = "Chatter";
+"Search option subtitle noise_level moderate" = "";
+"Search option short noise_level moderate" = "CH";
+
+"Search screen title has_natural_light" = "Lighting";
+"Search screen header has_natural_light" = "Select type of lighting";
+"Search screen subheader has_natural_light" = "";
+"Search screen default label has_natural_light" = "No preference";
+"Search option title has_natural_light " = "No Preference";
+"Search option subtitle has_natural_light " = "";
+"Search option short has_natural_light " = "";
+"Search option title has_natural_light true" = "Natural light";
+"Search option subtitle has_natural_light true" = "";
+"Search option short has_natural_light true" = "Natural light";
+
+"Search screen title equipment" = "Equipment";
+"Search screen header equipment" = "Equipment required";
+"Search screen subheader equipment" = "Select all attributes you want to include in your search.  Leave blank if you don't care";
+"Search screen default label equipment" = "No preference";
+"Search option title has_whiteboards true" = "Whiteboards";
+"Search option subtitle has_whiteboards true" = "";
+"Search option short has_whiteboards true" = "W";
+"Search option title has_outlets true" = "Outlets";
+"Search option subtitle has_outlets true" = "";
+"Search option short has_outlets true" = "O";
+"Search option title has_computers true" = "Computers";
+"Search option subtitle has_computers true" = "";
+"Search option short has_computers true" = "C";
+"Search option title has_displays true" = "Large Displays";
+"Search option subtitle has_displays true" = "For your laptop";
+"Search option short has_displays true" = "LD";
+"Search option title has_projector true" = "Projectors";
+"Search option subtitle has_projector true" = "";
+"Search option short has_projector true" = "Proj";
+"Search option title has_printing true" = "Printing";
+"Search option subtitle has_printing true" = "";
+"Search option short has_printing true" = "Print";
+"Search option title has_scanning true" = "Scanning";
+"Search option subtitle has_scanning true" = "";
+"Search option short has_scanning true" = "S";
+
+
+"Search screen title food_nearby" = "Food/coffee";
+"Search screen header food_nearby" = "Select proximity of food/coffee";
+"Search screen subheader food_nearby" = "";
+"Search screen default label food_nearby" = "Any";
+"Search option title food_nearby " = "No preference";
+"Search option subtitle food_nearby " = "";
+"Search option short food_nearby " = "";
+"Search option title food_nearby space" = "In space";
+"Search option subtitle food_nearby space" = "";
+"Search option short food_nearby space" = "In Sp.";
+"Search option title food_nearby building" = "In building";
+"Search option subtitle food_nearby building" = "";
+"Search option short food_nearby building" = "In Bldg.";
+"Search option title food_nearby neighboring" = "In neighboring building";
+"Search option subtitle food_nearby neighboring" = "";
+"Search option short food_nearby neighboring" = "In Neighb.";
+
 
 

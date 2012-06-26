@@ -27,12 +27,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *screen_title = [self.filter objectForKey:@"screen_title"];
+    
+    NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
+    NSString *screen_title =  NSLocalizedString(title_key, nil);
+    
     self.title = screen_title;
     
     int view_height = 0;
     
-    NSString *screen_header_text = [self.filter objectForKey:@"screen_header"];
+    NSString *header_key = [NSString stringWithFormat:@"Search screen header %@", [self.filter objectForKey:@"search_key"]];
+    NSString *screen_header_text =  NSLocalizedString(header_key, nil);
+
     if (screen_header_text != nil) {
         self.screen_header.text = screen_header_text;
         view_height += self.screen_header.frame.size.height;
@@ -43,7 +48,8 @@
         self.screen_header.hidden = YES;
     }
 
-    NSString *screen_subheader_text = [self.filter objectForKey:@"screen_subheader"];
+    NSString *subheader_key = [NSString stringWithFormat:@"Search screen subheader %@", [self.filter objectForKey:@"search_key"]];
+    NSString *screen_subheader_text =  NSLocalizedString(subheader_key, nil);;
 
     if (screen_subheader_text != nil) {
         self.screen_subheader.text = screen_subheader_text;
@@ -111,8 +117,15 @@
 {
     NSDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
     NSString *cell_id;
+
+    NSString *search_key = [option objectForKey:@"search_key"];
+    if (search_key == nil) {
+        search_key = [self.filter objectForKey:@"search_key"];
+    }
     
-    NSString *subtitle = [option objectForKey:@"subtitle"];
+    NSString *subtitle_key = [NSString stringWithFormat:@"Search option subtitle %@ %@", search_key, [option objectForKey:@"search_value"]];
+    NSString *subtitle =  NSLocalizedString(subtitle_key, nil);
+    
     if (subtitle != nil) {
         cell_id = @"detail_cell_with_subtitle";
     }
@@ -126,7 +139,11 @@
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [option objectForKey:@"title"];
+    
+    NSString *title_key = [NSString stringWithFormat:@"Search option title %@ %@", search_key, [option objectForKey:@"search_value"]];
+    NSString *title =  NSLocalizedString(title_key, nil);
+
+    filter_label.text = title;
 
     if ([[option objectForKey:@"selected"] boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
