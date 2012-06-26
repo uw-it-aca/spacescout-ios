@@ -53,6 +53,9 @@
 "Search option title type study_space" = "Study space";
 "Search option subtitle type study_space" = "Unenclosed space for individual or group";
 "Search option short type study_space" = "Spc";
+"Search option title type alcove" = "Alcove";
+"Search option subtitle type alcove" = "";
+"Search option short type alcove" = "Alc";
 "Search option title type computer_lab" = "Computer lab";
 "Search option subtitle type computer_lab" = "Group of computer stations";
 "Search option short type computer_lab" = "Lab";
