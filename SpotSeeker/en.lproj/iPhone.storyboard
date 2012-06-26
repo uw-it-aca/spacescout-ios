@@ -1338,6 +1338,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="R48-Hc-Krn">
                         <barButtonItem key="backBarButtonItem" title="List" id="a9i-Fe-DaS"/>
+                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="nsH-xj-sXD"/>
                     </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="fYm-Ao-Mlg" id="dyc-DU-ZTT"/>
@@ -1662,5 +1663,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rfQ-ts-oNK"/>
+        <segue reference="3Cj-Ws-5ju"/>
+        <segue reference="QY8-j1-nec"/>
     </inferredMetricsTieBreakers>
 </document>
