@@ -168,6 +168,7 @@
   
     UILabel *location_description = (UILabel *)[cell viewWithTag:5];
     location_description.text = [row_spot.extended_info objectForKey:@"description"];
+    [location_description sizeToFit];
     
     return cell;
 }
