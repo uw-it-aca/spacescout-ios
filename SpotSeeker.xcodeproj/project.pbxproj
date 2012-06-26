@@ -18,6 +18,7 @@
 		C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */; };
 		C23074D61599298900C31AA1 /* lighting.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D41599298900C31AA1 /* lighting.png */; };
 		C23074D71599298900C31AA1 /* lighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D51599298900C31AA1 /* lighting@2x.png */; };
+		C23074DA1599326900C31AA1 /* DetailsTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23074D91599326900C31AA1 /* DetailsTableFooter.xib */; };
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
@@ -188,6 +189,7 @@
 		C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableIndexedTableFilterViewController.m; path = ViewControllers/SearchableIndexedTableFilterViewController.m; sourceTree = "<group>"; };
 		C23074D41599298900C31AA1 /* lighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighting.png; sourceTree = "<group>"; };
 		C23074D51599298900C31AA1 /* lighting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighting@2x.png"; sourceTree = "<group>"; };
+		C23074D91599326900C31AA1 /* DetailsTableFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsTableFooter.xib; sourceTree = "<group>"; };
 		C24181831545E16E00DAA2FC /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchFilter.h; path = Models/SearchFilter.h; sourceTree = "<group>"; };
 		C24181841545E16E00DAA2FC /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFilter.m; path = Models/SearchFilter.m; sourceTree = "<group>"; };
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -486,6 +488,7 @@
 			children = (
 				C2FDB0F4150A802D00ED3A93 /* iPhone.storyboard */,
 				C26DBE011587F0A200FB4DD8 /* PickerView.xib */,
+				C23074D91599326900C31AA1 /* DetailsTableFooter.xib */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */,
 				C23074D61599298900C31AA1 /* lighting.png in Resources */,
 				C23074D71599298900C31AA1 /* lighting@2x.png in Resources */,
+				C23074DA1599326900C31AA1 /* DetailsTableFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

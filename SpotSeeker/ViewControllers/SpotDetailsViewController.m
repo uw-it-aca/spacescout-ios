@@ -577,6 +577,16 @@
      */
     [super viewDidLoad];
     
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
+                                                      owner:self
+                                                    options:nil];
+    
+    
+    UIView *footer = [nibViews objectAtIndex: 0];
+
+    UITableView *tv = (UITableView *)[self.view viewWithTag:200];
+    tv.tableFooterView = footer;
+    
 	// Do any additional setup after loading the view.
 }
 
