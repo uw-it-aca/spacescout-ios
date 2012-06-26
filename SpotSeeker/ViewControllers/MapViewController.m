@@ -162,8 +162,6 @@ extern const int meters_per_latitude;
         [self runSearch];
     }
     else {
-        UIView *tips = [self.view viewWithTag:10];
-        tips.hidden = true;
         [self showFoundSpots];
     }
 }
@@ -173,6 +171,9 @@ extern const int meters_per_latitude;
         return;
     }
     if (showing_tip_view) {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        delegate.has_hidden_map_tooltip = [NSNumber numberWithBool:true];
+
         UIView *tips = [self.view viewWithTag:10];
         [UIView animateWithDuration:0.5
                               delay:0.0
@@ -297,6 +298,13 @@ extern const int meters_per_latitude;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([delegate.has_hidden_map_tooltip boolValue] == true) {
+        UIView *tips = [self.view viewWithTag:10];
+        tips.hidden = true;
+    }
+    
     showing_tip_view = true;
     loading = true;
     has_centered_on_location = false;

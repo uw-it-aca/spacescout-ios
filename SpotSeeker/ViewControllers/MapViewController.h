@@ -27,6 +27,7 @@
 #import "AnnotationCluster.h"
 #import "ListViewController.h"
 #import "SearchableSpotListViewController.h"
+#import "AppDelegate.h"
 //#import "SpotClusterViewController.h"
 
 @interface MapViewController : SearchableSpotListViewController <MKMapViewDelegate> {

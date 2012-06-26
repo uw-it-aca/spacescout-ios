@@ -22,10 +22,12 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize has_hidden_map_tooltip;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    has_hidden_map_tooltip = [NSNumber numberWithBool:false];
     return YES;
 }
 							

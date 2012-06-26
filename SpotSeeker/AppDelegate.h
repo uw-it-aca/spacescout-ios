@@ -22,5 +22,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSNumber *has_hidden_map_tooltip;
 
 @end
