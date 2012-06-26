@@ -42,6 +42,7 @@
 
 /* These values are for the search screen */
 
+"Search screen label type" = "Type of spot";
 "Search screen title type" = "Type of spot";
 "Search screen header type" = "Select types of spots";
 "Search screen subheader type" = "";
@@ -74,6 +75,7 @@
 "Search option subtitle type outdoors" = "Outdoor casual space";
 "Search option short type outdoors" = "Outdr";
 
+"Search screen label reservable" = "Reserveable?";
 "Search screen title reservable" = "";
 "Search screen header reservable" = "Select reserveability";
 "Search screen subheader reservable" = "";
@@ -85,6 +87,7 @@
 "Search option subtitle reservable true" = "";
 "Search option short reservable true" = "";
 
+"Search screen label noise_level" = "Noise level";
 "Search screen title noise_level" = "Noise level";
 "Search screen header noise_level" = "Select acceptable noise levels";
 "Search screen subheader noise_level" = "";
@@ -102,6 +105,7 @@
 "Search option subtitle noise_level moderate" = "";
 "Search option short noise_level moderate" = "CH";
 
+"Search screen label has_natural_light" = "Lighting";
 "Search screen title has_natural_light" = "Lighting";
 "Search screen header has_natural_light" = "Select type of lighting";
 "Search screen subheader has_natural_light" = "";
@@ -113,6 +117,7 @@
 "Search option subtitle has_natural_light true" = "";
 "Search option short has_natural_light true" = "Natural light";
 
+"Search screen label equipment" = "Equipment";
 "Search screen title equipment" = "Equipment";
 "Search screen header equipment" = "Equipment required";
 "Search screen subheader equipment" = "Select all attributes you want to include in your search.  Leave blank if you don't care";
@@ -139,7 +144,7 @@
 "Search option subtitle has_scanning true" = "";
 "Search option short has_scanning true" = "S";
 
-
+"Search screen label food_nearby" = "Food/coffee";
 "Search screen title food_nearby" = "Food/coffee";
 "Search screen header food_nearby" = "Select proximity of food/coffee";
 "Search screen subheader food_nearby" = "";

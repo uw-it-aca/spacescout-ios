@@ -32,8 +32,7 @@
                           "search_value" : "outdoors"
                           }
                           ],
-             "search_key" : "type",
-             "title" : "Type of spot"
+             "search_key" : "type"
              },
              {
              "title":"Capacity",
@@ -77,8 +76,7 @@
                           "search_value" : "true"
                           }
                           ],
-             "search_key" : "reservable",
-             "title" : "Reserveable?"
+             "search_key" : "reservable"
              },
              {
              "title":"Location",
@@ -121,8 +119,7 @@
                           "search_value" : "moderate"
                           }
                           ],
-             "search_key" : "noise_level",
-             "title" : "Noise Level"
+             "search_key" : "noise_level"
              },
              {
              "options" : [
@@ -134,8 +131,7 @@
                           "search_value" : "true"
                           }
                           ],
-             "search_key" : "has_natural_light",
-             "title" : "Lighting"
+             "search_key" : "has_natural_light"
              },
              {
              "options" : [
@@ -168,8 +164,7 @@
                           "search_key" : "has_scanning"
                           }
                           ],
-             "search_key" : "equipment",
-             "title" : "Equipment"
+             "search_key" : "equipment"
              },
              {
              "options" : [
@@ -187,8 +182,7 @@
                           "search_value" : "neighboring"
                           }
                           ],
-             "search_key" : "food_nearby",
-             "title" : "Food/coffee"
+             "search_key" : "food_nearby"
              }
                           
              ]

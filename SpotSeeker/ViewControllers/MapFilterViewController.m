@@ -226,10 +226,15 @@
     }
 } 
 
--(NSString *)getSelectedOptionsStringForLabel:(UILabel *)selected_label andSelectedOptions:(NSArray *)options withTitleLabel:(UILabel *)title_label {
+-(NSString *)getSelectedOptionsStringForLabel:(UILabel *)selected_label andSelectedOptions:(NSArray *)options withTitleLabel:(UILabel *)title_label andFilter:(NSMutableDictionary *)filter {
     NSMutableArray *long_options = [[NSMutableArray alloc] init];
     for (NSDictionary *option in options) {
-        [long_options addObject:[option objectForKey:@"title"]];
+        NSString *search_key = [option objectForKey:@"search_key"];
+        if (search_key == nil) {
+            search_key = [filter objectForKey:@"search_key"];
+        }
+        NSString *label_key = [NSString stringWithFormat:@"Search option title %@ %@", search_key, [option objectForKey:@"search_value"]];
+        [long_options addObject:NSLocalizedString(label_key, nil)];
     }
 
     float left_most = title_label.frame.origin.x;
@@ -258,7 +263,13 @@
     for (; index < [options count]; index++) {
         NSMutableArray *short_options = [[NSMutableArray alloc] init];
         for (NSDictionary *option in options_copy) {
-            [short_options addObject:[option objectForKey:@"short"]];
+            NSString *search_key = [option objectForKey:@"search_key"];
+            if (search_key == nil) {
+                search_key = [filter objectForKey:@"search_key"];
+            }
+
+            NSString *short_key = [NSString stringWithFormat:@"Search option short %@ %@", search_key, [option objectForKey:@"search_value"]];
+            [short_options addObject:NSLocalizedString(short_key, nil)];
         }
         NSString *test_string = [short_options componentsJoinedByString:@", "];
         if (index > 0) {
@@ -645,7 +656,9 @@
     }
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:1];
-    filter_label.text = [current_obj objectForKey:@"title"];
+    
+    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
+    filter_label.text = NSLocalizedString(label_key, nil);
     
     NSMutableArray *selected_options = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *option in (NSMutableArray *)[current_obj objectForKey:@"options"]) {
@@ -657,11 +670,12 @@
     UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
     
     if ([selected_options count]) {
-        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label];
+        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label andFilter:current_obj];
         selected_label.text = label;
     }
     else {
-        selected_label.text = [current_obj objectForKey:@"default_selection_label"];
+        NSString *default_key = [NSString stringWithFormat:@"Search screen default label %@", [current_obj objectForKey:@"search_key"]];
+        selected_label.text = NSLocalizedString(default_key, nil);
     }
     
     return cell;
@@ -729,7 +743,7 @@
     UILabel *selected_label = (UILabel *)[cell viewWithTag:2];
     
     if ([selected_options count]) {
-        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label];
+        NSString *label = [self getSelectedOptionsStringForLabel:selected_label andSelectedOptions:selected_options withTitleLabel:filter_label andFilter:current_obj];
         selected_label.text = label;
     }
     else {
