@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Move and zoom the map to find spots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8W-xY-wm2">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Move and zoom the map to find spaces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8W-xY-wm2">
                                         <rect key="frame" x="15" y="-1" width="290" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1654,8 +1654,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3Cj-Ws-5ju"/>
-        <segue reference="QY8-j1-nec"/>
-        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>
