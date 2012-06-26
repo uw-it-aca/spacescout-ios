@@ -283,6 +283,9 @@
             hours_label.text = @"";            
         }
         
+        UILabel *description = (UILabel *)[cell viewWithTag:100];
+        description.text = [self.spot.extended_info objectForKey:@"description"];
+        
         return cell;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
