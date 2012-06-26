@@ -57,7 +57,10 @@ extern const int meters_per_latitude;
         }
         NSString *all_types = [type_names componentsJoinedByString:@", "];
         
-        annotationPoint.subtitle = [NSString stringWithFormat:@"%@ | %@ seats", all_types, first_in_group.capacity];
+        annotationPoint.subtitle = [NSString stringWithFormat:@"%@", all_types];
+        if (first_in_group.capacity != nil) {
+            annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@" | %@ seats", first_in_group.capacity];            
+        }
         if (first_in_group.room_number.length != 0) {
             annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@" | Room %@", first_in_group.room_number];
         }
