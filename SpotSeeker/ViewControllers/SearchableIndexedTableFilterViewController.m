@@ -220,8 +220,11 @@
             }
             [building removeObjectForKey:@"checked"];
         }
+        UITableViewCell *clicked_cell = [tableView cellForRowAtIndexPath:indexPath];
+        [clicked_cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         return;
     }
+        
     UITableViewCell *clicked_cell = [tableView cellForRowAtIndexPath:indexPath];
     
     UILabel *label = (UILabel *)[clicked_cell viewWithTag:1];
@@ -243,6 +246,8 @@
 
         }
     }
+    
+    [self selectFirstOptionOnEmptyTable:tableView];
 }
 
 -(NSInteger)numberOfSectionsInListTableView:(UITableView *)tableView {
@@ -258,6 +263,32 @@
     return [[[[self.index_data objectForKey:@"sections"] objectAtIndex:section - 1] objectForKey:@"values"] count];
 }
 
+-(void)selectFirstOptionOnEmptyTable:(UITableView *)tableView {
+
+    NSIndexPath *first_index = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:first_index];
+
+    if ([self shouldCheckFirstOptionInList]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+
+    }
+}
+
+-(BOOL)shouldCheckFirstOptionInList {
+    NSArray *options = [filter objectForKey:@"options"];
+
+    for (NSMutableDictionary *building in options) {
+        if ([[building objectForKey:@"checked"] intValue] > 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
 -(UITableViewCell *)listTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clear_cell"];
@@ -269,6 +300,11 @@
         if (clear_string != nil) {
             label.text = clear_string;
         }
+        
+        if ([self shouldCheckFirstOptionInList]) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
+        
         return cell;        
     }
     else {
