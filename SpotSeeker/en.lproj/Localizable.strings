@@ -78,17 +78,17 @@
 "Search option subtitle type outdoors" = "Outdoor casual space";
 "Search option short type outdoors" = "Outdr";
 
-"Search screen label reservable" = "Reserveable?";
-"Search screen title reservable" = "";
-"Search screen header reservable" = "Select reserveability";
-"Search screen subheader reservable" = "";
-"Search screen default label reservable" = "No preference";
-"Search option title reservable " = "No preference";
-"Search option subtitle reservable " = "";
-"Search option short reservable " = "";
-"Search option title reservable true" = "Reserveable";
-"Search option subtitle reservable true" = "";
-"Search option short reservable true" = "";
+"Search screen label extended_info:reservable" = "Reserveable?";
+"Search screen title extended_info:reservable" = "";
+"Search screen header extended_info:reservable" = "Select reserveability";
+"Search screen subheader extended_info:reservable" = "";
+"Search screen default label extended_info:reservable" = "No preference";
+"Search option title extended_info:reservable " = "No preference";
+"Search option subtitle extended_info:reservable " = "";
+"Search option short extended_info:reservable " = "";
+"Search option title extended_info:reservable true" = "Reserveable";
+"Search option subtitle extended_info:reservable true" = "";
+"Search option short extended_info:reservable true" = "";
 
 "Search screen label extended_info:noise_level" = "Noise level";
 "Search screen title extended_info:noise_level" = "Noise level";
