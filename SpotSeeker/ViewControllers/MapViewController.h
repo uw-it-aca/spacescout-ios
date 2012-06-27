@@ -39,6 +39,7 @@
     BOOL has_centered_on_location;
     BOOL showing_tip_view;
     BOOL loading;
+    NSArray *selected_cluster;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;
@@ -46,6 +47,7 @@
 @property (nonatomic) MKCoordinateRegion map_region;
 @property (nonatomic, retain) NSArray *cluster_spots_to_display;
 @property (nonatomic, retain) NSMutableDictionary *current_annotations;
+@property (nonatomic, retain) NSArray *selected_cluster;
 
 - (IBAction) btnClickRecenter:(id)sender;
 

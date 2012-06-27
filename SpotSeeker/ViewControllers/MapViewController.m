@@ -26,6 +26,7 @@
 @synthesize map_region;
 @synthesize cluster_spots_to_display;
 @synthesize current_annotations;
+@synthesize selected_cluster;
 
 extern const int meters_per_latitude;
 
@@ -142,10 +143,9 @@ extern const int meters_per_latitude;
     
     // XXX - This is the distance from the center of the image to the "point" of the pin drop. Needs to be updated with the images.
     pinView.centerOffset = CGPointMake(5, -20);
-    
+        
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-    [button setTag: [((SpotAnnotation *)annotation).cluster_index intValue]];
     pinView.rightCalloutAccessoryView = button;
 
     return pinView;    
@@ -202,6 +202,7 @@ extern const int meters_per_latitude;
         return;
 
     SpotAnnotation *annotation = (SpotAnnotation *)view.annotation;
+    self.selected_cluster = annotation.spots;
     if (annotation.spots.count > 1) {
         self.cluster_spots_to_display = annotation.spots;
         [self performSegueWithIdentifier:@"cluster_details" sender:nil];
@@ -266,9 +267,7 @@ extern const int meters_per_latitude;
     else if ([[segue identifier] isEqualToString:@"show_details"]) {
         SpotDetailsViewController *details = segue.destinationViewController;
 
-        AnnotationCluster *selected_cluster = [self.current_clusters objectAtIndex:[sender tag]];
-        
-        [details setSpot:[selected_cluster.spots objectAtIndex:0]];
+        [details setSpot:[self.selected_cluster objectAtIndex:0]];
     }
     else if ([[segue identifier] isEqualToString:@"spot_list"]) {
         UINavigationController *nav = segue.destinationViewController;
