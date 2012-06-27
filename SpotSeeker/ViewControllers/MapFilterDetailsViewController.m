@@ -99,7 +99,7 @@
     NSString *subtitle_key = [NSString stringWithFormat:@"Search option subtitle %@ %@", search_key, [option objectForKey:@"search_value"]];
     NSString *subtitle =  NSLocalizedString(subtitle_key, nil);
     
-    if (subtitle == nil) {
+    if (subtitle == nil || [subtitle isEqualToString:@""]) {
         return 45.0;
     }
     
@@ -131,11 +131,11 @@
     NSString *subtitle_key = [NSString stringWithFormat:@"Search option subtitle %@ %@", search_key, [option objectForKey:@"search_value"]];
     NSString *subtitle =  NSLocalizedString(subtitle_key, nil);
     
-    if (subtitle != nil) {
-        cell_id = @"detail_cell_with_subtitle";
+    if (subtitle == nil || [subtitle isEqualToString:@""]) {
+        cell_id = @"detail_cell";        
     }
     else {
-        cell_id = @"detail_cell";        
+        cell_id = @"detail_cell_with_subtitle";
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
