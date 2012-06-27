@@ -135,31 +135,31 @@
              "options" : [
                           {
                           "search_value" : "true",
-                          "search_key" : "has_whiteboards"
+                          "search_key" : "extended_info:has_whiteboards"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_outlets"
+                          "search_key" : "extended_info:has_outlets"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_computers"
+                          "search_key" : "extended_info:has_computers"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_displays"
+                          "search_key" : "extended_info:has_displays"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_projector"
+                          "search_key" : "extended_info:has_projector"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_printing"
+                          "search_key" : "extended_info:has_printing"
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "has_scanning"
+                          "search_key" : "extended_info:has_scanning"
                           }
                           ],
              "search_key" : "equipment"
@@ -180,7 +180,7 @@
                           "search_value" : "neighboring"
                           }
                           ],
-             "search_key" : "food_nearby"
+             "search_key" : "extended_info:food_nearby"
              }
                           
              ]
