@@ -108,17 +108,17 @@
 "Search option subtitle extended_info:noise_level moderate" = "";
 "Search option short extended_info:noise_level moderate" = "CH";
 
-"Search screen label has_natural_light" = "Lighting";
-"Search screen title has_natural_light" = "Lighting";
-"Search screen header has_natural_light" = "Select type of lighting";
-"Search screen subheader has_natural_light" = "";
-"Search screen default label has_natural_light" = "No preference";
-"Search option title has_natural_light " = "No Preference";
-"Search option subtitle has_natural_light " = "";
-"Search option short has_natural_light " = "";
-"Search option title has_natural_light true" = "Natural light";
-"Search option subtitle has_natural_light true" = "";
-"Search option short has_natural_light true" = "Natural light";
+"Search screen label extended_info:has_natural_light" = "Lighting";
+"Search screen title extended_info:has_natural_light" = "Lighting";
+"Search screen header extended_info:has_natural_light" = "Select type of lighting";
+"Search screen subheader extended_info:has_natural_light" = "";
+"Search screen default label extended_info:has_natural_light" = "No preference";
+"Search option title extended_info:has_natural_light " = "No Preference";
+"Search option subtitle extended_info:has_natural_light " = "";
+"Search option short extended_info:has_natural_light " = "";
+"Search option title extended_info:has_natural_light true" = "Natural light";
+"Search option subtitle extended_info:has_natural_light true" = "";
+"Search option short extended_info:has_natural_light true" = "Natural light";
 
 "Search screen label equipment" = "Equipment";
 "Search screen title equipment" = "Equipment";

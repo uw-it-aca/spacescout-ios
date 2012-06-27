@@ -129,7 +129,7 @@
                           "search_value" : "true"
                           }
                           ],
-             "search_key" : "has_natural_light"
+             "search_key" : "extended_info:has_natural_light"
              },
              {
              "options" : [
