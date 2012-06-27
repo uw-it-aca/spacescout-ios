@@ -23,6 +23,7 @@
 
 @synthesize window = _window;
 @synthesize has_hidden_map_tooltip;
+@synthesize user_location;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

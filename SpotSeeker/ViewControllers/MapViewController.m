@@ -212,6 +212,9 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.user_location = userLocation;
+    
     if (has_centered_on_location) {
         return;
     }

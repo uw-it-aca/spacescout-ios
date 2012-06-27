@@ -19,6 +19,8 @@
     MKCoordinateRegion map_region;
 }
 
+-(void)sortSpots;
+
 @property (nonatomic, retain) UITableView *spot_table;
 @property (nonatomic, retain) Spot *selected_spot;
 @property (nonatomic) MKCoordinateRegion map_region;

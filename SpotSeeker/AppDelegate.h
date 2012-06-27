@@ -18,10 +18,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSNumber *has_hidden_map_tooltip;
+@property (strong, nonatomic) MKUserLocation *user_location;
 
 @end

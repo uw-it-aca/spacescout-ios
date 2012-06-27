@@ -73,13 +73,16 @@
 #pragma mark sorting methods
 
 -(void)sortSpots {
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    MKUserLocation *user_location = delegate.user_location;
+    
     for (spot in self.current_spots) {
-        if (self.map_view.userLocation == nil) {
+        if (user_location == nil || user_location.location == nil) {
             spot.distance_from_user = nil;
         }
         else {
             CLLocation *spot_location = [[CLLocation alloc] initWithLatitude:[spot.latitude floatValue] longitude:[spot.longitude floatValue]];
-            double meters = [spot_location distanceFromLocation:self.map_view.userLocation.location];
+            double meters = [spot_location distanceFromLocation:user_location.location];
             double miles = meters * 0.000621371192;
             spot.distance_from_user = [NSNumber numberWithFloat:miles];
         }

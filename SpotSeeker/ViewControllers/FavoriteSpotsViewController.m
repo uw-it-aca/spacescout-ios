@@ -22,6 +22,7 @@
 
 -(void)searchFinished:(NSArray *)spots {
     self.current_spots = spots;
+    [self sortSpots];
     [self.spot_table reloadData];
 }
 
