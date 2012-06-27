@@ -117,7 +117,7 @@
                           "search_value" : "moderate"
                           }
                           ],
-             "search_key" : "noise_level"
+             "search_key" : "extended_info:noise_level"
              },
              {
              "options" : [
