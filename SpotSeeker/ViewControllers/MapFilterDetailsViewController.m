@@ -110,7 +110,7 @@
 
     UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];
     CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(cell.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
-        
+
     return 45.0 + expected.height - 18.0;
 }
 
@@ -158,7 +158,11 @@
     }
 
     if (subtitle != nil) {
-        UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];
+        UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];        
+       
+        CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(cell.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
+
+        subtitle_label.frame = CGRectMake(subtitle_label.frame.origin.x, subtitle_label.frame.origin.y, subtitle_label.frame.size.width, expected.height);
         subtitle_label.text = subtitle;
     }
     
