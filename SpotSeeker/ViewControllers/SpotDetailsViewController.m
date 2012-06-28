@@ -250,7 +250,13 @@
         if ([spot.image_urls count] == 0) {
             UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
             spinner.hidden = YES;
+            
         }
+        if ([spot.image_urls count] < 2) {
+            UILabel *image_count = (UILabel *)[cell viewWithTag:9];
+            image_count.hidden = YES;
+        }
+    
         
         if (self.img_view == nil) {
             self.img_view = spot_image;
@@ -260,6 +266,10 @@
                 _rest.delegate = self;
                 [_rest getURL:image_url];
                 self.rest = _rest;
+                
+                UILabel *image_count = (UILabel *)[cell viewWithTag:9];
+                image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
+
             }
         }
         
