@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "REST.h"
 #import "Spot.h"
-#import "SpotDetailsViewController.h"
+#import "SpaceDetailsViewController.h"
 #import "MapViewController.h"
 #import "SearchableSpotListViewController.h"
 

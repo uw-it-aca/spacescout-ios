@@ -22,7 +22,7 @@
 #import "ViewController.h"
 #import "Spot.h"
 #import "SpotAnnotation.h"
-#import "SpotDetailsViewController.h"
+#import "SpaceDetailsViewController.h"
 #import "MapFilterViewController.h"
 #import "AnnotationCluster.h"
 #import "ListViewController.h"

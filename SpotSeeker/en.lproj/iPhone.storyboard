@@ -656,11 +656,11 @@
             </objects>
             <point key="canvasLocation" x="3321" y="109"/>
         </scene>
-        <!--Spot Details View Controller - SpaceScout-->
+        <!--Space Details View Controller - SpaceScout-->
         <scene sceneID="adb-7p-DAh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ycF-WC-Hj5" customClass="SpotDetailsViewController" sceneMemberID="viewController">
+                <viewController id="ycF-WC-Hj5" customClass="SpaceDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRl-lE-xaE">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1631,15 +1631,6 @@
         </class>
         <class className="SpotClusterViewController" superclassName="ListViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotClusterViewController.h"/>
-        </class>
-        <class className="SpotDetailsViewController" superclassName="ViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickFavorite:"/>
-                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
-            </relationships>
         </class>
         <class className="SpotImagesViewController" superclassName="ViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotImagesViewController.h"/>

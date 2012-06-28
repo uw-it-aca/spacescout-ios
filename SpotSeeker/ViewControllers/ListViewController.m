@@ -47,7 +47,7 @@
         filter_vc.delegate = (id <SearchFilters>)self;
     }
     else if ([[segue identifier] isEqualToString:@"show_details"]) {
-        SpotDetailsViewController *details = segue.destinationViewController;
+        SpaceDetailsViewController *details = segue.destinationViewController;
         [details setSpot:self.selected_spot];
     }
     else if ([[segue identifier] isEqualToString:@"spot_map"]) {
