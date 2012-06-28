@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2FDB0DD150A802D00ED3A93"
-               BuildableName = "SpotSeeker.app"
+               BuildableName = "SpaceScout.app"
                BlueprintName = "SpaceScout"
                ReferencedContainer = "container:SpaceScout.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2FDB0FE150A802E00ED3A93"
-               BuildableName = "SpotSeekerTests.octest"
+               BuildableName = "SpaceScoutTests.octest"
                BlueprintName = "SpaceScoutTests"
                ReferencedContainer = "container:SpaceScout.xcodeproj">
             </BuildableReference>
@@ -42,7 +42,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2FDB0DD150A802D00ED3A93"
-            BuildableName = "SpotSeeker.app"
+            BuildableName = "SpaceScout.app"
             BlueprintName = "SpaceScout"
             ReferencedContainer = "container:SpaceScout.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2FDB0DD150A802D00ED3A93"
-            BuildableName = "SpotSeeker.app"
+            BuildableName = "SpaceScout.app"
             BlueprintName = "SpaceScout"
             ReferencedContainer = "container:SpaceScout.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2FDB0DD150A802D00ED3A93"
-            BuildableName = "SpotSeeker.app"
+            BuildableName = "SpaceScout.app"
             BlueprintName = "SpaceScout"
             ReferencedContainer = "container:SpaceScout.xcodeproj">
          </BuildableReference>
