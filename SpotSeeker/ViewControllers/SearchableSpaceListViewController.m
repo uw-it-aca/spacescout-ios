@@ -36,7 +36,7 @@ int const meters_per_latitude = 111 * 1000;
     
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%i", meters], nil] forKey:@"distance"];
     
-    Spot *_spot = [Spot alloc];
+    Space *_spot = [Space alloc];
     self.spot = _spot;
     [self.spot getListBySearch:search_attributes];
     [self.spot setDelegate:self];

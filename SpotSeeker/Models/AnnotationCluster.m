@@ -17,7 +17,7 @@
 +(NSArray *)createClustersFromSpots:(NSArray *)input_spots andMap:(MKMapView *)map_view {
     NSMutableArray *cluster_groups = [[NSMutableArray alloc] init];
     for (int index = 0; index < input_spots.count; index++) {
-        Spot *spot = [input_spots objectAtIndex:index];
+        Space *spot = [input_spots objectAtIndex:index];
         
         ClusterGroup *test_group = [AnnotationCluster createClusterGroupForSpot:spot andMapView:map_view];
         
@@ -93,8 +93,8 @@
         return false;
     }
     // There's an extra limit, that only spots in the same building intersect.
-    Spot *test_spot = [test_group.spots objectAtIndex:0];
-    Spot *cluster_spot = [cluster_group.spots objectAtIndex:0];
+    Space *test_spot = [test_group.spots objectAtIndex:0];
+    Space *cluster_spot = [cluster_group.spots objectAtIndex:0];
     
     if (![test_spot.building_name isEqualToString:cluster_spot.building_name]) {
         return false;
@@ -137,7 +137,7 @@
     return joined;
 }
 
-+(ClusterGroup *)createClusterGroupForSpot:(Spot *)spot andMapView:(MKMapView *)map_view {
++(ClusterGroup *)createClusterGroupForSpot:(Space *)spot andMapView:(MKMapView *)map_view {
     UIImage *sample_pin = [UIImage imageNamed:@"01.png"];
     float width = sample_pin.size.width;
     float height = sample_pin.size.height;
@@ -166,7 +166,7 @@
     float total_longitude = 0.0;
     
     for (int index = 0; index < group.spots.count; index++) {
-        Spot *spot = [group.spots objectAtIndex:index];
+        Space *spot = [group.spots objectAtIndex:index];
         total_latitude += [spot.latitude floatValue];
         total_longitude += [spot.longitude floatValue];
     }

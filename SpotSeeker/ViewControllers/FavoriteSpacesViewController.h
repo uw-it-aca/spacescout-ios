@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Spot.h"
+#import "Space.h"
 #import "Favorites.h"
 #import "ListViewController.h"
 

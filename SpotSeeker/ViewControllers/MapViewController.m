@@ -43,7 +43,7 @@ extern const int meters_per_latitude;
         annotationCoord.longitude = [cluster.display_longitude floatValue];
 
        
-        Spot *first_in_group = [cluster.spots objectAtIndex:0];
+        Space *first_in_group = [cluster.spots objectAtIndex:0];
         SpaceAnnotation *annotationPoint = [[SpaceAnnotation alloc] init];
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;

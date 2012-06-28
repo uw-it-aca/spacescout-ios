@@ -51,7 +51,7 @@
     NSMutableDictionary *id_lookup = [[NSMutableDictionary alloc] init];
     [id_lookup setObject:self.favorites forKey:@"id"];
     
-    Spot *search_spot = [[Spot alloc] init];
+    Space *search_spot = [[Space alloc] init];
     search_spot.delegate = self;
     [search_spot getListBySearch:id_lookup];
     self.spot = search_spot;

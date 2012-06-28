@@ -11,7 +11,7 @@
 @implementation SpotModelTests
 
 -(void)testEmptyQuery {
-    NSString *result = [[Spot alloc] buildURLWithParams:[[NSDictionary alloc] init]];
+    NSString *result = [[Space alloc] buildURLWithParams:[[NSDictionary alloc] init]];
     
     STAssertEqualObjects(result, @"/api/v1/spot/?", @"empty query");
 }
@@ -21,7 +21,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:[[NSMutableArray alloc] initWithObjects: @"search_value", nil] forKey:@"search_key"];
     
-    NSString *result = [[Spot alloc] buildURLWithParams:dict];
+    NSString *result = [[Space alloc] buildURLWithParams:dict];
     
     STAssertEqualObjects(result, @"/api/v1/spot/?search_key=search_value", @"single value test");
 }
@@ -31,7 +31,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:[[NSMutableArray alloc] initWithObjects: @"search_value2", @"search_value1", nil] forKey:@"search_key"];
     
-    NSString *result = [[Spot alloc] buildURLWithParams:dict];
+    NSString *result = [[Space alloc] buildURLWithParams:dict];
     
     STAssertEqualObjects(result, @"/api/v1/spot/?search_key=search_value2&search_key=search_value1", @"multi-value test");
 }
@@ -41,7 +41,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:[[NSMutableArray alloc] initWithObjects: @"#\n&?%", nil] forKey:@"search_key"];
     
-    NSString *result = [[Spot alloc] buildURLWithParams:dict];
+    NSString *result = [[Space alloc] buildURLWithParams:dict];
     
     STAssertEqualObjects(result, @"/api/v1/spot/?search_key=%23%0A%26%3F%25", @"multi-value test");
 }
@@ -50,9 +50,9 @@
 #pragma mark sorting tests
 
 -(void)testSpotDistance {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     alpha.distance_from_user = [NSNumber numberWithFloat:0.010];
     beta.distance_from_user = [NSNumber numberWithFloat:1.0201];
@@ -64,9 +64,9 @@
 }
 
 -(void)testBuildingName {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
 
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -83,9 +83,9 @@
 }
 
 -(void)testFloor {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -105,9 +105,9 @@
     STAssertEquals([beta compareToSpot:gamma], NSOrderedSame, @"Only comparing significant digits");   
     
     // Need to do more tests here...
-    Spot *delta = [[Spot alloc] init];
-    Spot *epsilon = [[Spot alloc] init];
-    Spot *zeta = [[Spot alloc] init];
+    Space *delta = [[Space alloc] init];
+    Space *epsilon = [[Space alloc] init];
+    Space *zeta = [[Space alloc] init];
 
     delta.distance_from_user = [NSNumber numberWithFloat:1.00];
     epsilon.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -129,9 +129,9 @@
 }
 
 -(void)testRoomNumber {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -157,9 +157,9 @@
 }
 
 -(void)testSpotName {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -189,9 +189,9 @@
 }
 
 -(void)testSpotType {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];
@@ -262,9 +262,9 @@
 }
 
 -(void)testSpotCapacity {
-    Spot *alpha = [[Spot alloc] init];
-    Spot *beta = [[Spot alloc] init];
-    Spot *gamma = [[Spot alloc] init];
+    Space *alpha = [[Space alloc] init];
+    Space *beta = [[Space alloc] init];
+    Space *gamma = [[Space alloc] init];
     
     
     alpha.distance_from_user = [NSNumber numberWithFloat:1.00];

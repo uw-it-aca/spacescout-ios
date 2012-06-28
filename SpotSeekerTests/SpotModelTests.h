@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "Spot.h"
+#import "Space.h"
 
 @interface SpotModelTests : SenTestCase
 

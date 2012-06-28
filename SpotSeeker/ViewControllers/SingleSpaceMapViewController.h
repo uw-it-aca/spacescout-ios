@@ -8,15 +8,15 @@
 
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
-#import "Spot.h"
+#import "Space.h"
 #import "SingleSpaceMapAnnotation.h"
 
 @interface SingleSpaceMapViewController : UIViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *map_view;
-    Spot *spot;
+    Space *spot;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
-@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) Space *spot;
 
 @end

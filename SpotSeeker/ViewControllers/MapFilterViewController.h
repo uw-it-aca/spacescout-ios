@@ -18,7 +18,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Spot.h"
+#import "Space.h"
 #import "SBJson.h"
 #import "MapViewController.h"
 #import "MapFilterDetailsViewController.h"
@@ -30,7 +30,7 @@
 @protocol SearchFilters;
 
 @interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
-    Spot *spot;
+    Space *spot;
       
     IBOutlet UITableView *filter_table;
     
@@ -54,7 +54,7 @@
 @property (nonatomic, retain) UIScrollView *scroll_view;
 @property (nonatomic, retain) UIView *filter_view;
 @property (nonatomic, retain) IBOutlet UITextField *name_filter;
-@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) UITableView *filter_table;
 @property (nonatomic, retain) NSMutableArray *data_sections;
 @property (nonatomic, retain) NSMutableDictionary *current_section;

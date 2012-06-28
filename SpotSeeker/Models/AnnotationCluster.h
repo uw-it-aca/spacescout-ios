@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "Spot.h"
+#import "Space.h"
 
 @interface AnnotationCluster : NSObject {
     NSMutableArray *spots;

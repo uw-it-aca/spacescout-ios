@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "REST.h"
-#import "Spot.h"
+#import "Space.h"
 #import "SpaceDetailsViewController.h"
 #import "MapViewController.h"
 #import "SearchableSpaceListViewController.h"
 
 @interface ListViewController : SearchableSpaceListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished> {
     IBOutlet UITableView *spot_table;
-    Spot *selected_spot;
+    Space *selected_spot;
     MKCoordinateRegion map_region;
 }
 
 -(void)sortSpots;
 
 @property (nonatomic, retain) UITableView *spot_table;
-@property (nonatomic, retain) Spot *selected_spot;
+@property (nonatomic, retain) Space *selected_spot;
 @property (nonatomic) MKCoordinateRegion map_region;
 @property (nonatomic, retain) REST *rest;
 

@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "Spot.h"
+#import "Space.h"
 
 @interface SearchableSpaceListViewController : UIViewController <SearchFinished> {
     MKMapView *map_view;
     NSMutableDictionary *search_attributes;
     NSArray *current_spots;
-    Spot *spot;
+    Space *spot;
 
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map_view;
 @property (nonatomic, retain) NSMutableDictionary *search_attributes;
-@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) NSArray *current_spots;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;

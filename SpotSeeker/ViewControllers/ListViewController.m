@@ -99,7 +99,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Spot *row_spot = [self.current_spots objectAtIndex:indexPath.row];
+    Space *row_spot = [self.current_spots objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"spot_list_display"];
     if (cell == nil) {

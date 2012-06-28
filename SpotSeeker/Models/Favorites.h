@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Spot.h"
+#import "Space.h"
 
 @interface Favorites : NSObject {
     
 }
 
-+(BOOL) isFavorite:(Spot *)spot;
++(BOOL) isFavorite:(Space *)spot;
 
-+(void) addFavorite:(Spot *)spot;
++(void) addFavorite:(Space *)spot;
 
-+(void) removeFavorite:(Spot *)spot;
++(void) removeFavorite:(Space *)spot;
 
 +(NSArray *) getFavoritesIDList;
 

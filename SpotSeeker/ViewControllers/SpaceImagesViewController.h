@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "Spot.h"
+#import "Space.h"
 #import "REST.h"
 
 @interface SpaceImagesViewController : ViewController <RESTFinished, UIGestureRecognizerDelegate> {
-    Spot *spot;
+    Space *spot;
     IBOutlet UIImageView *image_view;
     NSNumber *current_index;
     REST *rest;
@@ -26,7 +26,7 @@
 -(IBAction) clickPrevImgBtn:(id)sender;
 
 
-@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) IBOutlet UIImageView *image_view;
 @property (nonatomic, retain) NSNumber *current_index;
 @property (nonatomic, retain) REST *rest;

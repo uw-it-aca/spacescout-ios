@@ -11,20 +11,20 @@
 @implementation Favorites
 
 
-+(BOOL) isFavorite:(Spot *)spot {
++(BOOL) isFavorite:(Space *)spot {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     id is_favorite = [favorites objectForKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
     
     return !(is_favorite == nil);
 }
 
-+(void) addFavorite:(Spot *)spot {
++(void) addFavorite:(Space *)spot {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     [favorites setObject:[NSNumber numberWithBool:TRUE] forKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
     [Favorites saveFavorites:favorites];
 }
 
-+(void) removeFavorite:(Spot *)spot {
++(void) removeFavorite:(Space *)spot {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     [favorites removeObjectForKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
     [Favorites saveFavorites:favorites];

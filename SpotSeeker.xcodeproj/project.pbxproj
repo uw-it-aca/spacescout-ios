@@ -22,7 +22,7 @@
 		C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C24181841545E16E00DAA2FC /* SearchFilter.m */; };
 		C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A40150A8DDA005A994A /* MapKit.framework */; };
 		C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A43150A90DD005A994A /* MapFilterViewController.m */; };
-		C2429A4B150AA37C005A994A /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A4A150AA37C005A994A /* Spot.m */; };
+		C2429A4B150AA37C005A994A /* Space.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A4A150AA37C005A994A /* Space.m */; };
 		C2429A8A150AABDB005A994A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A72150AABDB005A994A /* NSObject+SBJson.m */; };
 		C2429A8B150AABDB005A994A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A75150AABDB005A994A /* SBJsonParser.m */; };
 		C2429A8C150AABDB005A994A /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429A77150AABDB005A994A /* SBJsonStreamParser.m */; };
@@ -194,8 +194,8 @@
 		C2429A40150A8DDA005A994A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2429A42150A90DC005A994A /* MapFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterViewController.h; path = ViewControllers/MapFilterViewController.h; sourceTree = "<group>"; };
 		C2429A43150A90DD005A994A /* MapFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterViewController.m; path = ViewControllers/MapFilterViewController.m; sourceTree = "<group>"; };
-		C2429A49150AA37C005A994A /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spot.h; path = Models/Spot.h; sourceTree = "<group>"; };
-		C2429A4A150AA37C005A994A /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Spot.m; path = Models/Spot.m; sourceTree = "<group>"; };
+		C2429A49150AA37C005A994A /* Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Space.h; path = Models/Space.h; sourceTree = "<group>"; };
+		C2429A4A150AA37C005A994A /* Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Space.m; path = Models/Space.m; sourceTree = "<group>"; };
 		C2429A71150AABDB005A994A /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		C2429A72150AABDB005A994A /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		C2429A73150AABDB005A994A /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -426,8 +426,8 @@
 		C2429A50150AA904005A994A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C2429A49150AA37C005A994A /* Spot.h */,
-				C2429A4A150AA37C005A994A /* Spot.m */,
+				C2429A49150AA37C005A994A /* Space.h */,
+				C2429A4A150AA37C005A994A /* Space.m */,
 				C2429AC8150AC711005A994A /* SpaceAnnotation.h */,
 				C2429AC9150AC711005A994A /* SpaceAnnotation.m */,
 				C24C11681536744A00109C30 /* Favorites.h */,
@@ -970,7 +970,7 @@
 				C2FDB0F3150A802D00ED3A93 /* AppDelegate.m in Sources */,
 				C2FDB0F9150A802D00ED3A93 /* ViewController.m in Sources */,
 				C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */,
-				C2429A4B150AA37C005A994A /* Spot.m in Sources */,
+				C2429A4B150AA37C005A994A /* Space.m in Sources */,
 				C2429A8A150AABDB005A994A /* NSObject+SBJson.m in Sources */,
 				C2429A8B150AABDB005A994A /* SBJsonParser.m in Sources */,
 				C2429A8C150AABDB005A994A /* SBJsonStreamParser.m in Sources */,

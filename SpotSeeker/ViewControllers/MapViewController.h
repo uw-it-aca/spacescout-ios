@@ -20,7 +20,7 @@
 #import <MapKit/MapKit.h>
 #import "SBJson.h"
 #import "ViewController.h"
-#import "Spot.h"
+#import "Space.h"
 #import "SpaceAnnotation.h"
 #import "SpaceDetailsViewController.h"
 #import "MapFilterViewController.h"

@@ -18,7 +18,7 @@
 //
 
 #import "ViewController.h"
-#import "Spot.h"
+#import "Space.h"
 #import "Favorites.h"
 #import "REST.h"
 #import "DisplayOptions.h"
@@ -27,7 +27,7 @@
 #import "SingleSpaceMapViewController.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {
-    Spot *spot;
+    Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
     IBOutlet UIButton *favorite_button;
@@ -40,7 +40,7 @@
 
 - (IBAction) btnClickFavorite:(id)sender;
 
-@property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) IBOutlet UILabel *capacity_label;
 @property (nonatomic, retain) IBOutlet UIButton *favorite_button;
 @property (nonatomic, retain) NSMutableDictionary *favorite_spots;
