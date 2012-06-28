@@ -23,7 +23,7 @@
 #import "REST.h"
 #import "DisplayOptions.h"
 #import "HoursFormat.h"
-#import "SpotImagesViewController.h"
+#import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {

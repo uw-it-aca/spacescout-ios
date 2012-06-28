@@ -565,7 +565,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"image_view"]) {
-        SpotImagesViewController *destination = (SpotImagesViewController *)[segue destinationViewController];
+        SpaceImagesViewController *destination = (SpaceImagesViewController *)[segue destinationViewController];
         destination.spot = self.spot;
     }
     
