@@ -40,7 +40,7 @@
     annotationCoord.latitude = [self.spot.latitude floatValue];
     annotationCoord.longitude = [self.spot.longitude floatValue];
     
-    SingleSpotMapAnnotation *annotation = [[SingleSpotMapAnnotation alloc] init];
+    SingleSpaceMapAnnotation *annotation = [[SingleSpaceMapAnnotation alloc] init];
     annotation.coordinate = annotationCoord;
 
     [self.map_view addAnnotation:annotation];

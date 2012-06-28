@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
 #import "Spot.h"
-#import "SingleSpotMapAnnotation.h"
+#import "SingleSpaceMapAnnotation.h"
 
 @interface SingleSpaceMapViewController : UIViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *map_view;

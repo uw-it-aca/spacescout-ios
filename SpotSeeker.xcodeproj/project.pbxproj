@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
-		C20EECAA1593E1A6002A3849 /* SingleSpotMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpotMapAnnotation.m */; };
+		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
 		C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5A61559C70C00F295DD /* HoursFormat.m */; };
 		C213C5AB1559C82700F295DD /* HoursDisplayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5AA1559C82700F295DD /* HoursDisplayTests.m */; };
@@ -171,8 +171,8 @@
 /* Begin PBXFileReference section */
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
-		C20EECA81593E1A6002A3849 /* SingleSpotMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpotMapAnnotation.h; path = Models/SingleSpotMapAnnotation.h; sourceTree = "<group>"; };
-		C20EECA91593E1A6002A3849 /* SingleSpotMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpotMapAnnotation.m; path = Models/SingleSpotMapAnnotation.m; sourceTree = "<group>"; };
+		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
+		C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapAnnotation.m; path = Models/SingleSpaceMapAnnotation.m; sourceTree = "<group>"; };
 		C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingTabBarController.h; path = ViewControllers/RotatingTabBarController.h; sourceTree = "<group>"; };
 		C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingTabBarController.m; path = ViewControllers/RotatingTabBarController.m; sourceTree = "<group>"; };
 		C213C5A51559C70C00F295DD /* HoursFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoursFormat.h; path = Models/HoursFormat.h; sourceTree = "<group>"; };
@@ -442,8 +442,8 @@
 				C213C5A61559C70C00F295DD /* HoursFormat.m */,
 				C2AFB7BC156CA3DB00D19E7A /* AnnotationCluster.h */,
 				C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */,
-				C20EECA81593E1A6002A3849 /* SingleSpotMapAnnotation.h */,
-				C20EECA91593E1A6002A3849 /* SingleSpotMapAnnotation.m */,
+				C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */,
+				C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1016,7 +1016,7 @@
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 				C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */,
 				C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */,
-				C20EECAA1593E1A6002A3849 /* SingleSpotMapAnnotation.m in Sources */,
+				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
