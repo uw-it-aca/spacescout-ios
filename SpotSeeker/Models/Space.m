@@ -91,7 +91,28 @@
         
         NSMutableArray *_image_urls = [[NSMutableArray alloc]init];
         for (NSDictionary *image in [spot_info objectForKey:@"images"]) {
-            [_image_urls addObject:[image objectForKey:@"url"]];
+            NSNumber *height = [image objectForKey:@"height"];
+            NSNumber *width = [image objectForKey:@"width"];
+            
+            if (([height intValue] < 400) && ([width intValue] < 400)) {
+                [_image_urls addObject:[image objectForKey:@"url"]];
+            }
+            else {
+                int new_height;
+                int new_width;
+                if (height < width) {
+                    float ratio = 400 / [width floatValue];
+                    new_width = 400;
+                    new_height = (int)(ratio * [height floatValue]);
+                }
+                else {
+                    float ratio = 400 / [height floatValue];
+                    new_height = 400;
+                    new_width = (int)(ratio * [width floatValue]);
+                }
+                NSString *thumb_url = [NSString stringWithFormat:@"%@/%ix%i", [image objectForKey:@"thumbnail_root"], new_width, new_height];
+                [_image_urls addObject:thumb_url];
+            }
         }
         spot.image_urls = _image_urls;
         
