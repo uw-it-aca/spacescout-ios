@@ -138,7 +138,7 @@
 }
 
 +(ClusterGroup *)createClusterGroupForSpot:(Space *)spot andMapView:(MKMapView *)map_view {
-    UIImage *sample_pin = [UIImage imageNamed:@"01.png"];
+    UIImage *sample_pin = [UIImage imageNamed:@"pin01.png"];
     float width = sample_pin.size.width;
     float height = sample_pin.size.height;
     
