@@ -64,7 +64,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void) showFoundSpots {
+-(void) showFoundSpaces {
     [self sortSpots];
     [self.spot_table reloadData];
 }

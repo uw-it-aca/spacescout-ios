@@ -50,10 +50,10 @@ int const meters_per_latitude = 111 * 1000;
 
 -(void) searchFinished:(NSArray *)spots {
     self.current_spots = spots;
-    [self showFoundSpots];
+    [self showFoundSpaces];
 }
 
--(void)showFoundSpots {
+-(void)showFoundSpaces {
     // Must be implemented in subclasses...
 }
 

@@ -30,7 +30,7 @@
 
 extern const int meters_per_latitude;
 
--(void) showFoundSpots {
+-(void) showFoundSpaces {
     NSArray *annotation_groups = [AnnotationCluster createClustersFromSpots:self.current_spots andMap:map_view];
    
     NSMutableArray *next_spots = [[NSMutableArray alloc] init];
@@ -165,7 +165,7 @@ extern const int meters_per_latitude;
         [self runSearch];
     }
     else {
-        [self showFoundSpots];
+        [self showFoundSpaces];
     }
 }
 

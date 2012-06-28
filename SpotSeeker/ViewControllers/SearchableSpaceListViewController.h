@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSArray *current_spots;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
--(void)showFoundSpots;
+-(void)showFoundSpaces;
 -(void)runSearch;
 
 @end
