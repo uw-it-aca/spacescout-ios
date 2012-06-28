@@ -570,7 +570,7 @@
     }
     
     if ([[segue identifier] isEqualToString:@"map_display"]) {
-        SingleSpotMapViewController *destination = (SingleSpotMapViewController *)[segue destinationViewController];
+        SingleSpaceMapViewController *destination = (SingleSpaceMapViewController *)[segue destinationViewController];
         destination.spot = self.spot;
     }
 }

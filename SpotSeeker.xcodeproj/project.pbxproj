@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C20EECA61593DD92002A3849 /* SingleSpotMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpotMapViewController.m */; };
+		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpotMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpotMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
 		C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5A61559C70C00F295DD /* HoursFormat.m */; };
@@ -169,8 +169,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C20EECA41593DD92002A3849 /* SingleSpotMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpotMapViewController.h; path = ViewControllers/SingleSpotMapViewController.h; sourceTree = "<group>"; };
-		C20EECA51593DD92002A3849 /* SingleSpotMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpotMapViewController.m; path = ViewControllers/SingleSpotMapViewController.m; sourceTree = "<group>"; };
+		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
+		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpotMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpotMapAnnotation.h; path = Models/SingleSpotMapAnnotation.h; sourceTree = "<group>"; };
 		C20EECA91593E1A6002A3849 /* SingleSpotMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpotMapAnnotation.m; path = Models/SingleSpotMapAnnotation.m; sourceTree = "<group>"; };
 		C2124A8D150AEE7B008935F3 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingTabBarController.h; path = ViewControllers/RotatingTabBarController.h; sourceTree = "<group>"; };
@@ -472,8 +472,8 @@
 				C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */,
 				C27F30C0158A563D002EC7B2 /* SpotImagesViewController.h */,
 				C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */,
-				C20EECA41593DD92002A3849 /* SingleSpotMapViewController.h */,
-				C20EECA51593DD92002A3849 /* SingleSpotMapViewController.m */,
+				C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */,
+				C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1015,7 +1015,7 @@
 				C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */,
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 				C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */,
-				C20EECA61593DD92002A3849 /* SingleSpotMapViewController.m in Sources */,
+				C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */,
 				C20EECAA1593E1A6002A3849 /* SingleSpotMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
