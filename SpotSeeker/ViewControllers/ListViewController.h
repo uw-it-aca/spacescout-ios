@@ -11,9 +11,9 @@
 #import "Spot.h"
 #import "SpaceDetailsViewController.h"
 #import "MapViewController.h"
-#import "SearchableSpotListViewController.h"
+#import "SearchableSpaceListViewController.h"
 
-@interface ListViewController : SearchableSpotListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished> {
+@interface ListViewController : SearchableSpaceListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished> {
     IBOutlet UITableView *spot_table;
     Spot *selected_spot;
     MKCoordinateRegion map_region;

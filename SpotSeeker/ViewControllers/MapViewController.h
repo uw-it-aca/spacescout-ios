@@ -26,11 +26,11 @@
 #import "MapFilterViewController.h"
 #import "AnnotationCluster.h"
 #import "ListViewController.h"
-#import "SearchableSpotListViewController.h"
+#import "SearchableSpaceListViewController.h"
 #import "AppDelegate.h"
 //#import "SpotClusterViewController.h"
 
-@interface MapViewController : SearchableSpotListViewController <MKMapViewDelegate> {
+@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
