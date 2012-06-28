@@ -159,7 +159,7 @@
                           },
                           {
                           "search_value" : "true",
-                          "search_key" : "extended_info:has_scanning"
+                          "search_key" : "extended_info:has_scanner"
                           }
                           ],
              "search_key" : "equipment"

@@ -143,9 +143,9 @@
 "Search option title extended_info:has_printing true" = "Printing";
 "Search option subtitle extended_info:has_printing true" = "";
 "Search option short extended_info:has_printing true" = "Print";
-"Search option title extended_info:has_scanning true" = "Scanning";
-"Search option subtitle extended_info:has_scanning true" = "";
-"Search option short extended_info:has_scanning true" = "S";
+"Search option title extended_info:has_scanner true" = "Scanning";
+"Search option subtitle extended_info:has_scanner true" = "";
+"Search option short extended_info:has_scanner true" = "S";
 
 "Search screen label extended_info:food_nearby" = "Food/coffee";
 "Search screen title extended_info:food_nearby" = "Food/coffee";
