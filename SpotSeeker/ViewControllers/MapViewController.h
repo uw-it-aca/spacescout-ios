@@ -21,7 +21,7 @@
 #import "SBJson.h"
 #import "ViewController.h"
 #import "Spot.h"
-#import "SpotAnnotation.h"
+#import "SpaceAnnotation.h"
 #import "SpaceDetailsViewController.h"
 #import "MapFilterViewController.h"
 #import "AnnotationCluster.h"

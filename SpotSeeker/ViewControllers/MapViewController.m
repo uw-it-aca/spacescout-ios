@@ -44,7 +44,7 @@ extern const int meters_per_latitude;
 
        
         Spot *first_in_group = [cluster.spots objectAtIndex:0];
-        SpotAnnotation *annotationPoint = [[SpotAnnotation alloc] init];
+        SpaceAnnotation *annotationPoint = [[SpaceAnnotation alloc] init];
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.spots = cluster.spots;
         annotationPoint.title = [first_in_group name];
@@ -68,7 +68,7 @@ extern const int meters_per_latitude;
         annotationPoint.cluster_index = [NSNumber numberWithInt:index];
         
         NSString *lookup_key = [annotationPoint getLookupKey];
-        SpotAnnotation *existing = [self.current_annotations objectForKey:lookup_key];
+        SpaceAnnotation *existing = [self.current_annotations objectForKey:lookup_key];
         
         if (existing) {
             existing.spots = annotationPoint.spots;
@@ -83,7 +83,7 @@ extern const int meters_per_latitude;
 
     NSMutableArray *remove_me = [[NSMutableArray alloc] init];
     for (NSString *key in self.current_annotations) {
-        SpotAnnotation *test_annotation = [keeper_ids objectForKey:key];
+        SpaceAnnotation *test_annotation = [keeper_ids objectForKey:key];
         if (test_annotation == nil) {
             [remove_me addObject:key];
         }
@@ -96,7 +96,7 @@ extern const int meters_per_latitude;
     }
     
     for (int index = 0; index < [next_spots count]; index++) {
-        SpotAnnotation *add_me = [next_spots objectAtIndex:index];
+        SpaceAnnotation *add_me = [next_spots objectAtIndex:index];
         [self.map_view addAnnotation:add_me];
         [self.current_annotations setObject:add_me forKey:[add_me getLookupKey]];
     }
@@ -108,7 +108,7 @@ extern const int meters_per_latitude;
     if([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-    if (![annotation isKindOfClass:[SpotAnnotation class]])
+    if (![annotation isKindOfClass:[SpaceAnnotation class]])
         return nil;
     
     NSString *annotationIdentifier = @"PinViewAnnotation";
@@ -124,7 +124,7 @@ extern const int meters_per_latitude;
         pinView.annotation = annotation;
     }
 
-    SpotAnnotation *actual = (SpotAnnotation *)annotation;
+    SpaceAnnotation *actual = (SpaceAnnotation *)annotation;
     
     int spot_count = actual.spots.count;
     if (spot_count > 30) {
@@ -201,7 +201,7 @@ extern const int meters_per_latitude;
     if([view.annotation isKindOfClass:[MKUserLocation class]])
         return;
 
-    SpotAnnotation *annotation = (SpotAnnotation *)view.annotation;
+    SpaceAnnotation *annotation = (SpaceAnnotation *)view.annotation;
     self.selected_cluster = annotation.spots;
     if (annotation.spots.count > 1) {
         self.cluster_spots_to_display = annotation.spots;

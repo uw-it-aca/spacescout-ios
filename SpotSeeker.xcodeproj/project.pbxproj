@@ -49,7 +49,7 @@
 		C2429ABF150AB03F005A994A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AB5150AB03F005A994A /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429AC0150AB03F005A994A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AB7150AB03F005A994A /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429AC3150AC133005A994A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC2150AC133005A994A /* MapViewController.m */; };
-		C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC9150AC711005A994A /* SpotAnnotation.m */; };
+		C2429ACA150AC711005A994A /* SpaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AC9150AC711005A994A /* SpaceAnnotation.m */; };
 		C242C2B1159260140045924B /* pin01.png in Resources */ = {isa = PBXBuildFile; fileRef = C242C276159260140045924B /* pin01.png */; };
 		C242C2B2159260140045924B /* pin01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C242C277159260140045924B /* pin01@2x.png */; };
 		C242C2B3159260140045924B /* pin02.png in Resources */ = {isa = PBXBuildFile; fileRef = C242C278159260140045924B /* pin02.png */; };
@@ -249,8 +249,8 @@
 		C2429AB8150AB03F005A994A /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		C2429AC1150AC133005A994A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewControllers/MapViewController.h; sourceTree = "<group>"; };
 		C2429AC2150AC133005A994A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/MapViewController.m; sourceTree = "<group>"; };
-		C2429AC8150AC711005A994A /* SpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotAnnotation.h; path = Models/SpotAnnotation.h; sourceTree = "<group>"; };
-		C2429AC9150AC711005A994A /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotAnnotation.m; path = Models/SpotAnnotation.m; sourceTree = "<group>"; };
+		C2429AC8150AC711005A994A /* SpaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceAnnotation.h; path = Models/SpaceAnnotation.h; sourceTree = "<group>"; };
+		C2429AC9150AC711005A994A /* SpaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceAnnotation.m; path = Models/SpaceAnnotation.m; sourceTree = "<group>"; };
 		C242C276159260140045924B /* pin01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin01.png; path = images/pins/pin01.png; sourceTree = "<group>"; };
 		C242C277159260140045924B /* pin01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin01@2x.png"; path = "images/pins/pin01@2x.png"; sourceTree = "<group>"; };
 		C242C278159260140045924B /* pin02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin02.png; path = images/pins/pin02.png; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 			children = (
 				C2429A49150AA37C005A994A /* Spot.h */,
 				C2429A4A150AA37C005A994A /* Spot.m */,
-				C2429AC8150AC711005A994A /* SpotAnnotation.h */,
-				C2429AC9150AC711005A994A /* SpotAnnotation.m */,
+				C2429AC8150AC711005A994A /* SpaceAnnotation.h */,
+				C2429AC9150AC711005A994A /* SpaceAnnotation.m */,
 				C24C11681536744A00109C30 /* Favorites.h */,
 				C24C11691536744B00109C30 /* Favorites.m */,
 				C24181831545E16E00DAA2FC /* SearchFilter.h */,
@@ -993,7 +993,7 @@
 				C2429ABF150AB03F005A994A /* ASIInputStream.m in Sources */,
 				C2429AC0150AB03F005A994A /* ASINetworkQueue.m in Sources */,
 				C2429AC3150AC133005A994A /* MapViewController.m in Sources */,
-				C2429ACA150AC711005A994A /* SpotAnnotation.m in Sources */,
+				C2429ACA150AC711005A994A /* SpaceAnnotation.m in Sources */,
 				C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */,
 				C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */,
 				C224FBF7153630AA00CD4A79 /* SpaceDetailsViewController.m in Sources */,
