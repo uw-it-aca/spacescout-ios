@@ -57,11 +57,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *search_preferences = app_delegate.search_preferences;
+    if (search_preferences == nil) {
+        SearchFilter *search_filter = [[SearchFilter alloc] init];
+        search_filter.delegate = self;
+        [search_filter loadSearchFilters];
+    }    
+    else {
     
-    SearchFilter *search_filter = [[SearchFilter alloc] init];
-    search_filter.delegate = self;
-    [search_filter loadSearchFilters];
-    
+        self.data_sections = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:search_preferences]];
+    }
     
     [self.name_filter setDelegate: self];
     
@@ -130,6 +136,9 @@
         }
     }
 
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app_delegate.search_preferences = self.data_sections;
+    
     [delegate runSearchWithAttributes:attributes];
     [self dismissModalViewControllerAnimated:YES];
 }

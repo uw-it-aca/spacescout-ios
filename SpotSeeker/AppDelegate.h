@@ -24,5 +24,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSNumber *has_hidden_map_tooltip;
 @property (strong, nonatomic) MKUserLocation *user_location;
+@property (strong, nonatomic) NSMutableArray *search_preferences;
 
 @end
