@@ -130,7 +130,7 @@
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2A20629156D9914005E30FF /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A20628156D9914005E30FF /* ListViewController.m */; };
 		C2A2A169156EA250004781F6 /* SearchableSpotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2A168156EA250004781F6 /* SearchableSpotListViewController.m */; };
-		C2A2A16D156EAD72004781F6 /* FavoriteSpotsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2A16C156EAD71004781F6 /* FavoriteSpotsViewController.m */; };
+		C2A2A16D156EAD72004781F6 /* FavoriteSpacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2A16C156EAD71004781F6 /* FavoriteSpacesViewController.m */; };
 		C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */; };
 		C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */; };
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
@@ -338,8 +338,8 @@
 		C2A20628156D9914005E30FF /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = ViewControllers/ListViewController.m; sourceTree = "<group>"; };
 		C2A2A167156EA250004781F6 /* SearchableSpotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchableSpotListViewController.h; path = ViewControllers/SearchableSpotListViewController.h; sourceTree = "<group>"; };
 		C2A2A168156EA250004781F6 /* SearchableSpotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableSpotListViewController.m; path = ViewControllers/SearchableSpotListViewController.m; sourceTree = "<group>"; };
-		C2A2A16B156EAD71004781F6 /* FavoriteSpotsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSpotsViewController.h; path = ViewControllers/FavoriteSpotsViewController.h; sourceTree = "<group>"; };
-		C2A2A16C156EAD71004781F6 /* FavoriteSpotsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSpotsViewController.m; path = ViewControllers/FavoriteSpotsViewController.m; sourceTree = "<group>"; };
+		C2A2A16B156EAD71004781F6 /* FavoriteSpacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSpacesViewController.h; path = ViewControllers/FavoriteSpacesViewController.h; sourceTree = "<group>"; };
+		C2A2A16C156EAD71004781F6 /* FavoriteSpacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSpacesViewController.m; path = ViewControllers/FavoriteSpacesViewController.m; sourceTree = "<group>"; };
 		C2AFB7BC156CA3DB00D19E7A /* AnnotationCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationCluster.h; path = Models/AnnotationCluster.h; sourceTree = "<group>"; };
 		C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotationCluster.m; path = Models/AnnotationCluster.m; sourceTree = "<group>"; };
 		C2B2F64C153E225800292FDC /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
@@ -466,8 +466,8 @@
 				C2A20628156D9914005E30FF /* ListViewController.m */,
 				C2A2A167156EA250004781F6 /* SearchableSpotListViewController.h */,
 				C2A2A168156EA250004781F6 /* SearchableSpotListViewController.m */,
-				C2A2A16B156EAD71004781F6 /* FavoriteSpotsViewController.h */,
-				C2A2A16C156EAD71004781F6 /* FavoriteSpotsViewController.m */,
+				C2A2A16B156EAD71004781F6 /* FavoriteSpacesViewController.h */,
+				C2A2A16C156EAD71004781F6 /* FavoriteSpacesViewController.m */,
 				C26EAA21156EE32600632C78 /* SpotClusterViewController.h */,
 				C26EAA22156EE32600632C78 /* SpotClusterViewController.m */,
 				C27F30C0158A563D002EC7B2 /* SpotImagesViewController.h */,
@@ -1011,7 +1011,7 @@
 				C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */,
 				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
 				C2A2A169156EA250004781F6 /* SearchableSpotListViewController.m in Sources */,
-				C2A2A16D156EAD72004781F6 /* FavoriteSpotsViewController.m in Sources */,
+				C2A2A16D156EAD72004781F6 /* FavoriteSpacesViewController.m in Sources */,
 				C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */,
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 				C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */,

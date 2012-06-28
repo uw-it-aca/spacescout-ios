@@ -1179,11 +1179,11 @@
             </objects>
             <point key="canvasLocation" x="3408" y="1262"/>
         </scene>
-        <!--Favorite Spots View Controller - Favorites-->
+        <!--Favorite Spaces View Controller - Favorites-->
         <scene sceneID="1K6-Li-Krl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYw-dW-fye" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="H5F-cS-j3x" customClass="FavoriteSpotsViewController" sceneMemberID="viewController">
+                <viewController id="H5F-cS-j3x" customClass="FavoriteSpacesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7HE-2P-DjD">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1562,12 +1562,6 @@
         <image name="tools.png" width="22" height="22"/>
     </resources>
     <classes>
-        <class className="FavoriteSpotsViewController" superclassName="ListViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpotsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnClickClose:"/>
-            </relationships>
-        </class>
         <class className="ListViewController" superclassName="SearchableSpotListViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
             <relationships>
