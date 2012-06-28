@@ -122,7 +122,7 @@
 		C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */ = {isa = PBXBuildFile; fileRef = C25D6F931576ACDC00A16A87 /* map_defaults.json */; };
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
-		C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpotClusterViewController.m */; };
+		C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */; };
@@ -324,8 +324,8 @@
 		C25D6F931576ACDC00A16A87 /* map_defaults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_defaults.json; sourceTree = "<group>"; };
 		C25D6F961576AF7100A16A87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
-		C26EAA21156EE32600632C78 /* SpotClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotClusterViewController.h; path = ViewControllers/SpotClusterViewController.h; sourceTree = "<group>"; };
-		C26EAA22156EE32600632C78 /* SpotClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotClusterViewController.m; path = ViewControllers/SpotClusterViewController.m; sourceTree = "<group>"; };
+		C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceClusterViewController.h; path = ViewControllers/SpaceClusterViewController.h; sourceTree = "<group>"; };
+		C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceClusterViewController.m; path = ViewControllers/SpaceClusterViewController.m; sourceTree = "<group>"; };
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
@@ -468,8 +468,8 @@
 				C2A2A168156EA250004781F6 /* SearchableSpaceListViewController.m */,
 				C2A2A16B156EAD71004781F6 /* FavoriteSpacesViewController.h */,
 				C2A2A16C156EAD71004781F6 /* FavoriteSpacesViewController.m */,
-				C26EAA21156EE32600632C78 /* SpotClusterViewController.h */,
-				C26EAA22156EE32600632C78 /* SpotClusterViewController.m */,
+				C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */,
+				C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */,
 				C27F30C0158A563D002EC7B2 /* SpotImagesViewController.h */,
 				C27F30C1158A563D002EC7B2 /* SpotImagesViewController.m */,
 				C20EECA41593DD92002A3849 /* SingleSpotMapViewController.h */,
@@ -1012,7 +1012,7 @@
 				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
 				C2A2A169156EA250004781F6 /* SearchableSpaceListViewController.m in Sources */,
 				C2A2A16D156EAD72004781F6 /* FavoriteSpacesViewController.m in Sources */,
-				C26EAA23156EE32600632C78 /* SpotClusterViewController.m in Sources */,
+				C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */,
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 				C27F30C2158A563D002EC7B2 /* SpotImagesViewController.m in Sources */,
 				C20EECA61593DD92002A3849 /* SingleSpotMapViewController.m in Sources */,
