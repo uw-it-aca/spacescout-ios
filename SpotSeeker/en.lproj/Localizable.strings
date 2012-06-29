@@ -42,9 +42,9 @@
 
 /* These values are for the search screen */
 
-"Search screen label type" = "Type of spot";
-"Search screen title type" = "Type of spot";
-"Search screen header type" = "Select types of spots";
+"Search screen label type" = "Type of space";
+"Search screen title type" = "Type of space";
+"Search screen header type" = "Select types of space";
 "Search screen subheader type" = "";
 "Search screen default label type" = "Any";
 "Search option title type study_room" = "Study room";
