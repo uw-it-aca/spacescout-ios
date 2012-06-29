@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Map View Controller - SpaceScout-->
@@ -97,11 +97,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmO-sb-slk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Uj1-TD-aQN" customClass="MapFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIS-Yc-F3z">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3br-UV-6gb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="SYE-fc-eJl">
@@ -288,19 +288,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Search" id="9K3-nX-3rJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="TWG-SQ-g8w"/>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LN9-M6-C7Q">
-                            <connections>
-                                <action selector="btnClickCancel:" destination="Uj1-TD-aQN" id="RJq-qH-vOe"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="NKe-vK-XcP">
+                        <barButtonItem key="leftBarButtonItem" title="Search" id="NKe-vK-XcP">
                             <connections>
                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="Dhb-DJ-LMX"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="LN9-M6-C7Q">
+                            <connections>
+                                <action selector="btnClickCancel:" destination="Uj1-TD-aQN" id="RJq-qH-vOe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="filter_table" destination="3br-UV-6gb" id="3Iq-0t-6pg"/>
                         <outlet property="searchDisplayController" destination="a9g-fh-ath" id="IFo-bp-XHu"/>
@@ -326,11 +328,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-QW-1ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="85z-WW-HGT" customClass="SearchableIndexedTableFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aDN-fT-YGG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HU0-52-ab2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" tag="1" contentMode="redraw" placeholder="Search..." id="lHQ-zq-nAs">
@@ -440,11 +442,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvI-39-eLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WRf-YH-4Wl" customClass="MapFilterDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dye-Dx-22C">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EyG-H2-pFu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="5zx-FL-nF0">
@@ -537,7 +539,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNJ-I7-In7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8cc-dF-ZeI" customClass="MapFilterTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="glR-SZ-BFb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select open hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="nzN-zC-xJ4">
