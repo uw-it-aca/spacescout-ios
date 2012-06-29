@@ -353,13 +353,7 @@
 
             return cell;
         }
-        else {        
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"environment_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"environment_cell"];
-            }
-                                   
-            UILabel *value = (UILabel *)[cell viewWithTag:2];
+        else {
             
             NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row - attribute_offset];
             NSString *attribute_key = [attribute objectForKey:@"attribute"];
@@ -367,6 +361,22 @@
 
             NSString *lang_key = [NSString stringWithFormat:@"Space environment %@ %@", attribute_key, attribute_value];
             NSString *display_value = NSLocalizedString(lang_key, nil);
+
+            NSString *cell_type = @"environment_cell";
+            NSString *label_lang_key = [NSString stringWithFormat:@"Space environment label %@", attribute_key];
+            NSString *label_display_value = NSLocalizedString(label_lang_key, nil);
+            
+            if (![label_display_value isEqualToString:@""]) {
+                cell_type = @"environment_cell_with_label";
+            }
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_type];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_type];
+            }
+            
+           
+            UILabel *value = (UILabel *)[cell viewWithTag:2];
             
             UIImageView *icon_view = (UIImageView *)[cell viewWithTag:1];
             
@@ -381,6 +391,11 @@
             else if ([attribute_key isEqualToString:@"has_natural_light"]) {
                 UIImage *icon = [UIImage imageNamed:@"lighting.png"];
                 icon_view.image = icon;                
+            }
+            
+            if (![label_display_value isEqualToString:@""]) {
+                UILabel *label = (UILabel *)[cell viewWithTag:3];
+                label.text = label_display_value;                                        
             }
             
             [value setText: display_value];
