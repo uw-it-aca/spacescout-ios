@@ -13,6 +13,31 @@
 @synthesize spot;
 @synthesize map_view;
 
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
+    if([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+        
+    NSString *annotationIdentifier = @"PinViewAnnotation";
+    
+    MKAnnotationView *pinView = (MKPinAnnotationView *) [map_view dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+    
+    if (!pinView) {
+        pinView = [[MKAnnotationView alloc]
+                   initWithAnnotation:annotation
+                   reuseIdentifier:annotationIdentifier];        
+    }
+    else {
+        pinView.annotation = annotation;
+    }
+        
+    pinView.image = [UIImage imageNamed:@"pin01.png"];
+    
+    // XXX - This is the distance from the center of the image to the "point" of the pin drop. Needs to be updated with the images.
+    pinView.centerOffset = CGPointMake(5, -20);
+        
+    return pinView;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
