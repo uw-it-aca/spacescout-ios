@@ -64,8 +64,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)showRunningSearchIndicator {
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.color = [UIColor grayColor];
+    loading_spinner.hidden = NO;    
+}
+
 -(void) showFoundSpaces {
     [self sortSpots];
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.hidden = YES;    
+
     [self.spot_table reloadData];
 }
 

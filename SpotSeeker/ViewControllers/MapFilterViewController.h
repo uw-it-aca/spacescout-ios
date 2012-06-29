@@ -67,6 +67,7 @@
 
 @protocol SearchFilters <NSObject>;
 
+-(void)showRunningSearchIndicator;
 -(void)runSearchWithAttributes:(NSDictionary *)filters;
 
 @end

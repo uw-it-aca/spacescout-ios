@@ -138,7 +138,8 @@
 
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app_delegate.search_preferences = self.data_sections;
-    
+        
+    [delegate showRunningSearchIndicator];
     [delegate runSearchWithAttributes:attributes];
     [self dismissModalViewControllerAnimated:YES];
 }

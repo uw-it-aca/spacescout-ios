@@ -62,6 +62,10 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView opaque="NO" tag="80" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="Q80-Lc-Xl6">
+                                <rect key="frame" x="142" y="170" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1476,6 +1480,10 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" tag="80" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="KQK-Sm-0B0">
+                                <rect key="frame" x="141" y="190" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1562,7 +1570,13 @@
         <image name="tools.png" width="22" height="22"/>
     </resources>
     <classes>
-        <class className="ListViewController" superclassName="SearchableSpotListViewController">
+        <class className="FavoriteSpacesViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpacesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickClose:"/>
+            </relationships>
+        </class>
+        <class className="ListViewController" superclassName="SearchableSpaceListViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="spot_table" candidateClass="UITableView"/>
@@ -1597,7 +1611,7 @@
                 <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="MapViewController" superclassName="SearchableSpotListViewController">
+        <class className="MapViewController" superclassName="SearchableSpaceListViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnClickRecenter:"/>
@@ -1611,10 +1625,48 @@
                 <relationship kind="outlet" name="table_view" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="SearchableSpotListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpotListViewController.h"/>
+        <class className="SearchableSpaceListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpaceListViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SingleSpaceMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleSpaceMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SpaceClusterViewController" superclassName="ListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpaceClusterViewController.h"/>
+        </class>
+        <class className="SpaceDetailsViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpaceDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnClickFavorite:"/>
+                <relationship kind="outlet" name="capacity_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favorite_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="img_view" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SpaceImagesViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpaceImagesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clickNextImgBtn:"/>
+                <relationship kind="action" name="clickPrevImgBtn:"/>
+                <relationship kind="action" name="closeGallery:"/>
+                <relationship kind="action" name="handlePan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="handlePinch:" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="action" name="screenTap:"/>
+                <relationship kind="outlet" name="activity_indicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="next_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="page_footer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="page_header" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pan_recognizer" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="pinch_recognizer" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="outlet" name="prev_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tap_recognizer" candidateClass="UITapGestureRecognizer"/>
             </relationships>
         </class>
         <class className="UITableSwitch" superclassName="UISwitch">
@@ -1631,7 +1683,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="em9-ZW-DQ1"/>
-        <segue reference="ehC-Lb-oxn"/>
         <segue reference="7BZ-SZ-G39"/>
+        <segue reference="Zv8-Ju-hZd"/>
     </inferredMetricsTieBreakers>
 </document>

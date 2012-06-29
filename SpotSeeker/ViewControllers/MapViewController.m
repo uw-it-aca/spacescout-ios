@@ -30,7 +30,14 @@
 
 extern const int meters_per_latitude;
 
+-(void)showRunningSearchIndicator {
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.hidden = NO;    
+}
+
 -(void) showFoundSpaces {
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.hidden = YES;
     NSArray *annotation_groups = [AnnotationCluster createClustersFromSpots:self.current_spots andMap:map_view];
    
     NSMutableArray *next_spots = [[NSMutableArray alloc] init];
@@ -309,6 +316,9 @@ extern const int meters_per_latitude;
         UIView *tips = [self.view viewWithTag:10];
         tips.hidden = true;
     }
+    
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.color = [UIColor grayColor];
     
     showing_tip_view = true;
     loading = true;
