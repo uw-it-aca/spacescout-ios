@@ -123,7 +123,7 @@
 "Search screen label equipment" = "Equipment";
 "Search screen title equipment" = "Equipment";
 "Search screen header equipment" = "Equipment required";
-"Search screen subheader equipment" = "Select all attributes you want to include in your search.  Leave blank if you don't care";
+"Search screen subheader equipment" = "Select all attributes you want to include in your search.";
 "Search screen default label equipment" = "No preference";
 "Search option title extended_info:has_whiteboards true" = "Whiteboard";
 "Search option subtitle extended_info:has_whiteboards true" = "";
