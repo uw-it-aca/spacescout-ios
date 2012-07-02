@@ -291,7 +291,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Search" id="9K3-nX-3rJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="TWG-SQ-g8w"/>
-                        <barButtonItem key="leftBarButtonItem" title="Search" id="NKe-vK-XcP">
+                        <barButtonItem key="leftBarButtonItem" title="View results" id="NKe-vK-XcP">
                             <connections>
                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="Dhb-DJ-LMX"/>
                             </connections>
