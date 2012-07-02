@@ -19,14 +19,14 @@
 "Space type cafe" = "Café";
 "Space type outdoor" = "Outdoor Area";
 
-"Space environment label noise_level" = "";
+"Space environment label noise_level" = "Noise level";
 "Space environment noise_level silent" = "Silent";
 "Space environment noise_level quiet" = "Low Hum";
 "Space environment noise_level moderate" = "Chatter";
 "Space environment noise_level loud" = "Rowdy";
 "Space environment noise_level variable" = "Variable";
 
-"Space environment label food_nearby" = "";
+"Space environment label food_nearby" = "Food/coffee";
 "Space environment food_nearby space" = "In space";
 "Space environment food_nearby building" = "In building";
 "Space environment food_nearby neighboring" = "In neighboring building";
