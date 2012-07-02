@@ -30,7 +30,6 @@
 "Space environment food_nearby space" = "In space";
 "Space environment food_nearby building" = "In building";
 "Space environment food_nearby neighboring" = "In neighboring building";
-"Space environment food_nearby none" = "None nearby";
 
 "Space environment label has_natural_light" = "Lighting";
 "Space environment has_natural_light true" = "Natural light";
