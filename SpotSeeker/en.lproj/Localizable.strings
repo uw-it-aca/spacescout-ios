@@ -77,9 +77,9 @@
 "Search option title type cafe" = "Café";
 "Search option subtitle type cafe" = "Space that functions primarily as an eatery";
 "Search option short type cafe" = "Café";
-"Search option title type outdoors" = "Outdoor area";
-"Search option subtitle type outdoors" = "Outdoor casual space";
-"Search option short type outdoors" = "Outdr";
+"Search option title type outdoor" = "Outdoor area";
+"Search option subtitle type outdoor" = "Outdoor casual space";
+"Search option short type outdoor" = "Outdr";
 
 "Search screen label extended_info:reservable" = "Reservable?";
 "Search screen title extended_info:reservable" = "";
