@@ -71,7 +71,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="f11-XH-hmO">
                         <barButtonItem key="backBarButtonItem" title="Map" id="E3E-6D-F3L"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="F4H-kl-V8E">
+                        <barButtonItem key="leftBarButtonItem" image="search.png" id="F4H-kl-V8E">
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
@@ -1527,7 +1527,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="9Zl-UU-At7">
                         <barButtonItem key="backBarButtonItem" title="List" id="zyD-7A-tTw"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="y2d-oE-VTZ">
+                        <barButtonItem key="leftBarButtonItem" image="search.png" id="y2d-oE-VTZ">
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
                             </connections>
@@ -1604,6 +1604,7 @@
         <image name="faveslist.png" width="24" height="24"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
+        <image name="search.png" width="70" height="22"/>
         <image name="star_unselected.png" width="30" height="30"/>
         <image name="tools.png" width="22" height="22"/>
     </resources>
@@ -1720,8 +1721,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="em9-ZW-DQ1"/>
         <segue reference="Zv8-Ju-hZd"/>
         <segue reference="7BZ-SZ-G39"/>
-        <segue reference="QY8-j1-nec"/>
     </inferredMetricsTieBreakers>
 </document>
