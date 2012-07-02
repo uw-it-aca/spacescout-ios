@@ -20,7 +20,7 @@
                           "search_value" : "studio"
                           },
                           {
-                          "search_value" : "conference"
+                          "search_value" : "classroom"
                           },
                           {
                           "search_value" : "open"
@@ -32,7 +32,7 @@
                           "search_value" : "cafe"
                           },
                           {
-                          "search_value" : "outdoors"
+                          "search_value" : "outdoor"
                           }
                           ],
              "search_key" : "type"

@@ -19,14 +19,14 @@
 "Space type cafe" = "Café";
 "Space type outdoor" = "Outdoor Area";
 
-"Space environment label noise_level" = "";
+"Space environment label noise_level" = "Noise level";
 "Space environment noise_level silent" = "Silent";
 "Space environment noise_level quiet" = "Low Hum";
 "Space environment noise_level moderate" = "Chatter";
 "Space environment noise_level loud" = "Rowdy";
 "Space environment noise_level variable" = "Variable";
 
-"Space environment label food_nearby" = "";
+"Space environment label food_nearby" = "Food/coffee";
 "Space environment food_nearby space" = "In space";
 "Space environment food_nearby building" = "In building";
 "Space environment food_nearby neighboring" = "In neighboring building";
@@ -64,9 +64,9 @@
 "Search option title type studio" = "Production studio";
 "Search option subtitle type studio" = "Work space with specialized equipment or technology";
 "Search option short type studio" = "Stdo";
-"Search option title type conference" = "Conference/classroom";
-"Search option subtitle type conference" = "Larger-capacity rooms primarily used for classes, meetings, or workshops";
-"Search option short type conference" = "Clsrm";
+"Search option title type classroom" = "Conference/classroom";
+"Search option subtitle type classroom" = "Larger-capacity rooms primarily used for classes, meetings, or workshops";
+"Search option short type classroom" = "Clsrm";
 "Search option title type open" = "Open space";
 "Search option subtitle type open" = "Area for use by multiple individuals or groups";
 "Search option short type open" = "Open sp";
@@ -76,9 +76,9 @@
 "Search option title type cafe" = "Café";
 "Search option subtitle type cafe" = "Space that functions primarily as an eatery";
 "Search option short type cafe" = "Café";
-"Search option title type outdoors" = "Outdoor area";
-"Search option subtitle type outdoors" = "Outdoor casual space";
-"Search option short type outdoors" = "Outdr";
+"Search option title type outdoor" = "Outdoor area";
+"Search option subtitle type outdoor" = "Outdoor casual space";
+"Search option short type outdoor" = "Outdr";
 
 "Search screen label extended_info:reservable" = "Reservable?";
 "Search screen title extended_info:reservable" = "";
