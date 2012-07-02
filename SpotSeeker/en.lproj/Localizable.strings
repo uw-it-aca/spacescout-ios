@@ -65,9 +65,9 @@
 "Search option title type studio" = "Production studio";
 "Search option subtitle type studio" = "Work space with specialized equipment or technology";
 "Search option short type studio" = "Stdo";
-"Search option title type conference" = "Conference/classroom";
-"Search option subtitle type conference" = "Larger-capacity rooms primarily used for classes, meetings, or workshops";
-"Search option short type conference" = "Clsrm";
+"Search option title type classroom" = "Conference/classroom";
+"Search option subtitle type classroom" = "Larger-capacity rooms primarily used for classes, meetings, or workshops";
+"Search option short type classroom" = "Clsrm";
 "Search option title type open" = "Open space";
 "Search option subtitle type open" = "Area for use by multiple individuals or groups";
 "Search option short type open" = "Open sp";
