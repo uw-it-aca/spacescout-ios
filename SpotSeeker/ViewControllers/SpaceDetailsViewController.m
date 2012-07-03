@@ -158,7 +158,13 @@
         
         float equipment_extra = [[plist_values objectForKey:@"equipment_cell_extra_height"] floatValue];
         
-        return expected.height + equipment_extra;
+        float basic = cell.frame.size.height;
+        float calculated = expected.height + equipment_extra;
+        
+        if (basic > calculated) {
+            return basic;
+        }
+        return calculated;        
     }
 
     // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
@@ -168,7 +174,6 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
         }
         return cell.frame.size.height;
-   
     }
     
 }
@@ -379,7 +384,8 @@
             NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
             CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
             
-            type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
+            float top = (cell.frame.origin.y + (cell.frame.size.height / 2)) - expected.height / 2;
+            type.frame = CGRectMake(type.frame.origin.x, top, type.frame.size.width, expected.height);
             
             type.text = equipment_string;
 
