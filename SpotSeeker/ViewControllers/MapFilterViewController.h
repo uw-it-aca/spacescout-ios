@@ -24,12 +24,13 @@
 #import "MapFilterDetailsViewController.h"
 #import "MapFilterTimeViewController.h"
 #import "SearchableIndexedTableFilterViewController.h"
+#import "PickerFilterViewController.h"
 #import "UITableSwitch.h"
 #import "SearchFilter.h"
 
 @protocol SearchFilters;
 
-@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
     Space *spot;
       
     IBOutlet UITableView *filter_table;

@@ -161,7 +161,10 @@
         SearchableIndexedTableFilterViewController *mft = [segue destinationViewController];
         mft.filter = self.current_section;
     }
-
+    else if ([[segue identifier] isEqualToString:@"picker_options"]) {
+        PickerFilterViewController *pf = [segue destinationViewController];
+        pf.filter = self.current_section;
+    }
 }
 
 #pragma mark -
@@ -539,44 +542,7 @@
 
 // Handle when some clicks the row - do nothing?
 - (void) didSelectChooserRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"PickerView"
-                                                      owner:self
-                                                    options:nil];
-    
-    
-    self.picker_view = [nibViews objectAtIndex: 0];
-    picker_view.frame = CGRectMake(0, 960, 320, 480);
-    [self.view addSubview:picker_view];
-    
-    [UIView animateWithDuration:0.4
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseOut
-                        animations:^{   
-                            picker_view.frame = CGRectMake(0, 0, 320, 480);
-                        }
-                     completion:^(BOOL finished) {
-                     }
-     ];
-    
-    [self.filter_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
-    [self.view addSubview:picker_view];
-    UIPickerView *picker = (UIPickerView *)[picker_view viewWithTag:3];
-    picker.delegate = self;
-    picker.dataSource = self;
-    
-    [picker selectRow:[[self.current_section objectForKey:@"selected_row"] intValue] inComponent:0 animated:NO];
-    
-    UIButton *reset = (UIButton *)[picker_view viewWithTag:1];
-    [reset addTarget:self action:@selector(pickerResetBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *done = (UIButton *)[picker_view viewWithTag:2];
-    [done addTarget:self action:@selector(pickerDoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
-    // This covers the top of the screen
-    UIButton *fake_done = (UIButton *)[picker_view viewWithTag:4];
-    [fake_done addTarget:self action:@selector(pickerDoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
+    [self performSegueWithIdentifier:@"picker_options" sender:self];
 }
 
 -(void)pickerResetBtnClick:(id)sender {
@@ -608,19 +574,6 @@
                      }];
     
     
-}
-
-
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [[self.current_section objectForKey:@"options"] count];
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[[self.current_section objectForKey:@"options"] objectAtIndex:row] objectForKey:@"title"];
 }
 
 /* Methods for on/off filters */
