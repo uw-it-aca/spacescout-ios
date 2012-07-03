@@ -145,6 +145,7 @@
 		C2D4E31615938BAB00B594C5 /* reservable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31115938BAB00B594C5 /* reservable.png */; };
 		C2D4E31715938BAB00B594C5 /* tools.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31215938BAB00B594C5 /* tools.png */; };
 		C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E0937D1542315A0015BF4B /* UITableSwitch.m */; };
+		C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -363,6 +364,7 @@
 		C2D4E31215938BAB00B594C5 /* tools.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tools.png; sourceTree = "<group>"; };
 		C2E0937C1542315A0015BF4B /* UITableSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableSwitch.h; path = Widgets/UITableSwitch.h; sourceTree = "<group>"; };
 		C2E0937D1542315A0015BF4B /* UITableSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableSwitch.m; path = Widgets/UITableSwitch.m; sourceTree = "<group>"; };
+		C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ui_magic_values.plist; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -757,6 +759,7 @@
 				C277E87C1551FC7A0022FACD /* details_config.json */,
 				C25D6F931576ACDC00A16A87 /* map_defaults.json */,
 				C25143911594E08F006A4A9E /* Localizable.strings */,
+				C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				C23074D71599298900C31AA1 /* lighting@2x.png in Resources */,
 				C23074DA1599326900C31AA1 /* DetailsTableFooter.xib in Resources */,
 				897CF54615A23B4B007D5ABA /* search.png in Resources */,
+				C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

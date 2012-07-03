@@ -134,6 +134,32 @@
         }
         return cell.frame.size.height;
     }
+    else if (indexPath.section == 1 && indexPath.row == 0 && [self.equipment_fields count] > 0) {
+        NSMutableArray *display_fields = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *field in self.equipment_fields) {
+            NSString *lang_key = [NSString stringWithFormat:@"Space equipment %@", [field objectForKey:@"attribute"]];
+            NSString *display_value = NSLocalizedString(lang_key, nil);
+            
+            [display_fields addObject:display_value];
+        }
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
+        }    
+        
+        UILabel *type = (UILabel *)[cell viewWithTag:1];
+        
+        NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
+        CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
+
+        NSString *app_path = [[NSBundle mainBundle] bundlePath];
+        NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+        NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+        
+        float equipment_extra = [[plist_values objectForKey:@"equipment_cell_extra_height"] floatValue];
+        
+        return expected.height + equipment_extra;
+    }
 
     // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
     else {
@@ -349,7 +375,13 @@
             }
             
             UILabel *type = (UILabel *)[cell viewWithTag:1];
-            type.text = [display_fields componentsJoinedByString:@", "];
+
+            NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
+            CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
+            
+            type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
+            
+            type.text = equipment_string;
 
             return cell;
         }
