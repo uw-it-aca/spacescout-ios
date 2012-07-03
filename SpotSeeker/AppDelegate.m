@@ -25,6 +25,7 @@
 @synthesize has_hidden_map_tooltip;
 @synthesize user_location;
 @synthesize search_preferences;
+@synthesize last_preference_set_time;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

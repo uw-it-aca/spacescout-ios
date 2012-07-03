@@ -59,7 +59,16 @@
     [super viewDidLoad];
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSMutableArray *search_preferences = app_delegate.search_preferences;
-    if (search_preferences == nil) {
+    float pref_interval = [app_delegate.last_preference_set_time timeIntervalSinceNow];
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float preference_duration = [[plist_values objectForKey:@"search_preference_sticky_duration_in_seconds"] floatValue];
+    
+    // The interval will always be negative - needs to be within 12 hours.
+    if (search_preferences == nil || pref_interval < -1 * preference_duration) {
         SearchFilter *search_filter = [[SearchFilter alloc] init];
         search_filter.delegate = self;
         [search_filter loadSearchFilters];
@@ -136,6 +145,7 @@
 
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app_delegate.search_preferences = self.data_sections;
+    app_delegate.last_preference_set_time = [NSDate date];
         
     [delegate showRunningSearchIndicator];
     [delegate runSearchWithAttributes:attributes];
