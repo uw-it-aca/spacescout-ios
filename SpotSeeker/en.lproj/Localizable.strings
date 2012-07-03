@@ -116,7 +116,7 @@
 "Search option short extended_info:noise_level quiet" = "LH";
 "Search option title extended_info:noise_level moderate" = "Chatter";
 "Search option subtitle extended_info:noise_level moderate" = "";
-"Search option short extended_info:noise_level moderate" = "CH";
+"Search option short extended_info:noise_level moderate" = "Ch";
 
 "Search screen label extended_info:has_natural_light" = "Lighting";
 "Search screen title extended_info:has_natural_light" = "Lighting";
