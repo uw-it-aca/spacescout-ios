@@ -49,6 +49,7 @@
 
 - (IBAction) btnClickSearch:(id)sender;
 - (IBAction) btnClickCancel:(id)sender;
+- (IBAction) btnClickResetFilter:(id)sender;
 
 @property (nonatomic, retain) UIView *picker_view;
 @property (nonatomic, retain) UIScrollView *scroll_view;

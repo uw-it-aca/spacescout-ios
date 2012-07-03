@@ -65,7 +65,6 @@
         [search_filter loadSearchFilters];
     }    
     else {
-    
         self.data_sections = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:search_preferences]];
     }
     
@@ -80,9 +79,8 @@
 
 -(void)availableFilters:(NSMutableArray *)filters {
     self.data_sections = filters;
+    [self.filter_table reloadData];
 }
-
-
 
 #pragma mark -
 #pragma mark screen actions
@@ -142,6 +140,12 @@
     [delegate showRunningSearchIndicator];
     [delegate runSearchWithAttributes:attributes];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+-(IBAction)btnClickResetFilter:(id)sender {
+    SearchFilter *search_filter = [[SearchFilter alloc] init];
+    search_filter.delegate = self;
+    [search_filter loadSearchFilters];
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
