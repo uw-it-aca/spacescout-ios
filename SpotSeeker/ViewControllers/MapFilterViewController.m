@@ -725,7 +725,7 @@
             NSString *search_value = [option objectForKey:@"search_value"];
             NSString *search_key   = [option objectForKey:@"search_key"];
             
-            if (search_value != nil) {
+            if (search_value != nil && ![search_value isEqualToString:@""]) {
                 has_search_values = true;
                 // A row can either add options to the group, or be independent.
                 if (search_key != nil) {

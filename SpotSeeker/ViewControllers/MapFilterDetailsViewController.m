@@ -187,6 +187,7 @@
         for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
             NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
             if ([opt objectForKey:@"clear_all"]) {
+                [opt setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
                 UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
                 [cell setAccessoryType:UITableViewCellAccessoryNone];

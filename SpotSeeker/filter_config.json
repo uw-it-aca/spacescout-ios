@@ -5,6 +5,11 @@
              {
              "options" : [
                           {
+                          "search_value" : "",
+                          "selected" : true,
+                          "clear_all" : true
+                          },
+                          {
                           "search_value" : "study_room"
                           },
                           {

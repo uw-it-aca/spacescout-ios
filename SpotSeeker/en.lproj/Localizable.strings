@@ -49,6 +49,8 @@
 "Search screen header type" = "Select types of space";
 "Search screen subheader type" = "";
 "Search screen default label type" = "Any";
+"Search option title type " = "No Preference";
+"Search option subtitle type " = "";
 "Search option title type study_room" = "Study room";
 "Search option subtitle type study_room" = "Enclosed space for individual or group";
 "Search option short type study_room" = "Rm";
