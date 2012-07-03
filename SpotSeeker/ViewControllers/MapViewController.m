@@ -27,6 +27,7 @@
 @synthesize cluster_spots_to_display;
 @synthesize current_annotations;
 @synthesize selected_cluster;
+@synthesize alert;
 
 extern const int meters_per_latitude;
 
@@ -35,8 +36,14 @@ extern const int meters_per_latitude;
     loading_spinner.hidden = NO;    
 }
 
--(void) showFoundSpaces {
+-(void) showFoundSpaces {    
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    
+    if (loading_spinner.hidden == NO && [self.current_spots count] == 0) {
+        UIAlertView *_alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no search results title", nil) message:NSLocalizedString(@"no search results message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"no search results button", nil) otherButtonTitles:nil];
+        self.alert = _alert;
+        [self.alert show];
+    }
     loading_spinner.hidden = YES;
     NSArray *annotation_groups = [AnnotationCluster createClustersFromSpots:self.current_spots andMap:map_view];
    
@@ -162,6 +169,12 @@ extern const int meters_per_latitude;
     [self centerOnUserLocation];
 }
 
+#pragma mark -
+#pragma mark alert methods
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self performSegueWithIdentifier:@"search_filter" sender:self];
+}
 
 #pragma mark -
 #pragma mark map methods

@@ -30,7 +30,7 @@
 #import "AppDelegate.h"
 //#import "SpotClusterViewController.h"
 
-@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate> {
+@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
@@ -48,6 +48,7 @@
 @property (nonatomic, retain) NSArray *cluster_spots_to_display;
 @property (nonatomic, retain) NSMutableDictionary *current_annotations;
 @property (nonatomic, retain) NSArray *selected_cluster;
+@property (nonatomic, retain) UIAlertView *alert;
 
 - (IBAction) btnClickRecenter:(id)sender;
 
