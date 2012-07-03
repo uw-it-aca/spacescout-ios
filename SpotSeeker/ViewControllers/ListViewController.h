@@ -13,7 +13,7 @@
 #import "MapViewController.h"
 #import "SearchableSpaceListViewController.h"
 
-@interface ListViewController : SearchableSpaceListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished> {
+@interface ListViewController : SearchableSpaceListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished, UIAlertViewDelegate> {
     IBOutlet UITableView *spot_table;
     Space *selected_spot;
     MKCoordinateRegion map_region;
@@ -25,5 +25,6 @@
 @property (nonatomic, retain) Space *selected_spot;
 @property (nonatomic) MKCoordinateRegion map_region;
 @property (nonatomic, retain) REST *rest;
+@property (nonatomic, retain) UIAlertView *alert;
 
 @end

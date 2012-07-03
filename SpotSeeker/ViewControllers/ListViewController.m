@@ -14,6 +14,7 @@
 @synthesize selected_spot;
 @synthesize map_region;
 @synthesize rest;
+@synthesize alert;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,6 +74,13 @@
 -(void) showFoundSpaces {
     [self sortSpots];
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    if (loading_spinner.hidden == NO && [self.current_spots count] == 0) {
+        UIAlertView *_alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no search results title", nil) message:NSLocalizedString(@"no search results message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"no search results button", nil) otherButtonTitles:nil];
+        self.alert = _alert;
+        [self.alert show];
+
+    }
+    
     loading_spinner.hidden = YES;    
 
     [self.spot_table reloadData];
@@ -200,5 +208,14 @@
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
 }
+
+#pragma mark -
+#pragma mark alert methods
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self performSegueWithIdentifier:@"search_filter" sender:self];
+}
+
+
 
 @end
