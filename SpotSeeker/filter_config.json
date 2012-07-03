@@ -74,7 +74,8 @@
              "options" : [
                           {
                           "search_value" : "",
-                          "clear_all" : true
+                          "clear_all" : true,
+                          "selected" : true
                           },
                           {
                           "search_value" : "true"
@@ -110,7 +111,8 @@
              "options" : [
                           {
                           "search_value" : "",
-                          "clear_all" : true
+                          "clear_all" : true,
+                          "selected" : true
                           },
                           {
                           "search_value" : "silent"
@@ -128,7 +130,8 @@
              "options" : [
                           {
                           "search_value" : "",
-                          "clear_all" : true
+                          "clear_all" : true,
+                          "selected" : true
                           },
                           {
                           "search_value" : "true"
@@ -138,6 +141,11 @@
              },
              {
              "options" : [
+                          {
+                          "search_value" : "",
+                          "clear_all" : true,
+                          "selected" : true
+                          },
                           {
                           "search_value" : "true",
                           "search_key" : "extended_info:has_whiteboards"
@@ -173,7 +181,8 @@
              "options" : [
                           {
                           "search_value" : "",
-                          "clear_all" : true
+                          "clear_all" : true,
+                          "selected" : true
                           },
                           {
                           "search_value" : "space"

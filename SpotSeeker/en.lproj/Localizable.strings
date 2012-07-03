@@ -48,7 +48,7 @@
 "Search screen title type" = "Type of space";
 "Search screen header type" = "Select types of space";
 "Search screen subheader type" = "";
-"Search screen default label type" = "Any";
+"Search screen default label type" = "No Preference";
 "Search option title type " = "No Preference";
 "Search option subtitle type " = "";
 "Search option title type study_room" = "Study room";
@@ -129,6 +129,8 @@
 "Search screen header equipment" = "Equipment required";
 "Search screen subheader equipment" = "Select all attributes you want to include in your search.";
 "Search screen default label equipment" = "No preference";
+"Search option title equipment " = "No preference";
+"Search option subtitle equipment " = "";
 "Search option title extended_info:has_whiteboards true" = "Whiteboard";
 "Search option subtitle extended_info:has_whiteboards true" = "";
 "Search option short extended_info:has_whiteboards true" = "W";
