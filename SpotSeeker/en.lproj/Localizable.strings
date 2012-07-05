@@ -9,7 +9,7 @@
 /* the alert dialog for no search results */
 
 "no search results title" = "";
-"no search results message" = "No spaces match your search criteria";
+"no search results message" = "No spaces match your search criteria.";
 "no search results button" = "Try again";
 
 /* These values show up on the space details screen */
@@ -54,13 +54,13 @@
 "Search screen title type" = "Type of space";
 "Search screen header type" = "Select types of space";
 "Search screen subheader type" = "";
-"Search screen default label type" = "No Preference";
-"Search option title type " = "No Preference";
+"Search screen default label type" = "No preference";
+"Search option title type " = "No preference";
 "Search option subtitle type " = "";
 "Search option title type study_room" = "Study room";
 "Search option subtitle type study_room" = "Enclosed space for individual or group";
 "Search option short type study_room" = "Rm";
-"Search option title type study_space" = "Study space";
+"Search option title type study_space" = "Study area";
 "Search option subtitle type study_space" = "Unenclosed space for individual or group";
 "Search option short type study_space" = "Spc";
 "Search option title type alcove" = "Alcove";
@@ -105,7 +105,7 @@
 "Search screen header extended_info:noise_level" = "Select acceptable noise levels";
 "Search screen subheader extended_info:noise_level" = "";
 "Search screen default label extended_info:noise_level" = "Any";
-"Search option title extended_info:noise_level " = "No Preference";
+"Search option title extended_info:noise_level " = "No preference";
 "Search option subtitle extended_info:noise_level " = "";
 "Search option short extended_info:noise_level " = "";
 "Search option title extended_info:noise_level silent" = "Silent";
@@ -116,14 +116,14 @@
 "Search option short extended_info:noise_level quiet" = "LH";
 "Search option title extended_info:noise_level moderate" = "Chatter";
 "Search option subtitle extended_info:noise_level moderate" = "";
-"Search option short extended_info:noise_level moderate" = "CH";
+"Search option short extended_info:noise_level moderate" = "Ch";
 
 "Search screen label extended_info:has_natural_light" = "Lighting";
 "Search screen title extended_info:has_natural_light" = "Lighting";
 "Search screen header extended_info:has_natural_light" = "Select type of lighting";
 "Search screen subheader extended_info:has_natural_light" = "";
 "Search screen default label extended_info:has_natural_light" = "No preference";
-"Search option title extended_info:has_natural_light " = "No Preference";
+"Search option title extended_info:has_natural_light " = "No preference";
 "Search option subtitle extended_info:has_natural_light " = "";
 "Search option short extended_info:has_natural_light " = "";
 "Search option title extended_info:has_natural_light true" = "Natural light";
