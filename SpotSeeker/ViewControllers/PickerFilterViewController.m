@@ -101,7 +101,7 @@
     }
     
     UILabel *value_label = (UILabel *)[cell viewWithTag:2];
-    NSString *value_label_key = [NSString stringWithFormat:@"Search screen label title %@", [current_obj objectForKey:@"search_key"]];   
+    NSString *value_label_key = [NSString stringWithFormat:@"Search screen label picker title %@", [current_obj objectForKey:@"search_key"]];   
     value_label.text = NSLocalizedString(value_label_key, nil);
     
     return cell;

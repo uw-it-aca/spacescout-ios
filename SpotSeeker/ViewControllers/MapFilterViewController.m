@@ -507,24 +507,24 @@
     
     UILabel *filter_label = (UILabel *)[cell viewWithTag:3];
     
-    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
-    filter_label.text = NSLocalizedString(label_key, nil);
-
-    UIButton *filter_selection = (UIButton *)[cell viewWithTag:4];
-
+    NSString *selected_value;
     NSNumber *selected_row = [current_obj objectForKey:@"selected_row"];
     if (selected_row == nil) {
-        [filter_selection setTitle:[current_obj objectForKey:@"no_selection_label"] forState:UIControlStateNormal];
+        selected_value = [current_obj objectForKey:@"no_selection_label"];
     }
     else {
         NSInteger current_row = [selected_row  integerValue];
-        NSString *title = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
-        [filter_selection setTitle:title forState:UIControlStateNormal];
+        selected_value = [[[current_obj objectForKey:@"options"] objectAtIndex:current_row] objectForKey:@"title"];
     }
+
     
+    NSString *label_key = [NSString stringWithFormat:@"Search screen label %@", [current_obj objectForKey:@"search_key"]];   
+    filter_label.text = NSLocalizedString(label_key, nil);
+
+        
     UILabel *value_label = (UILabel *)[cell viewWithTag:5];
     NSString *value_label_key = [NSString stringWithFormat:@"Search screen label title %@", [current_obj objectForKey:@"search_key"]];   
-    value_label.text = NSLocalizedString(value_label_key, nil);
+    value_label.text = [NSString stringWithFormat:NSLocalizedString(value_label_key, nil), selected_value];
     
     return cell;
 
