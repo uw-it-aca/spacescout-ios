@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="993" y="165"/>
         </scene>
-        <!--Map Filter View Controller - Search-->
+        <!--Map Filter View Controller - Filter-->
         <scene sceneID="g1a-Iw-LTA">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmO-sb-slk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,7 +277,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Search" id="9K3-nX-3rJ">
+                    <navigationItem key="navigationItem" title="Filter" id="9K3-nX-3rJ">
                         <barButtonItem key="backBarButtonItem" title="Done" id="TWG-SQ-g8w"/>
                         <barButtonItem key="leftBarButtonItem" title="View results" id="NKe-vK-XcP">
                             <connections>
