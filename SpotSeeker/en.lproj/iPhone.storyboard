@@ -278,7 +278,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Search" id="9K3-nX-3rJ">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="TWG-SQ-g8w"/>
+                        <barButtonItem key="backBarButtonItem" title="Done" id="TWG-SQ-g8w"/>
                         <barButtonItem key="leftBarButtonItem" title="View results" id="NKe-vK-XcP">
                             <connections>
                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="Dhb-DJ-LMX"/>
@@ -401,7 +401,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="3ak-Ze-GTq">
-                        <barButtonItem key="backBarButtonItem" title="Back ??" id="W6a-0g-mq9"/>
+                        <barButtonItem key="backBarButtonItem" title="Done" id="W6a-0g-mq9"/>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="pkl-63-ssl">
                             <connections>
                                 <action selector="btnClickCancel:" destination="85z-WW-HGT" id="MXj-G2-Xev"/>
