@@ -289,6 +289,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="LN9-M6-C7Q">
+                            <color key="tintColor" red="0.34509803919999998" green="0.2901960784" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnClickCancel:" destination="Uj1-TD-aQN" id="RJq-qH-vOe"/>
                             </connections>
@@ -407,6 +408,7 @@
                     <navigationItem key="navigationItem" id="3ak-Ze-GTq">
                         <barButtonItem key="backBarButtonItem" title="Done" id="W6a-0g-mq9"/>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="pkl-63-ssl">
+                            <color key="tintColor" red="0.34509803921568627" green="0.29019607843137252" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnClickCancel:" destination="85z-WW-HGT" id="MXj-G2-Xev"/>
                             </connections>
@@ -720,6 +722,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hours" id="jeV-fy-fMv">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="Sq2-S5-kGh">
+                            <color key="tintColor" red="0.1764705882" green="0.12941176469999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelBtnClick:" destination="8cc-dF-ZeI" id="ZE8-S3-yx6"/>
                             </connections>
