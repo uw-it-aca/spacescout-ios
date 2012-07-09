@@ -384,7 +384,7 @@
             NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
             CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
             
-            float top = (cell.frame.origin.y + (cell.frame.size.height / 2)) - expected.height / 2;
+            float top = ((cell.frame.size.height / 2)) - expected.height / 2;
             type.frame = CGRectMake(type.frame.origin.x, top, type.frame.size.width, expected.height);
             
             type.text = equipment_string;
