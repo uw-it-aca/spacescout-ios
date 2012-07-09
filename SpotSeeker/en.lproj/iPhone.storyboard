@@ -1649,6 +1649,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="56t-8u-DKs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.1764705882" green="0.12941176469999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1807,7 +1808,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7BZ-SZ-G39"/>
-        <segue reference="3Cj-Ws-5ju"/>
         <segue reference="SYV-Ne-S54"/>
+        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>
