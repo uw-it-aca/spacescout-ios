@@ -1365,6 +1365,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="lNt-eK-HUl">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="Dnz-He-EZd">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnClickClose:" destination="H5F-cS-j3x" id="qtc-jl-r2g"/>
                             </connections>
