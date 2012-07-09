@@ -184,15 +184,6 @@
         [current_cell setAccessoryType:UITableViewCellAccessoryCheckmark];        
     }
     else {
-        for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
-            NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
-            if ([opt objectForKey:@"clear_all"]) {
-                [opt setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
-                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-                UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
-                [cell setAccessoryType:UITableViewCellAccessoryNone];
-            }
-        }
         if ([[option objectForKey:@"selected"] boolValue]) {
             current_cell.accessoryType = UITableViewCellAccessoryNone;
             [option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
@@ -201,6 +192,31 @@
             current_cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [option setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];        
         }
+
+        bool select_clear_all = TRUE;
+        for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
+            NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
+            if (![opt objectForKey:@"clear_all"] && [[opt objectForKey:@"selected"] boolValue]) {
+                select_clear_all = FALSE;
+                break;
+            }                
+        }
+        
+        for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
+            NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
+            if ([opt objectForKey:@"clear_all"]) {
+                [opt setObject:[NSNumber numberWithBool:select_clear_all] forKey:@"selected"];
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
+                if (select_clear_all) {
+                    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
+                else {
+                    [cell setAccessoryType:UITableViewCellAccessoryNone];
+                }
+            }
+        }
+
     }
 }
 
