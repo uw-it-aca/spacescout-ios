@@ -1579,12 +1579,12 @@
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
-                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="8VW-Ka-HVY" kind="modal" identifier="spot_map" modalTransitionStyle="flipHorizontal" id="H5I-1v-Ztp"/>
                                             </connections>
                                         </segmentedControl>
-                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -1598,11 +1598,13 @@
                     <navigationItem key="navigationItem" title="SpaceScout" id="9Zl-UU-At7">
                         <barButtonItem key="backBarButtonItem" title="List" id="zyD-7A-tTw"/>
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="y2d-oE-VTZ">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="vSy-EG-TqB">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="cCc-xy-eWs" kind="modal" id="DG6-VL-yRO"/>
                             </connections>
@@ -1803,8 +1805,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
-        <segue reference="3uu-G9-i3V"/>
-        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="DG6-VL-yRO"/>
+        <segue reference="7BZ-SZ-G39"/>
     </inferredMetricsTieBreakers>
 </document>
