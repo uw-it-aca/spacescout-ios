@@ -283,6 +283,7 @@
                     <navigationItem key="navigationItem" title="Filter" id="9K3-nX-3rJ">
                         <barButtonItem key="backBarButtonItem" title="Done" id="TWG-SQ-g8w"/>
                         <barButtonItem key="leftBarButtonItem" title="View results" id="NKe-vK-XcP">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="Dhb-DJ-LMX"/>
                             </connections>
@@ -1670,6 +1671,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ePh-KH-z3t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.1764705882" green="0.12941176469999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
