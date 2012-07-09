@@ -41,6 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="locate.png" id="j22-9e-vnm">
+                                        <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="btnClickRecenter:" destination="2" id="7ty-oU-Znv"/>
                                         </connections>
@@ -54,7 +55,7 @@
                                                 <segment title="Map"/>
                                                 <segment title="List"/>
                                             </segments>
-                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="vs2-cn-cMQ" kind="modal" identifier="spot_list" modalTransitionStyle="flipHorizontal" id="8wc-VD-41p"/>
                                             </connections>
@@ -72,11 +73,13 @@
                     <navigationItem key="navigationItem" title="SpaceScout" id="f11-XH-hmO">
                         <barButtonItem key="backBarButtonItem" title="Map" id="E3E-6D-F3L"/>
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="F4H-kl-V8E">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="V6v-gZ-kPf">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="cCc-xy-eWs" kind="modal" id="em9-ZW-DQ1"/>
                             </connections>
@@ -1799,8 +1802,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7BZ-SZ-G39"/>
-        <segue reference="Zv8-Ju-hZd"/>
-        <segue reference="QY8-j1-nec"/>
+        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="3uu-G9-i3V"/>
+        <segue reference="rfQ-ts-oNK"/>
     </inferredMetricsTieBreakers>
 </document>
