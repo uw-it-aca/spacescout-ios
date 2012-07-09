@@ -1127,6 +1127,7 @@
                     <navigationItem key="navigationItem" title="SpaceScout" id="Yev-Ct-bwQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
                         <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="LlY-XK-qJN">
+                            <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="cCc-xy-eWs" kind="modal" id="QY8-j1-nec"/>
                             </connections>
@@ -1809,7 +1810,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7BZ-SZ-G39"/>
-        <segue reference="SYV-Ne-S54"/>
-        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>
