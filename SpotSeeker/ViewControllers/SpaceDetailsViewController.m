@@ -71,11 +71,21 @@
         
         NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
         UILabel *hours_label = (UILabel *)[cell viewWithTag:11];
-        int hours_height = hours_label.frame.size.height;
+        int hours_height = hours_label.frame.size.height * [display_hours count];
         
-        int unneeded = 7 - [display_hours count];
+   
+        UILabel *description_label = (UILabel *)[cell viewWithTag:100];
         
-        return cell.frame.size.height - (unneeded * hours_height);
+        NSString *spot_description = [self.spot.extended_info objectForKey:@"description"];
+        CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
+
+        NSString *app_path = [[NSBundle mainBundle] bundlePath];
+        NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+        NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+        
+        float hours_cell_extra = [[plist_values objectForKey:@"hours_cell_extra_height"] floatValue];
+
+        return hours_height + expected.height + hours_cell_extra;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
