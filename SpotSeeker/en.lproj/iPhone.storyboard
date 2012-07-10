@@ -1193,7 +1193,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jZe-qQ-aSN">
-                                        <rect key="frame" x="20" y="11" width="72" height="37"/>
+                                        <rect key="frame" x="73" y="11" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="&lt;&lt;">
@@ -1208,7 +1208,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fx6-Xb-DzS">
-                                        <rect key="frame" x="228" y="11" width="72" height="37"/>
+                                        <rect key="frame" x="179" y="11" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title=">>">
@@ -1816,8 +1816,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
         <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
+        <segue reference="QY8-j1-nec"/>
     </inferredMetricsTieBreakers>
 </document>
