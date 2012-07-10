@@ -49,5 +49,6 @@
 @property (nonatomic, retain) NSDictionary *config;
 @property (nonatomic, retain) NSMutableArray *environment_fields;
 @property (nonatomic, retain) NSMutableArray *equipment_fields;
+@property (nonatomic, retain) UIImage *spot_image;
 
 @end

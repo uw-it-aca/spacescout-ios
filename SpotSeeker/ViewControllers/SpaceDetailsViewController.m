@@ -31,6 +31,7 @@
 @synthesize config;
 @synthesize equipment_fields;
 @synthesize environment_fields;
+@synthesize spot_image;
 
 #pragma mark -
 #pragma mark table control methods
@@ -276,7 +277,7 @@
             [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
         }
         
-        UIImageView *spot_image = (UIImageView *)[cell viewWithTag:4];
+        UIImageView *spot_image_view = (UIImageView *)[cell viewWithTag:4];
         
         if ([spot.image_urls count] == 0) {
             UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
@@ -287,21 +288,30 @@
             UILabel *image_count = (UILabel *)[cell viewWithTag:9];
             image_count.hidden = YES;
         }
-    
-        
+
         if (self.img_view == nil) {
-            self.img_view = spot_image;
-            if ([spot.image_urls count]) {
+            self.img_view = spot_image_view;
+        }
+
+        if ([spot.image_urls count]) {
+            
+            if (self.spot_image) {
+                UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
+                spinner.hidden = YES;
+                spot_image_view.image = self.spot_image;
+                spot_image_view.hidden = NO;
+            }
+            else {
                 NSString *image_url = [spot.image_urls objectAtIndex:0];
                 REST *_rest = [[REST alloc] init];
                 _rest.delegate = self;
                 [_rest getURL:image_url];
                 self.rest = _rest;
-                
-                UILabel *image_count = (UILabel *)[cell viewWithTag:9];
-                image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
 
             }
+            UILabel *image_count = (UILabel *)[cell viewWithTag:9];
+            image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
+            
         }
         
         return cell;
@@ -556,7 +566,8 @@
         UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.view viewWithTag:10];
         spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
-        [self.img_view setImage:img];
+        self.spot_image = img;
+        [self.img_view setImage:self.spot_image];
     }
 }
 
