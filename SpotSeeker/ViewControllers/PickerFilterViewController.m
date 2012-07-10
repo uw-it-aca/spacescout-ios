@@ -30,6 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
+    NSString *screen_title =  NSLocalizedString(title_key, nil);
+    
+    self.title = screen_title;
+
 	// Do any additional setup after loading the view.
     [self.picker selectRow:[[self.filter objectForKey:@"selected_row"] intValue]  inComponent:0 animated:NO];
 }
