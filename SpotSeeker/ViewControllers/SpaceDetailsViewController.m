@@ -451,11 +451,7 @@
                 }    
                 
                 UILabel *notes = (UILabel *)[cell viewWithTag:2];
-                
-                CGSize expected = [[self.spot.extended_info objectForKey:@"access_notes"] sizeWithFont:notes.font constrainedToSize:CGSizeMake(notes.frame.size.width, 500.0)  lineBreakMode:notes.lineBreakMode];
-
-                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, expected.height);
-                
+                               
                 notes.text = [self.spot.extended_info objectForKey:@"access_notes"];
                 return cell;
             }
@@ -469,11 +465,7 @@
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reservation_notes_cell"];
                 }    
                 UILabel *notes = (UILabel *)[cell viewWithTag:2];
- 
-                CGSize expected = [[self.spot.extended_info objectForKey:@"reservation_notes"] sizeWithFont:notes.font constrainedToSize:CGSizeMake(notes.frame.size.width, 500.0)  lineBreakMode:notes.lineBreakMode];
-                
-                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, expected.height);
-                
+                 
                 notes.text = [self.spot.extended_info objectForKey:@"reservation_notes"];
 
                 return cell;
