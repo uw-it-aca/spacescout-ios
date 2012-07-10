@@ -187,13 +187,10 @@
     spot_type.text = type_display;
   
     UILabel *location_description = (UILabel *)[cell viewWithTag:5];
+    location_description.lineBreakMode = UILineBreakModeTailTruncation;
     
     NSString *description = [row_spot.extended_info objectForKey:@"description"];
-    CGSize expected = [description sizeWithFont:location_description.font constrainedToSize:CGSizeMake(location_description.frame.size.width, 500.0) lineBreakMode:location_description.lineBreakMode];
-    
-    location_description.frame = CGRectMake(location_description.frame.origin.x, location_description.frame.origin.y, location_description.frame.size.width, expected.height);
-    
-    location_description.text = [row_spot.extended_info objectForKey:@"description"];
+    location_description.text = description;
     
     return cell;
 }
