@@ -673,9 +673,10 @@
     NSString *to = [plist_values objectForKey:@"spotseeker_problem_email"];
 
     if (to == nil || [to isEqualToString:@""]) {
-        to = @"catalysthelp@uw.edu";
+        to = @"spacescout-support@uw.edu";
     }
-    NSString *subject =  NSLocalizedString(@"report_problem_email_subject", nil);
+    NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_subject", nil), self.spot.name];
+
     NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
     
     NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];

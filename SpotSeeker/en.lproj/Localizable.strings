@@ -191,5 +191,5 @@
 "Search screen section title basics" = "Basics";
 "Search screen section title environment" = "Environment";
 
-"report_problem_email_subject" = "Problem with space";
-"report_problem_email_body" = "There is a problem with %@ in %@:";
+"report_problem_email_subject" = "%@ problem report";
+"report_problem_email_body" = "Description of problem:\n\nSpace: %@\nLocation: %@\n";
