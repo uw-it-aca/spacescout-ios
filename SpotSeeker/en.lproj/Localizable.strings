@@ -62,7 +62,7 @@
 "Search option short type study_room" = "Rm";
 "Search option title type study_area" = "Study area";
 "Search option subtitle type study_area" = "Unenclosed space for individual or group";
-"Search option short type study_area" = "Spc";
+"Search option short type study_area" = "Area";
 "Search option title type alcove" = "Alcove";
 "Search option subtitle type alcove" = "";
 "Search option short type alcove" = "Alc";
