@@ -32,6 +32,7 @@
 @synthesize equipment_fields;
 @synthesize environment_fields;
 @synthesize spot_image;
+@synthesize footer;
 
 #pragma mark -
 #pragma mark table control methods
@@ -531,6 +532,40 @@
     
 }
 
+-(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
+                                                          owner:self
+                                                        options:nil];
+        
+        
+        UIView *_footer = [nibViews objectAtIndex: 0];
+
+        return _footer.frame.size.height;
+    }
+    return 0.0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        if (self.footer) {
+            return self.footer;
+        }
+        NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
+                                                          owner:self
+                                                        options:nil];
+        
+        
+        UIView *_footer = [nibViews objectAtIndex: 0];
+                
+        UIButton *report_problem = (UIButton *)[_footer viewWithTag:2];        
+        [report_problem addTarget:self action:@selector(btnClickReportProblem:) forControlEvents:UIControlEventTouchUpInside];
+
+        self.footer = _footer;
+    }
+    return nil;
+}
+
 #pragma mark -
 #pragma mark hours formatting
      
@@ -628,6 +663,24 @@
     
 }
 
+- (IBAction)btnClickReportProblem:(id)sender {
+    UIApplication *app = [UIApplication sharedApplication];  
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    NSString *to = [plist_values objectForKey:@"spotseeker_problem_email"];
+
+    if (to == nil || [to isEqualToString:@""]) {
+        to = @"catalysthelp@uw.edu";
+    }
+    NSString *subject =  NSLocalizedString(@"report_problem_email_subject", nil);
+    NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
+    
+    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    [app openURL:[NSURL URLWithString:url]];  
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"image_view"]) {
@@ -655,17 +708,6 @@
     self.navigationItem.titleView = imageView;
      */
     [super viewDidLoad];
-    
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
-                                                      owner:self
-                                                    options:nil];
-    
-    
-    UIView *footer = [nibViews objectAtIndex: 0];
-
-    UITableView *tv = (UITableView *)[self.view viewWithTag:200];
-    tv.tableFooterView = footer;
-    
 	// Do any additional setup after loading the view.
 }
 

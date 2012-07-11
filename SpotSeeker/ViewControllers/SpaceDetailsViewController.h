@@ -39,6 +39,7 @@
 }
 
 - (IBAction) btnClickFavorite:(id)sender;
+- (IBAction) btnClickReportProblem:(id)sender;
 
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) IBOutlet UILabel *capacity_label;
@@ -50,5 +51,6 @@
 @property (nonatomic, retain) NSMutableArray *environment_fields;
 @property (nonatomic, retain) NSMutableArray *equipment_fields;
 @property (nonatomic, retain) UIImage *spot_image;
+@property (nonatomic, retain) UIView *footer;
 
 @end
