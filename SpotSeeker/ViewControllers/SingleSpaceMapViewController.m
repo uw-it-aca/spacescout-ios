@@ -30,7 +30,7 @@
         pinView.annotation = annotation;
     }
         
-    pinView.image = [UIImage imageNamed:@"pin01.png"];
+    pinView.image = [UIImage imageNamed:@"pin00"];
     
     // XXX - This is the distance from the center of the image to the "point" of the pin drop. Needs to be updated with the images.
     pinView.centerOffset = CGPointMake(5, -20);
