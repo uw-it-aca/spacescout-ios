@@ -96,7 +96,7 @@
 "Search option title extended_info:reservable " = "No preference";
 "Search option subtitle extended_info:reservable " = "";
 "Search option short extended_info:reservable " = "";
-"Search option title extended_info:reservable true" = "Reserveable";
+"Search option title extended_info:reservable true" = "Reservable";
 "Search option subtitle extended_info:reservable true" = "";
 "Search option short extended_info:reservable true" = "";
 
