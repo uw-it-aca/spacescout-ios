@@ -137,7 +137,6 @@
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C27F30C2158A563D002EC7B2 /* SpaceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */; };
-		C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28202F7152E088100218272 /* cat_named_spot.jpg */; };
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2A20629156D9914005E30FF /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A20628156D9914005E30FF /* ListViewController.m */; };
 		C2A2A169156EA250004781F6 /* SearchableSpaceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2A168156EA250004781F6 /* SearchableSpaceListViewController.m */; };
@@ -355,7 +354,6 @@
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
 		C27F30C0158A563D002EC7B2 /* SpaceImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceImagesViewController.h; path = ViewControllers/SpaceImagesViewController.h; sourceTree = "<group>"; };
 		C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceImagesViewController.m; path = ViewControllers/SpaceImagesViewController.m; sourceTree = "<group>"; };
-		C28202F7152E088100218272 /* cat_named_spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_named_spot.jpg; sourceTree = "<group>"; };
 		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
 		C2A0E92F153E2EE100D9568E /* SpotModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotModelTests.m; sourceTree = "<group>"; };
 		C2A20627156D9914005E30FF /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = ViewControllers/ListViewController.h; sourceTree = "<group>"; };
@@ -784,7 +782,6 @@
 			children = (
 				C24B24DF158BC44F001C4B3F /* images */,
 				C25166681533713B002CEDB6 /* spotseeker.plist */,
-				C28202F7152E088100218272 /* cat_named_spot.jpg */,
 				C2FDB0EA150A802D00ED3A93 /* SpaceScout-Info.plist */,
 				C2FDB0EB150A802D00ED3A93 /* InfoPlist.strings */,
 				C2FDB0EE150A802D00ED3A93 /* main.m */,
@@ -894,7 +891,6 @@
 			files = (
 				C2FDB0ED150A802D00ED3A93 /* InfoPlist.strings in Resources */,
 				C2FDB0F6150A802D00ED3A93 /* iPhone.storyboard in Resources */,
-				C28202F8152E088100218272 /* cat_named_spot.jpg in Resources */,
 				C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */,
 				C25166691533713B002CEDB6 /* spotseeker.plist in Resources */,
 				C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */,
