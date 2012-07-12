@@ -52,11 +52,13 @@
             NSArray *buildings = [parser objectWithData:[request responseData]];
             NSMutableArray *options = [[NSMutableArray alloc] init];
             for (NSString *building in buildings) {
-                NSMutableDictionary *building_options = [[NSMutableDictionary alloc] init];
-                [building_options setObject:building forKey:@"title"];
-                [building_options setObject:building forKey:@"search_value"];
-
-                [options addObject:building_options];
+                if (![building isEqualToString:@""]) {
+                    NSMutableDictionary *building_options = [[NSMutableDictionary alloc] init];
+                    [building_options setObject:building forKey:@"title"];
+                    [building_options setObject:building forKey:@"search_value"];
+                    
+                    [options addObject:building_options];
+                }
             }
             [self.filter setObject:options forKey:@"options"];
             
