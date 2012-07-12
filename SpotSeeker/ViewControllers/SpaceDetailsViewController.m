@@ -712,5 +712,11 @@
 	// Do any additional setup after loading the view.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
+    //    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
 
 @end
