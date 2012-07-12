@@ -33,6 +33,7 @@ int const meters_per_latitude = 111 * 1000;
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     
     if (meters > 10000) {
+        [self searchFinished:self.current_spots];
         return;
     }
     
