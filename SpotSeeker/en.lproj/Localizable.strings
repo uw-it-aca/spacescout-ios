@@ -62,7 +62,7 @@
 "Search option short type study_room" = "Rm";
 "Search option title type study_area" = "Study area";
 "Search option subtitle type study_area" = "Unenclosed space for individual or group";
-"Search option short type study_area" = "Spc";
+"Search option short type study_area" = "Area";
 "Search option title type alcove" = "Alcove";
 "Search option subtitle type alcove" = "";
 "Search option short type alcove" = "Alc";
@@ -130,10 +130,10 @@
 "Search option subtitle extended_info:has_natural_light true" = "";
 "Search option short extended_info:has_natural_light true" = "Natural light";
 
-"Search screen label equipment" = "Equipment";
-"Search screen title equipment" = "Equipment";
-"Search screen header equipment" = "Equipment required";
-"Search screen subheader equipment" = "Select all attributes you want to include in your search.";
+"Search screen label equipment" = "Resources";
+"Search screen title equipment" = "Resources";
+"Search screen header equipment" = "Resources required";
+"Search screen subheader equipment" = "Select everything you want to include in your search.";
 "Search screen default label equipment" = "No preference";
 "Search option title equipment " = "No preference";
 "Search option subtitle equipment " = "";
