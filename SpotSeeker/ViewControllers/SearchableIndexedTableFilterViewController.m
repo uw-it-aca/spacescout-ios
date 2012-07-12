@@ -18,6 +18,8 @@
 @synthesize search_results;
 @synthesize search_bar_cell;
 @synthesize did_cancel;
+@synthesize loading_spinner;
+@synthesize rest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +34,44 @@
 {
     [super viewDidLoad];
 
-    self.index_data = [self createTableIndex];
+    self.rest = [[REST alloc] init];
+    if ([filter objectForKey:@"data_source"] && [[filter objectForKey:@"options"] count] == 0) {
+        self.table_view.hidden = YES;
+        self.loading_spinner.hidden = NO;
+        
+        __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:[filter objectForKey:@"data_source"]];
+        
+        [request setCompletionBlock:^{
+            SBJsonParser *parser = [[SBJsonParser alloc] init];
+            
+            if (200 != [request responseStatusCode]) {
+                NSLog(@"Code: %i", [request responseStatusCode]);
+                // show an error
+            }
+            
+            NSArray *buildings = [parser objectWithData:[request responseData]];
+            NSMutableArray *options = [[NSMutableArray alloc] init];
+            for (NSString *building in buildings) {
+                NSMutableDictionary *building_options = [[NSMutableDictionary alloc] init];
+                [building_options setObject:building forKey:@"title"];
+                [building_options setObject:building forKey:@"search_value"];
+
+                [options addObject:building_options];
+            }
+            [self.filter setObject:options forKey:@"options"];
+            
+            self.index_data = [self createTableIndex];
+            [self.table_view reloadData];
+            self.loading_spinner.hidden = YES;
+            self.table_view.hidden = NO;
+
+        }];
+
+        [request startAsynchronous];
+    }
+    else {
+        self.index_data = [self createTableIndex];
+    }
     
     self.search_display_controller = [[UISearchDisplayController alloc] initWithSearchBar:self.search_bar contentsController:self];
     self.search_display_controller.delegate = self;

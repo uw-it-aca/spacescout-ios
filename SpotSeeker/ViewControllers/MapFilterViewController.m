@@ -303,7 +303,7 @@
             // XXX - this is an unfortunate thing, but building names really can't be in the localization file.
             NSString *short_string;
             if ([search_key isEqualToString:@"building_name"]) {
-                short_string = [option objectForKey:@"short"];
+                short_string = [option objectForKey:@"title"];
             }
             else {
                 NSString *short_key = [NSString stringWithFormat:@"Search option short %@ %@", search_key, [option objectForKey:@"search_value"]];

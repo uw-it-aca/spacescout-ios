@@ -7,11 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "REST.h"
+#import "SBJson.h"
 
 @interface SearchableIndexedTableFilterViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
     NSMutableDictionary *filter;
     IBOutlet UITableView *table_view;
     IBOutlet UISearchBar *search_bar;
+    IBOutlet UIActivityIndicatorView *loading_spinner;
     UISearchDisplayController *search_display_controller;
     NSMutableDictionary *index_data;
     NSArray *search_results;
@@ -29,5 +32,7 @@
 @property (nonatomic, retain) UISearchDisplayController *search_display_controller;
 @property (nonatomic, retain) NSArray *search_results;
 @property (nonatomic, retain) UITableViewCell *search_bar_cell;
+@property (nonatomic, retain) UIActivityIndicatorView *loading_spinner;
+@property (nonatomic, retain) REST *rest;
 
 @end

@@ -86,19 +86,8 @@
              "table_row_type":"cell_with_indexed_table",
              "default_selection_label":"Entire campus",
              "clear_selections_label":"Entire campus",
-             "options": [
-                         { "title":"Allen Library South", "short":"ALB", "search_value":"Allen Library South" },
-                         { "title":"Burke Museum", "short":"BMM", "search_value":"Burke Museum" },
-                         { "title":"Fishery Sciences", "short":"FSH", "search_value":"Fishery Sciences" },
-                         { "title":"Intramural Activities Building", "short":"IMA", "search_value":"Intramural Activities Building" },
-                         { "title":"McMahon Hall", "short":"MCM", "search_value":"McMahon Hall" },
-                         { "title":"Miller Hall", "short":"MLR", "search_value":"Miller Hall" },
-                         { "title":"Odegaard Undergraduate Library", "short":"OUGL", "search_value":"Odegaard Undergraduate Library" },
-                         { "title":"Paccar Hall", "short":"PCAR", "search_value":"Paccar Hall" },
-                         { "title":"Suzzallo Library", "short":"SUZ", "search_value":"Suzzallo Library" }
-                         ]
+             "data_source":"/api/v1/buildings"
              }
-
              ]
   },
   {
