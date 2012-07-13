@@ -197,3 +197,5 @@
 /* favorites screen */ 
 "favorites list title" = "Favorites";
 "favorite list empty" = "You have not favorited any spaces. Tap the star in the top right of a space to mark it as a favorite.";
+
+"spot details modification date" = "This space was last updated %@ by the University of Washington.";
