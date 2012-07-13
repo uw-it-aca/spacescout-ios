@@ -71,6 +71,11 @@
     loading_spinner.hidden = NO;    
 }
 
+-(void) searchCancelled {
+    UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
+    loading_spinner.hidden = YES;
+}
+
 -(void) showFoundSpaces {
     [self sortSpots];
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];

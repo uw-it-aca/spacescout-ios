@@ -25,6 +25,7 @@
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;
+-(void)searchCancelled;
 -(void)runSearch;
 
 @end

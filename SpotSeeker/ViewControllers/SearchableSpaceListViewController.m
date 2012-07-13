@@ -33,7 +33,7 @@ int const meters_per_latitude = 111 * 1000;
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     
     if (meters > 10000) {
-        [self searchFinished:self.current_spots];
+        [self searchCancelled];
         return;
     }
     
@@ -54,6 +54,10 @@ int const meters_per_latitude = 111 * 1000;
 -(void) searchFinished:(NSArray *)spots {
     self.current_spots = spots;
     [self showFoundSpaces];
+}
+
+-(void)searchCancelled {
+    // This should be implemented in the subclasses
 }
 
 -(void)showFoundSpaces {
