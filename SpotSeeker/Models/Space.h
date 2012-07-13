@@ -78,6 +78,7 @@
 @property (nonatomic, retain) NSString *room_number;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSNumber *distance_from_user;
+@property (nonatomic, retain) NSDate *modifified_date;
 
 @end
 

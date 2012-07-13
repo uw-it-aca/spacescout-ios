@@ -557,7 +557,10 @@
         
         
         UIView *_footer = [nibViews objectAtIndex: 0];
-                
+        
+        UILabel *modification_label = (UILabel *)[_footer viewWithTag:1];
+        modification_label.text = [NSString stringWithFormat:NSLocalizedString(@"spot details modification date", nil), "The date"];
+        
         UIButton *report_problem = (UIButton *)[_footer viewWithTag:2];        
         [report_problem addTarget:self action:@selector(btnClickReportProblem:) forControlEvents:UIControlEventTouchUpInside];
 

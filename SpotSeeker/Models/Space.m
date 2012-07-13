@@ -43,6 +43,8 @@
 @synthesize description;
 @synthesize rest;
 @synthesize distance_from_user;
+@synthesize modifified_date;
+
 
 - (void) getListBySearch: (NSDictionary *)arguments {
     REST *_rest = [[REST alloc] init];
@@ -81,6 +83,13 @@
         if (![[[spot_info objectForKey:@"capacity"] class] isSubclassOfClass:[NSNull class]]) {
             spot.capacity = [spot_info objectForKey:@"capacity"];
         }
+        
+        
+       
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss+'00:00'";
+
+        spot.modifified_date = [dateFormatter dateFromString:[spot_info objectForKey:@"last_modified"]];
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
         
