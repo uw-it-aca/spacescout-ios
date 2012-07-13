@@ -9,7 +9,7 @@
 /* the alert dialog for no search results */
 
 "no search results title" = "";
-"no search results message" = "No spaces match your search criteria.";
+"no search results message" = "No spaces match your filters.";
 "no search results button" = "Try again";
 
 /* These values show up on the space details screen */
