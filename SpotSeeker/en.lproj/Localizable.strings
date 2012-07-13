@@ -9,7 +9,7 @@
 /* the alert dialog for no search results */
 
 "no search results title" = "";
-"no search results message" = "No spaces match your search criteria.";
+"no search results message" = "No spaces match your filters.";
 "no search results button" = "Try again";
 
 /* These values show up on the space details screen */
@@ -104,7 +104,7 @@
 "Search screen title extended_info:noise_level" = "Noise level";
 "Search screen header extended_info:noise_level" = "Select acceptable noise levels";
 "Search screen subheader extended_info:noise_level" = "";
-"Search screen default label extended_info:noise_level" = "Any";
+"Search screen default label extended_info:noise_level" = "No preference";
 "Search option title extended_info:noise_level " = "No preference";
 "Search option subtitle extended_info:noise_level " = "";
 "Search option short extended_info:noise_level " = "";
@@ -132,8 +132,8 @@
 
 "Search screen label equipment" = "Resources";
 "Search screen title equipment" = "Resources";
-"Search screen header equipment" = "Resources required";
-"Search screen subheader equipment" = "Select everything you want to include in your search.";
+"Search screen header equipment" = "Select resources needed";
+"Search screen subheader equipment" = "";
 "Search screen default label equipment" = "No preference";
 "Search option title equipment " = "No preference";
 "Search option subtitle equipment " = "";
@@ -163,7 +163,7 @@
 "Search screen title extended_info:food_nearby" = "Food/coffee";
 "Search screen header extended_info:food_nearby" = "Select proximity of food/coffee";
 "Search screen subheader extended_info:food_nearby" = "";
-"Search screen default label extended_info:food_nearby" = "Any";
+"Search screen default label extended_info:food_nearby" = "No preference";
 "Search option title extended_info:food_nearby " = "No preference";
 "Search option subtitle extended_info:food_nearby " = "";
 "Search option short extended_info:food_nearby " = "";
