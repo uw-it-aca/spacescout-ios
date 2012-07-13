@@ -26,15 +26,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Move and zoom the map to find spaces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8W-xY-wm2">
-                                        <rect key="frame" x="15" y="-1" width="290" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Move and zoom the map to find study spaces." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8W-xY-wm2">
+                                        <rect key="frame" x="13" y="0.0" width="294" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.75" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="9HE-8v-nHi">
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
@@ -1823,8 +1823,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
-        <segue reference="QY8-j1-nec"/>
+        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>
