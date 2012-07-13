@@ -194,7 +194,7 @@
     UILabel *location_description = (UILabel *)[cell viewWithTag:5];
     location_description.lineBreakMode = UILineBreakModeTailTruncation;
     
-    NSString *description = [row_spot.extended_info objectForKey:@"description"];
+    NSString *description = [row_spot.extended_info objectForKey:@"location_description"];
     location_description.text = description;
     
     return cell;
