@@ -23,11 +23,11 @@
                                 </connections>
                             </mapView>
                             <view tag="10" contentMode="scaleToFill" id="EKH-de-Wdg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Move and zoom the map to find study spaces." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8W-xY-wm2">
-                                        <rect key="frame" x="13" y="0.0" width="294" height="21"/>
+                                        <rect key="frame" x="0.0" y="3" width="320" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1846,8 +1846,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
-        <segue reference="ehC-Lb-oxn"/>
+        <segue reference="em9-ZW-DQ1"/>
     </inferredMetricsTieBreakers>
 </document>
