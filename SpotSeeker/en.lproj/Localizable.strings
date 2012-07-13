@@ -6,6 +6,9 @@
 
  */
 
+/* map tip text on first view */
+"map tip text" = "Move and zoom the map to find study spaces.";
+
 /* the alert dialog for no search results */
 
 "no search results title" = "";
