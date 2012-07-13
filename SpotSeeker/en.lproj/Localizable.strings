@@ -132,8 +132,8 @@
 
 "Search screen label equipment" = "Resources";
 "Search screen title equipment" = "Resources";
-"Search screen header equipment" = "Resources required";
-"Search screen subheader equipment" = "Select everything you want to include in your search.";
+"Search screen header equipment" = "Select resources needed";
+"Search screen subheader equipment" = "";
 "Search screen default label equipment" = "No preference";
 "Search option title equipment " = "No preference";
 "Search option subtitle equipment " = "";
