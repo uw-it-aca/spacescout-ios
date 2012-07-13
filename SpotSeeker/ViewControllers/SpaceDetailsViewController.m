@@ -77,7 +77,7 @@
    
         UILabel *description_label = (UILabel *)[cell viewWithTag:100];
         
-        NSString *spot_description = [self.spot.extended_info objectForKey:@"description"];
+        NSString *spot_description = [self.spot.extended_info objectForKey:@"location_description"];
         CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
 
         NSString *app_path = [[NSBundle mainBundle] bundlePath];
@@ -346,7 +346,7 @@
         }
         
         UILabel *description = (UILabel *)[cell viewWithTag:100];
-        description.text = [self.spot.extended_info objectForKey:@"description"];
+        description.text = [self.spot.extended_info objectForKey:@"location_description"];
         
         return cell;
     }

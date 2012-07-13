@@ -193,3 +193,7 @@
 
 "report_problem_email_subject" = "%@ problem report";
 "report_problem_email_body" = "Description of problem:\n\nSpace: %@\nLocation: %@\n";
+
+/* favorites screen */ 
+"favorites list title" = "Favorites";
+"favorite list empty" = "You have not favorited any spaces. Tap the star in the top right of a space to mark it as a favorite.";
