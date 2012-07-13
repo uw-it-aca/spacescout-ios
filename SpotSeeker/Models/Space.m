@@ -223,9 +223,9 @@
     By number of seats (ascending)
      */
      
-    if (self.distance_from_user && spot.distance_from_user) {
-        NSNumber *d1 = [NSNumber numberWithInt:(int)([self.distance_from_user floatValue] * 100.0)];
-        NSNumber *d2 = [NSNumber numberWithInt:(int)([spot.distance_from_user floatValue] * 100.0)];
+    if (self.distance_from_user && spot.distance_from_user) {       
+        NSNumber *d1 = [NSNumber numberWithInt:(int)(roundf([self.distance_from_user floatValue] * 100.0))];
+        NSNumber *d2 = [NSNumber numberWithInt:(int)(roundf([spot.distance_from_user floatValue] * 100.0))];
 
         if (![d1 isEqualToNumber:d2]) {
             return [d1 compare:d2];
