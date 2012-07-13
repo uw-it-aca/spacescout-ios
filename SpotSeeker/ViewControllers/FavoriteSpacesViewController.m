@@ -11,6 +11,7 @@
 @implementation FavoriteSpacesViewController
 
 @synthesize favorites;
+@synthesize no_favorites;
 
 - (IBAction)btnClickClose:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
@@ -23,7 +24,13 @@
 -(void)searchFinished:(NSArray *)spots {
     self.current_spots = spots;
     [self sortSpots];
-    [self.spot_table reloadData];
+    if (self.current_spots.count > 0) {
+        [self.spot_table reloadData];
+    }
+    else {
+        self.spot_table.hidden = YES;
+        self.no_favorites.hidden = NO;
+    }
 }
 
 #pragma mark -

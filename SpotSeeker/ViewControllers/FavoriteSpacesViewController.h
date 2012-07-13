@@ -18,5 +18,6 @@
 - (IBAction) btnClickClose:(id)sender;
 
 @property (nonatomic, retain) NSArray *favorites;
+@property (nonatomic, retain) IBOutlet UIView *no_favorites;
 
 @end

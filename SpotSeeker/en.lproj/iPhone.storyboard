@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8VW-Ka-HVY">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -1310,6 +1310,20 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" id="n6s-QL-t6d">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You have not favorited any spaces. Tap the star in the top right of a space to mark it as a favorite." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="uUy-LN-AvK">
+                                        <rect key="frame" x="50" y="111" width="220" height="194"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="mkW-fZ-cno">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1383,6 +1397,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="no_favorites" destination="n6s-QL-t6d" id="6w0-G9-C8M"/>
                         <outlet property="spot_table" destination="mkW-fZ-cno" id="hVa-LR-vjH"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="ehC-Lb-oxn"/>
                     </connections>
@@ -1705,6 +1720,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSpacesViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnClickClose:"/>
+                <relationship kind="outlet" name="no_favorites" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="ListViewController" superclassName="SearchableSpaceListViewController">
@@ -1823,8 +1839,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rfQ-ts-oNK"/>
         <segue reference="em9-ZW-DQ1"/>
-        <segue reference="3uu-G9-i3V"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>
