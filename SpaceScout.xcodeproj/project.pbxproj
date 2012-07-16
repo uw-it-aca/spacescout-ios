@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2323BBAE15B47A8500B6947B /* pin20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBAD15B47A8500B6947B /* pin20@2x.png */; };
 		234CA50F15B0E41100EFA9BE /* star_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234CA50B15B0E41100EFA9BE /* star_unselected@2x.png */; };
 		234CA51015B0E41100EFA9BE /* star_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 234CA50C15B0E41100EFA9BE /* star_unselected.png */; };
 		234CA51115B0E41100EFA9BE /* star_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234CA50D15B0E41100EFA9BE /* star_selected@2x.png */; };
@@ -181,6 +182,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2323BBAD15B47A8500B6947B /* pin20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin20@2x.png"; sourceTree = "<group>"; };
 		234CA50B15B0E41100EFA9BE /* star_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_unselected@2x.png"; sourceTree = "<group>"; };
 		234CA50C15B0E41100EFA9BE /* star_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_unselected.png; sourceTree = "<group>"; };
 		234CA50D15B0E41100EFA9BE /* star_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_selected@2x.png"; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				894D673415AE34BA007FA872 /* pin00@2x.png */,
 				C242C276159260140045924B /* pin01.png */,
 				C242C277159260140045924B /* pin01@2x.png */,
+				2323BBAD15B47A8500B6947B /* pin20@2x.png */,
 				C242C278159260140045924B /* pin02.png */,
 				C242C279159260140045924B /* pin02@2x.png */,
 				C242C27A159260140045924B /* pin03.png */,
@@ -983,6 +986,7 @@
 				234CA51015B0E41100EFA9BE /* star_unselected.png in Resources */,
 				234CA51115B0E41100EFA9BE /* star_selected@2x.png in Resources */,
 				234CA51215B0E41100EFA9BE /* star_selected.png in Resources */,
+				2323BBAE15B47A8500B6947B /* pin20@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
