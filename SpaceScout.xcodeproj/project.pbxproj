@@ -20,6 +20,8 @@
 		894D673515AE34BA007FA872 /* pin00.png in Resources */ = {isa = PBXBuildFile; fileRef = 894D673315AE34BA007FA872 /* pin00.png */; };
 		894D673615AE34BA007FA872 /* pin00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 894D673415AE34BA007FA872 /* pin00@2x.png */; };
 		897CF54615A23B4B007D5ABA /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 897CF54515A23B4B007D5ABA /* search.png */; };
+		89EA961F15B4901A00078DD3 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EA961D15B4901A00078DD3 /* flag.png */; };
+		89EA962015B4901A00078DD3 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EA961E15B4901A00078DD3 /* flag@2x.png */; };
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
@@ -195,6 +197,8 @@
 		894D673315AE34BA007FA872 /* pin00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin00.png; sourceTree = "<group>"; };
 		894D673415AE34BA007FA872 /* pin00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin00@2x.png"; sourceTree = "<group>"; };
 		897CF54515A23B4B007D5ABA /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
+		89EA961D15B4901A00078DD3 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
+		89EA961E15B4901A00078DD3 /* flag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag@2x.png"; sourceTree = "<group>"; };
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 		C2D4E30D15938BAB00B594C5 /* details */ = {
 			isa = PBXGroup;
 			children = (
+				89EA961D15B4901A00078DD3 /* flag.png */,
+				89EA961E15B4901A00078DD3 /* flag@2x.png */,
 				C23074D41599298900C31AA1 /* lighting.png */,
 				C23074D51599298900C31AA1 /* lighting@2x.png */,
 				C2D4E30E15938BAB00B594C5 /* asterisks.png */,
@@ -985,6 +991,8 @@
 				234CA51015B0E41100EFA9BE /* star_unselected.png in Resources */,
 				234CA51115B0E41100EFA9BE /* star_selected@2x.png in Resources */,
 				234CA51215B0E41100EFA9BE /* star_selected.png in Resources */,
+				89EA961F15B4901A00078DD3 /* flag.png in Resources */,
+				89EA962015B4901A00078DD3 /* flag@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
