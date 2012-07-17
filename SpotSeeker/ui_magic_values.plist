@@ -7,6 +7,8 @@
 	<key>search_preference_sticky_duration_in_seconds</key>
 	<integer>43200</integer>
 	<key>hours_cell_extra_height</key>
-	<integer>26</integer>
+	<integer>0</integer>
+	<key>space_details_location_spacing</key>
+	<integer>0</integer>
 </dict>
 </plist>

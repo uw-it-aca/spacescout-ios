@@ -73,11 +73,15 @@
         NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
         UILabel *hours_label = (UILabel *)[cell viewWithTag:11];
         int hours_height = hours_label.frame.size.height * [display_hours count];
-        
-   
+           
         UILabel *description_label = (UILabel *)[cell viewWithTag:100];
         
+        float location_header_size = 0;
         NSString *spot_description = [self.spot.extended_info objectForKey:@"location_description"];
+        if (![spot_description isEqualToString:@""]) {
+            UILabel *location_header_label = (UILabel *)[cell viewWithTag:51];
+            location_header_size = location_header_label.frame.size.height;
+        }
         CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
 
         NSString *app_path = [[NSBundle mainBundle] bundlePath];
@@ -86,7 +90,10 @@
         
         float hours_cell_extra = [[plist_values objectForKey:@"hours_cell_extra_height"] floatValue];
 
-        return hours_height + expected.height + hours_cell_extra;
+        UILabel *open_label = (UILabel *)[cell viewWithTag:50];
+        float open_label_bottom = open_label.frame.origin.y + open_label.frame.size.height;
+        
+        return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
@@ -338,15 +345,42 @@
         for (int index = 0; index < [display_hours count]; index++) {
             UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
             hours_label.text = [display_hours objectAtIndex:index];
+            hours_label.hidden = NO;
         }
-        
+                
         for (int index = [display_hours count]; index <= 7; index++) {
             UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
+            hours_label.hidden = YES;
             hours_label.text = @"";            
         }
         
         UILabel *description = (UILabel *)[cell viewWithTag:100];
         description.text = [self.spot.extended_info objectForKey:@"location_description"];
+        
+        UILabel *location_header = (UILabel *)[cell viewWithTag:51];
+
+        if (![description.text isEqualToString:@""]) {
+            UILabel *bottom_hours = (UILabel *)[cell viewWithTag:[display_hours count] + 11 - 1];
+            float hours_bottom = bottom_hours.frame.origin.y + bottom_hours.frame.size.height;    
+            
+            location_header.frame = CGRectMake(location_header.frame.origin.x, hours_bottom, location_header.frame.size.width, location_header.frame.size.height);
+            
+            float location_header_bottom = location_header.frame.origin.y + location_header.frame.size.height;
+            
+            NSString *app_path = [[NSBundle mainBundle] bundlePath];
+            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+            
+            float location_header_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
+            
+            CGSize expected = [description.text sizeWithFont:description.font constrainedToSize:CGSizeMake(description.frame.size.width, 500.0)  lineBreakMode:description.lineBreakMode];
+            
+            description.frame = CGRectMake(description.frame.origin.x, location_header_bottom + location_header_padding, description.frame.size.width, expected.height);
+            location_header.hidden = NO;
+        }
+        else {
+            location_header.hidden = YES;
+        }
         
         return cell;
     }
