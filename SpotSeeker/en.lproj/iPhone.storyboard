@@ -755,7 +755,7 @@
                             <tableView clipsSubviews="YES" tag="200" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NSk-zr-PcD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <inset key="contentInset" minX="0.0" minY="-1" maxX="0.0" maxY="-4"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="image_and_name" rowHeight="253" id="IZb-LP-SlO">
@@ -1852,8 +1852,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
+        <segue reference="3uu-G9-i3V"/>
         <segue reference="QY8-j1-nec"/>
     </inferredMetricsTieBreakers>
 </document>
