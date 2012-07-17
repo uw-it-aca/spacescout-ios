@@ -31,6 +31,8 @@
 {
     // Override point for customization after application launch.
     has_hidden_map_tooltip = [NSNumber numberWithBool:false];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:132.0 / 255.0 green:123.0 / 255.0 blue:170.0 / 255.0 alpha:1.0]];
+
     return YES;
 }
 							
