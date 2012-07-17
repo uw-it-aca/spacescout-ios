@@ -100,15 +100,23 @@
 -(IBAction)resetBtnClick:(id)sender {
     if ([self.current_widget intValue] == 1) {
         NSDateComponents *new = [self getDefaultStartTime];
-        self.start_time = new;
         [self setPickerDateComponents:new];
-        [self updateStartButtonWithDateComponents:new];
+        self.start_time = nil;
+        [self.filter removeObjectForKey:@"open_at"];     
+        UIButton *start = (UIButton *)[self.view viewWithTag:2];
+        [start setTitle:NSLocalizedString(@"hours filter default start label", nil) forState:UIControlStateNormal];
+//        [self updateStartButtonWithDateComponents:new];
     }
     else {
         NSDateComponents *new = [self getDefaultEndTime];
-        self.end_time = new;
         [self setPickerDateComponents:new];
-        [self updateEndButtonWithDateComponents:new];        
+        self.end_time = nil;
+        [self.filter removeObjectForKey:@"open_until"];
+        UIButton *end = (UIButton *)[self.view viewWithTag:3];
+
+        [end setTitle:NSLocalizedString(@"hours filter default end label", nil) forState:UIControlStateNormal];
+
+//        [self updateEndButtonWithDateComponents:new];        
     }
 }
 
