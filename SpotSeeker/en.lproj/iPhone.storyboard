@@ -117,7 +117,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="Reset">
-                                                <color key="titleColor" red="0.34509804840000002" green="0.29019609089999998" blue="0.32941177490000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="0.1764705926" green="0.1294117719" blue="0.1647058874" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="highlighted">
@@ -652,14 +652,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="at" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="tgN-Nl-bdy">
-                                <rect key="frame" x="20" y="72" width="42" height="21"/>
+                                <rect key="frame" x="37" y="71" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Until" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Gwh-FT-jnS">
-                                <rect key="frame" x="20" y="113" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="until" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Gwh-FT-jnS">
+                                <rect key="frame" x="37" y="112" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -729,7 +729,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Reset" backgroundImage="reset_picker.png">
-                                            <color key="titleColor" red="0.34509804840000002" green="0.29019609089999998" blue="0.32941177490000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.1764705926" green="0.1294117719" blue="0.1647058874" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -932,14 +932,14 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Access Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EFZ-gF-2X3">
-                                                                    <rect key="frame" x="40" y="5" width="118" height="21"/>
+                                                                    <rect key="frame" x="38" y="6" width="118" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="see below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GW9-O4-Oa8">
-                                                                    <rect key="frame" x="133" y="5" width="114" height="21"/>
+                                                                    <rect key="frame" x="132" y="6" width="114" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -957,28 +957,28 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reservations required:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JCh-dC-Jit">
-                                                                    <rect key="frame" x="39" y="2" width="148" height="21"/>
+                                                                    <rect key="frame" x="37" y="1" width="148" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="see below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qlr-cX-N2v">
-                                                                    <rect key="frame" x="184" y="2" width="83" height="21"/>
+                                                                    <rect key="frame" x="182" y="1" width="83" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="center" image="reservable.png" id="gjm-GT-4es">
-                                                                    <rect key="frame" x="10" y="4" width="22" height="22"/>
+                                                                    <rect key="frame" x="10" y="1" width="22" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.86274516580000005" green="0.86274516580000005" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -992,7 +992,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="4es-tX-5K5">
-                                                    <rect key="frame" x="132" y="16" width="168" height="13"/>
+                                                    <rect key="frame" x="122" y="16" width="168" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1025,7 +1025,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Environment value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="rGW-iS-WEI">
-                                                    <rect key="frame" x="131" y="0.0" width="136" height="43"/>
+                                                    <rect key="frame" x="122" y="0.0" width="136" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1193,16 +1193,16 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DbK-jG-kBQ">
                                         <rect key="frame" x="94" y="12" width="132" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vVS-1Z-cY2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vVS-1Z-cY2">
                                         <rect key="frame" x="20" y="8" width="62" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Done" backgroundImage="reset_picker.png">
+                                            <color key="titleColor" red="0.1764705926" green="0.1294117719" blue="0.1647058874" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -1216,14 +1216,14 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="H75-6b-Pmw">
-                                <rect key="frame" x="0.0" y="400" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="412" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jZe-qQ-aSN">
-                                        <rect key="frame" x="73" y="11" width="72" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jZe-qQ-aSN">
+                                        <rect key="frame" x="101" y="9" width="41" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="&lt;&lt;">
+                                        <state key="normal" backgroundImage="button_Back.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1234,11 +1234,11 @@
                                             <action selector="clickPrevImgBtn:" destination="4PN-pK-yie" eventType="touchUpInside" id="lig-Ep-5fS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fx6-Xb-DzS">
-                                        <rect key="frame" x="179" y="11" width="72" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fx6-Xb-DzS">
+                                        <rect key="frame" x="179" y="9" width="41" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title=">>">
+                                        <state key="normal" backgroundImage="button_Next.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1744,6 +1744,8 @@
     </scenes>
     <resources>
         <image name="asterisks.png" width="22" height="22"/>
+        <image name="button_Back.png" width="41" height="30"/>
+        <image name="button_Next.png" width="41" height="30"/>
         <image name="done_picker.png" width="60" height="30"/>
         <image name="faveslist.png" width="24" height="24"/>
         <image name="flag_open.png" width="66" height="31"/>
