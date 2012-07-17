@@ -824,7 +824,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="flag_open.png" id="gtq-cA-nhV">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="50" contentMode="center" image="flag_open.png" id="gtq-cA-nhV">
                                                     <rect key="frame" x="7" y="69" width="66" height="31"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>

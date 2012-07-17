@@ -282,11 +282,13 @@
         NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
         [capacity setText: capacity_string];
         
-        if (![self isOpenNow:self.spot.hours_available]) {
-            UILabel *open_now = (UILabel *)[cell viewWithTag:5];
-            open_now.text = @"CLOSED";
-            open_now.textColor = [UIColor blackColor];
-            open_now.backgroundColor = [UIColor redColor];
+        if ([self isOpenNow:self.spot.hours_available]) {
+            UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
+            flag_view.image = [UIImage imageNamed:@"flag_open"];
+        }
+        else {
+            UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
+            flag_view.image = [UIImage imageNamed:@"flag_closed"];            
         }
 
         UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
