@@ -117,25 +117,28 @@ extern const int meters_per_latitude;
         }
     }
 
-    CGPoint closest_point = [map_view convertCoordinate:closest_to_user toPointToView:nil];
-    
-    if (closest_point.x < 0 || closest_point.y < 0 || closest_point.x > map_view.frame.size.width || closest_point.y > map_view.frame.size.height) {
-        if (expand_map_on_demand) {
-            MKCoordinateRegion region;
-            region.center.latitude = (closest_to_user.latitude + map_view.centerCoordinate.latitude) / 2;
-            region.center.longitude = (closest_to_user.longitude + map_view.centerCoordinate.longitude) / 2;
-            
-            NSString *app_path = [[NSBundle mainBundle] bundlePath];
-            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-            
-            float map_padding = [[plist_values objectForKey:@"map_view_offscreen_space_padding"] floatValue];
 
-            region.span.latitudeDelta = (closest_to_user.latitude - map_view.centerCoordinate.latitude) * map_padding;
-            region.span.longitudeDelta = (closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding;
-            
-            MKCoordinateRegion scaled = [map_view regionThatFits:region];
-            [map_view setRegion:scaled];            
+    if (annotation_groups.count) {
+        CGPoint closest_point = [map_view convertCoordinate:closest_to_user toPointToView:nil];
+        
+        if (closest_point.x < 0 || closest_point.y < 0 || closest_point.x > map_view.frame.size.width || closest_point.y > map_view.frame.size.height) {
+            if (expand_map_on_demand) {
+                MKCoordinateRegion region;
+                region.center.latitude = (closest_to_user.latitude + map_view.centerCoordinate.latitude) / 2;
+                region.center.longitude = (closest_to_user.longitude + map_view.centerCoordinate.longitude) / 2;
+                
+                NSString *app_path = [[NSBundle mainBundle] bundlePath];
+                NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+                NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+                
+                float map_padding = [[plist_values objectForKey:@"map_view_offscreen_space_padding"] floatValue];
+                
+                region.span.latitudeDelta = (closest_to_user.latitude - map_view.centerCoordinate.latitude) * map_padding;
+                region.span.longitudeDelta = (closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding;
+                
+                MKCoordinateRegion scaled = [map_view regionThatFits:region];
+                [map_view setRegion:scaled];            
+            }
         }
     }
     
