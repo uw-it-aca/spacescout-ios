@@ -63,7 +63,7 @@ extern const int meters_per_latitude;
     NSMutableDictionary *keeper_ids = [[NSMutableDictionary alloc] init];
     
     CLLocation *map_center_location = [[CLLocation alloc] initWithLatitude:map_view.centerCoordinate.latitude longitude:map_view.centerCoordinate.longitude];
-    CLLocationCoordinate2D closest_to_user;
+    CLLocationCoordinate2D closest_to_user = CLLocationCoordinate2DMake(0.00, 0.00);
     float closest_cluster_distance = MAXFLOAT;
     
     for (int index = 0; index < annotation_groups.count; index++) { 
