@@ -51,6 +51,9 @@
 "Space equipment has_printing" = "Printing";
 "Space equipment has_scanner" = "Scanning";
 
+"Space reservable required" = "Reservations required:"; 
+"Space reservable optional" = "Can be reserved:"; 
+
 /* These values are for the search screen */
 
 "Search screen label type" = "Type of space";
