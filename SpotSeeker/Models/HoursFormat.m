@@ -49,18 +49,23 @@
         NSDateComponents *start_time = [window objectAtIndex:0];
         NSDateComponents *end_time = [window objectAtIndex:1];
         
-        if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours) {
-            NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
+        NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
+        int tomorrows_hour = tomorrows_end_time.hour;
+
+        if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours && tomorrows_hour > 3) {
+            [display_parts addObject:[NSString stringWithFormat: @"Open 24 hours"]];
+        }
+
+        else if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours) {
             [display_parts addObject:[NSString stringWithFormat: @"Open 24 hours, until %@", [self formatTime:tomorrows_end_time]]];
         }
         else if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59) {
             [display_parts addObject:@"Open 24 hours"];
         }
-        else if (start_time.hour == 0 && start_time.minute == 0 && yesterday_ends_at_midnight) {
-            // This window is covered in yesterdays last display window - e.g. 8pm-3am
+        else if (start_time.hour == 0 && start_time.minute == 0 && yesterday_ends_at_midnight && tomorrows_hour <= 3) {
+            [display_parts addObject:[NSString stringWithFormat:@"Midnight to %@", [self formatTime:end_time]]];
         }
         else if (end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours) {
-            NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
             NSString *window_display = [NSString stringWithFormat:@"%@-%@", [self formatTime: start_time], [self formatTime: tomorrows_end_time]];
             [display_parts addObject:window_display];
         }
