@@ -77,6 +77,7 @@ extern const int meters_per_latitude;
 
         if (meters < closest_cluster_distance) {
             closest_to_user = annotationCoord;
+            closest_cluster_distance = meters;
         }       
        
         Space *first_in_group = [cluster.spots objectAtIndex:0];
