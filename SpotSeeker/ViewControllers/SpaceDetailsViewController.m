@@ -77,10 +77,18 @@
         UILabel *description_label = (UILabel *)[cell viewWithTag:100];
         
         float location_header_size = 0;
+        float location_padding = 0;
         NSString *spot_description = [self.spot.extended_info objectForKey:@"location_description"];
         if (![spot_description isEqualToString:@""]) {
             UILabel *location_header_label = (UILabel *)[cell viewWithTag:51];
             location_header_size = location_header_label.frame.size.height;
+            
+            NSString *app_path = [[NSBundle mainBundle] bundlePath];
+            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+            
+            location_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
+
         }
         CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
 
@@ -93,7 +101,7 @@
         UILabel *open_label = (UILabel *)[cell viewWithTag:50];
         float open_label_bottom = open_label.frame.origin.y + open_label.frame.size.height;
         
-        return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size;
+        return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
@@ -369,15 +377,9 @@
             
             float location_header_bottom = location_header.frame.origin.y + location_header.frame.size.height;
             
-            NSString *app_path = [[NSBundle mainBundle] bundlePath];
-            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-            
-            float location_header_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
-            
             CGSize expected = [description.text sizeWithFont:description.font constrainedToSize:CGSizeMake(description.frame.size.width, 500.0)  lineBreakMode:description.lineBreakMode];
             
-            description.frame = CGRectMake(description.frame.origin.x, location_header_bottom + location_header_padding, description.frame.size.width, expected.height);
+            description.frame = CGRectMake(description.frame.origin.x, location_header_bottom, description.frame.size.width, expected.height);
             location_header.hidden = NO;
         }
         else {

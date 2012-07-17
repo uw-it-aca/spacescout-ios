@@ -9,6 +9,6 @@
 	<key>hours_cell_extra_height</key>
 	<integer>0</integer>
 	<key>space_details_location_spacing</key>
-	<integer>0</integer>
+	<integer>10</integer>
 </dict>
 </plist>
