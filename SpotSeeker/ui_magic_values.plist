@@ -10,5 +10,7 @@
 	<integer>0</integer>
 	<key>space_details_location_spacing</key>
 	<integer>10</integer>
+	<key>map_view_offscreen_space_padding</key>
+	<real>1.2</real>
 </dict>
 </plist>

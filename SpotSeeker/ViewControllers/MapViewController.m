@@ -44,6 +44,13 @@ extern const int meters_per_latitude;
 -(void) showFoundSpaces {    
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
     
+    bool expand_map_on_demand = !loading_spinner.hidden;
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([delegate.has_hidden_map_tooltip boolValue] == false) {
+        expand_map_on_demand = true;
+    }
+
     if (loading_spinner.hidden == NO && [self.current_spots count] == 0) {
         UIAlertView *_alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no search results title", nil) message:NSLocalizedString(@"no search results message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"no search results button", nil) otherButtonTitles:nil];
         self.alert = _alert;
@@ -55,12 +62,23 @@ extern const int meters_per_latitude;
     NSMutableArray *next_spots = [[NSMutableArray alloc] init];
     NSMutableDictionary *keeper_ids = [[NSMutableDictionary alloc] init];
     
-    for (int index = 0; index < annotation_groups.count; index++) {
+    CLLocation *map_center_location = [[CLLocation alloc] initWithLatitude:map_view.centerCoordinate.latitude longitude:map_view.centerCoordinate.longitude];
+    CLLocationCoordinate2D closest_to_user;
+    float closest_cluster_distance = MAXFLOAT;
+    
+    for (int index = 0; index < annotation_groups.count; index++) { 
         AnnotationCluster *cluster = [annotation_groups objectAtIndex:index];
         CLLocationCoordinate2D annotationCoord;
         annotationCoord.latitude = [cluster.display_latitude floatValue];
         annotationCoord.longitude = [cluster.display_longitude floatValue];
 
+        CLLocation *spot_location = [[CLLocation alloc] initWithLatitude:annotationCoord.latitude longitude:annotationCoord.longitude];
+        double meters = [spot_location distanceFromLocation:map_center_location];
+
+        if (meters < closest_cluster_distance) {
+            closest_to_user = annotationCoord;
+            closest_cluster_distance = meters;
+        }       
        
         Space *first_in_group = [cluster.spots objectAtIndex:0];
         SpaceAnnotation *annotationPoint = [[SpaceAnnotation alloc] init];
@@ -100,6 +118,31 @@ extern const int meters_per_latitude;
         }
     }
 
+
+    if (annotation_groups.count) {
+        CGPoint closest_point = [map_view convertCoordinate:closest_to_user toPointToView:nil];
+        
+        if (closest_point.x < 0 || closest_point.y < 0 || closest_point.x > map_view.frame.size.width || closest_point.y > map_view.frame.size.height) {
+            if (expand_map_on_demand) {
+                MKCoordinateRegion region;
+                region.center.latitude = (closest_to_user.latitude + map_view.centerCoordinate.latitude) / 2;
+                region.center.longitude = (closest_to_user.longitude + map_view.centerCoordinate.longitude) / 2;
+                
+                NSString *app_path = [[NSBundle mainBundle] bundlePath];
+                NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+                NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+                
+                float map_padding = [[plist_values objectForKey:@"map_view_offscreen_space_padding"] floatValue];
+                
+                region.span.latitudeDelta = (closest_to_user.latitude - map_view.centerCoordinate.latitude) * map_padding;
+                region.span.longitudeDelta = (closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding;
+                
+                MKCoordinateRegion scaled = [map_view regionThatFits:region];
+                [map_view setRegion:scaled];            
+            }
+        }
+    }
+    
     NSMutableArray *remove_me = [[NSMutableArray alloc] init];
     for (NSString *key in self.current_annotations) {
         SpaceAnnotation *test_annotation = [keeper_ids objectForKey:key];
