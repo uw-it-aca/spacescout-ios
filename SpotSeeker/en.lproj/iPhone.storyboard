@@ -1198,7 +1198,7 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vVS-1Z-cY2">
-                                        <rect key="frame" x="20" y="8" width="62" height="28"/>
+                                        <rect key="frame" x="5" y="8" width="62" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Done" backgroundImage="reset_picker.png">
