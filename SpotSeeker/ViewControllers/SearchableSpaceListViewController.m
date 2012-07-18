@@ -32,7 +32,7 @@ int const meters_per_latitude = 111 * 1000;
         return;
     }
 
-    
+    [search_attributes setValue:[NSArray arrayWithObject:@"true"] forKey:@"expand_radius"];    
     [search_attributes setValue:[NSArray arrayWithObject:[NSNumber numberWithInt:0]] forKey:@"limit"];
     if ([search_attributes objectForKey:@"open_at"] == nil && [search_attributes objectForKey:@"open_until"] == nil) {
         [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
