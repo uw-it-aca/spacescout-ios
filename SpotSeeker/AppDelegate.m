@@ -26,6 +26,7 @@
 @synthesize user_location;
 @synthesize search_preferences;
 @synthesize last_preference_set_time;
+@synthesize last_shown_offline_alert;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,7 +44,19 @@
 
     return YES;
 }
-							
+
+- (void)showNoNetworkAlert {
+    if (self.last_shown_offline_alert != nil && [self.last_shown_offline_alert timeIntervalSinceNow] > -10) {
+        return;
+    }
+
+    self.last_shown_offline_alert = [NSDate date];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network connection title", nil) message:NSLocalizedString(@"no network connection message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"no network connection button", nil) otherButtonTitles:nil];
+    [alert show];
+
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

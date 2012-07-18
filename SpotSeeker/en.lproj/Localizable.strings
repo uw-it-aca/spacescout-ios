@@ -209,3 +209,8 @@
 "hours filter default start label" = "now";
 "hours filter default end label" = "no preference";
 
+"no network connection title" = "";
+"no network connection message" = "Network not available";
+"no network connection button" = "OK";
+
+

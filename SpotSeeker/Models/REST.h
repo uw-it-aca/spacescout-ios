@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest+OAuth.h"
 #import "ASIDownloadCache.h"
+#import "AppDelegate.h"
 
 @protocol RESTFinished;
 
-@interface REST : NSObject {
+@interface REST : NSObject <ASIHTTPRequestDelegate> {
     id <RESTFinished> delegate;
 }
 

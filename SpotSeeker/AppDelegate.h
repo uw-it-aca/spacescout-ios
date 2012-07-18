@@ -26,5 +26,8 @@
 @property (strong, nonatomic) MKUserLocation *user_location;
 @property (strong, nonatomic) NSMutableArray *search_preferences;
 @property (strong, nonatomic) NSDate *last_preference_set_time;
+@property (strong, nonatomic) NSDate *last_shown_offline_alert;
+
+-(void)showNoNetworkAlert;
 
 @end

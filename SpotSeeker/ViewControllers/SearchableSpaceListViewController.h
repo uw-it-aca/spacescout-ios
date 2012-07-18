@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "Reachability.h"
 #import "Space.h"
+#import "AppDelegate.h"
 
 @interface SearchableSpaceListViewController : UIViewController <SearchFinished> {
     MKMapView *map_view;
@@ -22,6 +24,7 @@
 @property (nonatomic, retain) NSMutableDictionary *search_attributes;
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) NSArray *current_spots;
+@property (nonatomic, retain) UIAlertView *alert;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;

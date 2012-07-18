@@ -70,6 +70,11 @@
     return request_url;
 }
 
+-(void)requestFailed:(ASIHTTPRequest *)request {
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app_delegate showNoNetworkAlert];
+}
+
 - (void)requestFinished:(ASIHTTPRequest *)request {
     [self.delegate requestFromREST:request];
 }

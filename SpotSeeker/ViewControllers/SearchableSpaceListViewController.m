@@ -14,6 +14,7 @@
 @synthesize search_attributes;
 @synthesize spot;
 @synthesize current_spots;
+@synthesize alert;
 
 int const meters_per_latitude = 111 * 1000;
 
@@ -22,6 +23,15 @@ int const meters_per_latitude = 111 * 1000;
         search_attributes = [[NSMutableDictionary alloc] init];
     }
     
+    Reachability *r = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate showNoNetworkAlert];
+        [self searchCancelled];
+        return;
+    }
+
     
     [search_attributes setValue:[NSArray arrayWithObject:[NSNumber numberWithInt:0]] forKey:@"limit"];
     if ([search_attributes objectForKey:@"open_at"] == nil && [search_attributes objectForKey:@"open_until"] == nil) {
