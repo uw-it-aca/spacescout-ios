@@ -415,6 +415,30 @@
             
             wrapper.frame = CGRectMake(wrapper.frame.origin.x, wrapper.frame.origin.y, wrapper.frame.size.width, access_notes.frame.size.height + 4);
         }
+        else {
+            UILabel *reservations_label = (UILabel *)[cell viewWithTag:31];
+            if ([[self.spot.extended_info objectForKey:@"reservable"] isEqualToString:@"reservations"]) {
+                reservations_label.text = NSLocalizedString(@"Space reservable required", nil);
+            }
+            else {
+                reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
+            }
+
+            CGSize expected = [reservations_label.text sizeWithFont:reservations_label.font constrainedToSize:CGSizeMake(500.0, 500.0) lineBreakMode:UILineBreakModeClip];
+            
+            UILabel *reservations_more = (UILabel *)[cell viewWithTag:32];
+            
+            NSString *app_path = [[NSBundle mainBundle] bundlePath];
+            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+            
+            float reservations_padding = [[plist_values objectForKey:@"space_details_reservations_right_padding"] floatValue];
+
+            
+            float left_pos = reservations_label.frame.origin.x + expected.width + reservations_padding;
+            reservations_more.frame = CGRectMake(left_pos, reservations_more.frame.origin.y, reservations_more.frame.size.width, reservations_more.frame.size.height);
+            
+        }
 
         return cell;
     }
