@@ -134,9 +134,9 @@ extern const int meters_per_latitude;
                 
                 float map_padding = [[plist_values objectForKey:@"map_view_offscreen_space_padding"] floatValue];
                 
-                region.span.latitudeDelta = (closest_to_user.latitude - map_view.centerCoordinate.latitude) * map_padding;
-                region.span.longitudeDelta = (closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding;
-                
+                region.span.latitudeDelta = fabs((closest_to_user.latitude - map_view.centerCoordinate.latitude) * map_padding);
+                region.span.longitudeDelta = fabs((closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding);
+                                
                 MKCoordinateRegion scaled = [map_view regionThatFits:region];
                 [map_view setRegion:scaled];            
             }
