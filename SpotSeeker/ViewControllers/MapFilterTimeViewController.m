@@ -33,6 +33,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float red_value = [[plist_values objectForKey:@"nav_cancel_button_color_red"] floatValue];
+    float green_value = [[plist_values objectForKey:@"nav_cancel_button_color_green"] floatValue];
+    float blue_value = [[plist_values objectForKey:@"nav_cancel_button_color_blue"] floatValue];
+    
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+
+    
     self.start_time = [self.filter objectForKey:@"open_at"];
     self.end_time = [self.filter objectForKey:@"open_until"];
     

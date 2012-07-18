@@ -31,7 +31,15 @@
 {
     // Override point for customization after application launch.
     has_hidden_map_tooltip = [NSNumber numberWithBool:false];
-    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:132.0 / 255.0 green:123.0 / 255.0 blue:170.0 / 255.0 alpha:1.0]];
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float red_value = [[plist_values objectForKey:@"default_nav_button_color_red"] floatValue];
+    float green_value = [[plist_values objectForKey:@"default_nav_button_color_green"] floatValue];
+    float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
+
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0]];
 
     return YES;
 }

@@ -57,14 +57,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *search_preferences = app_delegate.search_preferences;
-    float pref_interval = [app_delegate.last_preference_set_time timeIntervalSinceNow];
     
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
     NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
     
+    float red_value = [[plist_values objectForKey:@"nav_cancel_button_color_red"] floatValue];
+    float green_value = [[plist_values objectForKey:@"nav_cancel_button_color_green"] floatValue];
+    float blue_value = [[plist_values objectForKey:@"nav_cancel_button_color_blue"] floatValue];
+    
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+    
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *search_preferences = app_delegate.search_preferences;
+    float pref_interval = [app_delegate.last_preference_set_time timeIntervalSinceNow];
+        
     float preference_duration = [[plist_values objectForKey:@"search_preference_sticky_duration_in_seconds"] floatValue];
     
     // The interval will always be negative - needs to be within 12 hours.

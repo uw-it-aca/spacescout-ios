@@ -14,5 +14,17 @@
 	<real>1.2</real>
 	<key>space_details_reservations_right_padding</key>
 	<integer>4</integer>
+	<key>default_nav_button_color_red</key>
+	<integer>132</integer>
+	<key>default_nav_button_color_green</key>
+	<real>123</real>
+	<key>default_nav_button_color_blue</key>
+	<integer>170</integer>
+	<key>nav_cancel_button_color_red</key>
+	<integer>45</integer>
+	<key>nav_cancel_button_color_green</key>
+	<integer>33</integer>
+	<key>nav_cancel_button_color_blue</key>
+	<integer>42</integer>
 </dict>
 </plist>
