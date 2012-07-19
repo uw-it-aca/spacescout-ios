@@ -33,6 +33,8 @@
 @synthesize environment_fields;
 @synthesize spot_image;
 @synthesize footer;
+@synthesize table_view;
+@synthesize reservation_notes_height;
 
 #pragma mark -
 #pragma mark table control methods
@@ -146,11 +148,16 @@
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reservation_notes_cell"];
                 }
-                UILabel *display = (UILabel *)[cell viewWithTag:2];
-
-                CGSize expected = [[self.spot.extended_info objectForKey:@"reservation_notes"] sizeWithFont:display.font constrainedToSize:CGSizeMake(display.frame.size.width, 500.0)  lineBreakMode:display.lineBreakMode];
                 
-                return expected.height + 20.0;
+                if (self.reservation_notes_height != nil) {
+                    return [self.reservation_notes_height floatValue] + 5;
+                }
+                
+                UIWebView *display = (UIWebView *)[cell viewWithTag:2];
+                [display loadHTMLString:[self.spot.extended_info objectForKey:@"reservation_notes"] baseURL:nil];
+                NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+                
+                return height + 20.0;
             }
             offset++;
         }
@@ -545,11 +552,20 @@
             if (indexPath.row == offset) {
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reservation_notes_cell"];
                 if (cell == nil) {
+                    NSLog(@"Cell is nil");
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reservation_notes_cell"];
                 }    
-                UILabel *notes = (UILabel *)[cell viewWithTag:2];
-                 
-                notes.text = [self.spot.extended_info objectForKey:@"reservation_notes"];
+                UIWebView *notes = (UIWebView *)[cell viewWithTag:2];
+                                
+                NSString *encoded = [[self.spot.extended_info objectForKey:@"reservation_notes"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+
+                NSString *final_notes = [NSString stringWithFormat:@"<html><body><div style='font-family:helvetica;'>%@</div></body></html>", encoded];
+                
+                notes.delegate = self;
+                [notes loadHTMLString:final_notes baseURL:nil];
+                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.reservation_notes_height floatValue]);
 
                 return cell;
             }
@@ -762,6 +778,38 @@
         destination.spot = self.spot;
     }
 }
+
+#pragma mark -
+#pragma mark web view methods
+
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        [[UIApplication sharedApplication] openURL:[request URL]];
+        return NO;
+    }
+    return YES;
+}
+
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    if (self.reservation_notes_height != nil) {
+        return;
+    }
+    
+    int height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+    self.reservation_notes_height = [NSNumber numberWithInt:height];
+    int row = 0;
+    if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+        row = 1;
+    }
+    
+    [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
+    
+}
+
+
+
 #pragma mark -
 #pragma mark setup
 

@@ -26,7 +26,7 @@
 #import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded, UIWebViewDelegate> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
@@ -52,5 +52,7 @@
 @property (nonatomic, retain) NSMutableArray *equipment_fields;
 @property (nonatomic, retain) UIImage *spot_image;
 @property (nonatomic, retain) UIView *footer;
+@property (nonatomic, retain) IBOutlet UITableView *table_view;
+@property (nonatomic, retain) NSNumber *reservation_notes_height;
 
 @end
