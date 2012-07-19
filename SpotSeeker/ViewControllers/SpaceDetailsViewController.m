@@ -561,7 +561,12 @@
                 encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
                 encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
 
-                NSString *final_notes = [NSString stringWithFormat:@"<html><body><div style='font-family:helvetica;'>%@</div></body></html>", encoded];
+                NSString *app_path = [[NSBundle mainBundle] bundlePath];
+                NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+                NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+                
+                NSString *format =  [plist_values objectForKey:@"reservation_notes_wrapper_format"];
+                NSString *final_notes = [NSString stringWithFormat:format, encoded];
                 
                 notes.delegate = self;
                 [notes loadHTMLString:final_notes baseURL:nil];

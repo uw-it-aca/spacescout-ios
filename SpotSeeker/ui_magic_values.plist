@@ -26,5 +26,7 @@
 	<integer>33</integer>
 	<key>nav_cancel_button_color_blue</key>
 	<integer>42</integer>
+	<key>reservation_notes_wrapper_format</key>
+	<string>&lt;html&gt;&lt;body&gt;&lt;div style=&apos;font-family:helvetica; font-size: 14px;&apos;&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 </dict>
 </plist>
