@@ -100,7 +100,9 @@
     NSString *subtitle =  NSLocalizedString(subtitle_key, nil);
     
     if (subtitle == nil || [subtitle isEqualToString:@""]) {
-        return 45.0;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail_cell"];
+        // This always returns 1 more than the value in the storyboard
+        return cell.bounds.size.height - 1.0;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail_cell_with_subtitle"];
