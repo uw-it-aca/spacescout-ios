@@ -106,24 +106,26 @@
         return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
+        NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+        NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
+        
+        NSString *cell_id;
+
+        if (access_notes != nil && reservation_notes != nil) {
+            cell_id = @"notes_bubble_cell_both";
+        }
+        else if (access_notes != nil) {
+            cell_id = @"notes_bubble_cell_access";
+        }
+        else {
+            cell_id = @"notes_bubble_cell_reservations";
+        }
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notes_bubble_cell"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
         }
         
-        float base_size = cell.frame.size.height;
-
-        if ([self.spot.extended_info objectForKey:@"access_notes"] == nil) {
-            UIView *notes = (UIView *)[cell viewWithTag:21];
-            base_size -= notes.frame.size.height - 10;
-        }
-
-        if ([self.spot.extended_info objectForKey:@"reservation_notes"] == nil) {
-            UIView *notes = (UIView *)[cell viewWithTag:22];
-            base_size -= notes.frame.size.height - 10;
-        }
-
-        return base_size;
+        return cell.bounds.size.height - 1.0;
     }
     else if (indexPath.section == 2) {
         int offset = 0;
@@ -396,33 +398,25 @@
         return cell;
     }
     else if (indexPath.section == 0 && indexPath.row == 2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notes_bubble_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notes_bubble_cell"];
-        }
-        
-        if ([self.spot.extended_info objectForKey:@"access_notes"] == nil) {
-            UIView *reservation_notes = (UIView *)[cell viewWithTag:22];
+        NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+        NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
 
-            UIView *notes = (UIView *)[cell viewWithTag:21];
-            notes.hidden = YES;
-            
-            // Need to move the reservation notes up
-            reservation_notes.frame = CGRectMake(reservation_notes.frame.origin.x, notes.frame.origin.y, reservation_notes.frame.size.width, reservation_notes.frame.size.height);
-            UIView *wrapper = (UIView *)[cell viewWithTag:20];
-            wrapper.frame = CGRectMake(wrapper.frame.origin.x, wrapper.frame.origin.y, wrapper.frame.size.width, reservation_notes.frame.size.height + 4);
-
+        NSString *cell_id;
+        if (access_notes != nil && reservation_notes != nil) {
+            cell_id = @"notes_bubble_cell_both";
         }
-        
-        if ([self.spot.extended_info objectForKey:@"reservation_notes"] == nil) {
-            UIView *access_notes = (UIView *)[cell viewWithTag:21];
-            UIView *notes = (UIView *)[cell viewWithTag:22];
-            notes.hidden = YES;
-            UIView *wrapper = (UIView *)[cell viewWithTag:20];
-            
-            wrapper.frame = CGRectMake(wrapper.frame.origin.x, wrapper.frame.origin.y, wrapper.frame.size.width, access_notes.frame.size.height + 4);
+        else if (access_notes != nil) {
+            cell_id = @"notes_bubble_cell_access";
         }
         else {
+            cell_id = @"notes_bubble_cell_reservations";
+        }
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        }
+                
+        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
             UILabel *reservations_label = (UILabel *)[cell viewWithTag:31];
             if ([[self.spot.extended_info objectForKey:@"reservable"] isEqualToString:@"reservations"]) {
                 reservations_label.text = NSLocalizedString(@"Space reservable required", nil);
@@ -431,20 +425,6 @@
                 reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
             }
 
-            CGSize expected = [reservations_label.text sizeWithFont:reservations_label.font constrainedToSize:CGSizeMake(500.0, 500.0) lineBreakMode:UILineBreakModeClip];
-            
-            UILabel *reservations_more = (UILabel *)[cell viewWithTag:32];
-            
-            NSString *app_path = [[NSBundle mainBundle] bundlePath];
-            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-            
-            float reservations_padding = [[plist_values objectForKey:@"space_details_reservations_right_padding"] floatValue];
-
-            
-            float left_pos = reservations_label.frame.origin.x + expected.width + reservations_padding;
-            reservations_more.frame = CGRectMake(left_pos, reservations_more.frame.origin.y, reservations_more.frame.size.width, reservations_more.frame.size.height);
-            
         }
 
         return cell;
