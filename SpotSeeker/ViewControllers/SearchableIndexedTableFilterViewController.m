@@ -279,7 +279,7 @@
         
     UITableViewCell *clicked_cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    UILabel *label = (UILabel *)[clicked_cell viewWithTag:1];
+    UILabel *label = (UILabel *)[clicked_cell viewWithTag:15];
     NSString *building_name = label.text;
     
     // This really can't be the best way to do this - but to get to the array index, i'd need to iterate over the sections of
@@ -367,7 +367,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"content_cell"];
         }
-        UILabel *option = (UILabel *)[cell viewWithTag:1];
+        UILabel *option = (UILabel *)[cell viewWithTag:15];
         NSArray *values =[[[self.index_data objectForKey:@"sections"] objectAtIndex:indexPath.section - 1] objectForKey:@"values"]; 
         
         NSMutableDictionary *building = [values objectAtIndex:indexPath.row];
