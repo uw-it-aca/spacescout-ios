@@ -152,8 +152,8 @@
 "Search option title extended_info:has_computers true" = "Computer";
 "Search option subtitle extended_info:has_computers true" = "";
 "Search option short extended_info:has_computers true" = "C";
-"Search option title extended_info:has_displays true" = "Large display";
-"Search option subtitle extended_info:has_displays true" = "For your laptop";
+"Search option title extended_info:has_displays true" = "Large display (for laptop)";
+"Search option subtitle extended_info:has_displays true" = "";
 "Search option short extended_info:has_displays true" = "LD";
 "Search option title extended_info:has_projector true" = "Projector";
 "Search option subtitle extended_info:has_projector true" = "";
