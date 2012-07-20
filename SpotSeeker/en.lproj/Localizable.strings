@@ -51,8 +51,8 @@
 "Space equipment has_printing" = "Printing";
 "Space equipment has_scanner" = "Scanning";
 
-"Space reservable required" = "Reservations required:"; 
-"Space reservable optional" = "Can be reserved:"; 
+"Space reservable required" = "Reservations required: see below"; 
+"Space reservable optional" = "Can be reserved: see below"; 
 
 /* These values are for the search screen */
 
