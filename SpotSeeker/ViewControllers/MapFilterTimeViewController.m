@@ -97,6 +97,12 @@
     NSDateComponents *start =  [self getStartTime];
     [self showPickerWidget];
 
+    UIButton *start_btn = (UIButton *)[self.view viewWithTag:2];
+    UIButton *end_btn = (UIButton *)[self.view viewWithTag:3];
+    
+    [start_btn setSelected:TRUE];
+    [end_btn setSelected:FALSE];
+    
     self.current_widget = [NSNumber numberWithInt:1];
     [self setPickerDateComponents:start];
 }
@@ -104,7 +110,13 @@
 -(IBAction)endTimeBtnClick:(id)sender {
     NSDateComponents *end = [self getEndTime];
     [self showPickerWidget];
+
+    UIButton *start_btn = (UIButton *)[self.view viewWithTag:2];
+    UIButton *end_btn = (UIButton *)[self.view viewWithTag:3];
     
+    [start_btn setSelected:FALSE];
+    [end_btn setSelected:TRUE];
+
     self.current_widget = [NSNumber numberWithInt:2];
     [self setPickerDateComponents:end];
 }
@@ -133,6 +145,12 @@
 }
 
 -(IBAction)doneBtnClick:(id)sender {
+    UIButton *start_btn = (UIButton *)[self.view viewWithTag:2];
+    UIButton *end_btn = (UIButton *)[self.view viewWithTag:3];
+    
+    [start_btn setSelected:FALSE];
+    [end_btn setSelected:FALSE];
+
     [self hidePickerWidget];
 }
 
