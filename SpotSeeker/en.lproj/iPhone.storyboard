@@ -725,7 +725,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W6Q-tp-bJd">
-                                        <rect key="frame" x="10" y="7" width="72" height="27"/>
+                                        <rect key="frame" x="9" y="8" width="54" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="Reset" backgroundImage="reset_picker.png">
@@ -1799,7 +1799,7 @@
         <image name="flag_open.png" width="66" height="31"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
-        <image name="reset_picker.png" width="60" height="30"/>
+        <image name="reset_picker.png" width="54" height="25"/>
         <image name="star_unselected.png" width="44" height="44"/>
     </resources>
     <classes>
