@@ -334,10 +334,8 @@
             image_count.hidden = YES;
         }
 
-        if (self.img_button_view == nil) {
-            self.img_button_view = spot_image_view;
-        }
-
+        self.img_button_view = spot_image_view;
+ 
         if ([spot.image_urls count]) {
             [[spot_image_view imageView] setContentMode: UIViewContentModeScaleAspectFill];
             spot_image_view.contentMode = UIViewContentModeScaleToFill;
@@ -362,7 +360,6 @@
         else {
             UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.jpg"];
             [self displaySpaceImage:no_image];
-//            spot_image_view.hidden = YES;
         }
         
         return cell;
@@ -692,7 +689,6 @@
 -(void)displaySpaceImage:(UIImage *)image {
     self.spot_image = image;
     
-
     self.img_button_view.contentMode = UIViewContentModeScaleAspectFill;
     self.img_button_view.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.img_button_view.imageView.image = image;
