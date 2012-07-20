@@ -83,9 +83,7 @@
         if (![[[spot_info objectForKey:@"capacity"] class] isSubclassOfClass:[NSNull class]]) {
             spot.capacity = [spot_info objectForKey:@"capacity"];
         }
-        
-        
-       
+               
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss+'00:00'";
 
@@ -97,6 +95,7 @@
         spot.longitude = [location_info objectForKey:@"longitude"];
         spot.building_name = [location_info objectForKey:@"building_name"];
         spot.room_number = [location_info objectForKey:@"room_number"];
+        spot.floor = [location_info objectForKey:@"floor"];
         
         NSMutableArray *_image_urls = [[NSMutableArray alloc]init];
         for (NSDictionary *image in [spot_info objectForKey:@"images"]) {
