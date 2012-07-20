@@ -65,13 +65,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
         }
         
-        float baseline_height;
-        if ([self.spot.image_urls count]) {
-            baseline_height = cell.frame.size.height;
-        }
-        else {
-            baseline_height = [[plist_values objectForKey:@"space_details_no_image_name_cell_baseline"] floatValue];
-        }
+        float baseline_height = cell.frame.size.height;
         
         UILabel *name_label = (UILabel *)[cell viewWithTag:1];
         
@@ -366,7 +360,9 @@
             
         }
         else {
-            spot_image_view.hidden = YES;
+            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.jpg"];
+            [self displaySpaceImage:no_image];
+//            spot_image_view.hidden = YES;
         }
         
         return cell;
