@@ -324,7 +324,7 @@
     }
     
     NSScanner *floor_finder = [NSScanner scannerWithString:_floor];
-    int number;
+    int number = 0;
     [floor_finder scanInt:&number];
     
     if (number) {
