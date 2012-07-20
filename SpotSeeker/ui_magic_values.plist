@@ -31,16 +31,16 @@
 	<key>space_details_no_image_name_cell_baseline</key>
 	<integer>120</integer>
 	<key>filter_row_selected_red</key>
-	<integer>230</integer>
+	<integer>235</integer>
 	<key>filter_row_selected_green</key>
-	<integer>230</integer>
+	<integer>235</integer>
 	<key>filter_row_selected_blue</key>
-	<integer>230</integer>
+	<integer>235</integer>
 	<key>filter_row_unselected_red</key>
-	<integer>255</integer>
+	<integer>247</integer>
 	<key>filter_row_unselected_green</key>
-	<integer>255</integer>
+	<integer>247</integer>
 	<key>filter_row_unselected_blue</key>
-	<integer>255</integer>
+	<integer>247</integer>
 </dict>
 </plist>
