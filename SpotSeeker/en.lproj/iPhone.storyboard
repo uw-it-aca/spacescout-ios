@@ -710,7 +710,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JUV-DN-6XY">
-                                        <rect key="frame" x="236" y="7" width="72" height="27"/>
+                                        <rect key="frame" x="257" y="8" width="53" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="Done" backgroundImage="done_picker.png">
@@ -1794,7 +1794,7 @@
         <image name="asterisks.png" width="22" height="22"/>
         <image name="button_Back.png" width="41" height="30"/>
         <image name="button_Next.png" width="41" height="30"/>
-        <image name="done_picker.png" width="60" height="30"/>
+        <image name="done_picker.png" width="53" height="25"/>
         <image name="faveslist.png" width="24" height="24"/>
         <image name="flag_open.png" width="66" height="31"/>
         <image name="locate.png" width="24" height="24"/>
