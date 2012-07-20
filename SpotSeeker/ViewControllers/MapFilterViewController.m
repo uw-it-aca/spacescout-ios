@@ -209,27 +209,29 @@
     if (cell_type == Nil) {
         cell_type = @"generic_cell";
     }
-    
 
+    UITableViewCell *cell;
+ 
     if ([cell_type isEqualToString:@"cell_with_switch"]) {
-        return [self getOnOffCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getOnOffCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else if ([cell_type isEqualToString:@"cell_with_chooser"]) {
-        return [self getChooserCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getChooserCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else if ([cell_type isEqualToString:@"cell_with_time"]) {
-        return [self getTimeCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getTimeCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else if ([cell_type isEqualToString:@"cell_with_checkbox"]) {
-        return [self getCheckboxCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getCheckboxCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else if ([cell_type isEqualToString:@"cell_with_indexed_table"]) {
-        return [self getIndexedTableCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getIndexedTableCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }
     else {
-        return [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
+        cell = [self getSubSelectionCellForFilter:tableView filter:current_obj pathIndex:indexPath];
     }  
 
+    return cell;
 }
 
          

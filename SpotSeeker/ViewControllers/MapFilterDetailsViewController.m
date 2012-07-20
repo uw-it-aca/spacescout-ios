@@ -152,11 +152,30 @@
 
     filter_label.text = title;
 
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float selected_red_value = [[plist_values objectForKey:@"filter_row_selected_red"] floatValue];
+    float selected_green_value = [[plist_values objectForKey:@"filter_row_selected_green"] floatValue];
+    float selected_blue_value = [[plist_values objectForKey:@"filter_row_selected_blue"] floatValue];
+    
+    UIColor *selected_row_color = [UIColor colorWithRed:selected_red_value / 255.0 green:selected_green_value / 255.0 blue:selected_blue_value / 255.0 alpha:1.0];
+    
+    float unselected_red_value = [[plist_values objectForKey:@"filter_row_unselected_red"] floatValue];
+    float unselected_green_value = [[plist_values objectForKey:@"filter_row_unselected_green"] floatValue];
+    float unselected_blue_value = [[plist_values objectForKey:@"filter_row_unselected_blue"] floatValue];
+    
+    UIColor *unselected_row_color = [UIColor colorWithRed:unselected_red_value / 255.0 green:unselected_green_value / 255.0 blue:unselected_blue_value / 255.0 alpha:1.0];
+
+    
     if ([[option objectForKey:@"selected"] boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell setBackgroundColor:selected_row_color];
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;    
+        [cell setBackgroundColor:unselected_row_color];
     }
 
     if (subtitle != nil) {
@@ -175,6 +194,22 @@
     UITableViewCell *current_cell = [self.table_view cellForRowAtIndexPath:indexPath];
     NSMutableDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];
     
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float selected_red_value = [[plist_values objectForKey:@"filter_row_selected_red"] floatValue];
+    float selected_green_value = [[plist_values objectForKey:@"filter_row_selected_green"] floatValue];
+    float selected_blue_value = [[plist_values objectForKey:@"filter_row_selected_blue"] floatValue];
+    
+    UIColor *selected_row_color = [UIColor colorWithRed:selected_red_value / 255.0 green:selected_green_value / 255.0 blue:selected_blue_value / 255.0 alpha:1.0];
+
+    float unselected_red_value = [[plist_values objectForKey:@"filter_row_unselected_red"] floatValue];
+    float unselected_green_value = [[plist_values objectForKey:@"filter_row_unselected_green"] floatValue];
+    float unselected_blue_value = [[plist_values objectForKey:@"filter_row_unselected_blue"] floatValue];
+    
+    UIColor *unselected_row_color = [UIColor colorWithRed:unselected_red_value / 255.0 green:unselected_green_value / 255.0 blue:unselected_blue_value / 255.0 alpha:1.0];
+    
     if ([option objectForKey:@"clear_all"]) {
         for (int index = 0; index < [[self.filter objectForKey:@"options"] count]; index++) {
             NSMutableDictionary *opt = [[self.filter objectForKey:@"options"] objectAtIndex:index];
@@ -187,16 +222,22 @@
             NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
             UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
             [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [cell setBackgroundColor:unselected_row_color];
         }
         [current_cell setAccessoryType:UITableViewCellAccessoryCheckmark];        
+        [current_cell setBackgroundColor:selected_row_color];
+
     }
     else {
         if ([[option objectForKey:@"selected"] boolValue]) {
             current_cell.accessoryType = UITableViewCellAccessoryNone;
+            [current_cell setBackgroundColor:unselected_row_color];
             [option setObject:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
         }
         else {
             current_cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [current_cell setBackgroundColor:selected_row_color];
+
             [option setObject:[NSNumber numberWithBool:TRUE] forKey:@"selected"];        
         }
 
@@ -217,9 +258,12 @@
                 UITableViewCell *cell = [self.table_view cellForRowAtIndexPath:path];
                 if (select_clear_all) {
                     [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                    [cell setBackgroundColor:selected_row_color];
                 }
                 else {
                     [cell setAccessoryType:UITableViewCellAccessoryNone];
+                    [cell setBackgroundColor:unselected_row_color];
+
                 }
             }
         }
