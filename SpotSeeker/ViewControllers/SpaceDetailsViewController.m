@@ -345,11 +345,13 @@
         }
 
         if ([spot.image_urls count]) {
-            
+            [[spot_image_view imageView] setContentMode: UIViewContentModeScaleAspectFill];
+            spot_image_view.contentMode = UIViewContentModeScaleToFill;
+
             if (self.spot_image) {
                 UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
                 spinner.hidden = YES;
-                [spot_image_view setImage:self.spot_image forState:UIControlStateNormal];
+                [spot_image_view setBackgroundImage:self.spot_image forState:UIControlStateNormal];
                 spot_image_view.hidden = NO;
             }
             else {
@@ -698,7 +700,7 @@
         spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
         self.spot_image = img;
-        [self.img_button_view setImage:self.spot_image forState:UIControlStateNormal];
+        [self.img_button_view setBackgroundImage:self.spot_image forState:UIControlStateNormal];
     }
 }
 
