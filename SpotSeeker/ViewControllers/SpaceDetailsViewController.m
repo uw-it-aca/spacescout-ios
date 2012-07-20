@@ -26,7 +26,7 @@
 @synthesize capacity_label;
 @synthesize favorite_button;
 @synthesize favorite_spots;
-@synthesize img_view;
+@synthesize img_button_view;
 @synthesize rest;
 @synthesize config;
 @synthesize equipment_fields;
@@ -242,12 +242,13 @@
     return 0;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        if ([self.spot.image_urls count] > 0) {
-            [self performSegueWithIdentifier:@"image_view" sender:self];
-        }
+-(IBAction)btnClickImageBrowserOpen:(id)sender {
+    if ([self.spot.image_urls count] > 0) {
+        [self performSegueWithIdentifier:@"image_view" sender:self];
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 2) {
         int offset = 0;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
@@ -314,7 +315,8 @@
             [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
         }
         
-        UIImageView *spot_image_view = (UIImageView *)[cell viewWithTag:4];
+        UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
+        
         
         if ([spot.image_urls count] == 0) {
             UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
@@ -326,8 +328,8 @@
             image_count.hidden = YES;
         }
 
-        if (self.img_view == nil) {
-            self.img_view = spot_image_view;
+        if (self.img_button_view == nil) {
+            self.img_button_view = spot_image_view;
         }
 
         if ([spot.image_urls count]) {
@@ -335,7 +337,7 @@
             if (self.spot_image) {
                 UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
                 spinner.hidden = YES;
-                spot_image_view.image = self.spot_image;
+                [spot_image_view setImage:self.spot_image forState:UIControlStateNormal];
                 spot_image_view.hidden = NO;
             }
             else {
@@ -349,6 +351,9 @@
             UILabel *image_count = (UILabel *)[cell viewWithTag:9];
             image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
             
+        }
+        else {
+            spot_image_view.hidden = YES;
         }
         
         return cell;
@@ -681,7 +686,7 @@
         spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
         self.spot_image = img;
-        [self.img_view setImage:self.spot_image];
+        [self.img_button_view setImage:self.spot_image forState:UIControlStateNormal];
     }
 }
 

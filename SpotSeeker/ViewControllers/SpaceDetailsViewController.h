@@ -31,7 +31,7 @@
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
     IBOutlet UIButton *favorite_button;
-    IBOutlet UIImageView *img_view;
+    IBOutlet UIButton *img_button_view;
     NSDictionary *config;
     REST *rest;
     NSMutableArray *environment_fields;
@@ -40,12 +40,13 @@
 
 - (IBAction) btnClickFavorite:(id)sender;
 - (IBAction) btnClickReportProblem:(id)sender;
+- (IBAction) btnClickImageBrowserOpen:(id)sender;
 
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) IBOutlet UILabel *capacity_label;
 @property (nonatomic, retain) IBOutlet UIButton *favorite_button;
 @property (nonatomic, retain) NSMutableDictionary *favorite_spots;
-@property (nonatomic, retain) IBOutlet UIImageView *img_view;
+@property (nonatomic, retain) IBOutlet UIButton *img_button_view;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) NSDictionary *config;
 @property (nonatomic, retain) NSMutableArray *environment_fields;
