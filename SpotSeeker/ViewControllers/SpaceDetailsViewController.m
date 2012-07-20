@@ -351,8 +351,7 @@
             if (self.spot_image) {
                 UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
                 spinner.hidden = YES;
-                [spot_image_view setBackgroundImage:self.spot_image forState:UIControlStateNormal];
-                spot_image_view.hidden = NO;
+                [self displaySpaceImage:self.spot_image];
             }
             else {
                 NSString *image_url = [spot.image_urls objectAtIndex:0];
@@ -694,13 +693,28 @@
 #pragma mark -
 #pragma mark image methods
 
+-(void)displaySpaceImage:(UIImage *)image {
+    self.spot_image = image;
+    
+
+    self.img_button_view.contentMode = UIViewContentModeScaleAspectFill;
+    self.img_button_view.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.img_button_view.imageView.image = image;
+
+    [self.img_button_view setImage:image forState:UIControlStateNormal];
+    [self.img_button_view setImage:image forState:UIControlStateHighlighted];
+    [self.img_button_view setImage:image forState:UIControlStateSelected];
+    
+    self.img_button_view.hidden = NO;
+}
+
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 200) {
         UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.view viewWithTag:10];
         spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
-        self.spot_image = img;
-        [self.img_button_view setBackgroundImage:self.spot_image forState:UIControlStateNormal];
+        [self displaySpaceImage:img];
+
     }
 }
 
