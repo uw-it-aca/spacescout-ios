@@ -55,16 +55,31 @@
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+
     if (indexPath.section == 0 && indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
         }
         
+        float baseline_height;
         if ([self.spot.image_urls count]) {
-            return cell.frame.size.height;
+            baseline_height = cell.frame.size.height;
         }
-        return 120;
+        else {
+            baseline_height = [[plist_values objectForKey:@"space_details_no_image_name_cell_baseline"] floatValue];
+        }
+        
+        UILabel *name_label = (UILabel *)[cell viewWithTag:1];
+        
+        // Only add height if this actually wraps
+        CGSize expected = [self.spot.name sizeWithFont:name_label.font constrainedToSize:CGSizeMake(name_label.frame.size.width, 500.0)  lineBreakMode:UILineBreakModeWordWrap];
+        CGSize base_size = [@"A" sizeWithFont:name_label.font];
+        
+        return baseline_height + expected.height - base_size.height;
     }
     else if (indexPath.section == 0 && indexPath.row == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
@@ -84,11 +99,7 @@
         if (![spot_description isEqualToString:@""]) {
             UILabel *location_header_label = (UILabel *)[cell viewWithTag:51];
             location_header_size = location_header_label.frame.size.height;
-            
-            NSString *app_path = [[NSBundle mainBundle] bundlePath];
-            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-            
+                        
             location_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
 
         }
@@ -279,6 +290,7 @@
         
         UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
         [spot_name setText:self.spot.name];
+        [spot_name sizeToFit];
         
         UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
         
