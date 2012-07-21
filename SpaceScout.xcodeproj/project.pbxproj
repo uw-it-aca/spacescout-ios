@@ -153,6 +153,8 @@
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
 		C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */; };
+		C2775E1915BA2B0700731EBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1815BA2B0700731EBB /* Default.png */; };
+		C2775E1B15BA2B3400731EBB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1A15BA2B3400731EBB /* Default@2x.png */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C27F30C2158A563D002EC7B2 /* SpaceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */; };
@@ -388,6 +390,8 @@
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceClusterViewController.h; path = ViewControllers/SpaceClusterViewController.h; sourceTree = "<group>"; };
 		C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceClusterViewController.m; path = ViewControllers/SpaceClusterViewController.m; sourceTree = "<group>"; };
+		C2775E1815BA2B0700731EBB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		C2775E1A15BA2B3400731EBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
@@ -644,8 +648,9 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
-				C238A4A015BA1A5F0008E6EC /* placeholder_noImage_bw.jpg */,
+				C2775E1C15BA2B4500731EBB /* Launch images */,
 				8990687E15B606EE002CDF90 /* buttons */,
+				C238A4A015BA1A5F0008E6EC /* placeholder_noImage_bw.jpg */,
 				2323BBCA15B496F200B6947B /* icon-72.png */,
 				2323BBCB15B496F200B6947B /* icon-small-50.png */,
 				2323BBCC15B496F200B6947B /* icon-small.png */,
@@ -665,6 +670,15 @@
 				C255957C15951F8A00C98C32 /* locate@2x.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		C2775E1C15BA2B4500731EBB /* Launch images */ = {
+			isa = PBXGroup;
+			children = (
+				C2775E1815BA2B0700731EBB /* Default.png */,
+				C2775E1A15BA2B3400731EBB /* Default@2x.png */,
+			);
+			name = "Launch images";
 			sourceTree = "<group>";
 		};
 		C27E7D121534E11500B2187F /* Views */ = {
@@ -1069,6 +1083,8 @@
 				89468EC015B8EE0C00A864E0 /* filter_reset.png in Resources */,
 				89468EC115B8EE0C00A864E0 /* filter_reset@2x.png in Resources */,
 				C238A4A115BA1A5F0008E6EC /* placeholder_noImage_bw.jpg in Resources */,
+				C2775E1915BA2B0700731EBB /* Default.png in Resources */,
+				C2775E1B15BA2B3400731EBB /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
