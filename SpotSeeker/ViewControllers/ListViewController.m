@@ -150,7 +150,7 @@
         }];
 
         [request setFailedBlock:^{
-            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.jpg"];
+            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
             [spot_image setImage:no_image];
             loading_image.hidden = TRUE;
             spot_image.hidden = FALSE;
@@ -160,7 +160,7 @@
         [request startAsynchronous];
     }
     else {
-        UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.jpg"];
+        UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
         [spot_image setImage:no_image];
         loading_image.hidden = TRUE;
         spot_image.hidden = FALSE;

@@ -358,7 +358,7 @@
             
         }
         else {
-            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.jpg"];
+            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
             [self displaySpaceImage:no_image];
         }
         
