@@ -152,9 +152,9 @@
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
 		C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */; };
+		C275414D15BA346400EBDA33 /* placeholder_noImage_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = C275414C15BA346400EBDA33 /* placeholder_noImage_bw.png */; };
 		C2775E1915BA2B0700731EBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1815BA2B0700731EBB /* Default.png */; };
 		C2775E1B15BA2B3400731EBB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1A15BA2B3400731EBB /* Default@2x.png */; };
-		C2775E1E15BA2D8D00731EBB /* placeholder_noImage_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1D15BA2D8D00731EBB /* placeholder_noImage_bw.png */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
 		C27F30C2158A563D002EC7B2 /* SpaceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */; };
@@ -389,9 +389,9 @@
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceClusterViewController.h; path = ViewControllers/SpaceClusterViewController.h; sourceTree = "<group>"; };
 		C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceClusterViewController.m; path = ViewControllers/SpaceClusterViewController.m; sourceTree = "<group>"; };
+		C275414C15BA346400EBDA33 /* placeholder_noImage_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_noImage_bw.png; sourceTree = "<group>"; };
 		C2775E1815BA2B0700731EBB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		C2775E1A15BA2B3400731EBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		C2775E1D15BA2D8D00731EBB /* placeholder_noImage_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder_noImage_bw.png; path = ../../../placeholder_noImage_bw.png; sourceTree = "<group>"; };
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
@@ -650,8 +650,8 @@
 			children = (
 				C2775E1C15BA2B4500731EBB /* Launch images */,
 				8990687E15B606EE002CDF90 /* buttons */,
-				C2775E1D15BA2D8D00731EBB /* placeholder_noImage_bw.png */,
 				2323BBCA15B496F200B6947B /* icon-72.png */,
+				C275414C15BA346400EBDA33 /* placeholder_noImage_bw.png */,
 				2323BBCB15B496F200B6947B /* icon-small-50.png */,
 				2323BBCC15B496F200B6947B /* icon-small.png */,
 				2323BBCD15B496F200B6947B /* icon-small@2x.png */,
@@ -1084,7 +1084,7 @@
 				89468EC115B8EE0C00A864E0 /* filter_reset@2x.png in Resources */,
 				C2775E1915BA2B0700731EBB /* Default.png in Resources */,
 				C2775E1B15BA2B3400731EBB /* Default@2x.png in Resources */,
-				C2775E1E15BA2D8D00731EBB /* placeholder_noImage_bw.png in Resources */,
+				C275414D15BA346400EBDA33 /* placeholder_noImage_bw.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
