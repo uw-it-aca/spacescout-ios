@@ -315,6 +315,10 @@
         return [NSNumber numberWithInt:-1];
     }
     
+    if ([_floor isEqualToString:@"Lower level"]) {
+        return [NSNumber numberWithInt:-1];
+    }
+    
     if ([_floor isEqualToString:@"Main floor"]) {
         return [NSNumber numberWithInt:1];
     }
@@ -322,6 +326,11 @@
     if ([_floor isEqualToString:@"Upper floor"]) {
         return [NSNumber numberWithInt:2];
     }
+    
+    if ([_floor isEqualToString:@"Upper level"]) {
+        return [NSNumber numberWithInt:2];
+    }
+
     
     NSScanner *floor_finder = [NSScanner scannerWithString:_floor];
     int number = 0;
