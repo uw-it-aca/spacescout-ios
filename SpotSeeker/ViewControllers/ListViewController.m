@@ -15,6 +15,7 @@
 @synthesize map_region;
 @synthesize rest;
 @synthesize alert;
+@synthesize requests;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +33,7 @@
     self.rest.delegate = self;
     [self sortSpots];
     [self.spot_table reloadData];
+    self.requests = [[NSMutableDictionary alloc] init];
 	// Do any additional setup after loading the view.
 }
 
@@ -131,8 +133,25 @@
     UIImageView *spot_image = (UIImageView *)[cell viewWithTag:20];
     UIActivityIndicatorView *loading_image = (UIActivityIndicatorView *)[cell viewWithTag:21];
 
-    if ([row_spot.image_urls count]) {
+    NSMutableDictionary *current_rows = [[NSMutableDictionary alloc] init];
+    for (NSIndexPath *path in tableView.indexPathsForVisibleRows) {
+        [current_rows setObject:[NSNumber numberWithInt:path.row] forKey:[NSNumber numberWithInt:path.row]];
+    }
+    
+    NSMutableArray *to_remove = [[NSMutableArray alloc] init];
+    for (NSNumber *key in self.requests) {
+        if ([current_rows objectForKey:key] == nil) {
+            ASIHTTPRequest *off_screen_request = [self.requests objectForKey:key];
+            [off_screen_request cancel];
+            [to_remove addObject:key];
+        }
+    }
+    
+    for (NSNumber *key in to_remove) {
+        [self.requests removeObjectForKey:key];
+    }
         
+    if ([row_spot.image_urls count]) {
         NSString *image_url = [row_spot.image_urls objectAtIndex:0];
                 
         spot_image.hidden = TRUE;
@@ -140,6 +159,7 @@
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
         
+        [self.requests setObject:request forKey:[NSNumber numberWithInt:indexPath.row]];
         [request setCompletionBlock:^{
             UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
             [spot_image setImage:img];    
@@ -150,10 +170,13 @@
         }];
 
         [request setFailedBlock:^{
-            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
-            [spot_image setImage:no_image];
-            loading_image.hidden = TRUE;
-            spot_image.hidden = FALSE;
+            // We get a status code of 0 when cancelling
+            if (request.responseStatusCode != 0) {
+                UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
+                [spot_image setImage:no_image];
+                loading_image.hidden = TRUE;
+                spot_image.hidden = FALSE;
+            }
 
         }];
         
