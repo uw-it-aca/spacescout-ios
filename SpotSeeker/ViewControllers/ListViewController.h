@@ -26,6 +26,5 @@
 @property (nonatomic) MKCoordinateRegion map_region;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) UIAlertView *alert;
-@property (nonatomic, retain) NSMutableDictionary *requests;
 
 @end
