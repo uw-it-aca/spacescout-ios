@@ -15,6 +15,7 @@
 @synthesize map_region;
 @synthesize rest;
 @synthesize alert;
+@synthesize requests;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,12 +33,24 @@
     self.rest.delegate = self;
     [self sortSpots];
     [self.spot_table reloadData];
+    self.requests = [[NSMutableDictionary alloc] init];
 	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    for (NSNumber *key in self.requests) {
+        ASIHTTPRequest *request = [self.requests objectForKey:key];
+        [request cancel];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self.spot_table reloadData];
 }
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
+    [super viewDidUnload];    
     // Release any retained subviews of the main view.
 }
 
@@ -139,7 +152,7 @@
         loading_image.hidden = FALSE;
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
-        
+        [self.requests setObject:request forKey:[NSNumber numberWithInt:indexPath.row]];
         [request setCompletionBlock:^{
             bool update_image = false;
             for (NSIndexPath *path in tableView.indexPathsForVisibleRows) {
@@ -155,10 +168,14 @@
                 loading_image.hidden = TRUE;
                 spot_image.hidden = FALSE;
             }
-            
+            [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
         }];
 
         [request setFailedBlock:^{
+            // the status code is 0 if we cancel the request
+            if (request.responseStatusCode == 0) {
+                return;
+            }
             bool update_image = false;
             for (NSIndexPath *path in tableView.indexPathsForVisibleRows) {
                 if (path.row == indexPath.row) {
@@ -172,6 +189,7 @@
                 loading_image.hidden = TRUE;
                 spot_image.hidden = FALSE;
             }
+            [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
 
         }];
         
