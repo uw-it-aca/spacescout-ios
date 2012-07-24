@@ -204,7 +204,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2323BBAD15B47A8500B6947B /* pin20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin20@2x.png"; sourceTree = "<group>"; };
 		2323BBCA15B496F200B6947B /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		2323BBCB15B496F200B6947B /* icon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small-50.png"; sourceTree = "<group>"; };
 		2323BBCC15B496F200B6947B /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
@@ -695,7 +694,6 @@
 				8940AD4015BF1DB200714AFB /* pin00@2x.png */,
 				C242C276159260140045924B /* pin01.png */,
 				C242C277159260140045924B /* pin01@2x.png */,
-				2323BBAD15B47A8500B6947B /* pin20@2x.png */,
 				C242C278159260140045924B /* pin02.png */,
 				C242C279159260140045924B /* pin02@2x.png */,
 				C242C27A159260140045924B /* pin03.png */,
