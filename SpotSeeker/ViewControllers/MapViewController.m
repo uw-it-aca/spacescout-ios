@@ -99,9 +99,6 @@ extern const int meters_per_latitude;
         if (first_in_group.capacity != nil) {
             annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@", seats %@", first_in_group.capacity];            
         }
-        if (first_in_group.room_number.length != 0) {
-            annotationPoint.subtitle = [annotationPoint.subtitle stringByAppendingFormat:@" | Room %@", first_in_group.room_number];
-        }
         annotationPoint.cluster_index = [NSNumber numberWithInt:index];
         
         NSString *lookup_key = [annotationPoint getLookupKey];
