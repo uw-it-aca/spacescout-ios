@@ -42,5 +42,7 @@
 	<integer>247</integer>
 	<key>filter_row_unselected_blue</key>
 	<integer>247</integer>
+	<key>building_filter_cell_padding</key>
+	<integer>20</integer>
 </dict>
 </plist>
