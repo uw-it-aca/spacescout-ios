@@ -311,6 +311,12 @@
     if (_floor == nil) {
         return [NSNumber numberWithInt:-10];        
     }
+    if ([_floor isEqualToString:@"L1"]) {
+        return [NSNumber numberWithInt:-1];        
+    }
+    if ([_floor isEqualToString:@"L2"]) {
+        return [NSNumber numberWithInt:-2];        
+    }
     if ([_floor isEqualToString:@"Basement"]) {
         return [NSNumber numberWithInt:-1];
     }
@@ -331,7 +337,6 @@
         return [NSNumber numberWithInt:2];
     }
 
-    
     NSScanner *floor_finder = [NSScanner scannerWithString:_floor];
     int number = 0;
     [floor_finder scanInt:&number];
