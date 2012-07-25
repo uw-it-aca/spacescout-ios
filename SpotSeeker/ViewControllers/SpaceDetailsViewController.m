@@ -779,7 +779,7 @@
 
     NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
     
-    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [app openURL:[NSURL URLWithString:url]];  
 }
 
