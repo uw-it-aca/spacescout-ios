@@ -35,6 +35,7 @@
 @synthesize footer;
 @synthesize table_view;
 @synthesize reservation_notes_height;
+@synthesize image_count_label;
 
 #pragma mark -
 #pragma mark table control methods
@@ -329,9 +330,9 @@
             spinner.hidden = YES;
             
         }
+        self.image_count_label = (UILabel *)[cell viewWithTag:9];
         if ([spot.image_urls count] < 2) {
-            UILabel *image_count = (UILabel *)[cell viewWithTag:9];
-            image_count.hidden = YES;
+            self.image_count_label.hidden = YES;
         }
 
         self.img_button_view = spot_image_view;
@@ -698,6 +699,11 @@
     [self.img_button_view setImage:image forState:UIControlStateSelected];
     
     self.img_button_view.hidden = NO;
+    
+    if ([spot.image_urls count] >= 2) {
+        self.image_count_label.hidden = NO;
+    }
+    
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
