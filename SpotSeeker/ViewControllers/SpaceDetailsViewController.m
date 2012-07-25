@@ -347,11 +347,12 @@
             }
             else {
                 NSString *image_url = [spot.image_urls objectAtIndex:0];
-                REST *_rest = [[REST alloc] init];
-                _rest.delegate = self;
-                [_rest getURL:image_url];
-                self.rest = _rest;
-
+                if (self.rest == nil) {
+                    REST *_rest = [[REST alloc] init];
+                    _rest.delegate = self;
+                    self.rest = _rest;
+                }
+                [self.rest getURL:image_url];
             }
             UILabel *image_count = (UILabel *)[cell viewWithTag:9];
             image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
