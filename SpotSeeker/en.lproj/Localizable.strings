@@ -30,7 +30,7 @@
 
 "Space environment label noise_level" = "Noise level";
 "Space environment noise_level silent" = "Silent";
-"Space environment noise_level quiet" = "Low Hum";
+"Space environment noise_level quiet" = "Low hum";
 "Space environment noise_level moderate" = "Chatter";
 "Space environment noise_level loud" = "Rowdy";
 "Space environment noise_level variable" = "Variable";
