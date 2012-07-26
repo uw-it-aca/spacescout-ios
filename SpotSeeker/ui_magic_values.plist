@@ -27,7 +27,7 @@
 	<key>nav_cancel_button_color_blue</key>
 	<integer>42</integer>
 	<key>reservation_notes_wrapper_format</key>
-	<string>&lt;html&gt;&lt;style&gt;body { background: #f7f7f7; font-family: helvetica; font-size: 14px; } a, a:active, a:visited { color: #847baa; }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
+	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	<key>space_details_no_image_name_cell_baseline</key>
 	<integer>120</integer>
 	<key>filter_row_selected_red</key>
