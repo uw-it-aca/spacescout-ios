@@ -117,7 +117,7 @@
 "Search option title extended_info:noise_level silent" = "Silent";
 "Search option subtitle extended_info:noise_level silent" = "";
 "Search option short extended_info:noise_level silent" = "S";
-"Search option title extended_info:noise_level quiet" = "Low Hum";
+"Search option title extended_info:noise_level quiet" = "Low hum";
 "Search option subtitle extended_info:noise_level quiet" = "";
 "Search option short extended_info:noise_level quiet" = "LH";
 "Search option title extended_info:noise_level moderate" = "Chatter";
