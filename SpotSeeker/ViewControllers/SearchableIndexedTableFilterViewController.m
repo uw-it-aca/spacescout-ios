@@ -199,6 +199,15 @@
     }
 }
 
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.search_display_controller.searchResultsTableView) {
+        return [self searchTableView:tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath];
+    }
+    else {
+        return [self listTableView:tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath];
+    }   
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.search_display_controller.searchResultsTableView) {
         return [self searchTableView:tableView numberOfRowsInSection:section];
@@ -247,6 +256,25 @@
 #pragma mark -
 #pragma mark search results table methods
 
+-(float)searchTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.table_view dequeueReusableCellWithIdentifier:@"search_results_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"search_results_cell"];
+    }
+    UILabel *option = (UILabel *)[cell viewWithTag:5];
+    
+    NSString *result = [[self.search_results objectAtIndex:indexPath.row] objectForKey:@"title"];
+    CGSize expected = [result sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float padding = [[plist_values objectForKey:@"building_filter_cell_padding"] floatValue];
+    
+    return expected.height + padding;
+}
+
 -(void)searchTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSMutableDictionary *hit = [self.search_results objectAtIndex:indexPath.row];
@@ -262,10 +290,8 @@
 
     [self.table_view scrollToRowAtIndexPath:hit_index_path atScrollPosition:UITableViewScrollPositionTop animated:NO];
 
-    // If the cell is already rendered, we need to add a check here
-    UITableViewCell *building_cell = [self.table_view cellForRowAtIndexPath:hit_index_path];
-    [building_cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-
+    // Force the cell to re-render, so it has the checkmark and background color
+    [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:hit_index_path] withRowAnimation:FALSE];
 }
 
 -(NSInteger)numberofSectionsInSearchTableView:(UITableView *)tableView {
@@ -281,14 +307,50 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"search_results_cell"];
     }
-    UILabel *option = (UILabel *)[cell viewWithTag:1];
+    UILabel *option = (UILabel *)[cell viewWithTag:5];
+    
+    NSString *result = [[self.search_results objectAtIndex:indexPath.row] objectForKey:@"title"];
+    CGSize expected = [result sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
 
-    option.text = [[self.search_results objectAtIndex:indexPath.row] objectForKey:@"title"];
+    option.frame = CGRectMake(option.frame.origin.x, option.frame.origin.y, option.frame.size.width, expected.height);
+    option.text = result;
     return cell;
 }
 
 #pragma mark -
 #pragma mark main list table methods
+
+-(float)listTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clear_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"clear_cell"];
+        }
+        
+        return cell.frame.size.height;
+    }
+    else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"content_cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"content_cell"];
+        }
+        UILabel *option = (UILabel *)[cell viewWithTag:15];
+        NSArray *values =[[[self.index_data objectForKey:@"sections"] objectAtIndex:indexPath.section - 1] objectForKey:@"values"]; 
+        
+        NSMutableDictionary *building = [values objectAtIndex:indexPath.row];
+        
+        CGSize expected = [[building objectForKey:@"title"] sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
+        
+        NSString *app_path = [[NSBundle mainBundle] bundlePath];
+        NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+        NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+        
+        float padding = [[plist_values objectForKey:@"building_filter_cell_padding"] floatValue];
+        
+        return expected.height + padding;
+    }
+}
+
 
 -(void)listTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
@@ -437,6 +499,9 @@
         NSArray *values =[[[self.index_data objectForKey:@"sections"] objectAtIndex:indexPath.section - 1] objectForKey:@"values"]; 
         
         NSMutableDictionary *building = [values objectAtIndex:indexPath.row];
+        CGSize expected = [[building objectForKey:@"title"] sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
+
+        option.frame = CGRectMake(option.frame.origin.x, option.frame.origin.y, option.frame.size.width, expected.height);
         option.text = [building objectForKey:@"title"];
         
         if ([[building objectForKey:@"checked"] intValue] > 0) {

@@ -55,5 +55,6 @@
 @property (nonatomic, retain) UIView *footer;
 @property (nonatomic, retain) IBOutlet UITableView *table_view;
 @property (nonatomic, retain) NSNumber *reservation_notes_height;
+@property (nonatomic, retain) UILabel *image_count_label;
 
 @end

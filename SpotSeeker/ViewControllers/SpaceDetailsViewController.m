@@ -35,6 +35,7 @@
 @synthesize footer;
 @synthesize table_view;
 @synthesize reservation_notes_height;
+@synthesize image_count_label;
 
 #pragma mark -
 #pragma mark table control methods
@@ -329,9 +330,9 @@
             spinner.hidden = YES;
             
         }
+        self.image_count_label = (UILabel *)[cell viewWithTag:9];
         if ([spot.image_urls count] < 2) {
-            UILabel *image_count = (UILabel *)[cell viewWithTag:9];
-            image_count.hidden = YES;
+            self.image_count_label.hidden = YES;
         }
 
         self.img_button_view = spot_image_view;
@@ -347,11 +348,12 @@
             }
             else {
                 NSString *image_url = [spot.image_urls objectAtIndex:0];
-                REST *_rest = [[REST alloc] init];
-                _rest.delegate = self;
-                [_rest getURL:image_url];
-                self.rest = _rest;
-
+                if (self.rest == nil) {
+                    REST *_rest = [[REST alloc] init];
+                    _rest.delegate = self;
+                    self.rest = _rest;
+                }
+                [self.rest getURL:image_url];
             }
             UILabel *image_count = (UILabel *)[cell viewWithTag:9];
             image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
@@ -465,8 +467,7 @@
             NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
             CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
             
-            float top = ((cell.frame.size.height / 2)) - expected.height / 2;
-            type.frame = CGRectMake(type.frame.origin.x, top, type.frame.size.width, expected.height);
+            type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
             
             type.text = equipment_string;
 
@@ -698,6 +699,11 @@
     [self.img_button_view setImage:image forState:UIControlStateSelected];
     
     self.img_button_view.hidden = NO;
+    
+    if ([spot.image_urls count] >= 2) {
+        self.image_count_label.hidden = NO;
+    }
+    
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
@@ -773,7 +779,7 @@
 
     NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
     
-    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [app openURL:[NSURL URLWithString:url]];  
 }
 
