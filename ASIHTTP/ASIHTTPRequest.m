@@ -313,7 +313,9 @@ static NSOperationQueue *sharedQueue = nil;
 
 + (id)requestWithURL:(NSURL *)newURL
 {
-	return [[[self alloc] initWithURL:newURL] autorelease];
+	//return [[[self alloc] initWithURL:newURL] autorelease];
+    return [[self alloc] initWithURL:newURL];
+
 }
 
 + (id)requestWithURL:(NSURL *)newURL usingCache:(id <ASICacheDelegate>)cache
