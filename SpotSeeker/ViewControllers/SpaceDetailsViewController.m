@@ -773,7 +773,7 @@
     NSString *to = [plist_values objectForKey:@"spotseeker_problem_email"];
 
     if (to == nil || [to isEqualToString:@""]) {
-        to = @"spacescout-support@uw.edu";
+        to = @"spacescouthelp@uw.edu";
     }
     NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_subject", nil), self.spot.name];
 
