@@ -95,7 +95,7 @@
 "Search option short type outdoor" = "Outdr";
 
 "Search screen label extended_info:reservable" = "Reservable?";
-"Search screen title extended_info:reservable" = "";
+"Search screen title extended_info:reservable" = "Reservability";
 "Search screen header extended_info:reservable" = "Select reservability";
 "Search screen subheader extended_info:reservable" = "";
 "Search screen default label extended_info:reservable" = "No preference";
