@@ -63,7 +63,7 @@
              {
              "search_key":"open_now",
              "default_search_value":"1",
-             "default_selection_label":"Open Now",
+             "default_selection_label":"Open now",
              "table_row_type":"cell_with_time",
              "options": []
              },
@@ -81,7 +81,7 @@
              "search_key" : "extended_info:reservable"
              },
              {
-             "screen_title":"Select Building",
+             "screen_title":"Select building",
              "search_key":"building_name",
              "table_row_type":"cell_with_indexed_table",
              "default_selection_label":"Entire campus",

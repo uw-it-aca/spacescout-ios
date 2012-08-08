@@ -28,12 +28,13 @@
 
 -(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url {
     NSString *request_url = [self _getFullURL:url];
-    
-    __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
-    
-    [self _signRequest:request];
+    @autoreleasepool {
+        __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
 
-    return request;
+        [self _signRequest:request];
+
+        return request;
+    }
 }
 
 -(void)_signRequest:(ASIHTTPRequest *)request {

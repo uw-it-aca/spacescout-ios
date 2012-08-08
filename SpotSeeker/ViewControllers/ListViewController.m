@@ -168,7 +168,9 @@
                 loading_image.hidden = TRUE;
                 spot_image.hidden = FALSE;
             }
-            [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
+            @autoreleasepool {
+                [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
+            }
         }];
 
         [request setFailedBlock:^{
@@ -189,8 +191,9 @@
                 loading_image.hidden = TRUE;
                 spot_image.hidden = FALSE;
             }
-            [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
-
+            @autoreleasepool {
+                [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
+            }
         }];
         
         [request startAsynchronous];

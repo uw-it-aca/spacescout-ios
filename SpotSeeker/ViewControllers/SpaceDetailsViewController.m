@@ -268,8 +268,15 @@
             // ...
         }
         else if (indexPath.row - offset == 1) {
-            UIApplication *app = [UIApplication sharedApplication];  
-            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            UIApplication *app = [UIApplication sharedApplication];
+
+            // Google Maps fails to give good directions for spotnames with (,),& in them
+            NSString *fixed_spotname = [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@"(" withString:@""];
+            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@")" withString:@""];
+            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@"&" withString:@""];
+
+            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], fixed_spotname];
             [app openURL:[NSURL URLWithString:url]];  
         }
     }
@@ -773,7 +780,7 @@
     NSString *to = [plist_values objectForKey:@"spotseeker_problem_email"];
 
     if (to == nil || [to isEqualToString:@""]) {
-        to = @"spacescout-support@uw.edu";
+        to = @"spacescouthelp@uw.edu";
     }
     NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_subject", nil), self.spot.name];
 

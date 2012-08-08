@@ -18,15 +18,15 @@
 /* These values show up on the space details screen */
 
 "Space type computer_lab" = "Computer lab";
-"Space type open" = "Open Space";
+"Space type open" = "Open space";
 "Space type alcove" = "Alcove / Nook";
 "Space type lounge" = "Lounge";
-"Space type classroom" = "Conf./Classroom";
-"Space type study_room" = "Study Room";
-"Space type study_area" = "Study Area";
-"Space type studio" = "Studio";
+"Space type classroom" = "Conf./classroom";
+"Space type study_room" = "Study room";
+"Space type study_area" = "Study area";
+"Space type studio" = "Production studio";
 "Space type cafe" = "Café";
-"Space type outdoor" = "Outdoor Area";
+"Space type outdoor" = "Outdoor area";
 
 "Space environment label noise_level" = "Noise level";
 "Space environment noise_level silent" = "Silent";
@@ -95,7 +95,7 @@
 "Search option short type outdoor" = "Outdr";
 
 "Search screen label extended_info:reservable" = "Reservable?";
-"Search screen title extended_info:reservable" = "";
+"Search screen title extended_info:reservable" = "Reservability";
 "Search screen header extended_info:reservable" = "Select reservability";
 "Search screen subheader extended_info:reservable" = "";
 "Search screen default label extended_info:reservable" = "No preference";
