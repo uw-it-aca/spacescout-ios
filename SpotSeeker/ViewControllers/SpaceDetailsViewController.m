@@ -783,9 +783,11 @@
         to = @"spacescouthelp@uw.edu";
     }
     NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_subject", nil), self.spot.name];
+    subject = [subject stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
 
     NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
-    
+    body = [body stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
+
     NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [app openURL:[NSURL URLWithString:url]];  
 }
