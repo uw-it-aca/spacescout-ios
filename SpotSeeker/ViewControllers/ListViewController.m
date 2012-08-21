@@ -31,6 +31,9 @@
     [super viewDidLoad];
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
+    if (self.current_spots.count < 1) {
+        [self runSearch];
+    }
     [self sortSpots];
     [self.spot_table reloadData];
     self.requests = [[NSMutableDictionary alloc] init];
