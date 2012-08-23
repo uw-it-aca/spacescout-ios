@@ -17,6 +17,7 @@
 @synthesize alert;
 
 int const meters_per_latitude = 111 * 1000;
+bool first_search = false;
 
 -(void) runSearch {
     if (search_attributes == nil) {
@@ -42,7 +43,7 @@ int const meters_per_latitude = 111 * 1000;
     
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     
-    if (meters > 10000) {
+    if (meters > 10000 && first_search == false) {
         [self searchCancelled];
         return;
     }
@@ -53,7 +54,7 @@ int const meters_per_latitude = 111 * 1000;
     self.spot = _spot;
     [self.spot getListBySearch:search_attributes];
     [self.spot setDelegate:self];
-    
+    first_search = true;
 }
 
 -(void) runSearchWithAttributes:(NSMutableDictionary *)attributes {
