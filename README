@@ -1,6 +1,6 @@
-This is the iOS client for SpotSeeker.  It connects to services provided by https://github.com/vegitron/spotseeker-server/
+This is the iOS client for SpaceScout.  It connects to services provided by https://github.com/uw-it-aca/spotseeker-server/
 
-  Copyright 2012 UW Information Technology, University of Washington
+  Copyright 2012, 2013 UW Information Technology, University of Washington
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -16,4 +16,4 @@ This is the iOS client for SpotSeeker.  It connects to services provided by http
 
 The current official repository can be found at
 
-https://github.com/vegitron/spotseeker-ios
+https://github.com/uw-it-aca/spotseeker-ios
