@@ -14,6 +14,8 @@
 @synthesize longitude;
 @synthesize latitude_delta;
 @synthesize longitude_delta;
+@synthesize search_key;
+@synthesize is_default;
 
 -(double)getLatitude {
     return [self.latitude doubleValue];
@@ -32,29 +34,46 @@
 }
 
 +(NSArray *)getCampuses {
-    
     NSMutableArray *campuses = [[NSMutableArray alloc] init];
-    [campuses addObject:[Campus getCurrentCampus]];
+
+    NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"map_defaults" ofType:@"json"]];
+
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSArray *values = [parser objectWithData:data_source];
+    
+    for (NSDictionary *campus_values in values) {
+        Campus *current = [[Campus alloc] init];
+        current.latitude = [campus_values objectForKey:@"latitude"];
+        current.longitude = [campus_values objectForKey:@"longitude"];
+        
+        current.latitude_delta = [campus_values objectForKey:@"latitude_delta"];
+        current.longitude_delta = [campus_values objectForKey:@"longitude_delta"];
+        
+        current.name = [campus_values objectForKey:@"name"];
+        current.search_key = [campus_values objectForKey:@"search_key"];
+        
+        if ([campus_values objectForKey:@"is_default"]) {
+            current.is_default = [NSNumber numberWithBool:true];
+        }
+        [campuses addObject:current];
+    }
     
     return campuses;
 }
 
 +(Campus *)getCurrentCampus {
-    NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"map_defaults" ofType:@"json"]];
+    NSArray *campuses = [Campus getCampuses];
     
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSDictionary *values = [parser objectWithData:data_source];
-    
-    Campus *current = [[Campus alloc] init];
-    current.latitude = [values objectForKey:@"latitude"];
-    current.longitude = [values objectForKey:@"longitude"];
+    for (Campus *campus in campuses) {
+        if ([campus.is_default boolValue]) {
+            return campus;
+        }
+    }
 
-    current.latitude_delta = [values objectForKey:@"latitude_delta"];
-    current.longitude_delta = [values objectForKey:@"longitude_delta"];
-
-    current.name = @"Demo Campus";
-    
-    return current;
+    NSAssert(false, @"No campus in getCampuses is_default");
+    return [[Campus alloc] init];
 }
+
+
 
 @end

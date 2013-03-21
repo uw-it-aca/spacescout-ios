@@ -11,18 +11,21 @@
 
 @interface Campus : NSObject {
     NSString *name;
+    NSString *search_key;
     NSNumber *longitude;
     NSNumber *latitude;
     NSNumber *longitude_delta;
     NSNumber *latitude_delta;
-    Boolean is_current;
+    NSNumber *is_default;
 }
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *search_key;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSNumber *latitude_delta;
 @property (nonatomic, retain) NSNumber *longitude_delta;
+@property (nonatomic, retain) NSNumber *is_default;
 
 +(NSArray *) getCampuses;
 +(Campus *) getCurrentCampus;

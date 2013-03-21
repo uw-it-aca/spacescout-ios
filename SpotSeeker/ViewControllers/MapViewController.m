@@ -219,7 +219,20 @@ extern const int meters_per_latitude;
 #pragma mark campus chooser methods
 
 -(IBAction)btnClickCampusChooser:(id)sender {
+    NSArray *campuses = [Campus getCampuses];
+    int selected_index;
+    Campus *current = [Campus getCurrentCampus];
+    
+    for (int i = 0; i < [campuses count]; i++) {
+        Campus *campus = [campuses objectAtIndex:i];
+        if ([campus.search_key isEqualToString:current.search_key]) {
+            selected_index = i;
+            break;
+        }
+    }
     self.campus_picker.hidden = FALSE;
+    
+    [self.campus_picker selectRow:selected_index inComponent:0 animated:false];
 }
 
 -(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -232,8 +245,13 @@ extern const int meters_per_latitude;
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSArray *campuses = [Campus getCampuses];
-    Campus *campus = [campuses objectAtIndex:component];
+    Campus *campus = [campuses objectAtIndex:row];
     return campus.name;
+}
+
+
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 }
 
 #pragma mark -
