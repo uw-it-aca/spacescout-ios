@@ -63,10 +63,20 @@
 
 +(Campus *)getCurrentCampus {
     NSArray *campuses = [Campus getCampuses];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *campus_search_key = [defaults objectForKey:@"current_campus"];
     
     for (Campus *campus in campuses) {
-        if ([campus.is_default boolValue]) {
-            return campus;
+        if (campus_search_key) {
+            if ([campus_search_key isEqualToString:campus.search_key]) {
+                return campus;
+            }
+        }
+        else {
+            if ([campus.is_default boolValue]) {
+                return campus;
+            }
         }
     }
 
@@ -74,6 +84,10 @@
     return [[Campus alloc] init];
 }
 
-
++(void)setCurrentCampus: (Campus *)campus {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:campus.search_key forKey:@"current_campus"];
+    [defaults synchronize];
+}
 
 @end

@@ -29,6 +29,7 @@
 
 +(NSArray *) getCampuses;
 +(Campus *) getCurrentCampus;
++(void)setCurrentCampus: (Campus *)campus;
 
 -(double)getLatitude;
 -(double)getLongitude;

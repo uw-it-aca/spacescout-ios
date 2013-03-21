@@ -252,6 +252,7 @@ extern const int meters_per_latitude;
 
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    [Campus setCurrentCampus:[[Campus getCampuses] objectAtIndex:row]];
 }
 
 #pragma mark -
