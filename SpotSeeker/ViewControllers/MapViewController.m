@@ -289,7 +289,7 @@ extern const int meters_per_latitude;
     int height = self.campus_picker_panel.frame.size.height;
     int width = self.campus_picker_panel.frame.size.width;
     int starting_y = self.campus_picker_panel.frame.origin.y;
-
+   
    
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -456,7 +456,19 @@ extern const int meters_per_latitude;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self hideCampusChooser];
+    if (self.campus_picker_panel.hidden) {
+        return;
+    }
+    
+    [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        CGPoint point = [obj locationInView:self.view];
+        float event_y = point.y;
+        float top_of_panel = self.campus_picker_panel.frame.origin.y;
+        
+        if (top_of_panel > event_y) {
+            [self hideCampusChooser];
+        }
+    }];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

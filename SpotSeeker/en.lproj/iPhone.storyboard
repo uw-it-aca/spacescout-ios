@@ -34,7 +34,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                             </view>
-                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="jDF-fa-bqa">
+                            <view hidden="YES" contentMode="scaleToFill" id="jDF-fa-bqa">
                                 <rect key="frame" x="0.0" y="101" width="320" height="271"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
