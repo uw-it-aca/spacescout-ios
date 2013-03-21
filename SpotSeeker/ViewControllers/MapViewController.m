@@ -238,7 +238,9 @@ extern const int meters_per_latitude;
 
 -(IBAction)btnClickCampusSelected:(id)sender {
     int row = [self.campus_picker selectedRowInComponent:0];
-    [Campus setCurrentCampus:[[Campus getCampuses] objectAtIndex:row]];
+    Campus *campus = [[Campus getCampuses] objectAtIndex:row];
+    [Campus setCurrentCampus: campus];
+    [self centerOnCampus:campus];
     
     self.campus_picker_panel.hidden = true;
 }
@@ -338,13 +340,7 @@ extern const int meters_per_latitude;
 -(void)centerOnUserLocation {
     if (map_view.userLocation.location == nil) {
         Campus *current_campus = [Campus getCurrentCampus];
-        MKCoordinateRegion mapRegion;
-        mapRegion.center =  CLLocationCoordinate2DMake([current_campus getLatitude], [current_campus getLongitude]);
-        
-        mapRegion.span.latitudeDelta = [current_campus getLatitudeDelta];
-        mapRegion.span.longitudeDelta = [current_campus getLongitudeDelta];
-      
-        [map_view setRegion:mapRegion animated: NO];
+        [self centerOnCampus:current_campus];
         return;
     }
     else {
@@ -355,6 +351,16 @@ extern const int meters_per_latitude;
     
         [map_view setRegion:mapRegion animated: YES];
     }
+}
+
+-(void)centerOnCampus: (Campus *)campus {
+    MKCoordinateRegion mapRegion;
+    mapRegion.center =  CLLocationCoordinate2DMake([campus getLatitude], [campus getLongitude]);
+    
+    mapRegion.span.latitudeDelta = [campus getLatitudeDelta];
+    mapRegion.span.longitudeDelta = [campus getLongitudeDelta];
+    
+    [map_view setRegion:mapRegion animated: NO];
 }
 
 - (void)showDetails:(id)sender {
