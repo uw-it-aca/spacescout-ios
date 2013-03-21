@@ -29,6 +29,7 @@
 @synthesize selected_cluster;
 @synthesize alert;
 @synthesize campus_picker;
+@synthesize campus_picker_panel;
 
 extern const int meters_per_latitude;
 
@@ -230,9 +231,16 @@ extern const int meters_per_latitude;
             break;
         }
     }
-    self.campus_picker.hidden = FALSE;
+    self.campus_picker_panel.hidden = FALSE;
     
     [self.campus_picker selectRow:selected_index inComponent:0 animated:false];
+}
+
+-(IBAction)btnClickCampusSelected:(id)sender {
+    int row = [self.campus_picker selectedRowInComponent:0];
+    [Campus setCurrentCampus:[[Campus getCampuses] objectAtIndex:row]];
+    
+    self.campus_picker_panel.hidden = true;
 }
 
 -(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -249,11 +257,6 @@ extern const int meters_per_latitude;
     return campus.name;
 }
 
-
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [Campus setCurrentCampus:[[Campus getCampuses] objectAtIndex:row]];
-}
 
 #pragma mark -
 #pragma mark alert methods
@@ -404,11 +407,11 @@ extern const int meters_per_latitude;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.campus_picker.hidden = TRUE;
+    self.campus_picker_panel.hidden = TRUE;
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
-    self.campus_picker.hidden = TRUE;
+    self.campus_picker_panel.hidden = TRUE;
 }
 
 - (void)viewDidLoad

@@ -42,6 +42,7 @@
     BOOL loading;
     NSArray *selected_cluster;
     IBOutlet UIPickerView *campus_picker;
+    IBOutlet UIView *campus_picker_panel;
    
 }
 
@@ -53,10 +54,11 @@
 @property (nonatomic, retain) NSArray *selected_cluster;
 @property (nonatomic, retain) UIAlertView *alert;
 @property (nonatomic, retain) UIPickerView *campus_picker;
+@property (nonatomic, retain) UIView *campus_picker_panel;
 
 - (IBAction) btnClickRecenter:(id)sender;
 - (IBAction) btnClickCampusChooser:(id)sender;
-
+- (IBAction) btnClickCampusSelected:(id)sender;
 
 
 @end
