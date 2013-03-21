@@ -182,6 +182,7 @@
 		C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E0937D1542315A0015BF4B /* UITableSwitch.m */; };
 		C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */; };
 		C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ED2BBA15A361D500662C0D /* PickerFilterViewController.m */; };
+		C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0D0C116FB9471008BB2CB /* Campus.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -438,6 +439,8 @@
 		C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ui_magic_values.plist; sourceTree = "<group>"; };
 		C2ED2BB915A361D500662C0D /* PickerFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerFilterViewController.h; path = ViewControllers/PickerFilterViewController.h; sourceTree = "<group>"; };
 		C2ED2BBA15A361D500662C0D /* PickerFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerFilterViewController.m; path = ViewControllers/PickerFilterViewController.m; sourceTree = "<group>"; };
+		C2F0D0C016FB9471008BB2CB /* Campus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Campus.h; path = Models/Campus.h; sourceTree = "<group>"; };
+		C2F0D0C116FB9471008BB2CB /* Campus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Campus.m; path = Models/Campus.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -542,6 +545,8 @@
 				C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */,
 				C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */,
 				C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */,
+				C2F0D0C016FB9471008BB2CB /* Campus.h */,
+				C2F0D0C116FB9471008BB2CB /* Campus.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1189,6 +1194,7 @@
 				C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */,
 				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,
 				C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */,
+				C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
 
 #import <MapKit/MapKit.h>
 #import "SBJson.h"
+#import "Campus.h"
 #import "ViewController.h"
 #import "Space.h"
 #import "SpaceAnnotation.h"
@@ -30,7 +31,7 @@
 #import "AppDelegate.h"
 //#import "SpotClusterViewController.h"
 
-@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate> {
+@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
@@ -40,6 +41,8 @@
     BOOL showing_tip_view;
     BOOL loading;
     NSArray *selected_cluster;
+    IBOutlet UIPickerView *campus_picker;
+   
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;
@@ -49,8 +52,11 @@
 @property (nonatomic, retain) NSMutableDictionary *current_annotations;
 @property (nonatomic, retain) NSArray *selected_cluster;
 @property (nonatomic, retain) UIAlertView *alert;
+@property (nonatomic, retain) UIPickerView *campus_picker;
 
 - (IBAction) btnClickRecenter:(id)sender;
+- (IBAction) btnClickCampusChooser:(id)sender;
+
 
 
 @end

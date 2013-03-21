@@ -28,6 +28,7 @@
 @synthesize current_annotations;
 @synthesize selected_cluster;
 @synthesize alert;
+@synthesize campus_picker;
 
 extern const int meters_per_latitude;
 
@@ -215,6 +216,27 @@ extern const int meters_per_latitude;
 }
 
 #pragma mark -
+#pragma mark campus chooser methods
+
+-(IBAction)btnClickCampusChooser:(id)sender {
+    self.campus_picker.hidden = FALSE;
+}
+
+-(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+-(int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [[Campus getCampuses] count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSArray *campuses = [Campus getCampuses];
+    Campus *campus = [campuses objectAtIndex:component];
+    return campus.name;
+}
+
+#pragma mark -
 #pragma mark alert methods
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -293,16 +315,13 @@ extern const int meters_per_latitude;
 
 -(void)centerOnUserLocation {
     if (map_view.userLocation.location == nil) {
-        NSData *data_source = [[NSData alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"map_defaults" ofType:@"json"]];
+        Campus *current_campus = [Campus getCurrentCampus];
+        MKCoordinateRegion mapRegion;
+        mapRegion.center =  CLLocationCoordinate2DMake([current_campus getLatitude], [current_campus getLongitude]);
         
-        SBJsonParser *parser = [[SBJsonParser alloc] init];
-        NSDictionary *values = [parser objectWithData:data_source];
-        
-        MKCoordinateRegion mapRegion;   
-        mapRegion.center =  CLLocationCoordinate2DMake([[values objectForKey:@"latitude"] doubleValue], [[values objectForKey:@"longitude"] doubleValue]);
-        mapRegion.span.latitudeDelta = [[values objectForKey:@"latitude_delta"] doubleValue];
-        mapRegion.span.longitudeDelta = [[values objectForKey:@"longitude_delta"] doubleValue];
-       
+        mapRegion.span.latitudeDelta = [current_campus getLatitudeDelta];
+        mapRegion.span.longitudeDelta = [current_campus getLongitudeDelta];
+      
         [map_view setRegion:mapRegion animated: NO];
         return;
     }
@@ -363,6 +382,14 @@ extern const int meters_per_latitude;
         // Custom initialization
     }
     return self;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.campus_picker.hidden = TRUE;
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    self.campus_picker.hidden = TRUE;
 }
 
 - (void)viewDidLoad
