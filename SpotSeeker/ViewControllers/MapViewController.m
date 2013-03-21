@@ -264,12 +264,43 @@ extern const int meters_per_latitude;
 
 -(void)showCampusChooser {
     int height = self.campus_picker_panel.frame.size.height;
+    int width = self.campus_picker_panel.frame.size.width;
+    int starting_y = self.campus_picker_panel.frame.origin.y;
+    
+    int full_height = self.view.frame.size.height;
+    
+    self.campus_picker_panel.frame = CGRectMake(0, full_height, width, height);
     
     self.campus_picker_panel.hidden = false;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                                    self.campus_picker_panel.frame = CGRectMake(0, starting_y, width, height);
+                                }
+                     completion:^(BOOL finished){
+                     }];
+    
 }
 
 -(void)hideCampusChooser {
-    self.campus_picker_panel.hidden = true;
+    int full_height = self.view.frame.size.height;
+    int height = self.campus_picker_panel.frame.size.height;
+    int width = self.campus_picker_panel.frame.size.width;
+    int starting_y = self.campus_picker_panel.frame.origin.y;
+
+   
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         self.campus_picker_panel.frame = CGRectMake(0, full_height, width, height);
+                     }
+                     completion:^(BOOL finished){
+                         self.campus_picker_panel.hidden = true;
+                         self.campus_picker_panel.frame = CGRectMake(0, starting_y, width, height);
+                     }];
 }
 
 #pragma mark -
