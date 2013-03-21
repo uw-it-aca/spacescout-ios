@@ -73,6 +73,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void)viewDidDisappear:(BOOL)animated {
     if (self.end_time != nil) {
         [self.filter setObject:self.end_time forKey:@"open_until"];    

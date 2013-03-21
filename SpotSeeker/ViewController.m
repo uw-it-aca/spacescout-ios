@@ -23,6 +23,27 @@
 
 @end
 
+// Taken from http://stackoverflow.com/questions/12577879/shouldautorotatetointerfaceorientation-is-not-working-in-ios-6
+// RotationIn_IOS6 is a Category for overriding the default orientation.
+@implementation UINavigationController (RotationIn_IOS6)
+
+-(BOOL)shouldAutorotate
+{
+    return [[self.viewControllers lastObject] shouldAutorotate];
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return [[self.viewControllers lastObject]  preferredInterfaceOrientationForPresentation];
+}
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad

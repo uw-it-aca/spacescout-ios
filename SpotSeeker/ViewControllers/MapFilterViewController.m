@@ -93,6 +93,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void)availableFilters:(NSMutableArray *)filters {
     self.data_sections = filters;
     [self.filter_table reloadData];

@@ -859,5 +859,9 @@
     //    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 @end
