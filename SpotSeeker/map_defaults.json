@@ -5,7 +5,9 @@
     "longitude_delta":0.005,
     "latitude_delta":0.005,
     "name":"Seattle",
-    "search_key": "seattle"
+    "search_key": "seattle",
+    "is_default": true
+
  },
  {
     "longitude":-122.308393,
@@ -13,8 +15,7 @@
     "longitude_delta":0.005,
     "latitude_delta":0.005,
     "name":"Tacoma",
-    "search_key": "seattle2",
-    "is_default": true
+    "search_key": "seattle2"
 
  },
  {

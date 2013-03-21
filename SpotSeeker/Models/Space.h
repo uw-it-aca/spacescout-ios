@@ -21,6 +21,7 @@
 #import "ASIHTTPRequest+OAuth.h"
 #import "SBJson.h"
 #import "REST.h"
+#import "Campus.h"
 
 @protocol SearchFinished;
 
