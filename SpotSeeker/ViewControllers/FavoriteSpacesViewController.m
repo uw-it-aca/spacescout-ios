@@ -65,4 +65,10 @@
     
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    //decide number of origination tob supported by Viewcontroller.
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 @end

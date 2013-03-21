@@ -81,6 +81,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void)showRunningSearchIndicator {
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
     loading_spinner.color = [UIColor grayColor];
@@ -270,7 +275,5 @@
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self performSegueWithIdentifier:@"search_filter" sender:self];
 }
-
-
 
 @end

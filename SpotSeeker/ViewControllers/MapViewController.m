@@ -474,4 +474,9 @@ extern const int meters_per_latitude;
     // Release any retained subviews of the main view.
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 @end
