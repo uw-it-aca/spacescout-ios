@@ -62,27 +62,43 @@
 }
 
 +(Campus *)getCurrentCampus {
-    NSArray *campuses = [Campus getCampuses];
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *campus_search_key = [defaults objectForKey:@"current_campus"];
+
+    Campus *campus;
+    if (campus_search_key) {
+        campus = [Campus _getCampusByPreference: campus_search_key];
+    }
     
+    if (!campus) {
+        campus = [Campus _getDefaultCampus];
+    }
+    
+    NSAssert(campus != nil, @"No campus in getCampuses is_default");
+
+    return campus;
+}
+
++(Campus *)_getCampusByPreference: (NSString *)preference {
+    NSArray *campuses = [Campus getCampuses];
     for (Campus *campus in campuses) {
-        if (campus_search_key) {
-            if ([campus_search_key isEqualToString:campus.search_key]) {
-                return campus;
-            }
-        }
-        else {
-            if ([campus.is_default boolValue]) {
-                return campus;
-            }
+        if ([preference isEqualToString:campus.search_key]) {
+            return campus;
         }
     }
-
-    NSAssert(false, @"No campus in getCampuses is_default");
-    return [[Campus alloc] init];
+    return nil;
 }
+
++(Campus *)_getDefaultCampus {
+    NSArray *campuses = [Campus getCampuses];
+    for (Campus *campus in campuses) {
+        if ([campus.is_default boolValue]) {
+            return campus;
+        }
+    }
+    return nil;
+}
+
 
 +(void)setCurrentCampus: (Campus *)campus {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
