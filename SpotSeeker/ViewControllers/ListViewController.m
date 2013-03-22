@@ -76,6 +76,24 @@
     }
 }
 
+#pragma mark -
+#pragma mark campus selection
+
+-(IBAction)btnClickCampusSelected:(id)sender {
+    int row = [self.campus_picker selectedRowInComponent:0];
+    Campus *campus = [[Campus getCampuses] objectAtIndex:row];
+    [Campus setCurrentCampus: campus];
+    self.search_attributes = nil;
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app_delegate.search_preferences = nil;
+    
+    [self hideCampusChooser];
+}
+
+
+
+#pragma mark -
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

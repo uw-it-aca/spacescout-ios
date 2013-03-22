@@ -28,4 +28,7 @@
 @property (nonatomic, retain) UIAlertView *alert;
 @property (nonatomic, retain) NSMutableDictionary *requests;
 
+- (IBAction) btnClickCampusSelected:(id)sender;
+
+
 @end

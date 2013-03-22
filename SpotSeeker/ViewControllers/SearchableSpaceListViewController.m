@@ -15,6 +15,8 @@
 @synthesize spot;
 @synthesize current_spots;
 @synthesize alert;
+@synthesize campus_picker;
+@synthesize campus_picker_panel;
 
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;
@@ -80,6 +82,84 @@ bool first_search = false;
     // Must be implemented in subclasses...
 }
 
+#pragma mark -
+#pragma mark campus selection
+
+-(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+-(int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [[Campus getCampuses] count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSArray *campuses = [Campus getCampuses];
+    Campus *campus = [campuses objectAtIndex:row];
+    return campus.name;
+}
+
+-(IBAction)btnClickCampusChooser:(id)sender {
+    NSArray *campuses = [Campus getCampuses];
+    int selected_index;
+    Campus *current = [Campus getCurrentCampus];
+    
+    for (int i = 0; i < [campuses count]; i++) {
+        Campus *campus = [campuses objectAtIndex:i];
+        if ([campus.search_key isEqualToString:current.search_key]) {
+            selected_index = i;
+            break;
+        }
+    }
+    [self showCampusChooser];
+    
+    [self.campus_picker selectRow:selected_index inComponent:0 animated:false];
+}
+
+
+
+-(void)showCampusChooser {
+    int height = self.campus_picker_panel.frame.size.height;
+    int width = self.campus_picker_panel.frame.size.width;
+    int starting_y = self.campus_picker_panel.frame.origin.y;
+    
+    int full_height = self.view.frame.size.height;
+    
+    self.campus_picker_panel.frame = CGRectMake(0, full_height, width, height);
+    
+    self.campus_picker_panel.hidden = false;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         self.campus_picker_panel.frame = CGRectMake(0, starting_y, width, height);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+    
+}
+
+-(void)hideCampusChooser {
+    int full_height = self.view.frame.size.height;
+    int height = self.campus_picker_panel.frame.size.height;
+    int width = self.campus_picker_panel.frame.size.width;
+    int starting_y = self.campus_picker_panel.frame.origin.y;
+    
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         self.campus_picker_panel.frame = CGRectMake(0, full_height, width, height);
+                     }
+                     completion:^(BOOL finished){
+                         self.campus_picker_panel.hidden = true;
+                         self.campus_picker_panel.frame = CGRectMake(0, starting_y, width, height);
+                     }];
+}
+
+#pragma mark -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
