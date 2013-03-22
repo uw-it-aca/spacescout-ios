@@ -86,7 +86,9 @@
     self.search_attributes = nil;
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app_delegate.search_preferences = nil;
-    
+    [self centerOnCampus:campus];
+
+    [self runSearch];
     [self hideCampusChooser];
 }
 

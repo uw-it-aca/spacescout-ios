@@ -305,32 +305,6 @@ extern const int meters_per_latitude;
 
 #pragma mark -
 
--(void)centerOnUserLocation {
-    if (map_view.userLocation.location == nil) {
-        Campus *current_campus = [Campus getCurrentCampus];
-        [self centerOnCampus:current_campus];
-        return;
-    }
-    else {
-        MKCoordinateRegion mapRegion;
-        mapRegion.center = map_view.userLocation.coordinate;
-        mapRegion.span.latitudeDelta = 0.005;
-        mapRegion.span.longitudeDelta = 0.005;
-    
-        [map_view setRegion:mapRegion animated: YES];
-    }
-}
-
--(void)centerOnCampus: (Campus *)campus {
-    MKCoordinateRegion mapRegion;
-    mapRegion.center =  CLLocationCoordinate2DMake([campus getLatitude], [campus getLongitude]);
-    
-    mapRegion.span.latitudeDelta = [campus getLatitudeDelta];
-    mapRegion.span.longitudeDelta = [campus getLongitudeDelta];
-    
-    [map_view setRegion:mapRegion animated: NO];
-}
-
 - (void)showDetails:(id)sender {
     [self performSegueWithIdentifier:@"show_details" sender: sender];
 }

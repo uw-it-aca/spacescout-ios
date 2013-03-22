@@ -38,5 +38,7 @@
 -(void)searchCancelled;
 -(void)runSearch;
 -(void)hideCampusChooser;
+-(void)centerOnUserLocation;
+-(void)centerOnCampus: (Campus *)campus;
 
 @end
