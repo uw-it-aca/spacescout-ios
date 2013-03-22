@@ -40,5 +40,6 @@
 -(void)hideCampusChooser;
 -(void)centerOnUserLocation;
 -(void)centerOnCampus: (Campus *)campus;
+-(void)setScreenTitleForCurrentCampus;
 
 @end

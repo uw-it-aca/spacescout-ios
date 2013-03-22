@@ -16,6 +16,7 @@
 @synthesize longitude_delta;
 @synthesize search_key;
 @synthesize is_default;
+@synthesize screen_title;
 
 -(double)getLatitude {
     return [self.latitude doubleValue];
@@ -50,6 +51,7 @@
         current.longitude_delta = [campus_values objectForKey:@"longitude_delta"];
         
         current.name = [campus_values objectForKey:@"name"];
+        current.screen_title = [campus_values objectForKey:@"screen_title"];
         current.search_key = [campus_values objectForKey:@"search_key"];
         
         if ([campus_values objectForKey:@"is_default"]) {

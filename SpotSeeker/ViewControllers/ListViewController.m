@@ -49,6 +49,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.campus_picker_panel.hidden = true;
+    [self setScreenTitleForCurrentCampus];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -97,6 +98,7 @@
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app_delegate.search_preferences = nil;
     [self centerOnCampus:campus];
+    [self setScreenTitleForCurrentCampus];
 
     [self runSearch];
     [self hideCampusChooser];

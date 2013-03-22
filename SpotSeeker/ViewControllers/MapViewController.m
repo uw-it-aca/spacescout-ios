@@ -230,7 +230,9 @@ extern const int meters_per_latitude;
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app_delegate.search_preferences = nil;
     [self centerOnCampus:campus];
-    
+    [self setScreenTitleForCurrentCampus];
+
+   
     [self hideCampusChooser];
 }
 

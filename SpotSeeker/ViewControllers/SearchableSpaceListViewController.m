@@ -85,6 +85,10 @@ bool first_search = false;
 #pragma mark -
 #pragma mark campus selection
 
+-(void)setScreenTitleForCurrentCampus {
+    self.title = [Campus getCurrentCampus].screen_title;
+}
+
 -(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -196,6 +200,10 @@ bool first_search = false;
         // Custom initialization
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self setScreenTitleForCurrentCampus];
 }
 
 - (void)viewDidLoad

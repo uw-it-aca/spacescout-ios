@@ -11,6 +11,7 @@
 
 @interface Campus : NSObject {
     NSString *name;
+    NSString *screen_title;
     NSString *search_key;
     NSNumber *longitude;
     NSNumber *latitude;
@@ -20,6 +21,7 @@
 }
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *screen_title;
 @property (nonatomic, retain) NSString *search_key;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;

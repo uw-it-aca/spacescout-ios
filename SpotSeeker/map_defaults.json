@@ -6,7 +6,8 @@
     "latitude_delta":0.005,
     "name":"Seattle",
     "search_key": "seattle",
-    "is_default": true
+    "is_default": true,
+    "screen_title": "Seattle Campus"
 
  },
  {
@@ -15,7 +16,8 @@
     "longitude_delta":0.005,
     "latitude_delta":0.005,
     "name":"Tacoma",
-    "search_key": "tacoma"
+    "search_key": "tacoma",
+    "screen_title": "Tacoma Campus"
 
  }
 ]
