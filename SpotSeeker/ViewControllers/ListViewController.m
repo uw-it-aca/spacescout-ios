@@ -47,6 +47,10 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    self.campus_picker_panel.hidden = true;
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [self.spot_table reloadData];
 }
