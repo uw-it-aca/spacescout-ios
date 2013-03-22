@@ -86,6 +86,12 @@
 -(IBAction)btnClickCampusSelected:(id)sender {
     int row = [self.campus_picker selectedRowInComponent:0];
     Campus *campus = [[Campus getCampuses] objectAtIndex:row];
+    Campus *current_campus = [Campus getCurrentCampus];
+    
+    if ([current_campus.search_key isEqualToString:campus.search_key]) {
+        [self hideCampusChooser];
+        return;
+    }
     [Campus setCurrentCampus: campus];
     self.search_attributes = nil;
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
