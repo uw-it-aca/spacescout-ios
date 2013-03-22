@@ -41,6 +41,11 @@ bool first_search = false;
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
     [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
     
+    Campus *current = [Campus getCurrentCampus];
+    NSArray *campus_param = [[NSArray alloc] initWithObjects:current.search_key, nil];
+    [search_attributes setValue:campus_param forKey:@"extended_info:campus"];
+
+    
     int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     
     if (meters > 10000 && first_search == false) {

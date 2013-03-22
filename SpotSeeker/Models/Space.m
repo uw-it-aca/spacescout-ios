@@ -50,10 +50,6 @@
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
     
-    Campus *current = [Campus getCurrentCampus];
-    
-    NSArray *campus_param = [[NSArray alloc] initWithObjects:current.search_key, nil];
-    [arguments setValue:campus_param forKey:@"extended_info:campus"];
     [_rest getURL:[self buildURLWithParams:arguments]];
     self.rest = _rest;
 }
