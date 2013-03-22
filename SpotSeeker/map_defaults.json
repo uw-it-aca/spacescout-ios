@@ -10,21 +10,12 @@
 
  },
  {
-    "longitude":-122.308391,
-    "latitude":47.656094,
+    "longitude":-122.438046,
+    "latitude":47.24527,
     "longitude_delta":0.005,
     "latitude_delta":0.005,
     "name":"Tacoma",
-    "search_key": "seattle2"
+    "search_key": "tacoma"
 
- },
- {
-    "longitude":-122.308393,
-    "latitude":47.656095,
-    "longitude_delta":0.005,
-    "latitude_delta":0.005,
-    "name":"Bothell",
-    "search_key": "bothell"
  }
-
 ]
