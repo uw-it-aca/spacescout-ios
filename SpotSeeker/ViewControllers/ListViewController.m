@@ -32,7 +32,8 @@
     
     // Get GA tracker
     id tracker = [GAI sharedInstance].defaultTracker;
-    [tracker sendView:@"List View"];
+    NSString *className = [NSString stringWithFormat:@"List View (%@)", self.class];
+    [tracker sendView:className];
 
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
