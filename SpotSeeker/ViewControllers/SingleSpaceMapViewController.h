@@ -10,8 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "Space.h"
 #import "SingleSpaceMapAnnotation.h"
+#import "GAITrackedViewController.h"
 
-@interface SingleSpaceMapViewController : UIViewController <MKMapViewDelegate> {
+@interface SingleSpaceMapViewController : GAITrackedViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *map_view;
     Space *spot;
 }

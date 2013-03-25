@@ -18,6 +18,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -41,6 +42,17 @@
     float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
 
     [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0]];
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    // TODO: get the app to send data once when it's done being used instead. (set negative value and call it's dispatch method)
+    [GAI sharedInstance].dispatchInterval = 0;
+    // Optional: set debug to YES for extra debugging information.
+    // TODO: don't forget to set this to NO for packaging
+    [GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-XXXXXXXX-X"];
 
     return YES;
 }

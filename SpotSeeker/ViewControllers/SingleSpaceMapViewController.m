@@ -50,6 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"Single Space Map View";
     
     [map_view setShowsUserLocation:YES];
 

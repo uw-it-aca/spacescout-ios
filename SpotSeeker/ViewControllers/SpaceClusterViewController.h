@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListViewController.h"
+#import "GAI.h"
 
 @interface SpaceClusterViewController : ListViewController {
     

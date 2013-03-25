@@ -29,6 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Get GA tracker
+    id tracker = [GAI sharedInstance].defaultTracker;
+    [tracker sendView:@"List View"];
+
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     if (self.current_spots.count < 1) {

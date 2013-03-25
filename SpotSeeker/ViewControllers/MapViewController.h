@@ -30,6 +30,7 @@
 #import "SearchableSpaceListViewController.h"
 #import "AppDelegate.h"
 //#import "SpotClusterViewController.h"
+#import "GAI.h"
 
 @interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate> {
     NSArray *current_clusters;

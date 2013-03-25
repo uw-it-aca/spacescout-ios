@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"Space Images View";
     self.current_index = [NSNumber numberWithInt:0];
     self.image_data = [[NSMutableArray alloc] init];
     self.rest = [[REST alloc] init];
