@@ -23,9 +23,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    // Get GA tracker
-    id tracker = [GAI sharedInstance].defaultTracker;
-    [tracker sendView:@"Space Cluster View"];
 
 }
 
