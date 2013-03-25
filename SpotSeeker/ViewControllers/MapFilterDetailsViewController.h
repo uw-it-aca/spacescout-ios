@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface MapFilterDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface MapFilterDetailsViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableDictionary *filter;
     IBOutlet UITableView *table_view;
     IBOutlet UILabel *screen_header;

@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"Map Filter Time View";
     
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
