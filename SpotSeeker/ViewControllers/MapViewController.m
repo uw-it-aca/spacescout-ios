@@ -387,6 +387,10 @@ extern const int meters_per_latitude;
 {
     [super viewDidLoad];
     
+    // Get GA tracker
+    id tracker = [GAI sharedInstance].defaultTracker;
+    [tracker sendView:@"Map View"];
+    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if ([delegate.has_hidden_map_tooltip boolValue] == true) {
         UIView *tips = [self.view viewWithTag:10];

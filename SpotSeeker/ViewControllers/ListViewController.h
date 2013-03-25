@@ -12,6 +12,7 @@
 #import "SpaceDetailsViewController.h"
 #import "MapViewController.h"
 #import "SearchableSpaceListViewController.h"
+#import "GAI.h"
 
 @interface ListViewController : SearchableSpaceListViewController <UITableViewDelegate, UITableViewDataSource, RESTFinished, UIAlertViewDelegate> {
     IBOutlet UITableView *spot_table;

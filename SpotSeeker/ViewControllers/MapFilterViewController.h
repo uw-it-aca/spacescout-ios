@@ -28,10 +28,11 @@
 #import "PickerFilterViewController.h"
 #import "UITableSwitch.h"
 #import "SearchFilter.h"
+#import "GAITrackedViewController.h"
 
 @protocol SearchFilters;
 
-@interface MapFilterViewController : UIViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
+@interface MapFilterViewController : GAITrackedViewController <UITextViewDelegate, SearchFilterLoaded, UITextFieldDelegate> {
     Space *spot;
       
     IBOutlet UITableView *filter_table;
