@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface PickerFilterViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface PickerFilterViewController : GAITrackedViewController <UITableViewDataSource,UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 
 @property (retain, nonatomic) NSMutableDictionary *filter;

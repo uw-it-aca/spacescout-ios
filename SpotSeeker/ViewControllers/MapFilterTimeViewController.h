@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface MapFilterTimeViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface MapFilterTimeViewController : GAITrackedViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
     IBOutlet UIPickerView *time_picker;
     NSMutableDictionary *filter;
     NSDateComponents *start_time;

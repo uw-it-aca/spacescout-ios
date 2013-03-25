@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"Map Filter Details View";
     
     NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
     NSString *screen_title =  NSLocalizedString(title_key, nil);

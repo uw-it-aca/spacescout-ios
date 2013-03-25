@@ -57,8 +57,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.trackedViewName = @"Map Filter View";
     
+    // Get GA tracker
+    id tracker = [GAI sharedInstance].defaultTracker;
+    [tracker sendView:@"Map Filter View"];
+        
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
     NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];

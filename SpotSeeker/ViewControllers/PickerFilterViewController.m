@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"Picker Filter View Controller";
     
     NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
     NSString *screen_title =  NSLocalizedString(title_key, nil);
