@@ -42,7 +42,17 @@
     float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
 
     [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0]];
-
+    
+    // Register the preference defaults early.
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"enable_analytics"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enable_analytics"]) {
+        [[GAI sharedInstance] setOptOut:NO];
+    } else {
+        [[GAI sharedInstance] setOptOut:YES];
+    }
+    
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
@@ -50,7 +60,7 @@
     [GAI sharedInstance].dispatchInterval = 0;
     // Optional: set debug to YES for extra debugging information.
     // TODO: don't forget to set this to NO for packaging
-    [GAI sharedInstance].debug = YES;
+    [GAI sharedInstance].debug = NO;
 
     // Get GA tracking id if it exists
     NSString *ss_plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
