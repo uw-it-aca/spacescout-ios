@@ -865,7 +865,7 @@
 				8974C44E1700CFA100DF1C81 /* CoreData.framework */,
 				C25D6F961576AF7100A16A87 /* CoreLocation.framework */,
 				C2FDB0E8150A802D00ED3A93 /* SpaceScout */,
-				C2FDB106150A802E00ED3A93 /* SpaceScout */,
+				C2FDB106150A802E00ED3A93 /* SpaceScout Tests */,
 				C2FDB0E1150A802D00ED3A93 /* Frameworks */,
 				C2FDB0DF150A802D00ED3A93 /* Products */,
 			);
@@ -936,7 +936,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C2FDB106150A802E00ED3A93 /* SpaceScout */ = {
+		C2FDB106150A802E00ED3A93 /* SpaceScout Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C2A0E92E153E2EE100D9568E /* SpotModelTests.h */,
@@ -945,7 +945,7 @@
 				C213C5AA1559C82700F295DD /* HoursDisplayTests.m */,
 				C2FDB107150A802E00ED3A93 /* Supporting Files */,
 			);
-			name = SpaceScout;
+			name = "SpaceScout Tests";
 			path = SpotSeekerTests;
 			sourceTree = "<group>";
 		};
