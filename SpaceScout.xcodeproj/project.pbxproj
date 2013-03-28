@@ -16,6 +16,10 @@
 		23BEBC0015BF413F006210FF /* pin30.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BEBBFE15BF413F006210FF /* pin30.png */; };
 		23BEBC0115BF413F006210FF /* pin30@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BEBBFF15BF413F006210FF /* pin30@2x.png */; };
 		890B018416C33500001962F8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890B018316C33500001962F8 /* Default-568h@2x.png */; };
+		891103441704AC5300D2214D /* hours_status_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103401704AC5300D2214D /* hours_status_active.png */; };
+		891103451704AC5300D2214D /* hours_status_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103411704AC5300D2214D /* hours_status_active@2x.png */; };
+		891103461704AC5300D2214D /* hours_status_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103421704AC5300D2214D /* hours_status_default.png */; };
+		891103471704AC5300D2214D /* hours_status_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103431704AC5300D2214D /* hours_status_default@2x.png */; };
 		8940AD4115BF1DB200714AFB /* pin00.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD3F15BF1DB200714AFB /* pin00.png */; };
 		8940AD4215BF1DB200714AFB /* pin00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD4015BF1DB200714AFB /* pin00@2x.png */; };
 		8940AD4515BF207800714AFB /* asterisk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD4315BF207800714AFB /* asterisk.png */; };
@@ -220,6 +224,10 @@
 		23BEBBFE15BF413F006210FF /* pin30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin30.png; path = images/pins/pin30.png; sourceTree = "<group>"; };
 		23BEBBFF15BF413F006210FF /* pin30@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin30@2x.png"; path = "images/pins/pin30@2x.png"; sourceTree = "<group>"; };
 		890B018316C33500001962F8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		891103401704AC5300D2214D /* hours_status_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hours_status_active.png; path = images/buttons/hours_status_active.png; sourceTree = "<group>"; };
+		891103411704AC5300D2214D /* hours_status_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hours_status_active@2x.png"; path = "images/buttons/hours_status_active@2x.png"; sourceTree = "<group>"; };
+		891103421704AC5300D2214D /* hours_status_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hours_status_default.png; path = images/buttons/hours_status_default.png; sourceTree = "<group>"; };
+		891103431704AC5300D2214D /* hours_status_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hours_status_default@2x.png"; path = "images/buttons/hours_status_default@2x.png"; sourceTree = "<group>"; };
 		8940AD3F15BF1DB200714AFB /* pin00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin00.png; path = images/pins/pin00.png; sourceTree = "<group>"; };
 		8940AD4015BF1DB200714AFB /* pin00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin00@2x.png"; path = "images/pins/pin00@2x.png"; sourceTree = "<group>"; };
 		8940AD4315BF207800714AFB /* asterisk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asterisk.png; sourceTree = "<group>"; };
@@ -519,6 +527,10 @@
 		8990687E15B606EE002CDF90 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				891103401704AC5300D2214D /* hours_status_active.png */,
+				891103411704AC5300D2214D /* hours_status_active@2x.png */,
+				891103421704AC5300D2214D /* hours_status_default.png */,
+				891103431704AC5300D2214D /* hours_status_default@2x.png */,
 				8940AD6715BF344400714AFB /* done_picker.png */,
 				8940AD6815BF344400714AFB /* done_picker@2x.png */,
 				8940AD6115BF334200714AFB /* ViewResults.png */,
@@ -1138,6 +1150,10 @@
 				895B2DBA16EE90F000E00BE0 /* icon-72@2x.png in Resources */,
 				8953B6D816EEA86F008BF921 /* Default@2x.png in Resources */,
 				898E35431703A984004AA71C /* Settings.bundle in Resources */,
+				891103441704AC5300D2214D /* hours_status_active.png in Resources */,
+				891103451704AC5300D2214D /* hours_status_active@2x.png in Resources */,
+				891103461704AC5300D2214D /* hours_status_default.png in Resources */,
+				891103471704AC5300D2214D /* hours_status_default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
