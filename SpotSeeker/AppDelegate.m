@@ -53,6 +53,13 @@
         [[GAI sharedInstance] setOptOut:YES];
     }
     
+    // register with the Notification Center in case someone changes settings
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(defaultsChanged:)
+                   name:NSUserDefaultsDidChangeNotification
+                 object:nil];
+    
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
@@ -83,6 +90,17 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network connection title", nil) message:NSLocalizedString(@"no network connection message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"no network connection button", nil) otherButtonTitles:nil];
     [alert show];
 
+}
+
+- (void)defaultsChanged:(NSNotification *)notification {
+    // Get the user defaults
+    NSUserDefaults *defaults = (NSUserDefaults *)[notification object];
+    
+    if ([defaults boolForKey:@"enable_analytics"]) {
+        [[GAI sharedInstance] setOptOut:NO];
+    } else {
+        [[GAI sharedInstance] setOptOut:YES];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
