@@ -97,7 +97,7 @@
                                         </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem width="23" style="plain" systemItem="fixedSpace" id="y3H-ga-lPU"/>
-                                    <barButtonItem title="Campus" id="Civ-yp-Tfv">
+                                    <barButtonItem image="cog.png" id="Civ-yp-Tfv">
                                         <connections>
                                             <action selector="btnClickCampusChooser:" destination="2" id="clp-Qf-owY"/>
                                         </connections>
@@ -1740,10 +1740,10 @@
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem width="54" style="plain" systemItem="fixedSpace" id="ldb-8E-bvN"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ldb-8E-bvN"/>
                                     <barButtonItem style="plain" id="u0B-AM-0hA">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
-                                            <rect key="frame" x="66" y="8" width="142" height="30"/>
+                                            <rect key="frame" x="89" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
@@ -1756,8 +1756,8 @@
                                         </segmentedControl>
                                         <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>
-                                    <barButtonItem width="31" style="plain" systemItem="fixedSpace" id="xqO-Ce-gpZ"/>
-                                    <barButtonItem title="Campus" id="GKi-4O-DYz">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xqO-Ce-gpZ"/>
+                                    <barButtonItem image="cog.png" id="GKi-4O-DYz">
                                         <connections>
                                             <action selector="btnClickCampusChooser:" destination="ylv-3b-UIf" id="HcP-6b-siA"/>
                                         </connections>
@@ -1906,6 +1906,7 @@
         <image name="asterisk.png" width="22" height="22"/>
         <image name="button_Back.png" width="41" height="30"/>
         <image name="button_Next.png" width="41" height="30"/>
+        <image name="cog.png" width="24" height="24"/>
         <image name="done_picker.png" width="53" height="25"/>
         <image name="faveslist.png" width="24" height="24"/>
         <image name="filter_reset.png" width="87" height="37"/>
@@ -2051,7 +2052,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rfQ-ts-oNK"/>
-        <segue reference="em9-ZW-DQ1"/>
         <segue reference="3uu-G9-i3V"/>
+        <segue reference="em9-ZW-DQ1"/>
     </inferredMetricsTieBreakers>
 </document>
