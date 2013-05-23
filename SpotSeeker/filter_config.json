@@ -86,7 +86,7 @@
              "table_row_type":"cell_with_indexed_table",
              "default_selection_label":"Entire campus",
              "clear_selections_label":"Entire campus",
-             "data_source":"/api/v1/buildings"
+             "data_source":"/api/v1/buildings?campus=%@"
              }
              ]
   },

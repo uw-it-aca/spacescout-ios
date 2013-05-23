@@ -51,7 +51,9 @@
         self.table_view.hidden = YES;
         self.loading_spinner.hidden = NO;
         
-        __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:[filter objectForKey:@"data_source"]];
+        NSString *building_url = [NSString stringWithFormat:[filter objectForKey:@"data_source"], [Campus getCurrentCampus].search_key];
+        
+        __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:building_url];
         
         [request setCompletionBlock:^{
             SBJsonParser *parser = [[SBJsonParser alloc] init];

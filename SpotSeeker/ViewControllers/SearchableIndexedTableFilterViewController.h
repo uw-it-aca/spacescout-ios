@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "REST.h"
 #import "SBJson.h"
+#import "Campus.h"
 
 @interface SearchableIndexedTableFilterViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
     NSMutableDictionary *filter;
