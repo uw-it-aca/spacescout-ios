@@ -156,22 +156,22 @@
     NSMutableArray *display_parts = [[NSMutableArray alloc] init];
     for (NSString *day in days) {
         int index = 0;
-        if (day == @"monday") {
+        if ([day isEqualToString: @"monday"]) {
             index = 0;
         }
-        else if (day == @"tuesday") {
+        else if ([day isEqualToString: @"tuesday"]) {
             index = 1;
         }
-        else if (day == @"wednesday") {
+        else if ([day isEqualToString: @"wednesday"]) {
             index = 2;
         }
-        else if (day == @"thursday") {
+        else if ([day isEqualToString: @"thursday"]) {
             index = 3;
         }
-        else if (day == @"friday") {
+        else if ([day isEqualToString: @"friday"]) {
             index = 4;
         }
-        else if (day == @"saturday") {
+        else if ([day isEqualToString: @"saturday"]) {
             index = 5;
         }
         else {
