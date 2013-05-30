@@ -135,7 +135,7 @@ bool first_search = false;
     
     [UIView animateWithDuration:0.5
                           delay:0.0
-                        options:UIViewAnimationCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          self.campus_picker_panel.frame = CGRectMake(0, starting_y, width, height);
                      }
@@ -153,7 +153,7 @@ bool first_search = false;
     
     [UIView animateWithDuration:0.5
                           delay:0.0
-                        options:UIViewAnimationCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          self.campus_picker_panel.frame = CGRectMake(0, full_height, width, height);
                      }

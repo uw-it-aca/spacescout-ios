@@ -268,7 +268,7 @@ extern const int meters_per_latitude;
         UIView *tips = [self.view viewWithTag:10];
         [UIView animateWithDuration:0.5
                               delay:0.0
-                            options:UIViewAnimationCurveEaseInOut
+                            options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{   
                              tips.alpha = 0.0;
                          }

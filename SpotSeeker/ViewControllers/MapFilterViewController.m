@@ -592,7 +592,7 @@
     
     [UIView animateWithDuration:0.8
                           delay:0.2
-                        options: UIViewAnimationCurveEaseIn
+                        options: UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          picker_view.frame = CGRectMake(0, 960, 320, 480);
                      } 

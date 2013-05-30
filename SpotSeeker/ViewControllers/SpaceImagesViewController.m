@@ -213,7 +213,7 @@
         else {
             [UIView animateWithDuration:0.5
                                   delay:0.0
-                                options:UIViewAnimationCurveEaseOut
+                                options:UIViewAnimationOptionCurveEaseOut
                              animations:^{   
                                  [self recenterImageView];
                              }

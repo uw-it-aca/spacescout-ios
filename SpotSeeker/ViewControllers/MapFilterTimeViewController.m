@@ -179,7 +179,7 @@
     
     [UIView animateWithDuration:0.5
                           delay:0.0
-                        options:UIViewAnimationCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{   
                          wrapper.frame = ending;
                      }
@@ -197,7 +197,7 @@
     
     [UIView animateWithDuration:0.5
                           delay:0.2
-                        options:UIViewAnimationCurveEaseIn
+                        options:UIViewAnimationOptionCurveEaseIn
                      animations:^{   
                          wrapper.frame = ending;
                      }
