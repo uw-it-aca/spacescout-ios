@@ -105,7 +105,7 @@ bool first_search = false;
 
 -(IBAction)btnClickCampusChooser:(id)sender {
     NSArray *campuses = [Campus getCampuses];
-    int selected_index;
+    int selected_index = 0; // Default to the first item in the list.
     Campus *current = [Campus getCurrentCampus];
     
     for (int i = 0; i < [campuses count]; i++) {
@@ -115,6 +115,7 @@ bool first_search = false;
             break;
         }
     }
+    
     [self showCampusChooser];
     
     [self.campus_picker selectRow:selected_index inComponent:0 animated:false];
