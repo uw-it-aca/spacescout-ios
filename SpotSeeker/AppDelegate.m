@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  SpotSeeker
 //
-//  Copyright 2012 UW Information Technology, University of Washington
+//  Copyright 2013 UW Information Technology, University of Washington
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -63,8 +63,7 @@
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    // TODO: get the app to send data once when it's done being used instead. (set negative value and call it's dispatch method)
-    [GAI sharedInstance].dispatchInterval = 0;
+    [GAI sharedInstance].dispatchInterval = -1;
     // Optional: set debug to YES for extra debugging information.
     // TODO: don't forget to set this to NO for packaging
     [GAI sharedInstance].debug = NO;
@@ -107,6 +106,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [[GAI sharedInstance] dispatch];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

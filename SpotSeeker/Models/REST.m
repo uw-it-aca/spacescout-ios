@@ -7,6 +7,7 @@
 //
 
 #import "REST.h"
+#import "GAI.h"
 
 @implementation REST
 
@@ -23,6 +24,7 @@
     
     [request setDelegate:self];
     [request startAsynchronous];
+    [[GAI sharedInstance] dispatch];
 
 }
 
