@@ -1491,7 +1491,7 @@ static NSOperationQueue *sharedQueue = nil;
 		// ***Black magic warning***
 		// We have a body, but we've taken longer than timeOutSeconds to upload the first small chunk of data
 		// Since there's no reliable way to track upload progress for the first 32KB (iPhone) or 128KB (Mac) with CFNetwork, we'll be slightly more forgiving on the timeout, as there's a strong chance our connection is just very slow.
-		} else if (secondsSinceLastActivity > [self timeOutSeconds]*1.5) {
+		} else if (secondsSinceLastActivity > [self timeOutSeconds]*1.5*2) { // timeOutSeconds doubled by cstimmel (temporarily?) because our server's a little slow
 			return YES;
 		}
 	}
