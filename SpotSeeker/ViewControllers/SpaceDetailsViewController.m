@@ -379,6 +379,35 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
         }
         
+#pragma mark labstats
+        NSLog(@"Available: %@, Total: %@", [spot.extended_info objectForKey:@"auto_labstats_available"], [spot.extended_info objectForKey:@"auto_labstats_total"]);
+        
+        id raw_total_value = [spot.extended_info objectForKey:@"auto_labstats_total"];
+
+        if (raw_total_value != nil && [raw_total_value integerValue] > 0) {
+            UILabel *total = (UILabel *)[cell viewWithTag:32];
+            total.text = raw_total_value;
+
+            id raw_available_value = [spot.extended_info objectForKey:@"auto_labstats_available"];
+
+            UILabel *available = (UILabel *)[cell viewWithTag:31];
+
+            if (raw_available_value == nil) {
+                available.text = @"--";
+            }
+            else {
+                available.text = raw_available_value;
+                if ([raw_available_value integerValue] == 0) {
+                    available.textColor = [UIColor redColor];
+                }
+            }
+        }
+        else {
+            
+        }
+        
+#pragma mark hours
+        
         NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
         
         for (int index = 0; index < [display_hours count]; index++) {
