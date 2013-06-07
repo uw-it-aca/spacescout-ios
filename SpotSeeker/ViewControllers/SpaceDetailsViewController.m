@@ -56,82 +56,28 @@
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *app_path = [[NSBundle mainBundle] bundlePath];
-    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
+    
+    int hours_cell_index = 1;
+    int access_notes_index = 2;
+    int labstats_cell_index = -1;
+    
+    if (has_labstats) {
+        hours_cell_index++;
+        access_notes_index++;
+        labstats_cell_index += 2;
+    }
+    
 
     if (indexPath.section == 0 && indexPath.row == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
-        }
-        
-        float baseline_height = cell.frame.size.height;
-        
-        UILabel *name_label = (UILabel *)[cell viewWithTag:1];
-        
-        // Only add height if this actually wraps
-        CGSize expected = [self.spot.name sizeWithFont:name_label.font constrainedToSize:CGSizeMake(name_label.frame.size.width, 500.0)  lineBreakMode:UILineBreakModeWordWrap];
-        CGSize base_size = [@"A" sizeWithFont:name_label.font];
-        
-        return baseline_height + expected.height - base_size.height;
+        return [self heightOfImageCellInTable:tableView];
     }
-    else if (indexPath.section == 0 && indexPath.row == 1) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
-        }
-        
-        NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
-        UILabel *hours_label = (UILabel *)[cell viewWithTag:11];
-        int hours_height = hours_label.frame.size.height * [display_hours count];
-           
-        UILabel *description_label = (UILabel *)[cell viewWithTag:100];
-        
-        float location_header_size = 0;
-        float location_padding = 0;
-        NSString *spot_description = [self.spot.extended_info objectForKey:@"location_description"];
-        if (![spot_description isEqualToString:@""]) {
-            UILabel *location_header_label = (UILabel *)[cell viewWithTag:51];
-            location_header_size = location_header_label.frame.size.height;
-                        
-            location_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
-
-        }
-        CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
-
-        NSString *app_path = [[NSBundle mainBundle] bundlePath];
-        NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-        NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-        
-        float hours_cell_extra = [[plist_values objectForKey:@"hours_cell_extra_height"] floatValue];
-
-        UILabel *open_label = (UILabel *)[cell viewWithTag:50];
-        float open_label_bottom = open_label.frame.origin.y + open_label.frame.size.height;
-        
-        return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
+    else if (indexPath.section == 0 && indexPath.row == hours_cell_index) {
+        return [self heightOfHoursCellInTable:tableView];
     }
-    else if (indexPath.section == 0 && indexPath.row == 2) {
-        NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
-        NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
-        
-        NSString *cell_id;
-
-        if (access_notes != nil && reservation_notes != nil) {
-            cell_id = @"notes_bubble_cell_both";
-        }
-        else if (access_notes != nil) {
-            cell_id = @"notes_bubble_cell_access";
-        }
-        else {
-            cell_id = @"notes_bubble_cell_reservations";
-        }
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
-        }
-        
-        return cell.bounds.size.height - 1.0;
+    else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
+        return [self heightOfAccessNotesCellInTable:tableView];
     }
     else if (indexPath.section == 2) {
         int offset = 0;
@@ -221,11 +167,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    int base_number = 2;
     if (section == 0) {
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil || [self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
-            return 3;
+            base_number++;
         }
-        return 2;
+        if ([self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil) {
+            base_number++;
+        }
+        return base_number;
     }
     if (section == 1) {
         int count = [self.environment_fields count];
@@ -284,199 +234,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0) {       
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
-        }
-        
-        UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
-        [spot_name setText:self.spot.name];
-        [spot_name sizeToFit];
-        
-        UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
-        
-        NSMutableArray *type_names = [[NSMutableArray alloc] init];
-        for (NSString *type in self.spot.type) {
-            NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
-                                
-            NSString *type_name = NSLocalizedString(string_key, nil);
-            [type_names addObject:type_name];
-        }
-        NSString *type_and_capacity = [type_names componentsJoinedByString:@", "];
-        
-        if (spot.capacity > 0) {
-            type_and_capacity = [NSString stringWithFormat:@"%@, seats %@", type_and_capacity, spot.capacity];
-        }
-        [spot_type setText: type_and_capacity];
-        
-        UILabel *capacity = (UILabel *)[cell viewWithTag:3];
-        NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
-        [capacity setText: capacity_string];
-        
-        if ([self isOpenNow:self.spot.hours_available]) {
-            UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
-            flag_view.image = [UIImage imageNamed:@"flag_open"];
-        }
-        else {
-            UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
-            flag_view.image = [UIImage imageNamed:@"flag_closed"];            
-        }
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
 
-        UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
-        self.favorite_button = fav_button;
-        if ([Favorites isFavorite:spot]) {
-            [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];        
-        }
-        
-        UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
-        
-        
-        if ([spot.image_urls count] == 0) {
-            UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
-            spinner.hidden = YES;
-            
-        }
-        self.image_count_label = (UILabel *)[cell viewWithTag:9];
-        if ([spot.image_urls count] < 2) {
-            self.image_count_label.hidden = YES;
-        }
-
-        self.img_button_view = spot_image_view;
- 
-        if ([spot.image_urls count]) {
-            [[spot_image_view imageView] setContentMode: UIViewContentModeScaleAspectFill];
-            spot_image_view.contentMode = UIViewContentModeScaleToFill;
-
-            if (self.spot_image) {
-                UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
-                spinner.hidden = YES;
-                [self displaySpaceImage:self.spot_image];
-            }
-            else {
-                NSString *image_url = [spot.image_urls objectAtIndex:0];
-                if (self.rest == nil) {
-                    REST *_rest = [[REST alloc] init];
-                    _rest.delegate = self;
-                    self.rest = _rest;
-                }
-                [self.rest getURL:image_url];
-            }
-            UILabel *image_count = (UILabel *)[cell viewWithTag:9];
-            image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
-            
-        }
-        else {
-            UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
-            [self displaySpaceImage:no_image];
-        }
-        
-        return cell;
+    int hours_cell_index = 1;
+    int access_notes_index = 2;
+    int labstats_cell_index = -1;
+    
+    if (has_labstats) {
+        hours_cell_index++;
+        access_notes_index++;
+        labstats_cell_index += 2;
     }
-    else if (indexPath.section == 0 && indexPath.row == 1) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
-        }
-        
-#pragma mark labstats
-        NSLog(@"Available: %@, Total: %@", [spot.extended_info objectForKey:@"auto_labstats_available"], [spot.extended_info objectForKey:@"auto_labstats_total"]);
-        
-        id raw_total_value = [spot.extended_info objectForKey:@"auto_labstats_total"];
-
-        if (raw_total_value != nil && [raw_total_value integerValue] > 0) {
-            UILabel *total = (UILabel *)[cell viewWithTag:32];
-            total.text = raw_total_value;
-
-            id raw_available_value = [spot.extended_info objectForKey:@"auto_labstats_available"];
-
-            UILabel *available = (UILabel *)[cell viewWithTag:31];
-
-            if (raw_available_value == nil) {
-                available.text = @"--";
-            }
-            else {
-                available.text = raw_available_value;
-                if ([raw_available_value integerValue] == 0) {
-                    available.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else {
-            
-        }
-        
-#pragma mark hours
-        
-        NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
-        
-        for (int index = 0; index < [display_hours count]; index++) {
-            UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
-            hours_label.text = [display_hours objectAtIndex:index];
-            hours_label.hidden = NO;
-        }
-                
-        for (int index = [display_hours count]; index <= 7; index++) {
-            UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
-            hours_label.hidden = YES;
-            hours_label.text = @"";            
-        }
-        
-        UILabel *description = (UILabel *)[cell viewWithTag:100];
-        description.text = [self.spot.extended_info objectForKey:@"location_description"];
-        
-        UILabel *location_header = (UILabel *)[cell viewWithTag:51];
-
-        if (![description.text isEqualToString:@""]) {
-            UILabel *bottom_hours = (UILabel *)[cell viewWithTag:[display_hours count] + 11 - 1];
-            float hours_bottom = bottom_hours.frame.origin.y + bottom_hours.frame.size.height;    
-            
-            location_header.frame = CGRectMake(location_header.frame.origin.x, hours_bottom, location_header.frame.size.width, location_header.frame.size.height);
-            
-            float location_header_bottom = location_header.frame.origin.y + location_header.frame.size.height;
-            
-            CGSize expected = [description.text sizeWithFont:description.font constrainedToSize:CGSizeMake(description.frame.size.width, 500.0)  lineBreakMode:description.lineBreakMode];
-            
-            description.frame = CGRectMake(description.frame.origin.x, location_header_bottom, description.frame.size.width, expected.height);
-            location_header.hidden = NO;
-        }
-        else {
-            location_header.hidden = YES;
-        }
-        
-        return cell;
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return [self cellForImageAndNameInTable:tableView];
     }
-    else if (indexPath.section == 0 && indexPath.row == 2) {
-        NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
-        NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
-
-        NSString *cell_id;
-        if (access_notes != nil && reservation_notes != nil) {
-            cell_id = @"notes_bubble_cell_both";
-        }
-        else if (access_notes != nil) {
-            cell_id = @"notes_bubble_cell_access";
-        }
-        else {
-            cell_id = @"notes_bubble_cell_reservations";
-        }
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
-        }
-                
-        if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
-            UILabel *reservations_label = (UILabel *)[cell viewWithTag:31];
-            if ([[self.spot.extended_info objectForKey:@"reservable"] isEqualToString:@"reservations"]) {
-                reservations_label.text = NSLocalizedString(@"Space reservable required", nil);
-            }
-            else {
-                reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
-            }
-
-        }
-
-        return cell;
+    else if (indexPath.section == 0 && indexPath.row == labstats_cell_index) {
+        return [self cellForLabstatsInTable:tableView];
+    }
+    else if (indexPath.section == 0 && indexPath.row == hours_cell_index) {
+        return [self cellForHoursInTable:tableView];
+    }
+    else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
+        return [self cellForAccessNotesInTable:tableView];
     }
     else if (indexPath.section == 1) {
         int attribute_offset = 0;
@@ -485,77 +265,10 @@
         }
         
         if (indexPath.row == 0 && attribute_offset) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
-            }    
-            
-            NSMutableArray *display_fields = [[NSMutableArray alloc] init];
-            for (NSMutableDictionary *field in self.equipment_fields) {
-                NSString *lang_key = [NSString stringWithFormat:@"Space equipment %@", [field objectForKey:@"attribute"]];
-                NSString *display_value = NSLocalizedString(lang_key, nil);
-
-                [display_fields addObject:display_value];
-            }
-            
-            UILabel *type = (UILabel *)[cell viewWithTag:1];
-
-            NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
-            CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
-            
-            type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
-            
-            type.text = equipment_string;
-
-            return cell;
+            return [self cellForEquipmentInTable:tableView];
         }
         else {
-            
-            NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row - attribute_offset];
-            NSString *attribute_key = [attribute objectForKey:@"attribute"];
-            NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
-
-            NSString *lang_key = [NSString stringWithFormat:@"Space environment %@ %@", attribute_key, attribute_value];
-            NSString *display_value = NSLocalizedString(lang_key, nil);
-
-            NSString *cell_type = @"environment_cell";
-            NSString *label_lang_key = [NSString stringWithFormat:@"Space environment label %@", attribute_key];
-            NSString *label_display_value = NSLocalizedString(label_lang_key, nil);
-            
-            if (![label_display_value isEqualToString:@""]) {
-                cell_type = @"environment_cell_with_label";
-            }
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_type];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_type];
-            }
-            
-           
-            UILabel *value = (UILabel *)[cell viewWithTag:2];
-            
-            UIImageView *icon_view = (UIImageView *)[cell viewWithTag:1];
-            
-            if ([attribute_key isEqualToString:@"food_nearby"]) {
-                UIImage *icon = [UIImage imageNamed:@"cafe.png"];
-                icon_view.image = icon;
-            }
-            else if ([attribute_key isEqualToString:@"noise_level"]) {
-                UIImage *icon = [UIImage imageNamed:@"noise.png"];
-                icon_view.image = icon;
-            }
-            else if ([attribute_key isEqualToString:@"has_natural_light"]) {
-                UIImage *icon = [UIImage imageNamed:@"lighting.png"];
-                icon_view.image = icon;                
-            }
-            
-            if (![label_display_value isEqualToString:@""]) {
-                UILabel *label = (UILabel *)[cell viewWithTag:3];
-                label.text = label_display_value;                                        
-            }
-            
-            [value setText: display_value];
-            return cell;
+            return [self cellForEnvironmentInTable:tableView atOffset:attribute_offset andIndexPath:indexPath];
         }
     }
     else if (indexPath.section == 2)  {
@@ -643,20 +356,6 @@
     
 }
 
--(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 2) {
-        NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
-                                                          owner:self
-                                                        options:nil];
-        
-        
-        UIView *_footer = [nibViews objectAtIndex: 0];
-
-        return _footer.frame.size.height;
-    }
-    return 0.0;
-}
-
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 2) {
         if (self.footer) {
@@ -683,9 +382,402 @@
     return nil;
 }
 
+-(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
+                                                          owner:self
+                                                        options:nil];
+        
+        
+        UIView *_footer = [nibViews objectAtIndex: 0];
+        
+        return _footer.frame.size.height;
+    }
+    return 0.0;
+}
+
+#pragma mark -
+#pragma mark cell heights
+
+-(CGFloat)heightOfImageCellInTable:(UITableView *)tableView {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
+    }
+    
+    float baseline_height = cell.frame.size.height;
+    
+    UILabel *name_label = (UILabel *)[cell viewWithTag:1];
+    
+    // Only add height if this actually wraps
+    CGSize expected = [self.spot.name sizeWithFont:name_label.font constrainedToSize:CGSizeMake(name_label.frame.size.width, 500.0)  lineBreakMode:UILineBreakModeWordWrap];
+    CGSize base_size = [@"A" sizeWithFont:name_label.font];
+    
+    return baseline_height + expected.height - base_size.height;
+}
+
+-(CGFloat)heightOfHoursCellInTable:(UITableView *)tableView {
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
+    }
+    
+    NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
+    UILabel *hours_label = (UILabel *)[cell viewWithTag:11];
+    int hours_height = hours_label.frame.size.height * [display_hours count];
+    
+    UILabel *description_label = (UILabel *)[cell viewWithTag:100];
+    
+    float location_header_size = 0;
+    float location_padding = 0;
+    NSString *spot_description = [self.spot.extended_info objectForKey:@"location_description"];
+    if (![spot_description isEqualToString:@""]) {
+        UILabel *location_header_label = (UILabel *)[cell viewWithTag:51];
+        location_header_size = location_header_label.frame.size.height;
+        
+        location_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
+        
+    }
+    CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
+   
+    
+    float hours_cell_extra = [[plist_values objectForKey:@"hours_cell_extra_height"] floatValue];
+    
+    UILabel *open_label = (UILabel *)[cell viewWithTag:50];
+    float open_label_bottom = open_label.frame.origin.y + open_label.frame.size.height;
+    
+    return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
+}
+
+-(CGFloat)heightOfAccessNotesCellInTable:(UITableView *)tableView {
+    NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+    NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
+    
+    NSString *cell_id;
+    
+    if (access_notes != nil && reservation_notes != nil) {
+        cell_id = @"notes_bubble_cell_both";
+    }
+    else if (access_notes != nil) {
+        cell_id = @"notes_bubble_cell_access";
+    }
+    else {
+        cell_id = @"notes_bubble_cell_reservations";
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+    }
+    
+    return cell.bounds.size.height - 1.0;
+}
+
+#pragma mark -
+#pragma mark cell formatting
+-(UITableViewCell *)cellForImageAndNameInTable:(UITableView *)tableView {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
+    }
+    
+    UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
+    [spot_name setText:self.spot.name];
+    [spot_name sizeToFit];
+    
+    UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
+    
+    NSMutableArray *type_names = [[NSMutableArray alloc] init];
+    for (NSString *type in self.spot.type) {
+        NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
+        
+        NSString *type_name = NSLocalizedString(string_key, nil);
+        [type_names addObject:type_name];
+    }
+    NSString *type_and_capacity = [type_names componentsJoinedByString:@", "];
+    
+    if (spot.capacity > 0) {
+        type_and_capacity = [NSString stringWithFormat:@"%@, seats %@", type_and_capacity, spot.capacity];
+    }
+    [spot_type setText: type_and_capacity];
+    
+    UILabel *capacity = (UILabel *)[cell viewWithTag:3];
+    NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
+    [capacity setText: capacity_string];
+    
+    if ([self isOpenNow:self.spot.hours_available]) {
+        UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
+        flag_view.image = [UIImage imageNamed:@"flag_open"];
+    }
+    else {
+        UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
+        flag_view.image = [UIImage imageNamed:@"flag_closed"];
+    }
+    
+    UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
+    self.favorite_button = fav_button;
+    if ([Favorites isFavorite:spot]) {
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+    }
+    
+    UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
+    
+    
+    if ([spot.image_urls count] == 0) {
+        UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
+        spinner.hidden = YES;
+        
+    }
+    self.image_count_label = (UILabel *)[cell viewWithTag:9];
+    if ([spot.image_urls count] < 2) {
+        self.image_count_label.hidden = YES;
+    }
+    
+    self.img_button_view = spot_image_view;
+    
+    if ([spot.image_urls count]) {
+        [[spot_image_view imageView] setContentMode: UIViewContentModeScaleAspectFill];
+        spot_image_view.contentMode = UIViewContentModeScaleToFill;
+        
+        if (self.spot_image) {
+            UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
+            spinner.hidden = YES;
+            [self displaySpaceImage:self.spot_image];
+        }
+        else {
+            NSString *image_url = [spot.image_urls objectAtIndex:0];
+            if (self.rest == nil) {
+                REST *_rest = [[REST alloc] init];
+                _rest.delegate = self;
+                self.rest = _rest;
+            }
+            [self.rest getURL:image_url];
+        }
+        UILabel *image_count = (UILabel *)[cell viewWithTag:9];
+        image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
+        
+    }
+    else {
+        UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
+        [self displaySpaceImage:no_image];
+    }
+    
+    return cell;
+}
+
+-(UITableViewCell *)cellForLabstatsInTable:(UITableView *)tableView {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"labstats_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"labstats_cell"];
+    }
+    
+    id raw_total_value = [spot.extended_info objectForKey:@"auto_labstats_total"];
+    
+    if (raw_total_value != nil && [raw_total_value integerValue] > 0) {
+        UILabel *total = (UILabel *)[cell viewWithTag:32];
+        total.text = raw_total_value;
+        
+        id raw_available_value = [spot.extended_info objectForKey:@"auto_labstats_available"];
+        
+        UILabel *available = (UILabel *)[cell viewWithTag:31];
+        
+        if (raw_available_value == nil || ![self isOpenNow:self.spot.hours_available]) {
+            available.text = @"--";
+        }
+        else {
+            available.text = raw_available_value;
+            if ([raw_available_value integerValue] == 0) {
+                available.textColor = [UIColor redColor];
+            }
+        }
+        
+        CGFloat space_width = [@" " sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        CGFloat of_width = [@"of" sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        
+        CGFloat available_width = [available.text sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)  lineBreakMode:UILineBreakModeWordWrap].width;
+        
+        CGFloat total_field_width = [total.text sizeWithFont:total.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        
+        UILabel *of_label = (UILabel *)[cell viewWithTag:33];
+        UILabel *available_now_label = (UILabel *)[cell viewWithTag:34];
+
+        CGFloat starting_x = available.frame.origin.x;
+        
+        CGFloat of_label_left = starting_x + available_width + space_width;
+        CGFloat total_left = of_label_left + of_width + space_width;
+        CGFloat available_left = total_left + total_field_width + space_width;
+        
+        of_label.frame = CGRectMake(of_label_left, of_label.frame.origin.y, of_label.frame.size.width, of_label.frame.size.height);
+        total.frame = CGRectMake(total_left, total.frame.origin.y, total.frame.size.width, total.frame.size.height);
+        available_now_label.frame = CGRectMake(available_left, available_now_label.frame.origin.y, available_now_label.frame.size.width, available_now_label.frame.size.height);
+        
+    }
+    else {
+        
+    }
+    
+    return cell;
+}
+
+-(UITableViewCell *)cellForHoursInTable:(UITableView *)tableView {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_cell"];
+    }
+    
+    NSMutableArray *display_hours = [[[HoursFormat alloc] init] displayLabelsForHours:spot.hours_available];
+    
+    for (int index = 0; index < [display_hours count]; index++) {
+        UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
+        hours_label.text = [display_hours objectAtIndex:index];
+        hours_label.hidden = NO;
+    }
+    
+    for (int index = [display_hours count]; index <= 7; index++) {
+        UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
+        hours_label.hidden = YES;
+        hours_label.text = @"";
+    }
+    
+    UILabel *description = (UILabel *)[cell viewWithTag:100];
+    description.text = [self.spot.extended_info objectForKey:@"location_description"];
+    
+    UILabel *location_header = (UILabel *)[cell viewWithTag:51];
+    
+    if (![description.text isEqualToString:@""]) {
+        UILabel *bottom_hours = (UILabel *)[cell viewWithTag:[display_hours count] + 11 - 1];
+        float hours_bottom = bottom_hours.frame.origin.y + bottom_hours.frame.size.height;
+        
+        location_header.frame = CGRectMake(location_header.frame.origin.x, hours_bottom, location_header.frame.size.width, location_header.frame.size.height);
+        
+        float location_header_bottom = location_header.frame.origin.y + location_header.frame.size.height;
+        
+        CGSize expected = [description.text sizeWithFont:description.font constrainedToSize:CGSizeMake(description.frame.size.width, 500.0)  lineBreakMode:description.lineBreakMode];
+        
+        description.frame = CGRectMake(description.frame.origin.x, location_header_bottom, description.frame.size.width, expected.height);
+        location_header.hidden = NO;
+    }
+    else {
+        location_header.hidden = YES;
+    }
+    
+    return cell;
+}
+
+-(UITableViewCell *)cellForAccessNotesInTable:(UITableView *)tableView {
+    NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+    NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
+    
+    NSString *cell_id;
+    if (access_notes != nil && reservation_notes != nil) {
+        cell_id = @"notes_bubble_cell_both";
+    }
+    else if (access_notes != nil) {
+        cell_id = @"notes_bubble_cell_access";
+    }
+    else {
+        cell_id = @"notes_bubble_cell_reservations";
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+    }
+    
+    if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+        UILabel *reservations_label = (UILabel *)[cell viewWithTag:31];
+        if ([[self.spot.extended_info objectForKey:@"reservable"] isEqualToString:@"reservations"]) {
+            reservations_label.text = NSLocalizedString(@"Space reservable required", nil);
+        }
+        else {
+            reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
+        }
+        
+    }
+    
+    return cell;
+}
+
+-(UITableViewCell *)cellForEquipmentInTable:(UITableView *)tableView {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
+    }
+    
+    NSMutableArray *display_fields = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary *field in self.equipment_fields) {
+        NSString *lang_key = [NSString stringWithFormat:@"Space equipment %@", [field objectForKey:@"attribute"]];
+        NSString *display_value = NSLocalizedString(lang_key, nil);
+        
+        [display_fields addObject:display_value];
+    }
+    
+    UILabel *type = (UILabel *)[cell viewWithTag:1];
+    
+    NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
+    CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
+    
+    type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
+    
+    type.text = equipment_string;
+    
+    return cell;
+}
+
+-(UITableViewCell *)cellForEnvironmentInTable:(UITableView *)tableView atOffset:(int)attribute_offset andIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary *attribute = [self.environment_fields objectAtIndex:indexPath.row - attribute_offset];
+    NSString *attribute_key = [attribute objectForKey:@"attribute"];
+    NSString *attribute_value = [self.spot.extended_info objectForKey:attribute_key];
+    
+    NSString *lang_key = [NSString stringWithFormat:@"Space environment %@ %@", attribute_key, attribute_value];
+    NSString *display_value = NSLocalizedString(lang_key, nil);
+    
+    NSString *cell_type = @"environment_cell";
+    NSString *label_lang_key = [NSString stringWithFormat:@"Space environment label %@", attribute_key];
+    NSString *label_display_value = NSLocalizedString(label_lang_key, nil);
+    
+    if (![label_display_value isEqualToString:@""]) {
+        cell_type = @"environment_cell_with_label";
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_type];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_type];
+    }
+    
+    
+    UILabel *value = (UILabel *)[cell viewWithTag:2];
+    
+    UIImageView *icon_view = (UIImageView *)[cell viewWithTag:1];
+    
+    if ([attribute_key isEqualToString:@"food_nearby"]) {
+        UIImage *icon = [UIImage imageNamed:@"cafe.png"];
+        icon_view.image = icon;
+    }
+    else if ([attribute_key isEqualToString:@"noise_level"]) {
+        UIImage *icon = [UIImage imageNamed:@"noise.png"];
+        icon_view.image = icon;
+    }
+    else if ([attribute_key isEqualToString:@"has_natural_light"]) {
+        UIImage *icon = [UIImage imageNamed:@"lighting.png"];
+        icon_view.image = icon;
+    }
+    
+    if (![label_display_value isEqualToString:@""]) {
+        UILabel *label = (UILabel *)[cell viewWithTag:3];
+        label.text = label_display_value;
+    }
+    
+    [value setText: display_value];
+    return cell;
+}
+
 #pragma mark -
 #pragma mark hours formatting
-     
+
 -(BOOL)isOpenNow:(NSMutableDictionary *)hours_available {
     NSDate *now = [NSDate date];
 
