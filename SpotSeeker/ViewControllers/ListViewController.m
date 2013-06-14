@@ -251,23 +251,6 @@
         spot_image.hidden = FALSE;
     }
     
-    UILabel *distance_label = (UILabel *)[cell viewWithTag:3];
-    UILabel *distance_value = (UILabel *)[cell viewWithTag:4];
-        
-    if (row_spot.distance_from_user != nil) {
-        float distance = [row_spot.distance_from_user floatValue];
-        if (distance > 1.0) {
-            distance_value.text = [NSString stringWithFormat:@"%.01f", [row_spot.distance_from_user floatValue]];   
-        }
-        else {
-            distance_value.text = [NSString stringWithFormat:@"%.02f", [row_spot.distance_from_user floatValue]];   
-        }
-    }
-    else {
-        distance_label.hidden = YES;
-        distance_value.hidden = YES;
-    }
-    
     UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
     spot_name.text = row_spot.name;
     
@@ -286,7 +269,9 @@
         type_display = [NSString stringWithFormat:@"%@, seats %i", type_display, [row_spot.capacity intValue]];
     }
     spot_type.text = type_display;
-  
+
+    [self showLabstatsForSpace:row_spot inTableCell:cell];
+    
     UILabel *location_description = (UILabel *)[cell viewWithTag:5];
     location_description.lineBreakMode = UILineBreakModeTailTruncation;
     
@@ -294,6 +279,49 @@
     location_description.text = description;
     
     return cell;
+}
+
+-(void)showLabstatsForSpace:(Space *)space inTableCell:(UITableViewCell *)cell {
+    UIImageView *labstats_image = (UIImageView *)[cell viewWithTag:10];
+    UILabel *available = (UILabel *)[cell viewWithTag:11];
+    UILabel *slash = (UILabel *)[cell viewWithTag:12];
+    UILabel *total = (UILabel *)[cell viewWithTag:13];
+    
+    if ([space.extended_info objectForKey:@"auto_labstats_total"]) {
+        id raw_available_value = [space.extended_info objectForKey:@"auto_labstats_available"];
+        if (raw_available_value == nil || ![space isOpenNow]) {
+            available.text = @"--";
+        }
+        else {
+            available.text = raw_available_value;
+        
+            if ([raw_available_value integerValue] == 0) {
+                available.textColor = [UIColor redColor];
+            }
+            else {
+                available.textColor = [UIColor greenColor];
+            }
+        }
+        
+        CGFloat slash_width = [@"/" sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        CGFloat available_width = [available.text sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        CGFloat available_left = available.frame.origin.x;
+        CGFloat slash_left = available_left + available_width;
+        
+        slash.frame = CGRectMake(slash_left, slash.frame.origin.y, slash_width, slash.frame.size.height);
+        
+        CGFloat total_left = slash_left + slash_width;
+        total.frame = CGRectMake(total_left, total.frame.origin.y, total.frame.size.width, total.frame.size.height);
+        total.text = [space.extended_info objectForKey:@"auto_labstats_total"];
+        
+    }
+    else {
+        available.hidden = true;
+        slash.hidden = true;
+        total.hidden = true;
+        labstats_image.hidden = true;
+    }
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

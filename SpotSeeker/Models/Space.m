@@ -350,4 +350,39 @@
 
 }
 
+-(BOOL)isOpenNow {
+    NSDate *now = [NSDate date];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSUIntegerMax fromDate:now];
+    
+    NSArray *day_lookup = [[NSArray alloc] initWithObjects:@"", @"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", nil];
+    
+    NSMutableArray *windows = [hours_available objectForKey:[day_lookup objectAtIndex:[components weekday]]];
+    
+    for (NSMutableArray *window in windows) {
+        NSDateComponents *start = [window objectAtIndex:0];
+        NSDateComponents *end   = [window objectAtIndex:1];
+        
+        [components setHour:[start hour]];
+        [components setMinute:[start minute]];
+        
+        NSDate *start_cmp = [calendar dateFromComponents:components];
+        
+        [components setHour:[end hour]];
+        [components setMinute:[end minute]];
+        
+        NSDate *end_cmp = [calendar dateFromComponents:components];
+        
+        // If the start time is before or equal to now, and the end time is after or equal to now, we're open
+        if (([start_cmp compare:now] != NSOrderedDescending) && ([end_cmp compare:now] != NSOrderedAscending)) {
+            return true;
+        }
+        
+    }
+    
+    return false;
+}
+
+
 @end

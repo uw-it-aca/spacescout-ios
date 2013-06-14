@@ -508,7 +508,7 @@
     NSString *capacity_string = [[NSString alloc] initWithFormat:@"%@", self.spot.capacity];
     [capacity setText: capacity_string];
     
-    if ([self isOpenNow:self.spot.hours_available]) {
+    if ([self.spot isOpenNow]) {
         UIImageView *flag_view = (UIImageView *)[cell viewWithTag:50];
         flag_view.image = [UIImage imageNamed:@"flag_open"];
     }
@@ -569,6 +569,7 @@
 }
 
 -(UITableViewCell *)cellForLabstatsInTable:(UITableView *)tableView {
+    NSLog(@"In here");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"labstats_cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"labstats_cell"];
@@ -584,13 +585,16 @@
         
         UILabel *available = (UILabel *)[cell viewWithTag:31];
         
-        if (raw_available_value == nil || ![self isOpenNow:self.spot.hours_available]) {
+        if (raw_available_value == nil || ![self.spot isOpenNow]) {
             available.text = @"--";
         }
         else {
             available.text = raw_available_value;
             if ([raw_available_value integerValue] == 0) {
                 available.textColor = [UIColor redColor];
+            }
+            else {
+                available.textColor = [UIColor greenColor];                
             }
         }
         
@@ -778,39 +782,6 @@
 #pragma mark -
 #pragma mark hours formatting
 
--(BOOL)isOpenNow:(NSMutableDictionary *)hours_available {
-    NSDate *now = [NSDate date];
-
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSUIntegerMax fromDate:now];
-
-    NSArray *day_lookup = [[NSArray alloc] initWithObjects:@"", @"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", nil];
-
-    NSMutableArray *windows = [hours_available objectForKey:[day_lookup objectAtIndex:[components weekday]]];
-       
-    for (NSMutableArray *window in windows) {
-        NSDateComponents *start = [window objectAtIndex:0];
-        NSDateComponents *end   = [window objectAtIndex:1];
-
-        [components setHour:[start hour]];
-        [components setMinute:[start minute]];
-        
-        NSDate *start_cmp = [calendar dateFromComponents:components];
-
-        [components setHour:[end hour]];
-        [components setMinute:[end minute]];
-        
-        NSDate *end_cmp = [calendar dateFromComponents:components];
-
-        // If the start time is before or equal to now, and the end time is after or equal to now, we're open
-        if (([start_cmp compare:now] != NSOrderedDescending) && ([end_cmp compare:now] != NSOrderedAscending)) {
-            return true;   
-        }
-        
-    }
-
-    return false;
-}
 
 #pragma mark -
 #pragma mark image methods
