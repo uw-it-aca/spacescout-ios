@@ -47,7 +47,7 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select your campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kEs-BP-ZF8">
-                                        <rect key="frame" x="11" y="7" width="150" height="21"/>
+                                        <rect key="frame" x="11" y="7" width="244" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2042,7 +2042,6 @@
                 <relationship kind="action" name="btnClickCancel:"/>
                 <relationship kind="action" name="btnClickResetFilter:"/>
                 <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="action" name="dismissNameKeyboard:"/>
                 <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
             </relationships>
@@ -2073,7 +2072,6 @@
         <class className="SearchableSpaceListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpaceListViewController.h"/>
             <relationships>
-                <relationship kind="action" name="btnClickCampusChooser:"/>
                 <relationship kind="outlet" name="campus_picker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="campus_picker_panel" candidateClass="UIView"/>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
@@ -2133,8 +2131,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ehC-Lb-oxn"/>
-        <segue reference="DG6-VL-yRO"/>
-        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="3uu-G9-i3V"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="em9-ZW-DQ1"/>
     </inferredMetricsTieBreakers>
 </document>
