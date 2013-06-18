@@ -569,7 +569,6 @@
 }
 
 -(UITableViewCell *)cellForLabstatsInTable:(UITableView *)tableView {
-    NSLog(@"In here");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"labstats_cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"labstats_cell"];
