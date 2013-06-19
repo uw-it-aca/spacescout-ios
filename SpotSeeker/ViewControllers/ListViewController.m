@@ -274,6 +274,15 @@
     
     NSString *description = [row_spot.extended_info objectForKey:@"location_description"];
     location_description.text = description;
+
+    CGFloat image_bottom = spot_image.frame.origin.y + spot_image.frame.size.height;
+    
+    [location_description sizeToFit];
+    CGRect frame = location_description.frame;
+
+    CGFloat location_height = frame.size.height;
+    
+    location_description.frame = CGRectMake(frame.origin.x, image_bottom - location_height, frame.size.width, frame.size.height);
     
     return cell;
 }
