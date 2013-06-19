@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 4/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "MapFilterDetailsViewController.h"
@@ -27,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.trackedViewName = @"Map Filter Details View";
     
     NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
     NSString *screen_title =  NSLocalizedString(title_key, nil);
@@ -72,7 +71,8 @@
 
     [self.table_view.tableHeaderView setFrame:CGRectMake(0.0, 0.0, 320.0, view_height)];
     
-	// Do any additional setup after loading the view.
+    self.trackedViewName = [NSString stringWithFormat:@"Map Filter Details View (%@)", screen_title];
+
 }
 
 - (void)viewDidUnload

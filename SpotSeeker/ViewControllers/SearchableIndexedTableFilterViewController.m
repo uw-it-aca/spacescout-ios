@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 6/8/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "SearchableIndexedTableFilterViewController.h"
@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.trackedViewName = @"Searchable Indexed Table Filter View";
 
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
@@ -97,7 +96,9 @@
     
     NSString *screen_title = [self.filter objectForKey:@"screen_title"];
     self.title = screen_title;
-	// Do any additional setup after loading the view.
+
+    self.trackedViewName = [NSString stringWithFormat:@"Searchable Indexed Table Filter View (%@)", screen_title];
+
 }
 
 - (void)viewDidUnload

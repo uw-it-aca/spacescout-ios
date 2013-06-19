@@ -3,7 +3,7 @@
 //  SpaceScout
 //
 //  Created by Patrick Michaud on 7/3/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "PickerFilterViewController.h"
@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.trackedViewName = @"Picker Filter View Controller";
     
     NSString *title_key = [NSString stringWithFormat:@"Search screen title %@", [self.filter objectForKey:@"search_key"]];
     NSString *screen_title =  NSLocalizedString(title_key, nil);
@@ -39,6 +38,7 @@
 
 	// Do any additional setup after loading the view.
     [self.picker selectRow:[[self.filter objectForKey:@"selected_row"] intValue]  inComponent:0 animated:NO];
+    self.trackedViewName = [NSString stringWithFormat:@"Picker Filter View Controller (%@)", screen_title];
 }
 
 - (void)viewDidUnload

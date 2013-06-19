@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 4/26/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "MapFilterTimeViewController.h"
@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.trackedViewName = @"Map Filter Time View";
     
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
@@ -61,6 +60,8 @@
     if (selected_date != Nil) {
 //        [self.date_picker setDate:selected_date];
     }
+    self.trackedViewName = @"Map Filter Time View (Hours)";
+
 }
 
 - (void)viewDidUnload
