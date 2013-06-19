@@ -1521,51 +1521,55 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <activityIndicatorView opaque="NO" tag="21" contentMode="scaleToFill" animating="YES" style="gray" id="WBM-u3-U2b">
+                                                            <rect key="frame" x="40" y="32" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </activityIndicatorView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="21j-SP-t6B">
-                                                            <rect key="frame" x="0.0" y="-1" width="115" height="97"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="84"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="XgR-2f-oSC">
-                                                            <rect key="frame" x="118" y="0.0" width="196" height="27"/>
+                                                            <rect key="frame" x="103" y="-3" width="209" height="27"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Spot type which can be on 2 lines" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Ajl-Og-nlg">
-                                                            <rect key="frame" x="119" y="21" width="110" height="32"/>
+                                                            <rect key="frame" x="103" y="20" width="140" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="This is a description of where the spot is, on 2 lines" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="XrX-yR-ADI">
-                                                            <rect key="frame" x="119" y="55" width="195" height="38"/>
+                                                            <rect key="frame" x="103" y="52" width="208" height="38"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="icon.png" id="d22-oM-V3Q">
-                                                            <rect key="frame" x="237" y="29" width="24" height="24"/>
+                                                            <rect key="frame" x="243" y="29" width="24" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g55-ZV-Zwx">
-                                                            <rect key="frame" x="263" y="30" width="26" height="20"/>
+                                                            <rect key="frame" x="269" y="30" width="26" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="left" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G7t-GL-SSL">
-                                                            <rect key="frame" x="283" y="30" width="5" height="22"/>
+                                                            <rect key="frame" x="290" y="30" width="5" height="22"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" text="500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JGF-kl-lXc">
-                                                            <rect key="frame" x="287" y="30" width="31" height="20"/>
+                                                            <rect key="frame" x="295" y="30" width="28" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2135,7 +2139,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7BZ-SZ-G39"/>
-        <segue reference="3Cj-Ws-5ju"/>
         <segue reference="SYV-Ne-S54"/>
+        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>
