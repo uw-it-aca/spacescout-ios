@@ -86,7 +86,12 @@ bool first_search = false;
 #pragma mark campus selection
 
 -(void)setScreenTitleForCurrentCampus {
-    self.title = [Campus getCurrentCampus].screen_title;
+    NSString *className = [NSString stringWithFormat:@"%@", self.class];
+    if ([className isEqual: @"FavoriteSpacesViewController"]) { // This is the one case where a ListView shouldn't show the campus name
+        self.title = @"Favorites";
+    } else {
+        self.title = [Campus getCurrentCampus].screen_title;
+    }
 }
 
 -(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
