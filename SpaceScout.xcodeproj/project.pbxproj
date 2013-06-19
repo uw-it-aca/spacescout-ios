@@ -184,6 +184,7 @@
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
+		C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */; };
 		C2D4E31415938BAB00B594C5 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30F15938BAB00B594C5 /* cafe.png */; };
 		C2D4E31515938BAB00B594C5 /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31015938BAB00B594C5 /* noise.png */; };
 		C2D4E31615938BAB00B594C5 /* reservable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31115938BAB00B594C5 /* reservable.png */; };
@@ -456,6 +457,8 @@
 		C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterTimeViewController.m; path = ViewControllers/MapFilterTimeViewController.m; sourceTree = "<group>"; };
 		C2C0088715476865004AF6F7 /* REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REST.h; path = Models/REST.h; sourceTree = "<group>"; };
 		C2C0088815476865004AF6F7 /* REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REST.m; path = Models/REST.m; sourceTree = "<group>"; };
+		C2CE6EA617722AA0009D1DA9 /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainListViewController.h; path = ViewControllers/MainListViewController.h; sourceTree = "<group>"; };
+		C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainListViewController.m; path = ViewControllers/MainListViewController.m; sourceTree = "<group>"; };
 		C2D4E30F15938BAB00B594C5 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		C2D4E31015938BAB00B594C5 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		C2D4E31115938BAB00B594C5 /* reservable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reservable.png; sourceTree = "<group>"; };
@@ -622,6 +625,8 @@
 				C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */,
 				C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */,
 				C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */,
+				C2CE6EA617722AA0009D1DA9 /* MainListViewController.h */,
+				C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1255,6 +1260,7 @@
 				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,
 				C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */,
 				C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */,
+				C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
