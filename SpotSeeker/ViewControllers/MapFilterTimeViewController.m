@@ -18,7 +18,6 @@
 @synthesize current_widget;
 
 -(IBAction)timeSelected:(id)sender {
-//    [self.filter setObject:self.date_picker.date forKey:@"selected_date"];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,8 +54,6 @@
         [self updateEndButtonWithDateComponents:self.end_time];
     }
     
-	// Do any additional setup after loading the view.
-    NSDate *selected_date = [self.filter objectForKey:@"selected_date"];
     self.trackedViewName = @"Map Filter Time View (Hours)";
 
 }
