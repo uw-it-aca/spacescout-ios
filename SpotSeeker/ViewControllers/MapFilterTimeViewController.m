@@ -57,9 +57,6 @@
     
 	// Do any additional setup after loading the view.
     NSDate *selected_date = [self.filter objectForKey:@"selected_date"];
-    if (selected_date != Nil) {
-//        [self.date_picker setDate:selected_date];
-    }
     self.trackedViewName = @"Map Filter Time View (Hours)";
 
 }
