@@ -47,7 +47,7 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select your campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kEs-BP-ZF8">
-                                        <rect key="frame" x="11" y="7" width="191" height="21"/>
+                                        <rect key="frame" x="11" y="7" width="244" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2131,6 +2131,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
         <segue reference="em9-ZW-DQ1"/>
         <segue reference="3uu-G9-i3V"/>
