@@ -276,13 +276,15 @@
     location_description.text = description;
 
     CGFloat image_bottom = spot_image.frame.origin.y + spot_image.frame.size.height;
-    
+
+    // SPOT-952
+    CGFloat original_width = location_description.frame.size.width;
     [location_description sizeToFit];
     CGRect frame = location_description.frame;
 
     CGFloat location_height = frame.size.height;
     
-    location_description.frame = CGRectMake(frame.origin.x, image_bottom - location_height, frame.size.width, frame.size.height);
+    location_description.frame = CGRectMake(frame.origin.x, image_bottom - location_height, original_width, frame.size.height);
     
     return cell;
 }
