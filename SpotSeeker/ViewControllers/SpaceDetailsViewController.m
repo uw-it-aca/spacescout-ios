@@ -590,10 +590,10 @@
         else {
             available.text = raw_available_value;
             if ([raw_available_value integerValue] == 0) {
-                available.textColor = [UIColor redColor];
+                available.textColor = [UIColor colorWithRed:133/255.0f green:22/255.0f blue:22/255.0f alpha:1.0f];
             }
             else {
-                available.textColor = [UIColor greenColor];                
+                available.textColor = [UIColor colorWithRed:22/255.0f green:133/255.0f blue:22/255.0f alpha:1.0f];                
             }
         }
         
