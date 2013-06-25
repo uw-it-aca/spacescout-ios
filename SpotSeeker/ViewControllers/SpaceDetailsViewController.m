@@ -2,7 +2,7 @@
 //  SpotDetailsViewControllerViewController.m
 //  SpotSeeker
 //
-//  Copyright 2012 UW Information Technology, University of Washington
+//  Copyright 2012, 2013 UW Information Technology, University of Washington
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -573,7 +573,22 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"labstats_cell"];
     }
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
     
+    float avail_redtext_red_value = [[plist_values objectForKey:@"labstats_avail_redtext_red"] floatValue];
+    float avail_redtext_green_value = [[plist_values objectForKey:@"labstats_avail_redtext_green"] floatValue];
+    float avail_redtext_blue_value = [[plist_values objectForKey:@"labstats_avail_redtext_blue"] floatValue];
+    
+    UIColor *avail_redtext_color = [UIColor colorWithRed:avail_redtext_red_value / 255.0 green:avail_redtext_green_value / 255.0 blue:avail_redtext_blue_value / 255.0 alpha:1.0];
+    
+    float avail_greentext_red_value = [[plist_values objectForKey:@"labstats_avail_greentext_red"] floatValue];
+    float avail_greentext_green_value = [[plist_values objectForKey:@"labstats_avail_greentext_green"] floatValue];
+    float avail_greentext_blue_value = [[plist_values objectForKey:@"labstats_avail_greentext_blue"] floatValue];
+    
+    UIColor *avail_greentext_color = [UIColor colorWithRed:avail_greentext_red_value / 255.0 green:avail_greentext_green_value / 255.0 blue:avail_greentext_blue_value / 255.0 alpha:1.0];
+
     id raw_total_value = [spot.extended_info objectForKey:@"auto_labstats_total"];
     
     if (raw_total_value != nil && [raw_total_value integerValue] > 0) {
@@ -590,10 +605,10 @@
         else {
             available.text = raw_available_value;
             if ([raw_available_value integerValue] == 0) {
-                available.textColor = [UIColor colorWithRed:133/255.0f green:22/255.0f blue:22/255.0f alpha:1.0f];
+                available.textColor = avail_redtext_color;
             }
             else {
-                available.textColor = [UIColor colorWithRed:22/255.0f green:133/255.0f blue:22/255.0f alpha:1.0f];                
+                available.textColor = avail_greentext_color;
             }
         }
         
