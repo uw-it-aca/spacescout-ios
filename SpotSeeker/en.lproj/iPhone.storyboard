@@ -1550,8 +1550,8 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="icon.png" id="d22-oM-V3Q">
-                                                            <rect key="frame" x="243" y="29" width="24" height="24"/>
+                                                        <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="comp-icon.png" id="d22-oM-V3Q">
+                                                            <rect key="frame" x="249" y="33" width="16" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g55-ZV-Zwx">
@@ -1658,8 +1658,8 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="icon.png" id="YZm-Xd-2mP">
-                                                    <rect key="frame" x="240" y="30" width="24" height="24"/>
+                                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="comp-icon.png" id="YZm-Xd-2mP">
+                                                    <rect key="frame" x="249" y="33" width="16" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gpt-T0-5qA">
@@ -1784,8 +1784,8 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="icon.png" id="UPv-wu-9UK">
-                                                    <rect key="frame" x="243" y="29" width="24" height="24"/>
+                                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" image="comp-icon.png" id="UPv-wu-9UK">
+                                                    <rect key="frame" x="249" y="33" width="16" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iLn-FM-3tX">
@@ -1990,13 +1990,13 @@
         <image name="button_Back.png" width="41" height="30"/>
         <image name="button_Next.png" width="41" height="30"/>
         <image name="cog.png" width="24" height="24"/>
+        <image name="comp-icon.png" width="16" height="16"/>
         <image name="done_picker.png" width="53" height="25"/>
         <image name="faveslist.png" width="24" height="24"/>
         <image name="filter_reset.png" width="87" height="37"/>
         <image name="flag_open.png" width="66" height="31"/>
         <image name="hours_status_active.png" width="412" height="74"/>
         <image name="hours_status_default.png" width="412" height="74"/>
-        <image name="icon.png" width="57" height="57"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
         <image name="reset_picker.png" width="54" height="25"/>
@@ -2139,7 +2139,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="DG6-VL-yRO"/>
-        <segue reference="Zv8-Ju-hZd"/>
         <segue reference="7BZ-SZ-G39"/>
+        <segue reference="Zv8-Ju-hZd"/>
     </inferredMetricsTieBreakers>
 </document>
