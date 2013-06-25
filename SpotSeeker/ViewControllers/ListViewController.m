@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 5/23/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "ListViewController.h"
@@ -322,6 +322,11 @@
         total.frame = CGRectMake(total_left, total.frame.origin.y, total.frame.size.width, total.frame.size.height);
         total.text = [space.extended_info objectForKey:@"auto_labstats_total"];
         
+        available.hidden = false;
+        slash.hidden = false;
+        total.hidden = false;
+        labstats_image.hidden = false;
+
     }
     else {
         available.hidden = true;
