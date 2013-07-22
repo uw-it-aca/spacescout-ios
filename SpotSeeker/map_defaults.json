@@ -4,10 +4,10 @@
     "latitude":47.656095,
     "longitude_delta":0.005,
     "latitude_delta":0.005,
-    "name":"Seattle",
+    "name":"UW Seattle",
     "search_key": "seattle",
     "is_default": true,
-    "screen_title": "Seattle Campus"
+    "screen_title": "UW Seattle Campus"
 
  },
  {
@@ -15,9 +15,9 @@
     "latitude":47.24527,
     "longitude_delta":0.005,
     "latitude_delta":0.005,
-    "name":"Tacoma",
+    "name":"UW Tacoma",
     "search_key": "tacoma",
-    "screen_title": "Tacoma Campus"
+    "screen_title": "UW Tacoma Campus"
 
  }
 ]
