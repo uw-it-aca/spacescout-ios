@@ -295,7 +295,7 @@
     UILabel *slash = (UILabel *)[cell viewWithTag:12];
     UILabel *total = (UILabel *)[cell viewWithTag:13];
     
-    if ([space.extended_info objectForKey:@"auto_labstats_total"]) {
+    if ([space.extended_info objectForKey:@"auto_labstats_total"] && [[space.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0) {
         
         NSString *app_path = [[NSBundle mainBundle] bundlePath];
         NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
@@ -314,13 +314,15 @@
         UIColor *avail_greentext_color = [UIColor colorWithRed:avail_greentext_red_value / 255.0 green:avail_greentext_green_value / 255.0 blue:avail_greentext_blue_value / 255.0 alpha:1.0];
 
         id raw_available_value = [space.extended_info objectForKey:@"auto_labstats_available"];
+        id raw_off_value = [space.extended_info objectForKey:@"auto_labstats_off"];
         if (raw_available_value == nil || ![space isOpenNow]) {
             available.text = @"--";
         }
         else {
-            available.text = raw_available_value;
-        
-            if ([raw_available_value integerValue] == 0) {
+            int actual_available_value = [raw_available_value integerValue] + [raw_off_value integerValue];
+            available.text = [NSString stringWithFormat:@"%d", actual_available_value];
+
+            if ([raw_available_value integerValue] == 0 && [raw_off_value integerValue] == 0) {
                 available.textColor = avail_redtext_color;
             }
             else {
