@@ -1,5 +1,5 @@
 //
-//  SpotDetailsViewControllerViewController.m
+//  SpotDetailsViewController.m
 //  SpotSeeker
 //
 //  Copyright 2012, 2013 UW Information Technology, University of Washington
@@ -57,7 +57,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
     
     int hours_cell_index = 1;
     int access_notes_index = 2;
@@ -234,7 +234,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
 
     int hours_cell_index = 1;
     int access_notes_index = 2;
