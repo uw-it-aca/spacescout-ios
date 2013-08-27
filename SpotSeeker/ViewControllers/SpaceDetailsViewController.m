@@ -57,7 +57,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_total"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
     
     int hours_cell_index = 1;
     int access_notes_index = 2;
@@ -234,7 +234,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_total"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
+    BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil;
 
     int hours_cell_index = 1;
     int access_notes_index = 2;
@@ -596,7 +596,6 @@
         total.text = raw_total_value;
         
         id raw_available_value = [spot.extended_info objectForKey:@"auto_labstats_available"];
-        id raw_off_value = [spot.extended_info objectForKey:@"auto_labstats_off"];
         
         UILabel *available = (UILabel *)[cell viewWithTag:31];
         
@@ -604,9 +603,8 @@
             available.text = @"--";
         }
         else {
-            int actual_available_value = [raw_available_value integerValue] + [raw_off_value integerValue];
-            available.text = [NSString stringWithFormat:@"%d", actual_available_value];
-            if ([raw_available_value integerValue] == 0 && [raw_off_value integerValue] == 0) {
+            available.text = raw_available_value;
+            if ([raw_available_value integerValue] == 0) {
                 available.textColor = avail_redtext_color;
             }
             else {
