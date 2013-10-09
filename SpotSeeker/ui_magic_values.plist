@@ -44,5 +44,17 @@
 	<integer>247</integer>
 	<key>building_filter_cell_padding</key>
 	<integer>20</integer>
+	<key>labstats_avail_redtext_red</key>
+	<integer>133</integer>
+	<key>labstats_avail_redtext_green</key>
+	<integer>22</integer>
+	<key>labstats_avail_redtext_blue</key>
+	<integer>22</integer>
+	<key>labstats_avail_greentext_red</key>
+	<integer>22</integer>
+	<key>labstats_avail_greentext_green</key>
+	<integer>133</integer>
+	<key>labstats_avail_greentext_blue</key>
+	<integer>22</integer>
 </dict>
 </plist>
