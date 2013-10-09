@@ -13,14 +13,21 @@
 
 @synthesize delegate;
 
--(void) getURL:(NSString *)url {
+-(void) getURLWithNoAccessToken:(NSString *)url {
+    [self getURL:url withAccessToken:FALSE];
+}
 
+-(void) getURL:(NSString *)url {
+    [self getURL:url withAccessToken:TRUE];
+}
+
+-(void)getURL:(NSString *)url withAccessToken:(Boolean)use_token {
     [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
     NSString *request_url = [self _getFullURL:url];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
     
-    [self _signRequest:request];
+    [self _signRequest:request withAccessToken:use_token];
     
     [request setDelegate:self];
     [request startAsynchronous];
@@ -28,18 +35,14 @@
 
 }
 
--(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url {
-    NSString *request_url = [self _getFullURL:url];
-    @autoreleasepool {
-        __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
+-(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier {
+    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
+    NSString *request_url = [self _getFullURL:@"/oauth/access_token/"];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:request_url]];
+    [request setRequestMethod:@"POST"];
 
-        [self _signRequest:request];
 
-        return request;
-    }
-}
-
--(void)_signRequest:(ASIHTTPRequest *)request {
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
     NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
@@ -48,12 +51,60 @@
     if (use_oauth) {
         NSString *oauth_key = [plist_values objectForKey:@"oauth_key"];
         NSString *oauth_secret = [plist_values objectForKey:@"oauth_secret"];
+        
         [request signRequestWithClientIdentifier:oauth_key secret:oauth_secret
-                                 tokenIdentifier:nil secret:nil
+                                 tokenIdentifier:token secret:token_secret verifier:verifier
+                                     usingMethod:ASIOAuthHMAC_SHA1SignatureMethod];
+    }
+
+    [request setDelegate:self];
+    [request startAsynchronous];
+    [[GAI sharedInstance] dispatch];
+    
+}
+
+
+-(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url {
+    NSString *request_url = [self _getFullURL:url];
+    @autoreleasepool {
+        __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
+
+        [self _signRequest:request withAccessToken:TRUE];
+
+        return request;
+    }
+}
+
+-(void)_signRequest:(ASIHTTPRequest *)request withAccessToken:(Boolean)use_token {
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    BOOL use_oauth = [[plist_values objectForKey:@"use_oauth"] boolValue];
+    if (use_oauth) {
+        NSString *access_token = nil;
+        NSString *access_token_secret = nil;
+        
+        NSString *oauth_key = [plist_values objectForKey:@"oauth_key"];
+        NSString *oauth_secret = [plist_values objectForKey:@"oauth_secret"];
+
+        if (use_token) {
+            KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
+
+            access_token = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+            access_token_secret = [wrapper objectForKey:(__bridge id)kSecValueData];
+        }
+        
+        [request signRequestWithClientIdentifier:oauth_key secret:oauth_secret
+                                 tokenIdentifier:access_token secret:access_token_secret
                                      usingMethod:ASIOAuthHMAC_SHA1SignatureMethod];
     }
     
 
+}
+
+-(NSString *)getFullURL:(NSString *)url {
+    return [self _getFullURL:url];
 }
 
 -(NSString *)_getFullURL:(NSString *)url {
