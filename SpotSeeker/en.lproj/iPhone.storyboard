@@ -2080,7 +2080,6 @@
                 <relationship kind="action" name="btnClickCancel:"/>
                 <relationship kind="action" name="btnClickResetFilter:"/>
                 <relationship kind="action" name="btnClickSearch:"/>
-                <relationship kind="action" name="dismissNameKeyboard:"/>
                 <relationship kind="outlet" name="filter_table" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="name_filter" candidateClass="UITextField"/>
             </relationships>
@@ -2117,7 +2116,6 @@
         <class className="SearchableSpaceListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchableSpaceListViewController.h"/>
             <relationships>
-                <relationship kind="action" name="btnClickCampusChooser:"/>
                 <relationship kind="outlet" name="campus_picker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="campus_picker_panel" candidateClass="UIView"/>
                 <relationship kind="outlet" name="map_view" candidateClass="MKMapView"/>
