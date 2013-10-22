@@ -67,6 +67,9 @@
 		C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C224FBED15361C2300CD4A79 /* filter_config.json */; };
 		C224FBF41536300500CD4A79 /* MapFilterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */; };
 		C224FBF7153630AA00CD4A79 /* SpaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C224FBF6153630AA00CD4A79 /* SpaceDetailsViewController.m */; };
+		C22AA31A1805F55F004EC188 /* OAuthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22AA3191805F55F004EC188 /* OAuthLoginViewController.m */; };
+		C22AA31E180618EA004EC188 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C22AA31D180618EA004EC188 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C22AA3201806196F004EC188 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C22AA31F1806196F004EC188 /* Security.framework */; };
 		C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */; };
 		C23074D61599298900C31AA1 /* lighting.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D41599298900C31AA1 /* lighting.png */; };
 		C23074D71599298900C31AA1 /* lighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C23074D51599298900C31AA1 /* lighting@2x.png */; };
@@ -295,6 +298,11 @@
 		C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterDetailsViewController.m; path = ViewControllers/MapFilterDetailsViewController.m; sourceTree = "<group>"; };
 		C224FBF5153630AA00CD4A79 /* SpaceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceDetailsViewController.h; path = ViewControllers/SpaceDetailsViewController.h; sourceTree = "<group>"; };
 		C224FBF6153630AA00CD4A79 /* SpaceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceDetailsViewController.m; path = ViewControllers/SpaceDetailsViewController.m; sourceTree = "<group>"; };
+		C22AA3181805F55F004EC188 /* OAuthLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthLoginViewController.h; path = ViewControllers/OAuthLoginViewController.h; sourceTree = "<group>"; };
+		C22AA3191805F55F004EC188 /* OAuthLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthLoginViewController.m; path = ViewControllers/OAuthLoginViewController.m; sourceTree = "<group>"; };
+		C22AA31C180618EA004EC188 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainItemWrapper.h; path = Keychain/KeychainItemWrapper.h; sourceTree = "<group>"; };
+		C22AA31D180618EA004EC188 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Keychain/KeychainItemWrapper.m; sourceTree = "<group>"; };
+		C22AA31F1806196F004EC188 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchableIndexedTableFilterViewController.h; path = ViewControllers/SearchableIndexedTableFilterViewController.h; sourceTree = "<group>"; };
 		C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchableIndexedTableFilterViewController.m; path = ViewControllers/SearchableIndexedTableFilterViewController.m; sourceTree = "<group>"; };
 		C23074D41599298900C31AA1 /* lighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighting.png; sourceTree = "<group>"; };
@@ -498,6 +506,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C22AA3201806196F004EC188 /* Security.framework in Frameworks */,
 				8974C44F1700CFA100DF1C81 /* CoreData.framework in Frameworks */,
 				C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */,
 				C2429A9D150AAC2B005A994A /* CFNetwork.framework in Frameworks */,
@@ -559,6 +568,15 @@
 				8940AD5415BF2EED00714AFB /* button_Next@2x.png */,
 			);
 			name = buttons;
+			sourceTree = "<group>";
+		};
+		C22AA31B180618AC004EC188 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				C22AA31C180618EA004EC188 /* KeychainItemWrapper.h */,
+				C22AA31D180618EA004EC188 /* KeychainItemWrapper.m */,
+			);
+			name = KeyChain;
 			sourceTree = "<group>";
 		};
 		C22FB45915826BEB005D6BD5 /* Search Filters */ = {
@@ -631,6 +649,8 @@
 				C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */,
 				C2CE6EA617722AA0009D1DA9 /* MainListViewController.h */,
 				C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */,
+				C22AA3181805F55F004EC188 /* OAuthLoginViewController.h */,
+				C22AA3191805F55F004EC188 /* OAuthLoginViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -883,6 +903,7 @@
 		C2FDB0D3150A802D00ED3A93 = {
 			isa = PBXGroup;
 			children = (
+				C22AA31F1806196F004EC188 /* Security.framework */,
 				898E35421703A984004AA71C /* Settings.bundle */,
 				8974C44E1700CFA100DF1C81 /* CoreData.framework */,
 				C25D6F961576AF7100A16A87 /* CoreLocation.framework */,
@@ -905,6 +926,7 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C22AA31B180618AC004EC188 /* KeyChain */,
 				8974C4461700CF7000DF1C81 /* GoogleAnalytics */,
 				C2B2F64B153E225800292FDC /* ASIHTTP+OAuth */,
 				C2429AA4150AB03F005A994A /* ASIHTTP */,
@@ -1269,6 +1291,8 @@
 				C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */,
 				C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */,
 				C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */,
+				C22AA31A1805F55F004EC188 /* OAuthLoginViewController.m in Sources */,
+				C22AA31E180618EA004EC188 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

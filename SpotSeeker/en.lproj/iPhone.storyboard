@@ -5,6 +5,33 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Auth Login View Controller-->
+        <scene sceneID="i08-cs-Yaf">
+            <objects>
+                <viewController id="6hd-bL-kBO" customClass="OAuthLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MZ8-Hf-FUy">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="xLD-RC-OCV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6hd-bL-kBO" id="7JF-Qb-cGC"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="auth_web_view" destination="xLD-RC-OCV" id="pgl-0K-si5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKv-hx-HMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981" y="-541"/>
+        </scene>
         <!--Map View Controller - SpaceScout-->
         <scene sceneID="5">
             <objects>
@@ -81,10 +108,10 @@
                                             <action selector="btnClickRecenter:" destination="2" id="7ty-oU-Znv"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="33" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="Zlv-iv-ptI"/>
                                     <barButtonItem title="Item" style="plain" id="lHy-1N-aSN">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
-                                            <rect key="frame" x="93" y="8" width="142" height="30"/>
+                                            <rect key="frame" x="74" y="8" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Map"/>
@@ -96,13 +123,17 @@
                                             </connections>
                                         </segmentedControl>
                                     </barButtonItem>
-                                    <barButtonItem width="23" style="plain" systemItem="fixedSpace" id="y3H-ga-lPU"/>
+                                    <barButtonItem width="9" style="plain" systemItem="fixedSpace" id="y3H-ga-lPU"/>
                                     <barButtonItem image="cog.png" id="Civ-yp-Tfv">
                                         <connections>
                                             <action selector="btnClickCampusChooser:" destination="2" id="clp-Qf-owY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" id="mLJ-Or-G1k"/>
+                                    <barButtonItem title="Item" id="mLJ-Or-G1k">
+                                        <connections>
+                                            <segue destination="6hd-bL-kBO" kind="modal" id="kVZ-D9-HVT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.1764705882" green="0.12941176469999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -2060,6 +2091,12 @@
                 <relationship kind="action" name="btnClickRecenter:"/>
             </relationships>
         </class>
+        <class className="OAuthLoginViewController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OAuthLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="auth_web_view" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
         <class className="PickerFilterViewController" superclassName="GAITrackedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerFilterViewController.h"/>
             <relationships>
@@ -2138,8 +2175,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DG6-VL-yRO"/>
-        <segue reference="7BZ-SZ-G39"/>
-        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="3uu-G9-i3V"/>
+        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="em9-ZW-DQ1"/>
     </inferredMetricsTieBreakers>
 </document>

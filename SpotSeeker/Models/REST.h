@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Security/Security.h>
+#import "KeychainItemWrapper.h"
+#import "ASIFormDataRequest+OAuth.h"
 #import "ASIHTTPRequest+OAuth.h"
 #import "ASIDownloadCache.h"
 #import "AppDelegate.h"
@@ -20,7 +23,11 @@
 @property (retain, nonatomic) id <RESTFinished> delegate;
 
 -(void) getURL:(NSString *)url;
+-(void) getURLWithNoAccessToken:(NSString *)url;
+-(void)postURL:(NSString *)url withParams:(NSDictionary *)params;
+-(NSString *) getFullURL:(NSString *)url;
 -(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url;
+-(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier;
 
 @end
 
