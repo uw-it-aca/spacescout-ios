@@ -957,7 +957,7 @@
      */
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.trackedViewName = @"Space Details View";
+    self.screenName = @"Space Details View";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

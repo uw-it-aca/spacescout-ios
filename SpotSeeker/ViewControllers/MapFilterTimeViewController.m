@@ -54,7 +54,7 @@
         [self updateEndButtonWithDateComponents:self.end_time];
     }
     
-    self.trackedViewName = @"Map Filter Time View (Hours)";
+    self.screenName = @"Map Filter Time View (Hours)";
 
 }
 

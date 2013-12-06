@@ -38,7 +38,7 @@
 
 	// Do any additional setup after loading the view.
     [self.picker selectRow:[[self.filter objectForKey:@"selected_row"] intValue]  inComponent:0 animated:NO];
-    self.trackedViewName = [NSString stringWithFormat:@"Picker Filter View Controller (%@)", screen_title];
+    self.screenName = [NSString stringWithFormat:@"Picker Filter View Controller (%@)", screen_title];
 }
 
 - (void)viewDidUnload

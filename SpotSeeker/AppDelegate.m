@@ -66,7 +66,7 @@
     [GAI sharedInstance].dispatchInterval = -1;
     // Optional: set debug to YES for extra debugging information.
     // TODO: don't forget to set this to NO for packaging
-    [GAI sharedInstance].debug = NO;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
 
     // Get GA tracking id if it exists
     NSString *ss_plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
@@ -74,7 +74,7 @@
     NSString *tracking_id = [ss_plist_values objectForKey:@"ga_tracking_id"];
 
     // Create tracker instance.
-    [[GAI sharedInstance] trackerWithTrackingId:tracking_id];
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:tracking_id];
 
     return YES;
 }

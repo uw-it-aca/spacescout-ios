@@ -97,7 +97,7 @@
     NSString *screen_title = [self.filter objectForKey:@"screen_title"];
     self.title = screen_title;
 
-    self.trackedViewName = [NSString stringWithFormat:@"Searchable Indexed Table Filter View (%@)", screen_title];
+    self.screenName = [NSString stringWithFormat:@"Searchable Indexed Table Filter View (%@)", screen_title];
 
 }
 

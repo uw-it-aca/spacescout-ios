@@ -388,8 +388,9 @@ extern const int meters_per_latitude;
     [super viewDidLoad];
     
     // Get GA tracker
-    id tracker = [GAI sharedInstance].defaultTracker;
-    [tracker sendView:@"Map View"];
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Map View"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if ([delegate.has_hidden_map_tooltip boolValue] == true) {

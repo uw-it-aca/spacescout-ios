@@ -71,7 +71,7 @@
 
     [self.table_view.tableHeaderView setFrame:CGRectMake(0.0, 0.0, 320.0, view_height)];
     
-    self.trackedViewName = [NSString stringWithFormat:@"Map Filter Details View (%@)", screen_title];
+    self.screenName = [NSString stringWithFormat:@"Map Filter Details View (%@)", screen_title];
 
 }
 

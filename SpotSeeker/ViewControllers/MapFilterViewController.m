@@ -59,8 +59,9 @@
     [super viewDidLoad];
     
     // Get GA tracker
-    id tracker = [GAI sharedInstance].defaultTracker;
-    [tracker sendView:@"Map Filter View"];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Map Filter View"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
         
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
