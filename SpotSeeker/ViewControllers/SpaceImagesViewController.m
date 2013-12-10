@@ -268,4 +268,9 @@
 
 }
 
+-(BOOL)prefersStatusBarHidden {
+    // Hide the status bar when doing the full-screen modal
+    return YES;
+}
+
 @end
