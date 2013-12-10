@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 5/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import "SearchableSpaceListViewController.h"
@@ -60,6 +60,7 @@ bool first_search = false;
     Space *_spot = [Space alloc];
     self.spot = _spot;
     [self.spot getListBySearch:search_attributes];
+    
     [self.spot setDelegate:self];
     first_search = true;
 }
@@ -67,6 +68,27 @@ bool first_search = false;
 -(void) runSearchWithAttributes:(NSMutableDictionary *)attributes {
     self.search_attributes = attributes;
     [self runSearch];
+    
+    // GA tracking of filters
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    for (id key in search_attributes) {
+        for (id value in [search_attributes objectForKey:key]) {
+            if (![key isEqualToString:@"center_latitude"] &&
+                ![key isEqualToString:@"center_longitude"] &&
+                ![key isEqualToString:@"limit"] &&
+                ![key isEqualToString:@"expand_radius"] &&
+                ![key isEqualToString:@"distance"] &&
+                ![key isEqualToString:@"extended_info:campus"]) {
+                [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Filters"
+                                                                      action:[NSString stringWithFormat:@"%@-%@", [search_attributes objectForKey:@"extended_info:campus"][0], key]
+                                                                       label:value
+                                                                       value:nil] build]];
+                //NSLog(@"campus = %@ key=%@ value=%@", [search_attributes objectForKey:@"extended_info:campus"][0], key, value);
+            }
+        }
+    }
+    
 }
 
 -(void) searchFinished:(NSArray *)spots {

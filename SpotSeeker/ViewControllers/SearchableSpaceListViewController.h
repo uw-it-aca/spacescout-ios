@@ -3,7 +3,7 @@
 //  SpotSeeker
 //
 //  Created by Patrick Michaud on 5/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012, 2013 University of Washington. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,9 @@
 #import "Space.h"
 #import "AppDelegate.h"
 #import "Campus.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface SearchableSpaceListViewController : UIViewController <SearchFinished, UIPickerViewDataSource, UIPickerViewDelegate> {
     MKMapView *map_view;
