@@ -1,0 +1,33 @@
+[
+{
+ "type":"suggestion",
+ "title": "Suggest a space",
+ "email_to": [
+              "spacescout@uw.edu"
+              ],
+ "email_prefix": "Note: Please answer following questions to help us identify the space you are suggesting.",
+ "email_postfix": "Note: Please attach pictures of suggested space to this email. SpaceScout and fellow UW students appreciate your suggestion!",
+ "fields": [
+            {
+            "name": "Building Name",
+            "required": true
+            },
+            {
+            "name": "Floor",
+            "required": true
+            },
+            {
+            "name": "Room number",
+            "required": false
+            },
+            {
+            "name": "Description of space",
+            "required": true
+            },
+            {
+            "name": "Why suggest this space",
+            "required": true
+            }
+            ]
+}
+]

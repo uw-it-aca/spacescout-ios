@@ -28,6 +28,7 @@
 @synthesize rest;
 @synthesize alert;
 @synthesize requests;
+@synthesize original_campus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,7 +48,7 @@
     NSString *className = [NSString stringWithFormat:@"List View (%@)", self.class];
     [tracker set:kGAIScreenName value:className];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-
+    
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     [self sortSpots];
@@ -64,12 +65,26 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    self.campus_picker_panel.hidden = true;
+ //GONE   self.campus_picker_panel.hidden = true;
+    // do something about changed campus!!!
     [self setScreenTitleForCurrentCampus];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [self.spot_table reloadData];
+
+    Campus *current_campus = [Campus getCurrentCampus];
+    
+    if (original_campus &&
+        ![original_campus.search_key isEqualToString:current_campus.search_key]) {
+        self.search_attributes = nil;
+        AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        app_delegate.search_preferences = nil;
+        [self centerOnCampus:current_campus];
+        [self setScreenTitleForCurrentCampus];
+        
+        [self runSearch];
+    }
 }
 
 - (void)viewDidUnload
@@ -95,32 +110,10 @@
         destination.map_region = self.map_region;
         destination.search_attributes = self.search_attributes;
     }
-}
-
-#pragma mark -
-#pragma mark campus selection
-
--(IBAction)btnClickCampusSelected:(id)sender {
-    int row = [self.campus_picker selectedRowInComponent:0];
-    Campus *campus = [[Campus getCampuses] objectAtIndex:row];
-    Campus *current_campus = [Campus getCurrentCampus];
-    
-    if ([current_campus.search_key isEqualToString:campus.search_key]) {
-        [self hideCampusChooser];
-        return;
+    else if ([[segue identifier] isEqualToString:@"more_view"]) {
+        original_campus = [Campus getCurrentCampus];
     }
-    [Campus setCurrentCampus: campus];
-    self.search_attributes = nil;
-    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app_delegate.search_preferences = nil;
-    [self centerOnCampus:campus];
-    [self setScreenTitleForCurrentCampus];
-
-    [self runSearch];
-    [self hideCampusChooser];
 }
-
-
 
 #pragma mark -
 

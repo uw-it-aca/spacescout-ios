@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A2EDFF18681593005B2933 /* MessageUI.framework */; };
+		06ACA0181898090800113AD0 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ACA0171898090800113AD0 /* MoreViewController.m */; };
+		06ACA01A189982D700113AD0 /* contact_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 06ACA019189982D700113AD0 /* contact_config.json */; };
+		06ACA0201899853600113AD0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ACA01F1899853600113AD0 /* Contact.m */; };
 		2323BBD015B496F200B6947B /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCA15B496F200B6947B /* icon-72.png */; };
 		2323BBD115B496F200B6947B /* icon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCB15B496F200B6947B /* icon-small-50.png */; };
 		2323BBD215B496F200B6947B /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCC15B496F200B6947B /* icon-small.png */; };
@@ -224,6 +228,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06A2EDFF18681593005B2933 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		06ACA0161898090800113AD0 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		06ACA0171898090800113AD0 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		06ACA019189982D700113AD0 /* contact_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contact_config.json; sourceTree = "<group>"; };
+		06ACA01E1899853600113AD0 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		06ACA01F1899853600113AD0 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		2323BBCA15B496F200B6947B /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		2323BBCB15B496F200B6947B /* icon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small-50.png"; sourceTree = "<group>"; };
 		2323BBCC15B496F200B6947B /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
@@ -511,6 +521,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */,
 				89DC154D185153D60014F4F3 /* AdSupport.framework in Frameworks */,
 				C22AA3201806196F004EC188 /* Security.framework in Frameworks */,
 				8974C44F1700CFA100DF1C81 /* CoreData.framework in Frameworks */,
@@ -626,6 +637,8 @@
 				C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */,
 				C2F0D0C016FB9471008BB2CB /* Campus.h */,
 				C2F0D0C116FB9471008BB2CB /* Campus.m */,
+				06ACA01E1899853600113AD0 /* Contact.h */,
+				06ACA01F1899853600113AD0 /* Contact.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -660,6 +673,8 @@
 				C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */,
 				C22AA3181805F55F004EC188 /* OAuthLoginViewController.h */,
 				C22AA3191805F55F004EC188 /* OAuthLoginViewController.m */,
+				06ACA0161898090800113AD0 /* MoreViewController.h */,
+				06ACA0171898090800113AD0 /* MoreViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -935,6 +950,7 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06A2EDFF18681593005B2933 /* MessageUI.framework */,
 				8972F37D185293DD003F0E3C /* GoogleAnalytics */,
 				89DC154C185153D60014F4F3 /* AdSupport.framework */,
 				C22AA31B180618AC004EC188 /* KeyChain */,
@@ -986,6 +1002,7 @@
 				C277E87C1551FC7A0022FACD /* details_config.json */,
 				C25D6F931576ACDC00A16A87 /* map_defaults.json */,
 				C25143911594E08F006A4A9E /* Localizable.strings */,
+				06ACA019189982D700113AD0 /* contact_config.json */,
 				C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */,
 			);
 			name = "Supporting Files";
@@ -1204,6 +1221,7 @@
 				895B2DBA16EE90F000E00BE0 /* icon-72@2x.png in Resources */,
 				8953B6D816EEA86F008BF921 /* Default@2x.png in Resources */,
 				898E35431703A984004AA71C /* Settings.bundle in Resources */,
+				06ACA01A189982D700113AD0 /* contact_config.json in Resources */,
 				891103441704AC5300D2214D /* hours_status_active.png in Resources */,
 				891103451704AC5300D2214D /* hours_status_active@2x.png in Resources */,
 				891103461704AC5300D2214D /* hours_status_default.png in Resources */,
@@ -1260,6 +1278,7 @@
 				C2429A8F150AABDB005A994A /* SBJsonStreamParserState.m in Sources */,
 				C2429A90150AABDB005A994A /* SBJsonStreamWriter.m in Sources */,
 				C2429A91150AABDB005A994A /* SBJsonStreamWriterAccumulator.m in Sources */,
+				06ACA0181898090800113AD0 /* MoreViewController.m in Sources */,
 				C2429A92150AABDB005A994A /* SBJsonStreamWriterState.m in Sources */,
 				C2429A93150AABDB005A994A /* SBJsonTokeniser.m in Sources */,
 				C2429A94150AABDB005A994A /* SBJsonUTF8Stream.m in Sources */,
@@ -1288,6 +1307,7 @@
 				C2C0088915476865004AF6F7 /* REST.m in Sources */,
 				C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */,
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
+				06ACA0201899853600113AD0 /* Contact.m in Sources */,
 				C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */,
 				C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */,
 				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
