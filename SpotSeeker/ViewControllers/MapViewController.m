@@ -28,6 +28,7 @@
 @synthesize current_annotations;
 @synthesize selected_cluster;
 @synthesize alert;
+@synthesize original_campus;
 
 extern const int meters_per_latitude;
 
@@ -214,29 +215,6 @@ extern const int meters_per_latitude;
     [self centerOnUserLocation];
 }
 
-
--(IBAction)btnClickCampusSelected:(id)sender {
-    int row = [self.campus_picker selectedRowInComponent:0];
-    Campus *campus = [[Campus getCampuses] objectAtIndex:row];
-    Campus *current_campus = [Campus getCurrentCampus];
-    
-    if ([current_campus.search_key isEqualToString:campus.search_key]) {
-        [self hideCampusChooser];
-        return;
-    }
-
-    [Campus setCurrentCampus: campus];
-    self.search_attributes = nil;
-    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app_delegate.search_preferences = nil;
-    [self centerOnCampus:campus];
-    [self setScreenTitleForCurrentCampus];
-
-   
-    [self hideCampusChooser];
-}
-
-
 #pragma mark -
 #pragma mark alert methods
 
@@ -352,6 +330,9 @@ extern const int meters_per_latitude;
         ListViewController *destination = segue.destinationViewController;
         destination.current_spots = self.cluster_spots_to_display;
     }
+    else if ([[segue identifier] isEqualToString:@"more_view"]) {
+        original_campus = [Campus getCurrentCampus];
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -363,24 +344,17 @@ extern const int meters_per_latitude;
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (self.campus_picker_panel.hidden) {
-        return;
-    }
+-(void)viewDidAppear:(BOOL)animated {
+    Campus *current_campus = [Campus getCurrentCampus];
     
-    [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        CGPoint point = [obj locationInView:self.view];
-        float event_y = point.y;
-        float top_of_panel = self.campus_picker_panel.frame.origin.y;
-        
-        if (top_of_panel > event_y) {
-            [self hideCampusChooser];
-        }
-    }];
-}
-
--(void)viewDidDisappear:(BOOL)animated {
-    [self hideCampusChooser];
+    if (original_campus &&
+        ![original_campus.search_key isEqualToString:current_campus.search_key]) {
+        self.search_attributes = nil;
+        AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        app_delegate.search_preferences = nil;
+        [self centerOnCampus:current_campus];
+        [self setScreenTitleForCurrentCampus];
+    }
 }
 
 - (void)viewDidLoad
@@ -417,7 +391,6 @@ extern const int meters_per_latitude;
         [map_view setShowsUserLocation:YES];
         self.from_list = [NSNumber numberWithBool:false];        
     }
-
 }
 
 -(void)clearFromList:(NSTimer *)timer {

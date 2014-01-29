@@ -44,7 +44,6 @@
     BOOL showing_tip_view;
     BOOL loading;
     NSArray *selected_cluster;
-   
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;
@@ -54,9 +53,10 @@
 @property (nonatomic, retain) NSMutableDictionary *current_annotations;
 @property (nonatomic, retain) NSArray *selected_cluster;
 @property (nonatomic, retain) UIAlertView *alert;
+@property (nonatomic) Campus *original_campus;
 
 - (IBAction) btnClickRecenter:(id)sender;
-- (IBAction) btnClickCampusSelected:(id)sender;
+//- (IBAction) btnClickCampusSelected:(id)sender;
 
 
 @end
