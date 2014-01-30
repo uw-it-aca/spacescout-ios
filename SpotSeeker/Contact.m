@@ -11,6 +11,7 @@
 @implementation Contact
 @synthesize type;
 @synthesize title;
+@synthesize description;
 @synthesize fields;
 @synthesize email_to;
 @synthesize email_prefix;
@@ -28,6 +29,7 @@
         Contact *current = [[Contact alloc] init];
         current.type = [contact_values objectForKey:@"type"];
         current.title = [contact_values objectForKey:@"title"];
+        current.description = [contact_values objectForKey:@"description"];
         current.fields = [contact_values objectForKey:@"fields"];
         current.email_to = [contact_values objectForKey:@"email_to"];
         current.email_prefix = [contact_values objectForKey:@"email_prefix"];

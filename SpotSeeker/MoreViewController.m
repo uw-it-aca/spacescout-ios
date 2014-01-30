@@ -70,20 +70,28 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [contacts count];
+    return [contacts count] * 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ContactCell";
+    UITableViewCell *cell;
+    BOOL isDescription = (indexPath.row % 2 != 0);
+    int contactIndex = indexPath.row;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (isDescription)
+        contactIndex -= 1;
 
-    Contact *contact = [contacts objectAtIndex:indexPath.row];
+    Contact *contact = [contacts objectAtIndex:contactIndex];
 
-    cell.textLabel.text = contact.title;
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (isDescription) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ContactDescriptionCell" forIndexPath:indexPath];
+        cell.textLabel.text = contact.description;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ContactCell" forIndexPath:indexPath];
+        cell.textLabel.text = contact.title;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
     return cell;
 }
@@ -104,6 +112,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2 != 0) {
+        return;
+    }
+    
     Contact *contact = [contacts objectAtIndex:indexPath.row];
     mailComposer = [[MFMailComposeViewController alloc]init];
     mailComposer.mailComposeDelegate = self;

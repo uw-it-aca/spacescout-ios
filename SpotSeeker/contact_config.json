@@ -2,6 +2,7 @@
 {
  "type":"suggestion",
  "title": "Suggest a space",
+ "description": "Email an unlisted space you've discovered to add to SpaceScout.",
  "email_to": [
               "spacescout@uw.edu"
               ],
