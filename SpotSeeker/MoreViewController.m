@@ -75,6 +75,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *contact_cell = @"ContactCell";
+    static NSString *description_cell = @"ContactDescriptionCell";
     UITableViewCell *cell;
     BOOL isDescription = (indexPath.row % 2 != 0);
     int contactIndex = indexPath.row;
@@ -85,10 +87,10 @@
     Contact *contact = [contacts objectAtIndex:contactIndex];
 
     if (isDescription) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ContactDescriptionCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:description_cell forIndexPath:indexPath];
         cell.textLabel.text = contact.description;
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ContactCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:contact_cell forIndexPath:indexPath];
         cell.textLabel.text = contact.title;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
