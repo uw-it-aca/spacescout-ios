@@ -15,11 +15,11 @@
 	<key>space_details_reservations_right_padding</key>
 	<integer>4</integer>
 	<key>default_nav_button_color_red</key>
-	<integer>132</integer>
+	<integer>81</integer>
 	<key>default_nav_button_color_green</key>
-	<real>123</real>
+	<integer>77</integer>
 	<key>default_nav_button_color_blue</key>
-	<integer>170</integer>
+	<integer>163</integer>
 	<key>nav_cancel_button_color_red</key>
 	<integer>45</integer>
 	<key>nav_cancel_button_color_green</key>
