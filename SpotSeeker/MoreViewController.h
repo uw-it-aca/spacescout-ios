@@ -16,8 +16,4 @@
 @property (weak, nonatomic) IBOutlet UITableView *contactView;
 @property (nonatomic, retain) IBOutlet UIPickerView *campusPicker;
 
-
--(IBAction)sendSuggestion:(id)sender;
-
-
 @end

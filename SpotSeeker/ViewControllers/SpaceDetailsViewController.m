@@ -894,7 +894,9 @@
 }
 
 - (IBAction)btnClickReportProblem:(id)sender {
-    UIApplication *app = [UIApplication sharedApplication];  
+    if (![MFMailComposeViewController canSendMail]) {
+        return;
+    }
     
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
@@ -905,14 +907,21 @@
     if (to == nil || [to isEqualToString:@""]) {
         to = @"spacescouthelp@uw.edu";
     }
+    
+    NSMutableArray *recipients = [[NSMutableArray alloc] init];
+    [recipients insertObject:to atIndex:0];
+    
     NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_subject", nil), self.spot.name];
-    subject = [subject stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
 
     NSString *body = [NSString stringWithFormat: NSLocalizedString(@"report_problem_email_body", nil), self.spot.name, self.spot.building_name];
-    body = [body stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
 
-    NSString *url = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@", [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [app openURL:[NSURL URLWithString:url]];  
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc]init];
+    mailComposer.mailComposeDelegate = self;
+    
+    [mailComposer setToRecipients:recipients];
+    [mailComposer setSubject:subject];
+    [mailComposer setMessageBody:body isHTML:NO];
+    [self presentModalViewController:mailComposer animated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -1002,6 +1011,19 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - mail compose delegate
+-(void)mailComposeController:(MFMailComposeViewController *)controller
+         didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    if (result) {
+        NSLog(@"Result : %d",result);
+    }
+    if (error) {
+        NSLog(@"Error : %@",error);
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

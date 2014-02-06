@@ -2017,9 +2017,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="x5A-Pp-hKu"/>
-        <segue reference="em9-ZW-DQ1"/>
         <segue reference="3uu-G9-i3V"/>
         <segue reference="rfQ-ts-oNK"/>
+        <segue reference="QY8-j1-nec"/>
+        <segue reference="x5A-Pp-hKu"/>
     </inferredMetricsTieBreakers>
 </document>

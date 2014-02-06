@@ -11,7 +11,6 @@
 @interface MoreViewController ()
 {
     NSArray *contacts;
-    MFMailComposeViewController *mailComposer;
 }
 
 @end
@@ -70,7 +69,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [contacts count] * 2;
+    NSInteger count = [contacts count];
+    return count * 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,12 +114,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2 != 0) {
+    if (!([MFMailComposeViewController canSendMail] && indexPath.row % 2 == 0)) {
         return;
     }
-    
+
     Contact *contact = [contacts objectAtIndex:indexPath.row];
-    mailComposer = [[MFMailComposeViewController alloc]init];
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc]init];
     mailComposer.mailComposeDelegate = self;
     [mailComposer setToRecipients:contact.email_to];
     NSMutableString *string = [[NSMutableString alloc] init];
@@ -167,14 +167,6 @@
     }
 
     [Campus setCurrentCampus: campus];
-}
-
--(void)sendSuggestion:(id)sender {
-    mailComposer = [[MFMailComposeViewController alloc]init];
-    mailComposer.mailComposeDelegate = self;
-    [mailComposer setSubject:@"Test mail"];
-    [mailComposer setMessageBody:@"Testing message for the test mail" isHTML:NO];
-    [self presentModalViewController:mailComposer animated:YES];
 }
 
 #pragma mark - mail compose delegate
