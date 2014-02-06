@@ -35,6 +35,7 @@
 @synthesize footer;
 @synthesize table_view;
 @synthesize reservation_notes_height;
+@synthesize access_notes_height;
 @synthesize image_count_label;
 
 #pragma mark -
@@ -87,11 +88,15 @@
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"access_notes_cell"];
                 }
-                UILabel *display = (UILabel *)[cell viewWithTag:2];
-
-                CGSize expected = [[self.spot.extended_info objectForKey:@"access_notes"] sizeWithFont:display.font constrainedToSize:CGSizeMake(display.frame.size.width, 500.0)  lineBreakMode:display.lineBreakMode];
-
-                return expected.height + 20.0;
+                if (self.access_notes_height != nil) {
+                    return [self.access_notes_height floatValue] + 5;
+                }
+                
+                UIWebView *display = (UIWebView *)[cell viewWithTag:100];
+                [display loadHTMLString:[self.spot.extended_info objectForKey:@"access_notes"] baseURL:nil];
+                NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+                
+                return height + 20.0;
             }
             offset++;
         }
@@ -281,9 +286,22 @@
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"access_notes_cell"];
                 }    
                 
-                UILabel *notes = (UILabel *)[cell viewWithTag:2];
-                               
-                notes.text = [self.spot.extended_info objectForKey:@"access_notes"];
+                UIWebView *notes = (UIWebView *)[cell viewWithTag:100];
+                NSString *encoded = [[self.spot.extended_info objectForKey:@"access_notes"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+                
+                NSString *app_path = [[NSBundle mainBundle] bundlePath];
+                NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+                NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+                
+                NSString *format =  [plist_values objectForKey:@"access_notes_wrapper_format"];
+                NSString *final_notes = [NSString stringWithFormat:format, encoded];
+                
+                notes.delegate = self;
+                [notes loadHTMLString:final_notes baseURL:nil];
+                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.access_notes_height floatValue]);
+                
                 return cell;
             }
             offset++;
@@ -712,7 +730,6 @@
         else {
             reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
         }
-        
     }
     
     return cell;
@@ -924,19 +941,35 @@
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
-    if (self.reservation_notes_height != nil) {
-        return;
-    }
     
-    int height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
-    self.reservation_notes_height = [NSNumber numberWithInt:height];
+   
     int row = 0;
-    if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
-        row = 1;
+    if(webView.tag == 2){// reservation_notes WebView
+
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            row = 1;
+        }
+        if (self.reservation_notes_height != nil) {
+            return;
+        }
+        
+        int height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.reservation_notes_height = [NSNumber numberWithInt:height];
     }
     
+    if(webView.tag == 100){//access_notes WebView
+
+        if (self.access_notes_height != nil) {
+            return;
+        }
+        
+        int height_access = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.access_notes_height = [NSNumber numberWithInt:height_access];
+    }
+
+    [self.table_view beginUpdates];
     [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
-    
+    [self.table_view endUpdates];
 }
 
 

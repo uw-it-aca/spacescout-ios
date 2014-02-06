@@ -15,11 +15,11 @@
 	<key>space_details_reservations_right_padding</key>
 	<integer>4</integer>
 	<key>default_nav_button_color_red</key>
-	<integer>132</integer>
+	<integer>81</integer>
 	<key>default_nav_button_color_green</key>
-	<real>123</real>
+	<integer>77</integer>
 	<key>default_nav_button_color_blue</key>
-	<integer>170</integer>
+	<integer>163</integer>
 	<key>nav_cancel_button_color_red</key>
 	<integer>45</integer>
 	<key>nav_cancel_button_color_green</key>
@@ -27,6 +27,8 @@
 	<key>nav_cancel_button_color_blue</key>
 	<integer>42</integer>
 	<key>reservation_notes_wrapper_format</key>
+	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
+	<key>access_notes_wrapper_format</key>
 	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	<key>space_details_no_image_name_cell_baseline</key>
 	<integer>120</integer>
