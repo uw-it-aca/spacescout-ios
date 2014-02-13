@@ -20,6 +20,11 @@
 #define kDateStartRow   0
 #define kDateEndRow     1
 
+#define UIColorFromRGB(rgbValue) [UIColor \
+        colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+        green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+        blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 static NSString *kDateCellID = @"dateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"datePicker"; // the cell containing the date picker
 static NSString *kDateResetID = @"resetCell";
@@ -475,12 +480,32 @@ NSUInteger DeviceSystemMajorVersion()
     [self updateTableRowWithDateComponents:kDateEndRow dateComponents:nil];
 }
 
-/* Set the Section Title
+/* Set the Section Title and Such
  */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,  tableView.bounds.size.width, 30)];
+    
+    UILabel *labelHeader = [[UILabel alloc] initWithFrame:CGRectMake (16,4,320,30)];
+
+    labelHeader.textColor = [UIColor grayColor];
+    [labelHeader setFont:[UIFont systemFontOfSize:14]];
+    
+    [headerView addSubview:labelHeader];
+                            
+    [headerView setBackgroundColor: UIColorFromRGB(0xF7F7F7)];
+    labelHeader.text = NSLocalizedString(@"hours section name", @"hours section name");
+    
+    return headerView;
+}
+
+
+/*
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return NSLocalizedString(@"hours section name", @"hours section name");
 }
+ */
 
 /* Cells map to the filterArray element
  */
@@ -502,13 +527,14 @@ NSUInteger DeviceSystemMajorVersion()
     cell.textLabel.text = [filterData valueForKey:kTitleKey];
 
     if ([time isKindOfClass:[NSNull class]]) {
-        text = [filterData valueForKey:kDefaultKey];
+        text = [[filterData valueForKey:kDefaultKey] capitalizedString];
     }
     else
     {
         text = [self stringForDateComponents:time];
     }
 
+    cell.detailTextLabel.textAlignment = UITextAlignmentRight;
     cell.detailTextLabel.text = text;
 }
 
