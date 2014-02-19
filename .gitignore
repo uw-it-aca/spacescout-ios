@@ -54,6 +54,7 @@ build/
 *.mode1v3
 *.mode2v3
 *.perspectivev3
+*.bak # Craig doesn't want anyone accidentally comitting their project.bak
 # NB: also, whitelist the default ones, some projects need to use these
 !default.pbxuser
 !default.mode1v3
