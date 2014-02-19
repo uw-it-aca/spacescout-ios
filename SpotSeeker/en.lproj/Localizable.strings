@@ -213,4 +213,8 @@
 "no network connection message" = "Network not available";
 "no network connection button" = "OK";
 
+"hours section name" = "SHOW SPACES OPEN...";
+"hours from" = "From";
+"hours until" = "Until";
+
 

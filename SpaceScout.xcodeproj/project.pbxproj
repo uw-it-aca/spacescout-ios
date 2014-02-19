@@ -11,6 +11,7 @@
 		06ACA0181898090800113AD0 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ACA0171898090800113AD0 /* MoreViewController.m */; };
 		06ACA01A189982D700113AD0 /* contact_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 06ACA019189982D700113AD0 /* contact_config.json */; };
 		06ACA0201899853600113AD0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ACA01F1899853600113AD0 /* Contact.m */; };
+		06ACA02618A4744B00113AD0 /* TimeFilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ACA02518A4744B00113AD0 /* TimeFilterTableViewController.m */; };
 		2323BBD015B496F200B6947B /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCA15B496F200B6947B /* icon-72.png */; };
 		2323BBD115B496F200B6947B /* icon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCB15B496F200B6947B /* icon-small-50.png */; };
 		2323BBD215B496F200B6947B /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2323BBCC15B496F200B6947B /* icon-small.png */; };
@@ -192,7 +193,6 @@
 		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
 		C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */; };
 		C2D4E31415938BAB00B594C5 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30F15938BAB00B594C5 /* cafe.png */; };
@@ -234,6 +234,8 @@
 		06ACA019189982D700113AD0 /* contact_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contact_config.json; sourceTree = "<group>"; };
 		06ACA01E1899853600113AD0 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		06ACA01F1899853600113AD0 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		06ACA02418A4744B00113AD0 /* TimeFilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFilterTableViewController.h; sourceTree = "<group>"; };
+		06ACA02518A4744B00113AD0 /* TimeFilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFilterTableViewController.m; sourceTree = "<group>"; };
 		2323BBCA15B496F200B6947B /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		2323BBCB15B496F200B6947B /* icon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small-50.png"; sourceTree = "<group>"; };
 		2323BBCC15B496F200B6947B /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
@@ -480,8 +482,6 @@
 		C2B2F651153E225800292FDC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		C2B2F652153E225800292FDC /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		C2B2F653153E225800292FDC /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
-		C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapFilterTimeViewController.h; path = ViewControllers/MapFilterTimeViewController.h; sourceTree = "<group>"; };
-		C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapFilterTimeViewController.m; path = ViewControllers/MapFilterTimeViewController.m; sourceTree = "<group>"; };
 		C2C0088715476865004AF6F7 /* REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REST.h; path = Models/REST.h; sourceTree = "<group>"; };
 		C2C0088815476865004AF6F7 /* REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REST.m; path = Models/REST.m; sourceTree = "<group>"; };
 		C2CE6EA617722AA0009D1DA9 /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainListViewController.h; path = ViewControllers/MainListViewController.h; sourceTree = "<group>"; };
@@ -602,10 +602,10 @@
 		C22FB45915826BEB005D6BD5 /* Search Filters */ = {
 			isa = PBXGroup;
 			children = (
+				06ACA02418A4744B00113AD0 /* TimeFilterTableViewController.h */,
+				06ACA02518A4744B00113AD0 /* TimeFilterTableViewController.m */,
 				C224FBF21536300400CD4A79 /* MapFilterDetailsViewController.h */,
 				C224FBF31536300500CD4A79 /* MapFilterDetailsViewController.m */,
-				C2BF0549154A081D002FA3EA /* MapFilterTimeViewController.h */,
-				C2BF054A154A081D002FA3EA /* MapFilterTimeViewController.m */,
 				C22FB45B15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.h */,
 				C22FB45C15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m */,
 				C2ED2BB915A361D500662C0D /* PickerFilterViewController.h */,
@@ -1305,10 +1305,10 @@
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
 				C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */,
 				C2C0088915476865004AF6F7 /* REST.m in Sources */,
-				C2BF054B154A081D002FA3EA /* MapFilterTimeViewController.m in Sources */,
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,
 				06ACA0201899853600113AD0 /* Contact.m in Sources */,
 				C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */,
+				06ACA02618A4744B00113AD0 /* TimeFilterTableViewController.m in Sources */,
 				C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */,
 				C2A20629156D9914005E30FF /* ListViewController.m in Sources */,
 				C2A2A169156EA250004781F6 /* SearchableSpaceListViewController.m in Sources */,

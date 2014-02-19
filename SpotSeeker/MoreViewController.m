@@ -70,7 +70,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [contacts count] * 2;
+    NSInteger count = [contacts count];
+    return count * 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,12 +115,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2 != 0) {
+    if (!([MFMailComposeViewController canSendMail] && indexPath.row % 2 == 0)) {
         return;
     }
-    
+
     Contact *contact = [contacts objectAtIndex:indexPath.row];
-    mailComposer = [[MFMailComposeViewController alloc]init];
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc]init];
     mailComposer.mailComposeDelegate = self;
     [mailComposer setToRecipients:contact.email_to];
     NSMutableString *string = [[NSMutableString alloc] init];

@@ -16,7 +16,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-
+#import <MessageUI/MessageUI.h>
 #import "ViewController.h"
 #import "Space.h"
 #import "Favorites.h"
@@ -26,7 +26,7 @@
 #import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, DisplayOptionsLoaded, UIWebViewDelegate> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;

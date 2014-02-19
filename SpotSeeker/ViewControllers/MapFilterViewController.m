@@ -181,7 +181,7 @@
         mfd.filter = self.current_section;
     }
     else if ([[segue identifier] isEqualToString:@"time_options"]) {
-        MapFilterTimeViewController *mft = [segue destinationViewController];
+        TimeFilterTableViewController *mft = [segue destinationViewController];
         mft.filter = self.current_section;
     }
     else if ([[segue identifier] isEqualToString:@"index_table"]) {
