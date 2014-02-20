@@ -25,6 +25,8 @@
         green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
         blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#define kSelectedDateDetailColor [UIColor redColor]
+
 static NSString *kDateCellID = @"dateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"datePicker"; // the cell containing the date picker
 static NSString *kDateResetID = @"resetCell";
@@ -237,33 +239,6 @@ NSUInteger DeviceSystemMajorVersion()
 	return cell;
 }
 
-/*! Adds or removes a UIPickerView cell below the given indexPath.
- 
- @param indexPath The indexPath to reveal the UIPickerView.
- */
-- (void)toggleDatePickerForSelectedIndexPath:(NSIndexPath *)indexPath
-{
-    [self.tableView beginUpdates];
-    
-    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]];
-    
-    // check if 'indexPath' has an attached date picker below it
-    if ([self hasPickerForIndexPath:indexPath])
-    {
-        // found a picker below it, so remove it
-        [self.tableView deleteRowsAtIndexPaths:indexPaths
-                              withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else
-    {
-        // didn't find a picker below it, so we should insert it
-        [self.tableView insertRowsAtIndexPaths:indexPaths
-                              withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
-    [self.tableView endUpdates];
-}
-
 /*! Reveals the date picker inline for the given indexPath, called by "didSelectRowAtIndexPath".
  
  @param indexPath The indexPath to reveal the UIPickerView.
@@ -273,39 +248,37 @@ NSUInteger DeviceSystemMajorVersion()
     // display the date picker inline with the table content
     [self.tableView beginUpdates];
     
-    BOOL before = NO;   // indicates if the date picker is below "indexPath", help us determine which row to reveal
-    if ([self hasInlineDatePicker])
-    {
-        before = self.time_picker_index_path.row < indexPath.row;
-    }
+    // indicates if the date picker is below "indexPath", help us determine which row to reveal
+    BOOL before = NO;
     
     BOOL sameCellClicked = (self.time_picker_index_path.row - 1 == indexPath.row);
     
     // remove any date picker cell if it exists
     if ([self hasInlineDatePicker])
     {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.time_picker_index_path.row - 1 inSection:0];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        before = (self.time_picker_index_path.row < indexPath.row);
+        NSInteger row = self.time_picker_index_path.row;
+
+        // clear cell details decorations
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row - 1 inSection:0]];
         cell.detailTextLabel.textColor = self.detailTextColor;
 
-        indexPath = [NSIndexPath indexPathForRow:self.time_picker_index_path.row inSection:0];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // remove the old picker
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         self.time_picker_index_path = nil;
     }
     
     if (!sameCellClicked)
     {
-        // hide the old date picker and display the new one
-        NSInteger rowToReveal = (before ? indexPath.row - 1 : indexPath.row);
-        NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:rowToReveal inSection:0];
-        
-        [self toggleDatePickerForSelectedIndexPath:indexPathToReveal];
-        self.time_picker_index_path = [NSIndexPath indexPathForRow:indexPathToReveal.row + 1 inSection:0];
-
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.time_picker_index_path.row - 1 inSection:0];
+        // decorate cell details to show they're being edited
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         self.detailTextColor = cell.detailTextLabel.textColor;
-        cell.detailTextLabel.textColor = [UIColor redColor];
+        cell.detailTextLabel.textColor = kSelectedDateDetailColor;
+    
+        // insert the new date picker
+        NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:(before ? indexPath.row : indexPath.row + 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPathToReveal] withRowAnimation:UITableViewRowAnimationFade];
+        self.time_picker_index_path = [NSIndexPath indexPathForRow:indexPathToReveal.row inSection:0];
     }
     
     // always deselect the row containing the start or end date
@@ -511,7 +484,13 @@ NSUInteger DeviceSystemMajorVersion()
  */
 - (void)updateTableWithModelRow:(NSInteger)row
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    NSInteger offset = 0;
+    
+    if ([self hasInlineDatePicker] && self.time_picker_index_path.row <= row) {
+        offset = 1;
+    }
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row + offset inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self updateTableCellWithModelRow:cell modelRow:row];
 }
