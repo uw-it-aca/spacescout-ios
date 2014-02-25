@@ -15,12 +15,15 @@
 @synthesize spot;
 @synthesize current_spots;
 @synthesize alert;
-
+@synthesize is_running_search;
+@synthesize current_map_list_ui_view_controller;
+@synthesize starting_in_search;
 
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;
 
 -(void) runSearch {
+    self.is_running_search = true;
     if (search_attributes == nil) {
         search_attributes = [[NSMutableDictionary alloc] init];
     }
@@ -91,6 +94,12 @@ bool first_search = false;
 }
 
 -(void) searchFinished:(NSArray *)spots {
+    self.is_running_search = false;
+    self.starting_in_search = false;
+    if (self.current_map_list_ui_view_controller) {
+        [self.current_map_list_ui_view_controller searchFinished:spots];
+        return;
+    }
     self.current_spots = spots;
     [self showFoundSpaces];
 }

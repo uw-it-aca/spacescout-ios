@@ -42,7 +42,11 @@ extern const int meters_per_latitude;
     loading_spinner.hidden = YES;
 }
 
--(void) showFoundSpaces {    
+-(void) showFoundSpaces {
+    if (self.starting_in_search) {
+        return;
+    }
+    
     UIActivityIndicatorView *loading_spinner = (UIActivityIndicatorView *)[self.view viewWithTag:80];
     
     bool expand_map_on_demand = !loading_spinner.hidden;
@@ -313,6 +317,12 @@ extern const int meters_per_latitude;
     else if ([[segue identifier] isEqualToString:@"spot_list"]) {
         UINavigationController *nav = segue.destinationViewController;
         ListViewController *destination = [[nav viewControllers] objectAtIndex:0];      
+
+        if (self.is_running_search) {
+            self.current_map_list_ui_view_controller = destination;
+            destination.starting_in_search = true;
+        }
+
         
         NSMutableArray *all_spots = [[NSMutableArray alloc] init];
         for (int index = 0; index < self.current_clusters.count; index++) {
@@ -354,6 +364,9 @@ extern const int meters_per_latitude;
         app_delegate.search_preferences = nil;
         [self centerOnCampus:current_campus];
         [self setScreenTitleForCurrentCampus];
+    }
+    if (self.starting_in_search) {
+        [self showRunningSearchIndicator];
     }
 }
 

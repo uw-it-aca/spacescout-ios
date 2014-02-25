@@ -21,6 +21,12 @@
     NSMutableDictionary *search_attributes;
     NSArray *current_spots;
     Space *spot;
+    Boolean is_running_search;
+    // This is to handle switching between map and list during a search
+    SearchableSpaceListViewController *current_map_list_ui_view_controller;
+    // This tells us we're in the transition mentioned above - show the spinner
+    Boolean starting_in_search;
+
 //    IBOutlet UIPickerView *campus_picker;
 //    IBOutlet UIView *campus_picker_panel;
 
@@ -32,7 +38,9 @@
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) NSArray *current_spots;
 @property (nonatomic, retain) UIAlertView *alert;
-
+@property (nonatomic) Boolean is_running_search;
+@property (nonatomic, retain) SearchableSpaceListViewController *current_map_list_ui_view_controller;
+@property (nonatomic) Boolean starting_in_search;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;
