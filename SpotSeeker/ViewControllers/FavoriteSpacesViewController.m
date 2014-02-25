@@ -38,29 +38,20 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    // If someone unfavorites something after being here, redraw the table
-    NSArray *current_favorites = [Favorites getFavoritesIDList];
-    if (self.favorites.count != current_favorites.count) {
-        self.favorites = current_favorites;
-        [self fetchFavorites];
-    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.favorites = [Favorites getFavoritesIDList];
+//    self.favorites = [Favorites getFavoritesIDList];
     [self fetchFavorites];
 }
 
-- (void)fetchFavorites {
-    NSMutableDictionary *id_lookup = [[NSMutableDictionary alloc] init];
-    [id_lookup setObject:self.favorites forKey:@"id"];
-    
+- (void)fetchFavorites {   
     Space *search_spot = [[Space alloc] init];
     search_spot.delegate = self;
-    [search_spot getListBySearch:id_lookup];
+    [search_spot getListByFavorites];
     self.spot = search_spot;
     
 }
