@@ -49,12 +49,17 @@
     NSString *description;
     REST *rest;
     
+    BOOL is_favorite;
     // For the list view, in miles
     NSNumber *distance_from_user;
+    
+    // For tracking favorites!
+   
 }
 
 - (void) getListByFavorites;
 - (void) getListBySearch: (NSDictionary *)arguments ;
++(void) clearFavoritesCache;
 
 -(NSString *) buildURLWithParams:(NSDictionary *)param_dictionary;
 -(NSComparisonResult)compareToSpot:(Space *)spot;
@@ -83,6 +88,7 @@
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSNumber *distance_from_user;
 @property (nonatomic, retain) NSDate *modifified_date;
+@property (nonatomic) BOOL is_favorite;
 
 @end
 

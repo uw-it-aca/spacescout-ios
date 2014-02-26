@@ -44,16 +44,58 @@
 @synthesize rest;
 @synthesize distance_from_user;
 @synthesize modifified_date;
+@synthesize is_favorite;
+
+static NSMutableDictionary *favorite_space_ids;
+static NSDate *last_favorite_update;
+
+const float FAVORITES_REFRESH_INTERVAL = 10.0;
+
++(void)clearFavoritesCache {
+    last_favorite_update = nil;
+}
 
 -(void) getListByFavorites {
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
+
     
     [_rest getURL:@"/api/v1/user/me/favorites/"];
     self.rest = _rest;
 }
 
 - (void) getListBySearch: (NSDictionary *)arguments {
+    if (!last_favorite_update || [[NSDate date] timeIntervalSinceDate:last_favorite_update] > FAVORITES_REFRESH_INTERVAL) {
+        last_favorite_update = [NSDate date];
+        REST *_rest = [[REST alloc] init];
+        __weak ASIHTTPRequest *request = [_rest getRequestForBlocksWithURL:@"/api/v1/user/me/favorites/"];
+        [request setCompletionBlock:^{
+            SBJsonParser *parser = [[SBJsonParser alloc] init];
+            NSArray *spot_results = [parser objectWithData:[request responseData]];
+            favorite_space_ids = [[NSMutableDictionary alloc] init];
+            
+            for (NSDictionary *spot_info in spot_results) {
+                NSString *fav_remote_id = [spot_info objectForKey:@"id"];
+                [favorite_space_ids setObject:[NSObject alloc] forKey:fav_remote_id];
+            }
+            [self _getListBySearch:arguments];
+        }];
+        
+        [request setFailedBlock:^{
+            // Go on anyway, no need to stop the app
+            [self _getListBySearch:arguments];
+            NSLog(@"Failure on favorites!");
+        }];
+        
+        [request startAsynchronous];
+    }
+    else {
+        [self _getListBySearch:arguments];
+        // fetch now
+    }
+}
+
+-(void) _getListBySearch: (NSDictionary *) arguments {
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
     
@@ -72,10 +114,17 @@
     NSArray *spot_results = [parser objectWithData:[request responseData]];
     NSMutableArray *spot_list = [NSMutableArray arrayWithCapacity:spot_results.count];
 
-    for (NSDictionary *spot_info in spot_results) {      
+    for (NSDictionary *spot_info in spot_results) {
         Space *spot = [Space alloc];
         spot.remote_id = [spot_info objectForKey:@"id"];
         spot.name = [spot_info objectForKey:@"name"];
+        
+        if ([favorite_space_ids objectForKey:spot.remote_id]) {
+            spot.is_favorite = true;
+        }
+        else {
+            spot.is_favorite = false;
+        }
         
         id type_basics = [spot_info objectForKey:@"type"];
         NSString *type_class = [NSString stringWithFormat:@"%@", [type_basics class]];

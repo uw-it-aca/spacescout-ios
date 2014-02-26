@@ -26,7 +26,7 @@
 #import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, IsFavorite> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
@@ -36,9 +36,6 @@
     REST *rest;
     NSMutableArray *environment_fields;
     NSMutableArray *equipment_fields;
-    Boolean space_is_favorite;
-    Boolean checked_for_favorite;
-
 }
 
 - (IBAction) btnClickFavorite:(id)sender;
@@ -60,8 +57,6 @@
 @property (nonatomic, retain) NSNumber *reservation_notes_height;
 @property (nonatomic, retain) NSNumber *access_notes_height;
 @property (nonatomic, retain) UILabel *image_count_label;
-@property (nonatomic) Boolean space_is_favorite;
-@property (nonatomic) Boolean checked_for_favorite;
 
 
 @end

@@ -37,23 +37,12 @@
 @synthesize reservation_notes_height;
 @synthesize access_notes_height;
 @synthesize image_count_label;
-@synthesize space_is_favorite;
-@synthesize checked_for_favorite;
+
 
 #pragma mark -
 #pragma mark table control methods
 
--(void)isFavorite:(Boolean)is_favorite {
-    self.space_is_favorite = is_favorite;
-    self.checked_for_favorite = true;
-
-    [self.table_view reloadData];
-}
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (!checked_for_favorite) {
-        return 0;
-    }
     return 3;
 }
 
@@ -549,7 +538,7 @@
     
     UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
     self.favorite_button = fav_button;
-    if (self.space_is_favorite) {
+    if (spot.is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
     }
     
@@ -895,17 +884,19 @@
 #pragma mark button actions
 - (IBAction) btnClickFavorite:(id)sender {
     Favorites *favs = [[Favorites alloc] init];
-    if (self.space_is_favorite) {
+    if (spot.is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
-        self.space_is_favorite = false;
+        spot.is_favorite = false;
         [favs removeServerFavorite:spot];
     }
     else {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
-        self.space_is_favorite = true;
+        spot.is_favorite = true;
         [favs addServerFavorite:spot];
     }
-    
+    // This prevents a problem where going back to the list, then searching, in less than the FAVORITES_REFRESH_INTERVAL results
+    // in the wrong value when coming back to the space
+    [Space clearFavoritesCache];
 }
 
 - (IBAction)btnClickReportProblem:(id)sender {
@@ -1006,10 +997,6 @@
     DisplayOptions *options = [[DisplayOptions alloc] init];
     options.delegate = self;
     [options loadOptions];
-    
-    Favorites *fav_check = [[Favorites alloc] init];
-    fav_check.delegate = self;
-    [fav_check getIsFavorite:self.spot];
     
     /*
     UIImage *image = [UIImage imageNamed:@"cat_named_spot.jpg"];    
