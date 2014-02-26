@@ -45,6 +45,13 @@
 @synthesize distance_from_user;
 @synthesize modifified_date;
 
+-(void) getListByFavorites {
+    REST *_rest = [[REST alloc] init];
+    _rest.delegate = self;
+    
+    [_rest getURL:@"/api/v1/user/me/favorites/"];
+    self.rest = _rest;
+}
 
 - (void) getListBySearch: (NSDictionary *)arguments {
     REST *_rest = [[REST alloc] init];
@@ -56,7 +63,7 @@
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-
+    
     if (200 != [request responseStatusCode]) {
         NSLog(@"Code: %i", [request responseStatusCode]);
         // show an error

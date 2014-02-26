@@ -24,7 +24,10 @@
 
 -(void) getURL:(NSString *)url;
 -(void) getURLWithNoAccessToken:(NSString *)url;
--(void)postURL:(NSString *)url withParams:(NSDictionary *)params;
+-(void) postURL:(NSString *)url withParams:(NSDictionary *)params;
+-(void) putURL:(NSString *)url withBody:(NSString *)body;
+-(void) deleteURL:(NSString *)url;
+
 -(NSString *) getFullURL:(NSString *)url;
 -(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url;
 -(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier;

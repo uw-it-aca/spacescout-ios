@@ -54,6 +54,10 @@
     [self sortSpots];
     [self.spot_table reloadData];
     self.requests = [[NSMutableDictionary alloc] init];
+    
+    if (self.starting_in_search) {
+        [self showRunningSearchIndicator];
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -105,7 +109,13 @@
     }
     else if ([[segue identifier] isEqualToString:@"spot_map"]) {
         UINavigationController *nav = segue.destinationViewController;
-        MapViewController *destination = [[nav viewControllers] objectAtIndex:0];      
+        MapViewController *destination = [[nav viewControllers] objectAtIndex:0];
+        
+        if (self.is_running_search) {
+            self.current_map_list_ui_view_controller = destination;
+            destination.starting_in_search = true;
+        }
+
         destination.current_spots = self.current_spots;
         destination.map_region = self.map_region;
         destination.search_attributes = self.search_attributes;
@@ -179,6 +189,9 @@
 #pragma mark table_view_methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.starting_in_search) {
+        return 0;
+    }
     return self.current_spots.count;
 }
 
