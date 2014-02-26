@@ -35,6 +35,38 @@
 
 }
 
+-(void)deleteURL:(NSString *)url {
+    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
+    NSString *request_url = [self _getFullURL:url];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
+    [request setRequestMethod:@"DELETE"];
+    
+    [self _signRequest:request withAccessToken:true];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+    [[GAI sharedInstance] dispatch];
+    
+}
+
+-(void)putURL:(NSString *)url withBody:(NSString *)body {
+    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
+    NSString *request_url = [self _getFullURL:url];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
+    [request setRequestMethod:@"PUT"];
+    [request appendPostData:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self _signRequest:request withAccessToken:true];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+    [[GAI sharedInstance] dispatch];
+    
+}
+
+
 -(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier {
     [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
     NSString *request_url = [self _getFullURL:@"/oauth/access_token/"];

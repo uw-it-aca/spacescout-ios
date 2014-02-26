@@ -55,6 +55,7 @@
 
 - (void) getListByFavorites;
 - (void) getListBySearch: (NSDictionary *)arguments ;
+
 -(NSString *) buildURLWithParams:(NSDictionary *)param_dictionary;
 -(NSComparisonResult)compareToSpot:(Space *)spot;
 -(BOOL)isOpenNow;
@@ -90,3 +91,4 @@
 -(void) searchFinished:(NSArray *)spots;
 
 @end
+

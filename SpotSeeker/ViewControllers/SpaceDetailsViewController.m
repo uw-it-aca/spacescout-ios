@@ -37,11 +37,23 @@
 @synthesize reservation_notes_height;
 @synthesize access_notes_height;
 @synthesize image_count_label;
+@synthesize space_is_favorite;
+@synthesize checked_for_favorite;
 
 #pragma mark -
 #pragma mark table control methods
 
+-(void)isFavorite:(Boolean)is_favorite {
+    self.space_is_favorite = is_favorite;
+    self.checked_for_favorite = true;
+
+    [self.table_view reloadData];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (!checked_for_favorite) {
+        return 0;
+    }
     return 3;
 }
 
@@ -537,7 +549,7 @@
     
     UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
     self.favorite_button = fav_button;
-    if ([Favorites isFavorite:spot]) {
+    if (self.space_is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
     }
     
@@ -882,13 +894,16 @@
 #pragma mark -
 #pragma mark button actions
 - (IBAction) btnClickFavorite:(id)sender {
-    if ([Favorites isFavorite:spot]) {
+    Favorites *favs = [[Favorites alloc] init];
+    if (self.space_is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
-        [Favorites removeFavorite:spot];     
+        self.space_is_favorite = false;
+        [favs removeServerFavorite:spot];
     }
     else {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
-        [Favorites addFavorite:spot];
+        self.space_is_favorite = true;
+        [favs addServerFavorite:spot];
     }
     
 }
@@ -991,6 +1006,10 @@
     DisplayOptions *options = [[DisplayOptions alloc] init];
     options.delegate = self;
     [options loadOptions];
+    
+    Favorites *fav_check = [[Favorites alloc] init];
+    fav_check.delegate = self;
+    [fav_check getIsFavorite:self.spot];
     
     /*
     UIImage *image = [UIImage imageNamed:@"cat_named_spot.jpg"];    

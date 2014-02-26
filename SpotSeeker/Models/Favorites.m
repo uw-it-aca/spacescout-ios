@@ -9,13 +9,56 @@
 #import "Favorites.h"
 
 @implementation Favorites
+@synthesize delegate;
+@synthesize rest;
 
+
+-(void) getIsFavorite:(Space *)space {
+    REST *_rest = [[REST alloc] init];
+    _rest.delegate = self;
+    
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", space.remote_id];
+    [_rest getURL:url];
+    self.rest = _rest;
+}
+
+-(void)requestFromREST:(ASIHTTPRequest *)request {
+    if ([[request requestMethod] isEqualToString:@"GET"]) {
+        if ([request.responseString isEqual: @"true"]) {
+            [self.delegate isFavorite:true];
+            return;
+        }
+        [self.delegate isFavorite:false];
+    }
+    return;
+}
 
 +(BOOL) isFavorite:(Space *)spot {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     id is_favorite = [favorites objectForKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
     
     return !(is_favorite == nil);
+}
+
+-(void) addServerFavorite:(Space *)spot {
+    REST *_rest = [[REST alloc] init];
+    _rest.delegate = self;
+    
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", spot.remote_id];
+    [_rest putURL:url withBody:@"true"];
+    self.rest = _rest;   
+}
+
+-(void) removeServerFavorite:(Space *)spot {
+    REST *_rest = [[REST alloc] init];
+    _rest.delegate = self;
+    
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", spot.remote_id];
+    [_rest deleteURL:url];
+    self.rest = _rest;
 }
 
 +(void) addFavorite:(Space *)spot {

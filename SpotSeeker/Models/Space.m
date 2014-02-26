@@ -63,7 +63,7 @@
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-
+    
     if (200 != [request responseStatusCode]) {
         NSLog(@"Code: %i", [request responseStatusCode]);
         // show an error
