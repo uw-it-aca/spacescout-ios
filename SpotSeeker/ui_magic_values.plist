@@ -21,11 +21,11 @@
 	<key>default_nav_button_color_blue</key>
 	<integer>163</integer>
 	<key>nav_cancel_button_color_red</key>
-	<integer>45</integer>
+	<integer>85</integer>
 	<key>nav_cancel_button_color_green</key>
-	<integer>33</integer>
+	<integer>85</integer>
 	<key>nav_cancel_button_color_blue</key>
-	<integer>42</integer>
+	<integer>85</integer>
 	<key>reservation_notes_wrapper_format</key>
 	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	<key>access_notes_wrapper_format</key>
@@ -33,11 +33,11 @@
 	<key>space_details_no_image_name_cell_baseline</key>
 	<integer>120</integer>
 	<key>filter_row_selected_red</key>
-	<integer>234</integer>
+	<integer>243</integer>
 	<key>filter_row_selected_green</key>
-	<integer>234</integer>
+	<integer>241</integer>
 	<key>filter_row_selected_blue</key>
-	<integer>234</integer>
+	<integer>252</integer>
 	<key>filter_row_unselected_red</key>
 	<integer>247</integer>
 	<key>filter_row_unselected_green</key>

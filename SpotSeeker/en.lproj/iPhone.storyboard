@@ -237,32 +237,22 @@
                                     <rect key="frame" x="0.0" y="393" width="320" height="103"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Ex-c4-gK4">
-                                            <rect key="frame" x="117" y="53" width="87" height="37"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Ex-c4-gK4">
+                                            <rect key="frame" x="262" y="0.0" width="38" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                            <state key="normal" title="Reset" backgroundImage="filter_reset.png">
-                                                <color key="titleColor" red="0.1764705926" green="0.1294117719" blue="0.1647058874" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" title="Reset">
+                                                <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             </state>
                                             <connections>
                                                 <action selector="btnClickResetFilter:" destination="Uj1-TD-aQN" eventType="touchUpInside" id="buW-MZ-AaL"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NOK-Uk-mBB">
-                                            <rect key="frame" x="91" y="4" width="140" height="37"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NOK-Uk-mBB">
+                                            <rect key="frame" x="8" y="0.0" width="90" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="View results" backgroundImage="ViewResults.png">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
+                                            <state key="normal" title="View Results"/>
                                             <connections>
                                                 <action selector="btnClickSearch:" destination="Uj1-TD-aQN" eventType="touchUpInside" id="rBc-oN-h9B"/>
                                             </connections>
@@ -289,7 +279,7 @@
                                                     <rect key="frame" x="77" y="11" width="197" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -334,7 +324,7 @@
                                                     <rect key="frame" x="108" y="11" width="165" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -358,7 +348,7 @@
                                                     <rect key="frame" x="68" y="11" width="205" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -399,7 +389,7 @@
                                                     <rect key="frame" x="72" y="11" width="202" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.5176470876" green="0.48235294220000002" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -424,7 +414,6 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="LN9-M6-C7Q">
-                            <color key="tintColor" red="0.34509803919999998" green="0.2901960784" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnClickCancel:" destination="Uj1-TD-aQN" id="RJq-qH-vOe"/>
                             </connections>
@@ -545,7 +534,9 @@
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="3ak-Ze-GTq">
-                        <barButtonItem key="backBarButtonItem" title="Done" id="W6a-0g-mq9"/>
+                        <barButtonItem key="backBarButtonItem" title="Done" id="W6a-0g-mq9">
+                            <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="pkl-63-ssl">
                             <color key="tintColor" red="0.34509803921568627" green="0.29019607843137252" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -1069,7 +1060,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.85098039219999999" green="0.92941176469999998" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <view autoresizesSubviews="NO" tag="22" contentMode="scaleToFill" id="rGJ-15-VFp">
                                                             <rect key="frame" x="0.0" y="30" width="260" height="30"/>
@@ -1087,10 +1078,10 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.85098039219999999" green="0.92941176469999998" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.85098039219999999" green="0.92941176469999998" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1122,7 +1113,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.85098039219999999" green="0.92941176469999998" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -1160,7 +1151,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.85098039219999999" green="0.92941176469999998" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1952,7 +1943,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ViewResults.png" width="140" height="37"/>
         <image name="asterisk.png" width="22" height="22"/>
         <image name="button_Back.png" width="41" height="30"/>
         <image name="button_Next.png" width="41" height="30"/>
@@ -1960,7 +1950,6 @@
         <image name="comp-icon.png" width="16" height="16"/>
         <image name="done_picker.png" width="53" height="25"/>
         <image name="faveslist.png" width="24" height="24"/>
-        <image name="filter_reset.png" width="87" height="37"/>
         <image name="flag_open.png" width="66" height="31"/>
         <image name="hours_status_active.png" width="412" height="74"/>
         <image name="hours_status_default.png" width="412" height="74"/>
