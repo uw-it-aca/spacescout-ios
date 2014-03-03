@@ -75,12 +75,18 @@
     else {
         
         NSDictionary *params = [self dictionaryFromParamsString:[request responseString]];
-        KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
-        [wrapper setObject:[params objectForKey:@"oauth_token"] forKey:(__bridge id)kSecAttrAccount];
-        [wrapper setObject:[params objectForKey:@"oauth_token_secret"] forKey:(__bridge id)kSecValueData];
         
-        [self dismissModalViewControllerAnimated:TRUE];
+        [REST setPersonalOAuthToken:[params objectForKey:@"oauth_token"] andSecret:[params objectForKey:@"oauth_token_secret"]];
+        [self.delegate loginComplete];
+        
+        [self dismissViewControllerAnimated:TRUE completion:^(void) {}];
     }
+}
+
+-(IBAction)backButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:TRUE completion:^(void) {
+        [self.delegate loginCancelled];
+    }];
 }
 
 -(NSDictionary *)dictionaryFromParamsString:(NSString *)params {

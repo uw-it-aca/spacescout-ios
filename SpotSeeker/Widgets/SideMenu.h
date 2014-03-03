@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Favorites.h"
 
 @interface SideMenu : NSObject {
 }

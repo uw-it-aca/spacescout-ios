@@ -135,6 +135,25 @@
 
 }
 
++(BOOL)hasPersonalOAuthToken {
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
+    
+    NSString *access_token = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+    NSString *access_token_secret = [wrapper objectForKey:(__bridge id)kSecValueData];
+
+    if (access_token && access_token_secret) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
++(void)setPersonalOAuthToken:(NSString *)token andSecret:(NSString *)secret {
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
+    [wrapper setObject:token forKey:(__bridge id)kSecAttrAccount];
+    [wrapper setObject:secret forKey:(__bridge id)kSecValueData];
+}
+
+
 -(NSString *)getFullURL:(NSString *)url {
     return [self _getFullURL:url];
 }

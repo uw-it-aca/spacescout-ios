@@ -61,6 +61,12 @@
     self.rest = _rest;
 }
 
++(int) getFavoritesCount {
+    NSMutableDictionary *favorites = [Favorites getFavorites];
+    int count = [favorites count];
+    return count;
+}
+
 +(void) addFavorite:(Space *)spot {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     [favorites setObject:[NSNumber numberWithBool:TRUE] forKey:[NSString stringWithFormat:@"%@", spot.remote_id]];

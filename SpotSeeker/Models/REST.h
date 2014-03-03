@@ -31,6 +31,8 @@
 -(NSString *) getFullURL:(NSString *)url;
 -(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url;
 -(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier;
++(void)setPersonalOAuthToken:(NSString *)token andSecret:(NSString *)secret;
++(BOOL)hasPersonalOAuthToken;
 
 @end
 

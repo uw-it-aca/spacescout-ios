@@ -881,8 +881,16 @@
 }
 
 #pragma mark -
-#pragma mark button actions
-- (IBAction) btnClickFavorite:(id)sender {
+#pragma mark oauth login protocol
+
+-(void)loginComplete {
+    [self setServerFavoriteValue];
+}
+
+-(void)loginCancelled {
+}
+
+-(void) setServerFavoriteValue {
     Favorites *favs = [[Favorites alloc] init];
     if (spot.is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
@@ -898,6 +906,23 @@
     // in the wrong value when coming back to the space
     [Space clearFavoritesCache];
 }
+
+#pragma mark -
+#pragma mark button actions
+- (IBAction) btnClickFavorite:(id)sender {
+    if ([REST hasPersonalOAuthToken]) {
+        [self setServerFavoriteValue];
+    }
+    else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        
+        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
+        auth_vc.delegate = self;
+
+        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
+    }
+}
+
 
 - (IBAction)btnClickReportProblem:(id)sender {
     if (![MFMailComposeViewController canSendMail]) {

@@ -25,8 +25,9 @@
 #import "HoursFormat.h"
 #import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
+#import "OAuthLoginViewController.h"
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
