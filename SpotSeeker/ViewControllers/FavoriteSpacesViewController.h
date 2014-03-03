@@ -12,7 +12,7 @@
 #import "ListViewController.h"
 #import "OAuthLoginViewController.h"
 
-@interface FavoriteSpacesViewController : ListViewController <UITableViewDelegate, UITableViewDataSource, SearchFinished, OAuthLogin> {
+@interface FavoriteSpacesViewController : ListViewController <UITableViewDelegate, UITableViewDataSource, SearchFinished, OAuthLogin, MovingFavorites> {
     NSArray *favorites;
 }
 
@@ -21,5 +21,6 @@
 @property (nonatomic, retain) NSArray *favorites;
 @property (nonatomic, retain) IBOutlet UIView *no_favorites;
 @property (nonatomic) BOOL handling_login;
+@property (nonatomic, retain) Favorites *favorites_interface;
 
 @end

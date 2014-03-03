@@ -11,6 +11,7 @@
 @implementation FavoriteSpacesViewController
 
 @synthesize favorites;
+@synthesize favorites_interface;
 @synthesize no_favorites;
 @synthesize handling_login;
 
@@ -44,6 +45,12 @@
 
 -(void)loginComplete {
     self.handling_login = FALSE;
+    self.favorites_interface = [[Favorites alloc] init];
+    self.favorites_interface.moving_delegate = self;
+    [self.favorites_interface moveFavoritesToServerFavorites];
+}
+
+-(void)movingFinished {
     [self fetchFavorites];
 }
 

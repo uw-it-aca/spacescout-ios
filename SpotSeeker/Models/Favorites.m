@@ -11,6 +11,8 @@
 @implementation Favorites
 @synthesize delegate;
 @synthesize rest;
+@synthesize moving_to_server;
+@synthesize moving_delegate;
 
 
 -(void) getIsFavorite:(Space *)space {
@@ -31,6 +33,11 @@
         }
         [self.delegate isFavorite:false];
     }
+    
+    if (self.moving_to_server) {
+        // Recursive!
+        [self moveFavoritesToServerFavorites];
+    }
     return;
 }
 
@@ -42,13 +49,18 @@
 }
 
 -(void) addServerFavorite:(Space *)spot {
+    [self addServerFavoriteByID:spot.remote_id];
+}
+
+-(void)addServerFavoriteByID:(id) remote_id {
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
     
-    
-    NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", spot.remote_id];
+    // Just to get data to work with
+    NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", remote_id];
     [_rest putURL:url withBody:@"true"];
-    self.rest = _rest;   
+    self.rest = _rest;
+    
 }
 
 -(void) removeServerFavorite:(Space *)spot {
@@ -59,6 +71,21 @@
     NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", spot.remote_id];
     [_rest deleteURL:url];
     self.rest = _rest;
+}
+
+// Recursive call through restresponse - don't want to slam the server
+// with a ton of concurrent requests.
+-(void)moveFavoritesToServerFavorites {
+    self.moving_to_server = TRUE;
+    NSMutableDictionary *current_local = [Favorites getFavorites];
+
+    for (id remote_id in current_local) {
+        [Favorites removeFavoriteByID: remote_id];
+        [self addServerFavoriteByID:remote_id];
+        return;
+    }
+
+    [self.moving_delegate movingFinished];
 }
 
 +(int) getFavoritesCount {
@@ -73,10 +100,14 @@
     [Favorites saveFavorites:favorites];
 }
 
-+(void) removeFavorite:(Space *)spot {
++(void) removeFavoriteByID:(id)remote_id {
     NSMutableDictionary *favorites = [Favorites getFavorites];
-    [favorites removeObjectForKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
+    [favorites removeObjectForKey:[NSString stringWithFormat:@"%@", remote_id]];
     [Favorites saveFavorites:favorites];
+}
+
++(void) removeFavorite:(Space *)spot {
+    [Favorites removeFavoriteByID:spot.remote_id];
 }
 
 +(BOOL) saveFavorites:(NSMutableDictionary *)favorites {
