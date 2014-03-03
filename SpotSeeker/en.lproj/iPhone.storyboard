@@ -117,23 +117,20 @@
                         <barButtonItem key="backBarButtonItem" title="Map" id="E3E-6D-F3L">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="F4H-kl-V8E">
-                            <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="m4F-Sv-kmb">
                             <connections>
-                                <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="rfQ-ts-oNK"/>
+                                <action selector="openNavigationMenu:" destination="2" id="SF0-d9-ZG7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="V6v-gZ-kPf">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="azT-h2-9jt">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="cCc-xy-eWs" kind="modal" id="em9-ZW-DQ1"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="map_view" destination="Aik-wh-Fpl" id="Phx-6p-3Bv"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="3uu-G9-i3V"/>
                         <segue destination="ty9-ZD-bvE" kind="push" identifier="cluster_details" id="5IB-FM-cpV"/>
+                        <segue destination="cCc-xy-eWs" kind="modal" identifier="open_favorites" id="g4m-Tc-imM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -1961,9 +1958,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="x5A-Pp-hKu"/>
-        <segue reference="em9-ZW-DQ1"/>
+        <segue reference="WGG-0Y-eRZ"/>
         <segue reference="3uu-G9-i3V"/>
-        <segue reference="rfQ-ts-oNK"/>
+        <segue reference="g4m-Tc-imM"/>
     </inferredMetricsTieBreakers>
 </document>

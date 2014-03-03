@@ -33,6 +33,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "SideMenu.h"
 
 @interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate> {
     NSArray *current_clusters;
@@ -54,7 +55,9 @@
 @property (nonatomic, retain) NSArray *selected_cluster;
 @property (nonatomic, retain) UIAlertView *alert;
 @property (nonatomic) Campus *original_campus;
+@property (nonatomic, retain) SideMenu *side_menu;
 
+- (IBAction) openNavigationMenu:(id)sender;
 - (IBAction) btnClickRecenter:(id)sender;
 //- (IBAction) btnClickCampusSelected:(id)sender;
 

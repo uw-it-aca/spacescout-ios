@@ -203,6 +203,10 @@
 		C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2ED2BB615A35A7C00662C0D /* ui_magic_values.plist */; };
 		C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ED2BBA15A361D500662C0D /* PickerFilterViewController.m */; };
 		C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0D0C116FB9471008BB2CB /* Campus.m */; };
+		C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715A718C3AC9F00255582 /* QuartzCore.framework */; };
+		C2F715AA18C3AD0300255582 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715A918C3AD0300255582 /* CoreImage.framework */; };
+		C2F715AC18C3C00000255582 /* NavigationMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F715AB18C3C00000255582 /* NavigationMenu.xib */; };
+		C2F715AF18C3EFA600255582 /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715AE18C3EFA600255582 /* SideMenu.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -497,6 +501,11 @@
 		C2ED2BBA15A361D500662C0D /* PickerFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerFilterViewController.m; path = ViewControllers/PickerFilterViewController.m; sourceTree = "<group>"; };
 		C2F0D0C016FB9471008BB2CB /* Campus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Campus.h; path = Models/Campus.h; sourceTree = "<group>"; };
 		C2F0D0C116FB9471008BB2CB /* Campus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Campus.m; path = Models/Campus.m; sourceTree = "<group>"; };
+		C2F715A718C3AC9F00255582 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C2F715A918C3AD0300255582 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C2F715AB18C3C00000255582 /* NavigationMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationMenu.xib; sourceTree = "<group>"; };
+		C2F715AD18C3EFA600255582 /* SideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenu.h; path = Widgets/SideMenu.h; sourceTree = "<group>"; };
+		C2F715AE18C3EFA600255582 /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenu.m; path = Widgets/SideMenu.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -521,6 +530,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F715AA18C3AD0300255582 /* CoreImage.framework in Frameworks */,
+				C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */,
 				06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */,
 				89DC154D185153D60014F4F3 /* AdSupport.framework in Frameworks */,
 				C22AA3201806196F004EC188 /* Security.framework in Frameworks */,
@@ -685,6 +696,7 @@
 				C2FDB0F4150A802D00ED3A93 /* iPhone.storyboard */,
 				C26DBE011587F0A200FB4DD8 /* PickerView.xib */,
 				C23074D91599326900C31AA1 /* DetailsTableFooter.xib */,
+				C2F715AB18C3C00000255582 /* NavigationMenu.xib */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -918,6 +930,8 @@
 		C2E09380154231610015BF4B /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				C2F715AD18C3EFA600255582 /* SideMenu.h */,
+				C2F715AE18C3EFA600255582 /* SideMenu.m */,
 				C2E0937C1542315A0015BF4B /* UITableSwitch.h */,
 				C2E0937D1542315A0015BF4B /* UITableSwitch.m */,
 			);
@@ -950,6 +964,8 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2F715A918C3AD0300255582 /* CoreImage.framework */,
+				C2F715A718C3AC9F00255582 /* QuartzCore.framework */,
 				06A2EDFF18681593005B2933 /* MessageUI.framework */,
 				8972F37D185293DD003F0E3C /* GoogleAnalytics */,
 				89DC154C185153D60014F4F3 /* AdSupport.framework */,
@@ -1214,6 +1230,7 @@
 				8940AD6615BF33C700714AFB /* reservable@2x.png in Resources */,
 				8940AD6915BF344400714AFB /* done_picker.png in Resources */,
 				8940AD6A15BF344400714AFB /* done_picker@2x.png in Resources */,
+				C2F715AC18C3C00000255582 /* NavigationMenu.xib in Resources */,
 				8940AD7115BF3AB800714AFB /* pin07.png in Resources */,
 				23BEBC0015BF413F006210FF /* pin30.png in Resources */,
 				23BEBC0115BF413F006210FF /* pin30@2x.png in Resources */,
@@ -1300,6 +1317,7 @@
 				C24C116A1536744B00109C30 /* Favorites.m in Sources */,
 				C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */,
 				C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */,
+				C2F715AF18C3EFA600255582 /* SideMenu.m in Sources */,
 				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
@@ -1458,7 +1476,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeeker/SpaceScout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/GoogleAnalytics",
@@ -1480,7 +1498,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeeker/SpaceScout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/GoogleAnalytics",

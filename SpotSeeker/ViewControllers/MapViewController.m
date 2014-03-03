@@ -29,6 +29,7 @@
 @synthesize selected_cluster;
 @synthesize alert;
 @synthesize original_campus;
+@synthesize side_menu;
 
 extern const int meters_per_latitude;
 
@@ -237,6 +238,17 @@ extern const int meters_per_latitude;
     else {
         [self showFoundSpaces];
     }
+}
+
+-(IBAction)openNavigationMenu:(id)sender {
+    [self showMenu];
+}
+
+-(void) showMenu {
+    if (!self.side_menu) {
+        self.side_menu = [[SideMenu alloc] init];
+    }
+    [self.side_menu showMenuForViewController:self];
 }
 
 -(void)hideTipView {
