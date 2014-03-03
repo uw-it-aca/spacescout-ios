@@ -12,9 +12,10 @@
 
 @synthesize favorites;
 @synthesize no_favorites;
+@synthesize handling_login;
 
 - (IBAction)btnClickClose:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 
@@ -34,19 +35,45 @@
 }
 
 #pragma mark -
+#pragma mark oauth login protocol
+
+-(void)loginCancelled {
+    self.handling_login = FALSE;
+    [self dismissViewControllerAnimated:NO completion:^(void) {}];
+}
+
+-(void)loginComplete {
+    self.handling_login = FALSE;
+    [self fetchFavorites];
+}
+
+#pragma mark -
 #pragma mark viewcontroller loading
 
 - (void)viewDidAppear:(BOOL)animated {
-    
+    if (self.handling_login) {
+        return;
+    }
+    if ([REST hasPersonalOAuthToken]) {
+        [self fetchFavorites];
+    }
+    else {
+        self.handling_login = TRUE;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        
+        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
+        auth_vc.delegate = self;
+        
+        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    self.favorites = [Favorites getFavoritesIDList];
-    [self fetchFavorites];
 }
+
+
 
 - (void)fetchFavorites {   
     Space *search_spot = [[Space alloc] init];
