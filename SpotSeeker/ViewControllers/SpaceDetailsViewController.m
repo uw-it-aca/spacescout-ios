@@ -967,6 +967,12 @@
         SingleSpaceMapViewController *destination = (SingleSpaceMapViewController *)[segue destinationViewController];
         destination.spot = self.spot;
     }
+    
+    if ([[segue identifier] isEqualToString:@"open_email_space"]) {
+        EmailSpaceViewController *destination = (EmailSpaceViewController *)[segue destinationViewController];
+        destination.space = self.spot;
+    }
+    
 }
 
 #pragma mark -

@@ -8,11 +8,9 @@
 
 #import "EmailSpaceViewController.h"
 
-@interface EmailSpaceViewController ()
-
-@end
-
 @implementation EmailSpaceViewController
+
+@synthesize space;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,7 +74,7 @@
     
     NSString *email_value = [email_field text];
     
-    NSString *email_regex = @".*@.*";
+    NSString *email_regex = @".+@.+";
     NSPredicate *email_predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", email_regex];
 
     BOOL has_error = FALSE;
@@ -92,9 +90,19 @@
         return;
     }
     
-    NSLog(@"Content: %@ To: %@", [content text], email_value);
+    self.rest = [[REST alloc] init];
+    self.rest.delegate = self;
     
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:email_value forKey:@"to"];
+    [data setObject:[content text] forKey:@"comment"];
+    
+    NSString *url = [NSString stringWithFormat:@"/api/v1/spot/%@/share", self.space.remote_id];
+    [self.rest putURL:url withBody:[data JSONRepresentation]];    
+}
+
+-(void)requestFromREST:(ASIHTTPRequest *)request {
     [self.navigationController popViewControllerAnimated:TRUE];
 }
-`
+
 @end

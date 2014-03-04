@@ -918,7 +918,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="l0v-HK-DRn" kind="push" id="KTL-zm-eJV"/>
+                                                        <segue destination="l0v-HK-DRn" kind="push" identifier="open_email_space" id="KTL-zm-eJV"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

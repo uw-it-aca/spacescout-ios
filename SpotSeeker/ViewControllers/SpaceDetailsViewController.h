@@ -26,6 +26,7 @@
 #import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 #import "OAuthLoginViewController.h"
+#import "EmailSpaceViewController.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {
     Space *spot;
