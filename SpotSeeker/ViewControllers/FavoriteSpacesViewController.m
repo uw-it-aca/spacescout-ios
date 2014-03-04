@@ -71,6 +71,7 @@
         OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
         auth_vc.delegate = self;
         
+ //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
         [self presentViewController:auth_vc animated:YES completion:^(void) {}];
     }
 }

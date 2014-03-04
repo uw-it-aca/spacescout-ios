@@ -884,6 +884,7 @@
 #pragma mark oauth login protocol
 
 -(void)loginComplete {
+    [self.navigationController popViewControllerAnimated:YES];
     [self setServerFavoriteValue];
 }
 
@@ -918,8 +919,9 @@
         
         OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
         auth_vc.delegate = self;
-
-        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
+        auth_vc.title = @"SpaceScout";
+        
+        [self.navigationController pushViewController:auth_vc animated:YES];
     }
 }
 
