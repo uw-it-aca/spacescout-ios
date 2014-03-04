@@ -50,6 +50,7 @@
 
 -(void) addServerFavorite:(Space *)spot {
     [self addServerFavoriteByID:spot.remote_id];
+    [Favorites addLocalCacheFavorite:spot];
     // Just to get data to work with
     // [Favorites addFavorite:spot];
 
@@ -72,6 +73,9 @@
     
     NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", spot.remote_id];
     [_rest deleteURL:url];
+    
+    [Favorites removeLocalCacheFavorite: spot];
+
     self.rest = _rest;
 }
 
@@ -90,8 +94,30 @@
     [self.moving_delegate movingFinished];
 }
 
++(void) setLocalCacheFromRESTData:(NSArray *)spot_results {
+    NSMutableDictionary *favorites = [[NSMutableDictionary alloc] init];
+
+    for (NSDictionary *spot_info in spot_results) {
+        NSString *fav_remote_id = [spot_info objectForKey:@"id"];
+        NSString *key_name = [NSString stringWithFormat:@"%@", fav_remote_id];
+        [favorites setObject:[NSNumber numberWithBool:TRUE] forKey:key_name];
+    }
+    [Favorites saveLocalCacheFavorites:favorites];
+}
+
 +(int) getLocalFavoritesCount {
     NSMutableDictionary *favorites = [Favorites getFavorites];
+    int count = [favorites count];
+    return count;
+}
+
++(int)getFavoritesCount {
+    int local = [Favorites getLocalFavoritesCount];
+    if (local > 0) {
+        return local;
+    }
+    
+    NSMutableDictionary *favorites = [Favorites getLocalCacheFavorites];
     int count = [favorites count];
     return count;
 }
@@ -153,5 +179,57 @@
     
     return list;
 }
+
+#pragma mark -
+#pragma mark local cache for the side menu count
++(void) addLocalCacheFavorite:(Space *)spot {
+    NSMutableDictionary *favorites = [Favorites getLocalCacheFavorites];
+    // Need to be quite sure that the value in the dictionary is an NSString,
+    // otherwise the dictionary won't save the entry.
+    [favorites setObject:[NSNumber numberWithBool:TRUE] forKey:[NSString stringWithFormat:@"%@", spot.remote_id]];
+    [Favorites saveLocalCacheFavorites:favorites];
+}
+
++(void) removeLocalCacheFavoriteByID:(id)remote_id {
+    NSMutableDictionary *favorites = [Favorites getLocalCacheFavorites];
+    [favorites removeObjectForKey:[NSString stringWithFormat:@"%@", remote_id]];
+    [Favorites saveLocalCacheFavorites:favorites];
+}
+
++(void) removeLocalCacheFavorite:(Space *)spot {
+    [Favorites removeLocalCacheFavoriteByID:spot.remote_id];
+}
+
++(BOOL) saveLocalCacheFavorites:(NSMutableDictionary *)favorites {
+    NSString *favorites_path = [Favorites getLocalCacheFavoritesPath];
+    return [favorites writeToFile:favorites_path atomically:YES];
+}
+
++(NSMutableDictionary *) getLocalCacheFavorites {
+    NSString *favorites_path = [Favorites getLocalCacheFavoritesPath];
+    
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    BOOL exists = [fm fileExistsAtPath:favorites_path];
+    
+    
+    if (!exists) {
+        NSMutableDictionary *tmp = [[NSMutableDictionary alloc] init];
+        [tmp writeToFile:favorites_path atomically:YES];
+    }
+    
+    NSMutableDictionary *favorite_spots = [[NSMutableDictionary alloc] initWithContentsOfFile:favorites_path];
+    
+    return favorite_spots;
+}
+
++(NSString *) getLocalCacheFavoritesPath {
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSError *err = nil;
+    NSURL *support_dir = [fm URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES  error:&err];
+    
+    NSString *favorites_path = [[support_dir path] stringByAppendingPathComponent:@"local_cache_favorites.dict"];
+    return favorites_path;
+}
+
 
 @end

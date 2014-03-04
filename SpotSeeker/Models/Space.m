@@ -19,6 +19,7 @@
 //
 
 #import "Space.h"
+#import "Favorites.h"
 
 @implementation Space
 
@@ -74,6 +75,7 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
             NSArray *spot_results = [parser objectWithData:[request responseData]];
             favorite_space_ids = [[NSMutableDictionary alloc] init];
             
+            [Favorites setLocalCacheFromRESTData:spot_results];
             for (NSDictionary *spot_info in spot_results) {
                 NSString *fav_remote_id = [spot_info objectForKey:@"id"];
                 [favorite_space_ids setObject:[NSObject alloc] forKey:fav_remote_id];

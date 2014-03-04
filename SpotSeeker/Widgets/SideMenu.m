@@ -165,9 +165,13 @@
     [img_view setContentMode:UIViewContentModeLeft];
     
     CGRect final_frame = frame;
-    
+
+    UIButton *favs_button = (UIButton *)[menu_view viewWithTag:301];
     UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
 
+    int fav_count = [Favorites getFavoritesCount];
+    NSString *fav_label = [NSString stringWithFormat:@"Favorites (%i)", fav_count];
+    [favs_button setTitle:fav_label forState:UIControlStateNormal];
     if ([REST hasPersonalOAuthToken]) {
         logout_button.hidden = FALSE;
     }

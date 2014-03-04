@@ -30,12 +30,14 @@
 
 +(void) addFavorite:(Space *)spot;
 +(void) removeFavorite:(Space *)spot;
++(void) setLocalCacheFromRESTData:(NSArray *)spots;
 
 -(void) addServerFavorite:(Space *)spot;
 -(void) removeServerFavorite:(Space *)spot;
 
 -(void) moveFavoritesToServerFavorites;
 +(int) getLocalFavoritesCount;
++(int) getFavoritesCount;
 
 +(NSArray *) getFavoritesIDList;
 

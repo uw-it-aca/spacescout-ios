@@ -56,6 +56,7 @@
         CGRect frame = screen_subheader.frame;
 
         CGSize expected = [screen_subheader_text sizeWithFont:screen_subheader.font constrainedToSize:CGSizeMake(frame.size.width, 500.0)  lineBreakMode:screen_subheader.lineBreakMode];
+
         
         frame.size.height = expected.height;
         screen_subheader.frame = frame;
