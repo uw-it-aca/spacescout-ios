@@ -204,9 +204,10 @@
 		C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ED2BBA15A361D500662C0D /* PickerFilterViewController.m */; };
 		C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0D0C116FB9471008BB2CB /* Campus.m */; };
 		C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715A718C3AC9F00255582 /* QuartzCore.framework */; };
-		C2F715AA18C3AD0300255582 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715A918C3AD0300255582 /* CoreImage.framework */; };
 		C2F715AC18C3C00000255582 /* NavigationMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F715AB18C3C00000255582 /* NavigationMenu.xib */; };
 		C2F715AF18C3EFA600255582 /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715AE18C3EFA600255582 /* SideMenu.m */; };
+		C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */; };
+		C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715B718C5A61E00255582 /* Accelerate.framework */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -506,6 +507,9 @@
 		C2F715AB18C3C00000255582 /* NavigationMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationMenu.xib; sourceTree = "<group>"; };
 		C2F715AD18C3EFA600255582 /* SideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenu.h; path = Widgets/SideMenu.h; sourceTree = "<group>"; };
 		C2F715AE18C3EFA600255582 /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenu.m; path = Widgets/SideMenu.m; sourceTree = "<group>"; };
+		C2F715B418C5A49B00255582 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "ImageEffects/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "ImageEffects/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		C2F715B718C5A61E00255582 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -530,7 +534,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F715AA18C3AD0300255582 /* CoreImage.framework in Frameworks */,
+				C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */,
 				C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */,
 				06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */,
 				89DC154D185153D60014F4F3 /* AdSupport.framework in Frameworks */,
@@ -938,6 +942,15 @@
 			name = Widgets;
 			sourceTree = "<group>";
 		};
+		C2F715B318C5A45500255582 /* ImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				C2F715B418C5A49B00255582 /* UIImage+ImageEffects.h */,
+				C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */,
+			);
+			name = ImageEffects;
+			sourceTree = "<group>";
+		};
 		C2FDB0D3150A802D00ED3A93 = {
 			isa = PBXGroup;
 			children = (
@@ -964,6 +977,7 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2F715B718C5A61E00255582 /* Accelerate.framework */,
 				C2F715A918C3AD0300255582 /* CoreImage.framework */,
 				C2F715A718C3AC9F00255582 /* QuartzCore.framework */,
 				06A2EDFF18681593005B2933 /* MessageUI.framework */,
@@ -998,6 +1012,7 @@
 				C2FDB0F1150A802D00ED3A93 /* AppDelegate.h */,
 				C2FDB0F2150A802D00ED3A93 /* AppDelegate.m */,
 				C2E09380154231610015BF4B /* Widgets */,
+				C2F715B318C5A45500255582 /* ImageEffects */,
 				C2FDB0E9150A802D00ED3A93 /* Supporting Files */,
 			);
 			name = SpaceScout;
@@ -1338,6 +1353,7 @@
 				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,
 				C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */,
 				C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */,
+				C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */,
 				C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */,
 				C22AA31A1805F55F004EC188 /* OAuthLoginViewController.m in Sources */,
 				C22AA31E180618EA004EC188 /* KeychainItemWrapper.m in Sources */,
