@@ -100,13 +100,21 @@
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     
     UIButton *fav_button = (UIButton *)[menu_view viewWithTag:301];
-    
+    UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
+
+   
     [fav_button removeTarget:nil
                       action:NULL
             forControlEvents:UIControlEventAllEvents];
     
-    [fav_button addTarget:self action:@selector(favButtonTouchUp:) forControlEvents:    UIControlEventTouchUpInside];
+    [fav_button addTarget:self action:@selector(favButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
+    
 
+    [logout_button removeTarget:nil
+                      action:NULL
+            forControlEvents:UIControlEventAllEvents];
+    
+    [logout_button addTarget:self action:@selector(logoutButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
 }
 
 -(void) showMenuForViewController:(UIViewController *)vc {
@@ -124,7 +132,7 @@
 
     menu_overlay.view = self.navigation_menu_view;
     
-    [self.view_controller.navigationController.view addSubview:self.navigation_menu_view];
+//    [self.view_controller.navigationController.view addSubview:self.navigation_menu_view];
     
     [self.view_controller presentViewController:menu_overlay animated:NO completion:^(void) {}];
 
@@ -157,6 +165,16 @@
     [img_view setContentMode:UIViewContentModeLeft];
     
     CGRect final_frame = frame;
+    
+    UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
+
+    if ([REST hasPersonalOAuthToken]) {
+        logout_button.hidden = FALSE;
+    }
+    else {
+        logout_button.hidden = TRUE;
+    }
+    
     self.navigation_menu_view.hidden = FALSE;
 
     final_frame.size.width = final_width;
@@ -205,6 +223,17 @@
     }];
     [self.view_controller performSegueWithIdentifier:@"open_favorites" sender:self.view_controller];
     [self quickHideMenu];
+}
+
+-(void)logoutButtonTouchUp: (id)sender {
+    [REST removePersonalOAuthToken];
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self slideHideMenu];
 }
 
 @end

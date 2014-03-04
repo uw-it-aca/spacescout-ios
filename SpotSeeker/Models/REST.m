@@ -141,7 +141,7 @@
     NSString *access_token = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
     NSString *access_token_secret = [wrapper objectForKey:(__bridge id)kSecValueData];
 
-    if (access_token && access_token_secret) {
+    if (![access_token  isEqual: @""] && ![access_token_secret  isEqual: @""]) {
         return TRUE;
     }
     return FALSE;
@@ -153,6 +153,10 @@
     [wrapper setObject:secret forKey:(__bridge id)kSecValueData];
 }
 
++(void)removePersonalOAuthToken {
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
+    [wrapper resetKeychainItem];
+}
 
 -(NSString *)getFullURL:(NSString *)url {
     return [self _getFullURL:url];

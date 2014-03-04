@@ -35,7 +35,7 @@
 -(void) removeServerFavorite:(Space *)spot;
 
 -(void) moveFavoritesToServerFavorites;
-+(int) getFavoritesCount;
++(int) getLocalFavoritesCount;
 
 +(NSArray *) getFavoritesIDList;
 

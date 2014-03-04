@@ -50,13 +50,15 @@
 
 -(void) addServerFavorite:(Space *)spot {
     [self addServerFavoriteByID:spot.remote_id];
+    // Just to get data to work with
+    // [Favorites addFavorite:spot];
+
 }
 
 -(void)addServerFavoriteByID:(id) remote_id {
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
     
-    // Just to get data to work with
     NSString *url = [[NSString alloc] initWithFormat:@"/api/v1/user/me/favorite/%@", remote_id];
     [_rest putURL:url withBody:@"true"];
     self.rest = _rest;
@@ -88,7 +90,7 @@
     [self.moving_delegate movingFinished];
 }
 
-+(int) getFavoritesCount {
++(int) getLocalFavoritesCount {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     int count = [favorites count];
     return count;
