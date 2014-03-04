@@ -208,6 +208,7 @@
 		C2F715AF18C3EFA600255582 /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715AE18C3EFA600255582 /* SideMenu.m */; };
 		C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */; };
 		C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715B718C5A61E00255582 /* Accelerate.framework */; };
+		C2F715BB18C63D0F00255582 /* EmailSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -510,6 +511,8 @@
 		C2F715B418C5A49B00255582 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "ImageEffects/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "ImageEffects/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		C2F715B718C5A61E00255582 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		C2F715B918C63D0F00255582 /* EmailSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailSpaceViewController.h; path = ViewControllers/EmailSpaceViewController.h; sourceTree = "<group>"; };
+		C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailSpaceViewController.m; path = ViewControllers/EmailSpaceViewController.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -690,6 +693,8 @@
 				C22AA3191805F55F004EC188 /* OAuthLoginViewController.m */,
 				06ACA0161898090800113AD0 /* MoreViewController.h */,
 				06ACA0171898090800113AD0 /* MoreViewController.m */,
+				C2F715B918C63D0F00255582 /* EmailSpaceViewController.h */,
+				C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1305,6 +1310,7 @@
 				C2429A8A150AABDB005A994A /* NSObject+SBJson.m in Sources */,
 				C2429A8B150AABDB005A994A /* SBJsonParser.m in Sources */,
 				C2429A8C150AABDB005A994A /* SBJsonStreamParser.m in Sources */,
+				C2F715BB18C63D0F00255582 /* EmailSpaceViewController.m in Sources */,
 				C2429A8D150AABDB005A994A /* SBJsonStreamParserAccumulator.m in Sources */,
 				C2429A8E150AABDB005A994A /* SBJsonStreamParserAdapter.m in Sources */,
 				C2429A8F150AABDB005A994A /* SBJsonStreamParserState.m in Sources */,

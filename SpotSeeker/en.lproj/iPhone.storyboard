@@ -569,7 +569,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3340" y="-1614"/>
+            <point key="canvasLocation" x="3346" y="-1890"/>
         </scene>
         <!--Map Filter Details View Controller-->
         <scene sceneID="aZK-RQ-ofv">
@@ -663,7 +663,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvI-39-eLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3346" y="-1029"/>
+            <point key="canvasLocation" x="3346" y="-1195"/>
         </scene>
         <!--Picker Filter View Controller-->
         <scene sceneID="ujD-qD-kmV">
@@ -736,7 +736,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yts-qE-arN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="-446"/>
+            <point key="canvasLocation" x="3346" y="-534"/>
         </scene>
         <!--Time Filter Table View Controller - Hours-->
         <scene sceneID="yie-Fe-McQ">
@@ -827,7 +827,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzh-SW-Zxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188" y="131"/>
+            <point key="canvasLocation" x="3346" y="151"/>
         </scene>
         <!--Space Details View Controller - SpaceScout-->
         <scene sceneID="adb-7p-DAh">
@@ -911,6 +911,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <button opaque="NO" tag="500" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bli-7o-1xx">
+                                                    <rect key="frame" x="272" y="2" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="ES!">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="l0v-HK-DRn" kind="push" id="KTL-zm-eJV"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -1336,7 +1346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811" y="642"/>
+            <point key="canvasLocation" x="3087" y="1242"/>
         </scene>
         <!--Space Images View Controller-->
         <scene sceneID="jeK-Q6-heI">
@@ -1454,7 +1464,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3408" y="684"/>
+            <point key="canvasLocation" x="3700" y="736"/>
         </scene>
         <!--Single Space Map View Controller - SpaceScout-->
         <scene sceneID="d4a-jq-xVa">
@@ -1483,7 +1493,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcI-TN-IOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3408" y="1262"/>
+            <point key="canvasLocation" x="3700" y="1434"/>
+        </scene>
+        <!--Email Space View Controller-->
+        <scene sceneID="Agd-Vc-67j">
+            <objects>
+                <viewController id="l0v-HK-DRn" customClass="EmailSpaceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y98-Ba-6ww">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email someone about this space." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nm3-ZE-3Pa">
+                                <rect key="frame" x="20" y="78" width="255" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="zbj-I6-MIu">
+                                <rect key="frame" x="20" y="149" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" id="EM0-HS-9LX">
+                                <rect key="frame" x="20" y="204" width="255" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.48952096719999999" blue="0.63263725140000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentInset" minX="0.0" minY="-8" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fx7-DZ-wHo">
+                                <rect key="frame" x="254" y="518" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendEmail:" destination="l0v-HK-DRn" eventType="touchUpInside" id="Znj-xi-oOD"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jLN-HA-rTj">
+                                <rect key="frame" x="283" y="149" width="37" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                <color key="textColor" red="1" green="0.1187502725" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3cj-j0-fHe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EkG-9V-PjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3708" y="2171"/>
         </scene>
         <!--Favorite Spaces View Controller - Favorites-->
         <scene sceneID="1K6-Li-Krl">
@@ -1608,7 +1672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYw-dW-fye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="1150"/>
+            <point key="canvasLocation" x="2584" y="1966"/>
         </scene>
         <!--Space Cluster View Controller - SpaceScout-->
         <scene sceneID="XeB-JD-BkB">
@@ -1965,8 +2029,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ehC-Lb-oxn"/>
+        <segue reference="QY8-j1-nec"/>
         <segue reference="WGG-0Y-eRZ"/>
-        <segue reference="3uu-G9-i3V"/>
-        <segue reference="g4m-Tc-imM"/>
     </inferredMetricsTieBreakers>
 </document>
