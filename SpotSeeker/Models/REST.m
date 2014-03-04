@@ -180,6 +180,13 @@
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request {
+    if (request.responseStatusCode == 401) {
+        // This will at least keep us from continuing to use a failed personal auth token
+        if ([REST hasPersonalOAuthToken]) {
+            [REST removePersonalOAuthToken];
+            return;
+        }
+    }
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [app_delegate showNoNetworkAlert];
 }
