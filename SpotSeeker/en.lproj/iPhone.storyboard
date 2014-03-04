@@ -1332,12 +1332,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="Yev-Ct-bwQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
-                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="LlY-XK-qJN">
-                            <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="cCc-xy-eWs" kind="modal" id="QY8-j1-nec"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table_view" destination="NSk-zr-PcD" id="bjO-Pl-4Mr"/>
@@ -1762,12 +1756,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="SpaceScout" id="R48-Hc-Krn">
                         <barButtonItem key="backBarButtonItem" title="List" id="a9i-Fe-DaS"/>
-                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="nsH-xj-sXD">
-                            <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="cCc-xy-eWs" kind="modal" id="SYV-Ne-S54"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="fYm-Ao-Mlg" id="dyc-DU-ZTT"/>
@@ -1929,12 +1917,6 @@
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="faveslist.png" id="vSy-EG-TqB">
-                            <color key="tintColor" red="0.31764705882352939" green="0.30196078431372547" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="cCc-xy-eWs" kind="modal" id="DG6-VL-yRO"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="spot_table" destination="Yxq-b3-KBs" id="tSi-Yg-QcM"/>
@@ -2016,7 +1998,6 @@
         <image name="button_Next.png" width="41" height="30"/>
         <image name="cog.png" width="24" height="24"/>
         <image name="comp-icon.png" width="16" height="16"/>
-        <image name="faveslist.png" width="24" height="24"/>
         <image name="flag_open.png" width="66" height="31"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
@@ -2029,8 +2010,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ehC-Lb-oxn"/>
-        <segue reference="QY8-j1-nec"/>
-        <segue reference="WGG-0Y-eRZ"/>
+        <segue reference="x5A-Pp-hKu"/>
+        <segue reference="3Cj-Ws-5ju"/>
     </inferredMetricsTieBreakers>
 </document>
