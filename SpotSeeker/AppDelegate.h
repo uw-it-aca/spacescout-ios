@@ -19,7 +19,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "GAI.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
@@ -28,7 +27,6 @@
 @property (strong, nonatomic) NSMutableArray *search_preferences;
 @property (strong, nonatomic) NSDate *last_preference_set_time;
 @property (strong, nonatomic) NSDate *last_shown_offline_alert;
-@property (strong, nonatomic) id<GAITracker> tracker ;
 
 -(void)showNoNetworkAlert;
 

@@ -18,6 +18,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -73,7 +74,7 @@
     NSString *tracking_id = [ss_plist_values objectForKey:@"ga_tracking_id"];
 
     // Create tracker instance.
-    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:tracking_id];
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:tracking_id];
 
     return YES;
 }
