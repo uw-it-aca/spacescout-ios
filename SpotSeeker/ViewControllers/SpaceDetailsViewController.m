@@ -224,16 +224,19 @@
             // ...
         }
         else if (indexPath.row - offset == 1) {
-            UIApplication *app = [UIApplication sharedApplication];
-
-            // Google Maps fails to give good directions for spotnames with (,),& in them
-            NSString *fixed_spotname = [self.spot.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@"(" withString:@""];
-            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@")" withString:@""];
-            fixed_spotname = [fixed_spotname stringByReplacingOccurrencesOfString:@"&" withString:@""];
-
-            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f%%20(%@)", [self.spot.latitude floatValue], [self.spot.longitude floatValue], fixed_spotname];
-            [app openURL:[NSURL URLWithString:url]];  
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.spot.latitude floatValue], [self.spot.longitude floatValue]);
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
+            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+            [mapItem setName:self.spot.name];
+            
+            // Set the directions mode to "Walking"
+            // Can use MKLaunchOptionsDirectionsModeDriving instead
+            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking};
+            // Get the "Current User Location" MKMapItem
+            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+            // Pass the current location and destination map items to the Maps app
+            // Set the direction mode in the launchOptions dictionary
+            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
         }
     }
 }
