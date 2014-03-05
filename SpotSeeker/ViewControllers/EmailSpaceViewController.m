@@ -78,7 +78,6 @@
 }
 
 -(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
-    NSLog(@"Cancelled");
     [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
@@ -87,7 +86,6 @@
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
-    NSLog(@"Person: %@, propert: %d, Identifier: %d",person, property, identifier);
     
     CFTypeRef prop = ABRecordCopyValue(person, property);
     CFIndex index = ABMultiValueGetIndexForIdentifier(prop,  identifier);
