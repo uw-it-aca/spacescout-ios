@@ -8,6 +8,7 @@
 
 #import "EmailSpaceViewController.h"
 
+
 @implementation EmailSpaceViewController
 
 @synthesize space;
@@ -65,6 +66,40 @@
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
     [content becomeFirstResponder];
     return YES;
+}
+
+-(IBAction)openContactChooser:(id)selector {
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    
+    picker.peoplePickerDelegate = self;
+    
+//    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:^(void) {}];
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
+    NSLog(@"Cancelled");
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    NSLog(@"Person: %@, propert: %d, Identifier: %d",person, property, identifier);
+    
+    CFTypeRef prop = ABRecordCopyValue(person, property);
+    CFIndex index = ABMultiValueGetIndexForIdentifier(prop,  identifier);
+    NSString *email = (__bridge NSString *)ABMultiValueCopyValueAtIndex(prop, index);
+    
+    UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
+    [email_field setText:email];
+
+    CFRelease(prop);
+
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+    return NO;
 }
 
 -(IBAction)sendEmail:(id)selector {

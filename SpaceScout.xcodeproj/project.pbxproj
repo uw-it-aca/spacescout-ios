@@ -209,6 +209,8 @@
 		C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715B518C5A49B00255582 /* UIImage+ImageEffects.m */; };
 		C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715B718C5A61E00255582 /* Accelerate.framework */; };
 		C2F715BB18C63D0F00255582 /* EmailSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */; };
+		C2F715BD18C79AD200255582 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715BC18C79AD200255582 /* AddressBookUI.framework */; };
+		C2F715BF18C79E6D00255582 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F715BE18C79E6D00255582 /* AddressBook.framework */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -513,6 +515,8 @@
 		C2F715B718C5A61E00255582 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C2F715B918C63D0F00255582 /* EmailSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailSpaceViewController.h; path = ViewControllers/EmailSpaceViewController.h; sourceTree = "<group>"; };
 		C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailSpaceViewController.m; path = ViewControllers/EmailSpaceViewController.m; sourceTree = "<group>"; };
+		C2F715BC18C79AD200255582 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		C2F715BE18C79E6D00255582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -537,6 +541,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F715BF18C79E6D00255582 /* AddressBook.framework in Frameworks */,
+				C2F715BD18C79AD200255582 /* AddressBookUI.framework in Frameworks */,
 				C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */,
 				C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */,
 				06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */,
@@ -982,6 +988,8 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2F715BE18C79E6D00255582 /* AddressBook.framework */,
+				C2F715BC18C79AD200255582 /* AddressBookUI.framework */,
 				C2F715B718C5A61E00255582 /* Accelerate.framework */,
 				C2F715A918C3AD0300255582 /* CoreImage.framework */,
 				C2F715A718C3AC9F00255582 /* QuartzCore.framework */,
