@@ -70,7 +70,7 @@
 
 -(IBAction)openContactChooser:(id)selector {
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    
+    picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     picker.peoplePickerDelegate = self;
     
 //    [self presentModalViewController:picker animated:YES];
