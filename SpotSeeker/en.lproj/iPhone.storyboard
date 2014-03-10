@@ -135,6 +135,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="azT-h2-9jt">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="VMr-ab-5JP" kind="modal" id="oKi-OA-TEt"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1981,6 +1984,7 @@
             <objects>
                 <navigationController id="VMr-ab-5JP" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Al9-bq-TKK"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ePh-KH-z3t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2020,7 +2024,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="x5A-Pp-hKu"/>
-        <segue reference="3Cj-Ws-5ju"/>
+        <segue reference="WGG-0Y-eRZ"/>
+        <segue reference="oKi-OA-TEt"/>
+        <segue reference="3uu-G9-i3V"/>
     </inferredMetricsTieBreakers>
 </document>
