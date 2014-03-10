@@ -102,6 +102,8 @@
 
 -(void) showMenuForViewController:(UIViewController *)vc {
     self.view_controller = vc;
+    vc.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+
     [self quickHideMenu];
 
     UIImage *image = [self getBackgroundImageForViewController:vc];
