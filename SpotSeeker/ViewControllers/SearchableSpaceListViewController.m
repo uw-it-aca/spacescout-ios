@@ -18,6 +18,7 @@
 @synthesize is_running_search;
 @synthesize current_map_list_ui_view_controller;
 @synthesize starting_in_search;
+@synthesize side_menu;
 
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;
@@ -150,6 +151,17 @@ bool first_search = false;
     mapRegion.span.longitudeDelta = [campus getLongitudeDelta];
     
     [map_view setRegion:mapRegion animated: NO];
+}
+
+-(IBAction)openNavigationMenu:(id)sender {
+    [self showMenu];
+}
+
+-(void) showMenu {
+    if (!self.side_menu) {
+        self.side_menu = [[SideMenu alloc] init];
+    }
+    [self.side_menu showMenuForViewController:self];
 }
 
 

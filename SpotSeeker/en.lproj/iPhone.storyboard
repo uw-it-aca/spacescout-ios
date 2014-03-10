@@ -1924,7 +1924,12 @@
                         <barButtonItem key="backBarButtonItem" title="List" id="zyD-7A-tTw">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="y2d-oE-VTZ">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="ioW-NK-FTy">
+                            <connections>
+                                <action selector="openNavigationMenu:" destination="ylv-3b-UIf" id="Sii-gP-ZJr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="y2d-oE-VTZ">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
@@ -1934,6 +1939,7 @@
                     <connections>
                         <outlet property="spot_table" destination="Yxq-b3-KBs" id="tSi-Yg-QcM"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="Zv8-Ju-hZd"/>
+                        <segue destination="cCc-xy-eWs" kind="modal" identifier="open_favorites" id="YtI-mQ-38u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4O-8k-jYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2024,8 +2030,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WGG-0Y-eRZ"/>
-        <segue reference="oKi-OA-TEt"/>
-        <segue reference="3uu-G9-i3V"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="YtI-mQ-38u"/>
+        <segue reference="7BZ-SZ-G39"/>
+        <segue reference="x5A-Pp-hKu"/>
     </inferredMetricsTieBreakers>
 </document>

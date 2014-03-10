@@ -15,6 +15,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "SideMenu.h"
 
 @interface SearchableSpaceListViewController : UIViewController <SearchFinished> {
     MKMapView *map_view;
@@ -41,6 +42,7 @@
 @property (nonatomic) Boolean is_running_search;
 @property (nonatomic, retain) SearchableSpaceListViewController *current_map_list_ui_view_controller;
 @property (nonatomic) Boolean starting_in_search;
+@property (nonatomic, retain) SideMenu *side_menu;
 
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;
@@ -50,5 +52,7 @@
 -(void)centerOnUserLocation;
 -(void)centerOnCampus: (Campus *)campus;
 -(void)setScreenTitleForCurrentCampus;
+- (IBAction) openNavigationMenu:(id)sender;
+
 
 @end
