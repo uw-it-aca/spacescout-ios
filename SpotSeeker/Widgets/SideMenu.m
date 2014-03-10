@@ -54,7 +54,7 @@
     
     [self.navigation_menu_view addSubview:base_img_view];
     base_img_view.tag = 100;
-    base_img_view.alpha = 0.6;
+    base_img_view.alpha = 0.8;
     
     // Has the actual menu items
     UIView *menu = [[[NSBundle mainBundle] loadNibNamed:@"NavigationMenu" owner:self options:nil] objectAtIndex:0];
