@@ -167,7 +167,7 @@
     final_frame.size.width = final_width;
     [self addTouchEvents];
     
-    [UIView animateWithDuration:1.2 delay: 0.0 options: UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay: 0.0 options: UIViewAnimationOptionCurveEaseIn animations:^{
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
         backing_view.frame = final_frame;
@@ -185,7 +185,7 @@
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
     
-    [UIView animateWithDuration:1.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.navigation_menu_view.frame = final_frame;
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
