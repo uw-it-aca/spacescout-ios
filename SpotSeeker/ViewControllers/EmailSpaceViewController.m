@@ -12,7 +12,7 @@
 @implementation EmailSpaceViewController
 
 @synthesize space;
-
+@synthesize is_sending_email;
 
 - (void)viewDidLoad
 {
@@ -122,6 +122,10 @@
 }
 
 -(IBAction)sendEmail:(id)selector {
+    if (self.is_sending_email) {
+        return;
+    }
+    
     UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
     UITextView *from_field = (UITextView *)[self.view viewWithTag:102];
     UITextView *subject_field = (UITextView *)[self.view viewWithTag:103];
@@ -153,13 +157,15 @@
         from_error_indicator.hidden = FALSE;
     }
     
-    
     if (has_error) {
         return;
     }
     
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
+    
+    // Make it so we don't double send - the overlay doesn't cover the send button
+    self.is_sending_email = TRUE;
     
     NSDictionary *data = @{@"to": email_value,
                                   @"comment": [content text],
@@ -168,11 +174,24 @@
                                   };
     
     NSString *url = [NSString stringWithFormat:@"/api/v1/spot/%@/share", self.space.remote_id];
-    [self.rest putURL:url withBody:[data JSONRepresentation]];    
+    
+    if (!self.overlay) {
+        self.overlay = [[OverlayMessage alloc] init];
+        [self.overlay addTo:self.view];
+    }
+    [self.overlay showOverlay:@"Sending email..." animateDisplay:YES afterShowBlock:^(void) {
+        [self.rest putURL:url withBody:[data JSONRepresentation]];
+    }];
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
-    [self.navigationController popViewControllerAnimated:TRUE];
+    
+    [self.overlay showOverlay:@"Email sent!" animateDisplay:NO afterShowBlock:^(void) {}];
+
+    [self.overlay hideOverlayAfterDelay:3.0 animateHide:YES afterHideBlock:^(void) {
+        [self.navigationController popViewControllerAnimated:TRUE];
+        self.is_sending_email = FALSE;
+    }];
 }
 
 @end
