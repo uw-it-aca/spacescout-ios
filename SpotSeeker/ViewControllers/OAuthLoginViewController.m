@@ -54,6 +54,7 @@
     if ([url rangeOfString:@"request_token"].length > 0) {
         if (200 != [request responseStatusCode]) {
             NSLog(@"Code: %i", [request responseStatusCode]);
+            NSLog(@"Body: %@", [request responseString]);
             // show an error
         }
 

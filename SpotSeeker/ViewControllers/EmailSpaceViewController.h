@@ -10,7 +10,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "Space.h"
 
-@interface EmailSpaceViewController : UIViewController <UITextViewDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate> {
+@interface EmailSpaceViewController : UITableViewController <UITextViewDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate> {
     
 }
 

@@ -13,14 +13,6 @@
 
 @synthesize space;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -39,7 +31,7 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+/*
     UITouch *touch = [[event allTouches] anyObject];
     UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
@@ -51,7 +43,7 @@
     if ([content isFirstResponder] && [touch view] != content) {
         [content resignFirstResponder];
     }
-    
+  */
     [super touchesBegan:touches withEvent:event];
 }
 
@@ -100,12 +92,46 @@
     return NO;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+            // Select To:
+            [[self.view viewWithTag:100] becomeFirstResponder];
+            break;
+        case 1:
+            // Select From:
+            [[self.view viewWithTag:102] becomeFirstResponder];
+            break;
+        case 2:
+            // Select Subject:
+            [[self.view viewWithTag:103] becomeFirstResponder];
+            break;
+        case 4:
+            // Select content
+            [[self.view viewWithTag:101] becomeFirstResponder];
+            break;
+
+        default:
+            break;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    // get the reference to the text field
+ //   [textField setUserInteractionEnabled:YES];
+   // [textField becomeFirstResponder];
+}
+
 -(IBAction)sendEmail:(id)selector {
     UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
+    UITextView *from_field = (UITextView *)[self.view viewWithTag:102];
+    UITextView *subject_field = (UITextView *)[self.view viewWithTag:103];
+
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
     UILabel *error_indicator = (UILabel *)[self.view viewWithTag:200];
+    UILabel *from_error_indicator = (UILabel *)[self.view viewWithTag:201];
     
     NSString *email_value = [email_field text];
+    NSString *from_value = [from_field text];
     
     NSString *email_regex = @".+@.+";
     NSPredicate *email_predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", email_regex];
@@ -118,6 +144,15 @@
         has_error = TRUE;
         error_indicator.hidden = FALSE;
     }
+ 
+    if ([email_predicate evaluateWithObject:from_value] == YES) {
+        from_error_indicator.hidden = TRUE;
+    }
+    else {
+        has_error = TRUE;
+        from_error_indicator.hidden = FALSE;
+    }
+    
     
     if (has_error) {
         return;
@@ -126,9 +161,11 @@
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-    [data setObject:email_value forKey:@"to"];
-    [data setObject:[content text] forKey:@"comment"];
+    NSDictionary *data = @{@"to": email_value,
+                                  @"comment": [content text],
+                                  @"subject": [subject_field text],
+                                  @"from": from_value
+                                  };
     
     NSString *url = [NSString stringWithFormat:@"/api/v1/spot/%@/share", self.space.remote_id];
     [self.rest putURL:url withBody:[data JSONRepresentation]];    
