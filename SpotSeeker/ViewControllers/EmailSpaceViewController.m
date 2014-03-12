@@ -161,6 +161,11 @@
         return;
     }
     
+    [from_field resignFirstResponder];
+    [subject_field resignFirstResponder];
+    [email_field resignFirstResponder];
+    [content resignFirstResponder];
+    
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
