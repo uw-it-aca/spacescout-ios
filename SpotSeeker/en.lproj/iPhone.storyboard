@@ -1318,7 +1318,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
                         <barButtonItem key="rightBarButtonItem" title="Share" id="8PZ-0L-8mn">
                             <connections>
-                                <segue destination="kDu-Hr-bR2" kind="push" id="QBw-Ki-aiP"/>
+                                <segue destination="kDu-Hr-bR2" kind="push" identifier="open_email_space" id="QBw-Ki-aiP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1592,7 +1592,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="400" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the space" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zI-K2-0M1">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="15" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the space" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zI-K2-0M1">
                                                     <rect key="frame" x="20" y="35" width="280" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1653,6 +1653,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="building_label" destination="iUg-6T-eE6" id="BWb-z5-yq3"/>
+                        <outlet property="room_label" destination="3zI-K2-0M1" id="rk2-F9-azI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGa-yS-ECY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

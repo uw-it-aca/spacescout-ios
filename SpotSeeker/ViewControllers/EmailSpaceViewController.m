@@ -13,14 +13,23 @@
 
 @synthesize space;
 @synthesize is_sending_email;
+@synthesize building_label;
+@synthesize room_label;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UITextView *content = (UITextView *)[self.view viewWithTag:101];
-    [content setText:@" "];
+    UILabel *space_name = (UILabel *)[self.view viewWithTag:400];
+    room_label.text = self.space.name;
 
+    NSLog(@"Space: %@, %@", self.space, self.space.name);
+    
+    UILabel *building_floor = (UILabel *)[self.view viewWithTag:15];
+    NSLog(@"Label: %@", building_floor);
+    building_label.text = [NSString stringWithFormat:@"%@, %@", space.building_name, space.floor];
+
+    NSLog(@"Building: %@", building_floor.text);
 	// Do any additional setup after loading the view.
 }
 

@@ -20,6 +20,8 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic) BOOL is_sending_email;
+@property (nonatomic, retain) IBOutlet UILabel *room_label;
+@property (nonatomic, retain) IBOutlet UILabel *building_label;
 
 
 -(IBAction)sendEmail:(id)selector;
