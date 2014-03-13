@@ -112,7 +112,7 @@
 #pragma mark screen actions
 
 - (IBAction)btnClickCancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 
@@ -166,7 +166,7 @@
         
     [delegate showRunningSearchIndicator];
     [delegate runSearchWithAttributes:attributes];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
 -(IBAction)btnClickResetFilter:(id)sender {

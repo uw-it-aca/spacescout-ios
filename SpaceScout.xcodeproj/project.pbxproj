@@ -105,7 +105,7 @@
 		C2429AA2150AAC9D005A994A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA1150AAC9D005A994A /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429AB9150AB03F005A994A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA6150AB03F005A994A /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429ABA150AB03F005A994A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA9150AB03F005A994A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
-		C2429ABB150AB03F005A994A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAB150AB03F005A994A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2429ABB150AB03F005A994A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAB150AB03F005A994A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		C2429ABC150AB03F005A994A /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAD150AB03F005A994A /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429ABD150AB03F005A994A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAF150AB03F005A994A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429ABE150AB03F005A994A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AB1150AB03F005A994A /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };

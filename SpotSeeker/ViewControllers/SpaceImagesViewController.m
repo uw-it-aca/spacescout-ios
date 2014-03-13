@@ -239,7 +239,7 @@
 #pragma mark button actions
 
 -(IBAction)closeGallery:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 -(IBAction)clickNextImgBtn:(id)sender {
