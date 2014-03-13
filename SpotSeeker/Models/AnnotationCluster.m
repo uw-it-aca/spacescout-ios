@@ -160,7 +160,7 @@
     NSMutableArray *final_clusters = [[NSMutableArray alloc] init];
     
     AnnotationCluster *all_of_it = [[AnnotationCluster alloc] init];
-    NSMutableArray *all_spots = [NSArray arrayWithArray:group.spots];
+    NSMutableArray *all_spots = [NSMutableArray arrayWithArray:group.spots];
     
     float total_latitude = 0.0;
     float total_longitude = 0.0;
