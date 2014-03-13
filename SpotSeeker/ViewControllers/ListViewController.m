@@ -289,7 +289,7 @@
     [self showLabstatsForSpace:row_spot inTableCell:cell];
     
     UILabel *location_description = (UILabel *)[cell viewWithTag:5];
-    location_description.lineBreakMode = UILineBreakModeTailTruncation;
+    location_description.lineBreakMode = NSLineBreakByTruncatingTail;
     
     NSString *description = [row_spot.extended_info objectForKey:@"location_description"];
     location_description.text = description;
