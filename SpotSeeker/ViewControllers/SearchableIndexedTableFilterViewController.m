@@ -273,15 +273,16 @@
     UILabel *option = (UILabel *)[cell viewWithTag:5];
     
     NSString *result = [[self.search_results objectAtIndex:indexPath.row] objectForKey:@"title"];
-    CGSize expected = [result sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
     
+    CGFloat expected_height = [result boundingRectWithSize:CGSizeMake(option.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: option.font } context:nil].size.height;
+
     NSString *app_path = [[NSBundle mainBundle] bundlePath];
     NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
     NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
     
     float padding = [[plist_values objectForKey:@"building_filter_cell_padding"] floatValue];
     
-    return expected.height + padding;
+    return expected_height + padding;
 }
 
 -(void)searchTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

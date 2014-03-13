@@ -441,10 +441,12 @@
     UILabel *name_label = (UILabel *)[cell viewWithTag:1];
     
     // Only add height if this actually wraps
-    CGSize expected = [self.spot.name sizeWithFont:name_label.font constrainedToSize:CGSizeMake(name_label.frame.size.width, 500.0)  lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGRect expected = [self.spot.name boundingRectWithSize:CGSizeMake(name_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: name_label.font } context:nil];
+                                                                                                                                                                   
     CGSize base_size = [@"A" sizeWithFont:name_label.font];
     
-    return baseline_height + expected.height - base_size.height;
+    return baseline_height + expected.size.height - expected.size.height;
 }
 
 -(CGFloat)heightOfHoursCellInTable:(UITableView *)tableView {

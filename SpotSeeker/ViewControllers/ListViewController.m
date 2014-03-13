@@ -347,8 +347,10 @@
             }
         }
         
-        CGFloat slash_width = [@"/" sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
-        CGFloat available_width = [available.text sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        CGFloat slash_width = [@"/" boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
+
+        CGFloat available_width = [available.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
+
         CGFloat available_left = available.frame.origin.x;
         CGFloat slash_left = available_left + available_width;
         
