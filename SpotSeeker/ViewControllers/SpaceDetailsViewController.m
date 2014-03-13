@@ -553,7 +553,7 @@
     UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
     self.favorite_button = fav_button;
     if (spot.is_favorite) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected"] forState:UIControlStateNormal];
     }
     
     UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
@@ -928,6 +928,7 @@
         spot.is_favorite = true;
         [self.favorites addServerFavorite:spot];
         [self.overlay showOverlay:@"Favorite Added" animateDisplay:YES afterShowBlock:^(void) {}];
+        [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
 
     }
     [self.overlay hideOverlayAfterDelay:2.0 animateHide:YES afterHideBlock:^(void){}];

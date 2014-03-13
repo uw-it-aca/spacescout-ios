@@ -26,6 +26,12 @@ const float MAX_ALPHA = 0.9;
     [view addSubview:self.overlay];
 }
 
+-(void)setImage:(UIImage *)image {
+    UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];
+    img_view.image = image;
+}
+
+
 -(void)showOverlay:(NSString *)text animateDisplay:(BOOL)animate_display afterShowBlock:(void (^)(void))showCallback {
     UITextView *label = (UITextView *)[overlay viewWithTag:100];
 

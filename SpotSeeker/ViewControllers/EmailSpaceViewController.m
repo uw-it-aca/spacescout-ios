@@ -210,6 +210,7 @@
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     
     [self.overlay showOverlay:@"Email sent!" animateDisplay:NO afterShowBlock:^(void) {}];
+    [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
 
     [self.overlay hideOverlayAfterDelay:3.0 animateHide:YES afterHideBlock:^(void) {
         [self.navigationController popViewControllerAnimated:TRUE];

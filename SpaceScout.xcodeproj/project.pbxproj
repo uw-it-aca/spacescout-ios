@@ -185,6 +185,8 @@
 		C2775E1915BA2B0700731EBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1815BA2B0700731EBB /* Default.png */; };
 		C277E87D1551FC7A0022FACD /* details_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C277E87C1551FC7A0022FACD /* details_config.json */; };
 		C277E8801551FD930022FACD /* DisplayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C277E87F1551FD920022FACD /* DisplayOptions.m */; };
+		C27818E618D2542500C45929 /* GreenCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C27818E418D2542500C45929 /* GreenCheckmark.png */; };
+		C27818E718D2542500C45929 /* GreenCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27818E518D2542500C45929 /* GreenCheckmark@2x.png */; };
 		C27F30C2158A563D002EC7B2 /* SpaceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */; };
 		C2A0E930153E2EE100D9568E /* SpotModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E92F153E2EE100D9568E /* SpotModelTests.m */; };
 		C2A20629156D9914005E30FF /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A20628156D9914005E30FF /* ListViewController.m */; };
@@ -475,6 +477,8 @@
 		C277E87C1551FC7A0022FACD /* details_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = details_config.json; sourceTree = "<group>"; };
 		C277E87E1551FD920022FACD /* DisplayOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayOptions.h; path = Models/DisplayOptions.h; sourceTree = "<group>"; };
 		C277E87F1551FD920022FACD /* DisplayOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayOptions.m; path = Models/DisplayOptions.m; sourceTree = "<group>"; };
+		C27818E418D2542500C45929 /* GreenCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenCheckmark.png; path = images/GreenCheckmark.png; sourceTree = "<group>"; };
+		C27818E518D2542500C45929 /* GreenCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GreenCheckmark@2x.png"; path = "images/GreenCheckmark@2x.png"; sourceTree = "<group>"; };
 		C27F30C0158A563D002EC7B2 /* SpaceImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceImagesViewController.h; path = ViewControllers/SpaceImagesViewController.h; sourceTree = "<group>"; };
 		C27F30C1158A563D002EC7B2 /* SpaceImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceImagesViewController.m; path = ViewControllers/SpaceImagesViewController.m; sourceTree = "<group>"; };
 		C2A0E92E153E2EE100D9568E /* SpotModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotModelTests.h; sourceTree = "<group>"; };
@@ -793,6 +797,8 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C27818E418D2542500C45929 /* GreenCheckmark.png */,
+				C27818E518D2542500C45929 /* GreenCheckmark@2x.png */,
 				895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */,
 				7F540364177A1B1C007467C5 /* comp-icon.png */,
 				7F540365177A1B1C007467C5 /* comp-icon@2x.png */,
@@ -1185,6 +1191,7 @@
 				C242C2C6159260140045924B /* pin12.png in Resources */,
 				C224DA8118D0FEEA00589CAD /* OverlayMessage.xib in Resources */,
 				C242C2C7159260140045924B /* pin12@2x.png in Resources */,
+				C27818E618D2542500C45929 /* GreenCheckmark.png in Resources */,
 				C242C2C8159260140045924B /* pin13.png in Resources */,
 				C242C2C9159260140045924B /* pin13@2x.png in Resources */,
 				C242C2CA159260140045924B /* pin14.png in Resources */,
@@ -1230,6 +1237,7 @@
 				C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */,
 				C23074D61599298900C31AA1 /* lighting.png in Resources */,
 				C23074D71599298900C31AA1 /* lighting@2x.png in Resources */,
+				C27818E718D2542500C45929 /* GreenCheckmark@2x.png in Resources */,
 				C23074DA1599326900C31AA1 /* DetailsTableFooter.xib in Resources */,
 				897CF54615A23B4B007D5ABA /* search.png in Resources */,
 				C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */,
