@@ -1812,7 +1812,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="MXO-U4-v7N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="84"/>
+                                                    <rect key="frame" x="0.0" y="6" width="100" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="du0-MA-9A8">
@@ -2136,9 +2136,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="3Cj-Ws-5ju"/>
         <segue reference="x5A-Pp-hKu"/>
         <segue reference="7BZ-SZ-G39"/>
         <segue reference="YtI-mQ-38u"/>
-        <segue reference="ehC-Lb-oxn"/>
     </inferredMetricsTieBreakers>
 </document>
