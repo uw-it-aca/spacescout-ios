@@ -24,7 +24,6 @@
 
 -(void) getURL:(NSString *)url;
 -(void) getURLWithNoAccessToken:(NSString *)url;
--(void) postURL:(NSString *)url withParams:(NSDictionary *)params;
 -(void) putURL:(NSString *)url withBody:(NSString *)body;
 -(void) deleteURL:(NSString *)url;
 

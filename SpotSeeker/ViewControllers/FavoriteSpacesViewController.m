@@ -38,6 +38,9 @@
 #pragma mark -
 #pragma mark oauth login protocol
 
+-(void)backButtonPressed:(id)sender {
+}
+
 -(void)loginCancelled {
     self.handling_login = FALSE;
     [self dismissViewControllerAnimated:NO completion:^(void) {}];

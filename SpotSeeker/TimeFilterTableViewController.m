@@ -513,7 +513,7 @@ NSUInteger DeviceSystemMajorVersion()
         text = [self stringForDateComponents:time];
     }
 
-    cell.detailTextLabel.textAlignment = UITextAlignmentRight;
+    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
     cell.detailTextLabel.text = text;
 }
 

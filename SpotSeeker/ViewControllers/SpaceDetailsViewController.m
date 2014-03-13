@@ -895,6 +895,9 @@
 #pragma mark -
 #pragma mark oauth login protocol
 
+-(void) backButtonPressed:(id)sender {
+}
+
 -(void)loginComplete {
     [self.navigationController popViewControllerAnimated:YES];
     [self setServerFavoriteValue];

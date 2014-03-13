@@ -17,11 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITextField *email_field = (UITextField *)[self.view viewWithTag:100];
-  //  email_field.delegate = self;
-
-    UITextField *from_field = (UITextField *)[self.view viewWithTag:102];
-//    from_field.delegate = self;
     
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
     [content setText:@" "];

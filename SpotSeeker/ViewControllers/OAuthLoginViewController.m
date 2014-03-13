@@ -14,6 +14,7 @@
 
 @implementation OAuthLoginViewController
 
+@synthesize delegate;
 @synthesize oauth_token;
 @synthesize oauth_token_secret;
 @synthesize rest;

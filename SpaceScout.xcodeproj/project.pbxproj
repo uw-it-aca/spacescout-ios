@@ -104,7 +104,7 @@
 		C2429A9D150AAC2B005A994A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2429A9C150AAC2B005A994A /* CFNetwork.framework */; };
 		C2429AA2150AAC9D005A994A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA1150AAC9D005A994A /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429AB9150AB03F005A994A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA6150AB03F005A994A /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C2429ABA150AB03F005A994A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA9150AB03F005A994A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2429ABA150AB03F005A994A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AA9150AB03F005A994A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		C2429ABB150AB03F005A994A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAB150AB03F005A994A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429ABC150AB03F005A994A /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAD150AB03F005A994A /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2429ABD150AB03F005A994A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2429AAF150AB03F005A994A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -192,7 +192,7 @@
 		C2A2A16D156EAD72004781F6 /* FavoriteSpacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2A16C156EAD71004781F6 /* FavoriteSpacesViewController.m */; };
 		C2AFB7BE156CA3DB00D19E7A /* AnnotationCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AFB7BD156CA3DB00D19E7A /* AnnotationCluster.m */; };
 		C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64D153E225800292FDC /* ASIFormDataRequest+OAuth.m */; };
-		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; };
+		C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F64F153E225800292FDC /* ASIHTTPRequest+OAuth.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F651153E225800292FDC /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
