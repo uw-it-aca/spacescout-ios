@@ -202,7 +202,7 @@
         self.overlay = [[OverlayMessage alloc] init];
         [self.overlay addTo:self.view];
     }
-    [self.overlay showOverlay:@"Sending email..." animateDisplay:YES afterShowBlock:^(void) {
+    [self.overlay showOverlay:@"Sending..." animateDisplay:YES afterShowBlock:^(void) {
         [self.rest putURL:url withBody:[data JSONRepresentation]];
     }];
 }

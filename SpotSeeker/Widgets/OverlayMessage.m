@@ -13,7 +13,7 @@
 
 @synthesize overlay;
 
-const float MAX_ALPHA = 0.9;
+const float MAX_ALPHA = 1;
 
 -(id) init {
     self = [super init];
@@ -29,15 +29,19 @@ const float MAX_ALPHA = 0.9;
 -(void)setImage:(UIImage *)image {
     UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];
     img_view.image = image;
+    img_view.hidden = NO;
 }
 
 
 -(void)showOverlay:(NSString *)text animateDisplay:(BOOL)animate_display afterShowBlock:(void (^)(void))showCallback {
+    UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];
+    img_view.hidden = YES;
     UITextView *label = (UITextView *)[overlay viewWithTag:100];
 
     UIView *panel = [self.overlay viewWithTag:200];
+    UIView *background_color = [self.overlay viewWithTag:500];
     
-    panel.layer.cornerRadius = 15.0;
+    background_color.layer.cornerRadius = 15.0;
 
     [label setText:text];
     
@@ -64,7 +68,7 @@ const float MAX_ALPHA = 0.9;
 -(void)hideOverlayAfterDelay:(NSTimeInterval)delay animateHide:(BOOL)animate_hide afterHideBlock:(void (^)(void))hideCallback {
     float duration = 0.0;
     if (animate_hide) {
-        duration = 1.5;
+        duration = 0.8;
     }
     
     UIView *panel = [self.overlay viewWithTag:200];
