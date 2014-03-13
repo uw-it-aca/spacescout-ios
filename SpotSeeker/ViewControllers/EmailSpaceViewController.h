@@ -11,7 +11,7 @@
 #import "Space.h"
 #import "OverlayMessage.h"
 
-@interface EmailSpaceViewController : UITableViewController <UITextViewDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate> {
+@interface EmailSpaceViewController : UITableViewController <UITextViewDelegate, UITextFieldDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate> {
     
 }
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic) BOOL is_sending_email;
+
 
 -(IBAction)sendEmail:(id)selector;
 -(IBAction)openContactChooser:(id)selector;

@@ -17,34 +17,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
-    email_field.delegate = self;
+    UITextField *email_field = (UITextField *)[self.view viewWithTag:100];
+  //  email_field.delegate = self;
+
+    UITextField *from_field = (UITextField *)[self.view viewWithTag:102];
+//    from_field.delegate = self;
     
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
     [content setText:@" "];
-    [content setText:@""];
 
-    content.layer.borderColor = [[UIColor blackColor] CGColor];
-    content.layer.borderWidth = 1.0;
-    content.backgroundColor = [UIColor whiteColor];
 	// Do any additional setup after loading the view.
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-/*
-    UITouch *touch = [[event allTouches] anyObject];
-    UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
-    UITextView *content = (UITextView *)[self.view viewWithTag:101];
-   
-    if ([email_field isFirstResponder] && [touch view] != email_field) {
-        [email_field resignFirstResponder];
-    }
-    
-    if ([content isFirstResponder] && [touch view] != content) {
-        [content resignFirstResponder];
-    }
-  */
-    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,10 +35,75 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *new_text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSString *to, *from;
+    
+    NSString *email_regex = @".+@.+";
+    NSPredicate *email_predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", email_regex];
+    
+    BOOL has_error = FALSE;
+   
+    // Validate to field.
+    if (100 == textField.tag) {
+        to = new_text;
+    }
+    else {
+        to = ((UITextField *)[self.view viewWithTag:100]).text;
+    }
+    if (![email_predicate evaluateWithObject:to]) {
+        has_error = TRUE;
+    }
+
+    // Validate from
+    if (102 == textField.tag) {
+        from = new_text;
+    }
+    else {
+        from = ((UITextField *)[self.view viewWithTag:102]).text;
+    }
+    
+    if (![email_predicate evaluateWithObject:from]) {
+        has_error = TRUE;
+    }
+
+    // Show/hide button
+    UIBarButtonItem *send_button = self.navigationItem.rightBarButtonItem;
+    if (has_error) {
+        send_button.enabled = FALSE;
+    }
+    else {
+        send_button.enabled = TRUE;
+    }
+
+    
+    return YES;
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    UITextView *content = (UITextView *)[self.view viewWithTag:101];
-    [content becomeFirstResponder];
+    switch (textField.tag) {
+        case 100: {
+            // From Email to From
+            UITextView *from_field = (UITextView *)[self.view viewWithTag:102];
+            [from_field becomeFirstResponder];
+            break;
+        }
+        case 102: {
+            // From From to Subject
+            UITextView *subject_field = (UITextView *)[self.view viewWithTag:103];
+            [subject_field becomeFirstResponder];
+            break;
+        }
+        case 103: {
+            // From Subject to Body
+            UITextView *body_field = (UITextView *)[self.view viewWithTag:101];
+            [body_field becomeFirstResponder];
+            break;
+        }
+    }
+    
     return YES;
 }
 
@@ -131,35 +178,9 @@
     UITextView *subject_field = (UITextView *)[self.view viewWithTag:103];
 
     UITextView *content = (UITextView *)[self.view viewWithTag:101];
-    UILabel *error_indicator = (UILabel *)[self.view viewWithTag:200];
-    UILabel *from_error_indicator = (UILabel *)[self.view viewWithTag:201];
     
     NSString *email_value = [email_field text];
     NSString *from_value = [from_field text];
-    
-    NSString *email_regex = @".+@.+";
-    NSPredicate *email_predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", email_regex];
-
-    BOOL has_error = FALSE;
-    if ([email_predicate evaluateWithObject:email_value] == YES) {
-        error_indicator.hidden = TRUE;
-    }
-    else {
-        has_error = TRUE;
-        error_indicator.hidden = FALSE;
-    }
- 
-    if ([email_predicate evaluateWithObject:from_value] == YES) {
-        from_error_indicator.hidden = TRUE;
-    }
-    else {
-        has_error = TRUE;
-        from_error_indicator.hidden = FALSE;
-    }
-    
-    if (has_error) {
-        return;
-    }
     
     [from_field resignFirstResponder];
     [subject_field resignFirstResponder];
