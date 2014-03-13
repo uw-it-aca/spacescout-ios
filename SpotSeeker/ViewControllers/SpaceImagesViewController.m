@@ -43,8 +43,6 @@
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-    
     [self.view addGestureRecognizer:self.pinch_recognizer];
     [self.view addGestureRecognizer:self.pan_recognizer];
     [self.view addGestureRecognizer:self.tap_recognizer];
