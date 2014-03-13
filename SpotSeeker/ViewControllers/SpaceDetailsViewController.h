@@ -27,6 +27,7 @@
 #import "SingleSpaceMapViewController.h"
 #import "OAuthLoginViewController.h"
 #import "EmailSpaceViewController.h"
+#import "OverlayMessage.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {
     Space *spot;
@@ -59,6 +60,7 @@
 @property (nonatomic, retain) NSNumber *reservation_notes_height;
 @property (nonatomic, retain) NSNumber *access_notes_height;
 @property (nonatomic, retain) UILabel *image_count_label;
-
+@property (nonatomic, retain) OverlayMessage *overlay;
+@property (nonatomic, retain) Favorites *favorites;
 
 @end

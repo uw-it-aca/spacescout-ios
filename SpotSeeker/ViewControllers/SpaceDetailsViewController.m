@@ -37,7 +37,8 @@
 @synthesize reservation_notes_height;
 @synthesize access_notes_height;
 @synthesize image_count_label;
-
+@synthesize overlay;
+@synthesize favorites;
 
 #pragma mark -
 #pragma mark table control methods
@@ -45,6 +46,7 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 1) {
@@ -420,6 +422,13 @@
 
 #pragma mark -
 #pragma mark cell heights
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0.1;
+    }
+    return 20.0;
+}
 
 -(CGFloat)heightOfImageCellInTable:(UITableView *)tableView {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image_and_name"];
@@ -895,17 +904,29 @@
 }
 
 -(void) setServerFavoriteValue {
-    Favorites *favs = [[Favorites alloc] init];
+    if (!self.favorites) {
+        self.favorites = [[Favorites alloc] init];
+    }
+    
+    if (!self.overlay) {
+        self.overlay = [[OverlayMessage alloc] init];
+        [self.overlay addTo:self.view];
+    }
+
     if (spot.is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
         spot.is_favorite = false;
-        [favs removeServerFavorite:spot];
+        [self.favorites removeServerFavorite:spot];
+        [self.overlay showOverlay:@"Favorite Removed" animateDisplay:YES afterShowBlock:^(void) {}];
     }
     else {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
         spot.is_favorite = true;
-        [favs addServerFavorite:spot];
+        [self.favorites addServerFavorite:spot];
+        [self.overlay showOverlay:@"Favorite Added" animateDisplay:YES afterShowBlock:^(void) {}];
+
     }
+    [self.overlay hideOverlayAfterDelay:2.0 animateHide:YES afterHideBlock:^(void){}];
     // This prevents a problem where going back to the list, then searching, in less than the FAVORITES_REFRESH_INTERVAL results
     // in the wrong value when coming back to the space
     [Space clearFavoritesCache];
