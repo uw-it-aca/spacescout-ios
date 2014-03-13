@@ -84,6 +84,8 @@
     
     UIButton *fav_button = (UIButton *)[menu_view viewWithTag:301];
     UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
+    UIButton *campus_chooser = (UIButton *)[menu_view viewWithTag:303];
+    UIButton *suggest_space = (UIButton *)[menu_view viewWithTag:304];
 
    
     [fav_button removeTarget:nil
@@ -98,6 +100,23 @@
             forControlEvents:UIControlEventAllEvents];
     
     [logout_button addTarget:self action:@selector(logoutButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
+
+    [campus_chooser removeTarget:nil
+                         action:NULL
+               forControlEvents:UIControlEventAllEvents];
+    
+    [campus_chooser addTarget:self action:@selector(campusChooserButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
+
+    if (![MFMailComposeViewController canSendMail]) {
+        suggest_space.enabled = FALSE;
+    }
+    else {
+        [suggest_space removeTarget:nil
+                             action:NULL
+                   forControlEvents:UIControlEventAllEvents];
+        
+        [suggest_space addTarget:self action:@selector(openSuggestASpace:) forControlEvents: UIControlEventTouchUpInside];
+    }
 }
 
 -(void) showMenuForViewController:(UIViewController *)vc {
@@ -214,6 +233,14 @@
     [self quickHideMenu];
 }
 
+-(void)campusChooserButtonTouchUp: (id)sender {
+    [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
+    }];
+    [self.view_controller performSegueWithIdentifier:@"choose_campus" sender:self.view_controller];
+    [self quickHideMenu];
+}
+
+
 -(void)logoutButtonTouchUp: (id)sender {
     [REST removePersonalOAuthToken];
     NSHTTPCookie *cookie;
@@ -224,5 +251,64 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self slideHideMenu];
 }
+
+-(void)openSuggestASpace:(id)sender {
+
+    NSArray *contacts = [Contact getContacts];
+    
+    Contact *contact = [contacts objectAtIndex:0];
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc]init];
+    mailComposer.mailComposeDelegate = self;
+    [mailComposer setToRecipients:contact.email_to];
+    NSMutableString *string = [[NSMutableString alloc] init];
+    [string appendFormat:@"[%s] %s",
+     [[contact.type capitalizedString] UTF8String],
+     [contact.title UTF8String]];
+    [mailComposer setSubject:string];
+    [string setString:@""];
+    if ([contact.email_prefix length]) {
+        [string appendFormat:@"(%s)\n\n", [contact.email_prefix UTF8String]];
+    }
+    
+    for (id field in contact.fields) {
+        NSString *name = [field objectForKey:@"name"];
+        if ([name length]) {
+            if ([[field objectForKey:@"required"] boolValue]) {
+                [string appendFormat:@"%s: \n", [name UTF8String]];
+            } else {
+                [string appendFormat:@"%s (optional): \n", [name UTF8String]];
+            }
+        }
+    }
+    
+    if ([contact.email_postfix length]) {
+        [string appendFormat:@"\n(%s)", [contact.email_postfix UTF8String]];
+    }
+    
+    [mailComposer setMessageBody:string isHTML:NO];
+
+    mailComposer.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
+    
+    [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
+    }];
+    [self.view_controller presentViewController:mailComposer animated:YES completion:^(void) {
+        [self quickHideMenu];
+    }];
+   
+}
+
+#pragma mark - mail compose delegate
+-(void)mailComposeController:(MFMailComposeViewController *)controller
+         didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    if (result) {
+        NSLog(@"Result : %d",result);
+    }
+    if (error) {
+        NSLog(@"Error : %@",error);
+    }
+    
+    [self.view_controller dismissModalViewControllerAnimated:YES];
+}
+
 
 @end

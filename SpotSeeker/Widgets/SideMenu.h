@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Favorites.h"
+#import "Contact.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SideMenu : NSObject {
+
+@interface SideMenu : NSObject <MFMailComposeViewControllerDelegate> {
 }
 
 @property (nonatomic, retain) UIView *navigation_menu_view;

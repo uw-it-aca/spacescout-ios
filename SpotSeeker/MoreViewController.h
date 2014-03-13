@@ -7,17 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
 #import "Campus.h"
 #import "Contact.h"
 
-@interface MoreViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MFMailComposeViewControllerDelegate>
+@interface MoreViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *contactView;
 @property (nonatomic, retain) IBOutlet UIPickerView *campusPicker;
-
-
--(IBAction)sendSuggestion:(id)sender;
-
 
 @end
