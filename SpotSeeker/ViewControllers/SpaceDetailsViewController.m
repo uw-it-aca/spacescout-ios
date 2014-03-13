@@ -982,7 +982,7 @@
     [mailComposer setToRecipients:recipients];
     [mailComposer setSubject:subject];
     [mailComposer setMessageBody:body isHTML:NO];
-    [self presentModalViewController:mailComposer animated:YES];
+    [self presentViewController:mailComposer animated:YES completion:^(void) {}];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -1090,7 +1090,7 @@
         NSLog(@"Error : %@",error);
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 @end
