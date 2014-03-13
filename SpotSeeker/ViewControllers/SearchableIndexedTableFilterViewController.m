@@ -320,9 +320,10 @@
     UILabel *option = (UILabel *)[cell viewWithTag:5];
     
     NSString *result = [[self.search_results objectAtIndex:indexPath.row] objectForKey:@"title"];
-    CGSize expected = [result sizeWithFont:option.font constrainedToSize:CGSizeMake(option.frame.size.width, 500) lineBreakMode:option.lineBreakMode];
-
-    option.frame = CGRectMake(option.frame.origin.x, option.frame.origin.y, option.frame.size.width, expected.height);
+    
+    CGFloat expected_height = [result boundingRectWithSize:CGSizeMake(option.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: option.font } context:nil].size.height;
+   
+    option.frame = CGRectMake(option.frame.origin.x, option.frame.origin.y, option.frame.size.width, expected_height);
     option.text = result;
     return cell;
 }

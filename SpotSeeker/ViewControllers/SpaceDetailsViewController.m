@@ -146,8 +146,10 @@
         UILabel *type = (UILabel *)[cell viewWithTag:1];
         
         NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
-        CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
+        
+        CGFloat expected_height = [equipment_string boundingRectWithSize:CGSizeMake(type.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: type.font } context:nil].size.height;
 
+       
         NSString *app_path = [[NSBundle mainBundle] bundlePath];
         NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
         NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
@@ -155,7 +157,7 @@
         float equipment_extra = [[plist_values objectForKey:@"equipment_cell_extra_height"] floatValue];
         
         float basic = cell.frame.size.height;
-        float calculated = expected.height + equipment_extra;
+        float calculated = expected_height + equipment_extra;
         
         if (basic > calculated) {
             return basic;
@@ -475,15 +477,15 @@
         location_padding = [[plist_values objectForKey:@"space_details_location_spacing"] floatValue];
         
     }
-    CGSize expected = [spot_description sizeWithFont:description_label.font constrainedToSize:CGSizeMake(description_label.frame.size.width, 500.0)  lineBreakMode:description_label.lineBreakMode];
-   
+    
+    CGFloat expected_height = [spot_description boundingRectWithSize:CGSizeMake(description_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: description_label.font } context:nil].size.height;
     
     float hours_cell_extra = [[plist_values objectForKey:@"hours_cell_extra_height"] floatValue];
     
     UILabel *open_label = (UILabel *)[cell viewWithTag:50];
     float open_label_bottom = open_label.frame.origin.y + open_label.frame.size.height;
     
-    return hours_height + expected.height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
+    return hours_height + expected_height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
 }
 
 -(CGFloat)heightOfAccessNotesCellInTable:(UITableView *)tableView {
@@ -645,12 +647,10 @@
             }
         }
         
-        CGFloat space_width = [@" " sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
-        CGFloat of_width = [@"of" sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
-        
-        CGFloat available_width = [available.text sizeWithFont:available.font constrainedToSize:CGSizeMake(500.0, 500.0)  lineBreakMode:UILineBreakModeWordWrap].width;
-        
-        CGFloat total_field_width = [total.text sizeWithFont:total.font constrainedToSize:CGSizeMake(500.0, 500.0)].width;
+        CGFloat space_width = [@" " boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
+        CGFloat of_width = [@"of" boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
+        CGFloat available_width = [available.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.height;
+        CGFloat total_field_width = [total.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: total.font } context:nil].size.width;
         
         UILabel *of_label = (UILabel *)[cell viewWithTag:33];
         UILabel *available_now_label = (UILabel *)[cell viewWithTag:34];
