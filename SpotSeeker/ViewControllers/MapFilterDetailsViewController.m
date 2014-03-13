@@ -55,15 +55,12 @@
         self.screen_subheader.text = screen_subheader_text;
         CGRect frame = screen_subheader.frame;
 
-        CGSize expected = [screen_subheader_text sizeWithFont:screen_subheader.font constrainedToSize:CGSizeMake(frame.size.width, 500.0)  lineBreakMode:screen_subheader.lineBreakMode];
-
-        
-        frame.size.height = expected.height;
+        CGFloat expected_height = [screen_subheader_text boundingRectWithSize:CGSizeMake(frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: screen_subheader.font } context:nil].size.height;
+       
+        frame.size.height = expected_height;
         screen_subheader.frame = frame;
         
         view_height += frame.size.height;
-        // this is somewhat arbitrary padding
-        view_height += 10;
 
     }
     else {
@@ -118,9 +115,10 @@
     }
 
     UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];
-    CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(subtitle_label.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat expected_height = [subtitle boundingRectWithSize:CGSizeMake(subtitle_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: subtitle_label.font } context:nil].size.height;
 
-    return 45.0 + expected.height - 18.0;
+    return 45.0 + expected_height - 18.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -185,12 +183,12 @@
         [cell setBackgroundColor:unselected_row_color];
     }
 
-    if (subtitle != nil) {
+    if (subtitle && ![subtitle isEqualToString:@""]) {
         UILabel *subtitle_label = (UILabel *)[cell viewWithTag:2];        
        
-        CGSize expected = [subtitle sizeWithFont:subtitle_label.font constrainedToSize:CGSizeMake(subtitle_label.frame.size.width, 500.0) lineBreakMode:UILineBreakModeWordWrap];
+        CGFloat expected_height = [subtitle boundingRectWithSize:CGSizeMake(subtitle_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: subtitle_label.font } context:nil].size.height;
 
-        subtitle_label.frame = CGRectMake(subtitle_label.frame.origin.x, subtitle_label.frame.origin.y, subtitle_label.frame.size.width, expected.height);
+        subtitle_label.frame = CGRectMake(subtitle_label.frame.origin.x, subtitle_label.frame.origin.y, subtitle_label.frame.size.width, expected_height);
         subtitle_label.text = subtitle;
     }
     

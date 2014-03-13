@@ -706,9 +706,9 @@
         
         float location_header_bottom = location_header.frame.origin.y + location_header.frame.size.height;
         
-        CGSize expected = [description.text sizeWithFont:description.font constrainedToSize:CGSizeMake(description.frame.size.width, 500.0)  lineBreakMode:description.lineBreakMode];
+        CGFloat expected_height = [description.text boundingRectWithSize:CGSizeMake(description.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: description.font } context:nil].size.height;
         
-        description.frame = CGRectMake(description.frame.origin.x, location_header_bottom, description.frame.size.width, expected.height);
+        description.frame = CGRectMake(description.frame.origin.x, location_header_bottom, description.frame.size.width, expected_height);
         location_header.hidden = NO;
     }
     else {
@@ -767,9 +767,10 @@
     UILabel *type = (UILabel *)[cell viewWithTag:1];
     
     NSString *equipment_string = [display_fields componentsJoinedByString:@", "];
-    CGSize expected = [equipment_string sizeWithFont:type.font constrainedToSize:CGSizeMake(type.frame.size.width, 500.0) lineBreakMode:type.lineBreakMode];
     
-    type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected.height);
+    CGFloat expected_height = [equipment_string boundingRectWithSize:CGSizeMake(type.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: type.font } context:nil].size.height;
+
+    type.frame = CGRectMake(type.frame.origin.x, type.frame.origin.y, type.frame.size.width, expected_height);
     
     type.text = equipment_string;
     
