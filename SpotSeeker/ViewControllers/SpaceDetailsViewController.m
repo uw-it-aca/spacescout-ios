@@ -445,8 +445,6 @@
     // Only add height if this actually wraps
     
     CGRect expected = [self.spot.name boundingRectWithSize:CGSizeMake(name_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: name_label.font } context:nil];
-                                                                                                                                                                   
-    CGSize base_size = [@"A" sizeWithFont:name_label.font];
     
     return baseline_height + expected.size.height - expected.size.height;
 }

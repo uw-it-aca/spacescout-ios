@@ -293,10 +293,10 @@
     
     float available_width = right_most - left_most;
 
-    float title_width = [title_label.text sizeWithFont:title_label.font].width;
-    
+    float title_width = [title_label.text sizeWithAttributes:@{NSFontAttributeName: title_label.font}].width;
+
     NSString *long_test = [long_options componentsJoinedByString:@", "];
-    CGSize long_size = [long_test sizeWithFont:selected_label.font];
+    CGSize long_size = [long_test sizeWithAttributes:@{NSFontAttributeName: selected_label.font}];
     
     if ((title_width + long_size.width + 20) < available_width) {
         return long_test;
@@ -334,7 +334,8 @@
         if (index > 0) {
             test_string = [NSString stringWithFormat:@"%@, %i more", test_string, index];
         }
-        CGSize short_size = [test_string sizeWithFont:selected_label.font];
+        
+        CGSize short_size = [test_string sizeWithAttributes:@{NSFontAttributeName: selected_label.font}];
         
         if ((title_width + short_size.width + 20) < available_width) {
             return test_string;
