@@ -302,6 +302,8 @@
 
     [self.table_view scrollToRowAtIndexPath:hit_index_path atScrollPosition:UITableViewScrollPositionTop animated:NO];
 
+    [self selectFirstOptionOnEmptyTable:self.table_view];
+
     // Force the cell to re-render, so it has the checkmark and background color
     [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:hit_index_path] withRowAnimation:FALSE];
 }
