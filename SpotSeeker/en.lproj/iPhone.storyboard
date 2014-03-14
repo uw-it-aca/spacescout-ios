@@ -483,10 +483,18 @@
                                     <outlet property="delegate" destination="85z-WW-HGT" id="EjS-Se-4MA"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" animating="YES" style="gray" id="aAd-nr-r8E">
-                                <rect key="frame" x="150" y="176" width="20" height="20"/>
+                            <view tag="100" contentMode="scaleToFill" id="2vU-J0-3EO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="aAd-nr-r8E">
+                                        <rect key="frame" x="142" y="201" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="3ak-Ze-GTq">
@@ -1512,7 +1520,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="oc2-Ae-fZr">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Check out this space on SpaceScout" minimumFontSize="17" id="oc2-Ae-fZr">
                                                     <rect key="frame" x="74" y="7" width="241" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1651,7 +1659,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </activityIndicatorView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="21j-SP-t6B">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="84"/>
+                                                            <rect key="frame" x="0.0" y="6" width="100" height="84"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="XgR-2f-oSC">
@@ -1872,7 +1880,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleAspectFill" id="M24-wc-1kt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="84"/>
+                                                    <rect key="frame" x="0.0" y="6" width="100" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Spot name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qTl-0I-d0D">
@@ -2075,9 +2083,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="8o3-ZB-NEA"/>
         <segue reference="YtI-mQ-38u"/>
         <segue reference="Zv8-Ju-hZd"/>
         <segue reference="7BZ-SZ-G39"/>
-        <segue reference="8o3-ZB-NEA"/>
     </inferredMetricsTieBreakers>
 </document>

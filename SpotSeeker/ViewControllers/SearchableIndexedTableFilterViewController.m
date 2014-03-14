@@ -48,13 +48,15 @@
     self.rest = [[REST alloc] init];
     if ([filter objectForKey:@"data_source"] && [[filter objectForKey:@"options"] count] == 0) {
         self.table_view.hidden = YES;
-        self.loading_spinner.hidden = NO;
+        UIView *overlay = [self.view viewWithTag:100];
+        overlay.hidden = NO;
         
         NSString *building_url = [NSString stringWithFormat:[filter objectForKey:@"data_source"], [Campus getCurrentCampus].search_key];
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:building_url];
         
         [request setCompletionBlock:^{
+            overlay.hidden = TRUE;
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             
             if (200 != [request responseStatusCode]) {
