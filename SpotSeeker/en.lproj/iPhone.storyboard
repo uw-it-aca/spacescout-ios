@@ -1498,7 +1498,7 @@
                                                     <rect key="frame" x="59" y="11" width="256" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="kDu-Hr-bR2" id="Mdh-Jv-LYf"/>
                                                     </connections>

@@ -36,7 +36,7 @@
     NSString *new_text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSString *to, *from;
     
-    NSString *email_regex = @".+@.+";
+    NSString *email_regex = @".+@.+\\...+";
     NSPredicate *email_predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", email_regex];
     
     BOOL has_error = FALSE;
