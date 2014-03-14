@@ -768,7 +768,7 @@
             </objects>
             <point key="canvasLocation" x="3346" y="151"/>
         </scene>
-        <!--Space Details View Controller - SpaceScout-->
+        <!--Space Details View Controller - Space Details-->
         <scene sceneID="adb-7p-DAh">
             <objects>
                 <viewController id="ycF-WC-Hj5" customClass="SpaceDetailsViewController" sceneMemberID="viewController">
@@ -1259,7 +1259,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SpaceScout" id="Yev-Ct-bwQ">
+                    <navigationItem key="navigationItem" title="Space Details" id="Yev-Ct-bwQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Khe-ac-0NG"/>
                         <barButtonItem key="rightBarButtonItem" title="Share" id="8PZ-0L-8mn">
                             <connections>
@@ -1423,7 +1423,7 @@
             </objects>
             <point key="canvasLocation" x="3700" y="1434"/>
         </scene>
-        <!--Email Space View Controller - Email This Space-->
+        <!--Email Space View Controller - Share This Space-->
         <scene sceneID="2Vd-9R-XeF">
             <objects>
                 <tableViewController id="kDu-Hr-bR2" customClass="EmailSpaceViewController" sceneMemberID="viewController">
@@ -1442,7 +1442,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" minimumFontSize="17" id="WY2-rp-HcB">
-                                                    <rect key="frame" x="51" y="7" width="253" height="30"/>
+                                                    <rect key="frame" x="51" y="7" width="233" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1451,10 +1451,11 @@
                                                         <outlet property="delegate" destination="kDu-Hr-bR2" id="aTU-vO-Ypk"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JSF-9x-JaK">
-                                                    <rect key="frame" x="295" y="6" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="JSF-9x-JaK">
+                                                    <rect key="frame" x="292" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="+">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1591,7 +1592,7 @@
                             <outlet property="delegate" destination="kDu-Hr-bR2" id="Xxk-H7-7Pj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Email This Space" id="Hi0-En-kOx">
+                    <navigationItem key="navigationItem" title="Share This Space" id="Hi0-En-kOx">
                         <barButtonItem key="rightBarButtonItem" tag="300" enabled="NO" title="Send" id="7ym-5L-lbc">
                             <connections>
                                 <action selector="sendEmail:" destination="kDu-Hr-bR2" id="lFb-gC-ADr"/>
