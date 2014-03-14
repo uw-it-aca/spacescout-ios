@@ -168,7 +168,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="More" id="PFD-FD-85b" colorLabel="IBBuiltInLabel-Purple"/>
+                    <navigationItem key="navigationItem" title="Choose Campus" id="PFD-FD-85b" colorLabel="IBBuiltInLabel-Purple"/>
                     <connections>
                         <outlet property="campusPicker" destination="u8E-pe-t9A" id="asE-97-ZTD"/>
                     </connections>

@@ -68,7 +68,7 @@ const float MAX_ALPHA = 1;
 -(void)hideOverlayAfterDelay:(NSTimeInterval)delay animateHide:(BOOL)animate_hide afterHideBlock:(void (^)(void))hideCallback {
     float duration = 0.0;
     if (animate_hide) {
-        duration = 0.8;
+        duration = 0.5;
     }
     
     UIView *panel = [self.overlay viewWithTag:200];

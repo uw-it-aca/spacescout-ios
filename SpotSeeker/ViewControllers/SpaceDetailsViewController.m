@@ -931,7 +931,7 @@
         [self.overlay showOverlay:@"Saved!" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
-    [self.overlay hideOverlayAfterDelay:2.0 animateHide:YES afterHideBlock:^(void){}];
+    [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void){}];
     // This prevents a problem where going back to the list, then searching, in less than the FAVORITES_REFRESH_INTERVAL results
     // in the wrong value when coming back to the space
     [Space clearFavoritesCache];
