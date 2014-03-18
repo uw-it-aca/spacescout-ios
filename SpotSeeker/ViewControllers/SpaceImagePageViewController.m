@@ -64,6 +64,15 @@
     }
 
     __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
+    
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    loading.tag = 101;
+    [loading setCenter:vc.view.center];
+    [loading startAnimating];
+    
+    [vc.view addSubview:loading];
+    
+    
     UIImageView *image_view = [[UIImageView alloc] init];
     image_view.tag = 100;
 
@@ -74,7 +83,7 @@
     [self setImageFrameForPageContent:vc];
    
     [request setCompletionBlock:^{
-        
+        loading.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
         [image_view setContentMode:UIViewContentModeScaleAspectFit];
         [image_view setImage:img];
@@ -142,7 +151,8 @@
             img_view.frame = vc.view.frame;
         }
     }
-    
+    UIActivityIndicatorView *loading = (UIActivityIndicatorView *)[vc.view viewWithTag:101];
+    [loading setCenter:img_view.center];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
