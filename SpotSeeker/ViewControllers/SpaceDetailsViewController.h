@@ -23,11 +23,10 @@
 #import "REST.h"
 #import "DisplayOptions.h"
 #import "HoursFormat.h"
-#import "SpaceImagesViewController.h"
 #import "SingleSpaceMapViewController.h"
 #import "OAuthLoginViewController.h"
 #import "EmailSpaceViewController.h"
-#import "SpaceImagePageViewController.h"
+#import "SpaceImagesScrollViewController.h"
 #import "OverlayMessage.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {

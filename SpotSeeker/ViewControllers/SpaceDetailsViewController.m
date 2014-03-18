@@ -988,8 +988,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"image_view"]) {
-        SpaceImagesViewController *destination = (SpaceImagesViewController *)[segue destinationViewController];
-        destination.spot = self.spot;
+        SpaceImagesScrollViewController *destination = (SpaceImagesScrollViewController *)[segue destinationViewController];
+        destination.space = self.spot;
     }
     
     if ([[segue identifier] isEqualToString:@"map_display"]) {
@@ -1001,12 +1001,6 @@
         EmailSpaceViewController *destination = (EmailSpaceViewController *)[segue destinationViewController];
         destination.space = self.spot;
     }
-
-    if ([[segue identifier] isEqualToString:@"paged_image_view"]) {
-        SpaceImagePageViewController *destination = (SpaceImagePageViewController *)[segue destinationViewController];
-        destination.space = self.spot;
-    }
-
 }
 
 #pragma mark -

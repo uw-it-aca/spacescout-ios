@@ -776,16 +776,6 @@
             </objects>
             <point key="canvasLocation" x="3346" y="151"/>
         </scene>
-        <!--Space Image Page View Controller-->
-        <scene sceneID="UhH-UT-poZ">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="dQM-Ao-eDd" customClass="SpaceImagePageViewController" sceneMemberID="viewController">
-                    <nil key="simulatedStatusBarMetrics"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SrN-4a-Xnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2958" y="557"/>
-        </scene>
         <!--Space Details View Controller - Space Details-->
         <scene sceneID="adb-7p-DAh">
             <objects>
@@ -867,16 +857,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LKT-eS-N1e">
-                                                    <rect key="frame" x="248" y="28" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="dQM-Ao-eDd" kind="modal" identifier="paged_image_view" id="fyM-6i-B2b"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -1296,130 +1276,45 @@
                     </navigationItem>
                     <connections>
                         <outlet property="table_view" destination="NSk-zr-PcD" id="bjO-Pl-4Mr"/>
-                        <segue destination="4PN-pK-yie" kind="modal" identifier="image_view" id="eBK-RZ-wht"/>
+                        <segue destination="WN3-wF-3ge" kind="push" identifier="image_view" id="Ydi-Do-Mjc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3087" y="1242"/>
         </scene>
-        <!--Space Images View Controller-->
-        <scene sceneID="jeK-Q6-heI">
+        <!--Space Images Scroll View Controller-->
+        <scene sceneID="hHN-F0-df7">
             <objects>
-                <viewController id="4PN-pK-yie" customClass="SpaceImagesViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uXe-42-Ml9">
+                <viewController id="WN3-wF-3ge" customClass="SpaceImagesScrollViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eX1-kO-QdN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="enD-sV-zY7">
-                                <rect key="frame" x="0.0" y="-18" width="320" height="586"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" id="CqE-Iu-gT5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="531"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
-                            <view contentMode="scaleToFill" id="35O-4I-4T2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DbK-jG-kBQ">
-                                        <rect key="frame" x="94" y="12" width="132" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vVS-1Z-cY2">
-                                        <rect key="frame" x="6" y="7" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="X">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closeGallery:" destination="4PN-pK-yie" eventType="touchUpInside" id="Bdk-o3-m2q"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="H75-6b-Pmw">
-                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WN3-wF-3ge" id="Wul-ZC-oQX"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="epb-F1-Pd8">
+                                <rect key="frame" x="0.0" y="531" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jZe-qQ-aSN">
-                                        <rect key="frame" x="101" y="9" width="41" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" backgroundImage="button_Back.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="clickPrevImgBtn:" destination="4PN-pK-yie" eventType="touchUpInside" id="lig-Ep-5fS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fx6-Xb-DzS">
-                                        <rect key="frame" x="179" y="9" width="41" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" backgroundImage="button_Next.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="clickNextImgBtn:" destination="4PN-pK-yie" eventType="touchUpInside" id="ofd-7w-A2z"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="fpk-KH-bBY">
-                                <rect key="frame" x="142" y="253" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationItem key="navigationItem" id="XCJ-1G-l9a"/>
                     <connections>
-                        <outlet property="activity_indicator" destination="fpk-KH-bBY" id="s8x-bn-8h2"/>
-                        <outlet property="image_view" destination="enD-sV-zY7" id="ppM-gl-gre"/>
-                        <outlet property="next_button" destination="Fx6-Xb-DzS" id="UtG-cd-e5h"/>
-                        <outlet property="page_footer" destination="H75-6b-Pmw" id="OnT-lr-qK6"/>
-                        <outlet property="page_header" destination="35O-4I-4T2" id="tSA-qP-Ulf"/>
-                        <outlet property="pan_recognizer" destination="dKy-xI-7Ol" id="M9e-wb-rKY"/>
-                        <outlet property="pinch_recognizer" destination="A01-go-2xk" id="Dhi-YM-M5q"/>
-                        <outlet property="prev_button" destination="jZe-qQ-aSN" id="uOC-DV-Hgg"/>
-                        <outlet property="tap_recognizer" destination="VJS-Tu-aYV" id="yjN-5c-ba9"/>
+                        <outlet property="page_control" destination="epb-F1-Pd8" id="dLk-ww-ebY"/>
+                        <outlet property="scroll_view" destination="CqE-Iu-gT5" id="OPj-sq-Nrl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e6z-hz-0P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="VJS-Tu-aYV">
-                    <connections>
-                        <action selector="screenTap:" destination="4PN-pK-yie" id="z6m-Zu-XlV"/>
-                        <outlet property="delegate" destination="4PN-pK-yie" id="4EQ-t4-N6C"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="dKy-xI-7Ol">
-                    <connections>
-                        <action selector="handlePan:" destination="4PN-pK-yie" id="Lu4-Cg-F6C"/>
-                        <outlet property="delegate" destination="4PN-pK-yie" id="eLe-kk-iM3"/>
-                    </connections>
-                </panGestureRecognizer>
-                <pinchGestureRecognizer id="A01-go-2xk">
-                    <connections>
-                        <action selector="handlePinch:" destination="4PN-pK-yie" id="RoR-s4-lRk"/>
-                        <outlet property="delegate" destination="4PN-pK-yie" id="Ja1-Nk-oov"/>
-                    </connections>
-                </pinchGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jhh-Fn-Ygx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3700" y="736"/>
+            <point key="canvasLocation" x="3844" y="780"/>
         </scene>
         <!--Single Space Map View Controller - SpaceScout-->
         <scene sceneID="d4a-jq-xVa">
@@ -2086,8 +1981,6 @@
     </scenes>
     <resources>
         <image name="asterisk.png" width="22" height="22"/>
-        <image name="button_Back.png" width="41" height="30"/>
-        <image name="button_Next.png" width="41" height="30"/>
         <image name="comp-icon.png" width="16" height="16"/>
         <image name="flag_open.png" width="66" height="31"/>
         <image name="locate.png" width="24" height="24"/>
