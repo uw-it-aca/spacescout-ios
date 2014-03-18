@@ -1001,7 +1001,12 @@
         EmailSpaceViewController *destination = (EmailSpaceViewController *)[segue destinationViewController];
         destination.space = self.spot;
     }
-    
+
+    if ([[segue identifier] isEqualToString:@"paged_image_view"]) {
+        SpaceImagePageViewController *destination = (SpaceImagePageViewController *)[segue destinationViewController];
+        destination.space = self.spot;
+    }
+
 }
 
 #pragma mark -

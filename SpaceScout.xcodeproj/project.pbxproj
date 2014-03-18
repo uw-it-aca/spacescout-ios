@@ -180,6 +180,8 @@
 		C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C255958115951FAD00C98C32 /* faveslist@2x.png */; };
 		C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */ = {isa = PBXBuildFile; fileRef = C25D6F931576ACDC00A16A87 /* map_defaults.json */; };
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
+		C2670F4B18D768E3004EACBD /* SpaceImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2670F4A18D768E3004EACBD /* SpaceImagePageViewController.m */; };
+		C2670F4E18D7B889004EACBD /* SpaceImagePageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2670F4D18D7B889004EACBD /* SpaceImagePageContentViewController.m */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
 		C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */; };
 		C2775E1915BA2B0700731EBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1815BA2B0700731EBB /* Default.png */; };
@@ -470,6 +472,10 @@
 		C255958115951FAD00C98C32 /* faveslist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "faveslist@2x.png"; path = "images/faveslist@2x.png"; sourceTree = "<group>"; };
 		C25D6F931576ACDC00A16A87 /* map_defaults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_defaults.json; sourceTree = "<group>"; };
 		C25D6F961576AF7100A16A87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C2670F4918D768E3004EACBD /* SpaceImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceImagePageViewController.h; path = ViewControllers/SpaceImagePageViewController.h; sourceTree = "<group>"; };
+		C2670F4A18D768E3004EACBD /* SpaceImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceImagePageViewController.m; path = ViewControllers/SpaceImagePageViewController.m; sourceTree = "<group>"; };
+		C2670F4C18D7B889004EACBD /* SpaceImagePageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceImagePageContentViewController.h; path = ViewControllers/SpaceImagePageContentViewController.h; sourceTree = "<group>"; };
+		C2670F4D18D7B889004EACBD /* SpaceImagePageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceImagePageContentViewController.m; path = ViewControllers/SpaceImagePageContentViewController.m; sourceTree = "<group>"; };
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceClusterViewController.h; path = ViewControllers/SpaceClusterViewController.h; sourceTree = "<group>"; };
 		C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceClusterViewController.m; path = ViewControllers/SpaceClusterViewController.m; sourceTree = "<group>"; };
@@ -710,6 +716,10 @@
 				06ACA0171898090800113AD0 /* MoreViewController.m */,
 				C2F715B918C63D0F00255582 /* EmailSpaceViewController.h */,
 				C2F715BA18C63D0F00255582 /* EmailSpaceViewController.m */,
+				C2670F4918D768E3004EACBD /* SpaceImagePageViewController.h */,
+				C2670F4A18D768E3004EACBD /* SpaceImagePageViewController.m */,
+				C2670F4C18D7B889004EACBD /* SpaceImagePageContentViewController.h */,
+				C2670F4D18D7B889004EACBD /* SpaceImagePageContentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1333,6 +1343,7 @@
 				C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */,
 				C2429A4B150AA37C005A994A /* Space.m in Sources */,
 				C2429A8A150AABDB005A994A /* NSObject+SBJson.m in Sources */,
+				C2670F4B18D768E3004EACBD /* SpaceImagePageViewController.m in Sources */,
 				C2429A8B150AABDB005A994A /* SBJsonParser.m in Sources */,
 				C2429A8C150AABDB005A994A /* SBJsonStreamParser.m in Sources */,
 				C2F715BB18C63D0F00255582 /* EmailSpaceViewController.m in Sources */,
@@ -1364,6 +1375,7 @@
 				C224DA8418D1004100589CAD /* OverlayMessage.m in Sources */,
 				C2B2F654153E225800292FDC /* ASIFormDataRequest+OAuth.m in Sources */,
 				C2B2F655153E225800292FDC /* ASIHTTPRequest+OAuth.m in Sources */,
+				C2670F4E18D7B889004EACBD /* SpaceImagePageContentViewController.m in Sources */,
 				C2F715AF18C3EFA600255582 /* SideMenu.m in Sources */,
 				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
