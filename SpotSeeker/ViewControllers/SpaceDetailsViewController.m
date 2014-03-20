@@ -36,7 +36,6 @@
 @synthesize table_view;
 @synthesize reservation_notes_height;
 @synthesize access_notes_height;
-@synthesize image_count_label;
 @synthesize overlay;
 @synthesize favorites;
 
@@ -564,10 +563,10 @@
         spinner.hidden = YES;
         
     }
-    self.image_count_label = (UILabel *)[cell viewWithTag:9];
-    if ([spot.image_urls count] < 2) {
-        self.image_count_label.hidden = YES;
-    }
+    
+    UIPageControl *page_view = (UIPageControl *)[cell viewWithTag:9];
+    page_view.numberOfPages = [spot.image_urls count];
+    NSLog(@"Set to: %i", page_view.numberOfPages);
     
     self.img_button_view = spot_image_view;
     
@@ -589,9 +588,6 @@
             }
             [self.rest getURL:image_url];
         }
-        UILabel *image_count = (UILabel *)[cell viewWithTag:9];
-        image_count.text = [NSString stringWithFormat:@"1 of %i", [spot.image_urls count]];
-        
     }
     else {
         UIImage *no_image = [UIImage imageNamed:@"placeholder_noImage_bw.png"];
@@ -843,10 +839,6 @@
     [self.img_button_view setImage:image forState:UIControlStateSelected];
     
     self.img_button_view.hidden = NO;
-    
-    if ([spot.image_urls count] >= 2) {
-        self.image_count_label.hidden = NO;
-    }
     
 }
 

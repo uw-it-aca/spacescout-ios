@@ -838,14 +838,6 @@
                                                         <action selector="btnClickFavorite:" destination="ycF-WC-Hj5" eventType="touchUpInside" id="m01-fc-Ga9"/>
                                                     </connections>
                                                 </button>
-                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="left" text="1 of N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="cbu-w5-Vnj">
-                                                    <rect key="frame" x="122" y="211" width="56" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="50" contentMode="center" image="flag_open.png" id="gtq-cA-nhV">
                                                     <rect key="frame" x="15" y="68" width="66" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -857,6 +849,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <pageControl opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="7" id="KuS-Vk-5OD">
+                                                    <rect key="frame" x="20" y="195" width="261" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </pageControl>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -1276,7 +1272,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="table_view" destination="NSk-zr-PcD" id="bjO-Pl-4Mr"/>
-                        <segue destination="WN3-wF-3ge" kind="push" identifier="image_view" id="Ydi-Do-Mjc"/>
+                        <segue destination="WN3-wF-3ge" kind="modal" identifier="image_view" id="Ydi-Do-Mjc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1286,7 +1282,7 @@
         <!--Space Images Scroll View Controller-->
         <scene sceneID="hHN-F0-df7">
             <objects>
-                <viewController id="WN3-wF-3ge" customClass="SpaceImagesScrollViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="WN3-wF-3ge" customClass="SpaceImagesScrollViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eX1-kO-QdN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -59,7 +59,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *table_view;
 @property (nonatomic, retain) NSNumber *reservation_notes_height;
 @property (nonatomic, retain) NSNumber *access_notes_height;
-@property (nonatomic, retain) UILabel *image_count_label;
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) Favorites *favorites;
 
