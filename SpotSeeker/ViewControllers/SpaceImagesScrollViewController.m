@@ -62,6 +62,9 @@
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
 
+    UIButton *close_button = (UIButton *)[self.view viewWithTag:401];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    
     self.showing_navigation = TRUE;
     UITapGestureRecognizer *single_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [single_tap setNumberOfTapsRequired:1];
@@ -71,18 +74,27 @@
 }
 
 -(void)tapAction:(id)selector {
+    UINavigationBar *nav_bar = (UINavigationBar *)[self.view viewWithTag:400];
     if (showing_navigation) {
         [UIView animateWithDuration:0.5 animations:^(void) {
-            self.navigationController.navigationBar.alpha = 0.0;
+            nav_bar.alpha = 0.0;
         }];
     }
     else {
         [UIView animateWithDuration:0.5 animations:^(void) {
-            self.navigationController.navigationBar.alpha = 1.0;
-        }];       
+            nav_bar.alpha = 1.0;
+        }];
     }
     
     self.showing_navigation = !self.showing_navigation;
+}
+
+-(IBAction)closeImageViewer:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+-(BOOL)prefersStatusBarHidden {
+    return TRUE;
 }
 
 - (void)loadScrollViewWithPage:(NSUInteger)page

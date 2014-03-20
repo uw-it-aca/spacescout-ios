@@ -1294,6 +1294,21 @@
                                     <outlet property="delegate" destination="WN3-wF-3ge" id="Wul-ZC-oQX"/>
                                 </connections>
                             </scrollView>
+                            <navigationBar tag="400" contentMode="scaleToFill" barStyle="black" id="nm8-dJ-rQV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem id="OXg-J5-6E5">
+                                        <barButtonItem key="leftBarButtonItem" tag="401" style="plain" systemItem="stop" id="lhh-cv-z1K">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeImageViewer:" destination="WN3-wF-3ge" id="xZB-YY-Obb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="epb-F1-Pd8">
                                 <rect key="frame" x="0.0" y="531" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1302,7 +1317,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XCJ-1G-l9a"/>
                     <connections>
                         <outlet property="page_control" destination="epb-F1-Pd8" id="dLk-ww-ebY"/>
                         <outlet property="scroll_view" destination="CqE-Iu-gT5" id="OPj-sq-Nrl"/>

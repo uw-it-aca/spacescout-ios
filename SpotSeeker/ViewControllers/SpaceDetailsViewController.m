@@ -566,7 +566,6 @@
     
     UIPageControl *page_view = (UIPageControl *)[cell viewWithTag:9];
     page_view.numberOfPages = [spot.image_urls count];
-    NSLog(@"Set to: %i", page_view.numberOfPages);
     
     self.img_button_view = spot_image_view;
     

@@ -22,4 +22,6 @@
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic) int showing_navigation;
 
+-(IBAction)closeImageViewer:(id)sender;
+
 @end
