@@ -307,7 +307,7 @@
         NSLog(@"Error : %@",error);
     }
     
-    [self.view_controller dismissModalViewControllerAnimated:YES];
+    [self.view_controller dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 

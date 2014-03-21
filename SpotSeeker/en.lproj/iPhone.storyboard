@@ -1300,7 +1300,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem id="OXg-J5-6E5">
-                                        <barButtonItem key="leftBarButtonItem" tag="401" style="plain" systemItem="stop" id="lhh-cv-z1K">
+                                        <barButtonItem key="leftBarButtonItem" tag="401" style="done" systemItem="stop" id="lhh-cv-z1K">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="closeImageViewer:" destination="WN3-wF-3ge" id="xZB-YY-Obb"/>

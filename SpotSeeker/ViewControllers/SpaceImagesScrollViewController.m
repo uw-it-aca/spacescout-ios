@@ -62,7 +62,6 @@
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
 
-    UIButton *close_button = (UIButton *)[self.view viewWithTag:401];
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     
     self.showing_navigation = TRUE;
