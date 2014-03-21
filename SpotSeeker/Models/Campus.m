@@ -81,6 +81,18 @@
     return campus;
 }
 
++(Campus *)getNextCampus {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *campus_search_key = [defaults objectForKey:@"next_campus"];
+    
+    Campus *campus;
+    if (campus_search_key) {
+        campus = [Campus _getCampusByPreference: campus_search_key];
+        return campus;
+    }
+    return nil;
+}
+
 +(Campus *)_getCampusByPreference: (NSString *)preference {
     NSArray *campuses = [Campus getCampuses];
     for (Campus *campus in campuses) {
@@ -106,6 +118,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:campus.search_key forKey:@"current_campus"];
     [defaults synchronize];
+}
+
++(void)setNextCampus: (Campus *)campus {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:campus.search_key forKey:@"next_campus"];
+    [defaults synchronize];
+    
+}
+
++(void)clearNextCampus {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"next_campus"];
+    [defaults synchronize];   
 }
 
 @end

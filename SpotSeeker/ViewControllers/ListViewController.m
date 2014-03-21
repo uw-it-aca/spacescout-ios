@@ -78,9 +78,11 @@
     [self.spot_table reloadData];
 
     Campus *current_campus = [Campus getCurrentCampus];
-    
-    if (original_campus &&
-        ![original_campus.search_key isEqualToString:current_campus.search_key]) {
+    Campus *next_campus = [Campus getNextCampus];
+    if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
+        [Campus setCurrentCampus:next_campus];
+        current_campus = next_campus;
+        [Campus clearNextCampus];
         self.search_attributes = nil;
         AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app_delegate.search_preferences = nil;

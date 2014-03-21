@@ -82,12 +82,12 @@
     int row = [self.campusPicker selectedRowInComponent:0];
     Campus *campus = [[Campus getCampuses] objectAtIndex:row];
     Campus *current_campus = [Campus getCurrentCampus];
-    
+
     if ([current_campus.search_key isEqualToString:campus.search_key]) {
         return;
     }
 
-    [Campus setCurrentCampus: campus];
+    [Campus setNextCampus: campus];
 }
 
 @end
