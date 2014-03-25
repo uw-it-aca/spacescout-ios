@@ -61,8 +61,6 @@
     //
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
-
-    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     
     self.showing_navigation = TRUE;
     UITapGestureRecognizer *single_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
