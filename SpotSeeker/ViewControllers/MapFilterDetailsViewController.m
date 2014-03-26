@@ -33,42 +33,6 @@
     
     self.title = screen_title;
     
-    int view_height = 0;
-    
-    NSString *header_key = [NSString stringWithFormat:@"Search screen header %@", [self.filter objectForKey:@"search_key"]];
-    NSString *screen_header_text =  NSLocalizedString(header_key, nil);
-
-    if (screen_header_text != nil) {
-        self.screen_header.text = screen_header_text;
-        view_height += self.screen_header.frame.size.height;
-        // this is somewhat arbitrary padding
-        view_height += 10;
-    }
-    else {
-        self.screen_header.hidden = YES;
-    }
-
-    NSString *subheader_key = [NSString stringWithFormat:@"Search screen subheader %@", [self.filter objectForKey:@"search_key"]];
-    NSString *screen_subheader_text =  NSLocalizedString(subheader_key, nil);;
-
-    if (screen_subheader_text != nil) {
-        self.screen_subheader.text = screen_subheader_text;
-        CGRect frame = screen_subheader.frame;
-
-        CGFloat expected_height = [screen_subheader_text boundingRectWithSize:CGSizeMake(frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: screen_subheader.font } context:nil].size.height;
-       
-        frame.size.height = expected_height;
-        screen_subheader.frame = frame;
-        
-        view_height += frame.size.height;
-
-    }
-    else {
-        self.screen_subheader.hidden = YES;
-    }
-
-    [self.table_view.tableHeaderView setFrame:CGRectMake(0.0, 0.0, 320.0, view_height)];
-    
     self.screenName = [NSString stringWithFormat:@"Map Filter Details View (%@)", screen_title];
 
 }
@@ -91,6 +55,12 @@
 
 #pragma mark -
 #pragma mark table methods
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header_key = [NSString stringWithFormat:@"Search screen header %@", [self.filter objectForKey:@"search_key"]];
+    NSString *screen_header_text =  NSLocalizedString(header_key, nil);
+    return screen_header_text;
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *option = [[self.filter objectForKey:@"options"] objectAtIndex:indexPath.row];

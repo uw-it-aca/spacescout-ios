@@ -180,6 +180,10 @@ NSUInteger DeviceSystemMajorVersion()
 
 #pragma mark - UITableViewDataSource
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return NSLocalizedString(@"hours section name", @"hours section name");
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return ([self indexPathHasPicker:indexPath] ? self.pickerCellRowHeight : self.tableView.rowHeight);
@@ -450,26 +454,6 @@ NSUInteger DeviceSystemMajorVersion()
     [self setPickerDateComponents:[self getDefaultEndTime]];
     [self updateTableRowWithDateComponents:kDateEndRow dateComponents:nil];
 }
-
-/* Set the Section Title and Such
- */
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,  tableView.bounds.size.width, 30)];
-    
-    UILabel *labelHeader = [[UILabel alloc] initWithFrame:CGRectMake (16,4,320,30)];
-
-    labelHeader.textColor = [UIColor grayColor];
-    [labelHeader setFont:[UIFont systemFontOfSize:14]];
-    
-    [headerView addSubview:labelHeader];
-                            
-    [headerView setBackgroundColor: UIColorFromRGB(0xF7F7F7)];
-    labelHeader.text = NSLocalizedString(@"hours section name", @"hours section name");
-    
-    return headerView;
-}
-
 
 /*
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
