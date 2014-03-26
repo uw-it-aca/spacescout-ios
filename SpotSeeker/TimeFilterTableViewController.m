@@ -25,8 +25,6 @@
         green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
         blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define kSelectedDateDetailColor [UIColor redColor]
-
 static NSString *kDateCellID = @"dateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"datePicker"; // the cell containing the date picker
 static NSString *kDateResetID = @"resetCell";
@@ -273,7 +271,7 @@ NSUInteger DeviceSystemMajorVersion()
         // decorate cell details to show they're being edited
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         self.detailTextColor = cell.detailTextLabel.textColor;
-        cell.detailTextLabel.textColor = kSelectedDateDetailColor;
+//        cell.detailTextLabel.textColor = kSelectedDateDetailColor;
     
         // insert the new date picker
         NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:(before ? indexPath.row : indexPath.row + 1) inSection:0];
