@@ -1946,7 +1946,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="56t-8u-DKs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.1764705882" green="0.12941176469999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1999,9 +1999,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8o3-ZB-NEA"/>
+        <segue reference="ehC-Lb-oxn"/>
         <segue reference="YtI-mQ-38u"/>
-        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="8o3-ZB-NEA"/>
         <segue reference="7BZ-SZ-G39"/>
     </inferredMetricsTieBreakers>
 </document>
