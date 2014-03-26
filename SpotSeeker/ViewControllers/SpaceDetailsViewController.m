@@ -912,14 +912,14 @@
         [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
         spot.is_favorite = false;
         [self.favorites removeServerFavorite:spot];
-        [self.overlay showOverlay:@"Saved!" animateDisplay:YES afterShowBlock:^(void) {}];
+        [self.overlay showOverlay:@"Removed" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     else {
         [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
         spot.is_favorite = true;
         [self.favorites addServerFavorite:spot];
-        [self.overlay showOverlay:@"Saved!" animateDisplay:YES afterShowBlock:^(void) {}];
+        [self.overlay showOverlay:@"Saved" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void){}];
