@@ -670,7 +670,7 @@
                                 </connections>
                             </tableView>
                             <pickerView contentMode="scaleToFill" id="ezr-r9-uXL">
-                                <rect key="frame" x="0.0" y="200" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
