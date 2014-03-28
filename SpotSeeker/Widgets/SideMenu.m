@@ -15,7 +15,8 @@
 -(UIImage *)getBackgroundImageForViewController:(UIViewController *)vc {
     UIImage *image;
     
-    UIGraphicsBeginImageContext(vc.view.frame.size);
+    UIGraphicsBeginImageContextWithOptions(vc.view.frame.size, true, 0.0);
+//    UIGraphicsBeginImageContext(vc.view.frame.size);
     [vc.navigationController.view drawViewHierarchyInRect:vc.view.frame afterScreenUpdates:YES];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -24,8 +25,10 @@
 }
 
 -(UIImage *)getBlurredImageFromUIImage:(UIImage *)image {
-    UIImage *blurredSnapshotImage = [image applyLightEffect];
-    return blurredSnapshotImage;
+    // No longer blurring the background image!  Keeping this in case we change our minds again
+    return image;
+//    UIImage *blurredSnapshotImage = [image applyLightEffect];
+//    return blurredSnapshotImage;
 }
 
 -(void) buildViews {
@@ -61,6 +64,9 @@
     menu.clipsToBounds = TRUE;
     
     menu.tag = 101;
+    
+    // Add the drop shadow
+
     
     [self.navigation_menu_view addSubview:menu];
     
@@ -120,6 +126,7 @@
 }
 
 -(void) showMenuForViewController:(UIViewController *)vc {
+    
     self.view_controller = vc;
     vc.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 

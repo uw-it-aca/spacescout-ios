@@ -65,6 +65,16 @@
 		89DD53FD15B49D94009C2336 /* flag_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DD53F915B49D94009C2336 /* flag_open@2x.png */; };
 		89EA961F15B4901A00078DD3 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EA961D15B4901A00078DD3 /* flag.png */; };
 		89EA962015B4901A00078DD3 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EA961E15B4901A00078DD3 /* flag@2x.png */; };
+		C203289D18E61EA600E2A671 /* iOS_FavList-Heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289318E61EA600E2A671 /* iOS_FavList-Heart@2x.png */; };
+		C203289E18E61EA600E2A671 /* iOS_FavList-Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289418E61EA600E2A671 /* iOS_FavList-Heart.png */; };
+		C203289F18E61EA600E2A671 /* iOS_Settings-Cog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289518E61EA600E2A671 /* iOS_Settings-Cog@2x.png */; };
+		C20328A018E61EA600E2A671 /* iOS_Settings-Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289618E61EA600E2A671 /* iOS_Settings-Cog.png */; };
+		C20328A118E61EA600E2A671 /* iOS_SuggestSpace-Bulb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289718E61EA600E2A671 /* iOS_SuggestSpace-Bulb@2x.png */; };
+		C20328A218E61EA600E2A671 /* iOS_SuggestSpace-Bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289818E61EA600E2A671 /* iOS_SuggestSpace-Bulb.png */; };
+		C20328A318E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289918E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu@2x.png */; };
+		C20328A418E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289A18E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png */; };
+		C20328A518E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289B18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png */; };
+		C20328A618E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */; };
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
@@ -314,6 +324,16 @@
 		89DD53F915B49D94009C2336 /* flag_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_open@2x.png"; sourceTree = "<group>"; };
 		89EA961D15B4901A00078DD3 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		89EA961E15B4901A00078DD3 /* flag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag@2x.png"; sourceTree = "<group>"; };
+		C203289318E61EA600E2A671 /* iOS_FavList-Heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_FavList-Heart@2x.png"; path = "../iOS_FavList-Heart@2x.png"; sourceTree = "<group>"; };
+		C203289418E61EA600E2A671 /* iOS_FavList-Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_FavList-Heart.png"; path = "../iOS_FavList-Heart.png"; sourceTree = "<group>"; };
+		C203289518E61EA600E2A671 /* iOS_Settings-Cog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_Settings-Cog@2x.png"; path = "../iOS_Settings-Cog@2x.png"; sourceTree = "<group>"; };
+		C203289618E61EA600E2A671 /* iOS_Settings-Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_Settings-Cog.png"; path = "../iOS_Settings-Cog.png"; sourceTree = "<group>"; };
+		C203289718E61EA600E2A671 /* iOS_SuggestSpace-Bulb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_SuggestSpace-Bulb@2x.png"; path = "../iOS_SuggestSpace-Bulb@2x.png"; sourceTree = "<group>"; };
+		C203289818E61EA600E2A671 /* iOS_SuggestSpace-Bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iOS_SuggestSpace-Bulb.png"; path = "../iOS_SuggestSpace-Bulb.png"; sourceTree = "<group>"; };
+		C203289918E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SS_LogoUnit_iOS_Sidemenu@2x.png"; path = "../SS_LogoUnit_iOS_Sidemenu@2x.png"; sourceTree = "<group>"; };
+		C203289A18E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS_LogoUnit_iOS_Sidemenu.png; path = ../SS_LogoUnit_iOS_Sidemenu.png; sourceTree = "<group>"; };
+		C203289B18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UWIT-logo_iOS_sidemenu.png"; path = "../UWIT-logo_iOS_sidemenu.png"; sourceTree = "<group>"; };
+		C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UWIT-logo_iOS_sidemenu@2x.png"; path = "../UWIT-logo_iOS_sidemenu@2x.png"; sourceTree = "<group>"; };
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
@@ -805,6 +825,16 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C203289318E61EA600E2A671 /* iOS_FavList-Heart@2x.png */,
+				C203289418E61EA600E2A671 /* iOS_FavList-Heart.png */,
+				C203289518E61EA600E2A671 /* iOS_Settings-Cog@2x.png */,
+				C203289618E61EA600E2A671 /* iOS_Settings-Cog.png */,
+				C203289718E61EA600E2A671 /* iOS_SuggestSpace-Bulb@2x.png */,
+				C203289818E61EA600E2A671 /* iOS_SuggestSpace-Bulb.png */,
+				C203289918E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu@2x.png */,
+				C203289A18E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png */,
+				C203289B18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png */,
+				C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */,
 				C27818E418D2542500C45929 /* GreenCheckmark.png */,
 				C27818E518D2542500C45929 /* GreenCheckmark@2x.png */,
 				895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */,
@@ -1169,6 +1199,7 @@
 			files = (
 				C2FDB0ED150A802D00ED3A93 /* InfoPlist.strings in Resources */,
 				C2FDB0F6150A802D00ED3A93 /* iPhone.storyboard in Resources */,
+				C20328A218E61EA600E2A671 /* iOS_SuggestSpace-Bulb.png in Resources */,
 				C2516666153370CF002CEDB6 /* example_spotseeker.plist in Resources */,
 				C25166691533713B002CEDB6 /* spotseeker.plist in Resources */,
 				C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */,
@@ -1203,6 +1234,7 @@
 				C242C2C8159260140045924B /* pin13.png in Resources */,
 				C242C2C9159260140045924B /* pin13@2x.png in Resources */,
 				C242C2CA159260140045924B /* pin14.png in Resources */,
+				C20328A018E61EA600E2A671 /* iOS_Settings-Cog.png in Resources */,
 				C242C2CB159260140045924B /* pin14@2x.png in Resources */,
 				C242C2CC159260140045924B /* pin15.png in Resources */,
 				C242C2CD159260140045924B /* pin15@2x.png in Resources */,
@@ -1210,6 +1242,7 @@
 				C242C2CF159260140045924B /* pin16@2x.png in Resources */,
 				C242C2D0159260140045924B /* pin17.png in Resources */,
 				C242C2D1159260140045924B /* pin17@2x.png in Resources */,
+				C20328A418E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png in Resources */,
 				C242C2D2159260140045924B /* pin18.png in Resources */,
 				C242C2D3159260140045924B /* pin18@2x.png in Resources */,
 				C242C2D4159260140045924B /* pin19.png in Resources */,
@@ -1220,8 +1253,10 @@
 				C242C2D9159260140045924B /* pin21@2x.png in Resources */,
 				C242C2DA159260140045924B /* pin22.png in Resources */,
 				C242C2DB159260140045924B /* pin22@2x.png in Resources */,
+				C20328A618E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png in Resources */,
 				C242C2DC159260140045924B /* pin23.png in Resources */,
 				C242C2DD159260140045924B /* pin23@2x.png in Resources */,
+				C203289E18E61EA600E2A671 /* iOS_FavList-Heart.png in Resources */,
 				C242C2DE159260140045924B /* pin24.png in Resources */,
 				C242C2DF159260140045924B /* pin24@2x.png in Resources */,
 				C242C2E0159260140045924B /* pin25.png in Resources */,
@@ -1240,6 +1275,7 @@
 				C2D4E31715938BAB00B594C5 /* tools.png in Resources */,
 				C251438F1594E08F006A4A9E /* Localizable.strings in Resources */,
 				C255957D15951F8A00C98C32 /* faveslist.png in Resources */,
+				C20328A118E61EA600E2A671 /* iOS_SuggestSpace-Bulb@2x.png in Resources */,
 				C255957E15951F8A00C98C32 /* locate.png in Resources */,
 				C255957F15951F8A00C98C32 /* locate@2x.png in Resources */,
 				C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */,
@@ -1249,6 +1285,7 @@
 				C23074DA1599326900C31AA1 /* DetailsTableFooter.xib in Resources */,
 				897CF54615A23B4B007D5ABA /* search.png in Resources */,
 				C2ED2BB715A35A7C00662C0D /* ui_magic_values.plist in Resources */,
+				C20328A318E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu@2x.png in Resources */,
 				89EA961F15B4901A00078DD3 /* flag.png in Resources */,
 				89EA962015B4901A00078DD3 /* flag@2x.png in Resources */,
 				2323BBD015B496F200B6947B /* icon-72.png in Resources */,
@@ -1272,6 +1309,7 @@
 				8940AD5015BF2ABF00714AFB /* star_unselected@2x.png in Resources */,
 				8940AD5515BF2EED00714AFB /* button_Back.png in Resources */,
 				8940AD5615BF2EED00714AFB /* button_Back@2x.png in Resources */,
+				C203289D18E61EA600E2A671 /* iOS_FavList-Heart@2x.png in Resources */,
 				8940AD5715BF2EED00714AFB /* button_Next.png in Resources */,
 				8940AD5815BF2EED00714AFB /* button_Next@2x.png in Resources */,
 				8940AD5B15BF311600714AFB /* filter_reset.png in Resources */,
@@ -1294,6 +1332,8 @@
 				06ACA01A189982D700113AD0 /* contact_config.json in Resources */,
 				891103441704AC5300D2214D /* hours_status_active.png in Resources */,
 				891103451704AC5300D2214D /* hours_status_active@2x.png in Resources */,
+				C203289F18E61EA600E2A671 /* iOS_Settings-Cog@2x.png in Resources */,
+				C20328A518E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png in Resources */,
 				891103461704AC5300D2214D /* hours_status_default.png in Resources */,
 				891103471704AC5300D2214D /* hours_status_default@2x.png in Resources */,
 				C28F16BA18D8F6A300A220DD /* SpaceImage.xib in Resources */,
