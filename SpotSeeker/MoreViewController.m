@@ -79,7 +79,7 @@
     }
     [super viewWillDisappear:animated];
  
-    int row = [self.campusPicker selectedRowInComponent:0];
+    NSInteger row = [self.campusPicker selectedRowInComponent:0];
     Campus *campus = [[Campus getCampuses] objectAtIndex:row];
     Campus *current_campus = [Campus getCurrentCampus];
 

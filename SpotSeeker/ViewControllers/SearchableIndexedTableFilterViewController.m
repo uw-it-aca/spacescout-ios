@@ -210,7 +210,7 @@
     }
 }
 
--(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.search_display_controller.searchResultsTableView) {
         return [self searchTableView:tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath];
     }
