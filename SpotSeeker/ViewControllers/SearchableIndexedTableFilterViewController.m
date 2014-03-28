@@ -79,8 +79,7 @@
             
             self.index_data = [self createTableIndex];
             [self.table_view reloadData];
-            self.loading_spinner.hidden = YES;
-            self.table_view.hidden = NO;
+            [self showBuildingTable];
 
         }];
 
@@ -88,6 +87,7 @@
     }
     else {
         self.index_data = [self createTableIndex];
+        [self showBuildingTable];
     }
     
     self.search_display_controller = [[UISearchDisplayController alloc] initWithSearchBar:self.search_bar contentsController:self];
@@ -101,6 +101,18 @@
 
     self.screenName = [NSString stringWithFormat:@"Searchable Indexed Table Filter View (%@)", screen_title];
 
+}
+
+-(void)showBuildingTable {
+    UIView *overlay = [self.view viewWithTag:100];
+    overlay.hidden = TRUE;
+    self.loading_spinner.hidden = YES;
+    self.table_view.hidden = NO;
+
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)viewDidUnload
@@ -131,7 +143,7 @@
     
     NSArray *options = [filter objectForKey:@"options"];
 
-    NSInteger section_index = 0;
+    NSNumber *section_index = @0;
     NSInteger row_count = 0;
     // Sort the options here, create a list of option->index mappings?
     for (int index = 0; index < [options count]; index++) {
@@ -147,9 +159,9 @@
             [current_section setObject:option_index forKey:@"title"];
             current_index = option_index;
             
-            section_index++;
+            section_index = @([section_index integerValue] + 1);
             row_count = 0;
-            [index_to_section setObject:[NSNumber numberWithInt:section_index] forKey:option_index];
+            [index_to_section setObject:section_index forKey:option_index];
         }
         
         [building setObject:[NSNumber numberWithInt:index] forKey:@"array_index"];
@@ -158,7 +170,7 @@
             [building setObject:[NSNumber numberWithInt:1] forKey:@"checked"];
         }
         
-        NSIndexPath *index_path = [NSIndexPath indexPathForRow:row_count inSection:section_index];
+        NSIndexPath *index_path = [NSIndexPath indexPathForRow:row_count inSection:[section_index integerValue]];
         [building setObject:index_path forKey:@"index_path"];
         NSMutableArray *values = [current_section objectForKey:@"values"];
         [values addObject:building]; 
