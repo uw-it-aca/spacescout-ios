@@ -76,6 +76,8 @@
 		C20328A618E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */; };
 		C203297318E629D300E2A671 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C203297118E629D300E2A671 /* libAdIdAccess.a */; };
 		C203297418E629D300E2A671 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */; };
+		C203297718E636F000E2A671 /* Close_X_Btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203297518E636F000E2A671 /* Close_X_Btn@2x.png */; };
+		C203297818E636F000E2A671 /* Close_X_Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C203297618E636F000E2A671 /* Close_X_Btn.png */; };
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
@@ -336,6 +338,8 @@
 		C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UWIT-logo_iOS_sidemenu@2x.png"; path = "../UWIT-logo_iOS_sidemenu@2x.png"; sourceTree = "<group>"; };
 		C203297118E629D300E2A671 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		C203297518E636F000E2A671 /* Close_X_Btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close_X_Btn@2x.png"; sourceTree = "<group>"; };
+		C203297618E636F000E2A671 /* Close_X_Btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close_X_Btn.png; sourceTree = "<group>"; };
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
@@ -829,6 +833,8 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C203297518E636F000E2A671 /* Close_X_Btn@2x.png */,
+				C203297618E636F000E2A671 /* Close_X_Btn.png */,
 				C203289318E61EA600E2A671 /* iOS_FavList-Heart@2x.png */,
 				C203289418E61EA600E2A671 /* iOS_FavList-Heart.png */,
 				C203289518E61EA600E2A671 /* iOS_Settings-Cog@2x.png */,
@@ -1258,6 +1264,7 @@
 				C242C2DA159260140045924B /* pin22.png in Resources */,
 				C242C2DB159260140045924B /* pin22@2x.png in Resources */,
 				C20328A618E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png in Resources */,
+				C203297818E636F000E2A671 /* Close_X_Btn.png in Resources */,
 				C242C2DC159260140045924B /* pin23.png in Resources */,
 				C242C2DD159260140045924B /* pin23@2x.png in Resources */,
 				C203289E18E61EA600E2A671 /* iOS_FavList-Heart.png in Resources */,
@@ -1300,6 +1307,7 @@
 				2323BBD515B496F200B6947B /* icon@2x.png in Resources */,
 				89DD53FA15B49D94009C2336 /* flag_closed.png in Resources */,
 				89DD53FB15B49D94009C2336 /* flag_closed@2x.png in Resources */,
+				C203297718E636F000E2A671 /* Close_X_Btn@2x.png in Resources */,
 				89DD53FC15B49D94009C2336 /* flag_open.png in Resources */,
 				89DD53FD15B49D94009C2336 /* flag_open@2x.png in Resources */,
 				C2775E1915BA2B0700731EBB /* Default.png in Resources */,

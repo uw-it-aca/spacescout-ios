@@ -1279,7 +1279,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TEA-GA-WQN">
                                 <rect key="frame" x="-5" y="14" width="56" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="asterisk.png">
+                                <state key="normal" image="Close_X_Btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1962,6 +1962,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Close_X_Btn.png" width="25" height="25"/>
         <image name="asterisk.png" width="22" height="22"/>
         <image name="comp-icon.png" width="16" height="16"/>
         <image name="flag_open.png" width="66" height="31"/>
