@@ -9,7 +9,7 @@
 #import "SpaceImageScrollPageViewController.h"
 
 @interface SpaceImageScrollPageViewController () {
-    int page_number;
+    NSUInteger page_number;
 }
 
 @end
