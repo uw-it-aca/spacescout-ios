@@ -52,7 +52,6 @@
 		8953B6D816EEA86F008BF921 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8953B6D716EEA86F008BF921 /* Default@2x.png */; };
 		895B2DBA16EE90F000E00BE0 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895B2DB916EE90F000E00BE0 /* icon-72@2x.png */; };
 		895BF08E17CE71E8002C4BDF /* placeholder_noImage_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */; };
-		8972F5A0185293DE003F0E3C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8972F59B185293DE003F0E3C /* libGoogleAnalyticsServices.a */; };
 		8974C44F1700CFA100DF1C81 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8974C44E1700CFA100DF1C81 /* CoreData.framework */; };
 		897CF54615A23B4B007D5ABA /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 897CF54515A23B4B007D5ABA /* search.png */; };
 		898E35431703A984004AA71C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 898E35421703A984004AA71C /* Settings.bundle */; };
@@ -75,6 +74,8 @@
 		C20328A418E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289A18E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png */; };
 		C20328A518E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289B18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png */; };
 		C20328A618E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */; };
+		C203297318E629D300E2A671 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C203297118E629D300E2A671 /* libAdIdAccess.a */; };
+		C203297418E629D300E2A671 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */; };
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
@@ -309,7 +310,6 @@
 		8972F383185293DD003F0E3C /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		8972F384185293DD003F0E3C /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
 		8972F385185293DD003F0E3C /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		8972F59B185293DE003F0E3C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		8974C44E1700CFA100DF1C81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		897CF54515A23B4B007D5ABA /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
 		898E35421703A984004AA71C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -334,6 +334,8 @@
 		C203289A18E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS_LogoUnit_iOS_Sidemenu.png; path = ../SS_LogoUnit_iOS_Sidemenu.png; sourceTree = "<group>"; };
 		C203289B18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UWIT-logo_iOS_sidemenu.png"; path = "../UWIT-logo_iOS_sidemenu.png"; sourceTree = "<group>"; };
 		C203289C18E61EA600E2A671 /* UWIT-logo_iOS_sidemenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UWIT-logo_iOS_sidemenu@2x.png"; path = "../UWIT-logo_iOS_sidemenu@2x.png"; sourceTree = "<group>"; };
+		C203297118E629D300E2A671 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
@@ -575,15 +577,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C203297318E629D300E2A671 /* libAdIdAccess.a in Frameworks */,
 				C2F715BF18C79E6D00255582 /* AddressBook.framework in Frameworks */,
 				C2F715BD18C79AD200255582 /* AddressBookUI.framework in Frameworks */,
+				C203297418E629D300E2A671 /* libGoogleAnalyticsServices.a in Frameworks */,
 				C2F715B818C5A61E00255582 /* Accelerate.framework in Frameworks */,
 				C2F715A818C3AC9F00255582 /* QuartzCore.framework in Frameworks */,
 				06A2EE0018681593005B2933 /* MessageUI.framework in Frameworks */,
 				89DC154D185153D60014F4F3 /* AdSupport.framework in Frameworks */,
 				C22AA3201806196F004EC188 /* Security.framework in Frameworks */,
 				8974C44F1700CFA100DF1C81 /* CoreData.framework in Frameworks */,
-				8972F5A0185293DE003F0E3C /* libGoogleAnalyticsServices.a in Frameworks */,
 				C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */,
 				C2429A9D150AAC2B005A994A /* CFNetwork.framework in Frameworks */,
 				C2429A9B150AAC21005A994A /* SystemConfiguration.framework in Frameworks */,
@@ -612,6 +615,8 @@
 		8972F37D185293DD003F0E3C /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				C203297118E629D300E2A671 /* libAdIdAccess.a */,
+				C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */,
 				8972F37E185293DD003F0E3C /* GAI.h */,
 				8972F37F185293DD003F0E3C /* GAIDictionaryBuilder.h */,
 				8972F380185293DD003F0E3C /* GAIFields.h */,
@@ -620,7 +625,6 @@
 				8972F383185293DD003F0E3C /* GAITracker.h */,
 				8972F384185293DD003F0E3C /* GAITransaction.h */,
 				8972F385185293DD003F0E3C /* GAITransactionItem.h */,
-				8972F59B185293DE003F0E3C /* libGoogleAnalyticsServices.a */,
 			);
 			path = GoogleAnalytics;
 			sourceTree = "<group>";
@@ -1578,6 +1582,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/GoogleAnalytics",
+					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = SpaceScout;
 				PROVISIONING_PROFILE = "";
@@ -1600,6 +1605,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/GoogleAnalytics",
+					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = SpaceScout;
 				PROVISIONING_PROFILE = "";
