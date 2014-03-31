@@ -50,6 +50,15 @@
     }
 
     [self.campusPicker selectRow:selected_index inComponent:0 animated:false];
+    
+    UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
+    NSLog(@"Button: %@", logout_button);
+    if ([REST hasPersonalOAuthToken]) {
+        logout_button.hidden = FALSE;
+    }
+    else {
+        logout_button.hidden = TRUE;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +80,32 @@
     Campus *campus = [campuses objectAtIndex:row];
     return campus.name;
 }
+
+-(void)logoutButtonTouchUp: (id)sender {
+    [REST removePersonalOAuthToken];
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if (!self.overlay) {
+        self.overlay = [[OverlayMessage alloc] init];
+        [self.overlay addTo:self.view];
+    }
+
+
+    [self.overlay showOverlay:@"Logged Out" animateDisplay:YES afterShowBlock:^(void) {
+        UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
+        logout_button.hidden = TRUE;
+
+        [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void) {
+        }];
+    }];
+
+}
+
 
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {

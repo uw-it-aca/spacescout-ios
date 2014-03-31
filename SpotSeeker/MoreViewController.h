@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Campus.h"
 #import "Contact.h"
+#import "REST.h"
+#import "OverlayMessage.h"
 
 @interface MoreViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIPickerView *campusPicker;
+@property (nonatomic, retain) OverlayMessage *overlay;
+
+-(IBAction)logoutButtonTouchUp:(id)sender;
 
 @end
