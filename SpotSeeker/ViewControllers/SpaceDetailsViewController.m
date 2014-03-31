@@ -187,7 +187,7 @@
         return base_number;
     }
     if (section == 1) {
-        int count = [self.environment_fields count];
+        long int count = [self.environment_fields count];
         if ([self.equipment_fields count] > 0) {
             count++;
         }
@@ -407,7 +407,7 @@
     return nil;
 }
 
--(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 2) {
         NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableFooter"
                                                           owner:self
@@ -680,7 +680,7 @@
         hours_label.hidden = NO;
     }
     
-    for (int index = [display_hours count]; index <= 7; index++) {
+    for (long int index = [display_hours count]; index <= 7; index++) {
         UILabel *hours_label = (UILabel *)[cell viewWithTag:(index + 11)];
         hours_label.hidden = YES;
         hours_label.text = @"";
@@ -1020,8 +1020,8 @@
             return;
         }
         
-        int height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
-        self.reservation_notes_height = [NSNumber numberWithInt:height];
+        NSInteger height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.reservation_notes_height = [NSNumber numberWithLong:height];
     }
     
     if(webView.tag == 100){//access_notes WebView
@@ -1030,8 +1030,8 @@
             return;
         }
         
-        int height_access = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
-        self.access_notes_height = [NSNumber numberWithInt:height_access];
+        NSInteger height_access = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.access_notes_height = [NSNumber numberWithLong:height_access];
     }
 
     [self.table_view beginUpdates];

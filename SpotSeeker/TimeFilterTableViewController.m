@@ -529,7 +529,7 @@ NSUInteger DeviceSystemMajorVersion()
 
 
 -(NSString *)stringForDateComponents:(NSDateComponents *)components {
-    int hour = components.hour;
+    NSInteger hour = components.hour;
     NSString *am_pm;
     
     if (hour >= 12) {
@@ -547,7 +547,7 @@ NSUInteger DeviceSystemMajorVersion()
         hour = 12;
     }
     
-    NSString *display = [NSString stringWithFormat:@"%@, %i:%02li %@", [self dayNameForIndex:components.weekday -1], hour, (long)components.minute, am_pm];
+    NSString *display = [NSString stringWithFormat:@"%@, %li:%02li %@", [self dayNameForIndex:components.weekday -1], (long)hour, (long)components.minute, am_pm];
     return display;
 }
 
@@ -624,7 +624,7 @@ NSUInteger DeviceSystemMajorVersion()
 
 -(void) setPickerDateComponents:(NSDateComponents *)components {
     int is_pm = 0;
-    int hour = components.hour;
+    NSInteger hour = components.hour;
     
     if (hour >= 12) {
         is_pm = 1;
@@ -664,7 +664,7 @@ NSUInteger DeviceSystemMajorVersion()
     
     NSDateComponents *new = [initial copy];
     
-    int hour;
+    NSInteger hour;
     switch (component) {
         case 0:
             [self setNewWeekDay:(row + 1) ForDateComponents:new];

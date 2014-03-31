@@ -107,7 +107,12 @@
 
 +(int) getLocalFavoritesCount {
     NSMutableDictionary *favorites = [Favorites getFavorites];
-    int count = [favorites count];
+    long int full_count = [favorites count];
+    // This seems quite unlikely, but displaying 0 seems better than an overflow.
+    if (full_count > INT_MAX) {
+        return 0;
+    }
+    int count = (int)full_count;
     return count;
 }
 
@@ -118,8 +123,11 @@
     }
     
     NSMutableDictionary *favorites = [Favorites getLocalCacheFavorites];
-    int count = [favorites count];
-    return count;
+    long int full_count = [favorites count];
+    if (full_count > INT_MAX) {
+        return 0;
+    }
+    return (int)full_count;
 }
 
 +(void) addFavorite:(Space *)spot {

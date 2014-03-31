@@ -78,7 +78,7 @@
     UIButton *filter_selection = (UIButton *)[cell viewWithTag:3];
     
     NSMutableDictionary *current_obj = self.filter;
-    [current_obj setObject:[NSNumber numberWithInt:row]  forKey:@"selected_row"];
+    [current_obj setObject:[NSNumber numberWithLong:row]  forKey:@"selected_row"];
     
     NSString *title = [[[current_obj objectForKey:@"options"] objectAtIndex:row] objectForKey:@"title"];
     [filter_selection setTitle:title forState:UIControlStateNormal];
@@ -127,7 +127,7 @@
     return cell;
 }
 
--(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 

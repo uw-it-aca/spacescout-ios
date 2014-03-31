@@ -306,10 +306,10 @@
     // Assuming that if there are more than 10 options selected, the string will be too long - just cutting down on
     // the number of string length tests.
     NSMutableArray *options_copy = [[NSMutableArray alloc] initWithArray: options];
-    int index = 0;
+    unsigned int index = 0;
     if ([options count] > 10) {
         [options_copy removeObjectsInRange:NSMakeRange(10, [options count] - 10)];
-        index = [options count] - 10;
+        index = (unsigned int)[options count] - 10;
     }
     for (; index < [options count]; index++) {
         NSMutableArray *short_options = [[NSMutableArray alloc] init];
@@ -589,7 +589,7 @@
     NSMutableDictionary *chosen = [[self.current_section objectForKey:@"options"] objectAtIndex:[picker selectedRowInComponent:0]];
     [chosen setValue:[NSNumber numberWithBool:FALSE] forKey:@"selected"];
 
-    [self.current_section setObject:[NSNumber numberWithInt:[picker selectedRowInComponent:0]] forKey:@"selected_row"];
+    [self.current_section setObject:[NSNumber numberWithInt:(int)[picker selectedRowInComponent:0]] forKey:@"selected_row"];
     [self.filter_table reloadData];
     
     [UIView animateWithDuration:0.8

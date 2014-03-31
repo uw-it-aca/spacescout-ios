@@ -50,8 +50,8 @@
         NSDateComponents *end_time = [window objectAtIndex:1];
         
         NSDateComponents *tomorrows_end_time  = [self getEndOfWindowStartingAtMidnight:next_hours];
-        int tomorrows_hour = tomorrows_end_time.hour;
-        int todays_end_hour = end_time.hour;
+        long int tomorrows_hour = tomorrows_end_time.hour;
+        long int todays_end_hour = end_time.hour;
 
         if (start_time.hour == 0 && start_time.minute == 0 && end_time.hour == 23 && end_time.minute == 59 && tomorrow_starts_at_midnight && !tomorrow_is_24_hours && tomorrows_hour > 3) {
             [display_parts addObject:[NSString stringWithFormat: @"Open 24 hours"]];

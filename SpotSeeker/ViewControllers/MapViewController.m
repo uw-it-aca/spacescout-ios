@@ -190,7 +190,7 @@ extern const int meters_per_latitude;
 
     SpaceAnnotation *actual = (SpaceAnnotation *)annotation;
     
-    int spot_count = actual.spots.count;
+    long int spot_count = actual.spots.count;
     if (spot_count > 30) {
         spot_count = 30;
     }
@@ -202,7 +202,7 @@ extern const int meters_per_latitude;
         pinView.canShowCallout = true;
     }
     
-    NSString *image_name = [NSString stringWithFormat:@"pin%02i.png", spot_count];
+    NSString *image_name = [NSString stringWithFormat:@"pin%02li.png", spot_count];
     pinView.image = [UIImage imageNamed:image_name];
     
     // XXX - This is the distance from the center of the image to the "point" of the pin drop. Needs to be updated with the images.

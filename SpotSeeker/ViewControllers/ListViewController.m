@@ -216,7 +216,7 @@
         loading_image.hidden = FALSE;
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
-        [self.requests setObject:request forKey:[NSNumber numberWithInt:indexPath.row]];
+        [self.requests setObject:request forKey:[NSNumber numberWithLong:indexPath.row]];
         [request setCompletionBlock:^{
             bool update_image = false;
             for (NSIndexPath *path in tableView.indexPathsForVisibleRows) {
@@ -233,7 +233,7 @@
                 spot_image.hidden = FALSE;
             }
             @autoreleasepool {
-                [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
+                [self.requests removeObjectForKey:[NSNumber numberWithLong:indexPath.row]];
             }
         }];
 
@@ -256,7 +256,7 @@
                 spot_image.hidden = FALSE;
             }
             @autoreleasepool {
-                [self.requests removeObjectForKey:[NSNumber numberWithInt:indexPath.row]];
+                [self.requests removeObjectForKey:[NSNumber numberWithLong:indexPath.row]];
             }
         }];
         
