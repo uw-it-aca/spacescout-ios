@@ -11,19 +11,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UWIT-logo_iOS_sidemenu.png" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-Yx-8lp">
+                <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="UWIT-logo_iOS_sidemenu.png" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-Yx-8lp">
                     <rect key="frame" x="20" y="512" width="270" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="dNh-ko-q04"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" tag="301" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="004-Ux-IMo">
+                <button opaque="NO" tag="301" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="004-Ux-IMo">
                     <rect key="frame" x="20" y="107" width="183" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="183" id="3df-pn-Uij"/>
-                    </constraints>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Favorites Button" image="iOS_FavList-Heart.png">
@@ -31,7 +28,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="303" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCg-cb-206">
+                <button opaque="NO" tag="303" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCg-cb-206">
                     <rect key="frame" x="20" y="223" width="176" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -44,7 +41,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="304" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-ls-mbT">
+                <button opaque="NO" tag="304" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-ls-mbT">
                     <rect key="frame" x="20" y="169" width="194" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -64,13 +61,7 @@
             </subviews>
             <color key="backgroundColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="RCg-cb-206" firstAttribute="leading" secondItem="WaB-Yx-8lp" secondAttribute="leading" id="2bk-52-unA"/>
-                <constraint firstAttribute="bottom" secondItem="WaB-Yx-8lp" secondAttribute="bottom" constant="20" symbolic="YES" id="3Ki-3V-sRu"/>
-                <constraint firstItem="RCg-cb-206" firstAttribute="top" secondItem="TQ9-ls-mbT" secondAttribute="bottom" constant="32" id="9oI-Ru-sMw"/>
-                <constraint firstAttribute="trailing" secondItem="WaB-Yx-8lp" secondAttribute="trailing" constant="30" id="Njp-TI-JEj"/>
-                <constraint firstItem="TQ9-ls-mbT" firstAttribute="leading" secondItem="RCg-cb-206" secondAttribute="leading" id="Qae-54-DBj"/>
-                <constraint firstItem="004-Ux-IMo" firstAttribute="leading" secondItem="TQ9-ls-mbT" secondAttribute="leading" id="Um9-kD-ekw"/>
-                <constraint firstItem="TQ9-ls-mbT" firstAttribute="top" secondItem="004-Ux-IMo" secondAttribute="bottom" constant="38" id="e4X-Ef-cvo"/>
+                <constraint firstAttribute="bottom" secondItem="WaB-Yx-8lp" secondAttribute="bottom" constant="20" id="fhs-lE-vIS"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
