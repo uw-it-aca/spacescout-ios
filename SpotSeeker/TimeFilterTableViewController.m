@@ -547,7 +547,7 @@ NSUInteger DeviceSystemMajorVersion()
         hour = 12;
     }
     
-    NSString *display = [NSString stringWithFormat:@"%@, %i:%02i %@", [self dayNameForIndex:components.weekday -1], hour, components.minute, am_pm];
+    NSString *display = [NSString stringWithFormat:@"%@, %i:%02li %@", [self dayNameForIndex:components.weekday -1], hour, (long)components.minute, am_pm];
     return display;
 }
 
@@ -747,10 +747,10 @@ NSUInteger DeviceSystemMajorVersion()
         }
     }
     else if (component == 2) {
-        return [NSString stringWithFormat:@"%02i", row * 15];
+        return [NSString stringWithFormat:@"%02i", (int)row * 15];
     }
     else if (component == 1) {
-        return [NSString stringWithFormat:@"%i", row+1];
+        return [NSString stringWithFormat:@"%i", (int)row+1];
     }
     else {
         return [self dayNameForIndex:row];

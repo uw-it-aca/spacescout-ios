@@ -368,7 +368,7 @@
     }
     // This fallback should never be reached
     else {
-        NSLog(@"Invalid index path section: %i", indexPath.section);
+        NSLog(@"Invalid index path section: %li", (long)indexPath.section);
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];

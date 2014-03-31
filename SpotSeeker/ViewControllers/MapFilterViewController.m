@@ -340,12 +340,12 @@
         if ((title_width + short_size.width + 20) < available_width) {
             return test_string;
         }
-        int remove_at = [options_copy count] - 1;
+        unsigned long int remove_at = [options_copy count] - 1;
         [options_copy removeObjectAtIndex:remove_at];
     }
 
     // Oh boy, I guess just tell them how many selected options there are.
-    return [NSString stringWithFormat:@"%i selected", [options count]];
+    return [NSString stringWithFormat:@"%lu selected", (unsigned long)[options count]];
 }
 
 /*
@@ -441,7 +441,7 @@
     if (components == nil) {
         return @"Now";
     }
-    int hour = components.hour;
+    long int hour = components.hour;
     
     NSString *am_pm;
     if (hour >= 12) {
@@ -459,7 +459,7 @@
         hour = 12;
     }
     
-    NSString *display = [NSString stringWithFormat:@"%@, %i:%02i %@", [self dayNameForIndex:components.weekday -1], hour, components.minute, am_pm];
+    NSString *display = [NSString stringWithFormat:@"%@, %li:%02li %@", [self dayNameForIndex:components.weekday -1], hour, (long)components.minute, am_pm];
 
     return display;
 }
@@ -475,7 +475,7 @@
 
 -(NSString *)stringForSearchingForDateComponents:(NSDateComponents *)components {
     
-    NSString *display = [NSString stringWithFormat:@"%@,%02i:%02i", [self dayNameForSearchingAtIndex:components.weekday -1], components.hour, components.minute];
+    NSString *display = [NSString stringWithFormat:@"%@,%02li:%02li", [self dayNameForSearchingAtIndex:components.weekday -1], (long)components.hour, (long)components.minute];
     
     return display;
 }

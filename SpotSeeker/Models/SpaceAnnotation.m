@@ -26,7 +26,7 @@
 @synthesize spots;
 
 -(NSString *)getLookupKey {
-    return [NSString stringWithFormat:@"%f_%f_%i", self.coordinate.latitude, self.coordinate.longitude, [self.spots count]];
+    return [NSString stringWithFormat:@"%f_%f_%lu", self.coordinate.latitude, self.coordinate.longitude, (unsigned long)[self.spots count]];
 }
 
 @end
