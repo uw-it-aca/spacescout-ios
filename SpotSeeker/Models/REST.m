@@ -136,6 +136,15 @@
 }
 
 +(BOOL)hasPersonalOAuthToken {
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"spotseeker.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    BOOL use_oauth = [[plist_values objectForKey:@"use_oauth"] boolValue];
+    
+    if (!use_oauth) {
+        return TRUE;
+    }
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
     
     NSString *access_token = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
