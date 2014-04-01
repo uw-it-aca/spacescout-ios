@@ -83,6 +83,8 @@
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
 		C213C5A71559C70C00F295DD /* HoursFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5A61559C70C00F295DD /* HoursFormat.m */; };
 		C213C5AB1559C82700F295DD /* HoursDisplayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C213C5AA1559C82700F295DD /* HoursDisplayTests.m */; };
+		C21CBD3218EB7A56005C5FCB /* ReviewSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21CBD3118EB7A56005C5FCB /* ReviewSpaceViewController.m */; };
+		C21CBD3518EB84BE005C5FCB /* SpaceReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21CBD3418EB84BE005C5FCB /* SpaceReviewsViewController.m */; };
 		C224DA8118D0FEEA00589CAD /* OverlayMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224DA8018D0FEEA00589CAD /* OverlayMessage.xib */; };
 		C224DA8418D1004100589CAD /* OverlayMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C224DA8318D1004100589CAD /* OverlayMessage.m */; };
 		C224FBEE15361C2300CD4A79 /* filter_config.json in Resources */ = {isa = PBXBuildFile; fileRef = C224FBED15361C2300CD4A79 /* filter_config.json */; };
@@ -350,6 +352,10 @@
 		C213C5A61559C70C00F295DD /* HoursFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoursFormat.m; path = Models/HoursFormat.m; sourceTree = "<group>"; };
 		C213C5A91559C82700F295DD /* HoursDisplayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoursDisplayTests.h; sourceTree = "<group>"; };
 		C213C5AA1559C82700F295DD /* HoursDisplayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoursDisplayTests.m; sourceTree = "<group>"; };
+		C21CBD3018EB7A56005C5FCB /* ReviewSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewSpaceViewController.h; path = ViewControllers/ReviewSpaceViewController.h; sourceTree = "<group>"; };
+		C21CBD3118EB7A56005C5FCB /* ReviewSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewSpaceViewController.m; path = ViewControllers/ReviewSpaceViewController.m; sourceTree = "<group>"; };
+		C21CBD3318EB84BE005C5FCB /* SpaceReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceReviewsViewController.h; path = ViewControllers/SpaceReviewsViewController.h; sourceTree = "<group>"; };
+		C21CBD3418EB84BE005C5FCB /* SpaceReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceReviewsViewController.m; path = ViewControllers/SpaceReviewsViewController.m; sourceTree = "<group>"; };
 		C224DA8018D0FEEA00589CAD /* OverlayMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayMessage.xib; sourceTree = "<group>"; };
 		C224DA8218D1004100589CAD /* OverlayMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayMessage.h; path = Widgets/OverlayMessage.h; sourceTree = "<group>"; };
 		C224DA8318D1004100589CAD /* OverlayMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayMessage.m; path = Widgets/OverlayMessage.m; sourceTree = "<group>"; };
@@ -745,6 +751,10 @@
 				C28F16B418D8F09C00A220DD /* SpaceImagesScrollViewController.m */,
 				C28F16B618D8F60C00A220DD /* SpaceImageScrollPageViewController.h */,
 				C28F16B718D8F60C00A220DD /* SpaceImageScrollPageViewController.m */,
+				C21CBD3018EB7A56005C5FCB /* ReviewSpaceViewController.h */,
+				C21CBD3118EB7A56005C5FCB /* ReviewSpaceViewController.m */,
+				C21CBD3318EB84BE005C5FCB /* SpaceReviewsViewController.h */,
+				C21CBD3418EB84BE005C5FCB /* SpaceReviewsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1407,6 +1417,7 @@
 				C2429A93150AABDB005A994A /* SBJsonTokeniser.m in Sources */,
 				C2429A94150AABDB005A994A /* SBJsonUTF8Stream.m in Sources */,
 				C2429A95150AABDB005A994A /* SBJsonWriter.m in Sources */,
+				C21CBD3218EB7A56005C5FCB /* ReviewSpaceViewController.m in Sources */,
 				C2429AA2150AAC9D005A994A /* Reachability.m in Sources */,
 				C2429AB9150AB03F005A994A /* ASIAuthenticationDialog.m in Sources */,
 				C2429ABA150AB03F005A994A /* ASIDataCompressor.m in Sources */,
@@ -1429,6 +1440,7 @@
 				C2B2F656153E225800292FDC /* NSData+Base64.m in Sources */,
 				C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */,
 				C2E0937E1542315A0015BF4B /* UITableSwitch.m in Sources */,
+				C21CBD3518EB84BE005C5FCB /* SpaceReviewsViewController.m in Sources */,
 				C24181851545E16E00DAA2FC /* SearchFilter.m in Sources */,
 				C2C0088915476865004AF6F7 /* REST.m in Sources */,
 				C277E8801551FD930022FACD /* DisplayOptions.m in Sources */,

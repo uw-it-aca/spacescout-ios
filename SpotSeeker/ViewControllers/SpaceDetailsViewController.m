@@ -522,6 +522,17 @@
     
     UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
     
+    UILabel *ratings = (UILabel *)[cell viewWithTag:800];
+    
+    if ([self.spot.extended_info valueForKey:@"review_count"]) {
+        ratings.text = [NSString stringWithFormat:@"%@ stars (%@)", [self.spot.extended_info valueForKey:@"aggregate_rating"], [self.spot.extended_info valueForKey:@"review_count"]];
+    }
+    else {
+        ratings.text = @"0 stars (0)";
+        UIButton *see_reviews = (UIButton *)[cell viewWithTag:810];
+        see_reviews.enabled = FALSE;
+    }
+    
     NSMutableArray *type_names = [[NSMutableArray alloc] init];
     for (NSString *type in self.spot.type) {
         NSString *string_key = [NSString stringWithFormat:@"Space type %@", type];
