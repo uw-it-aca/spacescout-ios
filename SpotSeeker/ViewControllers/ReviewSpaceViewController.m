@@ -8,14 +8,14 @@
 
 #import "ReviewSpaceViewController.h"
 const int MAX_REVIEW_LENGTH = 300;
-
-@interface ReviewSpaceViewController ()
-
-@end
+NSString *SELECTED_IMAGE = @"star_selected";
+NSString *UNSELECTED_IMAGE = @"star_unselected";
 
 @implementation ReviewSpaceViewController
 
 @synthesize handling_login;
+@synthesize space;
+@synthesize rating;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +40,9 @@ const int MAX_REVIEW_LENGTH = 300;
         //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
         [self presentViewController:auth_vc animated:YES completion:^(void) {}];
     }
+    else {
+        self.title = self.space.name;
+    }
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -54,6 +57,25 @@ const int MAX_REVIEW_LENGTH = 300;
     amount_left.text = [NSString stringWithFormat:@"Chars left: %i", whats_left];
     
     return TRUE;
+}
+
+-(IBAction)selectRating:(id)sender {
+    NSInteger tag = [sender tag];
+    
+    self.rating = tag-200;
+    
+    for (int i = 201; i <= tag; i++) {
+        UIButton *selected = (UIButton *)[self.view viewWithTag:i];
+        [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateHighlighted];
+        [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateNormal];
+        [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateSelected];
+    }
+    for (int i = tag + 1; i <= 205; i++) {
+        UIButton *selected = (UIButton *)[self.view viewWithTag:i];
+        [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateHighlighted];
+        [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
+        [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateSelected];
+    }
 }
 
 -(void)backButtonPressed:(id)sender {

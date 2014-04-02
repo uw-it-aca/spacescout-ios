@@ -27,6 +27,7 @@
 #import "OAuthLoginViewController.h"
 #import "EmailSpaceViewController.h"
 #import "SpaceImagesScrollViewController.h"
+#import "ReviewSpaceViewController.h"
 #import "OverlayMessage.h"
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {

@@ -1003,6 +1003,11 @@
         EmailSpaceViewController *destination = (EmailSpaceViewController *)[segue destinationViewController];
         destination.space = self.spot;
     }
+    if ([[segue identifier] isEqualToString:@"review_space"]) {
+        ReviewSpaceViewController *destination = (ReviewSpaceViewController *)[segue destinationViewController];
+        destination.space = self.spot;
+    }
+
 }
 
 #pragma mark -
