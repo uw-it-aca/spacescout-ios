@@ -56,6 +56,8 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
     UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
     amount_left.text = [NSString stringWithFormat:@"Chars left: %i", whats_left];
     
+    [self checkForValidReview];
+
     return TRUE;
 }
 
@@ -76,6 +78,28 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateSelected];
     }
+    [self checkForValidReview];
+}
+
+-(void)checkForValidReview {
+    UIButton *submit = (UIButton *)[self.view viewWithTag:300];
+    if ([self hasValidReview]) {
+        submit.enabled = TRUE;
+    }
+    else {
+        submit.enabled = FALSE;
+    }
+}
+
+-(BOOL)hasValidReview {
+    if (!self.rating) {
+        return FALSE;
+    }
+    UITextView *review = (UITextView *)[self.view viewWithTag:101];
+    if (!review.text.length) {
+        return FALSE;
+    }
+    return TRUE;
 }
 
 -(void)backButtonPressed:(id)sender {
@@ -86,13 +110,30 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
 }
 
 -(void)loginComplete {
-    NSLog(@"Complete");
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard:)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    UIButton *submit = (UIButton *)[self.view viewWithTag:300];
+    submit.enabled = FALSE;
+
+    self.automaticallyAdjustsScrollViewInsets = NO;   
+}
+
+-(void)dismissKeyboard:(id)selector {
+    UITextView *review = (UITextView *)[self.view viewWithTag:101];
+    if ([review isFirstResponder]) {
+        [review resignFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning
