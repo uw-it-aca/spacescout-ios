@@ -7,6 +7,7 @@
 //
 
 #import "ReviewSpaceViewController.h"
+const int MAX_REVIEW_LENGTH = 300;
 
 @interface ReviewSpaceViewController ()
 
@@ -39,6 +40,20 @@
         //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
         [self presentViewController:auth_vc animated:YES completion:^(void) {}];
     }
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSString *new_text = [textView.text stringByReplacingCharactersInRange:range withString:text];
+
+    if (new_text.length > MAX_REVIEW_LENGTH) {
+        return FALSE;
+    }
+    
+    int whats_left = MAX_REVIEW_LENGTH - new_text.length;
+    UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
+    amount_left.text = [NSString stringWithFormat:@"Chars left: %i", whats_left];
+    
+    return TRUE;
 }
 
 -(void)backButtonPressed:(id)sender {

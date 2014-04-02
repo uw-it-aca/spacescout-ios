@@ -10,7 +10,7 @@
 #import "OAuthLoginViewController.h"
 #import "REST.h"
 
-@interface ReviewSpaceViewController : ViewController <OAuthLogin> {
+@interface ReviewSpaceViewController : ViewController <OAuthLogin, UITextViewDelegate> {
     
 }
 
