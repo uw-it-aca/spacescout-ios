@@ -10,14 +10,18 @@
 #import "OAuthLoginViewController.h"
 #import "REST.h"
 #import "Space.h"
+#import "OverlayMessage.h"
 
-@interface ReviewSpaceViewController : ViewController <OAuthLogin, UITextViewDelegate> {
+@interface ReviewSpaceViewController : ViewController <OAuthLogin, UITextViewDelegate, RESTFinished> {
     
 }
 
 -(IBAction)selectRating:(id)sender;
+-(IBAction)submitReview:(id)sender;
 @property (nonatomic) BOOL handling_login;
 @property (nonatomic, retain) Space *space;
 @property (nonatomic) int rating;
+@property (nonatomic, retain) REST *rest;
+@property (nonatomic, retain) OverlayMessage *overlay;
 
 @end

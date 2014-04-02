@@ -61,6 +61,42 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
     return TRUE;
 }
 
+-(IBAction)submitReview:(id)sender {
+    self.rest = [[REST alloc] init];
+    self.rest.delegate = self;
+    
+    // Make it so we don't double send - the overlay doesn't cover the send button
+    
+    UITextView *review = (UITextView *)[self.view viewWithTag:101];
+    NSDictionary *data = @{@"rating": [NSNumber numberWithInt:rating],
+                           @"review": [review text]
+                           };
+    
+    NSString *url = [NSString stringWithFormat:@"/api/v1/spot/%@/reviews", self.space.remote_id];
+    
+    if (!self.overlay) {
+        self.overlay = [[OverlayMessage alloc] init];
+        [self.overlay addTo:self.view];
+    }
+    [self.overlay showOverlay:@"Submitting..." animateDisplay:YES afterShowBlock:^(void) {
+        [self.rest postURL:url withBody:[data JSONRepresentation]];
+    }];
+
+}
+
+-(void)requestFromREST:(ASIHTTPRequest *)request {
+    if ([request responseStatusCode] == 200) {
+        [self.overlay showOverlay:@"Review submitted.  Pending approval." animateDisplay:NO afterShowBlock:^(void) {
+            [self.overlay hideOverlayAfterDelay:4.0 animateHide:NO afterHideBlock:^(void) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }];
+    }
+    else {
+        [self.overlay showOverlay:@"Error sending review" animateDisplay:NO afterShowBlock:^(void) {}];
+    }
+}
+
 -(IBAction)selectRating:(id)sender {
     NSInteger tag = [sender tag];
     
@@ -126,6 +162,9 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
     UIButton *submit = (UIButton *)[self.view viewWithTag:300];
     submit.enabled = FALSE;
 
+    UITextView *review = (UITextView *)[self.view viewWithTag:101];
+    review.layer.borderColor = [[UIColor blackColor] CGColor];
+    review.layer.borderWidth = 0.5;
     self.automaticallyAdjustsScrollViewInsets = NO;   
 }
 
@@ -141,6 +180,8 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

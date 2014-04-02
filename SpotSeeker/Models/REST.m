@@ -50,12 +50,20 @@
     
 }
 
+-(void)postURL:(NSString *)url withBody:(NSString *)body {
+    [self sendBody:body toURL:url usingMethod:@"POST"];
+}
+
 -(void)putURL:(NSString *)url withBody:(NSString *)body {
+    [self sendBody:body toURL:url usingMethod:@"PUT"];
+}
+
+-(void)sendBody:(NSString *)body toURL:(NSString *)url usingMethod:(NSString *)method {
     [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
     NSString *request_url = [self _getFullURL:url];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
-    [request setRequestMethod:@"PUT"];
+    [request setRequestMethod:method];
     [request appendPostData:[body dataUsingEncoding:NSUTF8StringEncoding]];
     
     [self _signRequest:request withAccessToken:true];
