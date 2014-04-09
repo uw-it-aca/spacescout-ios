@@ -8,11 +8,15 @@
 
 #import "SpaceReviewsViewController.h"
 
-@interface SpaceReviewsViewController ()
-
-@end
-
 @implementation SpaceReviewsViewController
+
+@synthesize reviews;
+@synthesize rest;
+@synthesize space;
+
+NSString *STAR_SELECTED_IMAGE = @"star_selected";
+NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.rest = [[REST alloc] init];
+    self.reviews = @[];
+    
+    NSString *reviews_url = [NSString stringWithFormat:@"/api/v1/spot/%@/reviews", self.space.remote_id];
+    
+    __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:reviews_url];
+    
+    [request setCompletionBlock:^{
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        if (200 != [request responseStatusCode]) {
+            NSLog(@"Code: %i", [request responseStatusCode]);
+            // show an error
+        }
+        
+        self.reviews = [parser objectWithData:[request responseData]];
+        [self.tableView reloadData];
+    }];
+    
+    [request startAsynchronous];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +60,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [reviews count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"review_cell"];
+
+    UILabel *author = (UILabel *)[cell viewWithTag:200];
+    UILabel *date = (UILabel *)[cell viewWithTag:201];
+    UITextView *review = (UITextView *)[cell viewWithTag:202];
+
+    review.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"review"];
+    author.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"reviewer"];
+    date.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"date_submitted"];
+
+    int rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
+    for (int i = 1; i <= 5; i++) {
+        UIImageView *star = (UIImageView *)[cell viewWithTag:100+i];
+        if (rating < i) {
+            [star setImage:[UIImage imageNamed:STAR_UNSELECTED_IMAGE]];
+        }
+        else {
+            [star setImage:[UIImage imageNamed:STAR_SELECTED_IMAGE]];
+        }
+    }
+    
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation

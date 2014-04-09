@@ -7,7 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "REST.h"
+#import "Space.h"
 
-@interface SpaceReviewsViewController : ViewController
+@interface SpaceReviewsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
+    
+}
+
+@property (nonatomic, retain) REST *rest;
+@property (nonatomic, retain) Space *space;
+@property (nonatomic, retain) NSArray *reviews;
 
 @end
+

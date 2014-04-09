@@ -874,7 +874,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="HiC-mY-1nu" kind="push" id="iLI-76-OF8"/>
+                                                        <segue destination="EZv-6H-X46" kind="push" identifier="all_reviews" id="VRL-SO-WMc"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1655,19 +1655,95 @@
             <point key="canvasLocation" x="3850" y="2119"/>
         </scene>
         <!--Space Reviews View Controller - Reviews-->
-        <scene sceneID="CUM-0F-yj7">
+        <scene sceneID="et4-wv-Fx3">
             <objects>
-                <viewController id="HiC-mY-1nu" customClass="SpaceReviewsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Va-c4-r7k">
+                <tableViewController id="EZv-6H-X46" customClass="SpaceReviewsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="203" sectionHeaderHeight="22" sectionFooterHeight="22" id="sAd-WR-JT3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Reviews" id="tWU-W5-39V"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3ff-vb-FWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ge4-rV-z20">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the header." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K01-e7-nZy">
+                                    <rect key="frame" x="20" y="11" width="139" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="review_cell" rowHeight="203" id="iVd-Kh-F1G">
+                                <rect key="frame" x="0.0" y="130" width="320" height="203"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iVd-Kh-F1G" id="4lZ-WQ-MoG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS_FavList-Heart.png" id="bHu-iP-2cZ">
+                                            <rect key="frame" x="20" y="20" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS_FavList-Heart.png" id="1Nn-2p-lxi">
+                                            <rect key="frame" x="42" y="20" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="103" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS_FavList-Heart.png" id="5fu-7D-U54">
+                                            <rect key="frame" x="66" y="20" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="104" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS_FavList-Heart.png" id="3ea-wC-Ghk">
+                                            <rect key="frame" x="91" y="20" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="105" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS_FavList-Heart.png" id="IOS-m4-S0G">
+                                            <rect key="frame" x="114" y="20" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h42-ng-817">
+                                            <rect key="frame" x="147" y="20" width="30" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="netid_user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xLK-Fb-AIf">
+                                            <rect key="frame" x="185" y="20" width="80" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 30th, 2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rie-cf-J9u">
+                                            <rect key="frame" x="152" y="49" width="148" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="202" contentMode="scaleToFill" editable="NO" text="This is the review" id="lvH-rj-Qib">
+                                            <rect key="frame" x="20" y="78" width="280" height="114"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="EZv-6H-X46" id="Lgi-3F-r06"/>
+                            <outlet property="delegate" destination="EZv-6H-X46" id="V47-1U-UV1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Reviews" id="KCi-Wx-4Ed"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crm-KD-0xi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4354" y="1845"/>
+            <point key="canvasLocation" x="4361" y="1825"/>
         </scene>
         <!--Favorite Spaces View Controller - Favorites-->
         <scene sceneID="1K6-Li-Krl">
@@ -2124,6 +2200,7 @@
         <image name="asterisk.png" width="22" height="22"/>
         <image name="comp-icon.png" width="16" height="16"/>
         <image name="flag_open.png" width="66" height="31"/>
+        <image name="iOS_FavList-Heart.png" width="24" height="24"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
         <image name="star_unselected.png" width="25" height="25"/>

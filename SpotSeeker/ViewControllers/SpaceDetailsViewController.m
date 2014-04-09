@@ -1007,6 +1007,10 @@
         ReviewSpaceViewController *destination = (ReviewSpaceViewController *)[segue destinationViewController];
         destination.space = self.spot;
     }
+    if ([[segue identifier] isEqualToString:@"all_reviews"]) {
+        SpaceReviewsViewController *destination = (SpaceReviewsViewController *)[segue destinationViewController];
+        destination.space = self.spot;
+    }
 
 }
 
