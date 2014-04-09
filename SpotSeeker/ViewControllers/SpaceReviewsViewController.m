@@ -16,7 +16,8 @@
 
 NSString *STAR_SELECTED_IMAGE = @"star_selected";
 NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
-
+const float EXTRA_CELL_PADDING = 50.0;
+const float EXTRA_REVIEW_PADDING = 20.0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,8 +74,15 @@ NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
     UILabel *author = (UILabel *)[cell viewWithTag:200];
     UILabel *date = (UILabel *)[cell viewWithTag:201];
     UITextView *review = (UITextView *)[cell viewWithTag:202];
+    
+    NSString *review_content = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"review"];
+    
+    CGSize bound = CGSizeMake(review.frame.size.width, CGFLOAT_MAX);
+    CGRect frame_size = [review_content boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: review.font} context:nil];
 
-    review.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"review"];
+    review.frame = CGRectMake(review.frame.origin.x, review.frame.origin.y, review.frame.size.width, frame_size.size.height + EXTRA_REVIEW_PADDING);
+
+    review.text = review_content;
     author.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"reviewer"];
     date.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"date_submitted"];
 
@@ -90,6 +98,20 @@ NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
     }
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"review_cell"];
+    UITextView *review = (UITextView *)[cell viewWithTag:202];
+
+    CGFloat top = review.frame.origin.y;
+    NSString *review_content = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"review"];
+
+
+    CGSize bound = CGSizeMake(review.frame.size.width, CGFLOAT_MAX);
+    CGRect frame_size = [review_content boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: review.font} context:nil];
+
+    return top + frame_size.size.height + EXTRA_CELL_PADDING;
 }
 
 -(void)drawHeader {
