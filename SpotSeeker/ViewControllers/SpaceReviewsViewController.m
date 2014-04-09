@@ -32,6 +32,8 @@ NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self drawHeader];
+    
     self.rest = [[REST alloc] init];
     self.reviews = @[];
     
@@ -90,6 +92,21 @@ NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
     return cell;
 }
 
+-(void)drawHeader {
+    UILabel *space_name = (UILabel *)[self.view viewWithTag:600];
+    space_name.text = self.space.name;
+
+    UILabel *current_rating = (UILabel *)[self.view viewWithTag:601];
+    current_rating.text = [NSString stringWithFormat:@"%@ stars (%@)", [self.space.extended_info valueForKey:@"aggregate_rating"], [self.space.extended_info valueForKey:@"review_count"]];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"write_review"]) {
+        ReviewSpaceViewController *dest = (ReviewSpaceViewController *)[segue destinationViewController];
+        dest.space = self.space;
+    }
+}
 
 /*
 #pragma mark - Navigation

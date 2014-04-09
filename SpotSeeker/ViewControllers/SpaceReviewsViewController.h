@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ReviewSpaceViewController.h"
 #import "REST.h"
 #import "Space.h"
 
