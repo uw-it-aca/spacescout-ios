@@ -49,8 +49,15 @@ const float EXTRA_REVIEW_PADDING = 20.0;
             NSLog(@"Code: %i", [request responseStatusCode]);
             // show an error
         }
-        
+
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss+'00:00'";
+
         self.reviews = [parser objectWithData:[request responseData]];
+        for (NSMutableDictionary *review in reviews) {
+            NSDate *date_obj = [dateFormatter dateFromString:[review objectForKey:@"date_submitted"]];
+            [review setObject:date_obj forKey:@"date_object"];
+        }
         [self.tableView reloadData];
     }];
     
@@ -84,7 +91,13 @@ const float EXTRA_REVIEW_PADDING = 20.0;
 
     review.text = review_content;
     author.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"reviewer"];
-    date.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"date_submitted"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    
+    NSDate *date_obj = (NSDate *) [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"date_object"];
+    
+    date.text = [dateFormatter stringFromDate:date_obj];
 
     int rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
     for (int i = 1; i <= 5; i++) {
