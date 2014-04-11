@@ -522,15 +522,25 @@
     
     UILabel *spot_type = (UILabel *)[cell viewWithTag:2];
     
-    UILabel *ratings = (UILabel *)[cell viewWithTag:800];
-    
+    UIButton *see_reviews = (UIButton *)[cell viewWithTag:810];
+
     if ([self.spot.extended_info valueForKey:@"review_count"]) {
-        ratings.text = [NSString stringWithFormat:@"%@ stars (%@)", [self.spot.extended_info valueForKey:@"aggregate_rating"], [self.spot.extended_info valueForKey:@"review_count"]];
+        // Decision on Apr/11/2014 - round up rating to int star value
+        int aggregate_rating = ceilf([[self.spot.extended_info valueForKey:@"aggregate_rating"] floatValue]);
+        
+        NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%i_fill.png", aggregate_rating];
+        NSString *title_str = [NSString stringWithFormat:@"(%@)", [self.spot.extended_info valueForKey:@"review_count"]];
+        
+        [see_reviews setTitle:title_str forState:UIControlStateNormal];
+        [see_reviews setTitle:title_str forState:UIControlStateSelected];
+        [see_reviews setTitle:title_str forState:UIControlStateHighlighted];
+
+        [see_reviews setImage:[UIImage imageNamed:img_name] forState:UIControlStateNormal];
+        [see_reviews setImage:[UIImage imageNamed:img_name] forState:UIControlStateSelected];
+        [see_reviews setImage:[UIImage imageNamed:img_name] forState:UIControlStateHighlighted];
     }
     else {
-        ratings.text = @"0 stars (0)";
-        UIButton *see_reviews = (UIButton *)[cell viewWithTag:810];
-        see_reviews.enabled = FALSE;
+        see_reviews.titleLabel.text = @"(0)";
     }
     
     NSMutableArray *type_names = [[NSMutableArray alloc] init];
@@ -563,8 +573,27 @@
     UIButton *fav_button = (UIButton *)[cell viewWithTag:20];
     self.favorite_button = fav_button;
     if (spot.is_favorite) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected"] forState:UIControlStateNormal];
+        [self.favorite_button setImage:[UIImage imageNamed:@"Fav_YellowHeart.png"] forState:UIControlStateNormal];
     }
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float red_value = [[plist_values objectForKey:@"default_nav_button_color_red"] floatValue];
+    float green_value = [[plist_values objectForKey:@"default_nav_button_color_green"] floatValue];
+    float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
+    
+    UIColor *border_color = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+   
+    fav_button.layer.borderWidth = 1.0;
+    fav_button.layer.borderColor = border_color.CGColor;
+    fav_button.layer.cornerRadius = 3.0;
+    
+    UIButton *share_button = (UIButton *)[cell viewWithTag:21];
+    share_button.layer.borderWidth = 1.0;
+    share_button.layer.borderColor = border_color.CGColor;
+    share_button.layer.cornerRadius = 3.0;
     
     UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
     
@@ -920,14 +949,14 @@
     }
 
     if (spot.is_favorite) {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_unselected.png"] forState:UIControlStateNormal];
+        [self.favorite_button setImage:[UIImage imageNamed:@"Fav_BlankHeart.png"] forState:UIControlStateNormal];
         spot.is_favorite = false;
         [self.favorites removeServerFavorite:spot];
         [self.overlay showOverlay:@"Removed" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     else {
-        [self.favorite_button setImage:[UIImage imageNamed:@"star_selected.png"] forState:UIControlStateNormal];
+        [self.favorite_button setImage:[UIImage imageNamed:@"Fav_YellowHeart.png"] forState:UIControlStateNormal];
         spot.is_favorite = true;
         [self.favorites addServerFavorite:spot];
         [self.overlay showOverlay:@"Saved" animateDisplay:YES afterShowBlock:^(void) {}];

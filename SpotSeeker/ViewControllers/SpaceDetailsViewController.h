@@ -30,6 +30,7 @@
 #import "ReviewSpaceViewController.h"
 #import "SpaceReviewsViewController.h"
 #import "OverlayMessage.h"
+#import <math.h>
 
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {
     Space *spot;
