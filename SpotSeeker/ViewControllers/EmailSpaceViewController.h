@@ -22,7 +22,10 @@
 @property (nonatomic) BOOL is_sending_email;
 @property (nonatomic, retain) IBOutlet UILabel *room_label;
 @property (nonatomic, retain) IBOutlet UILabel *building_label;
-
+@property (nonatomic, retain) NSMutableDictionary *existing_emails;
+@property (nonatomic, retain) NSMutableArray *email_list;
+@property (nonatomic) CGFloat to_cell_size;
+@property (nonatomic) BOOL has_valid_to_email;
 
 -(IBAction)sendEmail:(id)selector;
 -(IBAction)openContactChooser:(id)selector;
