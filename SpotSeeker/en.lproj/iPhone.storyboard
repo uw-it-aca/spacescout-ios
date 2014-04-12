@@ -1662,20 +1662,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="600" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the header." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K01-e7-nZy">
-                                    <rect key="frame" x="20" y="11" width="139" height="21"/>
+                                    <rect key="frame" x="20" y="11" width="175" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Xx-JS-uGe">
-                                    <rect key="frame" x="20" y="33" width="116" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="601" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iGm-SD-aIv">
-                                    <rect key="frame" x="144" y="33" width="93" height="21"/>
+                                    <rect key="frame" x="114" y="33" width="45" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
@@ -1690,6 +1684,10 @@
                                         <segue destination="3WO-kL-AB0" kind="push" identifier="write_review" id="ZHe-uB-moH"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" tag="602" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StarRating-small_0_fill.png" id="QFc-Yi-5P0">
+                                    <rect key="frame" x="20" y="34" width="87" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -2214,7 +2212,7 @@
     </scenes>
     <resources>
         <image name="Close_X_Btn.png" width="25" height="25"/>
-        <image name="Fav_BlankHeart.png" width="14" height="13"/>
+        <image name="Fav_BlankHeart.png" width="17" height="15"/>
         <image name="Share_Arrow.png" width="14" height="13"/>
         <image name="StarRating-small_0_fill.png" width="80" height="15"/>
         <image name="asterisk.png" width="22" height="22"/>

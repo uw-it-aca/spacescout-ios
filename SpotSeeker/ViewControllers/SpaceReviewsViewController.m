@@ -131,9 +131,21 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     UILabel *space_name = (UILabel *)[self.view viewWithTag:600];
     space_name.text = self.space.name;
 
-    UILabel *current_rating = (UILabel *)[self.view viewWithTag:601];
-    current_rating.text = [NSString stringWithFormat:@"%@ stars (%@)", [self.space.extended_info valueForKey:@"aggregate_rating"], [self.space.extended_info valueForKey:@"review_count"]];
+    // Decision on Apr/11/2014 - round up rating to int star value
+    int aggregate_rating = 0;
+    int review_count = 0;
+    if ([self.space.extended_info valueForKey:@"review_count"]) {
+        aggregate_rating = ceilf([[self.space.extended_info valueForKey:@"aggregate_rating"] floatValue]);
+        review_count = [[self.space.extended_info valueForKey:@"review_count"] intValue];
+    }
+    
+    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%i_fill.png", aggregate_rating];
 
+    UIImageView *rating_display = (UIImageView *)[self.view viewWithTag:602];
+    rating_display.image = [UIImage imageNamed:img_name];
+    
+    UILabel *current_rating = (UILabel *)[self.view viewWithTag:601];
+    current_rating.text = [NSString stringWithFormat:@"(%i)", review_count];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
