@@ -195,12 +195,15 @@ extern const int meters_per_latitude;
         spot_count = 30;
     }
 
+    pinView.canShowCallout = false;
+    /*
     if (spot_count > 1) {
         pinView.canShowCallout = false;
     }
     else {
         pinView.canShowCallout = true;
     }
+     */
     
     NSString *image_name = [NSString stringWithFormat:@"pin%02li.png", spot_count];
     pinView.image = [UIImage imageNamed:image_name];
@@ -276,6 +279,10 @@ extern const int meters_per_latitude;
     if (annotation.spots.count > 1) {
         self.cluster_spots_to_display = annotation.spots;
         [self performSegueWithIdentifier:@"cluster_details" sender:nil];
+        [map_view deselectAnnotation:annotation animated:false];
+    }
+    else {
+        [self performSegueWithIdentifier:@"show_details" sender:nil];
         [map_view deselectAnnotation:annotation animated:false];
     }
 }
