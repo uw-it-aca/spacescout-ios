@@ -30,6 +30,7 @@ const CGFloat TEXT_FIELD_LIMIT = 0.75;
 const CGFloat TEXTFIELD_Y_INSET = 3.5;
 const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
 const int SEARCH_TABLE_TAG = 1000;
+const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 
 - (void)viewDidLoad
 {
@@ -476,7 +477,7 @@ const int SEARCH_TABLE_TAG = 1000;
         // Handle overflow...
         if ((width + current_x) > available_width) {
             current_x = MARGIN_LEFT;
-            current_y = current_y + height;
+            current_y = current_y + height + PADDING_BETWEEN_EMAIL_ROWS;
         }
         
         if (width > to_width) {
@@ -522,7 +523,7 @@ const int SEARCH_TABLE_TAG = 1000;
     UITextFieldWithKeypress *email_field = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     if (current_x > available_width * TEXT_FIELD_LIMIT) {
         current_x = MARGIN_LEFT;
-        current_y = current_y + last_height;
+        current_y = current_y + last_height + PADDING_BETWEEN_EMAIL_ROWS;
     }
     
     // Set the frame for the new container - otherwise touch events don't get through
