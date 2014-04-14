@@ -175,7 +175,6 @@ const int SEARCH_TABLE_TAG = 1000;
     
     UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     [to showCursor];
-
 }
 
 -(void)deselectCurrentEmail {
@@ -275,10 +274,19 @@ const int SEARCH_TABLE_TAG = 1000;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField.tag != 100) {
+        [self hideLastComma];
+    }
+    else {
+        if (!self.current_selected_email_tag) {
+            [self showLastComma];
+        }
+    }
     [self addEmailFromTextField];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
+    [self hideLastComma];
     [self addEmailFromTextField];
 }
 
@@ -361,6 +369,35 @@ const int SEARCH_TABLE_TAG = 1000;
 }
 
 #pragma mark - Methods for the display of the email list, with styles
+-(UILabel *)_getLastEmailComma {
+    if (![self.email_list count]) {
+        return nil;
+    }
+    int tag = [self.email_list count] + TO_EMAIL_TAG_STARTING_INDEX - 1;
+    
+    UIView *wrapper = [self.view viewWithTag:tag];
+    UILabel *comma = (UILabel *)[wrapper viewWithTag:2];
+
+    return comma;
+}
+
+-(void)hideLastComma {
+    UILabel *comma = [self _getLastEmailComma];
+    if (!comma) {
+        return;
+    }
+    comma.hidden = TRUE;
+}
+
+-(void)showLastComma {
+    UILabel *comma = [self _getLastEmailComma];
+    if (!comma) {
+        return;
+    }
+    comma.hidden = FALSE;
+}
+
+
 -(void)updateEmailContainerAsSelected:(UIView *)container {
     UILabel *email_label = (UILabel *)[container viewWithTag:1];
     UILabel *comma_label = (UILabel *)[container viewWithTag:2];
@@ -584,6 +621,7 @@ const int SEARCH_TABLE_TAG = 1000;
     [self addEmailFromTextField];
     UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     [to hideCursor];
+    [self showLastComma];
     [to becomeFirstResponder];
 }
 
