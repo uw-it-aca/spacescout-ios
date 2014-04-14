@@ -20,6 +20,8 @@
 @synthesize to_cell_size;
 @synthesize has_valid_to_email;
 @synthesize current_selected_email_tag;
+@synthesize all_contacts;
+@synthesize search_matches;
 
 const CGFloat MARGIN_LEFT = 42.0;
 const CGFloat MARGIN_RIGHT = 0.0;
@@ -27,6 +29,7 @@ const CGFloat MARGIN_TOP = 11.0;
 const CGFloat TEXT_FIELD_LIMIT = 0.75;
 const CGFloat TEXTFIELD_Y_INSET = 3.5;
 const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
+const int SEARCH_TABLE_TAG = 1000;
 
 - (void)viewDidLoad
 {
@@ -38,7 +41,47 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     
     room_label.text = self.space.name;
     building_label.text = [NSString stringWithFormat:@"%@, %@", space.building_name, space.floor];
+    
+    [self loadAllContacts];
+}
 
+// This is so we can search though them in the autocomplete
+-(void)loadAllContacts {
+    
+    CFErrorRef error;
+    ABAddressBookRef allPeople = ABAddressBookCreateWithOptions(nil, &error);
+//    ABAddressBookRef allPeople = ABAddressBookCreate();
+    CFArrayRef allContacts = ABAddressBookCopyArrayOfAllPeople(allPeople);
+    CFIndex numberOfContacts  = ABAddressBookGetPersonCount(allPeople);
+    
+    NSMutableArray *contacts = [[NSMutableArray alloc] init];
+   
+    for(int i = 0; i < numberOfContacts; i++){
+        NSString* name = @"";
+        
+        ABRecordRef aPerson = CFArrayGetValueAtIndex(allContacts, i);
+        ABMultiValueRef fnameProperty = ABRecordCopyValue(aPerson, kABPersonFirstNameProperty);
+        ABMultiValueRef lnameProperty = ABRecordCopyValue(aPerson, kABPersonLastNameProperty);
+        
+        ABMultiValueRef emailProperty = ABRecordCopyValue(aPerson, kABPersonEmailProperty);
+        
+        NSArray *emailArray = (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(emailProperty);
+        
+        if (fnameProperty != nil) {
+            name = [NSString stringWithFormat:@"%@", fnameProperty];
+        }
+        if (lnameProperty != nil) {
+            name = [name stringByAppendingString:[NSString stringWithFormat:@" %@", lnameProperty]];
+        }
+        
+        if ([emailArray count] > 0) {
+            for (int i = 0; i < [emailArray count]; i++) {
+                [contacts addObject:@{@"name": name, @"email": [emailArray objectAtIndex:i]}];
+            }
+        }
+    }
+    
+    self.all_contacts = contacts;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +96,60 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
 
     return [email_predicate evaluateWithObject:email];
 }
+
+#pragma mark - Methods for handling the autocomplete
+
+-(NSArray *)getContactDataForQuery:(NSString *)query {
+    if ([query isEqualToString:@""]) {
+        return @[];
+    }
+    
+    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:self.all_contacts.count];
+    
+    for (NSDictionary *contact in self.all_contacts) {
+        NSString *name = [contact objectForKey:@"name"];
+        NSString *email = [contact objectForKey:@"email"];
+        
+        if ([name hasPrefix:query] || [email hasPrefix:query]) {
+            [results addObject:contact];
+        }
+    }
+
+    return results;
+    return self.all_contacts;
+    return @[@{@"name": @"John Doe", @"email": @"example@example.com" },
+             @{@"name": @"Person 2", @"email": @"second@example.com" },
+             @{@"name": @"A 3rd", @"email": @"Why not, invalid" },
+             ];
+}
+
+-(void)drawAutocompleteForQuery:(NSString *)query {
+    NSArray *matches = [self getContactDataForQuery:query];
+
+    self.search_matches = matches;
+    UITableView *results_table = (UITableView *)[self.view viewWithTag:1000];
+
+    if (!matches.count) {
+        if (results_table) {
+            results_table.hidden = TRUE;
+        }
+        return;
+    }
+    if (!results_table) {
+        results_table = [[UITableView alloc] init];
+        results_table.tag = SEARCH_TABLE_TAG;
+        results_table.delegate = self;
+        results_table.dataSource = self;
+
+        results_table.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
+        [self.view addSubview:results_table];
+    }
+    results_table.hidden = false;
+
+    [results_table reloadData];
+}
+
+#pragma mark - Methods for handling selected email address / email list
 
 -(void)onTouchEvent:(UITextFieldWithKeypress *)textField {
     if (self.current_selected_email_tag < TO_EMAIL_TAG_STARTING_INDEX) {
@@ -103,6 +200,9 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     
     BOOL has_error = FALSE;
    
+    if (100 == textField.tag) {
+        [self drawAutocompleteForQuery:new_text];
+    }
     // Validate to field.
     if (!self.has_valid_to_email) {
         // If we don't have one in the list, and this is the field that's being edited, validate it.
@@ -181,69 +281,14 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     return YES;
 }
 
--(IBAction)openContactChooser:(id)selector {
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
-    picker.peoplePickerDelegate = self;
+-(void)addEmailFromSearchSelection:(NSString *)email {
+    UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    textField.text = @"";
     
-//    [self presentModalViewController:picker animated:YES];
-    [self presentViewController:picker animated:YES completion:^(void) {}];
-}
-
--(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
-    return YES;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
-    
-    CFTypeRef prop = ABRecordCopyValue(person, property);
-    CFIndex index = ABMultiValueGetIndexForIdentifier(prop,  identifier);
-    NSString *email = (__bridge NSString *)ABMultiValueCopyValueAtIndex(prop, index);
+    UITableView *matches = (UITableView *)[self.view viewWithTag:SEARCH_TABLE_TAG];
+    matches.hidden = TRUE;
     
     [self addEmailAddress:email];
-    [self makeEmailFieldFirstResponder];
-
-    CFRelease(prop);
-
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-            // Select To:
-            [[self.view viewWithTag:100] becomeFirstResponder];
-            break;
-        case 1:
-            // Select From:
-            [[self.view viewWithTag:102] becomeFirstResponder];
-            break;
-        case 2:
-            // Select Subject:
-            [[self.view viewWithTag:103] becomeFirstResponder];
-            break;
-        case 4:
-            // Select content
-            [[self.view viewWithTag:101] becomeFirstResponder];
-            break;
-
-        default:
-            break;
-    }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    // get the reference to the text field
- //   [textField setUserInteractionEnabled:YES];
-   // [textField becomeFirstResponder];
-}
-
--(void)makeEmailFieldFirstResponder {
-    UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     [textField becomeFirstResponder];
 }
 
@@ -259,13 +304,13 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     NSMutableString *tmp = [email mutableCopy];
     CFStringTrimWhitespace((CFMutableStringRef)tmp);
     email = [tmp copy];
-
+    
     if ([existing_emails objectForKey:email]) {
         return;
     }
     [existing_emails setObject:email forKey:email];
     [email_list addObject:email];
-
+    
     [self setHasValidEmail];
     [self drawEmailAddresses];
 }
@@ -277,51 +322,12 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     
     [existing_emails removeObjectForKey:email];
     [email_list removeObject:email];
-
+    
     [self setHasValidEmail];
     [self drawEmailAddresses];
 }
 
--(void)setHasValidEmail {
-    self.has_valid_to_email = FALSE;
-    for (NSString *email in email_list) {
-        if ([self isValidEmail:email]) {
-            self.has_valid_to_email = TRUE;
-        }
-    }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        if (self.to_cell_size) {
-            return self.to_cell_size;
-        }
-    }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-
-}
-
--(void)touchToEmail:(UITapGestureRecognizer *)selector {
-    if (selector.view.tag < TO_EMAIL_TAG_STARTING_INDEX) {
-        return;
-    }
-
-    UIView *email_container = selector.view;
-
-    if (self.current_selected_email_tag) {
-        UIView *last_selected = [self.view viewWithTag:self.current_selected_email_tag];
-        [self updateEmailContainerAsPlain:last_selected];
-    }
-
-    self.current_selected_email_tag = selector.view.tag;
-    [self updateEmailContainerAsSelected:email_container];
-    
-    [self addEmailFromTextField];
-    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
-    [to hideCursor];
-    [to becomeFirstResponder];
-}
-
+#pragma mark - Methods for the display of the email list, with styles
 -(void)updateEmailContainerAsSelected:(UIView *)container {
     UILabel *email_label = (UILabel *)[container viewWithTag:1];
     UILabel *comma_label = (UILabel *)[container viewWithTag:2];
@@ -355,7 +361,7 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
         email_label.textColor = [UIColor blueColor];
         email_label.layer.backgroundColor = [UIColor clearColor].CGColor;
     }
-
+    
     comma_label.hidden = FALSE;
 }
 
@@ -363,10 +369,10 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
 -(void)drawEmailAddresses {
     UIView *new_container = [[UIView alloc] init];
     UIView *to_container = [self.view viewWithTag:800];
-
+    
     CGFloat to_width = to_container.frame.size.width;
     CGFloat available_width = to_width - MARGIN_LEFT - MARGIN_RIGHT;
-
+    
     UILabel *size_label = [[UILabel alloc] init];
     float current_x = MARGIN_LEFT;
     float current_y = MARGIN_TOP;
@@ -374,7 +380,7 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     
     CGSize bound = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
     CGRect comma_frame_size = [comma_text boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
-
+    
     CGFloat comma_width = comma_frame_size.size.width;
     CGFloat comma_height = comma_frame_size.size.height;
     
@@ -387,29 +393,29 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
         email_label.text = email_with_formatting;
         
         CGRect frame_size = [email_with_formatting boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
-
+        
         CGRect email_frame_size = [email boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
-
+        
         
         CGFloat width = frame_size.size.width;
         CGFloat height = frame_size.size.height;
         CGFloat email_width = email_frame_size.size.width;
         CGFloat email_height = email_frame_size.size.height;
         last_height = height;
-
+        
         // Handle overflow...
         if ((width + current_x) > available_width) {
             current_x = MARGIN_LEFT;
             current_y = current_y + height;
         }
-    
+        
         if (width > to_width) {
             width = available_width;
         }
         
         UIView *email_container = [[UIView alloc] init];
         email_container.tag = TO_EMAIL_TAG_STARTING_INDEX + i;
-
+        
         UILabel *just_email = [[UILabel alloc] init];
         just_email.text = email;
         just_email.tag = 1;
@@ -429,7 +435,7 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
         just_email.frame = CGRectMake(0, 0, email_width, email_height);
         comma_label.frame = CGRectMake(email_width, 0, comma_width, comma_height);
         email_container.frame = CGRectMake(current_x, current_y, width, height);
-
+        
         current_x += width;
         
         if (email_container.tag == self.current_selected_email_tag) {
@@ -448,7 +454,7 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
         current_x = MARGIN_LEFT;
         current_y = current_y + last_height;
     }
-
+    
     // Set the frame for the new container - otherwise touch events don't get through
     CGFloat new_container_height = current_y + email_field.frame.size.height;
     new_container.frame = CGRectMake(0, 0, to_width, new_container_height);
@@ -458,12 +464,12 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     // The text input needs to be at a different Y value to offset it properly
     CGFloat textfield_y = current_y - TEXTFIELD_Y_INSET;
     email_field.frame = CGRectMake(current_x, textfield_y, textfield_width, email_field.frame.size.height);
-
-
+    
+    
     // Resize our table row...
     self.to_cell_size = current_y + email_field.frame.size.height;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-
+    
     // Replace the old list view with the new one
     UIView *existing_container = [to_container viewWithTag:900];
     if (existing_container) {
@@ -477,6 +483,171 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     UIButton *add_from_contacts = (UIButton *)[self.view viewWithTag:110];
     [to_container bringSubviewToFront:add_from_contacts];
 }
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self drawEmailAddresses];
+}
+
+#pragma mark - Methods for handling contacts from the chooser
+
+-(IBAction)openContactChooser:(id)selector {
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
+    picker.peoplePickerDelegate = self;
+    
+//    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:^(void) {}];
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    
+    CFTypeRef prop = ABRecordCopyValue(person, property);
+    CFIndex index = ABMultiValueGetIndexForIdentifier(prop,  identifier);
+    NSString *email = (__bridge NSString *)ABMultiValueCopyValueAtIndex(prop, index);
+    
+    [self addEmailAddress:email];
+    [self makeEmailFieldFirstResponder];
+
+    CFRelease(prop);
+
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+    return NO;
+}
+
+-(void)touchToEmail:(UITapGestureRecognizer *)selector {
+    if (selector.view.tag < TO_EMAIL_TAG_STARTING_INDEX) {
+        return;
+    }
+    
+    UIView *email_container = selector.view;
+    
+    if (self.current_selected_email_tag) {
+        UIView *last_selected = [self.view viewWithTag:self.current_selected_email_tag];
+        [self updateEmailContainerAsPlain:last_selected];
+    }
+    
+    self.current_selected_email_tag = selector.view.tag;
+    [self updateEmailContainerAsSelected:email_container];
+    
+    [self addEmailFromTextField];
+    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [to hideCursor];
+    [to becomeFirstResponder];
+}
+
+
+#pragma mark - General table handling
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.tag == SEARCH_TABLE_TAG) {
+        [self searchResultsTableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else {
+        [self primaryTableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.tag == SEARCH_TABLE_TAG) {
+        return [self searchResultsTableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    else {
+        return [self primaryTableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.tag == SEARCH_TABLE_TAG) {
+        return [self searchResultsTableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+}
+
+#pragma mark - table methods for the search results table
+-(UITableViewCell *)searchResultsTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    
+    if (indexPath.row >= self.search_matches.count) {
+        return cell;
+    }
+    NSDictionary *match = [self.search_matches objectAtIndex:indexPath.row];
+    cell.textLabel.text = [match objectForKey:@"name"];
+    cell.detailTextLabel.text = [match objectForKey:@"email"];
+    return cell;
+}
+
+-(CGFloat)searchResultsTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+-(void)searchResultsTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *email = [[self.search_matches objectAtIndex:indexPath.row] objectForKey:@"email"];
+    
+    [self addEmailFromSearchSelection:email];
+}
+
+#pragma mark - table methods for the primary ui table
+-(CGFloat)primaryTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        if (self.to_cell_size) {
+            return self.to_cell_size;
+        }
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+-(void)primaryTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+            // Select To:
+            [[self.view viewWithTag:100] becomeFirstResponder];
+            break;
+        case 1:
+            // Select From:
+            [[self.view viewWithTag:102] becomeFirstResponder];
+            break;
+        case 2:
+            // Select Subject:
+            [[self.view viewWithTag:103] becomeFirstResponder];
+            break;
+        case 4:
+            // Select content
+            [[self.view viewWithTag:101] becomeFirstResponder];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark -
+
+-(void)makeEmailFieldFirstResponder {
+    UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [textField becomeFirstResponder];
+}
+
+
+-(void)setHasValidEmail {
+    self.has_valid_to_email = FALSE;
+    for (NSString *email in email_list) {
+        if ([self isValidEmail:email]) {
+            self.has_valid_to_email = TRUE;
+        }
+    }
+}
+
+#pragma mark - Methods for actually sharing the space
 
 -(IBAction)sendEmail:(id)selector {
     if (self.is_sending_email) {
@@ -519,10 +690,6 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
     }];
 }
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self drawEmailAddresses];
-}
-
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     NSLog(@"Body: %@", [request responseString]);
     [self.overlay showOverlay:@"Email sent!" animateDisplay:NO afterShowBlock:^(void) {}];
@@ -532,6 +699,12 @@ const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
         [self.navigationController popViewControllerAnimated:TRUE];
         self.is_sending_email = FALSE;
     }];
+}
+
+
+#pragma mark - keep this upright
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end
