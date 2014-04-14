@@ -22,7 +22,7 @@
 
 @protocol UITextFieldKeyPressDelegate <NSObject>
 
--(void)preChangeKeyEvent:(UITextFieldWithKeypress *)textField;
+-(void)preChangeKeyEvent:(UITextFieldWithKeypress *)textField isDelete:(BOOL)is_delete;
 -(void)onTouchEvent:(UITextFieldWithKeypress *)textField;
 
 @end

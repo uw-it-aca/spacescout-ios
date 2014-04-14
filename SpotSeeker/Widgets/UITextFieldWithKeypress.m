@@ -38,13 +38,13 @@
 }
 
 -(void)deleteBackward {
-    [self.kp_delegate preChangeKeyEvent:self];
+    [self.kp_delegate preChangeKeyEvent:self isDelete:TRUE];
     [super deleteBackward];
 }
 
 
 -(void)insertText:(NSString *)text {
-    [self.kp_delegate preChangeKeyEvent:self];
+    [self.kp_delegate preChangeKeyEvent:self isDelete: FALSE];
     [super insertText:text];
 }
 

@@ -183,7 +183,24 @@ const int SEARCH_TABLE_TAG = 1000;
     self.current_selected_email_tag = 0;
 }
 
--(void)preChangeKeyEvent:(UITextFieldWithKeypress *)textField {
+-(void)preChangeKeyEvent:(UITextFieldWithKeypress *)textField isDelete:(BOOL)is_delete {
+    if (is_delete) {
+        // If there isn't a currently selected email address, and the text field is empty,
+        // select the last email in the list.  That way delete, delete ... will remove all
+        // emails
+        if (!self.current_selected_email_tag) {
+            UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+            if ([to.text isEqualToString:@""]) {
+                if ([self.email_list count]) {
+                    self.current_selected_email_tag = TO_EMAIL_TAG_STARTING_INDEX + [self.email_list count] - 1;
+                    UIView *email_view = [self.view viewWithTag:self.current_selected_email_tag];
+                    [self updateEmailContainerAsSelected:email_view];
+                    [to hideCursor];
+                    return;
+                }
+            }
+        }
+    }
     if (self.current_selected_email_tag < TO_EMAIL_TAG_STARTING_INDEX) {
         return;
     }
@@ -192,6 +209,7 @@ const int SEARCH_TABLE_TAG = 1000;
     UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     [to showCursor];
 }
+
 
 -(void)removeCurrentlySelectedEmail {
     UIView *container = [self.view viewWithTag:self.current_selected_email_tag];
@@ -605,6 +623,7 @@ const int SEARCH_TABLE_TAG = 1000;
 
 -(void)searchResultsTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row >= [self.search_matches count]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
         return;
     }
     NSString *email = [[self.search_matches objectAtIndex:indexPath.row] objectForKey:@"email"];
