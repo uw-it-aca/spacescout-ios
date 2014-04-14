@@ -499,10 +499,6 @@ const int SEARCH_TABLE_TAG = 1000;
     email_field.frame = CGRectMake(current_x, textfield_y, textfield_width, email_field.frame.size.height);
     
     
-    // Resize our table row...
-    self.to_cell_size = current_y + email_field.frame.size.height;
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    
     // Replace the old list view with the new one
     UIView *existing_container = [to_container viewWithTag:900];
     if (existing_container) {
@@ -515,6 +511,19 @@ const int SEARCH_TABLE_TAG = 1000;
     
     UIButton *add_from_contacts = (UIButton *)[self.view viewWithTag:110];
     [to_container bringSubviewToFront:add_from_contacts];
+
+    // Resize our table row...
+    self.to_cell_size = current_y + email_field.frame.size.height;
+    
+    UITableViewCell *to_cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    to_cell.frame = CGRectMake(to_cell.frame.origin.x, to_cell.frame.origin.y, to_cell.frame.size.width, to_cell_size);
+    
+    // the reloadData is needed, otherwise there's a gap between the first and second cells.
+    [self.tableView reloadData];
+    // This is needed to keep the first responder status for the input - and becomeFirstResponder doesn't work after the reload data,
+    // possibly because of the animation?  this preempts the animation at least.
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
