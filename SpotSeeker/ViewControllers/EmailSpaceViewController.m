@@ -284,11 +284,27 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         }
     }
     [self addEmailFromTextField];
+    [self selectTableRowForTextInput:textField];
+
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     [self hideLastComma];
     [self addEmailFromTextField];
+
+    [self selectTableRowForTextInput:textView];
+}
+
+-(void)selectTableRowForTextInput: (UIView *)input {
+    UIView *parent = input;
+    while (![parent isKindOfClass:[UITableViewCell class]]) {
+        parent = parent.superview;
+    }
+    
+    UITableViewCell *cell = (UITableViewCell *)parent;
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    
+    [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -722,7 +738,11 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         default:
             break;
     }
-    
+
+    // Scrolling the static content cell up into view is weird, so don't do it.
+    if (indexPath.row != 3) {
+        [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
