@@ -19,12 +19,14 @@
 @synthesize existing_emails;
 @synthesize to_cell_size;
 @synthesize has_valid_to_email;
+@synthesize current_selected_email_tag;
 
 const CGFloat MARGIN_LEFT = 42.0;
 const CGFloat MARGIN_RIGHT = 0.0;
 const CGFloat MARGIN_TOP = 11.0;
 const CGFloat TEXT_FIELD_LIMIT = 0.75;
 const CGFloat TEXTFIELD_Y_INSET = 3.5;
+const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
 
 - (void)viewDidLoad
 {
@@ -37,7 +39,6 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     room_label.text = self.space.name;
     building_label.text = [NSString stringWithFormat:@"%@, %@", space.building_name, space.floor];
 
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,7 +54,50 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     return [email_predicate evaluateWithObject:email];
 }
 
+-(void)onTouchEvent:(UITextFieldWithKeypress *)textField {
+    if (self.current_selected_email_tag < TO_EMAIL_TAG_STARTING_INDEX) {
+        return;
+    }
+    
+    [self deselectCurrentEmail];
+    
+    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [to showCursor];
+
+}
+
+-(void)deselectCurrentEmail {
+    UIView *selected = [self.view viewWithTag:self.current_selected_email_tag];
+    [self updateEmailContainerAsPlain:selected];
+    
+    self.current_selected_email_tag = 0;
+}
+
+-(void)preChangeKeyEvent:(UITextFieldWithKeypress *)textField {
+    if (self.current_selected_email_tag < TO_EMAIL_TAG_STARTING_INDEX) {
+        return;
+    }
+    [self removeCurrentlySelectedEmail];
+    
+    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [to showCursor];
+}
+
+-(void)removeCurrentlySelectedEmail {
+    UIView *container = [self.view viewWithTag:self.current_selected_email_tag];
+    UILabel *email_label = (UILabel *)[container viewWithTag:1];
+    NSString *email = email_label.text;
+
+    self.current_selected_email_tag = 0;
+    [self removeEmailAddress:email];
+    
+    UITextFieldWithKeypress *to_field = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [to_field becomeFirstResponder];
+}
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    
     NSString *new_text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSString *from;
     
@@ -199,12 +243,12 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
 }
 
 -(void)makeEmailFieldFirstResponder {
-    UITextField *textField = (UITextField *)[self.view viewWithTag:100];
+    UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     [textField becomeFirstResponder];
 }
 
 -(void)addEmailFromTextField {
-    UITextField *textField = (UITextField *)[self.view viewWithTag:100];
+    UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     if (textField.text && ![textField.text isEqualToString:@""]) {
         [self addEmailAddress:textField.text];
         textField.text = @"";
@@ -223,7 +267,6 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     [email_list addObject:email];
 
     [self setHasValidEmail];
-    NSLog(@"Email list: %@", email_list);
     [self drawEmailAddresses];
 }
 
@@ -236,7 +279,7 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     [email_list removeObject:email];
 
     [self setHasValidEmail];
-    NSLog(@"Email list (post remove): %@", email_list);
+    [self drawEmailAddresses];
 }
 
 -(void)setHasValidEmail {
@@ -258,6 +301,65 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
 
 }
 
+-(void)touchToEmail:(UITapGestureRecognizer *)selector {
+    if (selector.view.tag < TO_EMAIL_TAG_STARTING_INDEX) {
+        return;
+    }
+
+    UIView *email_container = selector.view;
+
+    if (self.current_selected_email_tag) {
+        UIView *last_selected = [self.view viewWithTag:self.current_selected_email_tag];
+        [self updateEmailContainerAsPlain:last_selected];
+    }
+
+    self.current_selected_email_tag = selector.view.tag;
+    [self updateEmailContainerAsSelected:email_container];
+    
+    [self addEmailFromTextField];
+    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    [to hideCursor];
+    [to becomeFirstResponder];
+}
+
+-(void)updateEmailContainerAsSelected:(UIView *)container {
+    UILabel *email_label = (UILabel *)[container viewWithTag:1];
+    UILabel *comma_label = (UILabel *)[container viewWithTag:2];
+    NSString *email = email_label.text;
+    
+    if (![self isValidEmail:email]) {
+        email_label.textColor = [UIColor whiteColor];
+        email_label.layer.cornerRadius = 3.0;
+        email_label.layer.backgroundColor = [UIColor purpleColor].CGColor;
+    }
+    else {
+        email_label.textColor = [UIColor whiteColor];
+        email_label.layer.cornerRadius = 3.0;
+        email_label.layer.backgroundColor = [UIColor blueColor].CGColor;
+    }
+    
+    comma_label.hidden = TRUE;
+}
+
+-(void)updateEmailContainerAsPlain:(UIView *)container {
+    UILabel *email_label = (UILabel *)[container viewWithTag:1];
+    UILabel *comma_label = (UILabel *)[container viewWithTag:2];
+    NSString *email = email_label.text;
+    
+    if (![self isValidEmail:email]) {
+        email_label.textColor = [UIColor whiteColor];
+        email_label.layer.cornerRadius = 3.0;
+        email_label.layer.backgroundColor = [UIColor redColor].CGColor;
+    }
+    else {
+        email_label.textColor = [UIColor blueColor];
+        email_label.layer.backgroundColor = [UIColor clearColor].CGColor;
+    }
+
+    comma_label.hidden = FALSE;
+}
+
+
 -(void)drawEmailAddresses {
     UIView *new_container = [[UIView alloc] init];
     UIView *to_container = [self.view viewWithTag:800];
@@ -265,8 +367,17 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     CGFloat to_width = to_container.frame.size.width;
     CGFloat available_width = to_width - MARGIN_LEFT - MARGIN_RIGHT;
 
+    UILabel *size_label = [[UILabel alloc] init];
     float current_x = MARGIN_LEFT;
     float current_y = MARGIN_TOP;
+    NSString *comma_text = @", ";
+    
+    CGSize bound = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    CGRect comma_frame_size = [comma_text boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
+
+    CGFloat comma_width = comma_frame_size.size.width;
+    CGFloat comma_height = comma_frame_size.size.height;
+    
     CGFloat last_height = 0.0;
     for (int i = 0; i < email_list.count; i++) {
         NSString *email = [email_list objectAtIndex:i];
@@ -275,11 +386,15 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
         NSString *email_with_formatting = [NSString stringWithFormat:@"%@, ", email];
         email_label.text = email_with_formatting;
         
-        CGSize bound = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
-        CGRect frame_size = [email_with_formatting boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: email_label.font} context:nil];
+        CGRect frame_size = [email_with_formatting boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
 
+        CGRect email_frame_size = [email boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: size_label.font} context:nil];
+
+        
         CGFloat width = frame_size.size.width;
         CGFloat height = frame_size.size.height;
+        CGFloat email_width = email_frame_size.size.width;
+        CGFloat email_height = email_frame_size.size.height;
         last_height = height;
 
         // Handle overflow...
@@ -292,25 +407,52 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
             width = available_width;
         }
         
-        if (![self isValidEmail:email]) {
-            email_label.backgroundColor = [UIColor redColor];
-            email_label.textColor = [UIColor whiteColor];
-        }
+        UIView *email_container = [[UIView alloc] init];
+        email_container.tag = TO_EMAIL_TAG_STARTING_INDEX + i;
+
+        UILabel *just_email = [[UILabel alloc] init];
+        just_email.text = email;
+        just_email.tag = 1;
         
-        email_label.frame = CGRectMake(current_x, current_y, width, height);
+        UILabel *comma_label = [[UILabel alloc] init];
+        comma_label.text = comma_text;
+        comma_label.tag = 2;
+        
+        [email_container addSubview:just_email];
+        [email_container addSubview:comma_label];
+        
+        email_container.userInteractionEnabled = TRUE;
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchToEmail:)];
+        [recognizer setNumberOfTapsRequired:1];
+        [email_container addGestureRecognizer:recognizer];
+        
+        just_email.frame = CGRectMake(0, 0, email_width, email_height);
+        comma_label.frame = CGRectMake(email_width, 0, comma_width, comma_height);
+        email_container.frame = CGRectMake(current_x, current_y, width, height);
+
         current_x += width;
         
-        [new_container addSubview:email_label];
+        if (email_container.tag == self.current_selected_email_tag) {
+            [self updateEmailContainerAsSelected:email_container];
+        }
+        else {
+            [self updateEmailContainerAsPlain:email_container];
+        }
+        [new_container addSubview:email_container];
     }
     
     // Start by moving the text input field
     // If we're in the last ... 75% of the width, drop down
-    UITextField *email_field = (UITextField *)[self.view viewWithTag:100];
+    UITextFieldWithKeypress *email_field = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     if (current_x > available_width * TEXT_FIELD_LIMIT) {
         current_x = MARGIN_LEFT;
         current_y = current_y + last_height;
     }
 
+    // Set the frame for the new container - otherwise touch events don't get through
+    CGFloat new_container_height = current_y + email_field.frame.size.height;
+    new_container.frame = CGRectMake(0, 0, to_width, new_container_height);
+    
     // Have the textfield fill the available width
     CGFloat textfield_width = available_width - current_x;
     // The text input needs to be at a different Y value to offset it properly
@@ -330,7 +472,10 @@ const CGFloat TEXTFIELD_Y_INSET = 3.5;
     
     new_container.tag = 900;
     [to_container addSubview:new_container];
+    [to_container bringSubviewToFront:email_field];
     
+    UIButton *add_from_contacts = (UIButton *)[self.view viewWithTag:110];
+    [to_container bringSubviewToFront:add_from_contacts];
 }
 
 -(IBAction)sendEmail:(id)selector {

@@ -10,8 +10,9 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "Space.h"
 #import "OverlayMessage.h"
+#import "UITextFieldWithKeypress.h"
 
-@interface EmailSpaceViewController : UITableViewController <UITextViewDelegate, UITextFieldDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate> {
+@interface EmailSpaceViewController : UITableViewController <UITextViewDelegate, UITextFieldDelegate, RESTFinished, ABPeoplePickerNavigationControllerDelegate, UITextFieldKeyPressDelegate> {
     
 }
 
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) NSMutableArray *email_list;
 @property (nonatomic) CGFloat to_cell_size;
 @property (nonatomic) BOOL has_valid_to_email;
+@property (nonatomic) int current_selected_email_tag;
 
 -(IBAction)sendEmail:(id)selector;
 -(IBAction)openContactChooser:(id)selector;

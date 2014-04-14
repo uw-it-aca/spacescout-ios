@@ -195,6 +195,7 @@
 		C255958215951FAD00C98C32 /* faveslist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C255958115951FAD00C98C32 /* faveslist@2x.png */; };
 		C25D6F941576ACDC00A16A87 /* map_defaults.json in Resources */ = {isa = PBXBuildFile; fileRef = C25D6F931576ACDC00A16A87 /* map_defaults.json */; };
 		C25D6F971576AF7100A16A87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D6F961576AF7100A16A87 /* CoreLocation.framework */; };
+		C265A7A618FB6A240041F8FD /* UITextFieldWithKeypress.m in Sources */ = {isa = PBXBuildFile; fileRef = C265A7A518FB6A240041F8FD /* UITextFieldWithKeypress.m */; };
 		C26DBE021587F0A200FB4DD8 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26DBE011587F0A200FB4DD8 /* PickerView.xib */; };
 		C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */; };
 		C2775E1915BA2B0700731EBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2775E1815BA2B0700731EBB /* Default.png */; };
@@ -516,6 +517,8 @@
 		C255958115951FAD00C98C32 /* faveslist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "faveslist@2x.png"; path = "images/faveslist@2x.png"; sourceTree = "<group>"; };
 		C25D6F931576ACDC00A16A87 /* map_defaults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_defaults.json; sourceTree = "<group>"; };
 		C25D6F961576AF7100A16A87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C265A7A418FB6A240041F8FD /* UITextFieldWithKeypress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITextFieldWithKeypress.h; path = Widgets/UITextFieldWithKeypress.h; sourceTree = "<group>"; };
+		C265A7A518FB6A240041F8FD /* UITextFieldWithKeypress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITextFieldWithKeypress.m; path = Widgets/UITextFieldWithKeypress.m; sourceTree = "<group>"; };
 		C26DBE011587F0A200FB4DD8 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		C26EAA21156EE32600632C78 /* SpaceClusterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceClusterViewController.h; path = ViewControllers/SpaceClusterViewController.h; sourceTree = "<group>"; };
 		C26EAA22156EE32600632C78 /* SpaceClusterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceClusterViewController.m; path = ViewControllers/SpaceClusterViewController.m; sourceTree = "<group>"; };
@@ -1057,6 +1060,8 @@
 				C2E0937D1542315A0015BF4B /* UITableSwitch.m */,
 				C224DA8218D1004100589CAD /* OverlayMessage.h */,
 				C224DA8318D1004100589CAD /* OverlayMessage.m */,
+				C265A7A418FB6A240041F8FD /* UITextFieldWithKeypress.h */,
+				C265A7A518FB6A240041F8FD /* UITextFieldWithKeypress.m */,
 			);
 			name = Widgets;
 			sourceTree = "<group>";
@@ -1463,6 +1468,7 @@
 				06ACA0181898090800113AD0 /* MoreViewController.m in Sources */,
 				C2429A92150AABDB005A994A /* SBJsonStreamWriterState.m in Sources */,
 				C2429A93150AABDB005A994A /* SBJsonTokeniser.m in Sources */,
+				C265A7A618FB6A240041F8FD /* UITextFieldWithKeypress.m in Sources */,
 				C2429A94150AABDB005A994A /* SBJsonUTF8Stream.m in Sources */,
 				C2429A95150AABDB005A994A /* SBJsonWriter.m in Sources */,
 				C21CBD3218EB7A56005C5FCB /* ReviewSpaceViewController.m in Sources */,
