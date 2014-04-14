@@ -16,7 +16,7 @@
 
 NSString *STAR_SELECTED_IMAGE = @"star_selected";
 NSString *STAR_UNSELECTED_IMAGE = @"star_unselected";
-const float EXTRA_CELL_PADDING = 50.0;
+const float EXTRA_CELL_PADDING = 25.0;
 const float EXTRA_REVIEW_PADDING = 20.0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,6 +63,22 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     
     [request startAsynchronous];
     
+    UIButton *write_review = (UIButton *)[self.view viewWithTag:603];
+    write_review.layer.backgroundColor = [[UIColor whiteColor] CGColor];
+    
+    NSString *app_path = [[NSBundle mainBundle] bundlePath];
+    NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+    NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+    
+    float red_value = [[plist_values objectForKey:@"default_nav_button_color_red"] floatValue];
+    float green_value = [[plist_values objectForKey:@"default_nav_button_color_green"] floatValue];
+    float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
+    
+    UIColor *border_color = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+    
+    write_review.layer.borderWidth = 1.0;
+    write_review.layer.borderColor = border_color.CGColor;
+    write_review.layer.cornerRadius = 3.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,15 +116,10 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     date.text = [dateFormatter stringFromDate:date_obj];
 
     NSInteger rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
-    for (int i = 1; i <= 5; i++) {
-        UIImageView *star = (UIImageView *)[cell viewWithTag:100+i];
-        if (rating < i) {
-            [star setImage:[UIImage imageNamed:STAR_UNSELECTED_IMAGE]];
-        }
-        else {
-            [star setImage:[UIImage imageNamed:STAR_SELECTED_IMAGE]];
-        }
-    }
+    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%li_fill.png", (long)rating];
+
+    UIImageView *stars = (UIImageView *)[cell viewWithTag:100];
+    [stars setImage:[UIImage imageNamed:img_name]];
     
     return cell;
 }
