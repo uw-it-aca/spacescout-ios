@@ -20,7 +20,7 @@
 -(IBAction)submitReview:(id)sender;
 @property (nonatomic) BOOL handling_login;
 @property (nonatomic, retain) Space *space;
-@property (nonatomic) int rating;
+@property (nonatomic) NSInteger rating;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) OverlayMessage *overlay;
 

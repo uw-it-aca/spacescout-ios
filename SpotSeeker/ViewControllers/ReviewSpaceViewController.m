@@ -8,8 +8,8 @@
 
 #import "ReviewSpaceViewController.h"
 const int MAX_REVIEW_LENGTH = 300;
-NSString *SELECTED_IMAGE = @"star_selected";
-NSString *UNSELECTED_IMAGE = @"star_unselected";
+NSString *SELECTED_IMAGE = @"StarRating-big_filled";
+NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 @implementation ReviewSpaceViewController
 
@@ -52,9 +52,9 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
         return FALSE;
     }
     
-    int whats_left = MAX_REVIEW_LENGTH - new_text.length;
+    NSInteger whats_left = MAX_REVIEW_LENGTH - new_text.length;
     UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
-    amount_left.text = [NSString stringWithFormat:@"Chars left: %i", whats_left];
+    amount_left.text = [NSString stringWithFormat:@"Chars left: %li", (long)whats_left];
     
     [self checkForValidReview];
 
@@ -68,7 +68,7 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
     // Make it so we don't double send - the overlay doesn't cover the send button
     
     UITextView *review = (UITextView *)[self.view viewWithTag:101];
-    NSDictionary *data = @{@"rating": [NSNumber numberWithInt:rating],
+    NSDictionary *data = @{@"rating": [NSNumber numberWithInteger:rating],
                            @"review": [review text]
                            };
     
@@ -108,7 +108,7 @@ NSString *UNSELECTED_IMAGE = @"star_unselected";
         [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateNormal];
         [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateSelected];
     }
-    for (int i = tag + 1; i <= 205; i++) {
+    for (NSInteger i = tag + 1; i <= 205; i++) {
         UIButton *selected = (UIButton *)[self.view viewWithTag:i];
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateHighlighted];
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];

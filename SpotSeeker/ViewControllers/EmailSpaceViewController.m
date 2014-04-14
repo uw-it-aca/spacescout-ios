@@ -390,7 +390,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     if (![self.email_list count]) {
         return nil;
     }
-    int tag = [self.email_list count] + TO_EMAIL_TAG_STARTING_INDEX - 1;
+    NSInteger tag = [self.email_list count] + TO_EMAIL_TAG_STARTING_INDEX - 1;
     
     UIView *wrapper = [self.view viewWithTag:tag];
     UILabel *comma = (UILabel *)[wrapper viewWithTag:2];

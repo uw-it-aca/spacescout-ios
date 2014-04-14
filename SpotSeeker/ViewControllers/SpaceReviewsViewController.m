@@ -99,7 +99,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     
     date.text = [dateFormatter stringFromDate:date_obj];
 
-    int rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
+    NSInteger rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
     for (int i = 1; i <= 5; i++) {
         UIImageView *star = (UIImageView *)[cell viewWithTag:100+i];
         if (rating < i) {

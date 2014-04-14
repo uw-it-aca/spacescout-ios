@@ -1573,9 +1573,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="C2j-Fl-d9Q">
-                                <rect key="frame" x="20" y="106" width="24" height="24"/>
+                                <rect key="frame" x="20" y="97" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="star_unselected.png">
+                                <state key="normal" image="StarRating-big_blank.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1583,9 +1583,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Nd9-P4-Eoj">
-                                <rect key="frame" x="52" y="106" width="24" height="24"/>
+                                <rect key="frame" x="79" y="97" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="star_unselected.png">
+                                <state key="normal" image="StarRating-big_blank.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1593,9 +1593,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="205" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="cqY-E9-YDc">
-                                <rect key="frame" x="148" y="106" width="24" height="24"/>
+                                <rect key="frame" x="256" y="97" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="star_unselected.png">
+                                <state key="normal" image="StarRating-big_blank.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1603,9 +1603,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="E5R-E3-8ra">
-                                <rect key="frame" x="116" y="106" width="24" height="24"/>
+                                <rect key="frame" x="197" y="97" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="star_unselected.png">
+                                <state key="normal" image="StarRating-big_blank.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1613,9 +1613,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Rae-L5-uBz">
-                                <rect key="frame" x="84" y="106" width="24" height="24"/>
+                                <rect key="frame" x="138" y="97" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="star_unselected.png">
+                                <state key="normal" image="StarRating-big_blank.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2215,6 +2215,7 @@
         <image name="Close_X_Btn.png" width="25" height="25"/>
         <image name="Fav_BlankHeart.png" width="17" height="15"/>
         <image name="Share_Arrow.png" width="14" height="13"/>
+        <image name="StarRating-big_blank.png" width="44" height="42"/>
         <image name="StarRating-small_0_fill.png" width="80" height="15"/>
         <image name="asterisk.png" width="22" height="22"/>
         <image name="comp-icon.png" width="16" height="16"/>
@@ -2222,7 +2223,6 @@
         <image name="iOS_FavList-Heart.png" width="24" height="24"/>
         <image name="locate.png" width="24" height="24"/>
         <image name="reservable.png" width="22" height="22"/>
-        <image name="star_unselected.png" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

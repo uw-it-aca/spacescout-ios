@@ -27,7 +27,7 @@
 @property (nonatomic, retain) NSMutableArray *email_list;
 @property (nonatomic) CGFloat to_cell_size;
 @property (nonatomic) BOOL has_valid_to_email;
-@property (nonatomic) int current_selected_email_tag;
+@property (nonatomic) NSInteger current_selected_email_tag;
 @property (nonatomic, retain) NSArray *search_matches;
 @property (nonatomic, retain) NSArray *all_contacts;
 
