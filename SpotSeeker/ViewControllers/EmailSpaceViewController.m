@@ -123,6 +123,16 @@ const int SEARCH_TABLE_TAG = 1000;
              ];
 }
 
+-(void)hideSearchResultsMenu {
+    UITableView *results_table = (UITableView *)[self.view viewWithTag:1000];
+
+    if (results_table) {
+        results_table.hidden = TRUE;
+    }
+    
+    self.tableView.scrollEnabled = TRUE;
+}
+
 -(void)drawAutocompleteForQuery:(NSString *)query {
     NSArray *matches = [self getContactDataForQuery:query];
 
@@ -130,9 +140,7 @@ const int SEARCH_TABLE_TAG = 1000;
     UITableView *results_table = (UITableView *)[self.view viewWithTag:1000];
 
     if (!matches.count) {
-        if (results_table) {
-            results_table.hidden = TRUE;
-        }
+        [self hideSearchResultsMenu];
         return;
     }
     if (!results_table) {
@@ -140,11 +148,16 @@ const int SEARCH_TABLE_TAG = 1000;
         results_table.tag = SEARCH_TABLE_TAG;
         results_table.delegate = self;
         results_table.dataSource = self;
+        results_table.scrollEnabled = FALSE;
 
-        results_table.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
+        // Position this right below the existing To: input
+        UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+        CGFloat to_bottom = to.frame.origin.y + to.frame.size.height;
+        results_table.frame = CGRectMake(0, to_bottom, self.view.frame.size.width, self.view.frame.size.height - to_bottom);
         [self.view addSubview:results_table];
     }
     results_table.hidden = false;
+    self.tableView.scrollEnabled = false;
 
     [results_table reloadData];
 }
@@ -491,11 +504,13 @@ const int SEARCH_TABLE_TAG = 1000;
 #pragma mark - Methods for handling contacts from the chooser
 
 -(IBAction)openContactChooser:(id)selector {
+    [self hideSearchResultsMenu];
+    [self addEmailFromTextField];
+
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     picker.peoplePickerDelegate = self;
     
-//    [self presentModalViewController:picker animated:YES];
     [self presentViewController:picker animated:YES completion:^(void) {}];
 }
 
@@ -589,6 +604,9 @@ const int SEARCH_TABLE_TAG = 1000;
 }
 
 -(void)searchResultsTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row >= [self.search_matches count]) {
+        return;
+    }
     NSString *email = [[self.search_matches objectAtIndex:indexPath.row] objectForKey:@"email"];
     
     [self addEmailFromSearchSelection:email];
