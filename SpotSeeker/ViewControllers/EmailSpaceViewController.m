@@ -24,7 +24,7 @@
 @synthesize search_matches;
 
 const CGFloat MARGIN_LEFT = 42.0;
-const CGFloat MARGIN_RIGHT = 0.0;
+const CGFloat MARGIN_RIGHT = 32.0;
 const CGFloat MARGIN_TOP = 11.0;
 const CGFloat TEXT_FIELD_LIMIT = 0.75;
 const CGFloat TEXTFIELD_Y_INSET = 3.5;
@@ -442,7 +442,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     UIView *to_container = [self.view viewWithTag:800];
     
     CGFloat to_width = to_container.frame.size.width;
-    CGFloat available_width = to_width - MARGIN_LEFT - MARGIN_RIGHT;
+    CGFloat available_width = to_width - MARGIN_LEFT;
     
     UILabel *size_label = [[UILabel alloc] init];
     float current_x = MARGIN_LEFT;
@@ -476,12 +476,21 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         
         // Handle overflow...
         if ((width + current_x) > available_width) {
-            current_x = MARGIN_LEFT;
-            current_y = current_y + height + PADDING_BETWEEN_EMAIL_ROWS;
+            // Special case though - if they have an entry that's more than... 90? percent
+            // of the row, and it doesn't fit - just truncate it.
+            if ((current_x - MARGIN_LEFT) < to_width * 0.10) {
+                width = available_width - MARGIN_RIGHT;
+                email_width = width;
+            }
+            else {
+                current_x = MARGIN_LEFT;
+                current_y = current_y + height + PADDING_BETWEEN_EMAIL_ROWS;
+            }
         }
         
         if (width > to_width) {
-            width = available_width;
+            width = available_width - MARGIN_RIGHT;
+            email_width = width;
         }
         
         UIView *email_container = [[UIView alloc] init];
@@ -549,7 +558,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     UIButton *add_from_contacts = (UIButton *)[self.view viewWithTag:110];
     [to_container bringSubviewToFront:add_from_contacts];
-
+    
     // Resize our table row...
     self.to_cell_size = current_y + email_field.frame.size.height;
     
