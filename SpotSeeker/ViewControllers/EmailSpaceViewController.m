@@ -150,12 +150,14 @@ const int SEARCH_TABLE_TAG = 1000;
         results_table.dataSource = self;
         results_table.scrollEnabled = FALSE;
 
-        // Position this right below the existing To: input
-        UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
-        CGFloat to_bottom = to.frame.origin.y + to.frame.size.height;
-        results_table.frame = CGRectMake(0, to_bottom, self.view.frame.size.width, self.view.frame.size.height - to_bottom);
         [self.view addSubview:results_table];
     }
+    // Position this right below the existing To: input
+    UITextFieldWithKeypress *to = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
+    CGFloat to_bottom = to.frame.origin.y + to.frame.size.height;
+    results_table.frame = CGRectMake(0, to_bottom, self.view.frame.size.width, self.view.frame.size.height - to_bottom);
+
+    
     results_table.hidden = false;
     self.tableView.scrollEnabled = false;
 
