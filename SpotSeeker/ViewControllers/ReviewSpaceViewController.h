@@ -12,7 +12,7 @@
 #import "Space.h"
 #import "OverlayMessage.h"
 
-@interface ReviewSpaceViewController : ViewController <OAuthLogin, UITextViewDelegate, RESTFinished> {
+@interface ReviewSpaceViewController : UIViewController <OAuthLogin, UITextViewDelegate, RESTFinished> {
     
 }
 

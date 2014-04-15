@@ -40,9 +40,6 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
         [self presentViewController:auth_vc animated:YES completion:^(void) {}];
     }
-    else {
-        self.title = self.space.name;
-    }
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -54,12 +51,62 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     
     NSInteger whats_left = MAX_REVIEW_LENGTH - new_text.length;
     UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
-    amount_left.text = [NSString stringWithFormat:@"Chars left: %li", (long)whats_left];
-    
+    if (whats_left == 1) {
+        amount_left.text = [NSString stringWithFormat:@"1 character left"];
+    }
+    else {
+        amount_left.text = [NSString stringWithFormat:@"%li characters left", (long)whats_left];
+
+    }
     [self checkForValidReview];
 
     return TRUE;
 }
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    UIScrollView *scroll = (UIScrollView *)[self.view viewWithTag:500];
+    scroll.scrollEnabled = TRUE;
+    scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100);
+    CGRect bottom = CGRectMake(0, scroll.frame.size.height + 68, 1, 68);
+    [scroll scrollRectToVisible:bottom animated:YES];
+
+    [self showDoneBarButton];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    UIScrollView *scroll = (UIScrollView *)[self.view viewWithTag:500];
+    CGRect top = CGRectMake(0, 0, 1, 1);
+    [scroll scrollRectToVisible:top animated:YES];
+    scroll.scrollEnabled = FALSE;
+
+    [self hideDoneBarButton];
+}
+
+-(void)hideDoneBarButton {
+    self.navigationItem.rightBarButtonItem.title = @"";
+    self.navigationItem.rightBarButtonItem.enabled = FALSE;
+}
+
+-(void)showDoneBarButton {
+    self.navigationItem.rightBarButtonItem.title = @"Done";
+    self.navigationItem.rightBarButtonItem.enabled = TRUE;
+}
+
+-(IBAction)finishEditing:(id)selector {
+    UITextView *review = (UITextView *)[self.view viewWithTag:101];
+    [review resignFirstResponder];
+}
+
+-(IBAction)showReviewGuidelines:(id)selector {
+    UIView *modal = [self.view viewWithTag:700];
+    modal.hidden = FALSE;
+}
+
+-(IBAction)hideReviewGuidelines:(id)selector {
+    UIView *modal = [self.view viewWithTag:700];
+    modal.hidden = TRUE;
+}
+
 
 -(IBAction)submitReview:(id)sender {
     self.rest = [[REST alloc] init];
@@ -114,6 +161,33 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
         [selected setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateSelected];
     }
+    
+    UILabel *rating_desc = (UILabel *)[self.view viewWithTag:220];
+    switch (self.rating) {
+        case 1: {
+            rating_desc.text = @"You rated: Terrible";
+            break;
+        }
+        case 2: {
+            rating_desc.text = @"You rated: Poor";
+            break;
+        }
+        case 3: {
+            rating_desc.text = @"You rated: Average";
+            break;
+        }
+        case 4: {
+            rating_desc.text = @"You rated: Good";
+            break;
+        }
+        case 5: {
+            rating_desc.text = @"You rated: Excellent";
+            break;
+        }
+
+            
+    }
+    
     [self checkForValidReview];
 }
 
@@ -162,10 +236,17 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     UIButton *submit = (UIButton *)[self.view viewWithTag:300];
     submit.enabled = FALSE;
 
-    UITextView *review = (UITextView *)[self.view viewWithTag:101];
-    review.layer.borderColor = [[UIColor blackColor] CGColor];
-    review.layer.borderWidth = 0.5;
-    self.automaticallyAdjustsScrollViewInsets = NO;   
+    UILabel *space_label = (UILabel *)[self.view viewWithTag:600];
+    space_label.text = self.space.name;
+
+    UIButton *submit_button = (UIButton *)[self.view viewWithTag:300];
+    submit_button.layer.cornerRadius = 3.0;
+    
+    UIView *modal = [self.view viewWithTag:701];
+    modal.layer.cornerRadius = 3.0;
+    [self hideDoneBarButton];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 -(void)dismissKeyboard:(id)selector {
