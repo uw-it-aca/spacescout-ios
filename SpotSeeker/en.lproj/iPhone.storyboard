@@ -1705,7 +1705,7 @@
                             <color key="backgroundColor" red="0.93009510869565215" green="0.93009510869565215" blue="0.93009510869565215" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="review_cell" rowHeight="203" id="iVd-Kh-F1G">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="review_cell" rowHeight="203" id="iVd-Kh-F1G">
                                 <rect key="frame" x="0.0" y="156" width="320" height="203"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iVd-Kh-F1G" id="4lZ-WQ-MoG">
