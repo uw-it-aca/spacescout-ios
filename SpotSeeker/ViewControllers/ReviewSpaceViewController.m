@@ -132,7 +132,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
-    if ([request responseStatusCode] == 200) {
+    if ([request responseStatusCode] == 201) {
         [self.overlay showOverlay:@"Review submitted.  Pending approval." animateDisplay:NO afterShowBlock:^(void) {
             [self.overlay hideOverlayAfterDelay:4.0 animateHide:NO afterHideBlock:^(void) {
                 [self.navigationController popViewControllerAnimated:YES];
@@ -140,7 +140,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         }];
     }
     else {
-        [self.overlay showOverlay:@"Error sending review" animateDisplay:NO afterShowBlock:^(void) {}];
+        NSLog(@"Status: %i, Body: %@", [request responseStatusCode], [request responseString]);
+        [self.overlay showOverlay:@"Error" animateDisplay:NO afterShowBlock:^(void) {}];
     }
 }
 
