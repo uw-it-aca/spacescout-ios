@@ -82,6 +82,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 }
 
 -(IBAction)showReviewGuidelines:(id)selector {
+    UITextField *review = (UITextField *)[self.view viewWithTag:101];
+    [review resignFirstResponder];
     UIView *modal = [self.view viewWithTag:700];
     modal.hidden = FALSE;
 }
