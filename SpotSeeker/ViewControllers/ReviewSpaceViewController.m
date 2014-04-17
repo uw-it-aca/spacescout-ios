@@ -135,7 +135,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         self.overlay = [[OverlayMessage alloc] init];
         [self.overlay addTo:self.view];
     }
-    [self.overlay showOverlay:@"Submitting..." animateDisplay:YES afterShowBlock:^(void) {
+    [self.overlay showOverlay:@"Sending..." animateDisplay:YES afterShowBlock:^(void) {
         [self.rest postURL:url withBody:[data JSONRepresentation]];
     }];
 
@@ -143,11 +143,13 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 201) {
-        [self.overlay showOverlay:@"Review submitted.  Pending approval." animateDisplay:NO afterShowBlock:^(void) {
+    
+        [self.overlay showOverlay:@"Submitted!" animateDisplay:NO afterShowBlock:^(void) {
             [self.overlay hideOverlayAfterDelay:4.0 animateHide:NO afterHideBlock:^(void) {
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         }];
+        [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     else {
         NSLog(@"Status: %i, Body: %@", [request responseStatusCode], [request responseString]);
