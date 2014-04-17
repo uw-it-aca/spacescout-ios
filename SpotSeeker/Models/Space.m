@@ -85,8 +85,19 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
         
         [request setFailedBlock:^{
             // Go on anyway, no need to stop the app
+            if ([request responseStatusCode] == 401) {
+                // If we're unauthorized, but we have a personal oauth token, drop it, because it
+                // obviously isn't helping us!
+                if ([REST hasPersonalOAuthToken]) {
+                    [REST removePersonalOAuthToken];
+                }
+                
+            }
+            else {
+                NSLog(@"Failure on favorites!, %i", [request responseStatusCode]);
+            }
             [self _getListBySearch:arguments];
-            NSLog(@"Failure on favorites!");
+
         }];
         
         [request startAsynchronous];

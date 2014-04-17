@@ -47,6 +47,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
         
         if (200 != [request responseStatusCode]) {
             NSLog(@"Code: %i", [request responseStatusCode]);
+            NSLog(@"Body: %@", [request responseString]);
             // show an error
         }
 
