@@ -26,22 +26,6 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    if (self.handling_login) {
-        return;
-    }
-    if (![REST hasPersonalOAuthToken]) {
-        self.handling_login = TRUE;
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
-        
-        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
-        auth_vc.delegate = self;
-        
-        //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
-        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
-    }
-}
-
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *new_text = [textView.text stringByReplacingCharactersInRange:range withString:text];
 
@@ -109,6 +93,19 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 
 -(IBAction)submitReview:(id)sender {
+    if (![REST hasPersonalOAuthToken]) {
+        self.handling_login = TRUE;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        
+        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
+        auth_vc.delegate = self;
+        
+        //       [self.navigationController presentViewController:auth_vc animated:YES completion:^(void){}];
+        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
+        return;
+    }
+
+    
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     
@@ -221,6 +218,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 }
 
 -(void)loginComplete {
+    [self submitReview:nil];
 }
 
 - (void)viewDidLoad
