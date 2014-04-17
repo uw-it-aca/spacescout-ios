@@ -60,6 +60,13 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     
     [defaults setObject:new_text forKey:review_key];
 
+    if ([new_text isEqualToString:@""]){
+        [self showWatermarkWithAnimation:TRUE];
+    }
+    else {
+        [self hideWatermarkWithAnimation:TRUE];
+    }
+    
     return TRUE;
 }
 
@@ -292,11 +299,52 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     if ([defaults valueForKey:review_key]) {
         UITextView *review = (UITextView *)[self.view viewWithTag:101];
         review.text = [defaults valueForKey:review_key];
+        if (![review.text isEqualToString:@""]) {
+            [self hideWatermarkWithAnimation:FALSE];
+        }
     }
     [self checkForValidReview];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
+
+-(void)hideWatermarkWithAnimation:(BOOL)animate {
+    UILabel *watermark = (UILabel *)[self.view viewWithTag:111];
+    if (animate) {
+        [UIView animateWithDuration:0.1 animations:^(void) {
+            watermark.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                watermark.hidden = TRUE;
+            }
+        }];
+    }
+    else {
+        watermark.hidden = TRUE;
+    }
+}
+
+-(void)showWatermarkWithAnimation:(BOOL)animate {
+    UILabel *watermark = (UILabel *)[self.view viewWithTag:111];
+    // Prevents flashing if someone keeps hitting backspace.
+    if (!watermark.hidden) {
+        return;
+    }
+    
+    if (animate) {
+        watermark.alpha = 0.0;
+        watermark.hidden = FALSE;
+        [UIView animateWithDuration:0.1 animations:^(void) {
+            watermark.alpha = 1.0;
+        } completion:^(BOOL finished) {
+        }];
+
+    }
+    else {
+        watermark.hidden = FALSE;
+    }
+}
+
 
 -(void)dismissKeyboard:(id)selector {
     UITextView *review = (UITextView *)[self.view viewWithTag:101];
