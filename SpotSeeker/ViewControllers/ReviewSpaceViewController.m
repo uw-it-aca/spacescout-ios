@@ -54,6 +54,11 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
     }
     [self checkForValidReview];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *review_key = [NSString stringWithFormat:@"space_review_%@", self.space.remote_id];
+    
+    [defaults setObject:new_text forKey:review_key];
 
     return TRUE;
 }
@@ -143,7 +148,12 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
     if ([request responseStatusCode] == 201) {
-    
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *rating_key = [NSString stringWithFormat:@"space_rating_%@", self.space.remote_id];
+        NSString *review_key = [NSString stringWithFormat:@"space_review_%@", self.space.remote_id];
+        [defaults removeObjectForKey:rating_key];
+        [defaults removeObjectForKey:review_key];
+        
         [self.overlay showOverlay:@"Submitted!" animateDisplay:NO afterShowBlock:^(void) {
             [self.overlay hideOverlayAfterDelay:4.0 animateHide:NO afterHideBlock:^(void) {
                 [self.navigationController popViewControllerAnimated:YES];
@@ -161,7 +171,17 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     NSInteger tag = [sender tag];
     
     self.rating = tag-200;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rating_key = [NSString stringWithFormat:@"space_rating_%@", self.space.remote_id];
+    [defaults setObject:[NSNumber numberWithInteger:self.rating] forKey:rating_key];
     
+    [self setRatingDisplay: self.rating];
+    
+    [self checkForValidReview];
+}
+
+-(void)setRatingDisplay:(NSInteger) _rating {
+    NSInteger tag = _rating + 200;
     for (int i = 201; i <= tag; i++) {
         UIButton *selected = (UIButton *)[self.view viewWithTag:i];
         [selected setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateHighlighted];
@@ -197,11 +217,11 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
             rating_desc.text = @"You rated: Excellent";
             break;
         }
-
+            
             
     }
     
-    [self checkForValidReview];
+
 }
 
 -(void)checkForValidReview {
@@ -259,6 +279,21 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     UIView *modal = [self.view viewWithTag:701];
     modal.layer.cornerRadius = 3.0;
     [self hideDoneBarButton];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rating_key = [NSString stringWithFormat:@"space_rating_%@", self.space.remote_id];
+    NSString *review_key = [NSString stringWithFormat:@"space_review_%@", self.space.remote_id];
+    
+    if ([defaults valueForKey:rating_key]) {
+        self.rating = [[defaults objectForKey:rating_key] integerValue];
+        [self setRatingDisplay:self.rating];
+    }
+    
+    if ([defaults valueForKey:review_key]) {
+        UITextView *review = (UITextView *)[self.view viewWithTag:101];
+        review.text = [defaults valueForKey:review_key];
+    }
+    [self checkForValidReview];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
