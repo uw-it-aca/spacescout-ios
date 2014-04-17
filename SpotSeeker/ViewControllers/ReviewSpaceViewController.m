@@ -26,14 +26,25 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     return self;
 }
 
+-(NSInteger)reviewCharCount:(NSString *)review {
+    NSMutableCharacterSet *char_set = [[NSMutableCharacterSet alloc] init];
+    [char_set formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [char_set formUnionWithCharacterSet:[NSCharacterSet punctuationCharacterSet]];
+    
+    NSString *stripped = [[review componentsSeparatedByCharactersInSet:char_set] componentsJoinedByString:@""];
+
+    return stripped.length;
+}
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *new_text = [textView.text stringByReplacingCharactersInRange:range withString:text];
 
-    if (new_text.length > MAX_REVIEW_LENGTH) {
+    NSInteger char_count = [self reviewCharCount:new_text];
+    if (char_count > MAX_REVIEW_LENGTH) {
         return FALSE;
     }
     
-    NSInteger whats_left = MAX_REVIEW_LENGTH - new_text.length;
+    NSInteger whats_left = MAX_REVIEW_LENGTH - char_count;
     UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
     if (whats_left == 1) {
         amount_left.text = [NSString stringWithFormat:@"1 character left"];
