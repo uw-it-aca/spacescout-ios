@@ -14,7 +14,7 @@
 @synthesize delegate;
 
 -(void) getURLWithNoAccessToken:(NSString *)url {
-    [self getURL:url withAccessToken:FALSE];
+    [self getURL:url withAccessToken:FALSE withCache:FALSE];
 }
 
 -(void) getURL:(NSString *)url {
@@ -23,16 +23,25 @@
 
 -(void)getURL:(NSString *)url withAccessToken:(Boolean)use_token {
     [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
+    
+    [self getURL:url withAccessToken:use_token withCache:TRUE];
+}
+
+-(void)getURL:(NSString *)url withAccessToken:(BOOL)use_token withCache:(BOOL)use_cache {
     NSString *request_url = [self _getFullURL:url];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
     
     [self _signRequest:request withAccessToken:use_token];
     
+    if (!use_cache) {
+        [request setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    }
     [request setDelegate:self];
     [request startAsynchronous];
     [[GAI sharedInstance] dispatch];
-
+    
+    
 }
 
 -(void)deleteURL:(NSString *)url {

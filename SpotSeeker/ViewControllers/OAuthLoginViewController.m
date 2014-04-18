@@ -69,13 +69,13 @@
         self.oauth_token = token;
         self.oauth_token_secret = token_secret;
 
+        
         NSString *partial_url = [NSString stringWithFormat:@"/oauth/authorize/?oauth_token=%@", token];
         NSString *url = [self.rest getFullURL:partial_url];
         NSURLRequest *auth_request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [self.auth_web_view loadRequest:auth_request];
     }
     else {
-        
         NSDictionary *params = [self dictionaryFromParamsString:[request responseString]];
         
         [REST setPersonalOAuthToken:[params objectForKey:@"oauth_token"] andSecret:[params objectForKey:@"oauth_token_secret"]];
