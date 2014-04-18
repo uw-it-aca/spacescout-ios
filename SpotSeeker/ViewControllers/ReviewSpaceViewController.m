@@ -160,10 +160,10 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         self.overlay = [[OverlayMessage alloc] init];
         [self.overlay addTo:self.view];
     }
+
     [self.overlay showOverlay:@"Sending..." animateDisplay:YES afterShowBlock:^(void) {
         [self.rest postURL:url withBody:[data JSONRepresentation]];
     }];
-
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
@@ -276,7 +276,6 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 -(void)loginComplete {
     [self dismissViewControllerAnimated:YES completion:^(void) {}];
-//    [self.navigationController popViewControllerAnimated:YES];
     [self submitReview:nil];
 }
 

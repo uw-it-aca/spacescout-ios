@@ -52,9 +52,7 @@ const float MAX_ALPHA = 1;
         [UIView animateWithDuration:1.0 animations:^(void) {
             panel.alpha = MAX_ALPHA;
         } completion:^(BOOL finished) {
-            if (finished) {
-                showCallback();
-            }
+            showCallback();
         }];
     }
     else {
