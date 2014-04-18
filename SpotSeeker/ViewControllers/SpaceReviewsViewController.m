@@ -60,6 +60,9 @@ const float EXTRA_REVIEW_PADDING = 20.0;
             [review setObject:date_obj forKey:@"date_object"];
         }
         [self.tableView reloadData];
+        if (self.reviews.count == 0) {
+            self.tableView.scrollEnabled = FALSE;
+        }
     }];
     
     [request startAsynchronous];
@@ -89,10 +92,19 @@ const float EXTRA_REVIEW_PADDING = 20.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [reviews count];
+    // Return 1 if there are no reviews, so we can show the no reviews cell
+    NSInteger count = [reviews count];
+    if (count > 0) {
+        return count;
+    }
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.reviews.count == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"no_reviews"];
+        return cell;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"review_cell"];
 
     UILabel *author = (UILabel *)[cell viewWithTag:200];
@@ -126,6 +138,10 @@ const float EXTRA_REVIEW_PADDING = 20.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.reviews.count == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"no_reviews"];
+        return cell.frame.size.height;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"review_cell"];
     UITextView *review = (UITextView *)[cell viewWithTag:202];
 
