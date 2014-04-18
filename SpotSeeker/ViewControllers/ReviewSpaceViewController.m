@@ -283,6 +283,18 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     UIButton *submit_button = (UIButton *)[self.view viewWithTag:300];
     submit_button.layer.cornerRadius = 3.0;
     
+    if ([REST hasPersonalOAuthToken]) {
+        [submit_button setTitle:@"Submit" forState:UIControlStateDisabled];
+        [submit_button setTitle:@"Submit" forState:UIControlStateSelected];
+        [submit_button setTitle:@"Submit" forState:UIControlStateNormal];
+
+    }
+    else {
+        [submit_button setTitle:@"Log in & Submit" forState:UIControlStateDisabled];
+        [submit_button setTitle:@"Log in & Submit" forState:UIControlStateSelected];
+        [submit_button setTitle:@"Log in & Submit" forState:UIControlStateNormal];
+    }
+    
     UIView *modal = [self.view viewWithTag:701];
     modal.layer.cornerRadius = 3.0;
     [self hideDoneBarButton];
