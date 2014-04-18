@@ -50,7 +50,14 @@
     backing.tag = 103;
     backing.backgroundColor = [UIColor whiteColor];
     [self.navigation_menu_view addSubview:backing];
+
+    // The dropshadow image
+    UIImageView *shadow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_shadow.png"]];
+    shadow.tag = 104;
+    shadow.frame = CGRectMake(0, 0, self.navigation_menu_view.frame.size.width * 0.1, self.navigation_menu_view.frame.size.height);
     
+    [self.navigation_menu_view addSubview:shadow];
+
     
     // Has the blurred/cropped screed
     UIImageView *base_img_view = [[UIImageView alloc] init];
@@ -153,6 +160,8 @@
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
 
     UIImageView *background_img_view = (UIImageView *)[self.navigation_menu_view viewWithTag:102];
+    UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+
     
     background_img_view.frame = self.view_controller.view.frame;
     background_img_view.image = image;
@@ -175,28 +184,32 @@
     
     CGRect final_frame = frame;
 
-    UIButton *favs_button = (UIButton *)[menu_view viewWithTag:301];
-    UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
+    UILabel *favs_count_label = (UILabel *)[menu_view viewWithTag:310];
 
     int fav_count = [Favorites getFavoritesCount];
-    NSString *fav_label = [NSString stringWithFormat:@"Favorites (%i)", fav_count];
-    [favs_button setTitle:fav_label forState:UIControlStateNormal];
-    if ([REST hasPersonalOAuthToken]) {
-        logout_button.hidden = FALSE;
+    favs_count_label.text = [NSString stringWithFormat:@"%i", fav_count];
+
+    if (fav_count < 1) {
+        favs_count_label.hidden = TRUE;
     }
     else {
-        logout_button.hidden = TRUE;
+        favs_count_label.hidden = FALSE;
     }
     
     self.navigation_menu_view.hidden = FALSE;
 
     final_frame.size.width = final_width;
     [self addTouchEvents];
+
+    CGRect final_shadow_frame = CGRectMake(self.navigation_menu_view.frame.size.width * 0.9, 0, self.navigation_menu_view.frame.size.width * 0.1, self.navigation_menu_view.frame.size.height);
     
     [UIView animateWithDuration:0.3 delay: 0.0 options: UIViewAnimationOptionCurveEaseIn animations:^{
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
         backing_view.frame = final_frame;
+       
+        shadow.frame = final_shadow_frame;
+
     } completion:^(BOOL finished) {
         if (finished) {
         }
@@ -210,18 +223,19 @@
     UIView *img_view = [self.navigation_menu_view viewWithTag:100];
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
+    UIView *shadow_view = [self.navigation_menu_view viewWithTag:104];
+
     
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.navigation_menu_view.frame = final_frame;
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
         backing_view.frame = final_frame;
+        shadow_view.frame = final_frame;
     } completion:^(BOOL finished){
-        if (finished) {
-            [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
-            }];
-            [self quickHideMenu];
-        }
+        [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
+        }];
+        [self quickHideMenu];
     }];
     
 }
