@@ -74,13 +74,6 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     
     [defaults setObject:new_text forKey:review_key];
 
-    if ([new_text isEqualToString:@""]){
-        [self showWatermarkWithAnimation:TRUE];
-    }
-    else {
-        [self hideWatermarkWithAnimation:TRUE];
-    }
-    
     return TRUE;
 }
 
@@ -91,6 +84,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     CGRect bottom = CGRectMake(0, scroll.frame.size.height + 68, 1, 68);
     [scroll scrollRectToVisible:bottom animated:YES];
 
+    [self hideWatermarkWithAnimation:TRUE];
     [self showDoneBarButton];
 }
 
@@ -100,6 +94,11 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     [scroll scrollRectToVisible:top animated:YES];
     scroll.scrollEnabled = FALSE;
 
+    UITextView *text_view = (UITextView *)[self.view viewWithTag:101];
+    if ([text_view.text isEqualToString:@""]) {
+        [self showWatermarkWithAnimation:TRUE];
+    }
+    
     [self hideDoneBarButton];
 }
 
@@ -352,6 +351,12 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 }
 
 -(void)showWatermarkWithAnimation:(BOOL)animate {
+    // Since this is currently shown/hidden when the textview gets/loses focus,
+    // rather than based on text, i'm disabling animation - the textview is already
+    // doing a motion animation.
+    animate = FALSE;
+    
+    
     UILabel *watermark = (UILabel *)[self.view viewWithTag:111];
     // Prevents flashing if someone keeps hitting backspace.
     if (!watermark.hidden) {
@@ -368,6 +373,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
     }
     else {
+        watermark.alpha = 1.0;
         watermark.hidden = FALSE;
     }
 }
