@@ -275,6 +275,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 }
 
 -(void)loginComplete {
+    [self dismissViewControllerAnimated:YES completion:^(void) {}];
+//    [self.navigationController popViewControllerAnimated:YES];
     [self submitReview:nil];
 }
 

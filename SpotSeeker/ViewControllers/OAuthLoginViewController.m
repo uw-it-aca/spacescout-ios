@@ -80,8 +80,6 @@
         
         [REST setPersonalOAuthToken:[params objectForKey:@"oauth_token"] andSecret:[params objectForKey:@"oauth_token_secret"]];
         [self.delegate loginComplete];
-        
-        [self dismissViewControllerAnimated:TRUE completion:^(void) {}];
     }
 }
 
