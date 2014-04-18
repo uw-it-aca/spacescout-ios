@@ -52,7 +52,6 @@
     [self.campusPicker selectRow:selected_index inComponent:0 animated:false];
     
     UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
-    NSLog(@"Button: %@", logout_button);
     if ([REST hasPersonalOAuthToken]) {
         logout_button.hidden = FALSE;
     }
