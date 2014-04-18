@@ -36,6 +36,27 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     return stripped.length;
 }
 
+-(void)updateRemainingCharacterCountByNSString:(NSString *)text {
+    NSInteger char_count = [self reviewCharCount:text];
+    NSInteger whats_left = MAX_REVIEW_LENGTH - char_count;
+    UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
+    if (whats_left == 1) {
+        amount_left.text = [NSString stringWithFormat:@"1 character left"];
+    }
+    else {
+        amount_left.text = [NSString stringWithFormat:@"%li characters left", (long)whats_left];
+        
+    }
+    
+    if (whats_left < 1) {
+        amount_left.textColor = [UIColor redColor];
+    }
+    else {
+        amount_left.textColor = [UIColor darkGrayColor];
+    }
+
+}
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *new_text = [textView.text stringByReplacingCharactersInRange:range withString:text];
 
@@ -44,15 +65,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         return FALSE;
     }
     
-    NSInteger whats_left = MAX_REVIEW_LENGTH - char_count;
-    UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
-    if (whats_left == 1) {
-        amount_left.text = [NSString stringWithFormat:@"1 character left"];
-    }
-    else {
-        amount_left.text = [NSString stringWithFormat:@"%li characters left", (long)whats_left];
-
-    }
+    [self updateRemainingCharacterCountByNSString:new_text];
+    
     [self checkForValidReview];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -313,6 +327,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         review.text = [defaults valueForKey:review_key];
         if (![review.text isEqualToString:@""]) {
             [self hideWatermarkWithAnimation:FALSE];
+            [self updateRemainingCharacterCountByNSString:review.text];
         }
     }
     [self checkForValidReview];
