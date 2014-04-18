@@ -126,11 +126,10 @@
 }
 
 -(void) showMenuForViewController:(UIViewController *)vc {
-    
     self.view_controller = vc;
-    vc.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 
     [self quickHideMenu];
+    vc.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 
     UIImage *image = [self getBackgroundImageForViewController:vc];
     UIImage *blurred_image = [self getBlurredImageFromUIImage:image];
@@ -147,7 +146,6 @@
     
     [self.view_controller presentViewController:menu_overlay animated:NO completion:^(void) {}];
 
-    
     self.navigation_menu_view.hidden = FALSE;
 
     UIImageView *img_view = (UIImageView *)[self.navigation_menu_view viewWithTag:100];
@@ -230,7 +228,8 @@
 
 -(void)quickHideMenu {
     self.navigation_menu_view.hidden = TRUE;
-
+    // Return to full screen flip
+    self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 }
 
 -(void)favButtonTouchUp: (id)sender {
