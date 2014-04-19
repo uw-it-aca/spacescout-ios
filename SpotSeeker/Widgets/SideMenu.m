@@ -173,7 +173,7 @@
     
     frame.size.width = 0;
     img_view.frame = frame;
- 
+    shadow.frame = frame;
     menu_view.frame = frame;
 
     [menu_view setClipsToBounds:TRUE];
