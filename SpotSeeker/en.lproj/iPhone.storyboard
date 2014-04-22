@@ -529,14 +529,7 @@
                             </view>
                         </subviews>
                     </view>
-                    <navigationItem key="navigationItem" id="3ak-Ze-GTq">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="pkl-63-ssl">
-                            <color key="tintColor" red="0.34509803921568627" green="0.29019607843137252" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="btnClickCancel:" destination="85z-WW-HGT" id="MXj-G2-Xev"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="3ak-Ze-GTq"/>
                     <connections>
                         <outlet property="loading_spinner" destination="aAd-nr-r8E" id="e5M-ws-nb3"/>
                         <outlet property="searchDisplayController" destination="HGb-5r-mne" id="oPQ-m6-g56"/>
