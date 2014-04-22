@@ -48,6 +48,7 @@
 
 -(void)loginComplete {
     self.handling_login = FALSE;
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
     self.favorites_interface = [[Favorites alloc] init];
     self.favorites_interface.moving_delegate = self;
     [self.favorites_interface moveFavoritesToServerFavorites];
