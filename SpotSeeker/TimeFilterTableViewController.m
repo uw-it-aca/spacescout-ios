@@ -193,7 +193,6 @@ NSUInteger DeviceSystemMajorVersion()
 {
     if ([self hasInlineDatePicker])
     {
-        NSLog(@"Opt 1");
         // we have a date picker, so allow for it in the number of rows in this section
         return self.filterArray.count + 1;
     }
