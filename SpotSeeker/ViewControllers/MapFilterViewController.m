@@ -71,7 +71,7 @@
     float green_value = [[plist_values objectForKey:@"nav_cancel_button_color_green"] floatValue];
     float blue_value = [[plist_values objectForKey:@"nav_cancel_button_color_blue"] floatValue];
     
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
     
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSMutableArray *search_preferences = app_delegate.search_preferences;
