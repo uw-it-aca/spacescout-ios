@@ -72,8 +72,6 @@
     
     menu.tag = 101;
     
-    // Add the drop shadow
-
     
     [self.navigation_menu_view addSubview:menu];
     
