@@ -193,12 +193,12 @@ NSUInteger DeviceSystemMajorVersion()
 {
     if ([self hasInlineDatePicker])
     {
+        NSLog(@"Opt 1");
         // we have a date picker, so allow for it in the number of rows in this section
-        return self.filterArray.count + 2;
+        return self.filterArray.count + 1;
     }
     
-    // allow one for reset cell
-    return self.filterArray.count + 1;
+    return self.filterArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
