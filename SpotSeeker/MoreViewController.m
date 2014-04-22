@@ -57,6 +57,10 @@
     }
     else {
         logout_button.hidden = TRUE;
+        UIView *background = [self.view viewWithTag:400];
+        UILabel *description = (UILabel *)[self.view viewWithTag:401];
+        background.hidden = TRUE;
+        description.hidden = TRUE;
     }
 }
 
@@ -100,6 +104,7 @@
         logout_button.hidden = TRUE;
 
         [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void) {
+            [self.navigationController popViewControllerAnimated:TRUE];
         }];
     }];
 
