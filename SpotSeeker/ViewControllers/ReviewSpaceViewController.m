@@ -175,8 +175,15 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         [defaults removeObjectForKey:review_key];
         
         [self.overlay showOverlay:@"Submitted!" animateDisplay:NO afterShowBlock:^(void) {
-            [self.overlay hideOverlayAfterDelay:4.0 animateHide:NO afterHideBlock:^(void) {
-                [self.navigationController popViewControllerAnimated:YES];
+            [self.overlay hideOverlayAfterDelay:1.0 animateHide:NO afterHideBlock:^(void) {
+                NSInteger current_index = [self.navigationController.viewControllers indexOfObject:self];
+                if (current_index > 2) {
+                    UIViewController *details = [[self.navigationController viewControllers] objectAtIndex:current_index - 2];
+                    [self.navigationController popToViewController:details animated:TRUE];
+                }
+                else {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }];
         }];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
