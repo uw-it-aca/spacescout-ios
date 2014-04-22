@@ -309,8 +309,7 @@ extern const int meters_per_latitude;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"search_filter"]) {
-        UINavigationController *nav_controller = segue.destinationViewController;
-        MapFilterViewController *filter_vc = [nav_controller.childViewControllers objectAtIndex:0];
+        MapFilterViewController *filter_vc = (MapFilterViewController *)segue.destinationViewController;
         filter_vc.user_latitude = [[NSNumber alloc] initWithDouble: self.map_view.centerCoordinate.latitude];
         filter_vc.user_longitude = [[NSNumber alloc] initWithDouble: self.map_view.centerCoordinate.longitude];
         filter_vc.user_distance = [[NSNumber alloc] initWithDouble: map_view.region.span.latitudeDelta * meters_per_latitude ];

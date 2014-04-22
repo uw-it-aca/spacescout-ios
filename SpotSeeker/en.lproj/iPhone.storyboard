@@ -129,7 +129,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="azT-h2-9jt">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="yB0-za-1T3"/>
+                                <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="K9g-4O-dAk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2340,7 +2340,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="y2d-oE-VTZ">
                             <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="VMr-ab-5JP" kind="modal" identifier="search_filter" id="7BZ-SZ-G39"/>
+                                <segue destination="Uj1-TD-aQN" kind="push" identifier="search_filter" id="3L4-Ky-WWo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2394,32 +2394,6 @@
             </objects>
             <point key="canvasLocation" x="1950" y="1830"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eLz-rM-KUI">
-            <objects>
-                <navigationController id="VMr-ab-5JP" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Al9-bq-TKK"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ePh-KH-z3t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Uj1-TD-aQN" kind="relationship" relationship="rootViewController" id="i8q-Ti-Azz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AcG-2E-mXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem title="View results" id="DjR-nu-sBN">
-                    <color key="tintColor" red="0.51764705879999995" green="0.4823529412" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <action selector="btnClickSearch:" destination="Uj1-TD-aQN" id="wjI-L8-g8D"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1746" y="-1195"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Close_X_Btn.png" width="25" height="25"/>
@@ -2441,10 +2415,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yB0-za-1T3"/>
-        <segue reference="3uu-G9-i3V"/>
-        <segue reference="g4m-Tc-imM"/>
-        <segue reference="gf4-p1-rc6"/>
+        <segue reference="3L4-Ky-WWo"/>
+        <segue reference="YtI-mQ-38u"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="8o3-ZB-NEA"/>
         <segue reference="s9i-6T-63E"/>
     </inferredMetricsTieBreakers>
 </document>
