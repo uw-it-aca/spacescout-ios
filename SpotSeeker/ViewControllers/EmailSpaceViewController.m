@@ -49,9 +49,29 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 // This is so we can search though them in the autocomplete
 -(void)loadAllContacts {
     
+    // If we've been rejected, bail out quick.
+    if ( ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusNotDetermined && ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusAuthorized ) {
+        self.all_contacts = [[NSArray alloc] init];
+        return;
+    }
+        
     CFErrorRef error;
     ABAddressBookRef allPeople = ABAddressBookCreateWithOptions(nil, &error);
-//    ABAddressBookRef allPeople = ABAddressBookCreate();
+
+    // If we don't request access, the auto-complete doesn't have access.
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(allPeople, ^(bool granted, CFErrorRef error) {
+            // Since we're in a block, call ourselves again - this time it will get down to the work below
+            if (granted) {
+                [self loadAllContacts];
+            }
+            else {
+                self.all_contacts = [[NSArray alloc] init];
+                return;
+            }
+        });
+    }
+    
     CFArrayRef allContacts = ABAddressBookCopyArrayOfAllPeople(allPeople);
     CFIndex numberOfContacts  = ABAddressBookGetPersonCount(allPeople);
     
