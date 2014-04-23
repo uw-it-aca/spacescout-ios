@@ -8,9 +8,12 @@
 
 #import "SideMenu.h"
 #import "UIImage+ImageEffects.h"
+#import "FavoriteSpacesViewController.h"
+
 
 @implementation SideMenu
 @synthesize navigation_menu_view;
+@synthesize menu_view_controller;
 
 -(UIImage *)getBackgroundImageForViewController:(UIViewController *)vc {
     UIImage *image;
@@ -144,6 +147,7 @@
     }
     
     UIViewController *menu_overlay = [[UIViewController alloc] init];
+    self.menu_view_controller = menu_overlay;
 
     menu_overlay.view = self.navigation_menu_view;
     
@@ -245,10 +249,16 @@
 }
 
 -(void)favButtonTouchUp: (id)sender {
-    [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
-    }];
-    [self.view_controller performSegueWithIdentifier:@"open_favorites" sender:self.view_controller];
-    [self quickHideMenu];
+
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    FavoriteSpacesViewController *favorites = (FavoriteSpacesViewController *)[sb instantiateViewControllerWithIdentifier:@"favorites-vc"];
+
+    self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+
+    UINavigationController *nav_controller = [[UINavigationController alloc] initWithRootViewController:favorites];
+    [self.menu_view_controller presentViewController:nav_controller animated:YES completion:^(void) {}];
+
 }
 
 -(void)campusChooserButtonTouchUp: (id)sender {
@@ -305,14 +315,10 @@
     
     [mailComposer setMessageBody:string isHTML:NO];
 
+    self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     mailComposer.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
-    
-    [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
-    }];
-    [self.view_controller presentViewController:mailComposer animated:YES completion:^(void) {
-        [self quickHideMenu];
-    }];
-   
+ 
+    [self.menu_view_controller presentViewController:mailComposer animated:YES completion:^(void) {}];
 }
 
 #pragma mark - mail compose delegate

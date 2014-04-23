@@ -16,7 +16,8 @@
 @synthesize handling_login;
 
 - (IBAction)btnClickClose:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^(void) {}];
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+    }];
 }
 
 
@@ -84,8 +85,6 @@
 {
     [super viewDidLoad];
 }
-
-
 
 - (void)fetchFavorites {   
     Space *search_spot = [[Space alloc] init];

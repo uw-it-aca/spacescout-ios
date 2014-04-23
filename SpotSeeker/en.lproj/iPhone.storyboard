@@ -1967,7 +1967,7 @@
         <!--Favorite Spaces View Controller - Favorites-->
         <scene sceneID="1K6-Li-Krl">
             <objects>
-                <viewController id="H5F-cS-j3x" customClass="FavoriteSpacesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favorites-vc" id="H5F-cS-j3x" customClass="FavoriteSpacesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7HE-2P-DjD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
