@@ -231,6 +231,7 @@
 		C2B2F657153E225800292FDC /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B2F653153E225800292FDC /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2C0088915476865004AF6F7 /* REST.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0088815476865004AF6F7 /* REST.m */; };
 		C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */; };
+		C2CFEAEA19087117002AF162 /* Menu_3bars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CFEAE919087117002AF162 /* Menu_3bars@2x.png */; };
 		C2D4E31415938BAB00B594C5 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E30F15938BAB00B594C5 /* cafe.png */; };
 		C2D4E31515938BAB00B594C5 /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31015938BAB00B594C5 /* noise.png */; };
 		C2D4E31615938BAB00B594C5 /* reservable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E31115938BAB00B594C5 /* reservable.png */; };
@@ -583,6 +584,7 @@
 		C2C0088815476865004AF6F7 /* REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REST.m; path = Models/REST.m; sourceTree = "<group>"; };
 		C2CE6EA617722AA0009D1DA9 /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainListViewController.h; path = ViewControllers/MainListViewController.h; sourceTree = "<group>"; };
 		C2CE6EA717722AA0009D1DA9 /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainListViewController.m; path = ViewControllers/MainListViewController.m; sourceTree = "<group>"; };
+		C2CFEAE919087117002AF162 /* Menu_3bars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_3bars@2x.png"; sourceTree = "<group>"; };
 		C2D4E30F15938BAB00B594C5 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		C2D4E31015938BAB00B594C5 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		C2D4E31115938BAB00B594C5 /* reservable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reservable.png; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFEAE919087117002AF162 /* Menu_3bars@2x.png */,
 				C270D6BC1901F10500CFBF3D /* menu_shadow@2x.png */,
 				C270D6B81901E6CF00CFBF3D /* menu_separator@2x.png */,
 				C265A7BB18FCAA030041F8FD /* WriteReview-Pen.png */,
@@ -1439,6 +1442,7 @@
 				8940AD5815BF2EED00714AFB /* button_Next@2x.png in Resources */,
 				C265A7B218FCA2B30041F8FD /* StarRating-big_blank@2x.png in Resources */,
 				8940AD5B15BF311600714AFB /* filter_reset.png in Resources */,
+				C2CFEAEA19087117002AF162 /* Menu_3bars@2x.png in Resources */,
 				8940AD5C15BF311600714AFB /* filter_reset@2x.png in Resources */,
 				8940AD5F15BF328500714AFB /* reset_picker.png in Resources */,
 				8940AD6015BF328500714AFB /* reset_picker@2x.png in Resources */,

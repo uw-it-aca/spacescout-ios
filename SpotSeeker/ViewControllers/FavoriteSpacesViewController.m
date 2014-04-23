@@ -16,7 +16,7 @@
 @synthesize handling_login;
 
 - (IBAction)btnClickClose:(id)sender {
-    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
     }];
 }
 
