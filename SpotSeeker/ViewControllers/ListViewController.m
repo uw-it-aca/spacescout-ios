@@ -58,6 +58,8 @@
     if (self.starting_in_search) {
         [self showRunningSearchIndicator];
     }
+    
+    [self addSwipeToOpenMenu];
 	// Do any additional setup after loading the view.
 }
 

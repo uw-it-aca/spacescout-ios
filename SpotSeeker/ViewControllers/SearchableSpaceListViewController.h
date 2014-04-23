@@ -17,7 +17,7 @@
 #import "GAIFields.h"
 #import "SideMenu.h"
 
-@interface SearchableSpaceListViewController : UIViewController <SearchFinished> {
+@interface SearchableSpaceListViewController : UIViewController <SearchFinished, UIGestureRecognizerDelegate> {
     MKMapView *map_view;
     NSMutableDictionary *search_attributes;
     NSArray *current_spots;
@@ -44,6 +44,7 @@
 @property (nonatomic) Boolean starting_in_search;
 @property (nonatomic, retain) SideMenu *side_menu;
 
+-(void)addSwipeToOpenMenu;
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;
 -(void)searchCancelled;

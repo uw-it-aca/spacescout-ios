@@ -20,6 +20,9 @@
 @synthesize starting_in_search;
 @synthesize side_menu;
 
+// This should match the transparent view over the left side of the map view.
+const float SIDE_MENU_START_SWIPE = 50.0;
+
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;
 
@@ -92,6 +95,24 @@ bool first_search = false;
         }
     }
     
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+-(void)handleSwipe:(UISwipeGestureRecognizer *)gesture {
+    CGPoint location = [gesture locationInView:self.view];
+    if (location.x < SIDE_MENU_START_SWIPE) {
+        [self openNavigationMenu:nil];
+    }
+}
+
+-(void)addSwipeToOpenMenu {
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    swipe.delegate = self;
+    [self.view addGestureRecognizer:swipe];
 }
 
 -(void) searchFinished:(NSArray *)spots {
