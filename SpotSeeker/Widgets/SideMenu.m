@@ -14,6 +14,7 @@
 @implementation SideMenu
 @synthesize navigation_menu_view;
 @synthesize menu_view_controller;
+const float SWIPE_CLOSE_THRESHOLD = 0.3;
 
 -(UIImage *)getBackgroundImageForViewController:(UIViewController *)vc {
     UIImage *image;
@@ -80,7 +81,7 @@
     
 }
 
--(IBAction)logstuff:(UITapGestureRecognizer *)tapRecognizer {
+-(IBAction)closeOnOutsideTap:(UITapGestureRecognizer *)tapRecognizer {
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     if ([tapRecognizer locationInView:self.navigation_menu_view].x > menu_view.frame.size.width) {
         [self slideHideMenu];
@@ -88,12 +89,69 @@
     
 }
 
+-(IBAction)moveMenuWithFinger:(UIPanGestureRecognizer *)gesture {
+    static CGPoint first_touch;
+    CGPoint current_position;
+    
+    if (gesture.state == UIGestureRecognizerStateBegan)
+    {
+        first_touch = [gesture translationInView:gesture.view.superview];
+    }
+    else if (gesture.state == UIGestureRecognizerStateChanged) {
+        current_position = [gesture translationInView:gesture.view.superview];
+    }
+    else if (gesture.state == UIGestureRecognizerStateEnded) {
+        current_position = [gesture translationInView:gesture.view.superview];
+        float dx = current_position.x - first_touch.x;
+
+        if (-1 * dx > self.view_controller.view.frame.size.width * SWIPE_CLOSE_THRESHOLD) {
+            [self slideHideMenu];
+        }
+        else {
+            [self slideOpenMenu];
+        }
+        return;
+    }
+    else {
+        return;
+    }
+    
+    // Don't move the menu too far right!
+    float dx = current_position.x - first_touch.x;
+    if (dx > 0) {
+        dx = 0;
+    }
+    
+    CGRect frame = self.view_controller.view.frame;
+    float final_width = frame.size.width * 0.9;
+    CGRect shadow_frame = CGRectMake(self.navigation_menu_view.frame.size.width * 0.9, 0, self.navigation_menu_view.frame.size.width * 0.1, self.navigation_menu_view.frame.size.height);
+
+    frame.size.width = final_width + dx;
+    shadow_frame.origin.x = shadow_frame.origin.x + dx;
+    
+    UIImageView *img_view = (UIImageView *)[self.navigation_menu_view viewWithTag:100];
+    UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
+    UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
+    UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+    
+    img_view.frame = frame;
+    menu_view.frame = frame;
+    backing_view.frame = frame;
+    shadow.frame = shadow_frame;
+
+}
+
+
 -(void) addTouchEvents {
-    UITapGestureRecognizer *touchOnView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logstuff:)];
+    UITapGestureRecognizer *touchOnView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeOnOutsideTap:)];
     [touchOnView setNumberOfTapsRequired:1];
     [touchOnView setNumberOfTouchesRequired:1];
     [self.navigation_menu_view addGestureRecognizer:touchOnView];
- 
+
+    UIPanGestureRecognizer *panning = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveMenuWithFinger:)];
+    panning.delegate = self;
+    [self.navigation_menu_view addGestureRecognizer:panning];
+    
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     
     UIButton *fav_button = (UIButton *)[menu_view viewWithTag:301];
@@ -169,7 +227,6 @@
     background_img_view.image = image;
     
     CGRect frame = self.view_controller.view.frame;
-    float final_width = frame.size.width * 0.9;
     
     [img_view setImage:blurred_image];
     
@@ -183,8 +240,6 @@
     backing_view.frame = frame;
     [img_view setClipsToBounds:YES];
     [img_view setContentMode:UIViewContentModeLeft];
-    
-    CGRect final_frame = frame;
 
     UILabel *favs_count_label = (UILabel *)[menu_view viewWithTag:310];
 
@@ -200,36 +255,61 @@
     
     self.navigation_menu_view.hidden = FALSE;
 
-    final_frame.size.width = final_width;
     [self addTouchEvents];
 
+
+    [self slideOpenMenu];
+}
+
+-(void)slideOpenMenu {
+    UIImageView *img_view = (UIImageView *)[self.navigation_menu_view viewWithTag:100];
+    UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
+    UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
+    
+    UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+
+    CGRect frame = self.view_controller.view.frame;
+    float final_width = frame.size.width * 0.9;
+    CGRect final_frame = frame;
+    final_frame.size.width = final_width;
+
+    
     CGRect final_shadow_frame = CGRectMake(self.navigation_menu_view.frame.size.width * 0.9, 0, self.navigation_menu_view.frame.size.width * 0.1, self.navigation_menu_view.frame.size.height);
     
     [UIView animateWithDuration:0.3 delay: 0.0 options: UIViewAnimationOptionCurveEaseIn animations:^{
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
         backing_view.frame = final_frame;
-       
+        
         shadow.frame = final_shadow_frame;
-
+        
     } completion:^(BOOL finished) {
         if (finished) {
         }
     }];
-
+    
 }
 
 -(void)slideHideMenu {
     CGRect final_frame = self.view_controller.view.frame;
+    float full_width = final_frame.size.width * 0.9;
+
     final_frame.size.width = 0;
     UIView *img_view = [self.navigation_menu_view viewWithTag:100];
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
     UIView *shadow_view = [self.navigation_menu_view viewWithTag:104];
 
+    CGRect current_frame = menu_view.frame;
+    float current_width = current_frame.size.width;
+
+    float percent_open = current_width / full_width;
     
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.navigation_menu_view.frame = final_frame;
+    float full_duration = 0.3;
+    
+    float actual_duration = full_duration * percent_open;
+    
+    [UIView animateWithDuration:actual_duration delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         img_view.frame = final_frame;
         menu_view.frame = final_frame;
         backing_view.frame = final_frame;

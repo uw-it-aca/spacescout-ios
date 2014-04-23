@@ -13,7 +13,7 @@
 #import <MessageUI/MessageUI.h>
 
 
-@interface SideMenu : NSObject <MFMailComposeViewControllerDelegate> {
+@interface SideMenu : NSObject <MFMailComposeViewControllerDelegate, UIGestureRecognizerDelegate> {
 }
 
 @property (nonatomic, retain) UIView *navigation_menu_view;

@@ -54,7 +54,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         self.all_contacts = [[NSArray alloc] init];
         return;
     }
-        
+    
     CFErrorRef error;
     ABAddressBookRef allPeople = ABAddressBookCreateWithOptions(nil, &error);
 
