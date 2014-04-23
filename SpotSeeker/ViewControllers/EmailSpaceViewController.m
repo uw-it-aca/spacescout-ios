@@ -58,7 +58,9 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     NSMutableArray *contacts = [[NSMutableArray alloc] init];
    
     for(int i = 0; i < numberOfContacts; i++){
-        NSString* name = @"";
+        NSString *name = @"";
+        NSString *first_name = @"";
+        NSString *last_name = @"";
         
         ABRecordRef aPerson = CFArrayGetValueAtIndex(allContacts, i);
         ABMultiValueRef fnameProperty = ABRecordCopyValue(aPerson, kABPersonFirstNameProperty);
@@ -70,14 +72,16 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         
         if (fnameProperty != nil) {
             name = [NSString stringWithFormat:@"%@", fnameProperty];
+            first_name = [NSString stringWithFormat:@"%@", fnameProperty];
         }
         if (lnameProperty != nil) {
             name = [name stringByAppendingString:[NSString stringWithFormat:@" %@", lnameProperty]];
+            last_name = [NSString stringWithFormat:@"%@", lnameProperty];
         }
         
         if ([emailArray count] > 0) {
             for (int i = 0; i < [emailArray count]; i++) {
-                [contacts addObject:@{@"name": name, @"email": [emailArray objectAtIndex:i]}];
+                [contacts addObject:@{@"name": name, @"first_name": first_name, @"last_name": last_name, @"email": [emailArray objectAtIndex:i]}];
             }
         }
     }
@@ -108,20 +112,20 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:self.all_contacts.count];
     
     for (NSDictionary *contact in self.all_contacts) {
-        NSString *name = [contact objectForKey:@"name"];
+        NSString *last_name = [contact objectForKey:@"first_name"];
+        NSString *first_name = [contact objectForKey:@"last_name"];
         NSString *email = [contact objectForKey:@"email"];
-        
-        if ([name hasPrefix:query] || [email hasPrefix:query]) {
+
+        BOOL fname_match = ([first_name rangeOfString:query options:(NSAnchoredSearch | NSCaseInsensitiveSearch)].location == 0);
+        BOOL lname_match = ([last_name rangeOfString:query options:(NSAnchoredSearch | NSCaseInsensitiveSearch)].location == 0);
+        BOOL email_match = ([email rangeOfString:query options:(NSAnchoredSearch | NSCaseInsensitiveSearch)].location == 0);
+
+        if (fname_match || lname_match || email_match) {
             [results addObject:contact];
         }
     }
 
     return results;
-    return self.all_contacts;
-    return @[@{@"name": @"John Doe", @"email": @"example@example.com" },
-             @{@"name": @"Person 2", @"email": @"second@example.com" },
-             @{@"name": @"A 3rd", @"email": @"Why not, invalid" },
-             ];
 }
 
 -(void)hideSearchResultsMenu {
