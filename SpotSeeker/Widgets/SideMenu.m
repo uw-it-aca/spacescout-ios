@@ -9,7 +9,7 @@
 #import "SideMenu.h"
 #import "UIImage+ImageEffects.h"
 #import "FavoriteSpacesViewController.h"
-
+#import "MoreViewController.h"
 
 @implementation SideMenu
 @synthesize navigation_menu_view;
@@ -262,10 +262,13 @@
 }
 
 -(void)campusChooserButtonTouchUp: (id)sender {
-    [self.view_controller dismissViewControllerAnimated:NO completion:^(void) {
-    }];
-    [self.view_controller performSegueWithIdentifier:@"choose_campus" sender:self.view_controller];
-    [self quickHideMenu];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    MoreViewController *settings = (MoreViewController *)[sb instantiateViewControllerWithIdentifier:@"settings-vc"];
+    
+    self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+    UINavigationController *nav_controller = [[UINavigationController alloc] initWithRootViewController:settings];
+    [self.menu_view_controller presentViewController:nav_controller animated:YES completion:^(void) {}];   
 }
 
 

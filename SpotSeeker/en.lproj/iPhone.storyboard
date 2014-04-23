@@ -148,7 +148,7 @@
         <!--More View Controller-->
         <scene sceneID="pk0-Va-1Tr">
             <objects>
-                <viewController id="jBe-bo-vWh" userLabel="More View Controller" customClass="MoreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings-vc" id="jBe-bo-vWh" userLabel="More View Controller" customClass="MoreViewController" sceneMemberID="viewController">
                     <view key="view" tag="2" contentMode="scaleToFill" id="g5s-fo-TKO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -200,7 +200,21 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose Campus" id="PFD-FD-85b" colorLabel="IBBuiltInLabel-Purple"/>
+                    <navigationItem key="navigationItem" title="Choose Campus" id="PFD-FD-85b" colorLabel="IBBuiltInLabel-Purple">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hDU-ug-bWh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Irc-KK-jJ3">
+                                <rect key="frame" x="16" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnClickClose:" destination="jBe-bo-vWh" eventType="touchUpInside" id="lsG-eO-FXX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="campusPicker" destination="u8E-pe-t9A" id="asE-97-ZTD"/>
                     </connections>
@@ -2409,8 +2423,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3L4-Ky-WWo"/>
+        <segue reference="gf4-p1-rc6"/>
         <segue reference="YtI-mQ-38u"/>
-        <segue reference="8o3-ZB-NEA"/>
         <segue reference="ehC-Lb-oxn"/>
         <segue reference="s9i-6T-63E"/>
     </inferredMetricsTieBreakers>

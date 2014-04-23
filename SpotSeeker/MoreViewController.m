@@ -84,6 +84,12 @@
     return campus.name;
 }
 
+- (IBAction)btnClickClose:(id)sender {
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+    }];
+}
+
+
 -(void)logoutButtonTouchUp: (id)sender {
     [REST removePersonalOAuthToken];
     NSHTTPCookie *cookie;

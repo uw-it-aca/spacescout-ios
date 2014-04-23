@@ -18,5 +18,7 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 
 -(IBAction)logoutButtonTouchUp:(id)sender;
+-(IBAction) btnClickClose:(id)sender;
+
 
 @end
