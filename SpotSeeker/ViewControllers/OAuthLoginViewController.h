@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Security/Security.h>
 #import "KeychainItemWrapper.h"
+#import "SBJson.h"
 #import "REST.h"
 
 @protocol OAuthLogin;

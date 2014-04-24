@@ -180,6 +180,10 @@
 }
 
 +(void)removePersonalOAuthToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"current_user_login"];
+    [defaults removeObjectForKey:@"current_user_email"];
+
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"spacescout" accessGroup:nil];
     [wrapper resetKeychainItem];
 }

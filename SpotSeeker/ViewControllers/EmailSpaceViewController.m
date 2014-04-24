@@ -47,9 +47,17 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"current_user_email"]) {
+        UITextView *from = (UITextView *)[self.view viewWithTag:102];
+        [from setText: [defaults objectForKey:@"current_user_email"]];
+    }
+    
     // Make this act like the email app - start with the to: focused
     UITextField *to = (UITextField *)[self.view viewWithTag:100];
     [to becomeFirstResponder];
+    
+    [super viewDidAppear:animated];
 }
 
 // This is so we can search though them in the autocomplete
@@ -408,6 +416,8 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     [self setHasValidEmail];
     [self drawEmailAddresses];
+    [self validateForm];
+
 }
 
 -(void)removeEmailAddress: (NSString *)email {
@@ -420,6 +430,20 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     [self setHasValidEmail];
     [self drawEmailAddresses];
+    [self validateForm];
+}
+
+-(void)validateForm {
+    NSString *from = ((UITextField *)[self.view viewWithTag:102]).text;
+    [self setHasValidEmail];
+
+    UIBarButtonItem *send_button = self.navigationItem.rightBarButtonItem;
+    if ([self isValidEmail:from] && self.has_valid_to_email) {
+        send_button.enabled = TRUE;
+    }
+    else {
+        send_button.enabled = FALSE;
+    }
 }
 
 #pragma mark - Methods for the display of the email list, with styles
@@ -832,6 +856,10 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     // Make it so we don't double send - the overlay doesn't cover the send button
     self.is_sending_email = TRUE;
+
+    // If someone set a new from email, let's stash that away for the future
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:from_value forKey:@"current_user_email"];
     
     NSDictionary *data = @{@"to": [self email_list],
                                   @"comment": [content text],

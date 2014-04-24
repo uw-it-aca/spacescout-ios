@@ -75,11 +75,26 @@
         NSURLRequest *auth_request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [self.auth_web_view loadRequest:auth_request];
     }
+    else if ([url rangeOfString:@"user/me"].length > 0) {
+        
+        if (request.responseStatusCode == 200) {
+            SBJsonParser *parser = [[SBJsonParser alloc] init];
+            NSDictionary *personal_data = [parser objectWithData:[request responseData]];
+
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:[personal_data objectForKey:@"user"] forKey:@"current_user_login"];
+            [defaults setObject:[personal_data objectForKey:@"email"] forKey:@"current_user_email"];
+        }
+       
+        [self.delegate loginComplete];
+        
+    }
     else {
         NSDictionary *params = [self dictionaryFromParamsString:[request responseString]];
         
         [REST setPersonalOAuthToken:[params objectForKey:@"oauth_token"] andSecret:[params objectForKey:@"oauth_token_secret"]];
-        [self.delegate loginComplete];
+        
+        [self.rest getURL:@"/api/v1/user/me"];
     }
 }
 
