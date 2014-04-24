@@ -387,10 +387,8 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 -(void)addEmailFromSearchSelection:(NSString *)email {
     UITextFieldWithKeypress *textField = (UITextFieldWithKeypress *)[self.view viewWithTag:100];
     textField.text = @"";
-    
-    UITableView *matches = (UITableView *)[self.view viewWithTag:SEARCH_TABLE_TAG];
-    matches.hidden = TRUE;
-    
+
+    [self hideSearchResultsMenu];
     [self addEmailAddress:email];
     [textField becomeFirstResponder];
 }
