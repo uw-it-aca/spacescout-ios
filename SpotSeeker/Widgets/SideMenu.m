@@ -10,6 +10,7 @@
 #import "UIImage+ImageEffects.h"
 #import "FavoriteSpacesViewController.h"
 #import "MoreViewController.h"
+#import "MainListViewController.h"
 
 @implementation SideMenu
 @synthesize navigation_menu_view;
@@ -96,6 +97,12 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     if (gesture.state == UIGestureRecognizerStateBegan)
     {
         first_touch = [gesture translationInView:gesture.view.superview];
+        
+        UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+
+        [UIView animateWithDuration:0.2 animations:^(void) {
+            shadow.alpha = 0.0;
+        }];
     }
     else if (gesture.state == UIGestureRecognizerStateChanged) {
         current_position = [gesture translationInView:gesture.view.superview];
@@ -108,7 +115,12 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
             [self slideHideMenu];
         }
         else {
-            [self slideOpenMenu];
+            UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+            [UIView animateWithDuration:0.05 animations:^(void) {
+                shadow.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                [self slideOpenMenu];
+            }];
         }
         return;
     }
@@ -158,8 +170,14 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     UIButton *logout_button = (UIButton *)[menu_view viewWithTag:302];
     UIButton *campus_chooser = (UIButton *)[menu_view viewWithTag:303];
     UIButton *suggest_space = (UIButton *)[menu_view viewWithTag:304];
+    UIButton *icon_button = (UIButton *)[menu_view viewWithTag:1300];
 
-   
+    [icon_button removeTarget:nil
+                      action:NULL
+            forControlEvents:UIControlEventAllEvents];
+    
+    [icon_button addTarget:self action:@selector(homeButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
+    
     [fav_button removeTarget:nil
                       action:NULL
             forControlEvents:UIControlEventAllEvents];
@@ -179,6 +197,13 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     
     [campus_chooser addTarget:self action:@selector(campusChooserButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
 
+    [campus_chooser removeTarget:nil
+                          action:NULL
+                forControlEvents:UIControlEventAllEvents];
+    
+    [campus_chooser addTarget:self action:@selector(campusChooserButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
+
+    
     if (![MFMailComposeViewController canSendMail]) {
         suggest_space.enabled = FALSE;
     }
@@ -267,6 +292,8 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     
     UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
+    // This is needed because swipe to close hides the shadow as step 1
+    shadow.alpha = 1.0;
 
     CGRect frame = self.view_controller.view.frame;
     float final_width = frame.size.width * 0.9;
@@ -360,6 +387,17 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     
     [self presentViewController:settings];
+}
+
+-(void)homeButtonTouchUp:(id)sender {
+    NSLog(@"VC: %@", self.view_controller);
+    
+    if ([self.view_controller isMemberOfClass:[MainListViewController class]]) {
+        [self.view_controller performSegueWithIdentifier:@"spot_map" sender:self.view_controller];
+    }
+    
+    [self.view_controller dismissViewControllerAnimated:YES completion:^(void) {}];
+//    [self.view_controller.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)logoutButtonTouchUp: (id)sender {
