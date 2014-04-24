@@ -955,7 +955,7 @@
         [self.favorite_button setTitle:@"Favorite" forState:UIControlStateNormal];
         spot.is_favorite = false;
         [self.favorites removeServerFavorite:spot];
-        [self.overlay showOverlay:@"Removed" animateDisplay:YES afterShowBlock:^(void) {}];
+        [self.overlay showOverlay:@"Unfavorited" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     else {
@@ -964,7 +964,7 @@
 
         spot.is_favorite = true;
         [self.favorites addServerFavorite:spot];
-        [self.overlay showOverlay:@"Saved" animateDisplay:YES afterShowBlock:^(void) {}];
+        [self.overlay showOverlay:@"Favorited" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     [self.overlay hideOverlayAfterDelay:0.5 animateHide:YES afterHideBlock:^(void){}];
