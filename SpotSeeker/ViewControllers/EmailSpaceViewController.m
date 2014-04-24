@@ -42,8 +42,14 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     room_label.text = self.space.name;
     building_label.text = [NSString stringWithFormat:@"%@, %@", space.building_name, space.floor];
-    
+
     [self loadAllContacts];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    // Make this act like the email app - start with the to: focused
+    UITextField *to = (UITextField *)[self.view viewWithTag:100];
+    [to becomeFirstResponder];
 }
 
 // This is so we can search though them in the autocomplete
@@ -327,8 +333,15 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     
     UITableViewCell *cell = (UITableViewCell *)parent;
     NSIndexPath *path = [self.tableView indexPathForCell:cell];
-    
-    [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+
+    // Keep some stuff above the text input visible, to make it more clear you can scroll back up.
+    if (path.row == 4) {
+//        [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    else {
+        [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -763,10 +776,17 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
             break;
     }
 
-    // Scrolling the static content cell up into view is weird, so don't do it.
-    if (indexPath.row != 3) {
-        [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+    // Keep some stuff above the text input visible, to make it more clear you can scroll back up.
+    if (indexPath.row == 4) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
+    // Scrolling the static content cell up into view is weird, so don't do it.
+
+    else if (indexPath.row != 3) {
+        [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -831,7 +851,6 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
-    NSLog(@"Body: %@", [request responseString]);
     [self.overlay showOverlay:@"Email sent!" animateDisplay:NO afterShowBlock:^(void) {}];
     [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
 
