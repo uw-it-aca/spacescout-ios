@@ -113,9 +113,10 @@
                                 <rect key="frame" x="142" y="170" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" id="8Ud-wn-Cww">
-                                <rect key="frame" x="0.0" y="65" width="50" height="423"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                            <view contentMode="scaleToFill" id="aZ4-Ou-VUq">
+                                <rect key="frame" x="0.0" y="59" width="50" height="425"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -2423,10 +2424,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3L4-Ky-WWo"/>
-        <segue reference="YtI-mQ-38u"/>
-        <segue reference="8o3-ZB-NEA"/>
-        <segue reference="ehC-Lb-oxn"/>
+        <segue reference="K9g-4O-dAk"/>
+        <segue reference="3uu-G9-i3V"/>
+        <segue reference="gf4-p1-rc6"/>
+        <segue reference="g4m-Tc-imM"/>
         <segue reference="s9i-6T-63E"/>
     </inferredMetricsTieBreakers>
 </document>

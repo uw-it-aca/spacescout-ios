@@ -329,16 +329,28 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
 }
 
 -(void)favButtonTouchUp: (id)sender {
-
-    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
     FavoriteSpacesViewController *favorites = (FavoriteSpacesViewController *)[sb instantiateViewControllerWithIdentifier:@"favorites-vc"];
 
     self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-    UINavigationController *nav_controller = [[UINavigationController alloc] initWithRootViewController:favorites];
-    [self.menu_view_controller presentViewController:nav_controller animated:YES completion:^(void) {}];
+    [self presentViewController:favorites];
+}
 
+-(void)presentViewController:(UIViewController *)vc {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction =
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromRight;
+    
+    // NSLog(@"%s: self.view.window=%@", _func_, self.view.window);
+    UIView *containerView = self.view_controller.view.window;
+    [containerView.layer addAnimation:transition forKey:nil];
+
+    UINavigationController *nav_controller = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.menu_view_controller presentViewController:nav_controller animated:NO completion:^(void) {}];
 }
 
 -(void)campusChooserButtonTouchUp: (id)sender {
@@ -347,10 +359,8 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     
     self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     
-    UINavigationController *nav_controller = [[UINavigationController alloc] initWithRootViewController:settings];
-    [self.menu_view_controller presentViewController:nav_controller animated:YES completion:^(void) {}];   
+    [self presentViewController:settings];
 }
-
 
 -(void)logoutButtonTouchUp: (id)sender {
     [REST removePersonalOAuthToken];
@@ -399,7 +409,6 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     [mailComposer setMessageBody:string isHTML:NO];
 
     self.view_controller.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    mailComposer.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
  
     [self.menu_view_controller presentViewController:mailComposer animated:YES completion:^(void) {}];
 }

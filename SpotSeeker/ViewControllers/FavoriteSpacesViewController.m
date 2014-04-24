@@ -16,7 +16,18 @@
 @synthesize handling_login;
 
 - (IBAction)btnClickClose:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction =
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromLeft;
+    
+    // NSLog(@"%s: controller.view.window=%@", _func_, controller.view.window);
+    UIView *containerView = self.view.window;
+    [containerView.layer addAnimation:transition forKey:nil];
+
+    [self.presentingViewController dismissViewControllerAnimated:NO completion:^(void) {
     }];
 }
 
