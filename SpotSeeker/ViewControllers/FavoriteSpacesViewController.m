@@ -31,6 +31,11 @@
     }];
 }
 
+#pragma mark - override swipe behavior
+
+-(void)handleSwipe:(UISwipeGestureRecognizer *)gesture {
+    [self btnClickClose:nil];
+}
 
 #pragma mark -
 #pragma mark load spots

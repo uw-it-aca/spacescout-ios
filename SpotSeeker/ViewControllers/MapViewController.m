@@ -413,8 +413,6 @@ extern const int meters_per_latitude;
         [map_view setShowsUserLocation:YES];
         self.from_list = [NSNumber numberWithBool:false];        
     }
-    
-    [self addSwipeToOpenMenu];
 }
 
 -(void)clearFromList:(NSTimer *)timer {

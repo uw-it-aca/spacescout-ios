@@ -62,6 +62,10 @@
         background.hidden = TRUE;
         description.hidden = TRUE;
     }
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(btnClickClose:)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipe];
 }
 
 - (void)didReceiveMemoryWarning
