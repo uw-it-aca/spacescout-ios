@@ -98,11 +98,6 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     {
         first_touch = [gesture translationInView:gesture.view.superview];
         
-        UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
-
-        [UIView animateWithDuration:0.2 animations:^(void) {
-            shadow.alpha = 0.0;
-        }];
     }
     else if (gesture.state == UIGestureRecognizerStateChanged) {
         current_position = [gesture translationInView:gesture.view.superview];
@@ -115,12 +110,7 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
             [self slideHideMenu];
         }
         else {
-            UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
-            [UIView animateWithDuration:0.05 animations:^(void) {
-                shadow.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                [self slideOpenMenu];
-            }];
+            [self slideOpenMenu];
         }
         return;
     }
@@ -138,6 +128,15 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     float final_width = frame.size.width * 0.9;
     CGRect shadow_frame = CGRectMake(self.navigation_menu_view.frame.size.width * 0.9, 0, self.navigation_menu_view.frame.size.width * 0.1, self.navigation_menu_view.frame.size.height);
 
+    float percent_at_clear = 0.7;
+    float position_at_clear = final_width * percent_at_clear;
+    float percent_alpha = dx / final_width * percent_at_clear;
+    
+    percent_alpha = (final_width + dx - position_at_clear) / (final_width * (1 - percent_at_clear));
+    
+    if (percent_alpha < 0) {
+        percent_alpha = 0;
+    }
     frame.size.width = final_width + dx;
     shadow_frame.origin.x = shadow_frame.origin.x + dx;
     
@@ -145,7 +144,8 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     UIView *backing_view = [self.navigation_menu_view viewWithTag:103];
     UIView *menu_view = [self.navigation_menu_view viewWithTag:101];
     UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
-    
+
+    shadow.alpha = percent_alpha;
     img_view.frame = frame;
     menu_view.frame = frame;
     backing_view.frame = frame;
@@ -293,7 +293,6 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     
     UIImageView *shadow = (UIImageView *)[self.navigation_menu_view viewWithTag:104];
     // This is needed because swipe to close hides the shadow as step 1
-    shadow.alpha = 1.0;
 
     CGRect frame = self.view_controller.view.frame;
     float final_width = frame.size.width * 0.9;
@@ -309,7 +308,8 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
         backing_view.frame = final_frame;
         
         shadow.frame = final_shadow_frame;
-        
+        shadow.alpha = 1.0;
+
     } completion:^(BOOL finished) {
         if (finished) {
         }
