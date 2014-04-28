@@ -18,6 +18,7 @@
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) Space *space;
 @property (nonatomic, retain) NSArray *reviews;
+@property (nonatomic) BOOL loading;
 
 @end
 

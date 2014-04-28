@@ -526,10 +526,10 @@
 
     if ([self.spot.extended_info valueForKey:@"review_count"]) {
         // Decision on Apr/11/2014 - round up rating to int star value
-        int aggregate_rating = ceilf([[self.spot.extended_info valueForKey:@"aggregate_rating"] floatValue]);
+        int aggregate_rating = ceilf([[self.spot.extended_info valueForKey:@"rating"] floatValue]);
         
         NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%i_fill.png", aggregate_rating];
-        NSString *title_str = [NSString stringWithFormat:@"(%@)", [self.spot.extended_info valueForKey:@"review_count"]];
+        NSString *title_str = [NSString stringWithFormat:@"(%li)", (long)[[self.spot.extended_info valueForKey:@"review_count"] integerValue]];
         
         [see_reviews setTitle:title_str forState:UIControlStateNormal];
         [see_reviews setTitle:title_str forState:UIControlStateSelected];

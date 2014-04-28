@@ -33,6 +33,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.loading = TRUE;
     [self drawHeader];
     
     self.rest = [[REST alloc] init];
@@ -59,7 +60,9 @@ const float EXTRA_REVIEW_PADDING = 20.0;
             NSDate *date_obj = [dateFormatter dateFromString:[review objectForKey:@"date_submitted"]];
             [review setObject:date_obj forKey:@"date_object"];
         }
+        self.loading = FALSE;
         [self.tableView reloadData];
+    
         if (self.reviews.count == 0) {
             self.tableView.scrollEnabled = FALSE;
         }
@@ -92,6 +95,9 @@ const float EXTRA_REVIEW_PADDING = 20.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.loading) {
+        return 0;
+    }
     // Return 1 if there are no reviews, so we can show the no reviews cell
     NSInteger count = [reviews count];
     if (count > 0) {
@@ -163,7 +169,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     int aggregate_rating = 0;
     int review_count = 0;
     if ([self.space.extended_info valueForKey:@"review_count"]) {
-        aggregate_rating = ceilf([[self.space.extended_info valueForKey:@"aggregate_rating"] floatValue]);
+        aggregate_rating = ceilf([[self.space.extended_info valueForKey:@"rating"] floatValue]);
         review_count = [[self.space.extended_info valueForKey:@"review_count"] intValue];
     }
     
