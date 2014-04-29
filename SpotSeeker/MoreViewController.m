@@ -143,4 +143,10 @@
     [Campus setNextCampus: campus];
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 @end

@@ -260,6 +260,7 @@
 		C2FB9EDE18F8A6BF0068BD09 /* Fav_YellowHeart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FB9EDA18F8A6BF0068BD09 /* Fav_YellowHeart@2x.png */; };
 		C2FB9EE118F8B6DC0068BD09 /* Fav_BlankHeart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FB9EDF18F8B6DC0068BD09 /* Fav_BlankHeart@2x.png */; };
 		C2FB9EE218F8B6DC0068BD09 /* Fav_BlankHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FB9EE018F8B6DC0068BD09 /* Fav_BlankHeart.png */; };
+		C2FC51421910323300472D4E /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FC51411910323300472D4E /* SideMenuViewController.m */; };
 		C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB0E5150A802D00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB0E7150A802D00ED3A93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */; };
@@ -620,6 +621,8 @@
 		C2FB9EDA18F8A6BF0068BD09 /* Fav_YellowHeart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fav_YellowHeart@2x.png"; sourceTree = "<group>"; };
 		C2FB9EDF18F8B6DC0068BD09 /* Fav_BlankHeart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fav_BlankHeart@2x.png"; sourceTree = "<group>"; };
 		C2FB9EE018F8B6DC0068BD09 /* Fav_BlankHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fav_BlankHeart.png; sourceTree = "<group>"; };
+		C2FC51401910323300472D4E /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
+		C2FC51411910323300472D4E /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB0E2150A802D00ED3A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C2FDB0E4150A802D00ED3A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -812,6 +815,8 @@
 				C21CBD3118EB7A56005C5FCB /* ReviewSpaceViewController.m */,
 				C21CBD3318EB84BE005C5FCB /* SpaceReviewsViewController.h */,
 				C21CBD3418EB84BE005C5FCB /* SpaceReviewsViewController.m */,
+				C2FC51401910323300472D4E /* SideMenuViewController.h */,
+				C2FC51411910323300472D4E /* SideMenuViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1567,6 +1572,7 @@
 				C2A2A169156EA250004781F6 /* SearchableSpaceListViewController.m in Sources */,
 				C2A2A16D156EAD72004781F6 /* FavoriteSpacesViewController.m in Sources */,
 				C26EAA23156EE32600632C78 /* SpaceClusterViewController.m in Sources */,
+				C2FC51421910323300472D4E /* SideMenuViewController.m in Sources */,
 				C22FB45D15826CC6005D6BD5 /* SearchableIndexedTableFilterViewController.m in Sources */,
 				C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */,
 				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,

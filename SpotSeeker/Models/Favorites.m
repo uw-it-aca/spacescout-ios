@@ -33,7 +33,7 @@
         }
         [self.delegate isFavorite:false];
     }
-        
+    
     if ([[request requestMethod] isEqualToString:@"PUT"] || [[request requestMethod] isEqualToString:@"DELETE"]) {
 
         [self.saving_delegate favoriteSaved];

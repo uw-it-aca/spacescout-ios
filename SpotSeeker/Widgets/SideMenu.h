@@ -11,6 +11,7 @@
 #import "Favorites.h"
 #import "Contact.h"
 #import <MessageUI/MessageUI.h>
+#import "SideMenuViewController.h"
 
 
 @interface SideMenu : NSObject <MFMailComposeViewControllerDelegate, UIGestureRecognizerDelegate> {

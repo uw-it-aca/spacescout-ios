@@ -251,7 +251,7 @@ const float SIDE_MENU_START_SWIPE = 50.0;
     
     [self buildViews];
     
-    UIViewController *menu_overlay = [[UIViewController alloc] init];
+    UIViewController *menu_overlay = [[SideMenuViewController alloc] init];
     self.menu_view_controller = menu_overlay;
 
     menu_overlay.view = self.navigation_menu_view;
