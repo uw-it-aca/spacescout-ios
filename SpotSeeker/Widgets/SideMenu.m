@@ -96,8 +96,21 @@ const float SIDE_MENU_START_SWIPE = 50.0;
     base_img_view.tag = 100;
     base_img_view.alpha = 0.8;
     
-    // Has the actual menu items
-    UIView *menu = [[[NSBundle mainBundle] loadNibNamed:@"NavigationMenu" owner:self options:nil] objectAtIndex:0];
+
+    UIView *menu;
+    // Need to do the 3.5 vs 4 inch check.  Constraints-based positioning wasn't working in the xib
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480) {
+            menu = [[[NSBundle mainBundle] loadNibNamed:@"NavigationMenu" owner:self options:nil] objectAtIndex:1];
+            
+        }
+        else {
+            // hopefully this will work when another size comes along...
+            menu = [[[NSBundle mainBundle] loadNibNamed:@"NavigationMenu" owner:self options:nil] objectAtIndex:0];
+        }
+    }
     menu.clipsToBounds = TRUE;
     
     menu.tag = 101;
