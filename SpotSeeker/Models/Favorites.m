@@ -13,7 +13,7 @@
 @synthesize rest;
 @synthesize moving_to_server;
 @synthesize moving_delegate;
-
+@synthesize saving_delegate;
 
 -(void) getIsFavorite:(Space *)space {
     REST *_rest = [[REST alloc] init];
@@ -32,6 +32,11 @@
             return;
         }
         [self.delegate isFavorite:false];
+    }
+        
+    if ([[request requestMethod] isEqualToString:@"PUT"] || [[request requestMethod] isEqualToString:@"DELETE"]) {
+
+        [self.saving_delegate favoriteSaved];
     }
     
     if (self.moving_to_server) {

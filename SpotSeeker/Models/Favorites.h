@@ -12,6 +12,7 @@
 
 @protocol IsFavorite;
 @protocol MovingFavorites;
+@protocol SaveFavorite;
 
 @interface Favorites : NSObject <RESTFinished> {
     id <IsFavorite> delegate;
@@ -23,6 +24,7 @@
 @property (retain, nonatomic) REST *rest;
 @property (nonatomic) BOOL moving_to_server;
 @property (nonatomic, retain) id <MovingFavorites> moving_delegate;
+@property (nonatomic, retain) id <SaveFavorite> saving_delegate;
 
 - (void) getIsFavorite: (Space *)space;
 
@@ -54,3 +56,9 @@
 -(void)movingFinished;
 
 @end
+
+@protocol SaveFavorite <NSObject>;
+
+-(void)favoriteSaved;
+
+@end;

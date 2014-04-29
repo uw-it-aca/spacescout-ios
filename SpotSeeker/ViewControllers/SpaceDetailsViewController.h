@@ -32,7 +32,7 @@
 #import "OverlayMessage.h"
 #import <math.h>
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin, SaveFavorite> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;

@@ -943,6 +943,7 @@
 -(void) setServerFavoriteValue {
     if (!self.favorites) {
         self.favorites = [[Favorites alloc] init];
+        self.favorites.saving_delegate = self;
     }
     
     if (!self.overlay) {
@@ -950,6 +951,7 @@
         [self.overlay addTo:self.view];
     }
 
+    self.favorite_button.enabled = FALSE;
     if (spot.is_favorite) {
         [self.favorite_button setImage:[UIImage imageNamed:@"Fav_BlankHeart.png"] forState:UIControlStateNormal];
         [self.favorite_button setTitle:@"Favorite" forState:UIControlStateNormal];
@@ -971,6 +973,10 @@
     // This prevents a problem where going back to the list, then searching, in less than the FAVORITES_REFRESH_INTERVAL results
     // in the wrong value when coming back to the space
     [Space clearFavoritesCache];
+}
+
+-(void)favoriteSaved {
+    self.favorite_button.enabled = TRUE;
 }
 
 #pragma mark -
