@@ -11,6 +11,8 @@
 #import "Favorites.h"
 #import "ListViewController.h"
 #import "OAuthLoginViewController.h"
+#import "SideMenu.h"
+
 
 @interface FavoriteSpacesViewController : ListViewController <UITableViewDelegate, UITableViewDataSource, SearchFinished, OAuthLogin, MovingFavorites> {
     NSArray *favorites;
@@ -22,5 +24,6 @@
 @property (nonatomic, retain) IBOutlet UIView *no_favorites;
 @property (nonatomic) BOOL handling_login;
 @property (nonatomic, retain) Favorites *favorites_interface;
+@property (nonatomic, retain) SideMenu *side_menu;
 
 @end

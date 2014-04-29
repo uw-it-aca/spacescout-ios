@@ -19,8 +19,11 @@
 @property (nonatomic, retain) UIView *navigation_menu_view;
 @property (nonatomic, retain) UIViewController *view_controller;
 @property (nonatomic, retain) UIViewController *menu_view_controller;
+@property (nonatomic, retain) UIView *view;
 
--(void)showMenuForViewController:(UIViewController *)vc;
+-(void)showMenu;
 -(IBAction)favButtonTouchUp: (id)sender;
+-(void)addSwipeToOpenMenuToView: (UIView *)view;
+-(void)setOpeningViewController: (UIViewController *)vc;
 
 @end

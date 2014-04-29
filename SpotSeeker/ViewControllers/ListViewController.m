@@ -43,6 +43,7 @@
 {
     [super viewDidLoad];
     
+    [self.side_menu addSwipeToOpenMenuToView:self.view];
     // Get GA tracker
     id tracker = [GAI sharedInstance].defaultTracker;
     NSString *className = [NSString stringWithFormat:@"List View (%@)", self.class];
@@ -59,7 +60,6 @@
         [self showRunningSearchIndicator];
     }
     
-    [self addSwipeToOpenMenu];
 	// Do any additional setup after loading the view.
 }
 

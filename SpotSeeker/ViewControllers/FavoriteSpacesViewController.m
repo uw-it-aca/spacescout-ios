@@ -15,20 +15,8 @@
 @synthesize no_favorites;
 @synthesize handling_login;
 
-- (IBAction)btnClickClose:(id)sender {
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.35;
-    transition.timingFunction =
-    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn;
-    transition.subtype = kCATransitionFromLeft;
-    
-    // NSLog(@"%s: controller.view.window=%@", _func_, controller.view.window);
-    UIView *containerView = self.view.window;
-    [containerView.layer addAnimation:transition forKey:nil];
-
-    [self.presentingViewController dismissViewControllerAnimated:NO completion:^(void) {
-    }];
+- (IBAction)btnClickClose:(id)sender {   
+    [self.side_menu showMenu];
 }
 
 #pragma mark - override swipe behavior
@@ -56,6 +44,7 @@
 #pragma mark oauth login protocol
 
 -(void)backButtonPressed:(id)sender {
+    NSLog(@"Back?");
 }
 
 -(void)loginCancelled {
@@ -100,6 +89,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.side_menu = [[SideMenu alloc] init];
+    [self.side_menu setOpeningViewController:self];
+    [self.side_menu addSwipeToOpenMenuToView:self.view];
 }
 
 - (void)fetchFavorites {   

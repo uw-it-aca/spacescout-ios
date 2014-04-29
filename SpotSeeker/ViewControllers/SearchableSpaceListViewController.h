@@ -44,7 +44,6 @@
 @property (nonatomic) Boolean starting_in_search;
 @property (nonatomic, retain) SideMenu *side_menu;
 
--(void)addSwipeToOpenMenu;
 -(void)runSearchWithAttributes:(NSMutableDictionary *)attributes;
 -(void)showFoundSpaces;
 -(void)searchCancelled;

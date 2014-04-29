@@ -29,6 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.side_menu = [[SideMenu alloc] init];
+    [self.side_menu setOpeningViewController:self];
+    [self.side_menu addSwipeToOpenMenuToView:self.view];
+
     self.campusPicker.delegate = self;
     self.campusPicker.dataSource = self;
 
@@ -89,19 +94,7 @@
 }
 
 - (IBAction)btnClickClose:(id)sender {
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.35;
-    transition.timingFunction =
-    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn;
-    transition.subtype = kCATransitionFromLeft;
-    
-    // NSLog(@"%s: controller.view.window=%@", _func_, controller.view.window);
-    UIView *containerView = self.view.window;
-    [containerView.layer addAnimation:transition forKey:nil];
-
-    [self.presentingViewController dismissViewControllerAnimated:NO completion:^(void) {
-    }];
+    [self.side_menu showMenu];
 }
 
 

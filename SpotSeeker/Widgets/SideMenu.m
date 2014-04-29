@@ -15,7 +15,32 @@
 @implementation SideMenu
 @synthesize navigation_menu_view;
 @synthesize menu_view_controller;
+@synthesize view;
 const float SWIPE_CLOSE_THRESHOLD = 0.3;
+const float SIDE_MENU_START_SWIPE = 50.0;
+
+-(void)setOpeningViewController:(UIViewController *)vc {
+    self.view_controller = vc;
+}
+
+-(void)addSwipeToOpenMenuToView:(UIView *)_view {
+    self.view = _view;
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [view addGestureRecognizer:swipe];
+}
+
+-(void)handleSwipe:(UISwipeGestureRecognizer *)gesture {
+    CGPoint location = [gesture locationInView:self.view];
+    if (location.x < SIDE_MENU_START_SWIPE) {
+        [self openNavigationMenu:nil];
+    }
+}
+
+-(IBAction)openNavigationMenu:(id)sender {
+    [self showMenu];
+}
+
 
 -(UIImage *)getBackgroundImageForViewController:(UIViewController *)vc {
     UIImage *image;
@@ -216,25 +241,20 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
     }
 }
 
--(void) showMenuForViewController:(UIViewController *)vc {
-    self.view_controller = vc;
-
+-(void) showMenu {
+    UIViewController *vc = self.view_controller;
     [self quickHideMenu];
     vc.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 
     UIImage *image = [self getBackgroundImageForViewController:vc];
     UIImage *blurred_image = [self getBlurredImageFromUIImage:image];
     
-    if (!self.navigation_menu_view) {
-        [self buildViews];
-    }
+    [self buildViews];
     
     UIViewController *menu_overlay = [[UIViewController alloc] init];
     self.menu_view_controller = menu_overlay;
 
     menu_overlay.view = self.navigation_menu_view;
-    
-//    [self.view_controller.navigationController.view addSubview:self.navigation_menu_view];
     
     [self.view_controller presentViewController:menu_overlay animated:NO completion:^(void) {}];
 
@@ -356,6 +376,10 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
 }
 
 -(void)favButtonTouchUp: (id)sender {
+    if ([self.view_controller isKindOfClass:[FavoriteSpacesViewController class]]) {
+        [self slideHideMenu];
+        return;
+    }
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
     FavoriteSpacesViewController *favorites = (FavoriteSpacesViewController *)[sb instantiateViewControllerWithIdentifier:@"favorites-vc"];
 
@@ -381,6 +405,11 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
 }
 
 -(void)campusChooserButtonTouchUp: (id)sender {
+    if ([self.view_controller isKindOfClass:[MoreViewController class]]) {
+        [self slideHideMenu];
+        return;
+    }
+
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
     MoreViewController *settings = (MoreViewController *)[sb instantiateViewControllerWithIdentifier:@"settings-vc"];
     
@@ -390,14 +419,50 @@ const float SWIPE_CLOSE_THRESHOLD = 0.3;
 }
 
 -(void)homeButtonTouchUp:(id)sender {
-    NSLog(@"VC: %@", self.view_controller);
+    if ([self.view_controller isKindOfClass:[MapViewController class]]) {
+        [self slideHideMenu];
+        return;
+    }
+    if ([self.view_controller isKindOfClass:[MainListViewController class]]) {
+        [self slideHideMenu];
+        return;
+    }
+
     
-    if ([self.view_controller isMemberOfClass:[MainListViewController class]]) {
-        [self.view_controller performSegueWithIdentifier:@"spot_map" sender:self.view_controller];
+    UIViewController *root;
+    
+    UIViewController *next;
+    UIViewController *current = self.view_controller;
+    
+    while (nil != current) {
+        root = current;
+        next = current.parentViewController;
+        if (nil == next) {
+            next = current.presentingViewController;
+        }
+        current = next;
+        
+        // XXX - this isn't really a great approach, but without this check, if someone's
+        // started from the list view, closing the menu will take you to the map view, with
+        // the segment controller in the wrong state.
+        UISegmentedControl *segments = (UISegmentedControl *)[root.view viewWithTag:5000];
+        if (nil != segments) {
+            current = nil;
+        }
     }
     
-    [self.view_controller dismissViewControllerAnimated:YES completion:^(void) {}];
-//    [self.view_controller.navigationController popToRootViewControllerAnimated:YES];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction =
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromRight;
+    
+    UIView *containerView = self.view.window;
+    [containerView.layer addAnimation:transition forKey:nil];
+
+    [root dismissViewControllerAnimated:YES completion:^(void) {}];
 }
 
 -(void)logoutButtonTouchUp: (id)sender {

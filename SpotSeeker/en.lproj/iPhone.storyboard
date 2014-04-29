@@ -92,7 +92,7 @@
                                         <color key="tintColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>
                                     <barButtonItem title="Item" style="plain" id="lHy-1N-aSN">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
+                                        <segmentedControl key="customView" opaque="NO" tag="5000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="a47-Zc-n4Y">
                                             <rect key="frame" x="93" y="7" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -2305,7 +2305,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ldb-8E-bvN"/>
                                     <barButtonItem style="plain" id="u0B-AM-0hA">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
+                                        <segmentedControl key="customView" opaque="NO" tag="5000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="1" id="Hzg-QE-xYU">
                                             <rect key="frame" x="89" y="7" width="142" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -2419,10 +2419,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="K9g-4O-dAk"/>
         <segue reference="3uu-G9-i3V"/>
         <segue reference="gf4-p1-rc6"/>
         <segue reference="g4m-Tc-imM"/>
+        <segue reference="K9g-4O-dAk"/>
         <segue reference="s9i-6T-63E"/>
     </inferredMetricsTieBreakers>
 </document>

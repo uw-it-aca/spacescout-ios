@@ -20,9 +20,6 @@
 @synthesize starting_in_search;
 @synthesize side_menu;
 
-// This should match the transparent view over the left side of the map view.
-const float SIDE_MENU_START_SWIPE = 50.0;
-
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;
 
@@ -101,20 +98,6 @@ bool first_search = false;
     return YES;
 }
 
--(void)handleSwipe:(UISwipeGestureRecognizer *)gesture {
-    CGPoint location = [gesture locationInView:self.view];
-    if (location.x < SIDE_MENU_START_SWIPE) {
-        [self openNavigationMenu:nil];
-    }
-}
-
--(void)addSwipeToOpenMenu {
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
-    swipe.delegate = self;
-    [self.view addGestureRecognizer:swipe];
-}
-
 -(void) searchFinished:(NSArray *)spots {
     self.is_running_search = false;
     self.starting_in_search = false;
@@ -174,19 +157,6 @@ bool first_search = false;
     [map_view setRegion:mapRegion animated: NO];
 }
 
--(IBAction)openNavigationMenu:(id)sender {
-    [self showMenu];
-}
-
--(void) showMenu {
-    if (!self.side_menu) {
-        self.side_menu = [[SideMenu alloc] init];
-    }
-    [self.side_menu showMenuForViewController:self];
-}
-
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -203,7 +173,14 @@ bool first_search = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.side_menu = [[SideMenu alloc] init];
+    [side_menu setOpeningViewController:self];
 	// Do any additional setup after loading the view.
+}
+
+-(IBAction)openNavigationMenu:(id)sender {
+    [self.side_menu showMenu];
 }
 
 - (void)viewDidUnload
