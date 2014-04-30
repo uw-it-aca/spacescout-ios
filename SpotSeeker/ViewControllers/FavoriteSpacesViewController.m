@@ -32,8 +32,16 @@
     self.current_spots = spots;
     [self sortSpots];
     if (self.current_spots.count > 0) {
+        // Just to make sure we show the right thing on the details view -
+        // if someone goes to favorites before zooming in, we don't have the global
+        // favorites that would have set this.
+        for (Space *space in spots) {
+            space.is_favorite = TRUE;
+        }
         [Favorites setLocalCacheFromFavoritesList:spots];
         [self.spot_table reloadData];
+        self.no_favorites.hidden = YES;
+        self.spot_table.hidden = NO;
     }
     else {
         self.spot_table.hidden = YES;
