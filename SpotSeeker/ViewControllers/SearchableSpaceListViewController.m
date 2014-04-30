@@ -43,8 +43,19 @@ bool first_search = false;
     if ([search_attributes objectForKey:@"open_at"] == nil && [search_attributes objectForKey:@"open_until"] == nil) {
         [search_attributes setValue:[NSArray arrayWithObjects:@"1", nil] forKey:@"open_now"];
     }
-    [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude], nil] forKey:@"center_latitude"];
-    [search_attributes setValue:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude], nil] forKey:@"center_longitude"];
+    
+    NSString *latitude = [NSString stringWithFormat:@"%f", map_view.centerCoordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%f", map_view.centerCoordinate.longitude];
+    // Prevent searching on the super-zoomed-out map
+    if ([latitude isEqualToString:@"30.000000"]) {
+        return;
+    }
+    if ([longitude isEqualToString:@"-40.000000"]) {
+        return;
+    }
+    
+    [search_attributes setValue:@[latitude] forKey:@"center_latitude"];
+    [search_attributes setValue:@[longitude] forKey:@"center_longitude"];
     
     Campus *current = [Campus getCurrentCampus];
     NSArray *campus_param = [[NSArray alloc] initWithObjects:current.search_key, nil];

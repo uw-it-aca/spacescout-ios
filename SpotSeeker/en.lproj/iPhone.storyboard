@@ -58,8 +58,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Aik-wh-Fpl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="529"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="-7" y="63" width="327" height="461"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="2zd-Ht-eos"/>
                                 </connections>

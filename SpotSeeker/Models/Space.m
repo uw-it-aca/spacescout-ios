@@ -112,7 +112,8 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
     
-    [_rest getURL:[self buildURLWithParams:arguments]];
+    NSString *url =[self buildURLWithParams:arguments];
+    [_rest getURL:url];
     self.rest = _rest;
 }
 
@@ -126,7 +127,11 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
 
     NSArray *spot_results = [parser objectWithData:[request responseData]];
     NSMutableArray *spot_list = [NSMutableArray arrayWithCapacity:spot_results.count];
-
+    
+    float min_long = 9999;
+    float min_lat = 9999;
+    float max_long = -99999;
+    float max_lat = -99999;
     for (NSDictionary *spot_info in spot_results) {
         Space *spot = [Space alloc];
         spot.remote_id = [spot_info objectForKey:@"id"];
@@ -160,6 +165,20 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
         spot.modifified_date = [dateFormatter dateFromString:[spot_info objectForKey:@"last_modified"]];
         
         NSDictionary *location_info = [spot_info objectForKey:@"location"];
+
+        if ([[location_info objectForKey:@"latitude"] floatValue] > max_lat) {
+            max_lat = [[location_info objectForKey:@"latitude"] floatValue];
+        }
+        if ([[location_info objectForKey:@"longitude"] floatValue] > max_long) {
+            max_long = [[location_info objectForKey:@"longitude"] floatValue];
+        }
+        if ([[location_info objectForKey:@"latitude"] floatValue] < min_lat) {
+            min_lat = [[location_info objectForKey:@"latitude"] floatValue];
+        }
+        if ([[location_info objectForKey:@"longitude"] floatValue] < min_long) {
+            min_long = [[location_info objectForKey:@"longitude"] floatValue];
+        }
+
         
         spot.latitude = [location_info objectForKey:@"latitude"];
         spot.longitude = [location_info objectForKey:@"longitude"];

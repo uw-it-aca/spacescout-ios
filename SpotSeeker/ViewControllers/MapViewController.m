@@ -140,7 +140,8 @@ extern const int meters_per_latitude;
                 region.span.longitudeDelta = fabs((closest_to_user.longitude - map_view.centerCoordinate.longitude) * map_padding);
                                 
                 MKCoordinateRegion scaled = [map_view regionThatFits:region];
-                [map_view setRegion:scaled];            
+      
+                [map_view setRegion:scaled];
             }
         }
     }
@@ -336,7 +337,7 @@ extern const int meters_per_latitude;
             [all_spots addObjectsFromArray:cluster.spots];
         }
        
-        destination.current_spots = all_spots;       
+        destination.current_spots = all_spots;
         destination.map_region = [self.map_view region];
         destination.map_view = self.map_view;
         destination.search_attributes = self.search_attributes;
@@ -377,6 +378,19 @@ extern const int meters_per_latitude;
     if (self.starting_in_search) {
         [self showRunningSearchIndicator];
     }
+    
+    if (self.current_spots.count > 0) {
+        self.from_list = [NSNumber numberWithBool:true];
+        [map_view setShowsUserLocation:YES];
+        
+        [map_view setRegion:self.map_region animated: NO];
+        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
+    }
+    else {
+        [map_view setShowsUserLocation:YES];
+        self.from_list = [NSNumber numberWithBool:false];
+    }
+
 }
 
 - (void)viewDidLoad
@@ -403,16 +417,6 @@ extern const int meters_per_latitude;
     self.current_annotations = [[NSMutableDictionary alloc] init];
     map_view.delegate = self;
 
-    if (self.current_spots.count > 0) {
-        self.from_list = [NSNumber numberWithBool:true];
-        [map_view setShowsUserLocation:YES];
-        [map_view setRegion:self.map_region animated: NO];
-        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
-    }
-    else {
-        [map_view setShowsUserLocation:YES];
-        self.from_list = [NSNumber numberWithBool:false];        
-    }
 }
 
 -(void)clearFromList:(NSTimer *)timer {
