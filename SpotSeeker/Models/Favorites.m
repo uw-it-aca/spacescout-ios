@@ -110,6 +110,17 @@
     [Favorites saveLocalCacheFavorites:favorites];
 }
 
++(void)setLocalCacheFromFavoritesList:(NSArray *)spots {
+    NSMutableDictionary *local_save = [[NSMutableDictionary alloc] init];
+    for (Space *space in spots) {
+        NSString *fav_remote_id = space.remote_id;
+        NSString *key_name = [NSString stringWithFormat:@"%@", fav_remote_id];
+        [local_save setObject:[NSNumber numberWithBool:TRUE] forKey:key_name];
+    
+    }
+    [Favorites saveLocalCacheFavorites:local_save];
+}
+
 +(int) getLocalFavoritesCount {
     NSMutableDictionary *favorites = [Favorites getFavorites];
     long int full_count = [favorites count];
@@ -203,6 +214,11 @@
     [Favorites saveLocalCacheFavorites:favorites];
 }
 
++(void)clearLocalCacheFavorites {
+    NSDictionary *empty = @{};
+    [Favorites saveLocalCacheFavorites:empty];
+}
+
 +(void) removeLocalCacheFavoriteByID:(id)remote_id {
     NSMutableDictionary *favorites = [Favorites getLocalCacheFavorites];
     [favorites removeObjectForKey:[NSString stringWithFormat:@"%@", remote_id]];
@@ -213,7 +229,7 @@
     [Favorites removeLocalCacheFavoriteByID:spot.remote_id];
 }
 
-+(BOOL) saveLocalCacheFavorites:(NSMutableDictionary *)favorites {
++(BOOL) saveLocalCacheFavorites:(NSDictionary *)favorites {
     NSString *favorites_path = [Favorites getLocalCacheFavoritesPath];
     return [favorites writeToFile:favorites_path atomically:YES];
 }

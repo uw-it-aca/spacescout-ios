@@ -33,6 +33,9 @@
 +(void) addFavorite:(Space *)spot;
 +(void) removeFavorite:(Space *)spot;
 +(void) setLocalCacheFromRESTData:(NSArray *)spots;
++(void)setLocalCacheFromFavoritesList:(NSArray *)spots;
++(BOOL) saveLocalCacheFavorites: (NSDictionary *)favorites;
++(void)clearLocalCacheFavorites;
 
 -(void) addServerFavorite:(Space *)spot;
 -(void) removeServerFavorite:(Space *)spot;

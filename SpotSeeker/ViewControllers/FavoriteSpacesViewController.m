@@ -32,6 +32,7 @@
     self.current_spots = spots;
     [self sortSpots];
     if (self.current_spots.count > 0) {
+        [Favorites setLocalCacheFromFavoritesList:spots];
         [self.spot_table reloadData];
     }
     else {

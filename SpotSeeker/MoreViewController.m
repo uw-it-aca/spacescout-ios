@@ -106,6 +106,7 @@
         [storage deleteCookie:cookie];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [Favorites clearLocalCacheFavorites];
     
     if (!self.overlay) {
         self.overlay = [[OverlayMessage alloc] init];

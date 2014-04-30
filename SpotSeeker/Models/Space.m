@@ -127,7 +127,7 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
 
     NSArray *spot_results = [parser objectWithData:[request responseData]];
     NSMutableArray *spot_list = [NSMutableArray arrayWithCapacity:spot_results.count];
-    
+
     float min_long = 9999;
     float min_lat = 9999;
     float max_long = -99999;
