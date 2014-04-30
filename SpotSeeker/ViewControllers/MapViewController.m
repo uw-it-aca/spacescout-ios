@@ -383,7 +383,9 @@ extern const int meters_per_latitude;
         self.from_list = [NSNumber numberWithBool:true];
         [map_view setShowsUserLocation:YES];
         
-        [map_view setRegion:self.map_region animated: NO];
+        if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
+            [map_view setRegion:self.map_region animated: NO];
+        }
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
     else {
