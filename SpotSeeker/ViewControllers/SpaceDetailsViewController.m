@@ -444,8 +444,10 @@
     // Only add height if this actually wraps
     
     CGRect expected = [self.spot.name boundingRectWithSize:CGSizeMake(name_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: name_label.font } context:nil];
+
+    CGRect base_expected = [@"A" boundingRectWithSize:CGSizeMake(name_label.frame.size.width, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: name_label.font } context:nil];
     
-    return baseline_height + expected.size.height - expected.size.height;
+    return baseline_height + expected.size.height - base_expected.size.height;
 }
 
 -(CGFloat)heightOfHoursCellInTable:(UITableView *)tableView {
