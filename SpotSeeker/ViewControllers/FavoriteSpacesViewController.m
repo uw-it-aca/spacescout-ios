@@ -104,6 +104,21 @@
     
 }
 
+-(void)btnClickDiscoverSpaces:(id)sender {
+    UIViewController *root = [SideMenu rootVCForVC:self];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromLeft;
+    
+    UIView *containerView = self.view.window;
+    [containerView.layer addAnimation:transition forKey:nil];
+    
+    [root dismissViewControllerAnimated:YES completion:^(void) {}];
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     //decide number of origination tob supported by Viewcontroller.

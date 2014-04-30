@@ -442,11 +442,27 @@ const float SIDE_MENU_START_SWIPE = 50.0;
     }
 
     
-    UIViewController *root;
+    UIViewController *root = [SideMenu rootVCForVC:self.view_controller];
     
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction =
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromRight;
+    
+    UIView *containerView = self.view.window;
+    [containerView.layer addAnimation:transition forKey:nil];
+
+    [root dismissViewControllerAnimated:YES completion:^(void) {}];
+}
+
++(UIViewController *)rootVCForVC:(UIViewController *)vc {
     UIViewController *next;
-    UIViewController *current = self.view_controller;
+    UIViewController *current = vc;
     
+    UIViewController *root;
     while (nil != current) {
         root = current;
         next = current.parentViewController;
@@ -464,18 +480,7 @@ const float SIDE_MENU_START_SWIPE = 50.0;
         }
     }
     
-    
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.35;
-    transition.timingFunction =
-    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn;
-    transition.subtype = kCATransitionFromRight;
-    
-    UIView *containerView = self.view.window;
-    [containerView.layer addAnimation:transition forKey:nil];
-
-    [root dismissViewControllerAnimated:YES completion:^(void) {}];
+    return root;
 }
 
 -(void)logoutButtonTouchUp: (id)sender {

@@ -19,6 +19,7 @@
 }
 
 - (IBAction) btnClickClose:(id)sender;
+- (IBAction) btnClickDiscoverSpaces:(id)sender;
 
 @property (nonatomic, retain) NSArray *favorites;
 @property (nonatomic, retain) IBOutlet UIView *no_favorites;
