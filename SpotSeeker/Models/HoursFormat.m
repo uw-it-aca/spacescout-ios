@@ -218,46 +218,32 @@
 -(NSMutableArray *)groupDaysBySameHours:(NSArray *)display_hours {
     
     NSArray *day_names = [[NSArray alloc] initWithObjects:@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday", nil];
- 
-    NSMutableDictionary *matches = [[NSMutableDictionary alloc] init];
- 
-    // Doing this so we can have the group output sorted by day
-    NSMutableArray *match_by_day = [[NSMutableArray alloc] init];
-    
+  
+    NSString *previous_day_display = @"";
+    NSMutableArray *groups = [[NSMutableArray alloc] init];
+   
+    // Grouping is easy now - if a day is not the same as the previous day, start a new group.
     for (int index = 0; index < 7; index++) {
         NSString *day_display = [display_hours objectAtIndex:index];
         
-        [match_by_day addObject:day_display];
-        if ([matches objectForKey:day_display]) { 
-            [[matches objectForKey:day_display] addObject: [day_names objectAtIndex:index]];
-        }
-        else {
-            NSMutableArray *days = [[NSMutableArray alloc] init];
-            [days addObject:[day_names objectAtIndex:index]];
-            [matches setObject:days forKey:day_display];
+        if (![day_display isEqualToString:@""]) {
+            if ([day_display isEqualToString:previous_day_display]) {
+                NSMutableDictionary *last_group = [groups objectAtIndex:[groups count]-1];
+                NSMutableArray *days = [last_group objectForKey:@"days"];
+                [days addObject:[day_names objectAtIndex:index]];
+            }
+            else {
+                NSMutableDictionary *new_group = [[NSMutableDictionary alloc] init];
+                [new_group setObject:day_display forKey:@"hours"];
+                NSMutableArray *days = [[NSMutableArray alloc] init];
+                [days addObject:[day_names objectAtIndex:index]];
+                [new_group setObject:days forKey:@"days"];
+                [groups addObject:new_group];
+            }
+            previous_day_display = day_display;
         }
     }
     
-    NSMutableArray *groups = [[NSMutableArray alloc] init];
-    NSMutableDictionary *seen_displays = [[NSMutableDictionary alloc] init];
-
-    for (int index = 0; index < 7; index++) {
-        NSString *hours_label = [match_by_day objectAtIndex:index];
-        
-        if ([[seen_displays objectForKey:hours_label] boolValue]) {
-            continue;
-        }
-
-        [seen_displays setObject:[NSNumber numberWithBool:TRUE] forKey:hours_label];
-        if (![hours_label isEqualToString:@""]) {
-            NSArray *days = [matches objectForKey:hours_label];
-            NSMutableDictionary *new_group = [[NSMutableDictionary alloc] init];
-            [new_group setObject:hours_label forKey:@"hours"];
-            [new_group setObject:days forKey:@"days"];
-            [groups addObject:new_group];
-        }
-    }
-        
     return groups;
 }
 
