@@ -60,8 +60,7 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
     REST *_rest = [[REST alloc] init];
     _rest.delegate = self;
 
-    
-    [_rest getURL:@"/api/v1/user/me/favorites/"];
+    [_rest getURL:@"/api/v1/user/me/favorites/" withAccessToken:YES withCache:NO];
     self.rest = _rest;
 }
 
@@ -69,7 +68,7 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
     if (!last_favorite_update || [[NSDate date] timeIntervalSinceDate:last_favorite_update] > FAVORITES_REFRESH_INTERVAL) {
         last_favorite_update = [NSDate date];
         REST *_rest = [[REST alloc] init];
-        __weak ASIHTTPRequest *request = [_rest getRequestForBlocksWithURL:@"/api/v1/user/me/favorites/"];
+        __weak ASIHTTPRequest *request = [_rest getRequestForBlocksWithURL:@"/api/v1/user/me/favorites/" withCache:NO];
         [request setCompletionBlock:^{
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             NSArray *spot_results = [parser objectWithData:[request responseData]];

@@ -24,12 +24,14 @@
 
 -(void) getURL:(NSString *)url;
 -(void) getURLWithNoAccessToken:(NSString *)url;
+-(void) getURL:(NSString *)url withAccessToken:(BOOL)use_token withCache:(BOOL)use_cache;
 -(void) putURL:(NSString *)url withBody:(NSString *)body;
 -(void) postURL:(NSString *)url withBody:(NSString *)body;
 -(void) deleteURL:(NSString *)url;
 
 -(NSString *) getFullURL:(NSString *)url;
 -(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url;
+-(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url withCache:(BOOL)use_cache;
 -(void)OAuthTokenRequestFromToken:(NSString *)token secret:(NSString *)token_secret andVerifier:(NSString *)verifier;
 +(void)setPersonalOAuthToken:(NSString *)token andSecret:(NSString *)secret;
 +(void)removePersonalOAuthToken;

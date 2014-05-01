@@ -112,16 +112,27 @@
     
 }
 
-
--(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url {
+-(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url withCache:(BOOL)use_cache {
     NSString *request_url = [self _getFullURL:url];
     @autoreleasepool {
         __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
 
-        [self _signRequest:request withAccessToken:TRUE];
+       
+        if (!use_cache) {
+            [request setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+        }
 
+        [self _signRequest:request withAccessToken:TRUE];
+        
         return request;
     }
+
+
+}
+
+
+-(ASIHTTPRequest *)getRequestForBlocksWithURL:(NSString *)url {
+    return [self getRequestForBlocksWithURL:url withCache:YES];
 }
 
 -(void)_signRequest:(ASIHTTPRequest *)request withAccessToken:(Boolean)use_token {
