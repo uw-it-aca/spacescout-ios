@@ -184,6 +184,8 @@ bool first_search = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Let sub-vcs filter the list to display...
+    self.spots_to_display = self.current_spots;
     
     self.side_menu = [[SideMenu alloc] init];
     [side_menu setOpeningViewController:self];

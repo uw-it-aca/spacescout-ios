@@ -53,7 +53,6 @@
     self.rest = [[REST alloc] init];
     self.rest.delegate = self;
     [self sortSpots];
-    [self.spot_table reloadData];
     self.requests = [[NSMutableDictionary alloc] init];
     
     if (self.starting_in_search) {
@@ -74,6 +73,8 @@
  //GONE   self.campus_picker_panel.hidden = true;
     // do something about changed campus!!!
     [self setScreenTitleForCurrentCampus];
+    
+    [self.spot_table reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -195,11 +196,11 @@
     if (self.starting_in_search) {
         return 0;
     }
-    return self.current_spots.count;
+    return self.spots_to_display.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Space *row_spot = [self.current_spots objectAtIndex:indexPath.row];
+    Space *row_spot = [self.spots_to_display objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"spot_list_display"];
     if (cell == nil) {
@@ -380,7 +381,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    self.selected_spot = [self.current_spots objectAtIndex:indexPath.row];
+    self.selected_spot = [self.spots_to_display objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"show_details" sender:nil];
 }
 

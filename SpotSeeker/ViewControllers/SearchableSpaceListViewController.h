@@ -21,6 +21,7 @@
     MKMapView *map_view;
     NSMutableDictionary *search_attributes;
     NSArray *current_spots;
+    NSArray *spots_to_display;
     Space *spot;
     Boolean is_running_search;
     // This is to handle switching between map and list during a search
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) NSMutableDictionary *search_attributes;
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) NSArray *current_spots;
+@property (nonatomic, retain) NSArray *spots_to_display;
 @property (nonatomic, retain) UIAlertView *alert;
 @property (nonatomic) Boolean is_running_search;
 @property (nonatomic, retain) SearchableSpaceListViewController *current_map_list_ui_view_controller;
