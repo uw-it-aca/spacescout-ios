@@ -1283,6 +1283,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					C2FDB0FE150A802E00ED3A93 = {
+						TestTargetID = C2FDB0DD150A802D00ED3A93;
+					};
+				};
 			};
 			buildConfigurationList = C2FDB0D8150A802D00ED3A93 /* Build configuration list for PBXProject "SpaceScout" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1758,13 +1763,13 @@
 		C2FDB115150A802E00ED3A93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotSeeker.app/SpotSeeker";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceScout.app/SpaceScout";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpotSeeker/SpotSeeker-Prefix.pch";
+				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeekerTests/SpaceScoutTests-Info.plist";
 				PRODUCT_NAME = SpaceScoutTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1775,13 +1780,13 @@
 		C2FDB116150A802E00ED3A93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotSeeker.app/SpotSeeker";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceScout.app/SpaceScout";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpotSeeker/SpotSeeker-Prefix.pch";
+				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeekerTests/SpaceScoutTests-Info.plist";
 				PRODUCT_NAME = SpaceScoutTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
