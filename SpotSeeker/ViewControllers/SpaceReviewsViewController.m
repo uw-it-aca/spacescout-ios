@@ -41,7 +41,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     
     NSString *reviews_url = [NSString stringWithFormat:@"/api/v1/spot/%@/reviews", self.space.remote_id];
     
-    __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:reviews_url];
+    __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:reviews_url withCache:NO];
     
     [request setCompletionBlock:^{
         SBJsonParser *parser = [[SBJsonParser alloc] init];
