@@ -35,7 +35,7 @@
 #import "GAIFields.h"
 #import "SideMenu.h"
 
-@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate> {
+@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;

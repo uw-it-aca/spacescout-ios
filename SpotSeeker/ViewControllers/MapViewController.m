@@ -235,7 +235,6 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     if ([self.from_list boolValue] == false) {
-        [self hideTipView];
         [self runSearch];
     }
     else {
@@ -244,26 +243,23 @@ extern const int meters_per_latitude;
 }
 
 -(void)hideTipView {
-    if (loading) {
-        return;
-    }
     if (showing_tip_view) {
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         delegate.has_hidden_map_tooltip = [NSNumber numberWithBool:true];
-
+        
         UIView *tips = [self.view viewWithTag:10];
         [UIView animateWithDuration:0.5
                               delay:0.0
                             options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{   
+                         animations:^{
                              tips.alpha = 0.0;
                          }
                          completion:^(BOOL finished) {
                              tips.hidden = true;
                          }
          ];
-
     }
+    
     showing_tip_view = false;
 }
 
@@ -418,7 +414,30 @@ extern const int meters_per_latitude;
     has_centered_on_location = false;
     self.current_annotations = [[NSMutableDictionary alloc] init];
     map_view.delegate = self;
+    
+    if (showing_tip_view) {
+        UIPanGestureRecognizer *panning = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        panning.delegate = self;
+        [self.map_view addGestureRecognizer:panning];
+        
+        UIPinchGestureRecognizer *pinching = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        pinching.delegate = self;
+        [self.map_view addGestureRecognizer:pinching];
+        
+        UITapGestureRecognizer *tapping = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        tapping.numberOfTapsRequired = 2;
+        tapping.numberOfTouchesRequired = 1;
+        tapping.delegate = self;
+        [self.map_view addGestureRecognizer:tapping];
+    }
+}
 
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return TRUE;
+}
+
+-(void)handleGesture:(UIGestureRecognizer *)gesture {
+    [self hideTipView];
 }
 
 -(void)clearFromList:(NSTimer *)timer {
