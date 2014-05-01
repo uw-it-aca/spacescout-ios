@@ -309,6 +309,8 @@
                 [notes loadHTMLString:final_notes baseURL:nil];
                 notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.access_notes_height floatValue]);
                 
+                notes.scrollView.scrollEnabled = FALSE;
+
                 return cell;
             }
             offset++;
@@ -337,6 +339,8 @@
                 notes.delegate = self;
                 [notes loadHTMLString:final_notes baseURL:nil];
                 notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.reservation_notes_height floatValue]);
+
+                notes.scrollView.scrollEnabled = FALSE;
 
                 return cell;
             }
