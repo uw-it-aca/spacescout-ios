@@ -29,7 +29,7 @@
 #pragma mark load spots
 
 -(void)searchFinished:(NSArray *)spots {
-    self.current_spots = spots;
+    self.current_spots = self.spots_to_display = spots;
     [self sortSpots];
     if (self.current_spots.count > 0) {
         // Just to make sure we show the right thing on the details view -
