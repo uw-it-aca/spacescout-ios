@@ -11,6 +11,8 @@ const int MAX_REVIEW_LENGTH = 300;
 NSString *SELECTED_IMAGE = @"StarRating-big_filled";
 NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
+#define is3_5InchDevice ([[UIScreen mainScreen] bounds].size.height == 480) ? TRUE : FALSE
+
 @implementation ReviewSpaceViewController
 
 @synthesize handling_login;
@@ -80,7 +82,13 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     UIScrollView *scroll = (UIScrollView *)[self.view viewWithTag:500];
     scroll.scrollEnabled = TRUE;
-    scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100);
+    
+    if (is3_5InchDevice) {
+        scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 180);
+    }
+    else {
+        scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100);
+    }
     CGRect bottom = CGRectMake(0, scroll.frame.size.height + 68, 1, 68);
     [scroll scrollRectToVisible:bottom animated:YES];
 
@@ -90,9 +98,18 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
     UIScrollView *scroll = (UIScrollView *)[self.view viewWithTag:500];
+    
+    if (is3_5InchDevice) {
+        // SPOT-1794
+        scroll.scrollEnabled = TRUE;
+        scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    }
+    else {
+        scroll.scrollEnabled = FALSE;
+    }
+    
     CGRect top = CGRectMake(0, 0, 1, 1);
     [scroll scrollRectToVisible:top animated:YES];
-    scroll.scrollEnabled = FALSE;
 
     UITextView *text_view = (UITextView *)[self.view viewWithTag:101];
     if ([text_view.text isEqualToString:@""]) {
@@ -342,6 +359,14 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     [self checkForValidReview];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
+    if (is3_5InchDevice) {
+        // SPOT-1794
+        UIScrollView *scroll = (UIScrollView *)[self.view viewWithTag:500];
+        scroll.scrollEnabled = TRUE;
+        scroll.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    }
 }
 
 -(void)hideWatermarkWithAnimation:(BOOL)animate {
