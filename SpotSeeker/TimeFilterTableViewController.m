@@ -589,15 +589,8 @@ NSUInteger DeviceSystemMajorVersion()
 
 
 -(NSDateComponents *)getDefaultEndTime {
-    NSDateComponents *start = [self getStartTime];
-    
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    NSDate *tmp_date = [cal dateFromComponents:start];
-    NSDate *end_date = [tmp_date dateByAddingTimeInterval:60*60];
-    NSDateComponents *components = [cal components:( INT_MAX ) fromDate:end_date];
-    
-    return components;
+    // SPOT-267
+    return [self getStartTime];
 }
 
 -(void)setNewWeekDay:(NSInteger)weekday ForDateComponents:(NSDateComponents *)date_components {
