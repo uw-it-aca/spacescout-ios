@@ -402,6 +402,11 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     // Dispose of any resources that can be recreated.
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 
 /*

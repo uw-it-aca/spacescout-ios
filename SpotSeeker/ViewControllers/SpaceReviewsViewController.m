@@ -189,6 +189,12 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     }
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 /*
 #pragma mark - Navigation
 
