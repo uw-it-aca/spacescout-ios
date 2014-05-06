@@ -371,6 +371,7 @@ extern const int meters_per_latitude;
         [self centerOnCampus:current_campus];
         [self setScreenTitleForCurrentCampus];
     }
+    
     if (self.starting_in_search) {
         [self showRunningSearchIndicator];
     }
@@ -378,7 +379,7 @@ extern const int meters_per_latitude;
     if (self.current_spots.count > 0) {
         self.from_list = [NSNumber numberWithBool:true];
         [map_view setShowsUserLocation:YES];
-        
+
         if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
             [map_view setRegion:self.map_region animated: NO];
         }
@@ -386,6 +387,7 @@ extern const int meters_per_latitude;
     }
     else {
         [map_view setShowsUserLocation:YES];
+        [self centerOnCampus:[Campus getCurrentCampus]];
         self.from_list = [NSNumber numberWithBool:false];
     }
 
