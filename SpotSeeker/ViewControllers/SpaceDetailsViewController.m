@@ -732,12 +732,14 @@
         
         CGFloat space_width = [@" " boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
         CGFloat of_width = [@"of" boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
-        CGFloat available_width = [available.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.height;
+        
+        CGFloat available_width = [available.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: available.font } context:nil].size.width;
         CGFloat total_field_width = [total.text boundingRectWithSize:CGSizeMake(500.0, 500.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: total.font } context:nil].size.width;
         
         UILabel *of_label = (UILabel *)[cell viewWithTag:33];
         UILabel *available_now_label = (UILabel *)[cell viewWithTag:34];
 
+        
         CGFloat starting_x = available.frame.origin.x;
         
         CGFloat of_label_left = starting_x + available_width + space_width;
