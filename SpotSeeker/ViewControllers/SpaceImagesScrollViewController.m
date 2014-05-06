@@ -16,6 +16,7 @@
 @synthesize viewControllers;
 @synthesize page_control;
 @synthesize showing_navigation;
+@synthesize starting_page;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,14 +54,24 @@
     self.scroll_view.delegate = self;
     
     self.page_control.numberOfPages = numberPages;
-    self.page_control.currentPage = 0;
+    self.page_control.currentPage = self.starting_page;
     
     // pages are created on demand
     // load the visible page
     // load the page on either side to avoid flashes when the user starts scrolling
     //
-    [self loadScrollViewWithPage:0];
-    [self loadScrollViewWithPage:1];
+    [self loadScrollViewWithPage:starting_page];
+    if (starting_page > 0) {
+        [self loadScrollViewWithPage:starting_page - 1];
+    }
+    if (starting_page < self.space.image_urls.count - 1) {
+        [self loadScrollViewWithPage:starting_page + 1];
+    }
+    
+    CGRect frame = self.scroll_view.frame;
+    frame.origin.x = frame.size.width * starting_page;
+    frame.origin.y = 0;
+    [self.scroll_view scrollRectToVisible:frame animated:YES];
     
     self.showing_navigation = TRUE;
     UITapGestureRecognizer *single_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];

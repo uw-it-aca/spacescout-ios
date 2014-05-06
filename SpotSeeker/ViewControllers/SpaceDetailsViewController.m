@@ -38,6 +38,7 @@
 @synthesize access_notes_height;
 @synthesize overlay;
 @synthesize favorites;
+@synthesize current_image;
 
 #pragma mark -
 #pragma mark table control methods
@@ -603,9 +604,6 @@
     share_button.layer.borderColor = border_color.CGColor;
     share_button.layer.cornerRadius = 3.0;
     
-    UIButton *spot_image_view = (UIButton *)[cell viewWithTag:4];
-    
-    
     if ([spot.image_urls count] == 0) {
         UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
         spinner.hidden = YES;
@@ -615,11 +613,24 @@
     UIPageControl *page_view = (UIPageControl *)[cell viewWithTag:9];
     page_view.numberOfPages = [spot.image_urls count];
     
-    self.img_button_view = spot_image_view;
+    self.current_image = 0;
     
     if ([spot.image_urls count]) {
-        [[spot_image_view imageView] setContentMode: UIViewContentModeScaleAspectFill];
-        spot_image_view.contentMode = UIViewContentModeScaleToFill;
+        UIImageView *spot_images = (UIImageView *)[cell viewWithTag:4000];
+        spot_images.userInteractionEnabled = TRUE;
+        
+        UISwipeGestureRecognizer *swipe_image_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeImage:)];
+        swipe_image_left.direction = UISwipeGestureRecognizerDirectionLeft;
+        [spot_images addGestureRecognizer:swipe_image_left];
+        
+        UISwipeGestureRecognizer *swipe_image_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeImage:)];
+        swipe_image_right.direction = UISwipeGestureRecognizerDirectionRight;
+        [spot_images addGestureRecognizer:swipe_image_right];
+        
+        UITapGestureRecognizer *open_images = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClickImageBrowserOpen:)];
+        [open_images setNumberOfTapsRequired:1];
+        [open_images setNumberOfTouchesRequired:1];
+        [spot_images addGestureRecognizer:open_images];
         
         if (self.spot_image) {
             UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[cell viewWithTag:10];
@@ -627,6 +638,7 @@
             [self displaySpaceImage:self.spot_image];
         }
         else {
+            spot_images.image = [[UIImage alloc] init];
             NSString *image_url = [spot.image_urls objectAtIndex:0];
             if (self.rest == nil) {
                 REST *_rest = [[REST alloc] init];
@@ -642,6 +654,35 @@
     }
     
     return cell;
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return TRUE;
+}
+
+-(void)swipeImage:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        if (self.current_image < 1) {
+            return;
+        }
+        self.current_image--;
+    }
+    else if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        if (self.current_image >= spot.image_urls.count - 1) {
+            return;
+        }
+        self.current_image++;
+    }
+    UIPageControl *page_view = (UIPageControl *)[self.view viewWithTag:9];
+    page_view.currentPage = self.current_image;
+    
+    UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.view viewWithTag:10];
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    spinner.hidden = FALSE;
+
+    NSString *image_url = [spot.image_urls objectAtIndex:self.current_image];
+    [self.rest getURL:image_url];
+
 }
 
 -(UITableViewCell *)cellForLabstatsInTable:(UITableView *)tableView {
@@ -877,16 +918,9 @@
 -(void)displaySpaceImage:(UIImage *)image {
     self.spot_image = image;
     
-    self.img_button_view.contentMode = UIViewContentModeScaleAspectFill;
-    self.img_button_view.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.img_button_view.imageView.image = image;
-
-    [self.img_button_view setImage:image forState:UIControlStateNormal];
-    [self.img_button_view setImage:image forState:UIControlStateHighlighted];
-    [self.img_button_view setImage:image forState:UIControlStateSelected];
-    
-    self.img_button_view.hidden = NO;
-    
+    UIImageView *space_image = (UIImageView *)[self.view viewWithTag:4000];
+    space_image.image = image;
+    space_image.hidden = NO;
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
@@ -1037,6 +1071,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"image_view"]) {
         SpaceImagesScrollViewController *destination = (SpaceImagesScrollViewController *)[segue destinationViewController];
+        destination.starting_page = self.current_image;
         destination.space = self.spot;
     }
     

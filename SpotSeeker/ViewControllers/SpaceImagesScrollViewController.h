@@ -21,6 +21,7 @@
 @property (nonatomic, retain) Space *space;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic) int showing_navigation;
+@property (nonatomic) int starting_page;
 
 -(IBAction)closeImageViewer:(id)sender;
 

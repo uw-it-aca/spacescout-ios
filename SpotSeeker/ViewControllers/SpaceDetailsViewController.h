@@ -32,7 +32,7 @@
 #import "OverlayMessage.h"
 #import <math.h>
 
-@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin, SaveFavorite> {
+@interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin, SaveFavorite, UIGestureRecognizerDelegate> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
     IBOutlet UILabel *capacity_label;
@@ -64,5 +64,6 @@
 @property (nonatomic, retain) NSNumber *access_notes_height;
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) Favorites *favorites;
+@property (nonatomic) int current_image;
 
 @end
