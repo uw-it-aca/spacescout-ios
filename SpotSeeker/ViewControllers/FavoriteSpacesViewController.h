@@ -23,8 +23,10 @@
 
 @property (nonatomic, retain) NSArray *favorites;
 @property (nonatomic, retain) IBOutlet UIView *no_favorites;
+@property (nonatomic, retain) IBOutlet UIView *loading_favorites;
 @property (nonatomic) BOOL handling_login;
 @property (nonatomic, retain) Favorites *favorites_interface;
 @property (nonatomic, retain) SideMenu *side_menu;
+@property (nonatomic, retain) NSString *removed_space_id;
 
 @end

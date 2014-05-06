@@ -32,6 +32,8 @@
 #import "OverlayMessage.h"
 #import <math.h>
 
+@class FavoriteSpacesViewController;
+
 @interface SpaceDetailsViewController : ViewController <RESTFinished, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, DisplayOptionsLoaded, UIWebViewDelegate, OAuthLogin, SaveFavorite, UIGestureRecognizerDelegate> {
     Space *spot;
     NSMutableDictionary *favorite_spots;
@@ -65,5 +67,8 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) Favorites *favorites;
 @property (nonatomic) int current_image;
+
+// To notify this viewcontroller if we've removed a favorite
+@property (nonatomic, retain) FavoriteSpacesViewController *opening_view_controller_favorites;
 
 @end

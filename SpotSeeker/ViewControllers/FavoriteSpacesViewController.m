@@ -10,9 +10,11 @@
 
 @implementation FavoriteSpacesViewController
 
+@synthesize removed_space_id;
 @synthesize favorites;
 @synthesize favorites_interface;
 @synthesize no_favorites;
+@synthesize loading_favorites;
 @synthesize handling_login;
 
 - (IBAction)btnClickClose:(id)sender {   
@@ -47,6 +49,7 @@
         self.spot_table.hidden = YES;
         self.no_favorites.hidden = NO;
     }
+    self.loading_favorites.hidden = YES;
 }
 
 #pragma mark -
@@ -76,6 +79,18 @@
 #pragma mark -
 #pragma mark viewcontroller loading
 
+-(void)viewWillAppear:(BOOL)animated {
+    NSMutableArray *new_display = [[NSMutableArray alloc] init];
+    for (Space * test in self.current_spots) {
+        // If someone unfavorites off of the favorites list, hide it right away.
+        if (![test.remote_id isEqualToString:self.removed_space_id]) {
+            [new_display addObject:test];
+        }
+    }
+    self.spots_to_display = new_display;
+    [self.spot_table reloadData];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     if (self.handling_login) {
         return;
@@ -102,14 +117,25 @@
     self.side_menu = [[SideMenu alloc] init];
     [self.side_menu setOpeningViewController:self];
     [self.side_menu addSwipeToOpenMenuToView:self.view];
+    [self.spot_table reloadData];
+
 }
 
-- (void)fetchFavorites {   
+- (void)fetchFavorites {
     Space *search_spot = [[Space alloc] init];
     search_spot.delegate = self;
     [search_spot getListByFavorites];
     self.spot = search_spot;
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // show_details
+    if ([[segue identifier] isEqualToString:@"show_details"]) {
+        SpaceDetailsViewController *destination = (SpaceDetailsViewController *)[segue destinationViewController];
+        destination.opening_view_controller_favorites = self;
+    }
+    [super prepareForSegue:segue sender:sender];
 }
 
 -(void)btnClickDiscoverSpaces:(id)sender {

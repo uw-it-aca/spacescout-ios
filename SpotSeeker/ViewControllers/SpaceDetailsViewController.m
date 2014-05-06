@@ -18,7 +18,7 @@
 //
 
 #import "SpaceDetailsViewController.h"
-
+#import "FavoriteSpacesViewController.h"
 
 @implementation SpaceDetailsViewController
 
@@ -39,6 +39,7 @@
 @synthesize overlay;
 @synthesize favorites;
 @synthesize current_image;
+@synthesize opening_view_controller_favorites;
 
 #pragma mark -
 #pragma mark table control methods
@@ -999,6 +1000,7 @@
         [self.favorites removeServerFavorite:spot];
         [self.overlay showOverlay:@"Unfavorited" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
+        self.opening_view_controller_favorites.removed_space_id = spot.remote_id;
     }
     else {
         [self.favorite_button setImage:[UIImage imageNamed:@"Fav_YellowHeart.png"] forState:UIControlStateNormal];
@@ -1008,6 +1010,7 @@
         [self.favorites addServerFavorite:spot];
         [self.overlay showOverlay:@"Favorited" animateDisplay:YES afterShowBlock:^(void) {}];
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
+        self.opening_view_controller_favorites.removed_space_id = nil;
     }
     [self.overlay hideOverlayAfterDelay:0.5 animateHide:YES afterHideBlock:^(void){}];
     // This prevents a problem where going back to the list, then searching, in less than the FAVORITES_REFRESH_INTERVAL results
@@ -1092,6 +1095,7 @@
         SpaceReviewsViewController *destination = (SpaceReviewsViewController *)[segue destinationViewController];
         destination.space = self.spot;
     }
+
 
 }
 

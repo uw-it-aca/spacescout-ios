@@ -133,7 +133,7 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
     float max_lat = -99999;
     for (NSDictionary *spot_info in spot_results) {
         Space *spot = [Space alloc];
-        spot.remote_id = [spot_info objectForKey:@"id"];
+        spot.remote_id = [NSString stringWithFormat:@"%@", [spot_info objectForKey:@"id"]];
         spot.name = [spot_info objectForKey:@"name"];
         
         if ([favorite_space_ids objectForKey:spot.remote_id]) {

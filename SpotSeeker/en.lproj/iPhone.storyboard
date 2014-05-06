@@ -2081,6 +2081,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="ceX-mQ-uIP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="yak-NO-w3u">
+                                        <rect key="frame" x="142" y="265" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -2094,6 +2106,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loading_favorites" destination="ceX-mQ-uIP" id="V8E-7d-hbZ"/>
                         <outlet property="no_favorites" destination="n6s-QL-t6d" id="6w0-G9-C8M"/>
                         <outlet property="spot_table" destination="mkW-fZ-cno" id="hVa-LR-vjH"/>
                         <segue destination="ycF-WC-Hj5" kind="push" identifier="show_details" id="ehC-Lb-oxn"/>
@@ -2425,9 +2438,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="K9g-4O-dAk"/>
-        <segue reference="3uu-G9-i3V"/>
-        <segue reference="g4m-Tc-imM"/>
         <segue reference="gf4-p1-rc6"/>
+        <segue reference="g4m-Tc-imM"/>
+        <segue reference="ehC-Lb-oxn"/>
         <segue reference="s9i-6T-63E"/>
     </inferredMetricsTieBreakers>
 </document>
