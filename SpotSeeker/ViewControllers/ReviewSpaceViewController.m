@@ -191,7 +191,7 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         [defaults removeObjectForKey:rating_key];
         [defaults removeObjectForKey:review_key];
         
-        [self.overlay showOverlay:@"Submitted!" animateDisplay:NO afterShowBlock:^(void) {
+        [self.overlay showOverlay:@"Submitted" animateDisplay:NO afterShowBlock:^(void) {
             [self.overlay hideOverlayAfterDelay:1.0 animateHide:NO afterHideBlock:^(void) {
                 NSInteger current_index = [self.navigationController.viewControllers indexOfObject:self];
                 if (current_index > 2) {
@@ -206,6 +206,11 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         [self.overlay setImage: [UIImage imageNamed:@"GreenCheckmark"]];
     }
     else {
+        [self.overlay showOverlay:@"Error.  Try again" animateDisplay:NO afterShowBlock:^(void) {
+            [self.overlay hideOverlayAfterDelay:1.0 animateHide:NO afterHideBlock:^(void) {
+            }
+             ];
+        }];
         NSLog(@"Status: %i, Body: %@", [request responseStatusCode], [request responseString]);
         [self.overlay showOverlay:@"Error" animateDisplay:NO afterShowBlock:^(void) {}];
     }
@@ -242,23 +247,23 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     UILabel *rating_desc = (UILabel *)[self.view viewWithTag:220];
     switch (self.rating) {
         case 1: {
-            rating_desc.text = @"You rated: Terrible";
+            rating_desc.text = @"You rated: I won’t be back";
             break;
         }
         case 2: {
-            rating_desc.text = @"You rated: Poor";
+            rating_desc.text = @"You rated: I dislike it";
             break;
         }
         case 3: {
-            rating_desc.text = @"You rated: Average";
+            rating_desc.text = @"You rated: It’s ok";
             break;
         }
         case 4: {
-            rating_desc.text = @"You rated: Good";
+            rating_desc.text = @"You rated: I like it";
             break;
         }
         case 5: {
-            rating_desc.text = @"You rated: Excellent";
+            rating_desc.text = @"You rated: I love it";
             break;
         }
             
