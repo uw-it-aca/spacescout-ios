@@ -360,7 +360,7 @@ extern const int meters_per_latitude;
 -(void)viewDidAppear:(BOOL)animated {
     Campus *current_campus = [Campus getCurrentCampus];
     Campus *next_campus = [Campus getNextCampus];
-    
+        
     if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
         [Campus setCurrentCampus:next_campus];
         current_campus = next_campus;

@@ -42,6 +42,9 @@
     float blue_value = [[plist_values objectForKey:@"default_nav_button_color_blue"] floatValue];
 
     [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0]];
+    self.window.tintColor = [UIColor colorWithRed:red_value / 255.0 green:green_value / 255.0 blue:blue_value / 255.0 alpha:1.0];
+    
+
     
     // Register the preference defaults early.
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"enable_analytics"];
