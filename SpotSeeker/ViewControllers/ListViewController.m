@@ -74,7 +74,6 @@
     // do something about changed campus!!!
     [self setScreenTitleForCurrentCampus];
     
-    [self.spot_table reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -83,6 +82,9 @@
     Campus *current_campus = [Campus getCurrentCampus];
     Campus *next_campus = [Campus getNextCampus];
     if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
+        self.current_spots = @[];
+        self.spots_to_display = @[];
+        [self.spot_table reloadData];
         [Campus setCurrentCampus:next_campus];
         current_campus = next_campus;
         [Campus clearNextCampus];
@@ -164,6 +166,7 @@
     
     loading_spinner.hidden = YES;    
 
+    self.spots_to_display = self.current_spots;
     [self.spot_table reloadData];
 }
 
