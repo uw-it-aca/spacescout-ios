@@ -27,11 +27,24 @@ const float MAX_ALPHA = 1;
 }
 
 -(void)setImage:(UIImage *)image {
+    [self hideActivityIndicator];
     UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];
     img_view.image = image;
     img_view.hidden = NO;
 }
 
+-(void)showActivityIndicator {
+    UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];
+    img_view.hidden = YES;
+    
+    UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.overlay viewWithTag:1000];
+    spinner.hidden = NO;
+}
+
+-(void)hideActivityIndicator {
+    UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[self.overlay viewWithTag:1000];
+    spinner.hidden = YES;
+}
 
 -(void)showOverlay:(NSString *)text animateDisplay:(BOOL)animate_display afterShowBlock:(void (^)(void))showCallback {
     UIImageView *img_view = (UIImageView *)[self.overlay viewWithTag:300];

@@ -178,12 +178,15 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
         [self.overlay addTo:self.view];
     }
 
+    [self.overlay showActivityIndicator];
     [self.overlay showOverlay:@"Sending..." animateDisplay:YES afterShowBlock:^(void) {
         [self.rest postURL:url withBody:[data JSONRepresentation]];
     }];
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
+    [self.overlay hideActivityIndicator];
+
     if ([request responseStatusCode] == 201) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *rating_key = [NSString stringWithFormat:@"space_rating_%@", self.space.remote_id];
