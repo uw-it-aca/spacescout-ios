@@ -877,7 +877,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="kDu-Hr-bR2" kind="push" identifier="open_email_space" id="T94-D6-qIS"/>
+                                                        <action selector="btnClickShareSpace:" destination="ycF-WC-Hj5" eventType="touchUpInside" id="pJW-VD-hJQ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="810" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xld-pZ-8qi">
@@ -1308,6 +1308,7 @@
                     <connections>
                         <outlet property="table_view" destination="NSk-zr-PcD" id="bjO-Pl-4Mr"/>
                         <segue destination="WN3-wF-3ge" kind="modal" identifier="image_view" id="Ydi-Do-Mjc"/>
+                        <segue destination="kDu-Hr-bR2" kind="push" identifier="open_email_space" id="aEw-TT-Uuc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-WJ-P4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

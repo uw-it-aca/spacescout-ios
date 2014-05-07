@@ -40,6 +40,8 @@
 @synthesize favorites;
 @synthesize current_image;
 @synthesize opening_view_controller_favorites;
+@synthesize is_marking_favorite;
+@synthesize is_sharing_space;
 
 #pragma mark -
 #pragma mark table control methods
@@ -976,8 +978,14 @@
 }
 
 -(void)loginComplete {
-    [self.navigationController popViewControllerAnimated:YES];
-    [self setServerFavoriteValue];
+    if (self.is_marking_favorite) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self setServerFavoriteValue];
+    }
+    else if (self.is_sharing_space) {
+        [self.navigationController popViewControllerAnimated:NO];
+        [self performSegueWithIdentifier:@"open_email_space" sender:self];
+    }
 }
 
 -(void)loginCancelled {
@@ -1031,6 +1039,8 @@
         [self setServerFavoriteValue];
     }
     else {
+        self.is_sharing_space = FALSE;
+        self.is_marking_favorite = TRUE;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
         
         OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
@@ -1041,6 +1051,24 @@
     }
 }
 
+- (IBAction)btnClickShareSpace:(id)sender {
+    if ([REST hasPersonalOAuthToken]) {
+        [self performSegueWithIdentifier:@"open_email_space" sender:self];
+    }
+    else {
+        self.is_sharing_space = TRUE;
+        self.is_marking_favorite = FALSE;
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        
+        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
+        auth_vc.delegate = self;
+        auth_vc.title = @"SpaceScout";
+        
+        [self.navigationController pushViewController:auth_vc animated:YES];
+    }
+    
+}
 
 - (IBAction)btnClickReportProblem:(id)sender {
     if (![MFMailComposeViewController canSendMail]) {

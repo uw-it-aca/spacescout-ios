@@ -49,6 +49,7 @@
 - (IBAction) btnClickFavorite:(id)sender;
 - (IBAction) btnClickReportProblem:(id)sender;
 - (IBAction) btnClickImageBrowserOpen:(id)sender;
+- (IBAction) btnClickShareSpace:(id)sender;
 
 @property (nonatomic, retain) Space *spot;
 @property (nonatomic, retain) IBOutlet UILabel *capacity_label;
@@ -67,6 +68,10 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) Favorites *favorites;
 @property (nonatomic) int current_image;
+
+// To handle the return from logging in...
+@property (nonatomic) bool is_marking_favorite;
+@property (nonatomic) bool is_sharing_space;
 
 // To notify this viewcontroller if we've removed a favorite
 @property (nonatomic, retain) FavoriteSpacesViewController *opening_view_controller_favorites;
