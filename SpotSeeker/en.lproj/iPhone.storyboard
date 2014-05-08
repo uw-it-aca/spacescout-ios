@@ -816,7 +816,7 @@
                                                     <rect key="frame" x="20" y="95" width="261" height="175"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" tag="4000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_noImage_bw.png" id="gB2-1E-tpX">
+                                                        <imageView clipsSubviews="YES" tag="4000" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_noImage_bw.png" id="gB2-1E-tpX">
                                                             <rect key="frame" x="0.0" y="0.0" width="261" height="175"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
