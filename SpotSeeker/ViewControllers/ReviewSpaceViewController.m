@@ -250,23 +250,23 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     UILabel *rating_desc = (UILabel *)[self.view viewWithTag:220];
     switch (self.rating) {
         case 1: {
-            rating_desc.text = @"You rated: I won’t be back";
+            rating_desc.text = @"I won’t be back";
             break;
         }
         case 2: {
-            rating_desc.text = @"You rated: I dislike it";
+            rating_desc.text = @"I dislike it";
             break;
         }
         case 3: {
-            rating_desc.text = @"You rated: It’s ok";
+            rating_desc.text = @"It’s ok";
             break;
         }
         case 4: {
-            rating_desc.text = @"You rated: I like it";
+            rating_desc.text = @"I like it";
             break;
         }
         case 5: {
-            rating_desc.text = @"You rated: I love it";
+            rating_desc.text = @"I love it";
             break;
         }
             
