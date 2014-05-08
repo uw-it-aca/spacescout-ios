@@ -233,6 +233,7 @@ extern const int meters_per_latitude;
 #pragma mark -
 #pragma mark map methods
 
+/*
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     if ([self.from_list boolValue] == false) {
         [self runSearch];
@@ -241,6 +242,7 @@ extern const int meters_per_latitude;
         [self showFoundSpaces];
     }
 }
+*/
 
 -(void)hideTipView {
     if (showing_tip_view) {
@@ -369,6 +371,7 @@ extern const int meters_per_latitude;
         AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app_delegate.search_preferences = nil;
         [self centerOnCampus:current_campus];
+        [self runSearch];
         [self setScreenTitleForCurrentCampus];
     }
     
@@ -388,6 +391,7 @@ extern const int meters_per_latitude;
     else {
         [map_view setShowsUserLocation:YES];
         [self centerOnCampus:[Campus getCurrentCampus]];
+        [self runSearch];
         self.from_list = [NSNumber numberWithBool:false];
     }
 
@@ -432,10 +436,56 @@ extern const int meters_per_latitude;
         tapping.delegate = self;
         [self.map_view addGestureRecognizer:tapping];
     }
+    
+    [self addGestureRecognizersForUpdates];
+}
+
+-(void)addGestureRecognizersForUpdates {
+    UIPanGestureRecognizer *panning = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMoveMapToShowSpotsGesture:)];
+    panning.delegate = self;
+    [self.map_view addGestureRecognizer:panning];
+    
+    UIPinchGestureRecognizer *pinching = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleMoveMapToShowSpotsGesture:)];
+    pinching.delegate = self;
+    [self.map_view addGestureRecognizer:pinching];
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return TRUE;
+}
+
+-(void)handleMoveMapToShowSpotsGesture:(UIGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+        if ([gesture class] == [UIPanGestureRecognizer class]) {
+            UIPanGestureRecognizer *panning = (UIPanGestureRecognizer *)gesture;
+            float x_velocity = [panning velocityInView:self.map_view].x;
+            float y_velocity = [panning velocityInView:self.map_view].y;
+            
+            float total_velocity = sqrtf(x_velocity * x_velocity + y_velocity * y_velocity);
+            
+            // These are basically just made up
+            float delay;
+            if (total_velocity > 5000) {
+                delay = 2.0;
+            }
+            else if (total_velocity > 2000) {
+                delay = 1.0;
+            }
+            else if (total_velocity > 1000) {
+                delay = 0.5;
+            }
+            else {
+                delay = 0.25;
+            }
+            
+            [self performSelector:@selector(runSearch) withObject:nil afterDelay:delay];
+
+        }
+        else {
+            [self runSearch];
+        }
+    }
 }
 
 -(void)handleGesture:(UIGestureRecognizer *)gesture {
