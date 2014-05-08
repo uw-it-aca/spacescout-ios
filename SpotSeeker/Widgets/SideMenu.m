@@ -241,17 +241,13 @@ const float SIDE_MENU_START_SWIPE = 50.0;
     
     [campus_chooser addTarget:self action:@selector(campusChooserButtonTouchUp:) forControlEvents: UIControlEventTouchUpInside];
 
+
+    [suggest_space removeTarget:nil
+                         action:NULL
+               forControlEvents:UIControlEventAllEvents];
     
-    if (![MFMailComposeViewController canSendMail]) {
-        suggest_space.enabled = FALSE;
-    }
-    else {
-        [suggest_space removeTarget:nil
-                             action:NULL
-                   forControlEvents:UIControlEventAllEvents];
-        
-        [suggest_space addTarget:self action:@selector(openSuggestASpace:) forControlEvents: UIControlEventTouchUpInside];
-    }
+    [suggest_space addTarget:self action:@selector(openSuggestASpace:) forControlEvents: UIControlEventTouchUpInside];
+
 }
 
 -(void) showMenu {
@@ -496,6 +492,12 @@ const float SIDE_MENU_START_SWIPE = 50.0;
 
 -(void)openSuggestASpace:(id)sender {
 
+    if (![MFMailComposeViewController canSendMail]) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"can't send suggest a space title", nil) message:NSLocalizedString(@"can't send suggest a space message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"can't send suggest a space button", nil) otherButtonTitles:nil] show];
+    
+        return;
+    }
+    
     NSArray *contacts = [Contact getContacts];
     
     Contact *contact = [contacts objectAtIndex:0];

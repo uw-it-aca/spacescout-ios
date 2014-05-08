@@ -217,4 +217,8 @@
 "hours from" = "From";
 "hours until" = "To";
 
+"can't send suggest a space title" = "Set up your email account first to send suggestion from SpaceScout.";
+"can't send suggest a space message" = "";
+"can't send suggest a space button" = "OK";
+
 
