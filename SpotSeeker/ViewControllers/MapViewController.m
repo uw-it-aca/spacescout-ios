@@ -381,12 +381,13 @@ extern const int meters_per_latitude;
     }
     
     if (self.current_spots.count > 0) {
-        self.from_list = [NSNumber numberWithBool:true];
         [map_view setShowsUserLocation:YES];
 
         if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
             [map_view setRegion:self.map_region animated: NO];
         }
+        
+        [self showFoundSpaces];
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
     else {
