@@ -54,7 +54,8 @@
         NSString *building_url = [NSString stringWithFormat:[filter objectForKey:@"data_source"], [Campus getCurrentCampus].search_key];
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:building_url];
-        
+        [request setDownloadCache:[ASIDownloadCache sharedCache]];
+
         [request setCompletionBlock:^{
             overlay.hidden = TRUE;
             SBJsonParser *parser = [[SBJsonParser alloc] init];

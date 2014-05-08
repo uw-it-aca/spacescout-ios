@@ -80,7 +80,6 @@
 #pragma mark viewcontroller loading
 
 -(void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Full list: %@", self.current_spots);
     NSMutableArray *new_display = [[NSMutableArray alloc] init];
     for (Space * test in self.current_spots) {
         // If someone unfavorites off of the favorites list, hide it right away.
@@ -89,7 +88,6 @@
         }
     }
     self.spots_to_display = new_display;
-    NSLog(@"Display: %@", self.spots_to_display);
     [self.spot_table reloadData];
 }
 

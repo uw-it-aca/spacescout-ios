@@ -36,6 +36,7 @@
     }
     
     __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
+    [request setDownloadCache:[ASIDownloadCache sharedCache]];
     
     [request setCompletionBlock:^{
         UIActivityIndicatorView *loading = (UIActivityIndicatorView *)[self.view viewWithTag:101];

@@ -22,10 +22,11 @@
 #import "SBJson.h"
 #import "REST.h"
 #import "Campus.h"
+#import "NativeREST.h"
 
 @protocol SearchFinished;
 
-@interface Space : NSObject <RESTFinished> {
+@interface Space : NSObject <RESTFinished, NativeRESTFinished> {
     id <SearchFinished> delegate;
     NSString *remote_id;
     NSString *name;
@@ -68,6 +69,8 @@
 @property (retain, nonatomic) id <SearchFinished> delegate;
 
 @property (nonatomic, retain) REST *rest;
+@property (nonatomic, retain) NativeREST *native_rest;
+
 @property (nonatomic, retain) NSString *remote_id;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSMutableArray *type;

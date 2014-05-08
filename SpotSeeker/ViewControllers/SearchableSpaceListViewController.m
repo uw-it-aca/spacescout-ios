@@ -19,6 +19,7 @@
 @synthesize current_map_list_ui_view_controller;
 @synthesize starting_in_search;
 @synthesize side_menu;
+@synthesize spots_to_display;
 
 int const meters_per_latitude = 111 * 1000;
 bool first_search = false;

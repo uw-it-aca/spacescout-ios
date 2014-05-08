@@ -20,6 +20,7 @@
 
 #import "Space.h"
 #import "Favorites.h"
+#import "NativeREST.h"
 
 @implementation Space
 
@@ -57,11 +58,11 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
 }
 
 -(void) getListByFavorites {
-    REST *_rest = [[REST alloc] init];
+    NativeREST *_rest = [[NativeREST alloc] init];
     _rest.delegate = self;
 
     [_rest getURL:@"/api/v1/user/me/favorites/" withAccessToken:YES withCache:NO];
-    self.rest = _rest;
+    self.native_rest = _rest;
 }
 
 - (void) getListBySearch: (NSDictionary *)arguments {
@@ -116,15 +117,25 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
     self.rest = _rest;
 }
 
+-(void)requestFromNativeREST:(NativeREST *)_rest {
+    self.native_rest = nil;
+    [self handleResponseWithCode:_rest.status_code body:_rest.received_data url:_rest.url];
+}
+
 -(void)requestFromREST:(ASIHTTPRequest *)request {
+    NSString *url = [[request url] absoluteString];
+    [self handleResponseWithCode:[request responseStatusCode] body:[request responseData] url:url];
+}
+
+-(void)handleResponseWithCode:(NSInteger) status_code body:(NSData *)body url:(NSString *)url {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-    
-    if (200 != [request responseStatusCode]) {
-        NSLog(@"Code: %i", [request responseStatusCode]);
+
+    if (200 != status_code) {
+        NSLog(@"Code: %li", (long)status_code);
         // show an error
     }
 
-    NSArray *spot_results = [parser objectWithData:[request responseData]];
+    NSArray *spot_results = [parser objectWithData:body];
     NSMutableArray *spot_list = [NSMutableArray arrayWithCapacity:spot_results.count];
 
     float min_long = 9999;

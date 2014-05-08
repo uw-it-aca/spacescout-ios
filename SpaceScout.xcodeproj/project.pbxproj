@@ -78,6 +78,10 @@
 		C203297418E629D300E2A671 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */; };
 		C203297718E636F000E2A671 /* Close_X_Btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C203297518E636F000E2A671 /* Close_X_Btn@2x.png */; };
 		C203297818E636F000E2A671 /* Close_X_Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C203297618E636F000E2A671 /* Close_X_Btn.png */; };
+		C206B947191B39B40024B0B4 /* NativeREST.m in Sources */ = {isa = PBXBuildFile; fileRef = C206B946191B39B40024B0B4 /* NativeREST.m */; };
+		C206B94B191B41880024B0B4 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C206B94A191B41880024B0B4 /* OAuthCore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C206B94E191B41CF0024B0B4 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C206B94D191B41CF0024B0B4 /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C206B951191B41FF0024B0B4 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C206B950191B41FF0024B0B4 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */; };
 		C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EECA91593E1A6002A3849 /* SingleSpaceMapAnnotation.m */; };
 		C2124A8F150AEE7B008935F3 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2124A8E150AEE7B008935F3 /* RotatingTabBarController.m */; };
@@ -371,6 +375,14 @@
 		C203297218E629D300E2A671 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		C203297518E636F000E2A671 /* Close_X_Btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close_X_Btn@2x.png"; sourceTree = "<group>"; };
 		C203297618E636F000E2A671 /* Close_X_Btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close_X_Btn.png; sourceTree = "<group>"; };
+		C206B945191B39B40024B0B4 /* NativeREST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeREST.h; path = Models/NativeREST.h; sourceTree = "<group>"; };
+		C206B946191B39B40024B0B4 /* NativeREST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeREST.m; path = Models/NativeREST.m; sourceTree = "<group>"; };
+		C206B949191B41880024B0B4 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
+		C206B94A191B41880024B0B4 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
+		C206B94C191B41CF0024B0B4 /* OAuth+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+Additions.h"; sourceTree = "<group>"; };
+		C206B94D191B41CF0024B0B4 /* OAuth+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+Additions.m"; sourceTree = "<group>"; };
+		C206B94F191B41FF0024B0B4 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		C206B950191B41FF0024B0B4 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		C20EECA41593DD92002A3849 /* SingleSpaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapViewController.h; path = ViewControllers/SingleSpaceMapViewController.h; sourceTree = "<group>"; };
 		C20EECA51593DD92002A3849 /* SingleSpaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleSpaceMapViewController.m; path = ViewControllers/SingleSpaceMapViewController.m; sourceTree = "<group>"; };
 		C20EECA81593E1A6002A3849 /* SingleSpaceMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleSpaceMapAnnotation.h; path = Models/SingleSpaceMapAnnotation.h; sourceTree = "<group>"; };
@@ -722,6 +734,19 @@
 			name = buttons;
 			sourceTree = "<group>";
 		};
+		C206B948191B41750024B0B4 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C206B949191B41880024B0B4 /* OAuthCore.h */,
+				C206B94A191B41880024B0B4 /* OAuthCore.m */,
+				C206B94C191B41CF0024B0B4 /* OAuth+Additions.h */,
+				C206B94D191B41CF0024B0B4 /* OAuth+Additions.m */,
+				C206B94F191B41FF0024B0B4 /* NSData+Base64.h */,
+				C206B950191B41FF0024B0B4 /* NSData+Base64.m */,
+			);
+			name = OAuth;
+			sourceTree = "<group>";
+		};
 		C22AA31B180618AC004EC188 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +796,8 @@
 				C2F0D0C116FB9471008BB2CB /* Campus.m */,
 				06ACA01E1899853600113AD0 /* Contact.h */,
 				06ACA01F1899853600113AD0 /* Contact.m */,
+				C206B945191B39B40024B0B4 /* NativeREST.h */,
+				C206B946191B39B40024B0B4 /* NativeREST.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1151,6 +1178,7 @@
 		C2FDB0E1150A802D00ED3A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C206B948191B41750024B0B4 /* OAuth */,
 				C2F715BE18C79E6D00255582 /* AddressBook.framework */,
 				C2F715BC18C79AD200255582 /* AddressBookUI.framework */,
 				C2F715B718C5A61E00255582 /* Accelerate.framework */,
@@ -1521,10 +1549,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C206B94B191B41880024B0B4 /* OAuthCore.m in Sources */,
 				C2FDB0EF150A802D00ED3A93 /* main.m in Sources */,
 				C2FDB0F3150A802D00ED3A93 /* AppDelegate.m in Sources */,
 				C2FDB0F9150A802D00ED3A93 /* ViewController.m in Sources */,
 				C2429A44150A90DD005A994A /* MapFilterViewController.m in Sources */,
+				C206B947191B39B40024B0B4 /* NativeREST.m in Sources */,
 				C2429A4B150AA37C005A994A /* Space.m in Sources */,
 				C2429A8A150AABDB005A994A /* NSObject+SBJson.m in Sources */,
 				C2429A8B150AABDB005A994A /* SBJsonParser.m in Sources */,
@@ -1582,6 +1612,8 @@
 				C20EECA61593DD92002A3849 /* SingleSpaceMapViewController.m in Sources */,
 				C20EECAA1593E1A6002A3849 /* SingleSpaceMapAnnotation.m in Sources */,
 				C2ED2BBB15A361D500662C0D /* PickerFilterViewController.m in Sources */,
+				C206B951191B41FF0024B0B4 /* NSData+Base64.m in Sources */,
+				C206B94E191B41CF0024B0B4 /* OAuth+Additions.m in Sources */,
 				C2F0D0C216FB9471008BB2CB /* Campus.m in Sources */,
 				C28F16B518D8F09C00A220DD /* SpaceImagesScrollViewController.m in Sources */,
 				C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */,

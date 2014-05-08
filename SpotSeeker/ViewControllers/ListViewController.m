@@ -77,12 +77,11 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    [self.spot_table reloadData];
-
     Campus *current_campus = [Campus getCurrentCampus];
     Campus *next_campus = [Campus getNextCampus];
     if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
         self.current_spots = @[];
+
         self.spots_to_display = @[];
         [self.spot_table reloadData];
         [Campus setCurrentCampus:next_campus];
@@ -221,6 +220,7 @@
         loading_image.hidden = FALSE;
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
+        [request setDownloadCache:[ASIDownloadCache sharedCache]];
         [self.requests setObject:request forKey:[NSNumber numberWithLong:indexPath.row]];
         [request setCompletionBlock:^{
             bool update_image = false;
