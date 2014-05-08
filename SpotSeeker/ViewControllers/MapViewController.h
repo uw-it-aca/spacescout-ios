@@ -45,6 +45,7 @@
     BOOL showing_tip_view;
     BOOL loading;
     NSArray *selected_cluster;
+    NSString *last_displayed_campus;
 }
 
 @property (nonatomic, retain) NSArray *current_clusters;

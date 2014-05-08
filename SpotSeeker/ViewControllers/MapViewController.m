@@ -363,7 +363,7 @@ extern const int meters_per_latitude;
 -(void)viewDidAppear:(BOOL)animated {
     Campus *current_campus = [Campus getCurrentCampus];
     Campus *next_campus = [Campus getNextCampus];
-        
+
     if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
         [Campus setCurrentCampus:next_campus];
         current_campus = next_campus;
@@ -375,6 +375,14 @@ extern const int meters_per_latitude;
         [self runSearch];
         [self setScreenTitleForCurrentCampus];
     }
+    else if (current_campus.search_key != last_displayed_campus) {
+        // This can happen if we switch campuses while on the list view.
+        // Also catches initial loading
+        [self centerOnCampus:current_campus];
+        [self runSearch];
+        [self setScreenTitleForCurrentCampus];
+    }
+    
     
     if (self.starting_in_search) {
         [self showRunningSearchIndicator];
@@ -383,20 +391,18 @@ extern const int meters_per_latitude;
     if (self.current_spots.count > 0) {
         [map_view setShowsUserLocation:YES];
 
-        if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
-            [map_view setRegion:self.map_region animated: NO];
+        // Only do this centering if we didn't just center the map above
+        if (current_campus.search_key == last_displayed_campus) {
+            if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
+                [map_view setRegion:self.map_region animated: NO];
+            }
         }
         
         [self showFoundSpaces];
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
-    else {
-        [map_view setShowsUserLocation:YES];
-        [self centerOnCampus:[Campus getCurrentCampus]];
-        [self runSearch];
-        self.from_list = [NSNumber numberWithBool:false];
-    }
 
+    last_displayed_campus = current_campus.search_key;
 }
 
 - (void)viewDidLoad
