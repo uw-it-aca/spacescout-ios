@@ -40,6 +40,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
 
 -(void)updateRemainingCharacterCountByNSString:(NSString *)text {
     NSInteger char_count = [self reviewCharCount:text];
+    
+    review_length = char_count;
     NSInteger whats_left = MAX_REVIEW_LENGTH - char_count;
     UILabel *amount_left = (UILabel *)[self.view viewWithTag:100];
     if (whats_left == 1) {
@@ -294,8 +296,8 @@ NSString *UNSELECTED_IMAGE = @"StarRating-big_blank";
     if (!self.rating) {
         return FALSE;
     }
-    UITextView *review = (UITextView *)[self.view viewWithTag:101];
-    if (!review.text.length) {
+    
+    if (review_length < 1) {
         return FALSE;
     }
     return TRUE;

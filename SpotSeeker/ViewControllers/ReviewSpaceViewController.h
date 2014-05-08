@@ -13,7 +13,7 @@
 #import "OverlayMessage.h"
 
 @interface ReviewSpaceViewController : UIViewController <OAuthLogin, UITextViewDelegate, RESTFinished> {
-    
+    NSInteger review_length;
 }
 
 -(IBAction)selectRating:(id)sender;
@@ -23,5 +23,6 @@
 @property (nonatomic) NSInteger rating;
 @property (nonatomic, retain) REST *rest;
 @property (nonatomic, retain) OverlayMessage *overlay;
+
 
 @end
