@@ -221,6 +221,7 @@ extern const int meters_per_latitude;
 
 - (IBAction) btnClickRecenter:(id)sender {
     [self centerOnUserLocation];
+    NSLog(@"Running search?");
 }
 
 #pragma mark -
@@ -298,6 +299,7 @@ extern const int meters_per_latitude;
     has_centered_on_location = true;
 
     [self centerOnUserLocation];
+    [self runSearch];
 }
 
 #pragma mark -
