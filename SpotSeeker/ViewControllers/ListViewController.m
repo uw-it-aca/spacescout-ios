@@ -218,6 +218,7 @@
                 
         spot_image.hidden = TRUE;
         loading_image.hidden = FALSE;
+        [loading_image startAnimating];
         
         __weak ASIHTTPRequest *request = [rest getRequestForBlocksWithURL:image_url];
         [request setDownloadCache:[ASIDownloadCache sharedCache]];
