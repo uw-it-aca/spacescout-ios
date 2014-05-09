@@ -536,9 +536,15 @@
 
     if ([self.spot.extended_info valueForKey:@"review_count"]) {
         // Decision on Apr/11/2014 - round up rating to int star value
-        int aggregate_rating = ceilf([[self.spot.extended_info valueForKey:@"rating"] floatValue]);
-        
-        NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%i_fill.png", aggregate_rating];
+        // Decision on May/8/2014 - back to half stars.
+        // Just to make sure we stay on .5 if the server gives us something else:
+        int aggregate_rating_2x = (int)([[self.spot.extended_info valueForKey:@"rating"] floatValue] * 2);
+       
+        // When written, we don't support 0 star ratings, so no single half star.  Just in case that changes... make it fail.
+        if (aggregate_rating_2x < 2) {
+            aggregate_rating_2x = 0;
+        }
+        NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%ih_fill.png", aggregate_rating_2x];
         NSString *title_str = [NSString stringWithFormat:@"(%li)", (long)[[self.spot.extended_info valueForKey:@"review_count"] integerValue]];
         
         [see_reviews setTitle:title_str forState:UIControlStateNormal];

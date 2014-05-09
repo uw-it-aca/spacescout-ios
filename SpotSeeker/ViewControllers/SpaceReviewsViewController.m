@@ -135,7 +135,8 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     date.text = [dateFormatter stringFromDate:date_obj];
 
     NSInteger rating = [[[self.reviews objectAtIndex:indexPath.row] objectForKey:@"rating"] integerValue];
-    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%li_fill.png", (long)rating];
+    
+    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%lih_fill.png", (long)rating * 2];
 
     UIImageView *stars = (UIImageView *)[cell viewWithTag:100];
     [stars setImage:[UIImage imageNamed:img_name]];
@@ -166,14 +167,22 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     space_name.text = self.space.name;
 
     // Decision on Apr/11/2014 - round up rating to int star value
-    int aggregate_rating = 0;
+    // Decision on May/8/2014 - back to half stars.
+    int aggregate_rating_2x = 0;
     int review_count = 0;
     if ([self.space.extended_info valueForKey:@"review_count"]) {
-        aggregate_rating = ceilf([[self.space.extended_info valueForKey:@"rating"] floatValue]);
+        // Just to make sure we stay on .5 if the server gives us something else:
+        aggregate_rating_2x = (int)([[self.space.extended_info valueForKey:@"rating"] floatValue] * 2);
+        
+        // When written, we don't support 0 star ratings, so no single half star.  Just in case that changes... make it fail.
+        if (aggregate_rating_2x < 2) {
+            aggregate_rating_2x = 0;
+        }
+
         review_count = [[self.space.extended_info valueForKey:@"review_count"] intValue];
     }
     
-    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%i_fill.png", aggregate_rating];
+    NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%ih_fill.png", aggregate_rating_2x];
 
     UIImageView *rating_display = (UIImageView *)[self.view viewWithTag:602];
     rating_display.image = [UIImage imageNamed:img_name];
