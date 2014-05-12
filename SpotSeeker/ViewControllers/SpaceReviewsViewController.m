@@ -192,7 +192,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"write_review"]) {
+    if ([[segue identifier] isEqualToString:@"write_review"] || [[segue identifier] isEqualToString:@"write_first_review"]) {
         ReviewSpaceViewController *dest = (ReviewSpaceViewController *)[segue destinationViewController];
         dest.space = self.space;
     }

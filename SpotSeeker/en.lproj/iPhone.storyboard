@@ -1979,7 +1979,7 @@ Remember your UW NetID will appear as the reviewer name.</string>
                                                 <color key="titleColor" red="0.31764705879999999" green="0.30196078430000001" blue="0.63921568630000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <segue destination="YvS-nK-1VT" kind="push" id="CuN-QO-MxA"/>
+                                                <segue destination="YvS-nK-1VT" kind="push" identifier="write_first_review" id="CuN-QO-MxA"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this space." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UhJ-S0-RK7">
@@ -2480,10 +2480,10 @@ Remember your UW NetID will appear as the reviewer name.</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Zv8-Ju-hZd"/>
-        <segue reference="3L4-Ky-WWo"/>
         <segue reference="YtI-mQ-38u"/>
         <segue reference="8o3-ZB-NEA"/>
-        <segue reference="s9i-6T-63E"/>
+        <segue reference="Zv8-Ju-hZd"/>
+        <segue reference="3L4-Ky-WWo"/>
+        <segue reference="CuN-QO-MxA"/>
     </inferredMetricsTieBreakers>
 </document>
