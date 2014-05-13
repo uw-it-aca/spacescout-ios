@@ -61,6 +61,8 @@ const float EXTRA_REVIEW_PADDING = 20.0;
             [review setObject:date_obj forKey:@"date_object"];
         }
         self.loading = FALSE;
+        [self drawHeader];
+
         [self.tableView reloadData];
     
         if (self.reviews.count == 0) {
@@ -174,12 +176,25 @@ const float EXTRA_REVIEW_PADDING = 20.0;
         // Just to make sure we stay on .5 if the server gives us something else:
         aggregate_rating_2x = (int)([[self.space.extended_info valueForKey:@"rating"] floatValue] * 2);
         
-        // When written, we don't support 0 star ratings, so no single half star.  Just in case that changes... make it fail.
-        if (aggregate_rating_2x < 2) {
-            aggregate_rating_2x = 0;
-        }
-
         review_count = [[self.space.extended_info valueForKey:@"review_count"] intValue];
+    }
+    
+    // If we have actual review data at this point, use that instead.  SPOT-1828
+    if ([self.reviews count] > 0) {
+        review_count = [self.reviews count];
+        NSInteger total_rating = 0;
+        for (NSDictionary *review in self.reviews) {
+            NSInteger rating = [[review objectForKey:@"rating"] integerValue];
+            total_rating += rating;
+        }
+        
+        aggregate_rating_2x = (int)((float)total_rating / (float)review_count * 2.0);
+        
+    }
+
+    // When written, we don't support 0 star ratings, so no single half star.  Just in case that changes... make it fail.
+    if (aggregate_rating_2x < 2) {
+        aggregate_rating_2x = 0;
     }
     
     NSString *img_name = [NSString stringWithFormat:@"StarRating-small_%ih_fill.png", aggregate_rating_2x];
