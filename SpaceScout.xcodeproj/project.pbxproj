@@ -27,6 +27,8 @@
 		891103451704AC5300D2214D /* hours_status_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103411704AC5300D2214D /* hours_status_active@2x.png */; };
 		891103461704AC5300D2214D /* hours_status_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103421704AC5300D2214D /* hours_status_default.png */; };
 		891103471704AC5300D2214D /* hours_status_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891103431704AC5300D2214D /* hours_status_default@2x.png */; };
+		89323E861926BBAC00892F56 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89323E841926BBAC00892F56 /* Icon-60@2x.png */; };
+		89323E871926BBAC00892F56 /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89323E851926BBAC00892F56 /* Icon-Small-40@2x.png */; };
 		8940AD4115BF1DB200714AFB /* pin00.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD3F15BF1DB200714AFB /* pin00.png */; };
 		8940AD4215BF1DB200714AFB /* pin00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD4015BF1DB200714AFB /* pin00@2x.png */; };
 		8940AD4515BF207800714AFB /* asterisk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD4315BF207800714AFB /* asterisk.png */; };
@@ -311,6 +313,8 @@
 		891103411704AC5300D2214D /* hours_status_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hours_status_active@2x.png"; path = "images/buttons/hours_status_active@2x.png"; sourceTree = "<group>"; };
 		891103421704AC5300D2214D /* hours_status_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hours_status_default.png; path = images/buttons/hours_status_default.png; sourceTree = "<group>"; };
 		891103431704AC5300D2214D /* hours_status_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hours_status_default@2x.png"; path = "images/buttons/hours_status_default@2x.png"; sourceTree = "<group>"; };
+		89323E841926BBAC00892F56 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		89323E851926BBAC00892F56 /* Icon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@2x.png"; sourceTree = "<group>"; };
 		8940AD3F15BF1DB200714AFB /* pin00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin00.png; path = images/pins/pin00.png; sourceTree = "<group>"; };
 		8940AD4015BF1DB200714AFB /* pin00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin00@2x.png"; path = "images/pins/pin00@2x.png"; sourceTree = "<group>"; };
 		8940AD4315BF207800714AFB /* asterisk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asterisk.png; sourceTree = "<group>"; };
@@ -928,6 +932,8 @@
 		C24B24DF158BC44F001C4B3F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				89323E841926BBAC00892F56 /* Icon-60@2x.png */,
+				89323E851926BBAC00892F56 /* Icon-Small-40@2x.png */,
 				C28AD22E191D8417004CD134 /* star_ratings */,
 				C270D6BC1901F10500CFBF3D /* menu_shadow@2x.png */,
 				C2CFEAE919087117002AF162 /* Menu_3bars@2x.png */,
@@ -1314,6 +1320,9 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
+					C2FDB0DD150A802D00ED3A93 = {
+						DevelopmentTeam = THEWY9596Q;
+					};
 					C2FDB0FE150A802E00ED3A93 = {
 						TestTargetID = C2FDB0DD150A802D00ED3A93;
 					};
@@ -1378,6 +1387,7 @@
 				C242C2C5159260140045924B /* pin11@2x.png in Resources */,
 				C242C2C6159260140045924B /* pin12.png in Resources */,
 				C224DA8118D0FEEA00589CAD /* OverlayMessage.xib in Resources */,
+				89323E861926BBAC00892F56 /* Icon-60@2x.png in Resources */,
 				C242C2C7159260140045924B /* pin12@2x.png in Resources */,
 				C27818E618D2542500C45929 /* GreenCheckmark.png in Resources */,
 				C242C2C8159260140045924B /* pin13.png in Resources */,
@@ -1391,6 +1401,7 @@
 				C242C2CE159260140045924B /* pin16.png in Resources */,
 				C242C2CF159260140045924B /* pin16@2x.png in Resources */,
 				C242C2D0159260140045924B /* pin17.png in Resources */,
+				89323E871926BBAC00892F56 /* Icon-Small-40@2x.png in Resources */,
 				C242C2D1159260140045924B /* pin17@2x.png in Resources */,
 				C20328A418E61EA600E2A671 /* SS_LogoUnit_iOS_Sidemenu.png in Resources */,
 				C242C2D2159260140045924B /* pin18.png in Resources */,
@@ -1785,8 +1796,8 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = SpaceScout;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "4EF9978B-6861-4BBC-A64E-03A627F3104B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4EF9978B-6861-4BBC-A64E-03A627F3104B";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
