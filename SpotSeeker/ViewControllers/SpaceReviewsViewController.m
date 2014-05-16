@@ -171,7 +171,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     // Decision on Apr/11/2014 - round up rating to int star value
     // Decision on May/8/2014 - back to half stars.
     int aggregate_rating_2x = 0;
-    int review_count = 0;
+    NSInteger review_count = 0;
     if ([self.space.extended_info valueForKey:@"review_count"]) {
         // Just to make sure we stay on .5 if the server gives us something else:
         aggregate_rating_2x = (int)([[self.space.extended_info valueForKey:@"rating"] floatValue] * 2);
@@ -203,7 +203,7 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     rating_display.image = [UIImage imageNamed:img_name];
     
     UILabel *current_rating = (UILabel *)[self.view viewWithTag:601];
-    current_rating.text = [NSString stringWithFormat:@"(%i)", review_count];
+    current_rating.text = [NSString stringWithFormat:@"(%li)", review_count];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
