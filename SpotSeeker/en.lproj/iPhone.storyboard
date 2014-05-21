@@ -525,7 +525,7 @@
                                 </connections>
                             </tableView>
                             <view tag="100" contentMode="scaleToFill" id="2vU-J0-3EO">
-                                <rect key="frame" x="500" y="64" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="aAd-nr-r8E">
