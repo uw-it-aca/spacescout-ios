@@ -94,7 +94,7 @@
 "Search option subtitle type outdoor" = "Outdoor casual space";
 "Search option short type outdoor" = "Outdr";
 
-"Search screen label extended_info:reservable" = "Reservable";
+"Search screen label extended_info:reservable" = "Reservability";
 "Search screen title extended_info:reservable" = "Reservability";
 "Search screen header extended_info:reservable" = "Select reservability";
 "Search screen subheader extended_info:reservable" = "";
