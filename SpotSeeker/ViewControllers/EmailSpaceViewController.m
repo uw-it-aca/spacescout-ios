@@ -26,7 +26,7 @@
 const CGFloat MARGIN_LEFT = 42.0;
 const CGFloat MARGIN_RIGHT = 32.0;
 const CGFloat MARGIN_TOP = 11.0;
-const CGFloat TEXT_FIELD_LIMIT = 0.75;
+const CGFloat TEXT_FIELD_LIMIT = 0.30;
 const CGFloat TEXTFIELD_Y_INSET = 3.5;
 const int TO_EMAIL_TAG_STARTING_INDEX = 1200;
 const int SEARCH_TABLE_TAG = 1000;
