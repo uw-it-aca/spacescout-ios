@@ -561,6 +561,32 @@
     return [[[self.index_data objectForKey:@"sections"] objectAtIndex:section - 1] objectForKey:@"title"];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0;
+    }
+    else {
+        return 22.0;
+    }
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0)];
+        header.backgroundColor = [UIColor greenColor];
+        return header;
+    }
+    UIView *whatnow = [[UIView alloc] init];
+    whatnow.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
+    UILabel *title_label = [[UILabel alloc] init];
+    title_label.frame = CGRectMake(10, 2, 100, 20);
+    title_label.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
+    title_label.text = [self tableView: tableView titleForHeaderInSection:section];
+    [whatnow addSubview:title_label];
+    
+    return whatnow;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     if (index == 0) {
         [self.table_view scrollRectToVisible:CGRectMake(0.0, 0.0, self.search_bar.frame.size.width, self.search_bar.frame.size.height) animated:NO];

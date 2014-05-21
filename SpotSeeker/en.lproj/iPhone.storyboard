@@ -479,7 +479,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.99709061399999999" green="1" blue="0.94918027319999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="content_cell" id="XQO-gT-mta">
                                         <rect key="frame" x="0.0" y="174" width="320" height="44"/>
@@ -514,6 +514,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -524,7 +525,7 @@
                                 </connections>
                             </tableView>
                             <view tag="100" contentMode="scaleToFill" id="2vU-J0-3EO">
-                                <rect key="frame" x="0.0" y="64" width="320" height="516"/>
+                                <rect key="frame" x="500" y="64" width="320" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="aAd-nr-r8E">
