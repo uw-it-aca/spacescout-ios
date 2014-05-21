@@ -120,13 +120,14 @@ const float EXTRA_REVIEW_PADDING = 20.0;
     UITextView *review = (UITextView *)[cell viewWithTag:202];
     
     NSString *review_content = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"review"];
+    NSString *trimmed_review = [review_content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     CGSize bound = CGSizeMake(review.frame.size.width, CGFLOAT_MAX);
     CGRect frame_size = [review_content boundingRectWithSize:bound options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: review.font} context:nil];
 
     review.frame = CGRectMake(review.frame.origin.x, review.frame.origin.y, review.frame.size.width, frame_size.size.height + EXTRA_REVIEW_PADDING);
 
-    review.text = review_content;
+    review.text = trimmed_review;
     author.text = [[self.reviews objectAtIndex:indexPath.row] objectForKey:@"reviewer"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
