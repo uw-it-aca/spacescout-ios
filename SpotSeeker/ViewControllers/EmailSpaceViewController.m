@@ -483,11 +483,13 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         email_label.textColor = [UIColor whiteColor];
         email_label.layer.cornerRadius = 3.0;
         email_label.layer.backgroundColor = [UIColor purpleColor].CGColor;
+        email_label.layer.backgroundColor = [UIColor colorWithRed:81.0/255 green:77.0/255 blue:163.0/255 alpha:1.0].CGColor;
     }
     else {
         email_label.textColor = [UIColor whiteColor];
         email_label.layer.cornerRadius = 3.0;
         email_label.layer.backgroundColor = [UIColor blueColor].CGColor;
+        email_label.layer.backgroundColor = [UIColor colorWithRed:81.0/255 green:77.0/255 blue:163.0/255 alpha:1.0].CGColor;
     }
     
     comma_label.hidden = TRUE;
