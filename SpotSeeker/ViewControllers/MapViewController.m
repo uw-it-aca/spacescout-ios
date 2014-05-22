@@ -388,7 +388,12 @@ extern const int meters_per_latitude;
         [self setScreenTitleForCurrentCampus];
     }
     else {
-        [self.map_view setRegion:map_region animated:NO];
+        if (map_region.center.latitude == 0 && map_region.center.longitude == 0) {
+            [self centerOnCampus:current_campus];
+        }
+        else {
+            [self.map_view setRegion:map_region animated:NO];
+        }
     }
     
     
