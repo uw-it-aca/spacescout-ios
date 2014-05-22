@@ -35,7 +35,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     email_list = [[NSMutableArray alloc] init];
     existing_emails = [[NSMutableDictionary alloc] init];
     has_valid_to_email = FALSE;
@@ -49,9 +49,17 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 -(void)viewDidAppear:(BOOL)animated {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"current_user_email"]) {
+        NSString *email =[defaults objectForKey:@"current_user_email"];
         UITextView *from = (UITextView *)[self.view viewWithTag:102];
-        [from setText: [defaults objectForKey:@"current_user_email"]];
+        [from setText: email];
     }
+    else if ([defaults objectForKey:@"current_user_login"]) {
+        // Eh
+        NSString *from_str = [NSString stringWithFormat:@"%@@uw.edu", [defaults objectForKey:@"current_user_login"]];
+        UITextView *from = (UITextView *)[self.view viewWithTag:102];
+        [from setText:from_str];
+    }
+
     
     // Make this act like the email app - start with the to: focused
     UITextField *to = (UITextField *)[self.view viewWithTag:100];
@@ -498,6 +506,9 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
 -(void)updateEmailContainerAsPlain:(UIView *)container {
     UILabel *email_label = (UILabel *)[container viewWithTag:1];
     UILabel *comma_label = (UILabel *)[container viewWithTag:2];
+    
+    /*
+
     NSString *email = email_label.text;
     
     if (![self isValidEmail:email]) {
@@ -509,6 +520,8 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         email_label.textColor = [UIColor blueColor];
         email_label.layer.backgroundColor = [UIColor clearColor].CGColor;
     }
+     */
+    email_label.textColor = [UIColor colorWithRed:81.0/255 green:77.0/255 blue:163.0/255 alpha:1.0];
     
     comma_label.hidden = FALSE;
 }
