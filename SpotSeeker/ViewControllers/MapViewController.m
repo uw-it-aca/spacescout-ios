@@ -509,6 +509,11 @@ extern const int meters_per_latitude;
     }
 }
 
+-(void)runSearch {
+    self.map_region = self.map_view.region;
+    [super runSearch];
+}
+
 -(void)handleGesture:(UIGestureRecognizer *)gesture {
     [self hideTipView];
 }
