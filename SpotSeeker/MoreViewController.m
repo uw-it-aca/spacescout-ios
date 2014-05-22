@@ -17,6 +17,9 @@
 
 @implementation MoreViewController
 
+NSString *log_in = @"Log in";
+NSString *log_out = @"Log out";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -58,14 +61,10 @@
     
     UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
     if ([REST hasPersonalOAuthToken]) {
-        logout_button.hidden = FALSE;
+        [logout_button setTitle: log_out forState:UIControlStateNormal];
     }
     else {
-        logout_button.hidden = TRUE;
-        UIView *background = [self.view viewWithTag:400];
-        UILabel *description = (UILabel *)[self.view viewWithTag:401];
-        background.hidden = TRUE;
-        description.hidden = TRUE;
+        [logout_button setTitle: log_in forState:UIControlStateNormal];
     }
     
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(btnClickClose:)];
@@ -99,32 +98,57 @@
 
 
 -(void)logoutButtonTouchUp: (id)sender {
-    [REST removePersonalOAuthToken];
-    NSHTTPCookie *cookie;
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies]) {
-        [storage deleteCookie:cookie];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [Favorites clearLocalCacheFavorites];
-    
-    if (!self.overlay) {
-        self.overlay = [[OverlayMessage alloc] init];
-        [self.overlay addTo:self.view];
-    }
+
+   
+    if ([REST hasPersonalOAuthToken]) {
+        [REST removePersonalOAuthToken];
+        NSHTTPCookie *cookie;
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (cookie in [storage cookies]) {
+            [storage deleteCookie:cookie];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [Favorites clearLocalCacheFavorites];
+        
+        if (!self.overlay) {
+            self.overlay = [[OverlayMessage alloc] init];
+            [self.overlay addTo:self.view];
+        }
 
 
-    [self.overlay showOverlay:@"Logged Out" animateDisplay:YES afterShowBlock:^(void) {
-        UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
-        logout_button.hidden = TRUE;
-
-        [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void) {
-            [self.navigationController popViewControllerAnimated:TRUE];
+        [self.overlay showOverlay:@"Logged Out" animateDisplay:YES afterShowBlock:^(void) {
+            [self.overlay hideOverlayAfterDelay:1.0 animateHide:YES afterHideBlock:^(void) {
+            }];
         }];
-    }];
+    }
+    else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        OAuthLoginViewController *auth_vc = [storyboard instantiateViewControllerWithIdentifier:@"OAuth_Login"];
+        auth_vc.delegate = self;
+        
+        [self presentViewController:auth_vc animated:YES completion:^(void) {}];
 
+    }
+        
+    UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
+
+    if ([REST hasPersonalOAuthToken]) {
+        [logout_button setTitle: log_out forState:UIControlStateNormal];
+    }
+    else {
+        [logout_button setTitle: log_in forState:UIControlStateNormal];
+    }
+    
 }
 
+-(void)loginCancelled {
+}
+
+-(void)loginComplete {
+    UIButton *logout_button = (UIButton *)[self.view viewWithTag:301];
+    [logout_button setTitle: log_out forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
 
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
