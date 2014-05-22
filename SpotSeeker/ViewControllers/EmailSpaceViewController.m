@@ -850,6 +850,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
     if (self.is_sending_email) {
         return;
     }
+    [self addEmailFromTextField];
     
     UITextView *email_field = (UITextView *)[self.view viewWithTag:100];
     UITextView *from_field = (UITextView *)[self.view viewWithTag:102];
