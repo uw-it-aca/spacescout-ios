@@ -28,6 +28,7 @@
 @synthesize search_preferences;
 @synthesize last_preference_set_time;
 @synthesize last_shown_offline_alert;
+@synthesize last_campus_on_mapview;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

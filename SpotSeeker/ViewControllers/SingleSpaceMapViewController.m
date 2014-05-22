@@ -59,7 +59,7 @@
     mapRegion.center =  CLLocationCoordinate2DMake([self.spot.latitude doubleValue], [self.spot.longitude doubleValue]);
     mapRegion.span.latitudeDelta = 0.001;
     mapRegion.span.longitudeDelta = 0.001;
-    
+
     [map_view setRegion:mapRegion animated: NO];
     
     CLLocationCoordinate2D annotationCoord;

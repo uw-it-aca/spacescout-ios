@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSMutableArray *search_preferences;
 @property (strong, nonatomic) NSDate *last_preference_set_time;
 @property (strong, nonatomic) NSDate *last_shown_offline_alert;
+@property (strong, nonatomic) NSString *last_campus_on_mapview;
 
 -(void)showNoNetworkAlert;
 

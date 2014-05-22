@@ -154,7 +154,7 @@ bool first_search = false;
         mapRegion.center = map_view.userLocation.coordinate;
         mapRegion.span.latitudeDelta = 0.005;
         mapRegion.span.longitudeDelta = 0.005;
-        
+
         [map_view setRegion:mapRegion animated: YES];
     }
 }
@@ -165,7 +165,7 @@ bool first_search = false;
     
     mapRegion.span.latitudeDelta = [campus getLatitudeDelta];
     mapRegion.span.longitudeDelta = [campus getLongitudeDelta];
-    
+ 
     [map_view setRegion:mapRegion animated: NO];
 }
 

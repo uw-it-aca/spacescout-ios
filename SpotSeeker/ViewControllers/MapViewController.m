@@ -125,7 +125,7 @@ extern const int meters_per_latitude;
         CGPoint closest_point = [map_view convertCoordinate:closest_to_user toPointToView:nil];
         
         if (closest_point.x < 0 || closest_point.y < 0 || closest_point.x > map_view.frame.size.width || closest_point.y > map_view.frame.size.height) {
-            if (expand_map_on_demand) {
+            if (expand_map_on_demand && FALSE) {
                 MKCoordinateRegion region;
                 region.center.latitude = (closest_to_user.latitude + map_view.centerCoordinate.latitude) / 2;
                 region.center.longitude = (closest_to_user.longitude + map_view.centerCoordinate.longitude) / 2;
@@ -289,6 +289,7 @@ extern const int meters_per_latitude;
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
+    /*
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.user_location = userLocation;
     
@@ -299,6 +300,7 @@ extern const int meters_per_latitude;
 
     [self centerOnUserLocation];
     [self runSearch];
+     */
 }
 
 #pragma mark -
@@ -360,11 +362,14 @@ extern const int meters_per_latitude;
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
     Campus *current_campus = [Campus getCurrentCampus];
     Campus *next_campus = [Campus getNextCampus];
-
-    if (next_campus && (!current_campus || current_campus.search_key != next_campus.search_key)) {
+   
+    AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *last_displayed = app_delegate.last_campus_on_mapview;
+    
+    if (next_campus.search_key && (!current_campus || current_campus.search_key != next_campus.search_key)) {
         [Campus setCurrentCampus:next_campus];
         current_campus = next_campus;
         [Campus clearNextCampus];
@@ -375,12 +380,15 @@ extern const int meters_per_latitude;
         [self runSearch];
         [self setScreenTitleForCurrentCampus];
     }
-    else if (current_campus.search_key != last_displayed_campus) {
+    else if (![current_campus.search_key isEqualToString:last_displayed]) {
         // This can happen if we switch campuses while on the list view.
         // Also catches initial loading
         [self centerOnCampus:current_campus];
         [self runSearch];
         [self setScreenTitleForCurrentCampus];
+    }
+    else {
+        [self.map_view setRegion:map_region animated:NO];
     }
     
     
@@ -389,10 +397,8 @@ extern const int meters_per_latitude;
     }
     
     if (self.current_spots.count > 0) {
-        [map_view setShowsUserLocation:YES];
-
         // Only do this centering if we didn't just center the map above
-        if (current_campus.search_key == last_displayed_campus) {
+        if (current_campus.search_key == last_displayed) {
             if ((self.map_region.center.latitude != 0.0) && (self.map_region.center.longitude != 0.0)) {
                 [map_view setRegion:self.map_region animated: NO];
             }
@@ -401,8 +407,10 @@ extern const int meters_per_latitude;
         [self showFoundSpaces];
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
+    
+    [map_view setShowsUserLocation:YES];
 
-    last_displayed_campus = current_campus.search_key;
+    app_delegate.last_campus_on_mapview = current_campus.search_key;
 }
 
 - (void)viewDidLoad
