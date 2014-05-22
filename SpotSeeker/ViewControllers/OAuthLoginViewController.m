@@ -81,9 +81,17 @@
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             NSDictionary *personal_data = [parser objectWithData:[request responseData]];
 
+            for (NSString *key in personal_data) {
+                NSLog(@"Key: %@, Value: %@", key, [personal_data objectForKey:key]);
+            }
+            
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            
             [defaults setObject:[personal_data objectForKey:@"user"] forKey:@"current_user_login"];
             [defaults setObject:[personal_data objectForKey:@"email"] forKey:@"current_user_email"];
+        }
+        else {
+            NSLog(@"Not a 200 on user/me: %i", request.responseStatusCode);
         }
        
         [self.delegate loginComplete];
@@ -94,7 +102,7 @@
         
         [REST setPersonalOAuthToken:[params objectForKey:@"oauth_token"] andSecret:[params objectForKey:@"oauth_token_secret"]];
         
-        [self.rest getURL:@"/api/v1/user/me"];
+        [self.rest getURL:@"/api/v1/user/me" withAccessToken:YES withCache:NO];
     }
 }
 
