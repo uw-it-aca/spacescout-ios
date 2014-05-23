@@ -521,6 +521,7 @@ const int PADDING_BETWEEN_EMAIL_ROWS = 2;
         email_label.layer.backgroundColor = [UIColor clearColor].CGColor;
     }
      */
+    email_label.layer.backgroundColor = [UIColor clearColor].CGColor;
     email_label.textColor = [UIColor colorWithRed:81.0/255 green:77.0/255 blue:163.0/255 alpha:1.0];
     
     comma_label.hidden = FALSE;
