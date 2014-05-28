@@ -1724,7 +1724,7 @@
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="Your review will be published with your UW NetID (if the review follows our guidelines). ">
+                                                    <fragment content="Your review will be published in 2-3 days if it meets review guidelines.">
                                                         <attributes>
                                                             <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <font key="NSFont" size="12" name="HelveticaNeue"/>
