@@ -68,6 +68,7 @@
 @property (nonatomic, retain) OverlayMessage *overlay;
 @property (nonatomic, retain) Favorites *favorites;
 @property (nonatomic) int current_image;
+@property (nonatomic, retain) UITableViewCell *image_title_cell_while_building;
 
 // To handle the return from logging in...
 @property (nonatomic) bool is_marking_favorite;

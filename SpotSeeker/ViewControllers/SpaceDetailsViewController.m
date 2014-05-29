@@ -42,6 +42,7 @@
 @synthesize opening_view_controller_favorites;
 @synthesize is_marking_favorite;
 @synthesize is_sharing_space;
+@synthesize image_title_cell_while_building;
 
 #pragma mark -
 #pragma mark table control methods
@@ -526,6 +527,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_and_name"];
     }
     
+    self.image_title_cell_while_building = cell;
     UILabel *spot_name = (UILabel *)[cell viewWithTag:1];
     [spot_name setText:self.spot.name];
     [spot_name sizeToFit];
@@ -929,9 +931,10 @@
 -(void)displaySpaceImage:(UIImage *)image {
     self.spot_image = image;
     
-    UIImageView *space_image = (UIImageView *)[self.view viewWithTag:4000];
+    UIImageView *space_image = (UIImageView *)[self.image_title_cell_while_building viewWithTag:4000];
     space_image.image = image;
     space_image.hidden = NO;
+    
 }
 
 -(void)requestFromREST:(ASIHTTPRequest *)request {
@@ -940,7 +943,6 @@
         spinner.hidden = TRUE;
         UIImage *img = [[UIImage alloc] initWithData:[request responseData]];
         [self displaySpaceImage:img];
-
     }
 }
 
