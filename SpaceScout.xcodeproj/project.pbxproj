@@ -273,7 +273,6 @@
 		C2FDB0F3150A802D00ED3A93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FDB0F2150A802D00ED3A93 /* AppDelegate.m */; };
 		C2FDB0F6150A802D00ED3A93 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2FDB0F4150A802D00ED3A93 /* iPhone.storyboard */; };
 		C2FDB0F9150A802D00ED3A93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FDB0F8150A802D00ED3A93 /* ViewController.m */; };
-		C2FDB101150A802E00ED3A93 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB100150A802E00ED3A93 /* SenTestingKit.framework */; };
 		C2FDB102150A802E00ED3A93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E2150A802D00ED3A93 /* UIKit.framework */; };
 		C2FDB103150A802E00ED3A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDB0E4150A802D00ED3A93 /* Foundation.framework */; };
 		C2FDB10B150A802E00ED3A93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2FDB109150A802E00ED3A93 /* InfoPlist.strings */; };
@@ -648,8 +647,7 @@
 		C2FDB0F5150A802D00ED3A93 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		C2FDB0F7150A802D00ED3A93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C2FDB0F8150A802D00ED3A93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceScoutTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2FDB100150A802E00ED3A93 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceScoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FDB108150A802E00ED3A93 /* SpaceScoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpaceScoutTests-Info.plist"; sourceTree = "<group>"; };
 		C2FDB10A150A802E00ED3A93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -685,7 +683,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2FDB101150A802E00ED3A93 /* SenTestingKit.framework in Frameworks */,
 				C2FDB102150A802E00ED3A93 /* UIKit.framework in Frameworks */,
 				C2FDB103150A802E00ED3A93 /* Foundation.framework in Frameworks */,
 			);
@@ -1178,7 +1175,7 @@
 			isa = PBXGroup;
 			children = (
 				C2FDB0DE150A802D00ED3A93 /* SpaceScout.app */,
-				C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.octest */,
+				C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1208,7 +1205,6 @@
 				C2FDB0E2150A802D00ED3A93 /* UIKit.framework */,
 				C2FDB0E4150A802D00ED3A93 /* Foundation.framework */,
 				C2FDB0E6150A802D00ED3A93 /* CoreGraphics.framework */,
-				C2FDB100150A802E00ED3A93 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1309,8 +1305,8 @@
 			);
 			name = SpaceScoutTests;
 			productName = SpotSeekerTests;
-			productReference = C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productReference = C2FDB0FF150A802E00ED3A93 /* SpaceScoutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1318,6 +1314,7 @@
 		C2FDB0D5150A802D00ED3A93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					C2FDB0DD150A802D00ED3A93 = {
@@ -1813,14 +1810,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceScout.app/SpaceScout";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeekerTests/SpaceScoutTests-Info.plist";
 				PRODUCT_NAME = SpaceScoutTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1830,14 +1826,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceScout.app/SpaceScout";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotSeeker/SpaceScout-Prefix.pch";
 				INFOPLIST_FILE = "SpotSeekerTests/SpaceScoutTests-Info.plist";
 				PRODUCT_NAME = SpaceScoutTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

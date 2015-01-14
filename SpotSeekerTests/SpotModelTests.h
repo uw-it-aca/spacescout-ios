@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Space.h"
 
-@interface SpotModelTests : SenTestCase
+@interface SpotModelTests : XCTestCase
 
 @end

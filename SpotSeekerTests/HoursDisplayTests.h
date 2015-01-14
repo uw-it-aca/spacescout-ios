@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "HoursFormat.h"
 
-@interface HoursDisplayTests : SenTestCase
+@interface HoursDisplayTests : XCTestCase
 
 @end
