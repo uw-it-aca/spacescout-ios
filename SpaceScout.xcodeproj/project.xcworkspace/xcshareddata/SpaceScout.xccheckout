@@ -10,31 +10,31 @@
 	<string>SpaceScout</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>03326F59-1970-41E3-9673-68538961A204</key>
-		<string>https://github.com/uw-it-aca/spacescout-ios.git</string>
+		<key>79B0C6CC4927056CBFDC47D13086B433D6B0B26D</key>
+		<string>github.com:uw-it-aca/spacescout-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SpaceScout.xcodeproj/project.xcworkspace</string>
+	<string>SpaceScout.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>03326F59-1970-41E3-9673-68538961A204</key>
+		<key>79B0C6CC4927056CBFDC47D13086B433D6B0B26D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/uw-it-aca/spacescout-ios.git</string>
+	<string>github.com:uw-it-aca/spacescout-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>03326F59-1970-41E3-9673-68538961A204</string>
+	<string>79B0C6CC4927056CBFDC47D13086B433D6B0B26D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>03326F59-1970-41E3-9673-68538961A204</string>
+			<string>79B0C6CC4927056CBFDC47D13086B433D6B0B26D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>spacescout-ios</string>
+			<string>spotseeker-ios</string>
 		</dict>
 	</array>
 </dict>

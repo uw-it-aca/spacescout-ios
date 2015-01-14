@@ -19,5 +19,16 @@
     "search_key": "tacoma",
     "screen_title": "UW Tacoma Campus"
 
+ },
+ {
+    "longitude":-122.193097,
+    "latitude":47.761296,
+    "longitude_delta":0.005,
+    "latitude_delta":0.005,
+    "name":"UW Bothell",
+    "search_key": "bothell",
+    "screen_title": "UW Bothell Campus"
+
  }
+
 ]
