@@ -413,7 +413,15 @@ extern const int meters_per_latitude;
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(clearFromList:) userInfo:nil repeats:FALSE];
     }
     
-    [map_view setShowsUserLocation:YES];
+    CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
+
+    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+
+            [map_view setShowsUserLocation:YES];
+
+    }
 
     app_delegate.last_campus_on_mapview = current_campus.search_key;
 }
