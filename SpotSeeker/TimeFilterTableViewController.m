@@ -643,7 +643,8 @@ NSUInteger DeviceSystemMajorVersion()
 #pragma mark picker methods
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)pickerView.superview.superview.superview];
+    UIView *cell = pickerView.superview.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:cell.center];
     NSInteger modelRow = indexPath.row - 1;
     
     NSDateComponents *initial;
