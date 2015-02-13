@@ -1201,6 +1201,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.screenName = @"Space Details View";
+
+    // GA tracking of viewed details
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+
+    NSString *detail_action = [NSString stringWithFormat:@"%@, %@, %@", self.spot.name, self.spot.extended_info[@"campus"], self.spot.remote_id];
+    //NSLog(@"%@", detail_action);
+
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Details"     // Event category (required)
+                                                          action:detail_action  // Event action (required)
+                                                           label:nil          // Event label
+                                                           value:nil] build]];    // Event value
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
