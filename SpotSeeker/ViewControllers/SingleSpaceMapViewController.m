@@ -52,7 +52,15 @@
     [super viewDidLoad];
     self.screenName = @"Single Space Map View";
     
-    [map_view setShowsUserLocation:YES];
+    CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
+
+    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+
+        [map_view setShowsUserLocation:YES];
+
+    }
 
     
     MKCoordinateRegion mapRegion;   
