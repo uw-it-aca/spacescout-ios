@@ -18,6 +18,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "SBJson.h"
 #import "Campus.h"
 #import "ViewController.h"
@@ -35,7 +36,7 @@
 #import "GAIFields.h"
 #import "SideMenu.h"
 
-@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate> {
+@interface MapViewController : SearchableSpaceListViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate> {
     NSArray *current_clusters;
     NSNumber *from_list;
     MKCoordinateRegion map_region;
@@ -48,6 +49,7 @@
     NSString *last_displayed_campus;
 }
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, retain) NSArray *current_clusters;
 @property (nonatomic, retain) NSNumber *from_list;
 @property (nonatomic) MKCoordinateRegion map_region;

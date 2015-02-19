@@ -369,6 +369,13 @@ extern const int meters_per_latitude;
     AppDelegate *app_delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *last_displayed = app_delegate.last_campus_on_mapview;
     
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+
+    if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
     if (next_campus.search_key && (!current_campus || current_campus.search_key != next_campus.search_key)) {
         [Campus setCurrentCampus:next_campus];
         current_campus = next_campus;
@@ -414,7 +421,7 @@ extern const int meters_per_latitude;
     }
     
     CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
-
+    
     if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
         authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
         authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
