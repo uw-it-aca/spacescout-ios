@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Required to show your location on the map</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -55,11 +53,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.1rc1</string>
+	<string>2.1beta1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2012, University of Washington</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Required to show your location on the map</string>
 	<key>UIMainStoryboardFile</key>
 	<string>iPhone</string>
 	<key>UIRequiredDeviceCapabilities</key>
