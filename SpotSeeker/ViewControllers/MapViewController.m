@@ -170,6 +170,8 @@ extern const int meters_per_latitude;
 
 
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
+    map_view.rotateEnabled = NO;
+
     if([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
