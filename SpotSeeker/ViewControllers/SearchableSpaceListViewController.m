@@ -62,8 +62,14 @@ bool first_search = false;
     NSArray *campus_param = [[NSArray alloc] initWithObjects:current.search_key, nil];
     [search_attributes setValue:campus_param forKey:@"extended_info:campus"];
 
+    // This was calculating a larger search radius than intended
+    //int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
+    CLLocationCoordinate2D centerCoord = [self.map_view centerCoordinate];
+    CLLocation *centerLocation = [[CLLocation alloc] initWithLatitude:centerCoord.latitude longitude:centerCoord.longitude];
+    CLLocationCoordinate2D topCenterCoord = [self.map_view convertPoint:CGPointMake(self.map_view.frame.size.width / 2.0f, 0) toCoordinateFromView:self.map_view];
+    CLLocation *topCenterLocation = [[CLLocation alloc] initWithLatitude:topCenterCoord.latitude longitude:topCenterCoord.longitude];
+    int meters = [centerLocation distanceFromLocation:topCenterLocation];
     
-    int meters = map_view.region.span.latitudeDelta * meters_per_latitude;
     
     if (meters > 10000 && first_search == false) {
         [self searchCancelled];
