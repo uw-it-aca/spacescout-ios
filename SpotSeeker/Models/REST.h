@@ -13,6 +13,7 @@
 #import "ASIHTTPRequest+OAuth.h"
 #import "ASIDownloadCache.h"
 #import "AppDelegate.h"
+#import "SearchQueueManager.h"
 
 @protocol RESTFinished;
 

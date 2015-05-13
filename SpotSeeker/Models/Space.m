@@ -100,7 +100,10 @@ const float FAVORITES_REFRESH_INTERVAL = 10.0;
 
         }];
         
-        [request startAsynchronous];
+        SearchQueueManager *sharedSearchQueueManager = [SearchQueueManager sharedQueueManager];
+        //[[sharedSearchQueueManager searchQueue] cancelAllOperations];
+        [[sharedSearchQueueManager searchQueue] addOperation:request];
+        NSLog(@"Space.m req count: %lu", (unsigned long)[[sharedSearchQueueManager searchQueue] operationCount]);
     }
     else {
         [self _getListBySearch:arguments];

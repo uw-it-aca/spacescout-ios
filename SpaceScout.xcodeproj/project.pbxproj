@@ -57,6 +57,7 @@
 		895B2DBA16EE90F000E00BE0 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895B2DB916EE90F000E00BE0 /* icon-72@2x.png */; };
 		895BF08E17CE71E8002C4BDF /* placeholder_noImage_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */; };
 		8974C44F1700CFA100DF1C81 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8974C44E1700CFA100DF1C81 /* CoreData.framework */; };
+		897912FB1B03F027005C2501 /* SearchQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897912FA1B03F027005C2501 /* SearchQueueManager.m */; };
 		897CF54615A23B4B007D5ABA /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 897CF54515A23B4B007D5ABA /* search.png */; };
 		898E35431703A984004AA71C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 898E35421703A984004AA71C /* Settings.bundle */; };
 		89C4448F176145D300FAE6D0 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C4448B176145D300FAE6D0 /* cog.png */; };
@@ -352,6 +353,8 @@
 		895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder_noImage_bw.png; path = images/placeholder_noImage_bw.png; sourceTree = "<group>"; };
 		89668EFC175FF4DA001D1578 /* SpaceScout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceScout.entitlements; sourceTree = SOURCE_ROOT; };
 		8974C44E1700CFA100DF1C81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		897912F91B03F027005C2501 /* SearchQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchQueueManager.h; path = Models/SearchQueueManager.h; sourceTree = "<group>"; };
+		897912FA1B03F027005C2501 /* SearchQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchQueueManager.m; path = Models/SearchQueueManager.m; sourceTree = "<group>"; };
 		897CF54515A23B4B007D5ABA /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
 		898E35421703A984004AA71C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		89C4448B176145D300FAE6D0 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cog.png; path = images/cog.png; sourceTree = "<group>"; };
@@ -797,6 +800,8 @@
 				06ACA01F1899853600113AD0 /* Contact.m */,
 				C206B945191B39B40024B0B4 /* NativeREST.h */,
 				C206B946191B39B40024B0B4 /* NativeREST.m */,
+				897912F91B03F027005C2501 /* SearchQueueManager.h */,
+				897912FA1B03F027005C2501 /* SearchQueueManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1642,6 +1647,7 @@
 				C28F16B518D8F09C00A220DD /* SpaceImagesScrollViewController.m in Sources */,
 				C2F715B618C5A49B00255582 /* UIImage+ImageEffects.m in Sources */,
 				C2CE6EA817722AA0009D1DA9 /* MainListViewController.m in Sources */,
+				897912FB1B03F027005C2501 /* SearchQueueManager.m in Sources */,
 				C22AA31A1805F55F004EC188 /* OAuthLoginViewController.m in Sources */,
 				C22AA31E180618EA004EC188 /* KeychainItemWrapper.m in Sources */,
 			);

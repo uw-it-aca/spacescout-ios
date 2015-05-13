@@ -23,6 +23,7 @@
 #import "REST.h"
 #import "Campus.h"
 #import "NativeREST.h"
+#import "SearchQueueManager.h"
 
 @protocol SearchFinished;
 

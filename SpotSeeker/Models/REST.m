@@ -28,6 +28,8 @@
 }
 
 -(void)getURL:(NSString *)url withAccessToken:(BOOL)use_token withCache:(BOOL)use_cache {
+    SearchQueueManager *sharedSearchQueueManager = [SearchQueueManager sharedQueueManager];
+    //[[sharedSearchQueueManager searchQueue] cancelAllOperations];
     NSString *request_url = [self _getFullURL:url];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
@@ -37,8 +39,11 @@
     if (!use_cache) {
         [request setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     }
+
     [request setDelegate:self];
-    [request startAsynchronous];
+    [[sharedSearchQueueManager searchQueue] addOperation:request];
+    NSLog(@"REST.m req count: %lu", (unsigned long)[[sharedSearchQueueManager searchQueue] operationCount]);
+
     [[GAI sharedInstance] dispatch];
     
     
