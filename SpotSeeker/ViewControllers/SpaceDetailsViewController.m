@@ -34,6 +34,7 @@
 @synthesize spot_image;
 @synthesize footer;
 @synthesize table_view;
+@synthesize hours_notes_height;
 @synthesize reservation_notes_height;
 @synthesize access_notes_height;
 @synthesize overlay;
@@ -69,12 +70,21 @@
     
     int hours_cell_index = 1;
     int access_notes_index = 2;
+    int hours_notes_index = -1;
     int labstats_cell_index = -1;
     
     if (has_labstats) {
         hours_cell_index++;
         access_notes_index++;
         labstats_cell_index += 2;
+    }
+    
+    if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+        access_notes_index++;
+        hours_notes_index = 2;
+        if (has_labstats) {
+            hours_notes_index++;
+        }
     }
     
 
@@ -86,6 +96,23 @@
     }
     else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
         return [self heightOfAccessNotesCellInTable:tableView];
+    }
+    else if (indexPath.section == 0 && indexPath.row == hours_notes_index) {
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
+            }
+            if (self.hours_notes_height != nil) {
+                return [self.hours_notes_height floatValue] + 5;
+            }
+            
+            UIWebView *display = (UIWebView *)[cell viewWithTag:212];
+            [display loadHTMLString:[self.spot.extended_info objectForKey:@"hours_notes"] baseURL:nil];
+            NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+            
+            return height + 20.0;
+        }
     }
     else if (indexPath.section == 2) {
         int offset = 0;
@@ -170,14 +197,11 @@
     }
 
     // Right now only the image/name cell and hours cell need a custom height, so the choice in cell here is arbitrary
-    else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
-        }
-        return cell.frame.size.height;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map_view_cell"];
     }
-    
+    return cell.frame.size.height;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -187,6 +211,9 @@
             base_number++;
         }
         if ([self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil) {
+            base_number++;
+        }
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
             base_number++;
         }
         return base_number;
@@ -255,12 +282,21 @@
 
     int hours_cell_index = 1;
     int access_notes_index = 2;
+    int hours_notes_index = -1;
     int labstats_cell_index = -1;
     
     if (has_labstats) {
         hours_cell_index++;
         access_notes_index++;
         labstats_cell_index += 2;
+    }
+    
+    if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+        access_notes_index++;
+        hours_notes_index = 2;
+        if (has_labstats) {
+            hours_notes_index++;
+        }
     }
     
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -274,6 +310,34 @@
     }
     else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
         return [self cellForAccessNotesInTable:tableView];
+    }
+    else if (indexPath.section == 0 && indexPath.row == hours_notes_index) {
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
+            }
+                
+            UIWebView *notes = (UIWebView *)[cell viewWithTag:212];
+            NSString *encoded = [[self.spot.extended_info objectForKey:@"hours_notes"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+            encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+            encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+            
+            NSString *app_path = [[NSBundle mainBundle] bundlePath];
+            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+            
+            NSString *format =  [plist_values objectForKey:@"hours_notes_wrapper_format"];
+            NSString *final_notes = [NSString stringWithFormat:format, encoded];
+            
+            notes.delegate = self;
+            [notes loadHTMLString:final_notes baseURL:nil];
+            notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.hours_notes_height floatValue]);
+            
+            notes.scrollView.scrollEnabled = FALSE;
+                
+            return cell;
+        }
     }
     else if (indexPath.section == 1) {
         int attribute_offset = 0;
@@ -376,18 +440,14 @@
         return cell;
     }
     // This fallback should never be reached
-    else {
-        NSLog(@"Invalid index path section: %li", (long)indexPath.section);
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
-        }    
-        UILabel *type = (UILabel *)[cell viewWithTag:1];
-        [type setText: @""];
-        return cell;
-        
+    NSLog(@"Invalid index path section: %li", (long)indexPath.section);
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"equipment_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"equipment_cell"];
     }
-    
+    UILabel *type = (UILabel *)[cell viewWithTag:1];
+    [type setText: @""];
+    return cell;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -813,6 +873,7 @@
     return cell;
 }
 
+// this only fills the two "look below" notes under hours
 -(UITableViewCell *)cellForAccessNotesInTable:(UITableView *)tableView {
     NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
     NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
@@ -1154,6 +1215,22 @@
     
    
     int row = 0;
+    if(webView.tag == 212){// hours_notes WebView
+        
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            row = 2;
+            if ([self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil) {
+                row++;
+            }
+        }
+        if (self.hours_notes_height != nil) {
+            return;
+        }
+        
+        NSInteger height_hours = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.hours_notes_height = [NSNumber numberWithLong:height_hours];
+    }
+    
     if(webView.tag == 2){// reservation_notes WebView
 
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
@@ -1178,7 +1255,11 @@
     }
 
     [self.table_view beginUpdates];
-    [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
+    if(webView.tag == 212) {
+        [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
+    }
     [self.table_view endUpdates];
 }
 

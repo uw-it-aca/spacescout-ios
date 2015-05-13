@@ -26,6 +26,8 @@
 	<integer>85</integer>
 	<key>nav_cancel_button_color_blue</key>
 	<integer>85</integer>
+	<key>hours_notes_wrapper_format</key>
+	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	<key>reservation_notes_wrapper_format</key>
 	<string>&lt;html&gt;&lt;style&gt;body { font-family: helvetica; font-size: 14px; background: #f7f7f7; margin-top: 15px;} a, a:active, a:visited { color: #847baa; } div {  }&lt;/style&gt;&lt;body&gt;&lt;div&gt;%@&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	<key>access_notes_wrapper_format</key>
