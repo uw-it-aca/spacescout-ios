@@ -69,24 +69,14 @@
     BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
     
     int hours_cell_index = 1;
-    int access_notes_index = 2;
-    int hours_notes_index = -1;
+    int special_notes_index = 2;
     int labstats_cell_index = -1;
     
     if (has_labstats) {
         hours_cell_index++;
-        access_notes_index++;
+        special_notes_index++;
         labstats_cell_index += 2;
     }
-    
-    if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
-        access_notes_index++;
-        hours_notes_index = 2;
-        if (has_labstats) {
-            hours_notes_index++;
-        }
-    }
-    
 
     if (indexPath.section == 0 && indexPath.row == 0) {
         return [self heightOfImageCellInTable:tableView];
@@ -94,25 +84,8 @@
     else if (indexPath.section == 0 && indexPath.row == hours_cell_index) {
         return [self heightOfHoursCellInTable:tableView];
     }
-    else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
-        return [self heightOfAccessNotesCellInTable:tableView];
-    }
-    else if (indexPath.section == 0 && indexPath.row == hours_notes_index) {
-        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
-            }
-            if (self.hours_notes_height != nil) {
-                return [self.hours_notes_height floatValue] + 5;
-            }
-            
-            UIWebView *display = (UIWebView *)[cell viewWithTag:212];
-            [display loadHTMLString:[self.spot.extended_info objectForKey:@"hours_notes"] baseURL:nil];
-            NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
-            
-            return height + 20.0;
-        }
+    else if (indexPath.section == 0 && indexPath.row == special_notes_index) {
+        return [self heightOfSpecialNotesCellInTable:tableView];
     }
     else if (indexPath.section == 2) {
         int offset = 0;
@@ -128,6 +101,25 @@
                 
                 UIWebView *display = (UIWebView *)[cell viewWithTag:100];
                 [display loadHTMLString:[self.spot.extended_info objectForKey:@"access_notes"] baseURL:nil];
+                NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+                
+                return height + 20.0;
+            }
+            offset++;
+        }
+        
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
+                }
+                if (self.hours_notes_height != nil) {
+                    return [self.hours_notes_height floatValue] + 5;
+                }
+                
+                UIWebView *display = (UIWebView *)[cell viewWithTag:212];
+                [display loadHTMLString:[self.spot.extended_info objectForKey:@"hours_notes"] baseURL:nil];
                 NSInteger height = [[display stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
                 
                 return height + 20.0;
@@ -152,7 +144,6 @@
                 
                 return height + 20.0;
             }
-            offset++;
         }
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"map_view_cell"];
@@ -207,13 +198,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     int base_number = 2;
     if (section == 0) {
-        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil || [self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil || [self.spot.extended_info objectForKey:@"reservation_notes"] != nil || [self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
             base_number++;
         }
         if ([self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil) {
-            base_number++;
-        }
-        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
             base_number++;
         }
         return base_number;
@@ -228,6 +216,9 @@
     else if (section == 2) {
         int count = 2;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            count++;
+        }
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
             count++;
         }
         if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
@@ -249,6 +240,9 @@
     if (indexPath.section == 2) {
         int offset = 0;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
+            offset++;
+        }
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
             offset++;
         }
         if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
@@ -281,22 +275,13 @@
     BOOL has_labstats = [self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil && [[self.spot.extended_info objectForKey:@"auto_labstats_total"] integerValue] > 0;
 
     int hours_cell_index = 1;
-    int access_notes_index = 2;
-    int hours_notes_index = -1;
+    int special_notes_index = 2;
     int labstats_cell_index = -1;
     
     if (has_labstats) {
         hours_cell_index++;
-        access_notes_index++;
+        special_notes_index++;
         labstats_cell_index += 2;
-    }
-    
-    if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
-        access_notes_index++;
-        hours_notes_index = 2;
-        if (has_labstats) {
-            hours_notes_index++;
-        }
     }
     
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -308,36 +293,8 @@
     else if (indexPath.section == 0 && indexPath.row == hours_cell_index) {
         return [self cellForHoursInTable:tableView];
     }
-    else if (indexPath.section == 0 && indexPath.row == access_notes_index) {
-        return [self cellForAccessNotesInTable:tableView];
-    }
-    else if (indexPath.section == 0 && indexPath.row == hours_notes_index) {
-        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
-            }
-                
-            UIWebView *notes = (UIWebView *)[cell viewWithTag:212];
-            NSString *encoded = [[self.spot.extended_info objectForKey:@"hours_notes"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
-            encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
-            encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
-            
-            NSString *app_path = [[NSBundle mainBundle] bundlePath];
-            NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
-            NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
-            
-            NSString *format =  [plist_values objectForKey:@"hours_notes_wrapper_format"];
-            NSString *final_notes = [NSString stringWithFormat:format, encoded];
-            
-            notes.delegate = self;
-            [notes loadHTMLString:final_notes baseURL:nil];
-            notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.hours_notes_height floatValue]);
-            
-            notes.scrollView.scrollEnabled = FALSE;
-                
-            return cell;
-        }
+    else if (indexPath.section == 0 && indexPath.row == special_notes_index) {
+        return [self cellForSpecialNotesInTable:tableView];
     }
     else if (indexPath.section == 1) {
         int attribute_offset = 0;
@@ -384,6 +341,38 @@
             }
             offset++;
         }
+        
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            if (indexPath.row == offset) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours_notes_cell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hours_notes_cell"];
+                }
+                
+                UIWebView *notes = (UIWebView *)[cell viewWithTag:212];
+                NSString *encoded = [[self.spot.extended_info objectForKey:@"hours_notes"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+                encoded = [encoded stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+                
+                NSString *app_path = [[NSBundle mainBundle] bundlePath];
+                NSString *plist_path = [app_path stringByAppendingPathComponent:@"ui_magic_values.plist"];
+                NSDictionary *plist_values = [NSDictionary dictionaryWithContentsOfFile:plist_path];
+                
+                NSString *format =  [plist_values objectForKey:@"hours_notes_wrapper_format"];
+                NSString *final_notes = [NSString stringWithFormat:format, encoded];
+                NSLog(@"final_notes: %@", final_notes);
+                
+                notes.delegate = self;
+                [notes loadHTMLString:final_notes baseURL:nil];
+                notes.frame = CGRectMake(notes.frame.origin.x, notes.frame.origin.y, notes.frame.size.width, [self.hours_notes_height floatValue]);
+                
+                notes.scrollView.scrollEnabled = FALSE;
+                
+                return cell;
+            }
+            offset++;
+        }
+        
         if ([self.spot.extended_info objectForKey:@"reservation_notes"] != nil) {
             
             if (indexPath.row == offset) {
@@ -556,21 +545,43 @@
     return hours_height + expected_height + open_label_bottom + hours_cell_extra + location_header_size + location_padding;
 }
 
--(CGFloat)heightOfAccessNotesCellInTable:(UITableView *)tableView {
+-(CGFloat)heightOfSpecialNotesCellInTable:(UITableView *)tableView {
     NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+    NSString *hours_notes = [self.spot.extended_info objectForKey:@"hours_notes"];
     NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
     
     NSString *cell_id;
     
-    if (access_notes != nil && reservation_notes != nil) {
-        cell_id = @"notes_bubble_cell_both";
-    }
-    else if (access_notes != nil) {
-        cell_id = @"notes_bubble_cell_access";
-    }
-    else {
+    if (access_notes != nil) {
+        if (hours_notes != nil) {
+            // access & hours notes exist
+            if (reservation_notes != nil) {
+                // all three exist
+                cell_id = @"notes_bubble_cell_three";
+            } else {
+                // only access & hours notes
+                cell_id = @"notes_bubble_cell_access_hours";
+            }
+        } else if (reservation_notes != nil) {
+            // only access & reservation notes
+            cell_id = @"notes_bubble_cell_access_reservations";
+        } else {
+            // only access_notes
+            cell_id = @"notes_bubble_cell_access";
+        }
+    } else if (hours_notes != nil) {
+        if (reservation_notes != nil) {
+            // hours & reservation notes exist
+            cell_id = @"notes_bubble_cell_hours_reservation";
+        } else {
+            // only hours notes
+            cell_id = @"notes_bubble_cell_hours";
+        }
+    } else if (reservation_notes != nil) {
+        // only reservation notes
         cell_id = @"notes_bubble_cell_reservations";
     }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
@@ -874,20 +885,42 @@
 }
 
 // this only fills the two "look below" notes under hours
--(UITableViewCell *)cellForAccessNotesInTable:(UITableView *)tableView {
+-(UITableViewCell *)cellForSpecialNotesInTable:(UITableView *)tableView {
     NSString *access_notes = [self.spot.extended_info objectForKey:@"access_notes"];
+    NSString *hours_notes = [self.spot.extended_info objectForKey:@"hours_notes"];
     NSString *reservation_notes = [self.spot.extended_info objectForKey:@"reservation_notes"];
     
     NSString *cell_id;
-    if (access_notes != nil && reservation_notes != nil) {
-        cell_id = @"notes_bubble_cell_both";
-    }
-    else if (access_notes != nil) {
-        cell_id = @"notes_bubble_cell_access";
-    }
-    else {
+    if (access_notes != nil) {
+        if (hours_notes != nil) {
+            // access & hours notes exist
+            if (reservation_notes != nil) {
+                // all three exist
+                cell_id = @"notes_bubble_cell_three";
+            } else {
+                // only access & hours notes
+                cell_id = @"notes_bubble_cell_access_hours";
+            }
+        } else if (reservation_notes != nil) {
+            // only access & reservation notes
+            cell_id = @"notes_bubble_cell_access_reservations";
+        } else {
+            // only access_notes
+            cell_id = @"notes_bubble_cell_access";
+        }
+    } else if (hours_notes != nil) {
+        if (reservation_notes != nil) {
+            // hours & reservation notes exist
+            cell_id = @"notes_bubble_cell_hours_reservation";
+        } else {
+            // only hours notes
+            cell_id = @"notes_bubble_cell_hours";
+        }
+    } else if (reservation_notes != nil) {
+        // only reservation notes
         cell_id = @"notes_bubble_cell_reservations";
     }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
@@ -897,8 +930,7 @@
         UILabel *reservations_label = (UILabel *)[cell viewWithTag:31];
         if ([[self.spot.extended_info objectForKey:@"reservable"] isEqualToString:@"reservations"]) {
             reservations_label.text = NSLocalizedString(@"Space reservable required", nil);
-        }
-        else {
+        } else {
             reservations_label.text = NSLocalizedString(@"Space reservable optional", nil);
         }
     }
@@ -1218,10 +1250,7 @@
     if(webView.tag == 212){// hours_notes WebView
         
         if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
-            row = 2;
-            if ([self.spot.extended_info objectForKey:@"auto_labstats_available"] != nil) {
-                row++;
-            }
+            row = 1;
         }
         if (self.hours_notes_height != nil) {
             return;
@@ -1234,7 +1263,7 @@
     if(webView.tag == 2){// reservation_notes WebView
 
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
-            row = 1;
+            row = 2;
         }
         if (self.reservation_notes_height != nil) {
             return;
@@ -1255,11 +1284,7 @@
     }
 
     [self.table_view beginUpdates];
-    if(webView.tag == 212) {
-        [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    } else {
-        [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
-    }
+    [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
     [self.table_view endUpdates];
 }
 
