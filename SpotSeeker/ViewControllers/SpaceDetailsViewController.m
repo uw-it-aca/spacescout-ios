@@ -310,6 +310,7 @@
         }
     }
     else if (indexPath.section == 2)  {
+//        NSLog(@"cellForRowAtIndexPath called for section 2");
         int offset = 0;
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
             
@@ -360,7 +361,7 @@
                 
                 NSString *format =  [plist_values objectForKey:@"hours_notes_wrapper_format"];
                 NSString *final_notes = [NSString stringWithFormat:format, encoded];
-                NSLog(@"final_notes: %@", final_notes);
+//                NSLog(@"final_notes: %@", final_notes);
                 
                 notes.delegate = self;
                 [notes loadHTMLString:final_notes baseURL:nil];
@@ -1247,9 +1248,20 @@
     
    
     int row = 0;
-    if(webView.tag == 212){// hours_notes WebView
+    
+    if(webView.tag == 100){ // access_notes WebView
         
-        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+        if (self.access_notes_height != nil) {
+            return;
+        }
+        
+        NSInteger height_access = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
+        self.access_notes_height = [NSNumber numberWithLong:height_access];
+    }
+    
+    if(webView.tag == 212){ // hours_notes WebView
+        
+        if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
             row = 1;
         }
         if (self.hours_notes_height != nil) {
@@ -1260,11 +1272,15 @@
         self.hours_notes_height = [NSNumber numberWithLong:height_hours];
     }
     
-    if(webView.tag == 2){// reservation_notes WebView
+    if(webView.tag == 2){ // reservation_notes WebView
 
         if ([self.spot.extended_info objectForKey:@"access_notes"] != nil) {
-            row = 2;
+            row++;
         }
+        if ([self.spot.extended_info objectForKey:@"hours_notes"] != nil) {
+            row++;
+        }
+        
         if (self.reservation_notes_height != nil) {
             return;
         }
@@ -1273,16 +1289,7 @@
         self.reservation_notes_height = [NSNumber numberWithLong:height];
     }
     
-    if(webView.tag == 100){//access_notes WebView
-
-        if (self.access_notes_height != nil) {
-            return;
-        }
-        
-        NSInteger height_access = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] integerValue];
-        self.access_notes_height = [NSNumber numberWithLong:height_access];
-    }
-
+//    NSLog(@"webViewDidFinishLoad called for section 2 at row: %d", row);
     [self.table_view beginUpdates];
     [self.table_view reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
     [self.table_view endUpdates];
