@@ -63,6 +63,7 @@
 @property (nonatomic, retain) UIImage *spot_image;
 @property (nonatomic, retain) UIView *footer;
 @property (nonatomic, retain) IBOutlet UITableView *table_view;
+@property (nonatomic, retain) NSNumber *hours_notes_height;
 @property (nonatomic, retain) NSNumber *reservation_notes_height;
 @property (nonatomic, retain) NSNumber *access_notes_height;
 @property (nonatomic, retain) OverlayMessage *overlay;
