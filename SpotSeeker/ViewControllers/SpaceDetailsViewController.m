@@ -573,7 +573,7 @@
     } else if (hours_notes != nil) {
         if (reservation_notes != nil) {
             // hours & reservation notes exist
-            cell_id = @"notes_bubble_cell_hours_reservation";
+            cell_id = @"notes_bubble_cell_hours_reservations";
         } else {
             // only hours notes
             cell_id = @"notes_bubble_cell_hours";
@@ -912,7 +912,7 @@
     } else if (hours_notes != nil) {
         if (reservation_notes != nil) {
             // hours & reservation notes exist
-            cell_id = @"notes_bubble_cell_hours_reservation";
+            cell_id = @"notes_bubble_cell_hours_reservations";
         } else {
             // only hours notes
             cell_id = @"notes_bubble_cell_hours";
