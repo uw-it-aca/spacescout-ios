@@ -54,7 +54,6 @@
 		8940AD6A15BF344400714AFB /* done_picker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD6815BF344400714AFB /* done_picker@2x.png */; };
 		8940AD7115BF3AB800714AFB /* pin07.png in Resources */ = {isa = PBXBuildFile; fileRef = 8940AD7015BF3AB800714AFB /* pin07.png */; };
 		8953B6D816EEA86F008BF921 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8953B6D716EEA86F008BF921 /* Default@2x.png */; };
-		8959A5CB1A68496D00FF8BEC /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8959A5C91A68496D00FF8BEC /* libAdIdAccess.a */; };
 		8959A5CC1A68496D00FF8BEC /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8959A5CA1A68496D00FF8BEC /* libGoogleAnalyticsServices.a */; };
 		895B2DBA16EE90F000E00BE0 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895B2DB916EE90F000E00BE0 /* icon-72@2x.png */; };
 		895BF08E17CE71E8002C4BDF /* placeholder_noImage_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */; };
@@ -351,7 +350,6 @@
 		8959A5C61A68494200FF8BEC /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		8959A5C71A68494200FF8BEC /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		8959A5C81A68494200FF8BEC /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		8959A5C91A68496D00FF8BEC /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		8959A5CA1A68496D00FF8BEC /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		895B2DB916EE90F000E00BE0 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		895BF08D17CE71E8002C4BDF /* placeholder_noImage_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder_noImage_bw.png; path = images/placeholder_noImage_bw.png; sourceTree = "<group>"; };
@@ -678,7 +676,6 @@
 				C2429A9B150AAC21005A994A /* SystemConfiguration.framework in Frameworks */,
 				C2429A99150AAC15005A994A /* MobileCoreServices.framework in Frameworks */,
 				C2429A97150AAC0A005A994A /* libz.dylib in Frameworks */,
-				8959A5CB1A68496D00FF8BEC /* libAdIdAccess.a in Frameworks */,
 				8959A5CC1A68496D00FF8BEC /* libGoogleAnalyticsServices.a in Frameworks */,
 				C2429A41150A8DDA005A994A /* MapKit.framework in Frameworks */,
 				C2FDB0E3150A802D00ED3A93 /* UIKit.framework in Frameworks */,
@@ -702,7 +699,6 @@
 		8972F37D185293DD003F0E3C /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				8959A5C91A68496D00FF8BEC /* libAdIdAccess.a */,
 				8959A5CA1A68496D00FF8BEC /* libGoogleAnalyticsServices.a */,
 				8959A5C11A68494200FF8BEC /* GAIDictionaryBuilder.h */,
 				8959A5C21A68494200FF8BEC /* GAIEcommerceProduct.h */,
